@@ -1,0 +1,49 @@
+name: Build and Deploy to AWS CodeDeploy
+
+on:
+  push:
+    branches:
+      - deploy-test
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Build Docker Image
+      run: docker build -t softeerh5/my-car-master:latest -f Dockerfile .
+
+    - name: Log in to Docker Hub
+      run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Push Docker Image
+      run: docker push softeerh5/my-car-master:latest
+
+    - name: Prepare Deployment Files
+      run: |
+        mkdir deploy
+        cp appspec.yml deploy/
+
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ap-northeast-2
+
+    - name: Zip Deployment Files
+      run: zip -r deploy.zip deploy/
+
+    - name: Copy Files to S3
+      run: aws s3 cp deploy.zip s3://h5-codedeploy-script/deploy/
+
+    - name: Deploy to AWS CodeDeploy
+      run: |
+        aws deploy create-deployment \
+          --application-name h5-application-ec2-deploy \
+          --deployment-config-name CodeDeployDefault.AllAtATime \
+          --deployment-group-name h5-application-ec2-deploy-auto-scaling-group \
+          --s3-location bucket=s3://h5-codedeploy-script/deploy/,bundleType=zip,key=deploy.zip
