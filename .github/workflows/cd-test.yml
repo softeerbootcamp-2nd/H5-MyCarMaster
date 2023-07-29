@@ -69,4 +69,4 @@ jobs:
             --application-name h5-application-ec2-deploy \
             --deployment-config-name CodeDeployDefault.AllAtOnce \
             --deployment-group-name h5-application-ec2-deploy-auto-scaling-group \
-            --s3-location bucket=s3://h5-codedeploy-script/deploy/,bundleType=zip,key=deploy.zip
+            --s3-location bucket=h5-codedeploy-script/deploy,bundleType=zip,key=deploy.zip
