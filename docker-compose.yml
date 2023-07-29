@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  spring-boot:
+    restart: 'on-failure'
+    build:
+      context: '.'
+      dockerfile: Dockerfile
+      args:
+        PROFILE: local
+    container_name: 'my-car-master'
+    ports:
+      - '8080:8080'
