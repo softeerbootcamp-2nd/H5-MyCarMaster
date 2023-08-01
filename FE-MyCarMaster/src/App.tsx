@@ -1,10 +1,12 @@
 import Estimation from "./pages/Estimation";
+import { ThemeProvider } from "styled-components";
+import theme from "./styles/Theme";
 
 function App() {
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <Estimation />
-    </div>
+    </ThemeProvider>
   );
 }
 
