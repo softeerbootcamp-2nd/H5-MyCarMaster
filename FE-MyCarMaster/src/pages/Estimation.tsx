@@ -2,7 +2,7 @@ import React from "react";
 import { Footer, Header, MainView } from "../components";
 import { styled } from "styled-components";
 
-function MainPage() {
+function Estimation() {
   return (
     <Container>
       <Header />
@@ -15,7 +15,9 @@ function MainPage() {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  width: 80rem;
+  height: 45rem;
+  margin: 4rem 8rem;
 `;
 
-export default MainPage;
+export default Estimation;
