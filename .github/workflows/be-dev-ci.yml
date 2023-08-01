@@ -42,10 +42,10 @@ jobs:
             ${{ runner.os }}-gradle-
 
       - name: Grant Execute Permission For Gradlew
-        run: chmod +x gradlew
+        run: chmod +x ./BE-MyCarMaster/gradlew
 
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./BE-MyCarMaster/gradlew build
 
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
