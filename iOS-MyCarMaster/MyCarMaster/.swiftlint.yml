@@ -1,0 +1,12 @@
+disabled_rules:
+  - colon
+  - comma
+  - control_statement
+
+opt_in_rules:
+  - empty_count
+
+included:
+  - MyCarMaster
+
+excluded:

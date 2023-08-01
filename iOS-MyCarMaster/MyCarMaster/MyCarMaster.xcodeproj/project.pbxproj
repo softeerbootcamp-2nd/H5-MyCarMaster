@@ -15,6 +15,7 @@
 		B50C7E632A79027A005AFE0B /* MyCarMasterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C7E622A79027A005AFE0B /* MyCarMasterTests.swift */; };
 		B50C7E6D2A79027A005AFE0B /* MyCarMasterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C7E6C2A79027A005AFE0B /* MyCarMasterUITests.swift */; };
 		B50C7E6F2A79027A005AFE0B /* MyCarMasterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C7E6E2A79027A005AFE0B /* MyCarMasterUITestsLaunchTests.swift */; };
+		B50C7E812A7905D8005AFE0B /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B50C7E802A7905D8005AFE0B /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		B50C7E682A79027A005AFE0B /* MyCarMasterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyCarMasterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B50C7E6C2A79027A005AFE0B /* MyCarMasterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCarMasterUITests.swift; sourceTree = "<group>"; };
 		B50C7E6E2A79027A005AFE0B /* MyCarMasterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCarMasterUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B50C7E802A7905D8005AFE0B /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		B50C7E3F2A790279005AFE0B = {
 			isa = PBXGroup;
 			children = (
+				B50C7E802A7905D8005AFE0B /* .swiftlint.yml */,
 				B50C7E4A2A790279005AFE0B /* MyCarMaster */,
 				B50C7E612A79027A005AFE0B /* MyCarMasterTests */,
 				B50C7E6B2A79027A005AFE0B /* MyCarMasterUITests */,
@@ -147,6 +150,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B50C7E722A79027A005AFE0B /* Build configuration list for PBXNativeTarget "MyCarMaster" */;
 			buildPhases = (
+				B50C7E7F2A7904DE005AFE0B /* Run SwiftLint */,
 				B50C7E442A790279005AFE0B /* Sources */,
 				B50C7E452A790279005AFE0B /* Frameworks */,
 				B50C7E462A790279005AFE0B /* Resources */,
@@ -244,6 +248,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B50C7E812A7905D8005AFE0B /* .swiftlint.yml in Resources */,
 				B50C7E582A79027A005AFE0B /* LaunchScreen.storyboard in Resources */,
 				B50C7E552A79027A005AFE0B /* Assets.xcassets in Resources */,
 			);
@@ -264,6 +269,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B50C7E7F2A7904DE005AFE0B /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B50C7E442A790279005AFE0B /* Sources */ = {
