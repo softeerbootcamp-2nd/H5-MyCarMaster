@@ -2,6 +2,20 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '2.7.5'
     id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+    id 'jacoco'
+}
+
+test {
+    // 테스트 종료후 항상 리포트 생성
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = true
+        html.required = true
+    }
 }
 
 group = 'softeer'
