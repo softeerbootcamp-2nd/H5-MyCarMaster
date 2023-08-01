@@ -32,6 +32,8 @@ const ModelSelector = styled.div`
 
 const ModelName = styled.div``;
 
-const ModelButton = styled.img``;
+const ModelButton = styled.img`
+  cursor: pointer;
+`;
 
 export default Header;
