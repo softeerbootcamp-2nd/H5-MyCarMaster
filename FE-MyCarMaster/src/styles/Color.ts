@@ -1,0 +1,14 @@
+export const Black = "#222222";
+export const White = "#FFFFFF";
+export const CoolGrey1 = "#C5C9D2";
+export const CoolGrey2 = "#81899E";
+export const Grey1 = "#F6F6F6";
+export const Grey2 = "#DDDDDD";
+export const Grey3 = "#7B7B7B";
+export const NavyBlue1 = "#E7ECF9";
+export const NavyBlue2 = "#D2D9EC";
+export const NavyBlue3 = "#C6D2F0";
+export const NavyBlue4 = "#96A9DC";
+export const NavyBlue5 = "#1A3276";
+export const Gold4 = "#FAF2ED";
+export const Gold5 = "#9B6D54";

@@ -1,10 +1,9 @@
-import "./App.css";
-import MainPage from "./pages/MainPage";
+import Estimation from "./pages/Estimation";
 
 function App() {
   return (
     <div>
-      <MainPage />
+      <Estimation />
     </div>
   );
 }
