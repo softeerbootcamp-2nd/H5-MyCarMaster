@@ -2,10 +2,10 @@ name: Java CI with Gradle
 on:
   push:
     branches:
-      - pr-test
+      - be-dev
   pull_request:
     branches:
-      - pr-test
+      - be-dev
 
 permissions:
   checks: write
