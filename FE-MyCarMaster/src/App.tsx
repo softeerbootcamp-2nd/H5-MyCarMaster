@@ -17,14 +17,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  width: 80rem;
-  height: 45rem;
+  height: 100vh;
 `;
 
 export default App;

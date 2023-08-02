@@ -17,9 +17,9 @@ function Header() {
 
 const Container = styled.div`
   display: flex;
+  flex: 1;
   justify-content: space-between;
   align-items: center;
-  height: 4rem;
 `;
 
 const Img = styled.img``;

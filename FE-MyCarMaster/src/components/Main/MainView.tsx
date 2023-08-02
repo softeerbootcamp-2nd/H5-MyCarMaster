@@ -1,14 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import MainWrapper from "./MainWrapper";
 
 function MainView() {
-  const navIndex = 0;
   return (
     <Container>
-      <MainContent>
-        <MainWrapper navIndex={navIndex} />
-      </MainContent>
+      <MainContent>Main Contents</MainContent>
       <NavContainer>Navigation</NavContainer>
     </Container>
   );
@@ -16,17 +12,16 @@ function MainView() {
 
 const Container = styled.div`
   display: flex;
+  flex: 5;
   flex-direction: row;
-  justify-content: space-between;
-  height: 400px;
 `;
 
 const MainContent = styled.div`
-  width: 51.5rem;
+  flex: 6;
 `;
 
 const NavContainer = styled.div`
-  width: 9.625rem;
+  flex: 1;
 `;
 
 export default MainView;
