@@ -12,7 +12,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  setup:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -20,53 +20,57 @@ jobs:
         with:
           token: ${{ secrets.SUBMODULE_TOKEN }}
           submodules: recursive
+
       - name: Git Submodule Update
         run: git submodule update --remote --recursive
+
       - name: Set Up JDK 11
         uses: actions/setup-java@v3
         with:
-          java-version: ‘11’
-          distribution: ‘temurin’
+          java-version: '11'
+          distribution: 'temurin'
+
       - name: Gradle Caching
         uses: actions/cache@v3
         with:
           path: |
             ~/.gradle/caches
             ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles(‘**/*.gradle*‘, ‘**/gradle-wrapper.properties’) }}
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
 
-  checkstyle:
-    needs: setup
-    runs-on: ubuntu-latest
-    steps:
       - name: Grant Execute Permission For Gradlew
         run: chmod +x ./BE-MyCarMaster/gradlew
+
+      # Checkstyle 작업 시작
+      - name: Grant Execute Permission For Gradlew
+        run: chmod +x ./BE-MyCarMaster/gradlew
+
       - name: Run Checkstyle on Main Source
         run: cd ./BE-MyCarMaster && ./gradlew checkstyleMain
+
       - name: Run Checkstyle on Test Source
         run: cd ./BE-MyCarMaster && ./gradlew checkstyleTest
 
-  build-and-test:
-    needs: checkstyle
-    runs-on: ubuntu-latest
-    steps:
-      - name: Grant Execute Permission For Gradlew
-        run: chmod +x ./BE-MyCarMaster/gradlew
       - name: Build with Gradle
-        run: cd ./BE-MyCarMaster && ./gradlew build
+        run: |
+          cd ./BE-MyCarMaster
+          ./gradlew build
+
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
-          files: ‘**/build/test-results/test/TEST-*.xml’
+          files: '**/build/test-results/test/TEST-*.xml'
+
       - name: If the test fails, register a check comment in the failed code line
         uses: mikepenz/action-junit-report@v3
         if: always()
         with:
-          report_paths: ‘**/build/test-results/test/TEST-*.xml’
+          report_paths: '**/build/test-results/test/TEST-*.xml'
           token: ${{ github.token }}
+
       - name: Create jacoco report
         id: jacoco
         uses: madrapps/jacoco-report@v1.2
