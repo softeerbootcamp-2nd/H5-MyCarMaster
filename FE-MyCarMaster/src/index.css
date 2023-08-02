@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "Hyundai-Sans-Bold";
+  src: url("./assets/fonts/Happiness-Sans-Bold.woff"),
+    url("./assets/fonts/Happiness-Sans-Bold.woff2");
+}
+
+@font-face {
+  font-family: "Hyundai-Sans-Regular";
+  src: url("./assets/fonts/Happiness-Sans-Regular.woff"),
+    url("./assets/fonts/Happiness-Sans-Regular.woff2");
+}
+
+@font-face {
+  font-family: "Hyundai-Sans-Title";
+  src: url("./assets/fonts/Happiness-Sans-Title.woff"),
+    url("./assets/fonts/Happiness-Sans-Title.woff2");
+}
