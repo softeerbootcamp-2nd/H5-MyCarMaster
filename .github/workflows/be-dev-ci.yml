@@ -43,7 +43,6 @@ jobs:
       - name: Grant Execute Permission For Gradlew
         run: chmod +x ./BE-MyCarMaster/gradlew
 
-      # Checkstyle 작업 시작
       - name: Grant Execute Permission For Gradlew
         run: chmod +x ./BE-MyCarMaster/gradlew
 
@@ -54,9 +53,7 @@ jobs:
         run: cd ./BE-MyCarMaster && ./gradlew checkstyleTest
 
       - name: Build with Gradle
-        run: |
-          cd ./BE-MyCarMaster
-          ./gradlew build
+        run: cd ./BE-MyCarMaster && ./gradlew build
 
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v2
