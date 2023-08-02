@@ -17,37 +17,164 @@ const colors = {
   Gold5: "#9B6D54",
 };
 
-const fontSize = {
-  display: "2.25",
-  headline: "1.75",
-  title: "1.375",
-  body: "1",
-//   headline: {
-//     large: "2",
-//     medium: "1.75",
-//     small: "1.5",
-//   },
-//   title: {
-//     large1: "1.375",
-//     large2: "1.25",
-//     medium1: "1.375",
-//     medium2: "1",
-//     small: "0.875",
-//   },
-//   body: {
-//     body1: "1",
-//     body2: "0.875",
-//     body3: "0.75",
-//   },
+const fontWeight = {
+  regular: 400,
+  medium: 500,
+  bold: 700,
+};
 
+const lineHeight = {
+  ExtraCompact: "1rem",
+  Compact: "1.25rem",
+  Normal: "1.5rem",
+  Loose: "1.75rem",
+  Tight: "2rem",
+  Spacious: "2.25rem",
+  Expanded: "2.5rem",
+  ExtraExpanded: "2.75rem",
+};
+
+const fontSize = {
+  Microscopic: "0.75rem",
+  Tiny: "0.8125rem",
+  ExtraSmall: "0.875rem",
+  Small: "1rem",
+  Normal: "1.25rem",
+  Large: "1.375rem",
+  ExtraLarge: "1.5rem",
+  Huge: "1.75rem",
+  Gigantic: "2rem",
+  Enormous: "2.25rem",
+};
+const fonts = {
+  display: {
+    fontFamily: "HyundaiSansBold",
+    fontSize: fontSize.Enormous,
+    fontStyle: "normal",
+    fontWeight: fontWeight.medium,
+    lineHeight: lineHeight.ExtraExpanded,
+    letterSpacing: "-0.0675rem",
+  },
+  headLarge: {
+    fontFamily: "HyundaiSansBold",
+    fontSize: fontSize.Gigantic,
+    fontStyle: "normal",
+    fontWeight: fontWeight.medium,
+    lineHeight: lineHeight.Expanded,
+    letterSpacing: "-0.06rem",
+  },
+  headMedium: {
+    fontFamily: "HyundaiSansBold",
+    fontSize: fontSize.Huge,
+    fontStyle: "normal",
+    fontWeight: fontWeight.medium,
+    lineHeight: lineHeight.Spacious,
+    letterSpacing: "-0.0525rem",
+  },
+  headSmall: {
+    fontFamily: "HyundaiSansBold",
+    fontSize: fontSize.ExtraLarge,
+    fontStyle: "normal",
+    fontWeight: fontWeight.medium,
+    lineHeight: lineHeight.Tight,
+    letterSpacing: "-0.045rem",
+  },
+  titleLarge1: {
+    fontFamily: "HyundaiSansRegular",
+    fontSize: fontSize.Large,
+    fontStyle: "normal",
+    fontWeight: fontWeight.bold,
+    lineHeight: lineHeight.Loose,
+    letterSpacing: "-0.04125rem",
+  },
+  titleLarge2: {
+    fontFamily: "HyundaiSansMedium",
+    fontSize: fontSize.Normal,
+    fontStyle: "normal",
+    fontWeight: fontWeight.bold,
+    lineHeight: lineHeight.Loose,
+    letterSpacing: "-0.0375rem",
+  },
+  titleMedium1: {
+    fontFamily: "HyundaiSansMedium",
+    fontSize: fontSize.Large,
+    fontStyle: "normal",
+    fontWeight: fontWeight.medium,
+    lineHeight: lineHeight.Tight,
+    letterSpacing: "-0.04125rem",
+  },
+  titleMedium2: {
+    fontFamily: "HyundaiSansMedium",
+    fontSize: fontSize.Small,
+    fontStyle: "normal",
+    fontWeight: fontWeight.bold,
+    lineHeight: lineHeight.Normal,
+    letterSpacing: "-0.3rem",
+  },
+  titleSmall: {
+    fontFamily: "HyundaiSansMedium",
+    fontSize: fontSize.ExtraSmall,
+    fontStyle: "normal",
+    fontWeight: fontWeight.bold,
+    lineHeight: lineHeight.Compact,
+    letterSpacing: "-0.02625rem",
+  },
+  bodyLarge: {
+    fontFamily: "HyundaiSansBold",
+    fontSize: fontSize.Small,
+    fontStyle: "normal",
+    fontWeight: fontWeight.regular,
+    lineHeight: lineHeight.Normal,
+    letterSpacing: "-0.03rem",
+  },
+  bodyMedium1: {
+    fontFamily: "HyundaiSansBold",
+    fontSize: fontSize.Small,
+    fontStyle: "normal",
+    fontWeight: fontWeight.medium,
+    lineHeight: lineHeight.Normal,
+    letterSpacing: "-0.03rem",
+  },
+  bodyMedium2: {
+    fontFamily: "HyundaiSansBold",
+    fontSize: fontSize.Small,
+    fontStyle: "normal",
+    fontWeight: fontWeight.medium,
+    lineHeight: lineHeight.Normal,
+    letterSpacing: "-0.03rem",
+  },
+  bodyMedium3: {
+    fontFamily: "HyundaiSansBold",
+    fontSize: fontSize.ExtraSmall,
+    fontStyle: "normal",
+    fontWeight: fontWeight.regular,
+    lineHeight: lineHeight.Compact,
+    letterSpacing: "-0.02625rem",
+  },
+  bodySmall1: {
+    fontFamily: "HyundaiSansBold",
+    fontSize: fontSize.Microscopic,
+    fontStyle: "normal",
+    fontWeight: fontWeight.medium,
+    lineHeight: lineHeight.ExtraCompact,
+    letterSpacing: "-0.0225rem",
+  },
+  bodySmall2: {
+    fontFamily: "HyundaiSansBold",
+    fontSize: fontSize.Tiny,
+    fontStyle: "normal",
+    fontWeight: fontWeight.regular,
+    lineHeight: lineHeight.Compact,
+    letterSpacing: "-0.02438rem",
+  },
 };
 
 export type ColorsTypes = typeof colors;
-export type FontSizeTypes = typeof fontSize;
+export type FontTypes = typeof fonts;
 
 const theme: DefaultTheme = {
   colors,
-  fontSize,
+  fonts,
 };
 
 export default theme;
