@@ -7,7 +7,7 @@
 
 ## 👉 팀 소개
 
-| 장동호 | 서시언 | 정원호 | 박병권 | 오승민 |
+| 장동호 | 서시언 | 정원호 | 박병권 | 오승민 |
 | --- | --- | --- | --- | --- |
 | <img width="160px" src="https://avatars.githubusercontent.com/u/92728780?v=4" /> | <img width="160px" src="https://avatars.githubusercontent.com/u/55352430?s=400&v=4" /> | <img width="160px" src="https://avatars.githubusercontent.com/u/59119468?v=4" /> | <img width="160px" src="https://avatars.githubusercontent.com/u/82306066?v=4" /> | <img width="160px" src="https://avatars.githubusercontent.com/u/46219689?v=4" /> |
 | [@jjddhh](https://github.com/jjddhh) | [@SeoSiun](https://github.com/SeoSiun) | [@wonho1401](https://github.com/wonho1401) | [@startartart](https://github.com/startartart) | [@sseungmn](https://github.com/sseungmn) |
