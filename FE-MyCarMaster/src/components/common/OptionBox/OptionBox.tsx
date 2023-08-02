@@ -126,8 +126,6 @@ const Tag = styled.button`
   font-size: 0.625rem;
 `;
 
-//
-
 const DetailModelOptionContainer = styled.div`
   display: flex;
   justify-content: space-between;
