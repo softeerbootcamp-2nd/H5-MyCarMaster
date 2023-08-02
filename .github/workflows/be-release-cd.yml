@@ -32,11 +32,15 @@ jobs:
 
       - name: Build with Gradle
         run: cd ./BE-MyCarMaster && ./gradlew build
+        env:
+          MYSQL_HOST: ${{ secrets.MYSQL_HOST }}
+          MYSQL_USERNAME: ${{ secrets.MYSQL_USERNAME }}
+          MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
 
       - name: Build Docker Image
         run: |
           cd ./BE-MyCarMaster
-          docker build -t softeerh5/my-car-master:latest . --build-arg PROFILE=prod정
+          docker build -t softeerh5/my-car-master:latest . --build-arg PROFILE=prod
 
       - name: Log in to Docker Hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
