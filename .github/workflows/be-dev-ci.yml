@@ -1,0 +1,79 @@
+name: Java CI with Gradle
+on:
+  push:
+    branches:
+      - be-dev
+  pull_request:
+    branches:
+      - be-dev
+
+permissions:
+  checks: write
+  pull-requests: write
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.SUBMODULE_TOKEN }}
+          submodules: recursive
+
+      - name: Git Submodule Update
+        run: git submodule update --remote --recursive
+
+      - name: Set Up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+
+      - name: Gradle Caching
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Grant Execute Permission For Gradlew
+        run: chmod +x ./BE-MyCarMaster/gradlew
+
+      - name: Grant Execute Permission For Gradlew
+        run: chmod +x ./BE-MyCarMaster/gradlew
+
+      - name: Run Checkstyle on Main Source
+        run: cd ./BE-MyCarMaster && ./gradlew checkstyleMain
+
+      - name: Run Checkstyle on Test Source
+        run: cd ./BE-MyCarMaster && ./gradlew checkstyleTest
+
+      - name: Build with Gradle
+        run: cd ./BE-MyCarMaster && ./gradlew build
+
+      - name: Publish Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          files: '**/build/test-results/test/TEST-*.xml'
+
+      - name: If the test fails, register a check comment in the failed code line
+        uses: mikepenz/action-junit-report@v3
+        if: always()
+        with:
+          report_paths: '**/build/test-results/test/TEST-*.xml'
+          token: ${{ github.token }}
+
+      - name: Create jacoco report
+        id: jacoco
+        uses: madrapps/jacoco-report@v1.2
+        with:
+          title: 📝 테스트 커버리지 리포트입니다
+          paths: ${{ github.workspace }}/BE-MyCarMaster/build/reports/jacoco/test/jacocoTestReport.xml
+          token: ${{ secrets.GITHUB_TOKEN }}
+          min-coverage-overall: 50
+          min-coverage-changed-files: 50

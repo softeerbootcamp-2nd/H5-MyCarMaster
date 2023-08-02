@@ -1,0 +1,3 @@
+[submodule "BE-MyCarMaster/submodule"]
+	path = BE-MyCarMaster/submodule
+	url = https://github.com/softeer-5team/MyCarMaster_Submodule.git
