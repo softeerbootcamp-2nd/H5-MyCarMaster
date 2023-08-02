@@ -3,7 +3,7 @@ name: Build Image and Deploy
 on:
   push:
     branches:
-      - dev-release
+      - be-release
 
 jobs:
   build-and-deploy:
