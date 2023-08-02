@@ -46,6 +46,7 @@ jobs:
 
       - name: Prepare Deployment Files
         run: |
+          cd ./BE-MyCarMaster 
           mkdir deploy
           cp appspec.yml deploy/
 
@@ -57,7 +58,9 @@ jobs:
           aws-region: ap-northeast-2
 
       - name: Zip Deployment Files
-        run: zip -r deploy.zip deploy/
+        run: |
+          cd ./BE-MyCarMaster 
+          zip -r deploy.zip deploy/
 
       - name: Copy Files to S3
         run: aws s3 cp deploy.zip s3://h5-codedeploy-script/deploy/
