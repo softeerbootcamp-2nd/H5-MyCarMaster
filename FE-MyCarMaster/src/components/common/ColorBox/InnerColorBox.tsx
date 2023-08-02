@@ -22,7 +22,7 @@ function InnerColorBox(props: innerColorProps) {
             {props.trim} 구매자의 {props.ratio}%가 선택
           </Ratio>
         </Text>
-        <Price>+{props.price}원</Price>
+        <Price>+ {props.price}원</Price>
       </InnerColorText>
     </Container>
   );
@@ -31,11 +31,12 @@ function InnerColorBox(props: innerColorProps) {
 const Container = styled.div`
   width: 12.5rem;
   height: 10.25rem;
+  display: flex;
+  flex-direction: column;
 `;
 
 const InnerColorImage = styled.img`
-  width: 100%;
-  height: 7.25rem;
+  height: 5.25rem;
 `;
 
 const InnerColorText = styled.div`
@@ -45,11 +46,15 @@ const InnerColorText = styled.div`
   justify-content: center;
   padding: 0.75rem 1rem;
   gap: 0.6875rem;
+  width: 100%;
+  height: 5rem;
 
   border: 1px solid ${GREY2};
 `;
 
-const Text = styled.div``;
+const Text = styled.div`
+  height: 100%;
+`;
 
 const ColorName = styled.p`
   color: ${BLACK};
