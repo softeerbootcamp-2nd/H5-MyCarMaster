@@ -29,21 +29,22 @@ function Footer() {
 const Container = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
-  flex: 4;
-  gap: 1.25rem;
+  height: 16rem;
   background-color: ${GREY1};
 `;
 
 const LeftContainer = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 2rem;
-
   width: 51.5rem;
 `;
 
-const RightContainer = styled.div``;
+const RightContainer = styled.div`
+  width: 9.625rem;
+  height: 100%;
+`;
 
 export default Footer;
