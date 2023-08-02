@@ -3,7 +3,18 @@ plugins {
     id 'org.springframework.boot' version '2.7.5'
     id 'io.spring.dependency-management' version '1.0.15.RELEASE'
     id 'jacoco'
+    id 'checkstyle'
 }
+
+checkstyle {
+    maxWarnings = 0
+    configFile = file("${rootDir}/config/checkstyle/naver-checkstyle-rules.xml")
+    configProperties = ["suppressionFile": "${rootDir}/config/checkstyle/naver-checkstyle-suppressions.xml"]
+    toolVersion = "8.42"
+}
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
 
 test {
     // 테스트 종료후 항상 리포트 생성

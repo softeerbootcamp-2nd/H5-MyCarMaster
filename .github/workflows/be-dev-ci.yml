@@ -14,7 +14,6 @@ permissions:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -43,6 +42,16 @@ jobs:
 
       - name: Grant Execute Permission For Gradlew
         run: chmod +x ./BE-MyCarMaster/gradlew
+
+      # Checkstyle 작업 시작
+      - name: Grant Execute Permission For Gradlew
+        run: chmod +x ./BE-MyCarMaster/gradlew
+
+      - name: Run Checkstyle on Main Source
+        run: cd ./BE-MyCarMaster && ./gradlew checkstyleMain
+
+      - name: Run Checkstyle on Test Source
+        run: cd ./BE-MyCarMaster && ./gradlew checkstyleTest
 
       - name: Build with Gradle
         run: |
