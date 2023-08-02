@@ -6,29 +6,6 @@ plugins {
     id 'checkstyle'
 }
 
-checkstyle {
-    maxWarnings = 0
-    configFile = file("${rootDir}/config/checkstyle/naver-checkstyle-rules.xml")
-    configProperties = ["suppressionFile": "${rootDir}/config/checkstyle/naver-checkstyle-suppressions.xml"]
-    toolVersion = "8.42"
-}
-
-compileJava.options.encoding = 'UTF-8'
-compileTestJava.options.encoding = 'UTF-8'
-
-test {
-    // 테스트 종료후 항상 리포트 생성
-    finalizedBy jacocoTestReport
-}
-
-jacocoTestReport {
-    dependsOn test
-    reports {
-        xml.required = true
-        html.required = true
-    }
-}
-
 group = 'softeer'
 version = '0.0.1-SNAPSHOT'
 
@@ -64,10 +41,26 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-task copyPrivate(type: Copy) {
-    copy {
-        from './submodule'
-        include "application-api.yml", "application-domain.yml"
-        into 'src/main/resources'
+// === checkstyle === //
+checkstyle {
+    maxWarnings = 0
+    configFile = file("${rootDir}/config/checkstyle/naver-checkstyle-rules.xml")
+    configProperties = ["suppressionFile": "${rootDir}/config/checkstyle/naver-checkstyle-suppressions.xml"]
+    toolVersion = "8.42"
+}
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+
+// === jacoco === //
+test {
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = true
+        html.required = true
     }
 }
