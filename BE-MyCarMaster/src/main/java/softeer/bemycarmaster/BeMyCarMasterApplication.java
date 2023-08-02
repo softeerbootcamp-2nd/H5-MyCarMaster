@@ -8,5 +8,6 @@ public class BeMyCarMasterApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BeMyCarMasterApplication.class, args);
+		String fasdDjk = "fds";
 	}
 }
