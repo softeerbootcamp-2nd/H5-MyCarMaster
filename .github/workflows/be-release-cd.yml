@@ -63,7 +63,9 @@ jobs:
           zip -r deploy.zip deploy/
 
       - name: Copy Files to S3
-        run: aws s3 cp deploy.zip s3://h5-codedeploy-script/deploy/
+        run: |
+          cd ./BE-MyCarMaster
+          aws s3 cp deploy.zip s3://h5-codedeploy-script/deploy/
 
       - name: Deploy to AWS CodeDeploy
         run: |
