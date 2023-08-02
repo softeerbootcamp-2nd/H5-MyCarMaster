@@ -6,7 +6,6 @@ build/
 !**/src/test/**/build/
 
 ### CUSTOM ###
-application.yml
 application-*.yml
 
 ### STS ###
