@@ -56,7 +56,7 @@ const Container = styled.div`
   transform: translate(-50%, -50%);
   width: 80rem;
   height: 45rem;
-  /* margin: 0 8rem; */
+  margin: 0 8rem;
 `;
 
 const IntroduceBox = styled.div`
