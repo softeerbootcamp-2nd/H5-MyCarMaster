@@ -1,4 +1,3 @@
-import React from "react";
 import { Footer, Header, MainView } from "../components";
 import { styled } from "styled-components";
 import dark_logo from "../assets/images/dark_logo.svg";

@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { GREY1 } from "../../styles/Color";
 import InnerColorBox from "../common/ColorBox/InnerColorBox";

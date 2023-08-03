@@ -1,4 +1,3 @@
-import React from "react";
 import TrimContent from "./view/TrimContent";
 import DetailModelContent from "./view/DetailModelContent";
 import ColorContent from "./view/ColorContent";

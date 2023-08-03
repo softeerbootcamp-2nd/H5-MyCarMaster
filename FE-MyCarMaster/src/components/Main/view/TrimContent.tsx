@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 // dummy data
 import exclusive from "../../../assets/images/exclusive.png";
-import leblanc from "../../../assets/images/leblanc.png";
 
 function TrimContent() {
   return (
