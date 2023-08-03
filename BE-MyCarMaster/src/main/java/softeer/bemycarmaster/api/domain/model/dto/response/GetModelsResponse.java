@@ -1,4 +1,4 @@
-package softeer.bemycarmaster.api.model.dto.response;
+package softeer.bemycarmaster.api.domain.model.dto.response;
 
 import java.util.List;
 
