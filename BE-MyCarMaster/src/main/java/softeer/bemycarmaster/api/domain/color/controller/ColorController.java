@@ -13,9 +13,9 @@ import softeer.bemycarmaster.api.domain.color.dto.response.GetInteriorColorsResp
 import softeer.bemycarmaster.api.domain.color.usecase.GetInteriorColorsUseCase;
 import softeer.bemycarmaster.api.global.response.Response;
 
-@RequiredArgsConstructor
 @RestController
 @RequestMapping("/colors")
+@RequiredArgsConstructor
 @Tag(name = "Color", description = "Color API Document")
 public class ColorController {
 

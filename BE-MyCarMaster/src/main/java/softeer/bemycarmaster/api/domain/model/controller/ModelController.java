@@ -11,9 +11,9 @@ import softeer.bemycarmaster.api.domain.model.dto.response.GetModelsResponse;
 import softeer.bemycarmaster.api.domain.model.usecase.GetModelsUseCase;
 import softeer.bemycarmaster.api.global.response.Response;
 
-@RequiredArgsConstructor
 @RestController
 @RequestMapping("/models")
+@RequiredArgsConstructor
 @Tag(name = "Model", description = "Model API Document")
 public class ModelController {
 
@@ -27,3 +27,4 @@ public class ModelController {
 		return new Response<>(getModelsResponse);
 	}
 }
+
