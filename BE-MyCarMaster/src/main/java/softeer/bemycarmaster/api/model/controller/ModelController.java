@@ -1,0 +1,28 @@
+package softeer.bemycarmaster.api.model.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
+import softeer.bemycarmaster.api.global.response.Response;
+import softeer.bemycarmaster.api.model.dto.response.GetModelsResponse;
+import softeer.bemycarmaster.api.model.usecase.GetModelsUseCase;
+
+@RequiredArgsConstructor
+@RestController
+@RequestMapping("/models")
+@Tag(name = "Model", description = "Model API Document")
+public class ModelController {
+
+	private final GetModelsUseCase getModelsUseCase;
+
+	@GetMapping
+	@Operation(summary = "test")
+	public Response<GetModelsResponse> getModels() {
+		GetModelsResponse getModelsResponse = getModelsUseCase.execute();
+		return new Response<>(getModelsResponse);
+	}
+}
