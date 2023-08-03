@@ -1,4 +1,3 @@
-import React from "react";
 import { styled } from "styled-components";
 import theme from "../../../styles/Theme";
 import CircleCheck from "../../../assets/icons/CircleCheck.svg";

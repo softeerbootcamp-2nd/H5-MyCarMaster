@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import Button from "../components/common/Button/Button.tsx";
 import homeVideo from "../assets/video/homeVideo.mp4";
