@@ -17,9 +17,9 @@ function Header() {
 
 const Container = styled.div`
   display: flex;
-  flex: 1;
   justify-content: space-between;
   align-items: center;
+  height: 4rem;
 `;
 
 const Img = styled.img``;
@@ -32,6 +32,8 @@ const ModelSelector = styled.div`
 
 const ModelName = styled.div``;
 
-const ModelButton = styled.img``;
+const ModelButton = styled.img`
+  cursor: pointer;
+`;
 
 export default Header;

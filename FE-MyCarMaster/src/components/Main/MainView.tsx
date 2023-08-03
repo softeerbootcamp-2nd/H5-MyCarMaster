@@ -1,27 +1,29 @@
 import React from "react";
 import styled from "styled-components";
+import MainWrapper from "./MainWrapper";
+import NavigationList from "../common/NavigationList/NavigationList";
 
 function MainView() {
+  const navIndex = 0;
   return (
     <Container>
-      <MainContent>Main Contents</MainContent>
-      <NavContainer>Navigation</NavContainer>
+      <MainContent>
+        <MainWrapper navIndex={navIndex} />
+      </MainContent>
+      <NavigationList />
     </Container>
   );
 }
 
 const Container = styled.div`
   display: flex;
-  flex: 5;
   flex-direction: row;
+  justify-content: space-between;
+  height: 400px;
 `;
 
 const MainContent = styled.div`
-  flex: 6;
-`;
-
-const NavContainer = styled.div`
-  flex: 1;
+  width: 51.5rem;
 `;
 
 export default MainView;

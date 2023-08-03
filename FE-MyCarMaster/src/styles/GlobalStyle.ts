@@ -18,16 +18,35 @@ const GlobalStyle = createGlobalStyle`
     body{
         line-height: 1;
         font-family: 'Noto Sans KR', sans-serif;
-        background-color: #F6F9F0;
-        margin-bottom: 100px;
+        background-color: #FFFFFF;
     }
     ol, ul{
         list-style: none;
     }
     button {
         border: 0;
+        padding: 0;
         background: transparent;
         cursor: pointer;
+    }
+
+    @font-face {
+        font-family: HyundaiSansBold;
+        font-style: normal;
+        font-display: swap;
+        src: url('src/assets/fonts/HyundaiSansHeadKRBold.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: HyundaiSansMedium;
+        font-style: normal;
+        font-display: swap;
+        src: url('src/assets/fonts/HyundaiSansHeadKRMedium.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: HyundaiSansRegular;
+        font-style: normal;
+        font-display: swap;
+        src: url('src/assets/fonts/HyundaiSansHeadKRRegular.ttf') format('truetype');
     }
 `;
 
