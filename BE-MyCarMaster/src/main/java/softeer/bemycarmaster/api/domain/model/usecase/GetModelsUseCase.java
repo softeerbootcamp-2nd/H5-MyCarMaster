@@ -1,7 +1,7 @@
-package softeer.bemycarmaster.api.model.usecase;
+package softeer.bemycarmaster.api.domain.model.usecase;
 
+import softeer.bemycarmaster.api.domain.model.dto.response.GetModelsResponse;
 import softeer.bemycarmaster.api.global.annotation.UseCase;
-import softeer.bemycarmaster.api.model.dto.response.GetModelsResponse;
 
 @UseCase
 public class GetModelsUseCase {
