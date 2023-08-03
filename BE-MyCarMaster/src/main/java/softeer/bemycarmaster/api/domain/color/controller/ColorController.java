@@ -28,7 +28,7 @@ public class ColorController {
 
 	@GetMapping("/interior")
 	@Operation(summary = "모델, 트림에서 선택가능한 내장 색상 목록을 반환합니다")
-	public Response<GetInteriorColorsResponse> getInterior(
+	public Response<GetInteriorColorsResponse> getInteriorColors(
 		@RequestBody GetInteriorColorsRequest getInteriorColorsRequest) {
 
 		Integer modelId = getInteriorColorsRequest.getModelId();
@@ -39,7 +39,7 @@ public class ColorController {
 
 	@GetMapping("/exterior")
 	@Operation(summary = "모델, 트림에서 선택가능한 외장 색상 목록을 반환합니다")
-	public Response<GetExteriorColorsResponse> getInterior(
+	public Response<GetExteriorColorsResponse> getExteriorColors(
 		@RequestBody GetExteriorColorsRequest getExteriorColorsRequest) {
 
 		Integer modelId = getExteriorColorsRequest.getModelId();
