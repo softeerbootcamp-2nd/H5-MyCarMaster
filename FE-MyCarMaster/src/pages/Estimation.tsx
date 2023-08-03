@@ -18,7 +18,7 @@ const Container = styled.div`
   flex-direction: column;
   width: 80rem;
   height: 45rem;
-  margin: 4rem 8rem;
+  margin: 0 8rem;
 `;
 
 export default Estimation;
