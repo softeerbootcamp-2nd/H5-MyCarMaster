@@ -1,0 +1,23 @@
+input_dir: ${TARGETNAME}/Raw/
+output_dir: ${TARGETNAME}/Generated/
+
+xcassets:
+  inputs:
+    - Color.xcassets
+  outputs:
+    - templateName: swift5
+      params:
+        forceProvidesNamespaces: true
+        enumName: RawColor
+      output: Color+Generated.swift
+
+
+fonts:
+  inputs:
+    - Font
+  outputs:
+    - templateName: swift5
+      params:
+        forceProvidesNamespaces: true
+        enumName: RawFont
+      output: Font+Generated.swift

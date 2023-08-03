@@ -1,0 +1,438 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B529551E2A7B782900BEDDE7 /* MCMResource.h in Headers */ = {isa = PBXBuildFile; fileRef = B529551D2A7B782900BEDDE7 /* MCMResource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B52955502A7B866400BEDDE7 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = B529554F2A7B866400BEDDE7 /* swiftgen.yml */; };
+		B52955382A7B797E00BEDDE7 /* launchScreen.json in Resources */ = {isa = PBXBuildFile; fileRef = B52955372A7B797E00BEDDE7 /* launchScreen.json */; };
+		B529553A2A7B79D700BEDDE7 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52955392A7B79D700BEDDE7 /* Resource.swift */; };
+		B529553F2A7B7A7100BEDDE7 /* HyundaiSansHeadKRRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B529553C2A7B7A7000BEDDE7 /* HyundaiSansHeadKRRegular.ttf */; };
+		B52955402A7B7A7100BEDDE7 /* HyundaiSansHeadKRMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B529553D2A7B7A7100BEDDE7 /* HyundaiSansHeadKRMedium.ttf */; };
+		B52955412A7B7A7100BEDDE7 /* HyundaiSansHeadKRBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B529553E2A7B7A7100BEDDE7 /* HyundaiSansHeadKRBold.ttf */; };
+		B52955432A7B7B4C00BEDDE7 /* Font+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52955422A7B7B4C00BEDDE7 /* Font+Generated.swift */; };
+		B52955482A7B7D7900BEDDE7 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B52955472A7B7D7900BEDDE7 /* Color.xcassets */; };
+		B529554A2A7B7DC400BEDDE7 /* Color+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52955492A7B7DC400BEDDE7 /* Color+Generated.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B529551A2A7B782900BEDDE7 /* MCMResource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MCMResource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B529551D2A7B782900BEDDE7 /* MCMResource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCMResource.h; sourceTree = "<group>"; };
+		B529554F2A7B866400BEDDE7 /* swiftgen.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
+		B52955372A7B797E00BEDDE7 /* launchScreen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = launchScreen.json; sourceTree = "<group>"; };
+		B52955392A7B79D700BEDDE7 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		B529553C2A7B7A7000BEDDE7 /* HyundaiSansHeadKRRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HyundaiSansHeadKRRegular.ttf; sourceTree = "<group>"; };
+		B529553D2A7B7A7100BEDDE7 /* HyundaiSansHeadKRMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HyundaiSansHeadKRMedium.ttf; sourceTree = "<group>"; };
+		B529553E2A7B7A7100BEDDE7 /* HyundaiSansHeadKRBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HyundaiSansHeadKRBold.ttf; sourceTree = "<group>"; };
+		B52955422A7B7B4C00BEDDE7 /* Font+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Font+Generated.swift"; path = "../../../../../../../../문서 - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/MCMResource/MCMResource/Generated/Font+Generated.swift"; sourceTree = "<group>"; };
+		B52955472A7B7D7900BEDDE7 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Color.xcassets; path = Raw/Color.xcassets; sourceTree = "<group>"; };
+		B52955492A7B7DC400BEDDE7 /* Color+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Color+Generated.swift"; path = "../../../../../../../../문서 - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/MCMResource/MCMResource/Generated/Color+Generated.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B52955172A7B782900BEDDE7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B52955102A7B782900BEDDE7 = {
+			isa = PBXGroup;
+			children = (
+				B529554F2A7B866400BEDDE7 /* swiftgen.yml */,
+				B529551C2A7B782900BEDDE7 /* MCMResource */,
+				B529551B2A7B782900BEDDE7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B529551B2A7B782900BEDDE7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B529551A2A7B782900BEDDE7 /* MCMResource.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B529551C2A7B782900BEDDE7 /* MCMResource */ = {
+			isa = PBXGroup;
+			children = (
+				B529551D2A7B782900BEDDE7 /* MCMResource.h */,
+				B52955342A7B795900BEDDE7 /* Raw */,
+				B52955472A7B7D7900BEDDE7 /* Color.xcassets */,
+				B52955352A7B795F00BEDDE7 /* Generated */,
+				B52955392A7B79D700BEDDE7 /* Resource.swift */,
+			);
+			path = MCMResource;
+			sourceTree = "<group>";
+		};
+		B52955342A7B795900BEDDE7 /* Raw */ = {
+			isa = PBXGroup;
+			children = (
+				B529553B2A7B7A6300BEDDE7 /* Font */,
+				B52955362A7B797300BEDDE7 /* Lottie */,
+			);
+			path = Raw;
+			sourceTree = "<group>";
+		};
+		B52955352A7B795F00BEDDE7 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				B52955492A7B7DC400BEDDE7 /* Color+Generated.swift */,
+				B52955422A7B7B4C00BEDDE7 /* Font+Generated.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
+		B52955362A7B797300BEDDE7 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				B52955372A7B797E00BEDDE7 /* launchScreen.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
+		B529553B2A7B7A6300BEDDE7 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				B529553E2A7B7A7100BEDDE7 /* HyundaiSansHeadKRBold.ttf */,
+				B529553D2A7B7A7100BEDDE7 /* HyundaiSansHeadKRMedium.ttf */,
+				B529553C2A7B7A7000BEDDE7 /* HyundaiSansHeadKRRegular.ttf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		B52955152A7B782900BEDDE7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B529551E2A7B782900BEDDE7 /* MCMResource.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		B52955192A7B782900BEDDE7 /* MCMResource */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B52955212A7B782900BEDDE7 /* Build configuration list for PBXNativeTarget "MCMResource" */;
+			buildPhases = (
+				B52955152A7B782900BEDDE7 /* Headers */,
+				B52955332A7B78DF00BEDDE7 /* SwiftGen */,
+				B52955162A7B782900BEDDE7 /* Sources */,
+				B52955172A7B782900BEDDE7 /* Frameworks */,
+				B52955182A7B782900BEDDE7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MCMResource;
+			productName = MCMResource;
+			productReference = B529551A2A7B782900BEDDE7 /* MCMResource.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B52955112A7B782900BEDDE7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					B52955192A7B782900BEDDE7 = {
+						CreatedOnToolsVersion = 14.3.1;
+						LastSwiftMigration = 1430;
+					};
+				};
+			};
+			buildConfigurationList = B52955142A7B782900BEDDE7 /* Build configuration list for PBXProject "MCMResource" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B52955102A7B782900BEDDE7;
+			productRefGroup = B529551B2A7B782900BEDDE7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B52955192A7B782900BEDDE7 /* MCMResource */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B52955182A7B782900BEDDE7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B52955382A7B797E00BEDDE7 /* launchScreen.json in Resources */,
+				B52955502A7B866400BEDDE7 /* swiftgen.yml in Resources */,
+				B529553F2A7B7A7100BEDDE7 /* HyundaiSansHeadKRRegular.ttf in Resources */,
+				B52955402A7B7A7100BEDDE7 /* HyundaiSansHeadKRMedium.ttf in Resources */,
+				B52955412A7B7A7100BEDDE7 /* HyundaiSansHeadKRBold.ttf in Resources */,
+				B52955482A7B7D7900BEDDE7 /* Color.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B52955332A7B78DF00BEDDE7 /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftgen > /dev/null;\nthen\n    swiftgen\nelse\n    echo \"warning: SwiftGen not installed\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B52955162A7B782900BEDDE7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B52955432A7B7B4C00BEDDE7 /* Font+Generated.swift in Sources */,
+				B529553A2A7B79D700BEDDE7 /* Resource.swift in Sources */,
+				B529554A2A7B7DC400BEDDE7 /* Color+Generated.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		B529551F2A7B782900BEDDE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B52955202A7B782900BEDDE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B52955222A7B782900BEDDE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = AVZ9493N69;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.minios.MCMResource;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B52955232A7B782900BEDDE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = AVZ9493N69;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.minios.MCMResource;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B52955142A7B782900BEDDE7 /* Build configuration list for PBXProject "MCMResource" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B529551F2A7B782900BEDDE7 /* Debug */,
+				B52955202A7B782900BEDDE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B52955212A7B782900BEDDE7 /* Build configuration list for PBXNativeTarget "MCMResource" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B52955222A7B782900BEDDE7 /* Debug */,
+				B52955232A7B782900BEDDE7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B52955112A7B782900BEDDE7 /* Project object */;
+}
