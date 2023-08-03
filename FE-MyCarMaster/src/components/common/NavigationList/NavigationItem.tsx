@@ -5,13 +5,13 @@ import CircleCheck from "../../../assets/icons/CircleCheck.svg";
 
 type NavigationItemProp = {
   name?: string;
-  active: boolean;
+  $active: boolean;
   optionName?: string;
 };
 
-function NavigationItem({ name, active, optionName }: NavigationItemProp) {
+function NavigationItem({ name, $active, optionName }: NavigationItemProp) {
   return (
-    <Container active={active}>
+    <Container $active={$active}>
       <TopContainer>
         <Category>{name}</Category>
         <CheckCircle src={CircleCheck} />
@@ -31,10 +31,10 @@ const Container = styled.li<NavigationItemProp>`
   justify-content: space-between;
   gap: 0.25rem;
 
-  background-color: ${({ active }) =>
-    active ? `${theme.colors.NavyBlue1}` : `${theme.colors.White}`};
-  border: ${({ active }) =>
-    active
+  background-color: ${({ $active }) =>
+    $active ? `${theme.colors.NavyBlue1}` : `${theme.colors.White}`};
+  border: ${({ $active }) =>
+    $active
       ? `1px solid ${theme.colors.NavyBlue4}`
       : `1px solid ${theme.colors.Grey2}`};
 `;
