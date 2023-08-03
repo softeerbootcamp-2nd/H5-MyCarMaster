@@ -13,9 +13,9 @@ import softeer.bemycarmaster.api.domain.trim.dto.response.GetTrimsResponse;
 import softeer.bemycarmaster.api.domain.trim.usecase.GetTrimsUseCase;
 import softeer.bemycarmaster.api.global.response.Response;
 
-@RequiredArgsConstructor
 @RestController
 @RequestMapping("/trims")
+@RequiredArgsConstructor
 @Tag(name = "Trim", description = "Trim API Document")
 public class TrimController {
 
