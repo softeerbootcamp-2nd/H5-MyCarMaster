@@ -19,6 +19,7 @@ function Footer() {
       {/* 각 단계에 맞는 상품 아이템이 들어감 */}
       <LeftContainer>
         <InnerColorBox {...InnerColorProps} />
+        <InnerColorBox {...InnerColorProps} />
       </LeftContainer>
       <RightContainer>{/* 이전 혹은 다음 버튼이 들어감 */}</RightContainer>
     </Container>
