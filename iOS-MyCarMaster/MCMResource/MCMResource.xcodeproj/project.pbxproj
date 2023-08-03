@@ -8,11 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		B529551E2A7B782900BEDDE7 /* MCMResource.h in Headers */ = {isa = PBXBuildFile; fileRef = B529551D2A7B782900BEDDE7 /* MCMResource.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B52955502A7B866400BEDDE7 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = B529554F2A7B866400BEDDE7 /* swiftgen.yml */; };
+		B52955382A7B797E00BEDDE7 /* launchScreen.json in Resources */ = {isa = PBXBuildFile; fileRef = B52955372A7B797E00BEDDE7 /* launchScreen.json */; };
+		B529553A2A7B79D700BEDDE7 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52955392A7B79D700BEDDE7 /* Resource.swift */; };
+		B529553F2A7B7A7100BEDDE7 /* HyundaiSansHeadKRRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B529553C2A7B7A7000BEDDE7 /* HyundaiSansHeadKRRegular.ttf */; };
+		B52955402A7B7A7100BEDDE7 /* HyundaiSansHeadKRMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B529553D2A7B7A7100BEDDE7 /* HyundaiSansHeadKRMedium.ttf */; };
+		B52955412A7B7A7100BEDDE7 /* HyundaiSansHeadKRBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B529553E2A7B7A7100BEDDE7 /* HyundaiSansHeadKRBold.ttf */; };
+		B52955432A7B7B4C00BEDDE7 /* Font+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52955422A7B7B4C00BEDDE7 /* Font+Generated.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B529551A2A7B782900BEDDE7 /* MCMResource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MCMResource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B529551D2A7B782900BEDDE7 /* MCMResource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCMResource.h; sourceTree = "<group>"; };
+		B529554F2A7B866400BEDDE7 /* swiftgen.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
+		B52955372A7B797E00BEDDE7 /* launchScreen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = launchScreen.json; sourceTree = "<group>"; };
+		B52955392A7B79D700BEDDE7 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		B529553C2A7B7A7000BEDDE7 /* HyundaiSansHeadKRRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HyundaiSansHeadKRRegular.ttf; sourceTree = "<group>"; };
+		B529553D2A7B7A7100BEDDE7 /* HyundaiSansHeadKRMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HyundaiSansHeadKRMedium.ttf; sourceTree = "<group>"; };
+		B529553E2A7B7A7100BEDDE7 /* HyundaiSansHeadKRBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HyundaiSansHeadKRBold.ttf; sourceTree = "<group>"; };
+		B52955422A7B7B4C00BEDDE7 /* Font+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Font+Generated.swift"; path = "../../../../../../../../문서 - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/MCMResource/MCMResource/Generated/Font+Generated.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +43,7 @@
 		B52955102A7B782900BEDDE7 = {
 			isa = PBXGroup;
 			children = (
+				B529554F2A7B866400BEDDE7 /* swiftgen.yml */,
 				B529551C2A7B782900BEDDE7 /* MCMResource */,
 				B529551B2A7B782900BEDDE7 /* Products */,
 			);
@@ -46,8 +61,46 @@
 			isa = PBXGroup;
 			children = (
 				B529551D2A7B782900BEDDE7 /* MCMResource.h */,
+				B52955342A7B795900BEDDE7 /* Raw */,
+				B52955352A7B795F00BEDDE7 /* Generated */,
+				B52955392A7B79D700BEDDE7 /* Resource.swift */,
 			);
 			path = MCMResource;
+			sourceTree = "<group>";
+		};
+		B52955342A7B795900BEDDE7 /* Raw */ = {
+			isa = PBXGroup;
+			children = (
+				B529553B2A7B7A6300BEDDE7 /* Font */,
+				B52955362A7B797300BEDDE7 /* Lottie */,
+			);
+			path = Raw;
+			sourceTree = "<group>";
+		};
+		B52955352A7B795F00BEDDE7 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				B52955422A7B7B4C00BEDDE7 /* Font+Generated.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
+		B52955362A7B797300BEDDE7 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				B52955372A7B797E00BEDDE7 /* launchScreen.json */,
+			);
+			path = Lottie;
+			sourceTree = "<group>";
+		};
+		B529553B2A7B7A6300BEDDE7 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				B529553E2A7B7A7100BEDDE7 /* HyundaiSansHeadKRBold.ttf */,
+				B529553D2A7B7A7100BEDDE7 /* HyundaiSansHeadKRMedium.ttf */,
+				B529553C2A7B7A7000BEDDE7 /* HyundaiSansHeadKRRegular.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -69,6 +122,7 @@
 			buildConfigurationList = B52955212A7B782900BEDDE7 /* Build configuration list for PBXNativeTarget "MCMResource" */;
 			buildPhases = (
 				B52955152A7B782900BEDDE7 /* Headers */,
+				B52955332A7B78DF00BEDDE7 /* SwiftGen */,
 				B52955162A7B782900BEDDE7 /* Sources */,
 				B52955172A7B782900BEDDE7 /* Frameworks */,
 				B52955182A7B782900BEDDE7 /* Resources */,
@@ -93,6 +147,7 @@
 				TargetAttributes = {
 					B52955192A7B782900BEDDE7 = {
 						CreatedOnToolsVersion = 14.3.1;
+						LastSwiftMigration = 1430;
 					};
 				};
 			};
@@ -119,16 +174,44 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B52955382A7B797E00BEDDE7 /* launchScreen.json in Resources */,
+				B52955502A7B866400BEDDE7 /* swiftgen.yml in Resources */,
+				B529553F2A7B7A7100BEDDE7 /* HyundaiSansHeadKRRegular.ttf in Resources */,
+				B52955402A7B7A7100BEDDE7 /* HyundaiSansHeadKRMedium.ttf in Resources */,
+				B52955412A7B7A7100BEDDE7 /* HyundaiSansHeadKRBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B52955332A7B78DF00BEDDE7 /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftgen > /dev/null;\nthen\n    swiftgen\nelse\n    echo \"warning: SwiftGen not installed\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B52955162A7B782900BEDDE7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B52955432A7B7B4C00BEDDE7 /* Font+Generated.swift in Sources */,
+				B529553A2A7B79D700BEDDE7 /* Resource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +341,7 @@
 		B52955222A7B782900BEDDE7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -281,6 +365,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -289,6 +374,7 @@
 		B52955232A7B782900BEDDE7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
