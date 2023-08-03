@@ -15,6 +15,8 @@
 		B52955402A7B7A7100BEDDE7 /* HyundaiSansHeadKRMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B529553D2A7B7A7100BEDDE7 /* HyundaiSansHeadKRMedium.ttf */; };
 		B52955412A7B7A7100BEDDE7 /* HyundaiSansHeadKRBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B529553E2A7B7A7100BEDDE7 /* HyundaiSansHeadKRBold.ttf */; };
 		B52955432A7B7B4C00BEDDE7 /* Font+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52955422A7B7B4C00BEDDE7 /* Font+Generated.swift */; };
+		B52955482A7B7D7900BEDDE7 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B52955472A7B7D7900BEDDE7 /* Color.xcassets */; };
+		B529554A2A7B7DC400BEDDE7 /* Color+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52955492A7B7DC400BEDDE7 /* Color+Generated.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		B529553D2A7B7A7100BEDDE7 /* HyundaiSansHeadKRMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HyundaiSansHeadKRMedium.ttf; sourceTree = "<group>"; };
 		B529553E2A7B7A7100BEDDE7 /* HyundaiSansHeadKRBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HyundaiSansHeadKRBold.ttf; sourceTree = "<group>"; };
 		B52955422A7B7B4C00BEDDE7 /* Font+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Font+Generated.swift"; path = "../../../../../../../../문서 - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/MCMResource/MCMResource/Generated/Font+Generated.swift"; sourceTree = "<group>"; };
+		B52955472A7B7D7900BEDDE7 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Color.xcassets; path = Raw/Color.xcassets; sourceTree = "<group>"; };
+		B52955492A7B7DC400BEDDE7 /* Color+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Color+Generated.swift"; path = "../../../../../../../../문서 - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/MCMResource/MCMResource/Generated/Color+Generated.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 			children = (
 				B529551D2A7B782900BEDDE7 /* MCMResource.h */,
 				B52955342A7B795900BEDDE7 /* Raw */,
+				B52955472A7B7D7900BEDDE7 /* Color.xcassets */,
 				B52955352A7B795F00BEDDE7 /* Generated */,
 				B52955392A7B79D700BEDDE7 /* Resource.swift */,
 			);
@@ -80,6 +85,7 @@
 		B52955352A7B795F00BEDDE7 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
+				B52955492A7B7DC400BEDDE7 /* Color+Generated.swift */,
 				B52955422A7B7B4C00BEDDE7 /* Font+Generated.swift */,
 			);
 			path = Generated;
@@ -179,6 +185,7 @@
 				B529553F2A7B7A7100BEDDE7 /* HyundaiSansHeadKRRegular.ttf in Resources */,
 				B52955402A7B7A7100BEDDE7 /* HyundaiSansHeadKRMedium.ttf in Resources */,
 				B52955412A7B7A7100BEDDE7 /* HyundaiSansHeadKRBold.ttf in Resources */,
+				B52955482A7B7D7900BEDDE7 /* Color.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +219,7 @@
 			files = (
 				B52955432A7B7B4C00BEDDE7 /* Font+Generated.swift in Sources */,
 				B529553A2A7B79D700BEDDE7 /* Resource.swift in Sources */,
+				B529554A2A7B7DC400BEDDE7 /* Color+Generated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
