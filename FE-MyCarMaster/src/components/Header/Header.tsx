@@ -1,16 +1,24 @@
 import React from "react";
 import styled from "styled-components";
-import logo from "../../assets/images/logo.svg";
 import ArrowBottom from "../../assets/icons/ArrowBottom.svg";
 
-function Header() {
+type HeaderProps = {
+  isHome: boolean;
+  logo: string;
+};
+
+function Header({ isHome, logo }: HeaderProps) {
   return (
     <Container>
       <Img src={logo} />
-      <ModelSelector>
-        <ModelName>Palisade</ModelName>
-        <ModelButton src={ArrowBottom} />
-      </ModelSelector>
+      {isHome ? (
+        <></>
+      ) : (
+        <ModelSelector>
+          <ModelName>Palisade</ModelName>
+          <ModelButton src={ArrowBottom} />
+        </ModelSelector>
+      )}
     </Container>
   );
 }
