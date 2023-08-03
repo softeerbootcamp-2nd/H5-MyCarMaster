@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Wheeldrive {
+public class WheelDrive {
 
 	@Schema(description = "구동방식 식별자", example = "1")
 	private Integer id;

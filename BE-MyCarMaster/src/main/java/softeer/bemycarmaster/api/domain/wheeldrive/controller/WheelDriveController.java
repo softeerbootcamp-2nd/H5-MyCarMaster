@@ -8,26 +8,26 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import softeer.bemycarmaster.api.domain.wheeldrive.dto.request.GetWheeldrivesRequest;
-import softeer.bemycarmaster.api.domain.wheeldrive.dto.response.GetWheeldrivesResponse;
-import softeer.bemycarmaster.api.domain.wheeldrive.usecase.GetWheeldrivesUseCase;
+import softeer.bemycarmaster.api.domain.wheeldrive.dto.request.GetWheelDrivesRequest;
+import softeer.bemycarmaster.api.domain.wheeldrive.dto.response.GetWheelDrivesResponse;
+import softeer.bemycarmaster.api.domain.wheeldrive.usecase.GetWheelDrivesUseCase;
 import softeer.bemycarmaster.api.global.response.Response;
 
 @RestController
 @RequestMapping("/wheeldrives")
 @RequiredArgsConstructor
 @Tag(name = "Wheeldrive", description = "Wheeldrive API Document")
-public class WheeldriveController {
+public class WheelDriveController {
 
-	private final GetWheeldrivesUseCase getWheeldrivesUseCase;
+	private final GetWheelDrivesUseCase getWheeldrivesUseCase;
 
 	@GetMapping
 	@Operation(summary = "모델과 트림에 따른 구동 방식 목록을 반환합니다")
-	public Response<GetWheeldrivesResponse> getWheeldrives(@RequestBody GetWheeldrivesRequest getWheeldrivesRequest) {
+	public Response<GetWheelDrivesResponse> getWheeldrives(@RequestBody GetWheelDrivesRequest getWheeldrivesRequest) {
 
 		Integer modelId = getWheeldrivesRequest.getModelId();
 		Integer trimId = getWheeldrivesRequest.getTrimId();
-		GetWheeldrivesResponse getWheeldrivesResponse = getWheeldrivesUseCase.execute(modelId, trimId);
+		GetWheelDrivesResponse getWheeldrivesResponse = getWheeldrivesUseCase.execute(modelId, trimId);
 		return new Response<>(getWheeldrivesResponse);
 	}
 }

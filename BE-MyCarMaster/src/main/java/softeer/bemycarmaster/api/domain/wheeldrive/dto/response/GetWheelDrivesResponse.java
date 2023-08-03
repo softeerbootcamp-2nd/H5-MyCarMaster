@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class GetWheeldrivesResponse {
+public class GetWheelDrivesResponse {
 
-	private List<Wheeldrive> wheeldrives;
+	private List<WheelDrive> wheelDrives;
 }
