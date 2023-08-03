@@ -7,9 +7,9 @@ public enum ResponseStatus {
 
 	SUCCESS(2000, "요청에 성공하셨습니다.");
 
-	private int code;
+	private final int code;
 
-	private String message;
+	private final String message;
 
 	ResponseStatus(int code, String message) {
 		this.code = code;
