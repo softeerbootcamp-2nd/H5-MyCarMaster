@@ -8,21 +8,21 @@ import lombok.Setter;
 @Setter
 public class InteriorColor {
 
-	@Schema(description = "색상 식별자", example = "1")
+	@Schema(description = "내장 색상 식별자", example = "1")
 	private Integer id;
 
-	@Schema(description = "색상명", example = "palisade")
+	@Schema(description = "내장 색상명", example = "퀄팅 천연(블랙)")
 	private String name;
 
-	@Schema(description = "색상 가격", example = "1000")
+	@Schema(description = "내장 색상 추가 가격", example = "0")
 	private Integer price;
 
-	@Schema(description = "색상 비율", example = "32")
+	@Schema(description = "판매율", example = "32")
 	private Integer ratio;
 
-	@Schema(description = "색상 이미지", example = "colorImgUrl")
+	@Schema(description = "내장 색상 이미지", example = "colorImgUrl")
 	private String colorImgUrl;
 
-	@Schema(description = "색상 이미지", example = "coloredImgUrl")
+	@Schema(description = "내장 색상이 적용된 차량 내부 이미지", example = "coloredImgUrl")
 	private String coloredImgUrl;
 }
