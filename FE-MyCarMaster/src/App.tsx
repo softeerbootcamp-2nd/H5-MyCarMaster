@@ -1,13 +1,20 @@
 import { styled } from "styled-components";
-import Estimation from "./pages/Estimation";
+import { Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import theme from "./styles/Theme";
+import Home from "./pages/Home";
+import Estimation from "./pages/Estimation";
+import Quotation from "./pages/Quotation";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <Container>
-        <Estimation />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/estimation" element={<Estimation />} />
+          <Route path="/quotation" element={<Quotation />} />
+        </Routes>
       </Container>
     </ThemeProvider>
   );
