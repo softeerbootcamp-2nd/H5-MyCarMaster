@@ -8,21 +8,21 @@ function NavigationList() {
     <Container>
       <NavigationItem
         name={"트림"}
-        active={true}
+        $active={true}
         optionName={"Le Blanc (르블랑)"}
       />
       <NavigationItem
         name={"세부모델"}
-        active={false}
+        $active={false}
         optionName={"가솔린3.8 4WD 7인승"}
       />
       <NavigationItem
         name={"색상"}
-        active={false}
+        $active={false}
         optionName={"그라파이드 그레이 메탈릭"}
       />
-      <NavigationItem name={"옵션"} active={false} optionName={"빌트인 캠"} />
-      <NavigationItem name={"견적서 완성"} active={false} />
+      <NavigationItem name={"옵션"} $active={false} optionName={"빌트인 캠"} />
+      <NavigationItem name={"견적서 완성"} $active={false} />
       <EstimatedPrice sumPrice={9999999} />
     </Container>
   );
