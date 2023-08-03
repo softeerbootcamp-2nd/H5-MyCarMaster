@@ -10,45 +10,43 @@ type TextProp = {
   $weight: number;
   $lineHeight: number;
 };
-        
+
 function Home() {
   return (
     <>
-    <Video autoPlay muted loop>
+      <Video autoPlay muted loop>
         <source src={homeVideo} type="video/mp4" />
       </Video>
-    <Container>
-      <Header logo={white_logo} isHome={true} />
-      <IntroduceBox>
-        <Text $size={2} $weight={500} $lineHeight={2.5}>
-          내게 맞는 견적부터 카마스터 연결까지
-        </Text>
-        <Text $size={1} $weight={400} $lineHeight={1.5}>
-          마이 카마스터와 함께해요
-        </Text>
+      <Container>
+        <Header logo={white_logo} isHome={true} />
+        <IntroduceBox>
+          <Text $size={2} $weight={500} $lineHeight={2.5}>
+            내게 맞는 견적부터 카마스터 연결까지
+          </Text>
+          <Text $size={1} $weight={400} $lineHeight={1.5}>
+            마이 카마스터와 함께해요
+          </Text>
 
-        <Button
-          $x={15}
-          $y={2.75}
-          $backgroundcolor="#FFFFFF"
-          $textcolor="#222222"
-          $bordercolor="#FFFFFF"
-          text="마이 카마스터 시작하기"
-        />
-      </IntroduceBox>
-    </Container>
-   </>
+          <Button
+            $x={15}
+            $y={2.75}
+            $backgroundcolor="#FFFFFF"
+            $textcolor="#222222"
+            $bordercolor="#FFFFFF"
+            text="마이 카마스터 시작하기"
+          />
+        </IntroduceBox>
+      </Container>
+    </>
   );
 }
-        
+
 const Video = styled.video`
   object-fit: fill;
 
   position: fixed;
-  right: 0;
-  bottom: 0;
   min-width: 100%;
-  min-height: 100%;
+  min-height: 100vh;
 `;
 
 const Container = styled.div`
@@ -82,5 +80,5 @@ const Text = styled.p<TextProp>`
   letter-spacing: -0.06rem;
   text-align: left;
   color: #ffffff;
-
+`;
 export default Home;
