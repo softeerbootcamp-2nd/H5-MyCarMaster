@@ -1,4 +1,3 @@
-import React from "react";
 import { styled } from "styled-components";
 import { BLACK, COOLGREY2, GREY2, GREY3 } from "../../../styles/Color";
 import InnerColor from "../../../assets/images/InnerColor.png";
