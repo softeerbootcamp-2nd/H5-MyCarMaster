@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class GetBodytypesResponse {
+public class GetBodyTypesResponse {
 
-	private List<Bodytype> bodytypes;
+	private List<BodyType> bodyTypes;
 }

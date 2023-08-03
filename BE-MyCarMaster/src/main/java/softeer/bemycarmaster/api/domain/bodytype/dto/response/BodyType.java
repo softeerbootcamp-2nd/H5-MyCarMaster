@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Bodytype {
+public class BodyType {
 
 	@Schema(description = "바디타입 식별자", example = "1")
 	private Integer id;
