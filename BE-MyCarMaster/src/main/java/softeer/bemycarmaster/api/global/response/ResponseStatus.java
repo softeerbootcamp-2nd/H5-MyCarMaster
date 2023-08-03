@@ -3,7 +3,7 @@ package softeer.bemycarmaster.api.global.response;
 import lombok.Getter;
 
 @Getter
-public enum Code {
+public enum ResponseStatus {
 
 	SUCCESS(2000, "요청에 성공하셨습니다.");
 
@@ -11,7 +11,7 @@ public enum Code {
 
 	private String message;
 
-	Code(int code, String message) {
+	ResponseStatus(int code, String message) {
 		this.code = code;
 		this.message = message;
 	}

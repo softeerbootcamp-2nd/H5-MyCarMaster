@@ -18,20 +18,20 @@ public class Response<T> {
 
 	// 요청 성공
 	public Response(T result) {
-		this.code = Code.SUCCESS.getCode();
-		this.message = Code.SUCCESS.getMessage();
+		this.code = ResponseStatus.SUCCESS.getCode();
+		this.message = ResponseStatus.SUCCESS.getMessage();
 		this.result = result;
 	}
 
 	// 오류 발생
-	public Response(Code code) {
-		this.code = code.getCode();
-		this.message = code.getMessage();
+	public Response(ResponseStatus responseStatus) {
+		this.code = responseStatus.getCode();
+		this.message = responseStatus.getMessage();
 	}
 
-	public Response(Code code, T result) {
-		this.code = code.getCode();
-		this.message = code.getMessage();
+	public Response(ResponseStatus responseStatus, T result) {
+		this.code = responseStatus.getCode();
+		this.message = responseStatus.getMessage();
 		this.result = result;
 	}
 }
