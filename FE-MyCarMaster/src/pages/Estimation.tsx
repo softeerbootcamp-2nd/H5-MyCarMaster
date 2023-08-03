@@ -1,11 +1,12 @@
 import React from "react";
 import { Footer, Header, MainView } from "../components";
 import { styled } from "styled-components";
+import dark_logo from "../assets/images/dark_logo.svg";
 
 function Estimation() {
   return (
     <Container>
-      <Header />
+      <Header logo={dark_logo} isHome={false} />
       <MainView />
       <Footer />
     </Container>
