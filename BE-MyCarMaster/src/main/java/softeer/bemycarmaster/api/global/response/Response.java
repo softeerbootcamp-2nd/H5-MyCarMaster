@@ -10,7 +10,9 @@ import lombok.Setter;
 public class Response<T> {
 
 	private int code;
+
 	private String message;
+
 	@JsonInclude(JsonInclude.Include.NON_NULL)
 	private T result;
 
