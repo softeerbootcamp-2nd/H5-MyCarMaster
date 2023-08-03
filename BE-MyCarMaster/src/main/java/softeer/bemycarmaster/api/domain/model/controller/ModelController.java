@@ -27,4 +27,3 @@ public class ModelController {
 		return new Response<>(getModelsResponse);
 	}
 }
-
