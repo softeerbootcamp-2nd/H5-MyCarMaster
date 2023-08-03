@@ -5,10 +5,10 @@ type CategoryItemProp = {
   active?: boolean;
 };
 
-function CategoryItem(props: CategoryItemProp) {
+function CategoryItem({ name, active }: CategoryItemProp) {
   return (
     <Container>
-      <Text active={props.active}>{props.name}</Text>
+      <Text active={active}>{name}</Text>
     </Container>
   );
 }
