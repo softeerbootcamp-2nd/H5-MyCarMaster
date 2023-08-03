@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import MainWrapper from "./MainWrapper";
+import NavigationList from "../common/NavigationList/NavigationList";
 
 function MainView() {
   const navIndex = 0;
@@ -9,7 +10,7 @@ function MainView() {
       <MainContent>
         <MainWrapper navIndex={navIndex} />
       </MainContent>
-      <NavContainer>Navigation</NavContainer>
+      <NavigationList />
     </Container>
   );
 }
@@ -23,10 +24,6 @@ const Container = styled.div`
 
 const MainContent = styled.div`
   width: 51.5rem;
-`;
-
-const NavContainer = styled.div`
-  width: 9.625rem;
 `;
 
 export default MainView;
