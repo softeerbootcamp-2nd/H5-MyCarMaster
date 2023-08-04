@@ -3,6 +3,7 @@ import Button from "../components/common/Button/Button.tsx";
 import homeVideo from "../assets/video/homeVideo.mp4";
 import white_logo from "../assets/images/white_logo.svg";
 import { Header } from "../components";
+import { useNavigate } from "react-router-dom";
 
 type TextProp = {
   $size: number;
@@ -11,6 +12,11 @@ type TextProp = {
 };
 
 function Home() {
+  const navigate = useNavigate();
+  const homeButtonHandler = () => {
+    navigate("/estimation");
+  };
+
   return (
     <>
       <Video autoPlay muted loop>
@@ -34,6 +40,7 @@ function Home() {
             $textcolor="#222222"
             $bordercolor="#FFFFFF"
             text="마이 카마스터 시작하기"
+            handleClick={homeButtonHandler}
           />
         </IntroduceBox>
       </Container>

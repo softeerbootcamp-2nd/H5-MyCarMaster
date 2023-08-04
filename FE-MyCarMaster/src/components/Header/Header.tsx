@@ -29,7 +29,9 @@ const Container = styled.div`
   height: 4rem;
 `;
 
-const Img = styled.img``;
+const Img = styled.img`
+  width: 25%;
+`;
 
 const ModelSelector = styled.div`
   display: flex;
