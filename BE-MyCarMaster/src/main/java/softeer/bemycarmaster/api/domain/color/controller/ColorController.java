@@ -28,8 +28,9 @@ public class ColorController {
 
 	@GetMapping("/interior")
 	@Operation(summary = "모델, 트림에서 선택가능한 내장 색상 목록을 반환합니다")
-	public Response<GetInteriorColorsResponse> getInteriorColors(
-		@RequestBody GetInteriorColorsRequest getInteriorColorsRequest) {
+	public Response<GetInteriorColorsResponse> getInterior(
+		@RequestBody GetInteriorColorsRequest getInteriorColorsRequest
+	) {
 
 		Integer modelId = getInteriorColorsRequest.getModelId();
 		Integer trimId = getInteriorColorsRequest.getTrimId();
