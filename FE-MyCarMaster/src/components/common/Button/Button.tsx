@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 type ContainerProp = {
   $x: number;
@@ -8,7 +8,7 @@ type ContainerProp = {
   $textcolor?: string;
   $bordercolor?: string;
   text?: string | undefined;
-  hanldeClick?: () => void;
+  handleClick?: () => void;
 };
 
 function Button({
@@ -18,16 +18,8 @@ function Button({
   $textcolor,
   $bordercolor,
   text,
+  handleClick,
 }: ContainerProp) {
-  const navigate = useNavigate();
-  const handleClick = (text: string | undefined) => {
-    // text에 따라 버튼의 기능을 다르게 해야함
-    // 현재는 home에서만 사용됨
-    if (text === "마이 카마스터 시작하기") {
-      navigate("/estimation");
-    }
-  };
-
   return (
     <Container
       $x={$x}
@@ -35,7 +27,7 @@ function Button({
       $backgroundcolor={$backgroundcolor}
       $textcolor={$textcolor}
       $bordercolor={$bordercolor}
-      onClick={() => handleClick(text)}
+      onClick={handleClick}
     >
       <Text>{text}</Text>
     </Container>
