@@ -5,11 +5,12 @@ import java.util.Map;
 
 import lombok.Getter;
 import lombok.Setter;
-import softeer.bemycarmaster.api.domain.option.dto.OptionEnum;
 
 @Getter
 @Setter
 public class GetOptionsResponse {
+
+	private List<String> exclusiveTags;
 
 	private Map<OptionEnum, List<Option>> options;
 }

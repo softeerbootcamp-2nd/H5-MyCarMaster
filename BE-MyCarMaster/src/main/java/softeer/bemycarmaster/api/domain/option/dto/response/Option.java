@@ -13,6 +13,9 @@ public class Option {
 	@Schema(description = "옵션 식별자", example = "1")
 	private Integer id;
 
+	@Schema(description = "카테고리", example = "SAFE")
+	private String category;
+
 	@Schema(description = "옵션명", example = "주차보조 시스템||")
 	private String name;
 
@@ -28,5 +31,8 @@ public class Option {
 	@Schema(description = "옵션 설명", example = "null")
 	private String description;
 
-	private List<PackageOptionDetail> packageOptionDetails;
+	@Schema(description = "태그", example = "null")
+	private String tag;
+
+	private List<SubOption> subOptions;
 }
