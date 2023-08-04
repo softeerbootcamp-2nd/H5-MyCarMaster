@@ -14,7 +14,7 @@ public class ExteriorColor {
 	@Schema(description = "외장 색상명", example = "그라파이트 그레이 메탈릭")
 	private String name;
 
-	@Schema(description = "외장 색상 추가 가격", example = "0")
+	@Schema(description = "외장 색상 추가 비용", example = "0")
 	private Integer price;
 
 	@Schema(description = "판매율", example = "32")
