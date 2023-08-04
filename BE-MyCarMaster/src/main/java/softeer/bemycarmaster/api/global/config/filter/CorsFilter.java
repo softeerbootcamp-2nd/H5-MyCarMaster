@@ -17,7 +17,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class CorsFilter implements Filter {
 
-	private final List<String> allowedOrigins = Arrays.asList("http://h5-my-car-master.vercel.app");
+	private final List<String> allowedOrigins = Arrays.asList(
+		"http://h5-my-car-master.vercel.app",
+		"http://localhost:5173"
+	);
 
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws
