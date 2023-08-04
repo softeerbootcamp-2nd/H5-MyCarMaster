@@ -16,7 +16,7 @@ public class Option {
 	@Schema(description = "옵션명", example = "주차보조 시스템||")
 	private String name;
 
-	@Schema(description = "옵션 기본 가격", example = "1280000")
+	@Schema(description = "옵션 기본 비용", example = "1280000")
 	private Integer price;
 
 	@Schema(description = "판매율", example = "22")
