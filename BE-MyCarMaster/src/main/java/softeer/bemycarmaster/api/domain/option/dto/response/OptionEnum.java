@@ -1,4 +1,4 @@
-package softeer.bemycarmaster.api.domain.option.dto;
+package softeer.bemycarmaster.api.domain.option.dto.response;
 
 public enum OptionEnum {
 
