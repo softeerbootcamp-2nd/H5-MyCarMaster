@@ -14,15 +14,13 @@ type TrimState = {
   trimList: Trims[];
 };
 
-type TrimAction =
-  | {
-      type: "SELECT_TRIM";
-      payload: { trimId: number };
-    }
-  | {
-      type: "SET_TRIM_LIST";
-      payload: { trimList: Trims[] };
-    };
+type TrimAction = {
+  type: "SELECT_TRIM" | "SET_TRIM_LIST";
+  payload: {
+    trimId: number;
+    trimList: Trims[];
+  };
+};
 
 const initialTrimState: TrimState = {
   trimId: 0,
