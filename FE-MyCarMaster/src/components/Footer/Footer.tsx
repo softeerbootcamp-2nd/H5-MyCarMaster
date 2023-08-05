@@ -3,8 +3,15 @@ import { GREY1 } from "../../styles/Color";
 import InnerColorBox from "../common/ColorBox/InnerColorBox";
 import Button from "../common/Button/Button";
 import theme from "../../styles/Theme";
+import {
+  useQuotationState,
+  useQuotationDispatch,
+} from "../../contexts/QuotationContext";
 
 function Footer() {
+  const { navigationId } = useQuotationState();
+  const quotationDispatch = useQuotationDispatch();
+
   // api 연동 후 Props 재정의 필요
   const InnerColorProps = {
     id: 1,
@@ -16,9 +23,23 @@ function Footer() {
     // coloredImgUrl
   };
 
-  const prevButtonHandler = () => {};
+  const prevButtonHandler = () => {
+    quotationDispatch({
+      type: "NAVIGATE",
+      payload: {
+        navigationId: navigationId - 1,
+      },
+    });
+  };
 
-  const nextButtonHandler = () => {};
+  const nextButtonHandler = () => {
+    quotationDispatch({
+      type: "NAVIGATE",
+      payload: {
+        navigationId: navigationId + 1,
+      },
+    });
+  };
 
   return (
     <Container>
