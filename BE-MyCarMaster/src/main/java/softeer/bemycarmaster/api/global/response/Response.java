@@ -16,14 +16,12 @@ public class Response<T> {
 	@JsonInclude(JsonInclude.Include.NON_NULL)
 	private T result;
 
-	// 요청 성공
 	public Response(T result) {
 		this.code = ResponseStatus.SUCCESS.getCode();
 		this.message = ResponseStatus.SUCCESS.getMessage();
 		this.result = result;
 	}
 
-	// 오류 발생
 	public Response(ResponseStatus responseStatus) {
 		this.code = responseStatus.getCode();
 		this.message = responseStatus.getMessage();
@@ -33,5 +31,21 @@ public class Response<T> {
 		this.code = responseStatus.getCode();
 		this.message = responseStatus.getMessage();
 		this.result = result;
+	}
+
+	public static <T> Response createSuccessResponse(T result) {
+		return new Response(result);
+	}
+
+	public static <T> Response createSuccessResponse() {
+		return new Response(ResponseStatus.SUCCESS);
+	}
+
+	public static <T> Response createErrorResponse(ResponseStatus responseStatus) {
+		return new Response(responseStatus);
+	}
+
+	public static <T> Response createErrorResponse(ResponseStatus responseStatus, T result) {
+		return new Response(responseStatus, result);
 	}
 }
