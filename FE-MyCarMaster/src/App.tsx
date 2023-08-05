@@ -2,12 +2,16 @@ import React, { createElement } from "react";
 import { styled } from "styled-components";
 import { Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
+import { ModelProvider } from "./contexts/ModelContext";
+import { TrimProvider } from "./contexts/TrimContext";
+import { DetailProvider } from "./contexts/DetailContext";
+import { CarPaintProvider } from "./contexts/CarPaintContext";
+import { OptionProvider } from "./contexts/OptionContext";
+import { QuotationProvider } from "./contexts/QuotationContext";
 import theme from "./styles/Theme";
 import Home from "./pages/Home";
 import Estimation from "./pages/Estimation";
 import Quotation from "./pages/Quotation";
-import { ModelProvider } from "./contexts/ModelContext";
-import { TrimProvider } from "./contexts/TrimContext";
 
 const AppProvider = ({
   providers,
@@ -27,7 +31,16 @@ const AppProvider = ({
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <AppProvider providers={[ModelProvider, TrimProvider]}>
+      <AppProvider
+        providers={[
+          ModelProvider,
+          TrimProvider,
+          DetailProvider,
+          CarPaintProvider,
+          OptionProvider,
+          QuotationProvider,
+        ]}
+      >
         <Container>
           <Routes>
             <Route path="/" element={<Home />} />
