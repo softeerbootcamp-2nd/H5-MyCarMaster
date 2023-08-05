@@ -53,12 +53,6 @@ jobs:
           tags: |
             softeerh5/my-car-master:latest
 
-      - name: Prepare Deployment Files
-        run: |
-          cd ./BE-MyCarMaster 
-          mkdir deploy
-          cp appspec.yml deploy/
-
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -69,12 +63,12 @@ jobs:
       - name: Zip Deployment Files
         run: |
           cd ./BE-MyCarMaster 
-          zip -r deploy.zip deploy/
+          zip -r scripts.zip scripts/
 
       - name: Copy Files to S3
         run: |
           cd ./BE-MyCarMaster
-          aws s3 cp deploy.zip s3://h5-codedeploy-script/deploy/
+          aws s3 cp scripts.zip s3://h5-codedeploy-script/script/
 
       - name: Deploy to AWS CodeDeploy
         run: |
@@ -82,4 +76,4 @@ jobs:
             --application-name h5-application-ec2-deploy \
             --deployment-config-name CodeDeployDefault.AllAtOnce \
             --deployment-group-name h5-application-deploy-group \
-            --s3-location bucket=h5-codedeploy-script,bundleType=zip,key=deploy/deploy.zip
+            --s3-location bucket=h5-codedeploy-script,bundleType=zip,key=script/scripts.zip
