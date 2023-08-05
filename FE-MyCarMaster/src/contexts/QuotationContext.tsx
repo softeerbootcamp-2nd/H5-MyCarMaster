@@ -21,21 +21,24 @@ type QuotationState = {
   consideredQuotation: quotation[];
 };
 
-type QuotationAction = {
-  type: "NAVIGATE" | "SET_QUOTATION";
-  payload: {
-    navigationId: number;
-    isFirst: boolean[];
-    trimQuotation: quotation[];
-    engineQuotation: quotation[];
-    wheelDriveQuotation: quotation[];
-    bodyTypeQuotation: quotation[];
-    exteriorColorQuotation: quotation[];
-    interiorColorQuotation: quotation[];
-    selectedQuotation: quotation[];
-    consideredQuotation: quotation[];
-  };
-};
+type QuotationAction =
+  | {
+      type: "NAVIGATE";
+      payload: { navigationId: number; isFirst?: boolean[] };
+    }
+  | {
+      type: "SET_QUOTATION";
+      payload: {
+        trimQuotation?: quotation[];
+        engineQuotation?: quotation[];
+        wheelDriveQuotation?: quotation[];
+        bodyTypeQuotation?: quotation[];
+        exteriorColorQuotation?: quotation[];
+        interiorColorQuotation?: quotation[];
+        selectedQuotation?: quotation[];
+        consideredQuotation?: quotation[];
+      };
+    };
 
 const initialQuotationState: QuotationState = {
   navigationId: 0,
@@ -60,20 +63,47 @@ const quotationReducer = (
     case "NAVIGATE":
       return {
         ...state,
-        navigationId: action.payload.navigationId,
-        isFirst: action.payload.isFirst,
+        navigationId:
+          action.payload.navigationId === -1
+            ? 0
+            : action.payload.navigationId === 7
+            ? 6
+            : action.payload.navigationId,
       };
     case "SET_QUOTATION":
       return {
         ...state,
-        trimQuotation: action.payload.trimQuotation,
-        engineQuotation: action.payload.engineQuotation,
-        wheelDriveQuotation: action.payload.wheelDriveQuotation,
-        bodyTypeQuotation: action.payload.bodyTypeQuotation,
-        exteriorColorQuotation: action.payload.exteriorColorQuotation,
-        interiorColorQuotation: action.payload.interiorColorQuotation,
-        selectedQuotation: action.payload.selectedQuotation,
-        consideredQuotation: action.payload.consideredQuotation,
+        trimQuotation: action.payload.trimQuotation
+          ? action.payload.trimQuotation
+          : state.trimQuotation,
+
+        engineQuotation: action.payload.engineQuotation
+          ? action.payload.engineQuotation
+          : state.engineQuotation,
+
+        wheelDriveQuotation: action.payload.wheelDriveQuotation
+          ? action.payload.wheelDriveQuotation
+          : state.wheelDriveQuotation,
+
+        bodyTypeQuotation: action.payload.bodyTypeQuotation
+          ? action.payload.bodyTypeQuotation
+          : state.bodyTypeQuotation,
+
+        exteriorColorQuotation: action.payload.exteriorColorQuotation
+          ? action.payload.exteriorColorQuotation
+          : state.exteriorColorQuotation,
+
+        interiorColorQuotation: action.payload.interiorColorQuotation
+          ? action.payload.interiorColorQuotation
+          : state.interiorColorQuotation,
+
+        selectedQuotation: action.payload.selectedQuotation
+          ? action.payload.selectedQuotation
+          : state.selectedQuotation,
+
+        consideredQuotation: action.payload.consideredQuotation
+          ? action.payload.consideredQuotation
+          : state.consideredQuotation,
       };
     default:
       return state;
