@@ -1,0 +1,17 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/scripts
+hooks:
+  BeforeInstall:
+    - location: /home/ubuntu/scripts/create-directory.sh
+      timeout: 300
+      runas: root
+    - location: /home/ubuntu/scripts/remove-container.sh
+      timeout: 300
+      runas: root
+  AfterInstall:
+    - location: /home/ubuntu/scripts/pull-and-run-container.sh
+      timeout: 300
+      runas: root
