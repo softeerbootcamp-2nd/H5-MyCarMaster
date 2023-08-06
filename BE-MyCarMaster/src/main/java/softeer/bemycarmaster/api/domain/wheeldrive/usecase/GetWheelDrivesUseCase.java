@@ -6,7 +6,7 @@ import softeer.bemycarmaster.api.global.annotation.UseCase;
 @UseCase
 public class GetWheelDrivesUseCase {
 
-	public GetWheelDrivesResponse execute(Integer trimId) {
+	public GetWheelDrivesResponse execute(Long trimId) {
 
 		return new GetWheelDrivesResponse();
 	}

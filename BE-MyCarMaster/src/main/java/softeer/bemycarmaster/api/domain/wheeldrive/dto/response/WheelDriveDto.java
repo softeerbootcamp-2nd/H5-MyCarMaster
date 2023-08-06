@@ -13,7 +13,7 @@ import lombok.Setter;
 public class WheelDriveDto {
 
 	@Schema(description = "구동방식 식별자", example = "1")
-	private Integer id;
+	private Long id;
 
 	@Schema(description = "구동방식명", example = "2WD")
 	private String name;

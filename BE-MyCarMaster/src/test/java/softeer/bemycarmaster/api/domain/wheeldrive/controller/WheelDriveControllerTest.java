@@ -42,11 +42,11 @@ class WheelDriveControllerTest {
 	@DisplayName("구동방식 목록을 조회합니다")
 	void getWheelDrives() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetWheelDrivesRequest(1));
+		String requestBody = getRequestBody(new GetWheelDrivesRequest(1L));
 
 		GetWheelDrivesResponse getWheelDrivesResponse = new GetWheelDrivesResponse();
 		WheelDriveDto wheelDriveDto = WheelDriveDto.builder()
-			.id(1)
+			.id(1L)
 			.name("2WD")
 			.description("2WD Description")
 			.price(0)
@@ -78,7 +78,7 @@ class WheelDriveControllerTest {
 	@DisplayName("trimId는 1 이상이어야 합니다")
 	void minimumTrimId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetWheelDrivesRequest(0));
+		String requestBody = getRequestBody(new GetWheelDrivesRequest(0L));
 
 		String responseBody = getClientErrorResponseBody();
 

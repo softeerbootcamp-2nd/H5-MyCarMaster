@@ -29,7 +29,7 @@ public class WheelDriveController {
 		@RequestBody @Valid GetWheelDrivesRequest getWheelDrivesRequest
 	) {
 
-		Integer trimId = getWheelDrivesRequest.getTrimId();
+		Long trimId = getWheelDrivesRequest.getTrimId();
 		GetWheelDrivesResponse getWheelDrivesResponse = getWheelDrivesUseCase.execute(trimId);
 		return Response.createSuccessResponse(getWheelDrivesResponse);
 	}
