@@ -22,12 +22,11 @@ public class WheelDriveController {
 	private final GetWheelDrivesUseCase getWheeldrivesUseCase;
 
 	@GetMapping
-	@Operation(summary = "모델과 트림에 따른 구동 방식 목록을 반환합니다")
+	@Operation(summary = "트림에 따른 구동 방식 목록을 반환합니다")
 	public Response<GetWheelDrivesResponse> getWheeldrives(@RequestBody GetWheelDrivesRequest getWheeldrivesRequest) {
 
-		Integer modelId = getWheeldrivesRequest.getModelId();
 		Integer trimId = getWheeldrivesRequest.getTrimId();
-		GetWheelDrivesResponse getWheeldrivesResponse = getWheeldrivesUseCase.execute(modelId, trimId);
-		return new Response<>(getWheeldrivesResponse);
+		GetWheelDrivesResponse getWheeldrivesResponse = getWheeldrivesUseCase.execute(trimId);
+		return Response.createSuccessResponse(getWheeldrivesResponse);
 	}
 }
