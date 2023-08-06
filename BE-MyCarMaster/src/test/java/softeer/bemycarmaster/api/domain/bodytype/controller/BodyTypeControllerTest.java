@@ -39,7 +39,7 @@ class BodyTypeControllerTest {
 	private GetBodyTypesUseCase getBodyTypesUseCase;
 
 	@Test
-	@DisplayName("바디 타입 목록을 조회합니다.")
+	@DisplayName("바디 타입 목록을 조회합니다")
 	void getBodyTypes() throws Exception {
 		//given
 		String requestBody = getRequestBody(new GetBodyTypesRequest(1));
