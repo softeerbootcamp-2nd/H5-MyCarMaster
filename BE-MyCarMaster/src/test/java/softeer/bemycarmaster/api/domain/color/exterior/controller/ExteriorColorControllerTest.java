@@ -38,7 +38,7 @@ class ExteriorColorControllerTest {
 
 	@Test
 	@DisplayName("외장 색상 목록을 조회합니다")
-	public void getExteriorColors() throws Exception {
+	void getExteriorColors() throws Exception {
 		//given
 		String requestBody = getRequestBody(new GetExteriorColorsRequest(1));
 
