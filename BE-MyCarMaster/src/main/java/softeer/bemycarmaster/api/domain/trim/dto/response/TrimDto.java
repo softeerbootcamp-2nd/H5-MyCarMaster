@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Trim {
+public class TrimDto {
 
 	@Schema(description = "트림 식별자", example = "1")
 	private Long id;

@@ -9,5 +9,5 @@ import lombok.Setter;
 @Setter
 public class GetTrimsResponse {
 
-	private List<Trim> trims;
+	private List<TrimDto> trims;
 }
