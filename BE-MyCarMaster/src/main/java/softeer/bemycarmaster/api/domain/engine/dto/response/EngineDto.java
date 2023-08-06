@@ -13,7 +13,7 @@ import lombok.Setter;
 public class EngineDto {
 
 	@Schema(description = "엔진 식별자", example = "1")
-	private Integer id;
+	private Long id;
 
 	@Schema(description = "엔진명", example = "가솔린 3.8")
 	private String name;

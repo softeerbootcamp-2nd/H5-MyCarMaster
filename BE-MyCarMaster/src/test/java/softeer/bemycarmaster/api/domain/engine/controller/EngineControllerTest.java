@@ -42,11 +42,11 @@ class EngineControllerTest {
 	@DisplayName("엔진 목록을 조회합니다")
 	void getEngines() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetEnginesRequest(1));
+		String requestBody = getRequestBody(new GetEnginesRequest(1L));
 
 		GetEnginesResponse getEnginesResponse = new GetEnginesResponse();
 		EngineDto engineDto = EngineDto.builder()
-			.id(1)
+			.id(1L)
 			.name("가솔린 3.8")
 			.description("가솔린 3.8 Description")
 			.price(0)
@@ -82,7 +82,7 @@ class EngineControllerTest {
 	@DisplayName("trimId는 1 이상이어야 합니다")
 	void minimumTrimId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetEnginesRequest(0));
+		String requestBody = getRequestBody(new GetEnginesRequest(0L));
 
 		String responseBody = getClientErrorResponseBody();
 

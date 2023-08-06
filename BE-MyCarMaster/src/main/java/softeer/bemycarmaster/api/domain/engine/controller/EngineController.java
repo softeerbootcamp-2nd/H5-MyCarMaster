@@ -27,7 +27,7 @@ public class EngineController {
 	@Operation(summary = "트림에 따른 엔진 목록을 반환합니다")
 	public Response<GetEnginesResponse> getEngines(@RequestBody @Valid GetEnginesRequest getEnginesRequest) {
 
-		Integer trimId = getEnginesRequest.getTrimId();
+		Long trimId = getEnginesRequest.getTrimId();
 		GetEnginesResponse getEnginesResponse = getEnginesUseCase.execute(trimId);
 		return Response.createSuccessResponse(getEnginesResponse);
 	}
