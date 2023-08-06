@@ -75,8 +75,8 @@ class TrimControllerTest {
 	}
 
 	@Test
-	@DisplayName("trimId는 1 이상이어야 합니다")
-	void minimumTrimId() throws Exception {
+	@DisplayName("modelId는 1 이상이어야 합니다")
+	void minimumModelId() throws Exception {
 		//given
 		String requestBody = getRequestBody(new GetTrimsRequest(0L));
 
@@ -97,8 +97,8 @@ class TrimControllerTest {
 	}
 
 	@Test
-	@DisplayName("trimId는 null값 일 수 없습니다")
-	void nonNullTrimId() throws Exception {
+	@DisplayName("modelId는 null값 일 수 없습니다")
+	void nonNullModelId() throws Exception {
 		//given
 		String requestBody = getRequestBody(new GetTrimsRequest(null));
 
