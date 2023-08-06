@@ -22,12 +22,11 @@ public class EngineController {
 	private final GetEnginesUseCase getEnginesUseCase;
 
 	@GetMapping
-	@Operation(summary = "모델과 트림에 따른 엔진 목록을 반환합니다")
+	@Operation(summary = "트림에 따른 엔진 목록을 반환합니다")
 	public Response<GetEnginesResponse> getEngines(@RequestBody GetEnginesRequest getEnginesRequest) {
 
-		Integer modelId = getEnginesRequest.getModelId();
 		Integer trimId = getEnginesRequest.getTrimId();
-		GetEnginesResponse getEnginesResponse = getEnginesUseCase.execute(modelId, trimId);
-		return new Response<>(getEnginesResponse);
+		GetEnginesResponse getEnginesResponse = getEnginesUseCase.execute(trimId);
+		return Response.createSuccessResponse(getEnginesResponse);
 	}
 }

@@ -6,8 +6,8 @@ import softeer.bemycarmaster.api.global.annotation.UseCase;
 @UseCase
 public class GetEnginesUseCase {
 
-	public GetEnginesResponse execute(Integer modelId, Integer trimId) {
+	public GetEnginesResponse execute(Integer trimId) {
 
-		return null;
+		return new GetEnginesResponse();
 	}
 }
