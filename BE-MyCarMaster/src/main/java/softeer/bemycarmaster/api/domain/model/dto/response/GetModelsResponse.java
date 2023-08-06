@@ -9,5 +9,5 @@ import lombok.Setter;
 @Setter
 public class GetModelsResponse {
 
-	private List<Model> models;
+	private List<ModelDto> models;
 }
