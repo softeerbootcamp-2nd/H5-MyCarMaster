@@ -39,7 +39,7 @@ class ModelControllerTest {
 		//given
 		GetModelsResponse getModelsResponse = new GetModelsResponse();
 		ModelDto modelDto = ModelDto.builder()
-			.id(1)
+			.id(1L)
 			.name("model name")
 			.imgUrl("imgUrl")
 			.build();
