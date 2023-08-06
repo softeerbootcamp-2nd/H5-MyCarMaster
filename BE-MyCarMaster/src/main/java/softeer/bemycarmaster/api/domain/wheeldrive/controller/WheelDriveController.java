@@ -18,19 +18,19 @@ import softeer.bemycarmaster.api.global.response.Response;
 @RestController
 @RequestMapping("/wheeldrives")
 @RequiredArgsConstructor
-@Tag(name = "Wheeldrive", description = "Wheeldrive API Document")
+@Tag(name = "WheelDrive", description = "WheelDrive API Document")
 public class WheelDriveController {
 
-	private final GetWheelDrivesUseCase getWheeldrivesUseCase;
+	private final GetWheelDrivesUseCase getWheelDrivesUseCase;
 
 	@GetMapping
 	@Operation(summary = "트림에 따른 구동 방식 목록을 반환합니다")
-	public Response<GetWheelDrivesResponse> getWheeldrives(
-		@RequestBody @Valid GetWheelDrivesRequest getWheeldrivesRequest
+	public Response<GetWheelDrivesResponse> getWheelDrives(
+		@RequestBody @Valid GetWheelDrivesRequest getWheelDrivesRequest
 	) {
 
-		Integer trimId = getWheeldrivesRequest.getTrimId();
-		GetWheelDrivesResponse getWheeldrivesResponse = getWheeldrivesUseCase.execute(trimId);
-		return Response.createSuccessResponse(getWheeldrivesResponse);
+		Integer trimId = getWheelDrivesRequest.getTrimId();
+		GetWheelDrivesResponse getWheelDrivesResponse = getWheelDrivesUseCase.execute(trimId);
+		return Response.createSuccessResponse(getWheelDrivesResponse);
 	}
 }
