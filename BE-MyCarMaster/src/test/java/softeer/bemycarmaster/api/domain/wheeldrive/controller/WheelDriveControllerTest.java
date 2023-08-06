@@ -45,7 +45,7 @@ class WheelDriveControllerTest {
 		String requestBody = getRequestBody(new GetWheelDrivesRequest(1));
 
 		GetWheelDrivesResponse getWheelDrivesResponse = new GetWheelDrivesResponse();
-		WheelDriveDto bodyTypeDto = WheelDriveDto.builder()
+		WheelDriveDto wheelDriveDto = WheelDriveDto.builder()
 			.id(1)
 			.name("2WD")
 			.description("2WD Description")
@@ -53,7 +53,7 @@ class WheelDriveControllerTest {
 			.ratio(22)
 			.imgUrl("imgUrl")
 			.build();
-		getWheelDrivesResponse.setWheelDrives(Arrays.asList(bodyTypeDto));
+		getWheelDrivesResponse.setWheelDrives(Arrays.asList(wheelDriveDto));
 
 		given(getWheelDrivesUseCase.execute(any())).willReturn(getWheelDrivesResponse);
 
