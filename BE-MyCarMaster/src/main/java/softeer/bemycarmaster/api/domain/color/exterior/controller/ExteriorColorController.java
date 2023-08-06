@@ -24,13 +24,12 @@ public class ExteriorColorController {
 	private final GetExteriorColorsUseCase getExteriorColorsUseCase;
 
 	@GetMapping("/exterior")
-	@Operation(summary = "모델, 트림에서 선택가능한 외장 색상 목록을 반환합니다")
+	@Operation(summary = "트림에서 선택가능한 외장 색상 목록을 반환합니다")
 	public Response<GetExteriorColorsResponse> getExteriorColors(
 		@RequestBody @Valid GetExteriorColorsRequest getExteriorColorsRequest) {
 
-		Integer modelId = getExteriorColorsRequest.getModelId();
 		Integer trimId = getExteriorColorsRequest.getTrimId();
-		GetExteriorColorsResponse getExteriorColorsResponse = getExteriorColorsUseCase.execute(modelId, trimId);
+		GetExteriorColorsResponse getExteriorColorsResponse = getExteriorColorsUseCase.execute(trimId);
 		return Response.createSuccessResponse(getExteriorColorsResponse);
 	}
 }

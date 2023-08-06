@@ -40,7 +40,7 @@ class ExteriorColorControllerTest {
 	@DisplayName("외장 색상 목록을 조회합니다")
 	public void getExteriorColors() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetExteriorColorsRequest(1, 1));
+		String requestBody = getRequestBody(new GetExteriorColorsRequest(1));
 
 		GetExteriorColorsResponse getExteriorColorsResponse = new GetExteriorColorsResponse();
 		ExteriorColorDto exteriorColorDto = ExteriorColorDto.builder()
@@ -53,7 +53,7 @@ class ExteriorColorControllerTest {
 			.build();
 		getExteriorColorsResponse.setColors(Arrays.asList(exteriorColorDto));
 
-		given(getExteriorColorsUseCase.execute(any(), any())).willReturn(getExteriorColorsResponse);
+		given(getExteriorColorsUseCase.execute(any())).willReturn(getExteriorColorsResponse);
 
 		Response successResponse = Response.createSuccessResponse(getExteriorColorsResponse);
 		String responseBody = objectMapper.writeValueAsString(successResponse);
@@ -73,54 +73,10 @@ class ExteriorColorControllerTest {
 	}
 
 	@Test
-	@DisplayName("modelId는 1 이상이어야 합니다")
-	void minimumModelId() throws Exception {
-		//given
-		String requestBody = getRequestBody(new GetExteriorColorsRequest(0, 1));
-
-		String responseBody = getClientErrorResponseBody();
-
-		//when
-		ResultActions perform = mockMvc.perform(
-			get("/colors/exterior")
-				.contentType("application/json")
-				.content(requestBody)
-		);
-
-		//then
-		perform
-			.andExpect(status().is4xxClientError())
-			.andExpect(content().contentType("application/json"))
-			.andExpect(content().json(responseBody, false));
-	}
-
-	@Test
-	@DisplayName("modelId는 null값 일 수 없습니다")
-	void nonNullModelId() throws Exception {
-		//given
-		String requestBody = getRequestBody(new GetExteriorColorsRequest(null, 1));
-
-		String responseBody = getClientErrorResponseBody();
-
-		//when
-		ResultActions perform = mockMvc.perform(
-			get("/colors/exterior")
-				.contentType("application/json")
-				.content(requestBody)
-		);
-
-		//then
-		perform
-			.andExpect(status().is4xxClientError())
-			.andExpect(content().contentType("application/json"))
-			.andExpect(content().json(responseBody, false));
-	}
-
-	@Test
 	@DisplayName("trimId는 1 이상이어야 합니다")
 	void minimumTrimId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetExteriorColorsRequest(1, 0));
+		String requestBody = getRequestBody(new GetExteriorColorsRequest(0));
 
 		String responseBody = getClientErrorResponseBody();
 
@@ -142,7 +98,7 @@ class ExteriorColorControllerTest {
 	@DisplayName("trimId는 null값 일 수 없습니다")
 	void nonNullTrimId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetExteriorColorsRequest(1, null));
+		String requestBody = getRequestBody(new GetExteriorColorsRequest(null));
 
 		String responseBody = getClientErrorResponseBody();
 

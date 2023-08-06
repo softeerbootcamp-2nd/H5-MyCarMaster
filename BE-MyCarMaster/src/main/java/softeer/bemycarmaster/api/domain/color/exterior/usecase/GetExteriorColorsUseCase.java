@@ -6,7 +6,7 @@ import softeer.bemycarmaster.api.global.annotation.UseCase;
 @UseCase
 public class GetExteriorColorsUseCase {
 
-	public GetExteriorColorsResponse execute(Integer modelId, Integer trimId) {
+	public GetExteriorColorsResponse execute(Integer trimId) {
 		return new GetExteriorColorsResponse();
 	}
 }
