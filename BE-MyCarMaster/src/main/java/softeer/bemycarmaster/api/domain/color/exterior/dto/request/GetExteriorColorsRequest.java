@@ -1,14 +1,16 @@
-package softeer.bemycarmaster.api.domain.color.dto.request;
+package softeer.bemycarmaster.api.domain.color.exterior.dto.request;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
 public class GetExteriorColorsRequest {
 
 	@Schema(description = "모델 식별자", example = "1")

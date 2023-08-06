@@ -1,4 +1,4 @@
-package softeer.bemycarmaster.api.domain.color.dto.response;
+package softeer.bemycarmaster.api.domain.color.interior.dto.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
