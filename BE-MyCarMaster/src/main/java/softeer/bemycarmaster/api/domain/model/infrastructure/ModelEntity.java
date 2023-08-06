@@ -10,7 +10,7 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import softeer.bemycarmaster.api.domain.model.domain.Model;
 
-@Entity
+@Entity(name = "model")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ModelEntity {
 
@@ -21,7 +21,7 @@ public class ModelEntity {
 	@Column(name = "name", nullable = false)
 	private String name;
 
-	@Column(name = "imgUrl", nullable = false)
+	@Column(name = "img_url", nullable = false)
 	private String imgUrl;
 
 	public Model toModel() {
