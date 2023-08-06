@@ -24,7 +24,7 @@ public class BodyTypeController {
 	private final GetBodyTypesUseCase getBodyTypesUseCase;
 
 	@GetMapping
-	@Operation(summary = "모델과 트림에 따른 바디타입 목록을 반환합니다")
+	@Operation(summary = "트림에 따른 바디타입 목록을 반환합니다")
 	public Response<GetBodyTypesResponse> getBodytypes(@RequestBody @Valid GetBodyTypesRequest getBodytypesRequest) {
 
 		Integer trimId = getBodytypesRequest.getTrimId();
