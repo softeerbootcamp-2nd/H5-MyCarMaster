@@ -21,14 +21,14 @@ import softeer.bemycarmaster.api.global.response.Response;
 @Tag(name = "Bodytype", description = "Bodytype API Document")
 public class BodyTypeController {
 
-	private final GetBodyTypesUseCase getBodytypesUseCase;
+	private final GetBodyTypesUseCase getBodyTypesUseCase;
 
 	@GetMapping
 	@Operation(summary = "모델과 트림에 따른 바디타입 목록을 반환합니다")
 	public Response<GetBodyTypesResponse> getBodytypes(@RequestBody @Valid GetBodyTypesRequest getBodytypesRequest) {
 
 		Integer trimId = getBodytypesRequest.getTrimId();
-		GetBodyTypesResponse getBodytypesResponse = getBodytypesUseCase.execute(trimId);
-		return Response.createSuccessResponse(getBodytypesResponse);
+		GetBodyTypesResponse getBodyTypesResponse = getBodyTypesUseCase.execute(trimId);
+		return Response.createSuccessResponse(getBodyTypesResponse);
 	}
 }
