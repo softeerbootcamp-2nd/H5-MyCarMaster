@@ -1,5 +1,7 @@
 package softeer.bemycarmaster.api.domain.color.interior.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +26,7 @@ public class InteriorColorController {
 	@GetMapping("/interior")
 	@Operation(summary = "트림, 외장 색상에서 선택가능한 내장 색상 목록을 반환합니다")
 	public Response<GetInteriorColorsResponse> getInterior(
-		@RequestBody GetInteriorColorsRequest getInteriorColorsRequest) {
+		@RequestBody @Valid GetInteriorColorsRequest getInteriorColorsRequest) {
 
 		Integer trimId = getInteriorColorsRequest.getTrimId();
 		Integer exteriorColorId = getInteriorColorsRequest.getExteriorColorId();
