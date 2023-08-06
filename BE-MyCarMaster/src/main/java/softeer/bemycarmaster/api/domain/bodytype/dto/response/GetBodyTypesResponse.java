@@ -9,5 +9,5 @@ import lombok.Setter;
 @Setter
 public class GetBodyTypesResponse {
 
-	private List<BodyType> bodyTypes;
+	private List<BodyTypeDto> bodyTypes;
 }

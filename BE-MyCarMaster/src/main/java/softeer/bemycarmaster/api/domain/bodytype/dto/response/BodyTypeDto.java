@@ -1,12 +1,16 @@
 package softeer.bemycarmaster.api.domain.bodytype.dto.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class BodyType {
+@Builder
+@AllArgsConstructor
+public class BodyTypeDto {
 
 	@Schema(description = "바디타입 식별자", example = "1")
 	private Integer id;

@@ -9,5 +9,5 @@ import lombok.Setter;
 @Setter
 public class GetInteriorColorsResponse {
 
-	private List<InteriorColor> colors;
+	private List<InteriorColorDto> colors;
 }

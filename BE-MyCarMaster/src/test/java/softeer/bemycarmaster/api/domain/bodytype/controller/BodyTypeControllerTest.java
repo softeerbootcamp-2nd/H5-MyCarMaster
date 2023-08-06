@@ -1,5 +1,6 @@
-package softeer.bemycarmaster.api.domain.color.exterior.controller;
+package softeer.bemycarmaster.api.domain.bodytype.controller;
 
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.BDDMockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -17,50 +18,51 @@ import org.springframework.test.web.servlet.ResultActions;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import softeer.bemycarmaster.api.domain.color.exterior.dto.request.GetExteriorColorsRequest;
-import softeer.bemycarmaster.api.domain.color.exterior.dto.response.ExteriorColorDto;
-import softeer.bemycarmaster.api.domain.color.exterior.dto.response.GetExteriorColorsResponse;
-import softeer.bemycarmaster.api.domain.color.exterior.usecase.GetExteriorColorsUseCase;
+import softeer.bemycarmaster.api.domain.bodytype.dto.request.GetBodyTypesRequest;
+import softeer.bemycarmaster.api.domain.bodytype.dto.response.BodyTypeDto;
+import softeer.bemycarmaster.api.domain.bodytype.dto.response.GetBodyTypesResponse;
+import softeer.bemycarmaster.api.domain.bodytype.usecase.GetBodyTypesUseCase;
 import softeer.bemycarmaster.api.global.response.Response;
 import softeer.bemycarmaster.api.global.response.ResponseStatus;
 
-@WebMvcTest(ExteriorColorController.class)
-@DisplayName("Exterior Color Controller Test")
-class ExteriorColorControllerTest {
+@WebMvcTest(BodyTypeController.class)
+@DisplayName("BodyType Controller Test")
+class BodyTypeControllerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
+
 	@Autowired
 	private ObjectMapper objectMapper;
 
 	@MockBean
-	private GetExteriorColorsUseCase getExteriorColorsUseCase;
+	private GetBodyTypesUseCase getBodyTypesUseCase;
 
 	@Test
-	@DisplayName("외장 색상 목록을 조회합니다")
-	void getExteriorColors() throws Exception {
+	@DisplayName("바디 타입 목록을 조회합니다")
+	void getBodyTypes() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetExteriorColorsRequest(1));
+		String requestBody = getRequestBody(new GetBodyTypesRequest(1));
 
-		GetExteriorColorsResponse getExteriorColorsResponse = new GetExteriorColorsResponse();
-		ExteriorColorDto exteriorColorDto = ExteriorColorDto.builder()
+		GetBodyTypesResponse getBodyTypesResponse = new GetBodyTypesResponse();
+		BodyTypeDto bodyTypeDto = BodyTypeDto.builder()
 			.id(1)
-			.name("Exterior Color")
+			.name("7인승")
+			.description("7인승 Description")
 			.price(0)
-			.ratio(32)
-			.colorImgUrl("colorImgUrl")
-			.coloredImgUrl("coloredImgUrl")
+			.ratio(22)
+			.imgUrl("imgUrl")
 			.build();
-		getExteriorColorsResponse.setColors(Arrays.asList(exteriorColorDto));
+		getBodyTypesResponse.setBodyTypes(Arrays.asList(bodyTypeDto));
 
-		given(getExteriorColorsUseCase.execute(any())).willReturn(getExteriorColorsResponse);
+		given(getBodyTypesUseCase.execute(any())).willReturn(getBodyTypesResponse);
 
-		Response successResponse = Response.createSuccessResponse(getExteriorColorsResponse);
+		Response successResponse = Response.createSuccessResponse(getBodyTypesResponse);
 		String responseBody = objectMapper.writeValueAsString(successResponse);
 
 		//when
 		ResultActions perform = mockMvc.perform(
-			get("/colors/exterior")
+			get("/bodytypes")
 				.contentType("application/json")
 				.content(requestBody)
 		);
@@ -76,13 +78,13 @@ class ExteriorColorControllerTest {
 	@DisplayName("trimId는 1 이상이어야 합니다")
 	void minimumTrimId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetExteriorColorsRequest(0));
+		String requestBody = getRequestBody(new GetBodyTypesRequest(0));
 
 		String responseBody = getClientErrorResponseBody();
 
 		//when
 		ResultActions perform = mockMvc.perform(
-			get("/colors/exterior")
+			get("/bodytypes")
 				.contentType("application/json")
 				.content(requestBody)
 		);
@@ -98,13 +100,13 @@ class ExteriorColorControllerTest {
 	@DisplayName("trimId는 null값 일 수 없습니다")
 	void nonNullTrimId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetExteriorColorsRequest(null));
+		String requestBody = getRequestBody(new GetBodyTypesRequest(null));
 
 		String responseBody = getClientErrorResponseBody();
 
 		//when
 		ResultActions perform = mockMvc.perform(
-			get("/colors/exterior")
+			get("/bodytypes")
 				.contentType("application/json")
 				.content(requestBody)
 		);
@@ -122,8 +124,9 @@ class ExteriorColorControllerTest {
 		return responseBody;
 	}
 
-	private String getRequestBody(GetExteriorColorsRequest getExteriorColorsRequest) throws JsonProcessingException {
-		String requestBody = objectMapper.writeValueAsString(getExteriorColorsRequest);
+	private String getRequestBody(GetBodyTypesRequest getBodyTypesRequest) throws
+		JsonProcessingException {
+		String requestBody = objectMapper.writeValueAsString(getBodyTypesRequest);
 		return requestBody;
 	}
 }

@@ -6,8 +6,8 @@ import softeer.bemycarmaster.api.global.annotation.UseCase;
 @UseCase
 public class GetBodyTypesUseCase {
 
-	public GetBodyTypesResponse execute(Integer modelId, Integer trimId) {
+	public GetBodyTypesResponse execute(Integer trimId) {
 
-		return null;
+		return new GetBodyTypesResponse();
 	}
 }
