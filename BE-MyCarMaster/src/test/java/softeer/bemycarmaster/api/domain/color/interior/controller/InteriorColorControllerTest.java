@@ -31,6 +31,7 @@ class InteriorColorControllerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
+
 	@Autowired
 	private ObjectMapper objectMapper;
 
