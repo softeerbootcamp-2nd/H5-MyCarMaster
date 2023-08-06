@@ -1,6 +1,6 @@
-package softeer.bemycarmaster.api.domain.color.usecase;
+package softeer.bemycarmaster.api.domain.color.interior.usecase;
 
-import softeer.bemycarmaster.api.domain.color.dto.response.GetInteriorColorsResponse;
+import softeer.bemycarmaster.api.domain.color.interior.dto.response.GetInteriorColorsResponse;
 import softeer.bemycarmaster.api.global.annotation.UseCase;
 
 @UseCase

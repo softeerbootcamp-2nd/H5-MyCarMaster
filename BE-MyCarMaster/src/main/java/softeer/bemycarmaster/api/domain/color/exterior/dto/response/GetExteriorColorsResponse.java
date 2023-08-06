@@ -1,4 +1,4 @@
-package softeer.bemycarmaster.api.domain.color.dto.response;
+package softeer.bemycarmaster.api.domain.color.exterior.dto.response;
 
 import java.util.List;
 
@@ -9,5 +9,5 @@ import lombok.Setter;
 @Setter
 public class GetExteriorColorsResponse {
 
-	private List<ExteriorColor> colors;
+	private List<ExteriorColorDto> colors;
 }
