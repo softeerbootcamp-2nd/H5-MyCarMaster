@@ -25,9 +25,8 @@ public class BodyTypeController {
 	@Operation(summary = "모델과 트림에 따른 바디타입 목록을 반환합니다")
 	public Response<GetBodyTypesResponse> getBodytypes(@RequestBody GetBodyTypesRequest getBodytypesRequest) {
 
-		Integer modelId = getBodytypesRequest.getModelId();
 		Integer trimId = getBodytypesRequest.getTrimId();
-		GetBodyTypesResponse getBodytypesResponse = getBodytypesUseCase.execute(modelId, trimId);
-		return new Response<>(getBodytypesResponse);
+		GetBodyTypesResponse getBodytypesResponse = getBodytypesUseCase.execute(trimId);
+		return Response.createSuccessResponse(getBodytypesResponse);
 	}
 }
