@@ -9,7 +9,7 @@ import lombok.Setter;
 public class Trim {
 
 	@Schema(description = "트림 식별자", example = "1")
-	private Integer id;
+	private Long id;
 
 	@Schema(description = "트림명", example = "Le Blanc")
 	private String name;
