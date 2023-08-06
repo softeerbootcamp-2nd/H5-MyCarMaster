@@ -22,7 +22,7 @@ import softeer.bemycarmaster.api.domain.model.usecase.GetModelsUseCase;
 import softeer.bemycarmaster.api.global.response.Response;
 
 @WebMvcTest(ModelController.class)
-@DisplayName("Model Controller Test")
+@DisplayName("ModelController Test")
 class ModelControllerTest {
 
 	@Autowired
