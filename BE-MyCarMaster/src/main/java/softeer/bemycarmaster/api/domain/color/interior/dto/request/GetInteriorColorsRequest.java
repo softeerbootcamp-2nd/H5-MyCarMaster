@@ -8,9 +8,9 @@ import lombok.Setter;
 @Setter
 public class GetInteriorColorsRequest {
 
-	@Schema(description = "모델 식별자", example = "1")
-	private Integer modelId;
-
 	@Schema(description = "트림 식별자", example = "1")
 	private Integer trimId;
+
+	@Schema(description = "외장 색상 식별자", example = "1")
+	private Integer exteriorColorId;
 }

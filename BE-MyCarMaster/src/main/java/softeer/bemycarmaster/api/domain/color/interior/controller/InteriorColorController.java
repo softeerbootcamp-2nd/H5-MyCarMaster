@@ -22,13 +22,13 @@ public class InteriorColorController {
 	private final GetInteriorColorsUseCase getInteriorColorsUseCase;
 
 	@GetMapping("/interior")
-	@Operation(summary = "모델, 트림에서 선택가능한 내장 색상 목록을 반환합니다")
+	@Operation(summary = "트림, 외장 색상에서 선택가능한 내장 색상 목록을 반환합니다")
 	public Response<GetInteriorColorsResponse> getInterior(
 		@RequestBody GetInteriorColorsRequest getInteriorColorsRequest) {
 
-		Integer modelId = getInteriorColorsRequest.getModelId();
 		Integer trimId = getInteriorColorsRequest.getTrimId();
-		GetInteriorColorsResponse getInteriorColorsResponse = getInteriorColorsUseCase.execute(modelId, trimId);
-		return new Response<>(getInteriorColorsResponse);
+		Integer exteriorColorId = getInteriorColorsRequest.getExteriorColorId();
+		GetInteriorColorsResponse getInteriorColorsResponse = getInteriorColorsUseCase.execute(trimId, exteriorColorId);
+		return Response.createSuccessResponse(getInteriorColorsResponse);
 	}
 }
