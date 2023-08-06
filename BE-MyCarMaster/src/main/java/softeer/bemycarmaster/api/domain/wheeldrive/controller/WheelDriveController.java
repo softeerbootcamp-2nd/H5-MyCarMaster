@@ -1,5 +1,7 @@
 package softeer.bemycarmaster.api.domain.wheeldrive.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +25,9 @@ public class WheelDriveController {
 
 	@GetMapping
 	@Operation(summary = "트림에 따른 구동 방식 목록을 반환합니다")
-	public Response<GetWheelDrivesResponse> getWheeldrives(@RequestBody GetWheelDrivesRequest getWheeldrivesRequest) {
+	public Response<GetWheelDrivesResponse> getWheeldrives(
+		@RequestBody @Valid GetWheelDrivesRequest getWheeldrivesRequest
+	) {
 
 		Integer trimId = getWheeldrivesRequest.getTrimId();
 		GetWheelDrivesResponse getWheeldrivesResponse = getWheeldrivesUseCase.execute(trimId);
