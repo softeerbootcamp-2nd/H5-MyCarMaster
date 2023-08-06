@@ -9,5 +9,5 @@ import lombok.Setter;
 @Setter
 public class GetEnginesResponse {
 
-	private List<Engine> engines;
+	private List<EngineDto> engines;
 }

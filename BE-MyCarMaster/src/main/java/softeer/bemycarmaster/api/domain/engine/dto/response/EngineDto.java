@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Engine {
+public class EngineDto {
 
 	@Schema(description = "엔진 식별자", example = "1")
 	private Integer id;
