@@ -1,11 +1,15 @@
 package softeer.bemycarmaster.api.domain.trim.dto.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
 public class TrimDto {
 
 	@Schema(description = "트림 식별자", example = "1")
