@@ -7,9 +7,9 @@ import { useQuotationState } from "../../contexts/QuotationContext";
 function MainWrapper() {
   const { navigationId } = useQuotationState();
   if (navigationId === 0) return <TrimContent />;
-  if (navigationId === 1) return <DetailModelContent />;
-  if (navigationId === 2) return <ColorContent />;
-  if (navigationId === 3) return <OptionContent />;
+  if (navigationId >= 1 && navigationId <= 3) return <DetailModelContent />;
+  if (navigationId >= 4 && navigationId <= 5) return <ColorContent />;
+  if (navigationId === 6) return <OptionContent />;
   return <></>;
 }
 
