@@ -1,9 +1,7 @@
-import React from "react";
-import exteriorImage from "../../../../assets/images/exteriorImage.png";
 import { styled } from "styled-components";
 
 function ExteriorColorView() {
-  return <ExteriorColorImg src={exteriorImage} />;
+  return <ExteriorColorImg src="/images/exterior/black/image_1.png" />;
 }
 
 const ExteriorColorImg = styled.img`
