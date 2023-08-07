@@ -2,15 +2,13 @@ import React from "react";
 import EngineView from "./EngineView";
 import WheelDriveView from "./WheelDriveView";
 import BodyTypeView from "./BodyTypeView";
+import { useQuotationState } from "../../../../contexts/QuotationContext";
 
-interface DetailModelWrapperProps {
-  navIndex: number;
-}
-
-function DetailModelWrapper({ navIndex }: DetailModelWrapperProps) {
-  if (navIndex === 1) return <EngineView />;
-  if (navIndex === 2) return <WheelDriveView />;
-  if (navIndex === 3) return <BodyTypeView />;
+function DetailModelWrapper() {
+  const { navigationId } = useQuotationState();
+  if (navigationId === 1) return <EngineView />;
+  if (navigationId === 2) return <WheelDriveView />;
+  if (navigationId === 3) return <BodyTypeView />;
   return <></>;
 }
 
