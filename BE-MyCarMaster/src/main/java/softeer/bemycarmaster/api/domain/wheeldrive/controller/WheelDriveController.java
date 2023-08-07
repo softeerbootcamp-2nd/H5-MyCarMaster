@@ -1,5 +1,7 @@
 package softeer.bemycarmaster.api.domain.wheeldrive.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,18 +18,19 @@ import softeer.bemycarmaster.api.global.response.Response;
 @RestController
 @RequestMapping("/wheeldrives")
 @RequiredArgsConstructor
-@Tag(name = "Wheeldrive", description = "Wheeldrive API Document")
+@Tag(name = "WheelDrive", description = "WheelDrive API Document")
 public class WheelDriveController {
 
-	private final GetWheelDrivesUseCase getWheeldrivesUseCase;
+	private final GetWheelDrivesUseCase getWheelDrivesUseCase;
 
 	@GetMapping
-	@Operation(summary = "모델과 트림에 따른 구동 방식 목록을 반환합니다")
-	public Response<GetWheelDrivesResponse> getWheeldrives(@RequestBody GetWheelDrivesRequest getWheeldrivesRequest) {
+	@Operation(summary = "트림에 따른 구동 방식 목록을 반환합니다")
+	public Response<GetWheelDrivesResponse> getWheelDrives(
+		@RequestBody @Valid GetWheelDrivesRequest getWheelDrivesRequest
+	) {
 
-		Integer modelId = getWheeldrivesRequest.getModelId();
-		Integer trimId = getWheeldrivesRequest.getTrimId();
-		GetWheelDrivesResponse getWheeldrivesResponse = getWheeldrivesUseCase.execute(modelId, trimId);
-		return new Response<>(getWheeldrivesResponse);
+		Long trimId = getWheelDrivesRequest.getTrimId();
+		GetWheelDrivesResponse getWheelDrivesResponse = getWheelDrivesUseCase.execute(trimId);
+		return Response.createSuccessResponse(getWheelDrivesResponse);
 	}
 }

@@ -1,5 +1,7 @@
 package softeer.bemycarmaster.api.domain.trim.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +28,6 @@ public class TrimController {
 	public Response<GetTrimsResponse> getTrims(@RequestBody GetTrimsRequest getTrimsRequest) {
 		Long modelId = getTrimsRequest.getModelId();
 		GetTrimsResponse getTrimsResponse = getTrimsUseCase.execute(modelId);
-		return new Response<>(getTrimsResponse);
+		return Response.createSuccessResponse(getTrimsResponse);
 	}
 }
