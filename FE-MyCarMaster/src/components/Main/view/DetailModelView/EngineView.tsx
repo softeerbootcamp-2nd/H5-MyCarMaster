@@ -1,12 +1,15 @@
 import { styled } from "styled-components";
 import diesel from "../../../../assets/images/diesel.png";
+import GraphList from "../../../common/Graph/GraphList";
 
 function EngineView() {
   return (
     <Container>
       <EngineContainer>
         <EngineImg src={diesel} />
-        <EngineGraph>그래프</EngineGraph>
+        <EngineGraph>
+          <GraphList />
+        </EngineGraph>
       </EngineContainer>
     </Container>
   );
