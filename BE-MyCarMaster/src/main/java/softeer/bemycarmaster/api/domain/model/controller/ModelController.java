@@ -22,7 +22,6 @@ public class ModelController {
 	@GetMapping
 	@Operation(summary = "모델 전체 목록을 반환합니다")
 	public Response<GetModelsResponse> getModels() {
-
 		GetModelsResponse getModelsResponse = getModelsUseCase.execute();
 		return new Response<>(getModelsResponse);
 	}

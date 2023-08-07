@@ -5,12 +5,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import softeer.bemycarmaster.api.domain.model.domain.Model;
 
-@Entity(name = "model")
+@Entity
+@Table(name = "model")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class ModelEntity {
 
