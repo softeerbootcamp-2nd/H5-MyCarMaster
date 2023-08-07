@@ -18,10 +18,15 @@
 		B50C7E812A7905D8005AFE0B /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B50C7E802A7905D8005AFE0B /* .swiftlint.yml */; };
 		B50C7E832A7924E1005AFE0B /* .swiftlint.auto.yml in Resources */ = {isa = PBXBuildFile; fileRef = B50C7E822A7924E1005AFE0B /* .swiftlint.auto.yml */; };
 		B52955582A7B879100BEDDE7 /* MCMResource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B52955562A7B878600BEDDE7 /* MCMResource.framework */; };
-		B52955592A7B879100BEDDE7 /* MCMResource.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B52955562A7B878600BEDDE7 /* MCMResource.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B58799712A8177E90051E6E7 /* MCMResource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58289892A7FFDDC00FAD6AA /* MCMResource.framework */; };
+		B58799722A8177E90051E6E7 /* MCMResource.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B58289892A7FFDDC00FAD6AA /* MCMResource.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B58799732A8177EA0051E6E7 /* MVIFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58289F32A800B8E00FAD6AA /* MVIFoundation.framework */; };
+		B58799742A8177EA0051E6E7 /* MVIFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B58289F32A800B8E00FAD6AA /* MVIFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B58A32342A7BA452005FC831 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A32332A7BA452005FC831 /* OnboardingView.swift */; };
 		B58A32382A7BA47D005FC831 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B58A32372A7BA47D005FC831 /* Lottie */; };
 		B58A323B2A7C0B35005FC831 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A323A2A7C0B35005FC831 /* OnboardingViewController.swift */; };
+		B5A600CF2A817C3200CF2983 /* CombineExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58289AB2A7FFE5A00FAD6AA /* CombineExtension.framework */; };
+		B5A600D02A817C3200CF2983 /* CombineExtension.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B58289AB2A7FFE5A00FAD6AA /* CombineExtension.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,23 +44,39 @@
 			remoteGlobalIDString = B50C7E472A790279005AFE0B;
 			remoteInfo = MyCarMaster;
 		};
-		B52955552A7B878600BEDDE7 /* PBXContainerItemProxy */ = {
+		B58289882A7FFDDC00FAD6AA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B52955512A7B878600BEDDE7 /* MCMResource.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = B529551A2A7B782900BEDDE7;
 			remoteInfo = MCMResource;
 		};
+		B58289AA2A7FFE5A00FAD6AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B58289A62A7FFE5A00FAD6AA /* CombineExtension.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B582899C2A7FFE4E00FAD6AA;
+			remoteInfo = CombineExtension;
+		};
+		B58289F22A800B8E00FAD6AA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B58289EE2A800B8D00FAD6AA /* MVIFoundation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B58289E32A800B6000FAD6AA;
+			remoteInfo = MVIFoundation;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		B529555A2A7B879100BEDDE7 /* Embed Frameworks */ = {
+		B58799702A8177E80051E6E7 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B52955592A7B879100BEDDE7 /* MCMResource.framework in Embed Frameworks */,
+				B58799742A8177EA0051E6E7 /* MVIFoundation.framework in Embed Frameworks */,
+				B5A600D02A817C3200CF2983 /* CombineExtension.framework in Embed Frameworks */,
+				B58799722A8177E90051E6E7 /* MCMResource.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,7 +98,9 @@
 		B50C7E6E2A79027A005AFE0B /* MyCarMasterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCarMasterUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B50C7E802A7905D8005AFE0B /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		B50C7E822A7924E1005AFE0B /* .swiftlint.auto.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.auto.yml; sourceTree = "<group>"; };
-		B52955512A7B878600BEDDE7 /* MCMResource.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MCMResource.xcodeproj; path = ../MCMResource/MCMResource.xcodeproj; sourceTree = "<group>"; };
+		B52955512A7B878600BEDDE7 /* MCMResource.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MCMResource.xcodeproj; path = ../../MCMResource/MCMResource.xcodeproj; sourceTree = "<group>"; };
+		B58289A62A7FFE5A00FAD6AA /* CombineExtension.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CombineExtension.xcodeproj; path = "../../../../../../../문서 - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/CombineExtension/CombineExtension.xcodeproj"; sourceTree = "<group>"; };
+		B58289EE2A800B8D00FAD6AA /* MVIFoundation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MVIFoundation.xcodeproj; path = "../../../../../../../문서 - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/MVIFoundation/MVIFoundation.xcodeproj"; sourceTree = "<group>"; };
 		B58A32332A7BA452005FC831 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		B58A323A2A7C0B35005FC831 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,7 +110,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B52955582A7B879100BEDDE7 /* MCMResource.framework in Frameworks */,
+				B5A600CF2A817C3200CF2983 /* CombineExtension.framework in Frameworks */,
+				B58799712A8177E90051E6E7 /* MCMResource.framework in Frameworks */,
+				B58799732A8177EA0051E6E7 /* MVIFoundation.framework in Frameworks */,
 				B58A32382A7BA47D005FC831 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,7 +137,7 @@
 		B50C7E3F2A790279005AFE0B = {
 			isa = PBXGroup;
 			children = (
-				B52955512A7B878600BEDDE7 /* MCMResource.xcodeproj */,
+				B58289842A7FFDD400FAD6AA /* Dependency */,
 				B50C7E822A7924E1005AFE0B /* .swiftlint.auto.yml */,
 				B50C7E802A7905D8005AFE0B /* .swiftlint.yml */,
 				B50C7E4A2A790279005AFE0B /* MyCarMaster */,
@@ -180,19 +205,45 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		B52955522A7B878600BEDDE7 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				B52955562A7B878600BEDDE7 /* MCMResource.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		B52955572A7B879100BEDDE7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B58289842A7FFDD400FAD6AA /* Dependency */ = {
+			isa = PBXGroup;
+			children = (
+				B58289EE2A800B8D00FAD6AA /* MVIFoundation.xcodeproj */,
+				B58289A62A7FFE5A00FAD6AA /* CombineExtension.xcodeproj */,
+				B52955512A7B878600BEDDE7 /* MCMResource.xcodeproj */,
+			);
+			path = Dependency;
+			sourceTree = "<group>";
+		};
+		B58289852A7FFDDC00FAD6AA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B58289892A7FFDDC00FAD6AA /* MCMResource.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B58289A72A7FFE5A00FAD6AA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B58289AB2A7FFE5A00FAD6AA /* CombineExtension.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B58289EF2A800B8D00FAD6AA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B58289F32A800B8E00FAD6AA /* MVIFoundation.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		B58A323C2A7C0B3B005FC831 /* Onboarding */ = {
@@ -215,7 +266,7 @@
 				B50C7E442A790279005AFE0B /* Sources */,
 				B50C7E452A790279005AFE0B /* Frameworks */,
 				B50C7E462A790279005AFE0B /* Resources */,
-				B529555A2A7B879100BEDDE7 /* Embed Frameworks */,
+				B58799702A8177E80051E6E7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -304,8 +355,16 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = B52955522A7B878600BEDDE7 /* Products */;
+					ProductGroup = B58289A72A7FFE5A00FAD6AA /* Products */;
+					ProjectRef = B58289A62A7FFE5A00FAD6AA /* CombineExtension.xcodeproj */;
+				},
+				{
+					ProductGroup = B58289852A7FFDDC00FAD6AA /* Products */;
 					ProjectRef = B52955512A7B878600BEDDE7 /* MCMResource.xcodeproj */;
+				},
+				{
+					ProductGroup = B58289EF2A800B8D00FAD6AA /* Products */;
+					ProjectRef = B58289EE2A800B8D00FAD6AA /* MVIFoundation.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -318,11 +377,25 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		B52955562A7B878600BEDDE7 /* MCMResource.framework */ = {
+		B58289892A7FFDDC00FAD6AA /* MCMResource.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = MCMResource.framework;
-			remoteRef = B52955552A7B878600BEDDE7 /* PBXContainerItemProxy */;
+			remoteRef = B58289882A7FFDDC00FAD6AA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B58289AB2A7FFE5A00FAD6AA /* CombineExtension.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CombineExtension.framework;
+			remoteRef = B58289AA2A7FFE5A00FAD6AA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B58289F32A800B8E00FAD6AA /* MVIFoundation.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MVIFoundation.framework;
+			remoteRef = B58289F22A800B8E00FAD6AA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -485,6 +558,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MACH_O_TYPE = mh_execute;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -539,6 +613,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MACH_O_TYPE = mh_execute;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
