@@ -4,10 +4,10 @@ import CategoryItem from "./CategoryItem";
 function CategoryList() {
   return (
     <Container>
-      <CategoryItem name="전체" active={true} />
-      <CategoryItem name="엔진" active={false} />
-      <CategoryItem name="구동방식" active={false} />
-      <CategoryItem name="타입" active={false} />
+      <CategoryItem name="전체" $active={true} />
+      <CategoryItem name="엔진" $active={false} />
+      <CategoryItem name="구동방식" $active={false} />
+      <CategoryItem name="타입" $active={false} />
     </Container>
   );
 }
