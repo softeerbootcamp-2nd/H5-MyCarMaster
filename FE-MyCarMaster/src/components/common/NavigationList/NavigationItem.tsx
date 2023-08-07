@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import theme from "../../../styles/Theme";
 import CircleCheck from "../../../assets/icons/CircleCheck.svg";
-import indexContextSwitching from "../../../utils/indexContextSwitching";
+import indexNameSwitching from "../../../utils/indexNameSwitching";
 import {
   useQuotationState,
   useQuotationDispatch,
@@ -33,21 +33,40 @@ type NavigationItemProp = {
 function NavigationItem({ name, quotation }: NavigationItemProp) {
   const { navigationId, isFirst } = useQuotationState();
   const quotationDispatch = useQuotationDispatch();
-  const selected = indexContextSwitching(name);
+  const [start, end] = indexNameSwitching(name) as number[];
 
   const handleNavigate = () => {
     quotationDispatch({
       type: "NAVIGATE",
-      payload: { navigationId: selected },
+      payload: { navigationId: start },
     });
   };
   return (
-    <Container $active={selected === navigationId} onClick={handleNavigate}>
+    <Container
+      $active={navigationId >= start && navigationId <= end}
+      onClick={handleNavigate}
+    >
       <TopContainer>
         <Category>{name}</Category>
-        {!isFirst[selected] && (
+        {(!isFirst[start] || !isFirst[end]) && quotation && (
           <ShowRightOption>
-            <Price>+1,000,000</Price>
+            <Price>
+              {"+"}
+              {Object.entries(quotation)
+                .reduce((acc, [key, value]) => {
+                  if (key === "selectedQuotation") {
+                    return (
+                      acc +
+                      value.reduce(
+                        (sum: number, curr: QuotationType) => sum + curr.price,
+                        0
+                      )
+                    );
+                  } else if (key === "consideredQuotation") return acc;
+                  return acc + value.price;
+                }, 0)
+                .toLocaleString("ko-KR")}
+            </Price>
             <CheckCircle src={CircleCheck} />
           </ShowRightOption>
         )}
@@ -82,7 +101,9 @@ const Container = styled.li<activeProp>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 0.25rem;
+  & + & {
+    gap: 0.25rem;
+  }
 
   background-color: ${({ $active }) =>
     $active ? `${theme.colors.NavyBlue1}` : `${theme.colors.White}`};
@@ -106,11 +127,15 @@ const ShowRightOption = styled.div`
 
 const Price = styled.p`
   font-size: 0.5rem;
+  // text vertical center
+  display: flex;
+  align-items: center;
 `;
 
 const BottomContainer = styled.div`
   display: flex;
   flex-direction: row;
+
   gap: 0.75rem;
   font-family: "Hyundai Sans Text KR";
   font-size: 0.5rem;
