@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 public class UnselectableOptionDto {
 	@Schema(description = "옵션 식별자", example = "1")
-	private Integer id;
+	private Long id;
 
 	@Schema(description = "옵션명", example = "주차보조 시스템||")
 	private String name;
