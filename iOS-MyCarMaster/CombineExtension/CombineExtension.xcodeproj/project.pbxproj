@@ -13,6 +13,7 @@
 		B58289D22A80023B00FAD6AA /* DemandBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58289D12A80023B00FAD6AA /* DemandBuffer.swift */; };
 		B58289D42A80040E00FAD6AA /* Relay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58289D32A80040E00FAD6AA /* Relay.swift */; };
 		B58289D62A80048C00FAD6AA /* Sink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58289D52A80048C00FAD6AA /* Sink.swift */; };
+		B5A600D32A81804300CF2983 /* ConcatenateMany.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A600D22A81804300CF2983 /* ConcatenateMany.swift */; };
 		B5F80AE02A81312F0001C2D2 /* ReplaySubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F80ADF2A81312F0001C2D2 /* ReplaySubject.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +25,7 @@
 		B58289D12A80023B00FAD6AA /* DemandBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemandBuffer.swift; sourceTree = "<group>"; };
 		B58289D32A80040E00FAD6AA /* Relay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relay.swift; sourceTree = "<group>"; };
 		B58289D52A80048C00FAD6AA /* Sink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sink.swift; sourceTree = "<group>"; };
+		B5A600D22A81804300CF2983 /* ConcatenateMany.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcatenateMany.swift; sourceTree = "<group>"; };
 		B5F80ADF2A81312F0001C2D2 /* ReplaySubject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplaySubject.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -57,6 +59,7 @@
 		B58289C32A80014000FAD6AA /* CombineExtension */ = {
 			isa = PBXGroup;
 			children = (
+				B5A600D12A81803700CF2983 /* Operator */,
 				B5F80ADE2A8131150001C2D2 /* Subject */,
 				B58289D82A8004BE00FAD6AA /* Relay */,
 				B58289D72A80049100FAD6AA /* Common */,
@@ -82,6 +85,14 @@
 				B521BADA2A8022A90057BBA1 /* PassthroughRelay.swift */,
 			);
 			path = Relay;
+			sourceTree = "<group>";
+		};
+		B5A600D12A81803700CF2983 /* Operator */ = {
+			isa = PBXGroup;
+			children = (
+				B5A600D22A81804300CF2983 /* ConcatenateMany.swift */,
+			);
+			path = Operator;
 			sourceTree = "<group>";
 		};
 		B5F80ADE2A8131150001C2D2 /* Subject */ = {
@@ -172,6 +183,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5A600D32A81804300CF2983 /* ConcatenateMany.swift in Sources */,
 				B58289D22A80023B00FAD6AA /* DemandBuffer.swift in Sources */,
 				B58289D42A80040E00FAD6AA /* Relay.swift in Sources */,
 				B58289D62A80048C00FAD6AA /* Sink.swift in Sources */,
