@@ -42,7 +42,7 @@ public class EngineController {
 	@Operation(summary = "엔진 변경 시도시 기존에 선택된 옵션들 중 변경하려는 엔진에서 선택 불가능한 옵션 목록을 반환합니다.")
 	public Response<GetUnselectableOptionsByEngineResponse> getUnselectableOptionsByEngine(
 		@PathVariable Long engineId,
-		@RequestBody GetUnselectableOptionsByEngineRequest getUnselectableOptionsByEngineRequest
+		@RequestBody @Valid GetUnselectableOptionsByEngineRequest getUnselectableOptionsByEngineRequest
 	) {
 		Long trimId = getUnselectableOptionsByEngineRequest.getTrimId();
 		List<Long> optionIds = getUnselectableOptionsByEngineRequest.getOptionsIds();
