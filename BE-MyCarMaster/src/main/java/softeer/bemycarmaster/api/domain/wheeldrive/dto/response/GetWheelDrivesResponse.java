@@ -9,5 +9,5 @@ import lombok.Setter;
 @Setter
 public class GetWheelDrivesResponse {
 
-	private List<WheelDrive> wheelDrives;
+	private List<WheelDriveDto> wheelDrives;
 }
