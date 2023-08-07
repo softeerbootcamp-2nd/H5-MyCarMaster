@@ -1,15 +1,31 @@
 import { styled } from "styled-components";
 import theme from "../../../styles/Theme";
+import { useQuotationState } from "../../../contexts/QuotationContext";
 
-type EstimatedPriceProp = {
-  sumPrice: number;
-};
+function EstimatedPrice() {
+  const {
+    trimQuotation,
+    detailQuotation,
+    carPaintQuotation,
+    optionQuotation,
+  }: any = useQuotationState();
 
-function EstimatedPrice({ sumPrice }: EstimatedPriceProp) {
+  const sum: number =
+    trimQuotation?.trimQuotation.price +
+    detailQuotation?.engineQuotation.price +
+    detailQuotation?.wheelDriveQuotation.price +
+    detailQuotation?.bodyTypeQuotation.price +
+    carPaintQuotation?.exteriorColorQuotation.price +
+    carPaintQuotation?.interiorColorQuotation.price +
+    optionQuotation?.selectedQuotation.reduce(
+      (acc: number, cur: any) => acc + cur.price,
+      0
+    );
+
   return (
     <Container>
       <Text>예상 가격</Text>
-      <Price>{sumPrice.toLocaleString("ko-KR")}원</Price>
+      <Price>{sum.toLocaleString("ko-KR")}원</Price>
     </Container>
   );
 }

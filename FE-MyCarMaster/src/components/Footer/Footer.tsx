@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { GREY1 } from "../../styles/Color";
 import InnerColorBox from "../common/ColorBox/InnerColorBox";
 import Button from "../common/Button/Button";
 import theme from "../../styles/Theme";
@@ -7,10 +6,12 @@ import {
   useQuotationState,
   useQuotationDispatch,
 } from "../../contexts/QuotationContext";
+import indexNameSwitching from "../../utils/indexNameSwitching";
 
 function Footer() {
-  const { navigationId } = useQuotationState();
+  const { navigationId, isFirst } = useQuotationState();
   const quotationDispatch = useQuotationDispatch();
+  const name = indexNameSwitching(navigationId) as string;
 
   // api 연동 후 Props 재정의 필요
   const InnerColorProps = {
@@ -24,19 +25,29 @@ function Footer() {
   };
 
   const prevButtonHandler = () => {
+    const navigationIndex = navigationId - 1;
     quotationDispatch({
       type: "NAVIGATE",
       payload: {
-        navigationId: navigationId - 1,
+        navigationId: navigationIndex,
+        isFirst: {
+          ...isFirst,
+          [navigationIndex]: false,
+        },
       },
     });
   };
 
   const nextButtonHandler = () => {
+    const navigationIndex = navigationId + 1;
     quotationDispatch({
       type: "NAVIGATE",
       payload: {
-        navigationId: navigationId + 1,
+        navigationId: navigationIndex,
+        isFirst: {
+          ...isFirst,
+          [navigationIndex]: false,
+        },
       },
     });
   };
@@ -53,13 +64,14 @@ function Footer() {
       <RightContainer>
         <HeightFittingContainer>
           <TextContainer>
-            <HeadText>트림 선택</HeadText>
-            <DescriptionText>원하는 트림을 선택해주세요.</DescriptionText>
+            {name && (
+              <>
+                <HeadText>{name} 선택</HeadText>
+                <DescriptionText>원하는 {name}을 선택해주세요.</DescriptionText>
+              </>
+            )}
           </TextContainer>
           <ButtonContainer>
-            {/* {navigationIndex === 0 ? (
-              <></>
-            ) : ( */}
             <Button
               $x={9.625}
               $y={2.25}
@@ -93,7 +105,6 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
   height: 16rem;
-  background-color: ${GREY1};
 `;
 
 const LeftContainer = styled.div`
