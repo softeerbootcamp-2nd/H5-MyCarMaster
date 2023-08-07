@@ -22,7 +22,7 @@ function NavigationList() {
         quotation={quotationState.optionQuotation}
       />
       <NavigationItem name={"견적서 완성"} />
-      <EstimatedPrice sumPrice={9999999} />
+      <EstimatedPrice />
     </Container>
   );
 }
