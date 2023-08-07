@@ -1,4 +1,7 @@
 import { styled } from "styled-components";
+import { useQuotationState } from "../../../contexts/QuotationContext";
+import theme from "../../../styles/Theme";
+import Button from "../Button/Button";
 import {
   BLACK,
   GREY2,
@@ -7,51 +10,102 @@ import {
   NAVYBLUE5,
 } from "../../../styles/Color";
 
-function OptionBox() {
+type OptionBoxProp = {
+  $id: number;
+  $name?: string;
+  $description?: string;
+  $price?: number;
+  $ratio?: number;
+  $imgUrl?: string;
+  $selected?: boolean;
+  $considered?: boolean;
+  handleClick?: () => void;
+};
+
+function OptionBox({
+  $id,
+  $name,
+  $description,
+  $price,
+  $ratio,
+  $imgUrl,
+  handleClick,
+  $selected,
+  $considered,
+}: OptionBoxProp) {
+  const { navigationId } = useQuotationState();
   const navindex = 0;
+
+  const considerButtonHandler = () => {
+    console.log("considerButtonHandler");
+  };
+
+  const addButtonHandler = () => {
+    console.log("addButtonHandler");
+  };
+
   return (
     <Container>
       <TopContainer>
-        {navindex === 0 || navindex === 3 ? (
+        {navigationId === 0 || navigationId === 6 ? (
           <>
             <Decoration navindex={navindex}>New</Decoration>
-            <OptionName navindex={navindex}>Le Blanc</OptionName>
-            {navindex === 0 ? (
-              <Description>
-                실용적이고 기본적인 기능을 갖춘 베이직 트림
-              </Description>
+            <OptionName navindex={navindex}>{$name}</OptionName>
+
+            {navigationId !== 6 && <Description>{$description}</Description>}
+
+            {navigationId === 6 ? (
+              <Price navindex={navindex}>
+                + {$price?.toLocaleString("ko-KR")} 원
+              </Price>
             ) : (
-              <></>
+              <PriceContainer>
+                <Price navindex={navindex}>
+                  {$price?.toLocaleString("ko-KR")} 원
+                </Price>
+                {/* {navindex === 0 ? <Tag>기본 제공</Tag> : <></>} */}
+              </PriceContainer>
             )}
-            <PriceContainer>
-              <Price navindex={navindex}>99,999,999 원</Price>
-              {navindex === 0 ? <Tag>기본 제공</Tag> : <></>}
-            </PriceContainer>
           </>
         ) : (
           <>
             <DetailModelOptionContainer>
-              <Name>가솔린 3.8</Name>
-              <Ratio>구매자 22%가 선택</Ratio>
+              <Name>{$name}</Name>
+              <Ratio>구매자 {$ratio}%가 선택</Ratio>
             </DetailModelOptionContainer>
-            <Description>
-              우수한 가속 성능으로 안정적이고 엔진의 진동이 적어 조용한
-              드라이빙이 가능합니다.
-            </Description>
+            <Description>{$description}</Description>
           </>
         )}
       </TopContainer>
+
       <BottomContainer>
-        {navindex === 0 ? (
-          // 내게 맞는 트림 찾기의 경우 자세히 보기는 없어야함.
-          <Detail>자세히보기 &gt;</Detail>
-        ) : navindex === 1 ? (
-          <Price navindex={navindex}>+ 999,999 원</Price>
+        {navigationId === 6 ? (
+          <>
+            <ButtonContainer>
+              <Button
+                $x={4.875}
+                $y={1.5}
+                $backgroundcolor={`${theme.colors.White}`}
+                $textcolor={`${theme.colors.NavyBlue5}`}
+                $bordercolor={`${theme.colors.NavyBlue5}`}
+                text={"고민해보기"}
+                handleClick={considerButtonHandler}
+              />
+              <Button
+                $x={4.875}
+                $y={1.5}
+                $backgroundcolor={`${theme.colors.White}`}
+                $textcolor={`${theme.colors.NavyBlue5}`}
+                $bordercolor={`${theme.colors.NavyBlue5}`}
+                text={"추가하기"}
+                handleClick={addButtonHandler}
+              />
+            </ButtonContainer>
+          </>
         ) : (
-          <ButtonContainer>
-            <button>고민해보기</button>
-            <button>추가하기</button>
-          </ButtonContainer>
+          <>
+            <Detail>자세히보기 &gt;</Detail>
+          </>
         )}
       </BottomContainer>
     </Container>
@@ -76,7 +130,7 @@ const TopContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /* justify-content: space-between; */
+  justify-content: space-between;
 `;
 
 const BottomContainer = styled.div`
