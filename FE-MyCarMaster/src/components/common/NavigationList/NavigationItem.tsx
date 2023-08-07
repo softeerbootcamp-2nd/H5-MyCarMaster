@@ -1,28 +1,82 @@
 import { styled } from "styled-components";
 import theme from "../../../styles/Theme";
 import CircleCheck from "../../../assets/icons/CircleCheck.svg";
+import indexContextSwitching from "../../../utils/indexContextSwitching";
+import {
+  useQuotationState,
+  useQuotationDispatch,
+} from "../../../contexts/QuotationContext";
+import {
+  QuotationType,
+  TrimQuotationType,
+  DetailQuotationType,
+  CarPaintQuotationType,
+  OptionQuotationType,
+} from "../../../types/quotation.types";
 
-type NavigationItemProp = {
-  name?: string;
-  $active: boolean;
-  optionName?: string;
+type activeProp = {
+  $active?: boolean;
 };
 
-function NavigationItem({ name, $active, optionName }: NavigationItemProp) {
+type QutoationProp =
+  | undefined
+  | TrimQuotationType
+  | DetailQuotationType
+  | CarPaintQuotationType
+  | OptionQuotationType;
+
+type NavigationItemProp = {
+  name: string;
+  quotation?: QutoationProp;
+};
+
+function NavigationItem({ name, quotation }: NavigationItemProp) {
+  const { navigationId, isFirst } = useQuotationState();
+  const quotationDispatch = useQuotationDispatch();
+  const selected = indexContextSwitching(name);
+
+  const handleNavigate = () => {
+    quotationDispatch({
+      type: "NAVIGATE",
+      payload: { navigationId: selected },
+    });
+  };
   return (
-    <Container $active={$active}>
+    <Container $active={selected === navigationId} onClick={handleNavigate}>
       <TopContainer>
         <Category>{name}</Category>
-        <CheckCircle src={CircleCheck} />
+        {!isFirst[selected] && (
+          <ShowRightOption>
+            <Price>+1,000,000</Price>
+            <CheckCircle src={CircleCheck} />
+          </ShowRightOption>
+        )}
       </TopContainer>
-      <BottomContainer>{optionName}</BottomContainer>
+
+      {quotation && name === "세부모델" ? (
+        <BottomContainer>
+          {Object.entries(quotation).map(([key, value]) => (
+            <Text key={key}>{value.name}</Text>
+          ))}
+        </BottomContainer>
+      ) : (
+        quotation &&
+        Object.entries(quotation).map(([key, value]) =>
+          key === "selectedQuotation" ? (
+            value.map((item: QuotationType) => (
+              <BottomContainer key={item.name}>{item.name}</BottomContainer>
+            ))
+          ) : (
+            <BottomContainer key={key}>{value.name}</BottomContainer>
+          )
+        )
+      )}
     </Container>
   );
 }
 
-const Container = styled.li<NavigationItemProp>`
+const Container = styled.li<activeProp>`
   width: 9.625rem;
-  height: 3.3125rem;
   padding: 0.5rem 0.75rem;
 
   display: flex;
@@ -44,7 +98,20 @@ const TopContainer = styled.div`
   align-items: center;
 `;
 
+const ShowRightOption = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 0.38rem;
+`;
+
+const Price = styled.p`
+  font-size: 0.5rem;
+`;
+
 const BottomContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 0.75rem;
   font-family: "Hyundai Sans Text KR";
   font-size: 0.5rem;
   font-style: normal;
@@ -52,6 +119,8 @@ const BottomContainer = styled.div`
   line-height: 165%; /* 0.825rem */
   letter-spacing: -0.015rem;
 `;
+
+const Text = styled.p``;
 
 const Category = styled.p`
   font-family: "Hyundai Sans Text KR";

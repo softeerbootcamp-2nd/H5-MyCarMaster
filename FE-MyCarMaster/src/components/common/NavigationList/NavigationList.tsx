@@ -1,27 +1,27 @@
 import { styled } from "styled-components";
 import NavigationItem from "./NavigationItem";
 import EstimatedPrice from "./EstimatedPrice";
+import { useQuotationState } from "../../../contexts/QuotationContext";
 
 function NavigationList() {
+  const quotationState = useQuotationState();
+
   return (
     <Container>
-      <NavigationItem
-        name={"트림"}
-        $active={true}
-        optionName={"Le Blanc (르블랑)"}
-      />
+      <NavigationItem name={"트림"} quotation={quotationState.trimQuotation} />
       <NavigationItem
         name={"세부모델"}
-        $active={false}
-        optionName={"가솔린3.8 4WD 7인승"}
+        quotation={quotationState.detailQuotation}
       />
       <NavigationItem
         name={"색상"}
-        $active={false}
-        optionName={"그라파이드 그레이 메탈릭"}
+        quotation={quotationState.carPaintQuotation}
       />
-      <NavigationItem name={"옵션"} $active={false} optionName={"빌트인 캠"} />
-      <NavigationItem name={"견적서 완성"} $active={false} />
+      <NavigationItem
+        name={"옵션"}
+        quotation={quotationState.optionQuotation}
+      />
+      <NavigationItem name={"견적서 완성"} />
       <EstimatedPrice sumPrice={9999999} />
     </Container>
   );
