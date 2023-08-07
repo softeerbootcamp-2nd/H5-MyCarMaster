@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import softeer.bemycarmaster.api.domain.trim.domain.Trim
+import softeer.bemycarmaster.api.domain.trim.domain.Trim;
 
 @Getter
 @Setter
