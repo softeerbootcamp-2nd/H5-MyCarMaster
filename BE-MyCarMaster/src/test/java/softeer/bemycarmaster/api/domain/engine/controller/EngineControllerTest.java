@@ -22,6 +22,7 @@ import softeer.bemycarmaster.api.domain.engine.dto.request.GetEnginesRequest;
 import softeer.bemycarmaster.api.domain.engine.dto.response.EngineDto;
 import softeer.bemycarmaster.api.domain.engine.dto.response.GetEnginesResponse;
 import softeer.bemycarmaster.api.domain.engine.usecase.GetEnginesUseCase;
+import softeer.bemycarmaster.api.domain.engine.usecase.GetUnselectableOptionsByEngineUseCase;
 import softeer.bemycarmaster.api.global.response.Response;
 import softeer.bemycarmaster.api.global.response.ResponseStatus;
 
@@ -31,12 +32,13 @@ class EngineControllerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
-
 	@Autowired
 	private ObjectMapper objectMapper;
 
 	@MockBean
 	private GetEnginesUseCase getEnginesUseCase;
+	@MockBean
+	private GetUnselectableOptionsByEngineUseCase getUnselectableOptionsByEngineUseCase;
 
 	@Test
 	@DisplayName("엔진 목록을 조회합니다")
