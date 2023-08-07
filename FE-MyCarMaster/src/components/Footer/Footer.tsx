@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import InnerColorBox from "../common/ColorBox/InnerColorBox";
+import SelectListWrapper from "./SelectListWrapper";
 import Button from "../common/Button/Button";
 import theme from "../../styles/Theme";
 import {
@@ -12,17 +12,6 @@ function Footer() {
   const { navigationId, isFirst } = useQuotationState();
   const quotationDispatch = useQuotationDispatch();
   const name = indexNameSwitching(navigationId) as string;
-
-  // api 연동 후 Props 재정의 필요
-  const InnerColorProps = {
-    id: 1,
-    name: "퀼팅천연(블랙)",
-    trim: "Le Blanc",
-    ratio: 33,
-    price: 100000,
-    // colorImgUrl
-    // coloredImgUrl
-  };
 
   const prevButtonHandler = () => {
     const navigationIndex = navigationId - 1;
@@ -54,12 +43,7 @@ function Footer() {
 
   return (
     <Container>
-      <LeftContainer>
-        <InnerColorBox {...InnerColorProps} />
-        <InnerColorBox {...InnerColorProps} />
-        <InnerColorBox {...InnerColorProps} />
-        <InnerColorBox {...InnerColorProps} />
-      </LeftContainer>
+      <SelectListWrapper />
       <RightContainer>
         <HeightFittingContainer>
           <TextContainer>
@@ -106,13 +90,6 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
   height: 16rem;
-`;
-
-const LeftContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 51.5rem;
-  gap: 0.5rem;
 `;
 
 const RightContainer = styled.div`
