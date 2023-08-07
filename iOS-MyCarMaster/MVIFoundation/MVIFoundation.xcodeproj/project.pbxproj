@@ -1,0 +1,456 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B58289E72A800B6000FAD6AA /* MVIFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = B58289E62A800B6000FAD6AA /* MVIFoundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B5A600DA2A81812500CF2983 /* CombineExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A600D92A81811C00CF2983 /* CombineExtension.framework */; };
+		B5F80AD92A80B00C0001C2D2 /* Reactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F80AD82A80B00C0001C2D2 /* Reactor.swift */; };
+		B5F80ADB2A80DB790001C2D2 /* WeakMapTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F80ADA2A80DB790001C2D2 /* WeakMapTable.swift */; };
+		B5F80AE22A8136510001C2D2 /* Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F80AE12A8136510001C2D2 /* Stub.swift */; };
+		B5F80AE42A8138090001C2D2 /* Reactable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F80AE32A8138090001C2D2 /* Reactable.swift */; };
+		B5F80AE92A815C260001C2D2 /* ReactorRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F80AE82A815C260001C2D2 /* ReactorRuntime.m */; };
+		B5F80AEC2A815D4C0001C2D2 /* ReactorRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = B5F80AEB2A815C500001C2D2 /* ReactorRuntime.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B5A600D82A81811C00CF2983 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5A600D42A81811C00CF2983 /* CombineExtension.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B58289C12A80014000FAD6AA;
+			remoteInfo = CombineExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B58289E32A800B6000FAD6AA /* MVIFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MVIFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B58289E62A800B6000FAD6AA /* MVIFoundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVIFoundation.h; sourceTree = "<group>"; };
+		B58289F52A800B9B00FAD6AA /* CombineExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CombineExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5A600D42A81811C00CF2983 /* CombineExtension.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CombineExtension.xcodeproj; path = ../CombineExtension/CombineExtension.xcodeproj; sourceTree = "<group>"; };
+		B5F80AD82A80B00C0001C2D2 /* Reactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reactor.swift; sourceTree = "<group>"; };
+		B5F80ADA2A80DB790001C2D2 /* WeakMapTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakMapTable.swift; sourceTree = "<group>"; };
+		B5F80AE12A8136510001C2D2 /* Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stub.swift; sourceTree = "<group>"; };
+		B5F80AE32A8138090001C2D2 /* Reactable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reactable.swift; sourceTree = "<group>"; };
+		B5F80AE82A815C260001C2D2 /* ReactorRuntime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReactorRuntime.m; sourceTree = "<group>"; };
+		B5F80AEB2A815C500001C2D2 /* ReactorRuntime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReactorRuntime.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B58289E02A800B6000FAD6AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5A600DA2A81812500CF2983 /* CombineExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B58289D92A800B6000FAD6AA = {
+			isa = PBXGroup;
+			children = (
+				B58289E52A800B6000FAD6AA /* MVIFoundation */,
+				B58289E42A800B6000FAD6AA /* Products */,
+				B58289F42A800B9B00FAD6AA /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B58289E42A800B6000FAD6AA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B58289E32A800B6000FAD6AA /* MVIFoundation.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B58289E52A800B6000FAD6AA /* MVIFoundation */ = {
+			isa = PBXGroup;
+			children = (
+				B5F80AD72A80AFE20001C2D2 /* ReactorKitCombine */,
+				B58289E62A800B6000FAD6AA /* MVIFoundation.h */,
+			);
+			path = MVIFoundation;
+			sourceTree = "<group>";
+		};
+		B58289F42A800B9B00FAD6AA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B5A600D42A81811C00CF2983 /* CombineExtension.xcodeproj */,
+				B58289F52A800B9B00FAD6AA /* CombineExtension.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B5A600D52A81811C00CF2983 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B5A600D92A81811C00CF2983 /* CombineExtension.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B5F80AD72A80AFE20001C2D2 /* ReactorKitCombine */ = {
+			isa = PBXGroup;
+			children = (
+				B5F80AE72A815BD30001C2D2 /* Runtime */,
+				B5F80ADA2A80DB790001C2D2 /* WeakMapTable.swift */,
+				B5F80AD82A80B00C0001C2D2 /* Reactor.swift */,
+				B5F80AE12A8136510001C2D2 /* Stub.swift */,
+				B5F80AE32A8138090001C2D2 /* Reactable.swift */,
+			);
+			path = ReactorKitCombine;
+			sourceTree = "<group>";
+		};
+		B5F80AE72A815BD30001C2D2 /* Runtime */ = {
+			isa = PBXGroup;
+			children = (
+				B5F80AEA2A815C420001C2D2 /* include */,
+				B5F80AE82A815C260001C2D2 /* ReactorRuntime.m */,
+			);
+			path = Runtime;
+			sourceTree = "<group>";
+		};
+		B5F80AEA2A815C420001C2D2 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				B5F80AEB2A815C500001C2D2 /* ReactorRuntime.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		B58289DE2A800B6000FAD6AA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B58289E72A800B6000FAD6AA /* MVIFoundation.h in Headers */,
+				B5F80AEC2A815D4C0001C2D2 /* ReactorRuntime.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		B58289E22A800B6000FAD6AA /* MVIFoundation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B58289EA2A800B6000FAD6AA /* Build configuration list for PBXNativeTarget "MVIFoundation" */;
+			buildPhases = (
+				B58289DE2A800B6000FAD6AA /* Headers */,
+				B58289DF2A800B6000FAD6AA /* Sources */,
+				B58289E02A800B6000FAD6AA /* Frameworks */,
+				B58289E12A800B6000FAD6AA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MVIFoundation;
+			packageProductDependencies = (
+			);
+			productName = MVIFoundation;
+			productReference = B58289E32A800B6000FAD6AA /* MVIFoundation.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B58289DA2A800B6000FAD6AA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					B58289E22A800B6000FAD6AA = {
+						CreatedOnToolsVersion = 14.3.1;
+						LastSwiftMigration = 1500;
+					};
+				};
+			};
+			buildConfigurationList = B58289DD2A800B6000FAD6AA /* Build configuration list for PBXProject "MVIFoundation" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B58289D92A800B6000FAD6AA;
+			packageReferences = (
+			);
+			productRefGroup = B58289E42A800B6000FAD6AA /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = B5A600D52A81811C00CF2983 /* Products */;
+					ProjectRef = B5A600D42A81811C00CF2983 /* CombineExtension.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				B58289E22A800B6000FAD6AA /* MVIFoundation */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		B5A600D92A81811C00CF2983 /* CombineExtension.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CombineExtension.framework;
+			remoteRef = B5A600D82A81811C00CF2983 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B58289E12A800B6000FAD6AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B58289DF2A800B6000FAD6AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5F80AE92A815C260001C2D2 /* ReactorRuntime.m in Sources */,
+				B5F80AE22A8136510001C2D2 /* Stub.swift in Sources */,
+				B5F80AE42A8138090001C2D2 /* Reactable.swift in Sources */,
+				B5F80ADB2A80DB790001C2D2 /* WeakMapTable.swift in Sources */,
+				B5F80AD92A80B00C0001C2D2 /* Reactor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		B58289E82A800B6000FAD6AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MACH_O_TYPE = mh_dylib;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B58289E92A800B6000FAD6AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MACH_O_TYPE = mh_dylib;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B58289EB2A800B6000FAD6AA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = AVZ9493N69;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = mh_dylib;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.minios.MVIFoundation;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B58289EC2A800B6000FAD6AA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = AVZ9493N69;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = mh_dylib;
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.minios.MVIFoundation;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B58289DD2A800B6000FAD6AA /* Build configuration list for PBXProject "MVIFoundation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B58289E82A800B6000FAD6AA /* Debug */,
+				B58289E92A800B6000FAD6AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B58289EA2A800B6000FAD6AA /* Build configuration list for PBXNativeTarget "MVIFoundation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B58289EB2A800B6000FAD6AA /* Debug */,
+				B58289EC2A800B6000FAD6AA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B58289DA2A800B6000FAD6AA /* Project object */;
+}
