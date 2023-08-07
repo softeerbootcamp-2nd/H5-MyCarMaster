@@ -9,5 +9,5 @@ import lombok.Setter;
 public class GetTrimsRequest {
 
 	@Schema(description = "모델 식별자", example = "1")
-	private Integer modelId;
+	private Long modelId;
 }
