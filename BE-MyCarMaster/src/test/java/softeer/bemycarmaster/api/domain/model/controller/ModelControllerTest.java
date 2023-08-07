@@ -27,6 +27,7 @@ class ModelControllerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
+
 	@Autowired
 	private ObjectMapper objectMapper;
 
