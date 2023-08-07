@@ -54,7 +54,6 @@ function Footer() {
 
   return (
     <Container>
-      {/* 각 단계에 맞는 상품 아이템이 들어감 */}
       <LeftContainer>
         <InnerColorBox {...InnerColorProps} />
         <InnerColorBox {...InnerColorProps} />
@@ -72,23 +71,25 @@ function Footer() {
             )}
           </TextContainer>
           <ButtonContainer>
-            <Button
-              $x={9.625}
-              $y={2.25}
-              $backgroundcolor={`${theme.colors.White}`}
-              $textcolor={`${theme.colors.NavyBlue5}`}
-              $bordercolor={`${theme.colors.NavyBlue5}`}
-              text={"이전"}
-              handleClick={prevButtonHandler}
-            />
-            {/* )} */}
+            {navigationId !== 0 && (
+              <Button
+                $x={9.625}
+                $y={2.25}
+                $backgroundcolor={`${theme.colors.White}`}
+                $textcolor={`${theme.colors.NavyBlue5}`}
+                $bordercolor={`${theme.colors.NavyBlue5}`}
+                text={"이전"}
+                handleClick={prevButtonHandler}
+              />
+            )}
+
             <Button
               $x={9.625}
               $y={2.25}
               $backgroundcolor={`${theme.colors.NavyBlue5}`}
               $textcolor={`${theme.colors.White}`}
               $bordercolor={`${theme.colors.NavyBlue5}`}
-              text={"다음"}
+              text={navigationId === 7 ? "견적서 완성" : "다음"}
               handleClick={nextButtonHandler}
             />
           </ButtonContainer>
