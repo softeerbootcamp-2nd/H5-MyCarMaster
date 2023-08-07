@@ -9,7 +9,7 @@ import {
 } from "../../contexts/QuotationContext";
 
 function Footer() {
-  const { navigationId } = useQuotationState();
+  const { navigationId, isFirst } = useQuotationState();
   const quotationDispatch = useQuotationDispatch();
 
   // api 연동 후 Props 재정의 필요
@@ -24,19 +24,29 @@ function Footer() {
   };
 
   const prevButtonHandler = () => {
+    const navigationIndex = navigationId - 1;
     quotationDispatch({
       type: "NAVIGATE",
       payload: {
-        navigationId: navigationId - 1,
+        navigationId: navigationIndex,
+        isFirst: {
+          ...isFirst,
+          [navigationIndex]: false,
+        },
       },
     });
   };
 
   const nextButtonHandler = () => {
+    const navigationIndex = navigationId + 1;
     quotationDispatch({
       type: "NAVIGATE",
       payload: {
-        navigationId: navigationId + 1,
+        navigationId: navigationIndex,
+        isFirst: {
+          ...isFirst,
+          [navigationIndex]: false,
+        },
       },
     });
   };
