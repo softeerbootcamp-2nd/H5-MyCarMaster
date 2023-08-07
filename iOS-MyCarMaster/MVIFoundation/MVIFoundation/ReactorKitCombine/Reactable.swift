@@ -29,7 +29,12 @@ public protocol Reactable: AnyObject {
 
 extension Reactable {
     public var reactor: Reactor? {
-        get { MapTables.reactor.value(forKey: self) as? Reactor }
+        get {
+            guard let reactor = MapTables.reactor.value(forKey: self) as? Reactor else {
+                fatalError("사용하기 전에, 먼저 Reactor을 등록하세요")
+            }
+            return reactor
+        }
         set {
             MapTables.reactor.setValue(newValue, forKey: self)
 
