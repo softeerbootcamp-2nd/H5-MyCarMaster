@@ -1,5 +1,7 @@
 package softeer.bemycarmaster.api.domain.engine.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,12 +24,11 @@ public class EngineController {
 	private final GetEnginesUseCase getEnginesUseCase;
 
 	@GetMapping
-	@Operation(summary = "모델과 트림에 따른 엔진 목록을 반환합니다")
-	public Response<GetEnginesResponse> getEngines(@RequestBody GetEnginesRequest getEnginesRequest) {
+	@Operation(summary = "트림에 따른 엔진 목록을 반환합니다")
+	public Response<GetEnginesResponse> getEngines(@RequestBody @Valid GetEnginesRequest getEnginesRequest) {
 
-		Integer modelId = getEnginesRequest.getModelId();
-		Integer trimId = getEnginesRequest.getTrimId();
-		GetEnginesResponse getEnginesResponse = getEnginesUseCase.execute(modelId, trimId);
-		return new Response<>(getEnginesResponse);
+		Long trimId = getEnginesRequest.getTrimId();
+		GetEnginesResponse getEnginesResponse = getEnginesUseCase.execute(trimId);
+		return Response.createSuccessResponse(getEnginesResponse);
 	}
 }
