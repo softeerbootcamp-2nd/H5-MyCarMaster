@@ -7,6 +7,8 @@
 
 import UIKit
 
+import MVIFoundation
+
 final class OnboardingViewController: UIViewController {
 
     private var onboardingView: OnboardingView {
@@ -31,7 +33,8 @@ final class OnboardingViewController: UIViewController {
     @objc
     func startButtonDidTap(_ sender: UIButton) {
         // TODO: Routing 레이어에서 RootViewController 교체
-        let viewController = ViewController()
+        let viewController = CounterViewController()
+        viewController.reactor = Counter()
         viewController.modalPresentationStyle = .fullScreen
         present(viewController, animated: false)
     }
