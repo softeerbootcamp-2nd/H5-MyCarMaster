@@ -28,7 +28,7 @@
 		B529553D2A7B7A7100BEDDE7 /* HyundaiSansHeadKRMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HyundaiSansHeadKRMedium.ttf; sourceTree = "<group>"; };
 		B529553E2A7B7A7100BEDDE7 /* HyundaiSansHeadKRBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HyundaiSansHeadKRBold.ttf; sourceTree = "<group>"; };
 		B52955422A7B7B4C00BEDDE7 /* Font+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Font+Generated.swift"; path = "../../../../../../../../문서 - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/MCMResource/MCMResource/Generated/Font+Generated.swift"; sourceTree = "<group>"; };
-		B52955472A7B7D7900BEDDE7 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Color.xcassets; path = Raw/Color.xcassets; sourceTree = "<group>"; };
+		B52955472A7B7D7900BEDDE7 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		B52955492A7B7DC400BEDDE7 /* Color+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Color+Generated.swift"; path = "../../../../../../../../문서 - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/MCMResource/MCMResource/Generated/Color+Generated.swift"; sourceTree = "<group>"; };
 		B529554F2A7B866400BEDDE7 /* swiftgen.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,7 +66,6 @@
 			children = (
 				B529551D2A7B782900BEDDE7 /* MCMResource.h */,
 				B52955342A7B795900BEDDE7 /* Raw */,
-				B52955472A7B7D7900BEDDE7 /* Color.xcassets */,
 				B52955352A7B795F00BEDDE7 /* Generated */,
 				B52955392A7B79D700BEDDE7 /* Resource.swift */,
 			);
@@ -76,6 +75,7 @@
 		B52955342A7B795900BEDDE7 /* Raw */ = {
 			isa = PBXGroup;
 			children = (
+				B52955472A7B7D7900BEDDE7 /* Color.xcassets */,
 				B529553B2A7B7A6300BEDDE7 /* Font */,
 				B52955362A7B797300BEDDE7 /* Lottie */,
 			);
