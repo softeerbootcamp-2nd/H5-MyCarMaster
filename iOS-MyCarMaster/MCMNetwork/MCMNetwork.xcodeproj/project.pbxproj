@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B524A55A2A826AA50095F0E2 /* GithubTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B524A5592A826AA50095F0E2 /* GithubTarget.swift */; };
+		B524A55C2A826AD90095F0E2 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B524A55B2A826AD90095F0E2 /* ResponseModel.swift */; };
+		B524A55E2A826B060095F0E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B524A55D2A826B060095F0E2 /* ViewController.swift */; };
 		B5A6013F2A81EADC00CF2983 /* MCMNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A6013E2A81EADC00CF2983 /* MCMNetwork.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5A601502A81EB6200CF2983 /* MCMCombineExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A6014F2A81EB6200CF2983 /* MCMCombineExtension.framework */; };
 		B5A601912A8205B500CF2983 /* Dependency.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5A601902A8205B500CF2983 /* Dependency.plist */; };
@@ -20,6 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B524A5592A826AA50095F0E2 /* GithubTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubTarget.swift; sourceTree = "<group>"; };
+		B524A55B2A826AD90095F0E2 /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
+		B524A55D2A826B060095F0E2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B5A6013B2A81EADC00CF2983 /* MCMNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MCMNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A6013E2A81EADC00CF2983 /* MCMNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCMNetwork.h; sourceTree = "<group>"; };
 		B5A6014F2A81EB6200CF2983 /* MCMCombineExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMCombineExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +51,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B524A5572A826A8B0095F0E2 /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				B524A5582A826A990095F0E2 /* GithubSearch */,
+			);
+			path = Examples;
+			sourceTree = "<group>";
+		};
+		B524A5582A826A990095F0E2 /* GithubSearch */ = {
+			isa = PBXGroup;
+			children = (
+				B524A5592A826AA50095F0E2 /* GithubTarget.swift */,
+				B524A55B2A826AD90095F0E2 /* ResponseModel.swift */,
+				B524A55D2A826B060095F0E2 /* ViewController.swift */,
+			);
+			path = GithubSearch;
+			sourceTree = "<group>";
+		};
 		B524A5642A828F7C0095F0E2 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				B524A5642A828F7C0095F0E2 /* Sources */,
+				B524A5572A826A8B0095F0E2 /* Examples */,
 				B5A601962A820BD900CF2983 /* Resources */,
 				B5A6013E2A81EADC00CF2983 /* MCMNetwork.h */,
 			);
@@ -183,13 +208,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B524A55E2A826B060095F0E2 /* ViewController.swift in Sources */,
 				B5A601DF2A823BFB00CF2983 /* RequestModel.swift in Sources */,
+				B524A55C2A826AD90095F0E2 /* ResponseModel.swift in Sources */,
 				B5A601BC2A82265400CF2983 /* TargetType.swift in Sources */,
 				B5A601D92A822E3D00CF2983 /* NetworkProvider.swift in Sources */,
 				B5A601932A82061400CF2983 /* Dependency.swift in Sources */,
 				B5A601DD2A82334900CF2983 /* NetworkError.swift in Sources */,
 				B5A601BE2A8228BE00CF2983 /* HTTPMethod.swift in Sources */,
 				B5A601DB2A82323F00CF2983 /* NetworkResponse.swift in Sources */,
+				B524A55A2A826AA50095F0E2 /* GithubTarget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
