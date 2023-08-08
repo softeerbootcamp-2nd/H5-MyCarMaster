@@ -40,11 +40,11 @@ class ExteriorColorControllerTest {
 	@DisplayName("외장 색상 목록을 조회합니다")
 	void getExteriorColors() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetExteriorColorsRequest(1));
+		String requestBody = getRequestBody(new GetExteriorColorsRequest(1L));
 
 		GetExteriorColorsResponse getExteriorColorsResponse = new GetExteriorColorsResponse();
 		ExteriorColorDto exteriorColorDto = ExteriorColorDto.builder()
-			.id(1)
+			.id(1L)
 			.name("Exterior Color")
 			.price(0)
 			.ratio(32)
@@ -76,7 +76,7 @@ class ExteriorColorControllerTest {
 	@DisplayName("trimId는 1 이상이어야 합니다")
 	void minimumTrimId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetExteriorColorsRequest(0));
+		String requestBody = getRequestBody(new GetExteriorColorsRequest(0L));
 
 		String responseBody = getClientErrorResponseBody();
 
