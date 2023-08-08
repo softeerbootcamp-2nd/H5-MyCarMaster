@@ -1,16 +1,16 @@
 import styled from "styled-components";
 import { useOptionState } from "../../../contexts/OptionContext";
-import { useQuotationState } from "../../../contexts/QuotationContext";
 import OptionBox from "../../../components/common/OptionBox/OptionBox";
 
 export default function OptionSelect() {
   const { optionList, selectedOption, consideredOption } = useOptionState();
-  const { navigationId } = useQuotationState();
+
   return (
     <Container>
       {optionList.map((option) => {
         return (
           <OptionBox
+            key={option.id}
             $id={option.id}
             $name={option.name}
             $description={option.description}
