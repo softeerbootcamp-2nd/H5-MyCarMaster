@@ -17,11 +17,11 @@ export type DetailQuotationType = {
 };
 
 export type CarPaintQuotationType = {
-  exteriorColorQuotation?: QuotationType;
-  interiorColorQuotation?: QuotationType;
+  exteriorColorQuotation: QuotationType;
+  interiorColorQuotation: QuotationType;
 };
 
 export type OptionQuotationType = {
-  selectedQuotation?: QuotationType[];
-  consideredQuotation?: QuotationType[];
+  selectedQuotation: QuotationType[];
+  consideredQuotation: QuotationType[];
 };
