@@ -15,7 +15,7 @@ import {
 } from "../../../types/quotation.types";
 
 type activeProp = {
-  $active?: boolean;
+  $active?: boolean | undefined | 0;
 };
 
 type QutoationProp =
@@ -43,7 +43,7 @@ function NavigationItem({ name, quotation }: NavigationItemProp) {
   };
   return (
     <Container
-      $active={navigationId >= start && navigationId <= end}
+      $active={navigationId && navigationId >= start && navigationId <= end}
       onClick={handleNavigate}
     >
       <TopContainer>
@@ -74,9 +74,9 @@ function NavigationItem({ name, quotation }: NavigationItemProp) {
 
       {quotation && name === "세부모델" ? (
         <BottomContainer>
-          {Object.entries(quotation).map(([key, value]) => (
-            <Text key={key}>{value.name}</Text>
-          ))}
+          {Object.entries(quotation).map(
+            ([key, value]) => value.name && <Text key={key}>{value.name}</Text>
+          )}
         </BottomContainer>
       ) : (
         quotation &&
