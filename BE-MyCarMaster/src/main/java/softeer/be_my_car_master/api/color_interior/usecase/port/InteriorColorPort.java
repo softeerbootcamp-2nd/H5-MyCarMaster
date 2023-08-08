@@ -9,4 +9,6 @@ import softeer.be_my_car_master.global.annotation.Port;
 public interface InteriorColorPort {
 
 	List<InteriorColor> findSelectableInteriorColorsByTrimId(Long trimId);
+
+	List<Long> findUnselectableInteriorColorIdsByExteriorColorId(Long exteriorColorId);
 }
