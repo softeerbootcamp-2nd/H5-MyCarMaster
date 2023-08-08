@@ -17,7 +17,6 @@
 		B50C7E6F2A79027A005AFE0B /* MyCarMasterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C7E6E2A79027A005AFE0B /* MyCarMasterUITestsLaunchTests.swift */; };
 		B50C7E812A7905D8005AFE0B /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B50C7E802A7905D8005AFE0B /* .swiftlint.yml */; };
 		B50C7E832A7924E1005AFE0B /* .swiftlint.auto.yml in Resources */ = {isa = PBXBuildFile; fileRef = B50C7E822A7924E1005AFE0B /* .swiftlint.auto.yml */; };
-		B5828A002A80121300FAD6AA /* CounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58289FF2A80121300FAD6AA /* CounterViewController.swift */; };
 		B58799712A8177E90051E6E7 /* MCMResource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58289892A7FFDDC00FAD6AA /* MCMResource.framework */; };
 		B58799722A8177E90051E6E7 /* MCMResource.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B58289892A7FFDDC00FAD6AA /* MCMResource.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B58799732A8177EA0051E6E7 /* MVIFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58289F32A800B8E00FAD6AA /* MVIFoundation.framework */; };
@@ -101,7 +100,6 @@
 		B52955512A7B878600BEDDE7 /* MCMResource.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MCMResource.xcodeproj; path = ../../MCMResource/MCMResource.xcodeproj; sourceTree = "<group>"; };
 		B58289A62A7FFE5A00FAD6AA /* CombineExtension.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CombineExtension.xcodeproj; path = "../../../../../../../문서 - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/CombineExtension/CombineExtension.xcodeproj"; sourceTree = "<group>"; };
 		B58289EE2A800B8D00FAD6AA /* MVIFoundation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MVIFoundation.xcodeproj; path = "../../../../../../../문서 - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/MVIFoundation/MVIFoundation.xcodeproj"; sourceTree = "<group>"; };
-		B58289FF2A80121300FAD6AA /* CounterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewController.swift; sourceTree = "<group>"; };
 		B58A32332A7BA452005FC831 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		B58A323A2A7C0B35005FC831 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,7 +164,6 @@
 				B50C7E7E2A790434005AFE0B /* Resources */,
 				B58A323C2A7C0B3B005FC831 /* Onboarding */,
 				B50C7E4F2A790279005AFE0B /* ViewController.swift */,
-				B58289FF2A80121300FAD6AA /* CounterViewController.swift */,
 			);
 			path = MyCarMaster;
 			sourceTree = "<group>";
@@ -460,7 +457,6 @@
 				B50C7E502A790279005AFE0B /* ViewController.swift in Sources */,
 				B58A32342A7BA452005FC831 /* OnboardingView.swift in Sources */,
 				B58A323B2A7C0B35005FC831 /* OnboardingViewController.swift in Sources */,
-				B5828A002A80121300FAD6AA /* CounterViewController.swift in Sources */,
 				B50C7E4C2A790279005AFE0B /* AppDelegate.swift in Sources */,
 				B50C7E4E2A790279005AFE0B /* SceneDelegate.swift in Sources */,
 			);
