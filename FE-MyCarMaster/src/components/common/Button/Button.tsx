@@ -38,7 +38,7 @@ const Container = styled.button<ContainerProp>`
   display: flex;
   width: ${(props) => props.$x}rem;
   height: ${(props) => props.$y}rem;
-  padding: 0.25 0.75rem;
+  padding: 0.25rem 0.75rem;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
