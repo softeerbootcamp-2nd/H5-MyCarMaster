@@ -10,6 +10,10 @@
 		B524A55A2A826AA50095F0E2 /* GithubTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B524A5592A826AA50095F0E2 /* GithubTarget.swift */; };
 		B524A55C2A826AD90095F0E2 /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B524A55B2A826AD90095F0E2 /* ResponseModel.swift */; };
 		B524A55E2A826B060095F0E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B524A55D2A826B060095F0E2 /* ViewController.swift */; };
+		B524A5602A8281BF0095F0E2 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = B524A55F2A8281BF0095F0E2 /* Task.swift */; };
+		B524A5622A828DB90095F0E2 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B524A5612A828DB90095F0E2 /* Endpoint.swift */; };
+		B524A56E2A82B9640095F0E2 /* DecodedDataTaskPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B524A56D2A82B9640095F0E2 /* DecodedDataTaskPublisher.swift */; };
+		B524A5702A82B9E10095F0E2 /* DownloadTaskPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B524A56F2A82B9E10095F0E2 /* DownloadTaskPublisher.swift */; };
 		B5A6013F2A81EADC00CF2983 /* MCMNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A6013E2A81EADC00CF2983 /* MCMNetwork.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5A601502A81EB6200CF2983 /* MCMCombineExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A6014F2A81EB6200CF2983 /* MCMCombineExtension.framework */; };
 		B5A601912A8205B500CF2983 /* Dependency.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5A601902A8205B500CF2983 /* Dependency.plist */; };
@@ -17,15 +21,17 @@
 		B5A601BC2A82265400CF2983 /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A601BB2A82265400CF2983 /* TargetType.swift */; };
 		B5A601BE2A8228BE00CF2983 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A601BD2A8228BE00CF2983 /* HTTPMethod.swift */; };
 		B5A601D92A822E3D00CF2983 /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A601D82A822E3D00CF2983 /* NetworkProvider.swift */; };
-		B5A601DB2A82323F00CF2983 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A601DA2A82323F00CF2983 /* NetworkResponse.swift */; };
 		B5A601DD2A82334900CF2983 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A601DC2A82334900CF2983 /* NetworkError.swift */; };
-		B5A601DF2A823BFB00CF2983 /* RequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A601DE2A823BFB00CF2983 /* RequestModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B524A5592A826AA50095F0E2 /* GithubTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubTarget.swift; sourceTree = "<group>"; };
 		B524A55B2A826AD90095F0E2 /* ResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseModel.swift; sourceTree = "<group>"; };
 		B524A55D2A826B060095F0E2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B524A55F2A8281BF0095F0E2 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		B524A5612A828DB90095F0E2 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		B524A56D2A82B9640095F0E2 /* DecodedDataTaskPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodedDataTaskPublisher.swift; sourceTree = "<group>"; };
+		B524A56F2A82B9E10095F0E2 /* DownloadTaskPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadTaskPublisher.swift; sourceTree = "<group>"; };
 		B5A6013B2A81EADC00CF2983 /* MCMNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MCMNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A6013E2A81EADC00CF2983 /* MCMNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCMNetwork.h; sourceTree = "<group>"; };
 		B5A6014F2A81EB6200CF2983 /* MCMCombineExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMCombineExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -34,9 +40,7 @@
 		B5A601BB2A82265400CF2983 /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
 		B5A601BD2A8228BE00CF2983 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		B5A601D82A822E3D00CF2983 /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
-		B5A601DA2A82323F00CF2983 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
 		B5A601DC2A82334900CF2983 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		B5A601DE2A823BFB00CF2983 /* RequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,12 +76,14 @@
 		B524A5642A828F7C0095F0E2 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B524A55F2A8281BF0095F0E2 /* Task.swift */,
 				B5A601BB2A82265400CF2983 /* TargetType.swift */,
 				B5A601D82A822E3D00CF2983 /* NetworkProvider.swift */,
-				B5A601DA2A82323F00CF2983 /* NetworkResponse.swift */,
 				B5A601BD2A8228BE00CF2983 /* HTTPMethod.swift */,
 				B5A601DC2A82334900CF2983 /* NetworkError.swift */,
-				B5A601DE2A823BFB00CF2983 /* RequestModel.swift */,
+				B524A5612A828DB90095F0E2 /* Endpoint.swift */,
+				B524A56D2A82B9640095F0E2 /* DecodedDataTaskPublisher.swift */,
+				B524A56F2A82B9E10095F0E2 /* DownloadTaskPublisher.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -209,14 +215,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				B524A55E2A826B060095F0E2 /* ViewController.swift in Sources */,
-				B5A601DF2A823BFB00CF2983 /* RequestModel.swift in Sources */,
 				B524A55C2A826AD90095F0E2 /* ResponseModel.swift in Sources */,
+				B524A56E2A82B9640095F0E2 /* DecodedDataTaskPublisher.swift in Sources */,
 				B5A601BC2A82265400CF2983 /* TargetType.swift in Sources */,
+				B524A5602A8281BF0095F0E2 /* Task.swift in Sources */,
 				B5A601D92A822E3D00CF2983 /* NetworkProvider.swift in Sources */,
 				B5A601932A82061400CF2983 /* Dependency.swift in Sources */,
+				B524A5702A82B9E10095F0E2 /* DownloadTaskPublisher.swift in Sources */,
 				B5A601DD2A82334900CF2983 /* NetworkError.swift in Sources */,
 				B5A601BE2A8228BE00CF2983 /* HTTPMethod.swift in Sources */,
-				B5A601DB2A82323F00CF2983 /* NetworkResponse.swift in Sources */,
+				B524A5622A828DB90095F0E2 /* Endpoint.swift in Sources */,
 				B524A55A2A826AA50095F0E2 /* GithubTarget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

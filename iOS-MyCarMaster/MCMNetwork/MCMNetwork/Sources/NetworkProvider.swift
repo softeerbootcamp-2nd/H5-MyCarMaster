@@ -11,96 +11,91 @@ import Combine
 public protocol NetworkProviderType: AnyObject {
 
     associatedtype Target: TargetType
-
-    func requestPlain(_ target: Target, callbackQueue: DispatchQueue?, configuration: URLSessionConfiguration) -> AnyPublisher<NetworkResponse, NetworkError>
-
-    func requestData(_ target: Target, data: Data, callbackQueue: DispatchQueue?, configuration: URLSessionConfiguration) -> AnyPublisher<NetworkResponse, NetworkError>
-
-    func fetch<T: Decodable>(_ target: Target, forType type: T.Type, data: Data?, callbackQueue: DispatchQueue?, configuration: URLSessionConfiguration) -> AnyPublisher<T, NetworkError>
+    
+    /// Designated request-making method.
+    ///
+    /// - Parameters:
+    ///   - target: Entity, which provides specifications necessary for a `NetworkProvider`.
+    ///   - callbackQueue: Callback queue. If nil - queue from provider initializer will be used.
+    /// - Returns: `AnyPublisher<NetworkResponse, NetworkError>`
+    func requestPublisher(_ target: Target, callbackQueue: DispatchQueue?) -> AnyPublisher<TaskOutput, URLError>
 }
 
-public final class NetworkProvider<Target: TargetType>: NetworkProviderType {
+public class NetworkProvider<Target: TargetType>: NetworkProviderType {
 
-    public init() {
-
-    }
-
-    public func requestPlain(
-        _ target: Target,
+    /// Closure that defines the endpoints for the provider.
+    public typealias EndpointClosure = (Target) -> Endpoint
+    
+    /// Closure that decides if and what request should be performed.
+    public typealias RequestResultClosure = (Result<URLRequest, NetworkError>) -> Void
+    
+    /// Closure that resolves an `Endpoint` into a `RequestResult`.
+    public typealias RequestClosure = (Endpoint, @escaping RequestResultClosure) -> Void
+    
+    /// A closure responsible for mapping a `TargetType` to an `EndPoint`.
+    public let endpointClosure: EndpointClosure
+    
+    /// A closure deciding if and what request should be performed.
+    public let requestClosure: RequestClosure
+    
+    public let session: URLSession
+    
+    let callbackQueue: DispatchQueue?
+    
+    let lock: NSRecursiveLock = NSRecursiveLock()
+    
+    public init(
+        endpointClosure: @escaping EndpointClosure = NetworkProvider.defaultEndpointMapping,
+        requestClosure: @escaping RequestClosure = NetworkProvider.defaultRequestMapping,
         callbackQueue: DispatchQueue? = nil,
-        configuration: URLSessionConfiguration = .default
-    ) -> AnyPublisher<NetworkResponse, NetworkError> {
-        let requestModel = RequestModel(target: target)
-        return request(requestModel: requestModel, callbackQueue: callbackQueue, configuration: configuration)
+        session: URLSession = .shared
+    ) {
+        self.endpointClosure = endpointClosure
+        self.requestClosure = requestClosure
+        self.callbackQueue = callbackQueue
+        self.session = session
     }
-
-    public func requestData(
-        _ target: Target,
-        data: Data,
-        callbackQueue: DispatchQueue? = nil,
-        configuration: URLSessionConfiguration = .default
-    ) -> AnyPublisher<NetworkResponse, NetworkError> {
-        let requestModel = RequestModel(target: target, requestBody: data)
-        return request(requestModel: requestModel, callbackQueue: callbackQueue, configuration: configuration)
-    }
-
-    public func fetch<T: Decodable>(
-        _ target: Target,
-        forType type: T.Type,
-        data: Data? = nil,
-        callbackQueue: DispatchQueue? = nil,
-        configuration: URLSessionConfiguration = .default
-    ) -> AnyPublisher<T, NetworkError> {
-        var requestModel: RequestModel
-        if let data = data { requestModel = RequestModel(target: target, requestBody: data) }
-        else { requestModel = RequestModel(target: target) }
-
-        return URLSession(configuration: configuration)
-            .dataTaskPublisher(for: requestModel.urlRequest()!)
-            .tryMap { (data, response) -> Data in
-                guard response is HTTPURLResponse else {
-                    throw NetworkError.unknown(errorMessage: "HTTPURLResponse conversion Error")
+    
+    // TODO: 오류에 대한 처리가 많이 필요
+    public func requestPublisher(_ target: Target, callbackQueue: DispatchQueue? = nil) -> AnyPublisher<TaskOutput, URLError> {
+        return Just((session, target))
+            .map { ($0.0, endpointClosure($0.1)) }
+            .tryMap { try ($0.0, $0.1.urlRequest()) }
+            .mapError({ error in
+                return URLError.init(.unknown)
+            })
+            .flatMap { session, urlRequest in
+                switch target.task {
+                case .requestPlain, .requestData, .requestParameters:
+                    return session.dataTaskPublisher(for: urlRequest).eraseToAnyPublisher()
+                case .downloadContent:
+                    return session.downloadTaskPublisher(for: urlRequest).eraseToAnyPublisher()
                 }
-                return data
-            }
-            .decode(type: type, decoder: JSONDecoder()) // FIXME: 디코딩에러남 계속...
-            .mapError { error in
-                if let networkError = error as? NetworkError {
-                    return networkError
-                }
-                if let decodeError = error as? DecodingError {
-                    return NetworkError.jsonDecodingError
-                }
-                return NetworkError.unknown(errorMessage: error.localizedDescription)
             }
             .eraseToAnyPublisher()
     }
+}
 
-    private func request(
-        requestModel: RequestModel,
-        callbackQueue: DispatchQueue? = nil,
-        configuration: URLSessionConfiguration = .default
-    ) -> AnyPublisher<NetworkResponse, NetworkError> {
-        let sessionConfig = configuration
+public extension NetworkProvider {
+    final class func defaultEndpointMapping(for target: Target) -> Endpoint {
+        var url = target.baseURL
+        if !target.path.isEmpty { url = url.appendingPathComponent(target.path) }
+        return Endpoint(
+            url: url.absoluteString,
+            httpMethod: target.httpMethod,
+            task: target.task,
+            httpHeaderFields: target.headers
+        )
+    }
 
-        return URLSession(configuration: configuration)
-            .dataTaskPublisher(for: requestModel.urlRequest()!) // TODO: urlRequest 생성함수 오류 응대응
-            .tryMap { output in
-                guard let response = output.response as? HTTPURLResponse else {
-                    throw NetworkError.unknown(errorMessage: "HTTPURLResponse conversion Error")
-                }
-                return NetworkResponse(
-                    statusCode: response.statusCode,
-                    data: output.data,
-                    response: response
-                )
-            }
-            .mapError { error in
-                if let networkError = error as? NetworkError {
-                    return networkError
-                }
-                return NetworkError.unknown(errorMessage: error.localizedDescription)
-            }
-            .eraseToAnyPublisher()
+    final class func defaultRequestMapping(for endpoint: Endpoint, closure: RequestResultClosure) {
+        do {
+            let urlRequest = try endpoint.urlRequest()
+            closure(.success(urlRequest))
+        } catch NetworkError.requestMapping(let url) {
+            closure(.failure(NetworkError.requestMapping(url)))
+        } catch {
+            closure(.failure(NetworkError.unknown(errorMessage: error.localizedDescription)))
+        }
     }
 }
