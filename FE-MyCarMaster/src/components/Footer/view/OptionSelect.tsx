@@ -31,4 +31,5 @@ const Container = styled.div`
   flex-direction: row;
   width: 51.5rem;
   gap: 0.5rem;
+  overflow: hidden;
 `;
