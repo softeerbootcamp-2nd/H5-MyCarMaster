@@ -26,8 +26,8 @@ public class InteriorColorController {
 	public Response<GetInteriorColorsResponse> getInterior(
 		@RequestBody @Valid GetInteriorColorsRequest getInteriorColorsRequest) {
 
-		Integer trimId = getInteriorColorsRequest.getTrimId();
-		Integer exteriorColorId = getInteriorColorsRequest.getExteriorColorId();
+		Long trimId = getInteriorColorsRequest.getTrimId();
+		Long exteriorColorId = getInteriorColorsRequest.getExteriorColorId();
 		GetInteriorColorsResponse getInteriorColorsResponse = getInteriorColorsUseCase.execute(trimId, exteriorColorId);
 		return Response.createSuccessResponse(getInteriorColorsResponse);
 	}
