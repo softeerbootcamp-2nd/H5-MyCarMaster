@@ -9,12 +9,16 @@
 /* Begin PBXBuildFile section */
 		B5A6013F2A81EADC00CF2983 /* MCMNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A6013E2A81EADC00CF2983 /* MCMNetwork.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5A601502A81EB6200CF2983 /* MCMCombineExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A6014F2A81EB6200CF2983 /* MCMCombineExtension.framework */; };
+		B5A601912A8205B500CF2983 /* Dependency.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5A601902A8205B500CF2983 /* Dependency.plist */; };
+		B5A601932A82061400CF2983 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A601922A82061400CF2983 /* Dependency.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B5A6013B2A81EADC00CF2983 /* MCMNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MCMNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A6013E2A81EADC00CF2983 /* MCMNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCMNetwork.h; sourceTree = "<group>"; };
 		B5A6014F2A81EB6200CF2983 /* MCMCombineExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMCombineExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5A601902A8205B500CF2983 /* Dependency.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Dependency.plist; sourceTree = "<group>"; };
+		B5A601922A82061400CF2983 /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +53,9 @@
 		B5A6013D2A81EADC00CF2983 /* MCMNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				B5A601962A820BD900CF2983 /* Resources */,
 				B5A6013E2A81EADC00CF2983 /* MCMNetwork.h */,
+				B5A601922A82061400CF2983 /* Dependency.swift */,
 			);
 			path = MCMNetwork;
 			sourceTree = "<group>";
@@ -60,6 +66,14 @@
 				B5A6014F2A81EB6200CF2983 /* MCMCombineExtension.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B5A601962A820BD900CF2983 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B5A601902A8205B500CF2983 /* Dependency.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -105,6 +119,7 @@
 				TargetAttributes = {
 					B5A6013A2A81EADC00CF2983 = {
 						CreatedOnToolsVersion = 14.3.1;
+						LastSwiftMigration = 1430;
 					};
 				};
 			};
@@ -131,6 +146,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5A601912A8205B500CF2983 /* Dependency.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +157,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5A601932A82061400CF2983 /* Dependency.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +287,7 @@
 		B5A601432A81EADC00CF2983 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -294,6 +312,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -302,6 +321,7 @@
 		B5A601442A81EADC00CF2983 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
