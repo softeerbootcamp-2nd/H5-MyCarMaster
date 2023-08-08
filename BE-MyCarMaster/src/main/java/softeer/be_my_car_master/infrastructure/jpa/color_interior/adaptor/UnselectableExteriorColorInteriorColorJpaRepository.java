@@ -13,5 +13,5 @@ public interface UnselectableExteriorColorInteriorColorJpaRepository extends
 	@Query("SELECT uecic.interiorColor.id "
 		+ "FROM UnselectableExteriorColorInteriorColorEntity uecic "
 		+ "WHERE uecic.exteriorColor.id = :exteriorColorId")
-	List<Long> findAllByExteriorColorId(Long exteriorColorId);
+	List<Long> findUnselectableInteriorColorIdByExteriorColorId(Long exteriorColorId);
 }

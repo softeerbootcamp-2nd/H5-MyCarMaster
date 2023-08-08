@@ -15,6 +15,7 @@ import softeer.be_my_car_master.infrastructure.jpa.color_interior.repository.Tri
 public class InteriorColorJpaAdaptor implements InteriorColorPort {
 
 	private final TrimInteriorColorJpaRepository trimInteriorColorJpaRepository;
+	private final UnselectableExteriorColorInteriorColorJpaRepository unselectableExteriorColorInteriorColorJpaRepository;
 
 	@Override
 	public List<InteriorColor> findSelectableInteriorColorsByTrimId(Long trimId) {
@@ -22,4 +23,10 @@ public class InteriorColorJpaAdaptor implements InteriorColorPort {
 			.map(TrimInteriorColorEntity::toInteriorColor)
 			.collect(Collectors.toList());
 	}
+
+	@Override
+	public List<Long> findUnselectableInteriorColorIdsByExteriorColorId(Long exteriorColorId) {
+		return unselectableExteriorColorInteriorColorJpaRepository.findUnselectableInteriorColorIdByExteriorColorId(exteriorColorId);
+	}
 }
+
