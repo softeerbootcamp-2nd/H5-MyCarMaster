@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
 function ExteriorColorView() {
-  return <ExteriorColorImg src="/images/exterior/black/image_1.png" />;
+  return <ExteriorColorImg src="/images/exterior/black/image_001.png" />;
 }
 
 const ExteriorColorImg = styled.img`
