@@ -6,8 +6,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -19,15 +21,18 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import softeer.bemycarmaster.api.domain.engine.dto.request.GetEnginesRequest;
+import softeer.bemycarmaster.api.domain.engine.dto.request.GetUnselectableOptionsByEngineRequest;
 import softeer.bemycarmaster.api.domain.engine.dto.response.EngineDto;
 import softeer.bemycarmaster.api.domain.engine.dto.response.GetEnginesResponse;
+import softeer.bemycarmaster.api.domain.engine.dto.response.GetUnselectableOptionsByEngineResponse;
+import softeer.bemycarmaster.api.domain.engine.dto.response.UnselectableOptionDto;
 import softeer.bemycarmaster.api.domain.engine.usecase.GetEnginesUseCase;
 import softeer.bemycarmaster.api.domain.engine.usecase.GetUnselectableOptionsByEngineUseCase;
 import softeer.bemycarmaster.api.global.response.Response;
 import softeer.bemycarmaster.api.global.response.ResponseStatus;
 
 @WebMvcTest(EngineController.class)
-@DisplayName("Engine Controller Test")
+@DisplayName("EngineController Test")
 class EngineControllerTest {
 
 	@Autowired
@@ -40,88 +45,219 @@ class EngineControllerTest {
 	@MockBean
 	private GetUnselectableOptionsByEngineUseCase getUnselectableOptionsByEngineUseCase;
 
-	@Test
-	@DisplayName("엔진 목록을 조회합니다")
-	void getEngines() throws Exception {
-		//given
-		String requestBody = getRequestBody(new GetEnginesRequest(1L));
+	@Nested
+	@DisplayName("getEngines Test")
+	class GetEnginesTest {
+		@Test
+		@DisplayName("엔진 목록을 조회합니다")
+		void getEngines() throws Exception {
+			//given
+			String requestBody = getRequestBody(new GetEnginesRequest(1L));
 
-		GetEnginesResponse getEnginesResponse = new GetEnginesResponse();
-		EngineDto engineDto = EngineDto.builder()
-			.id(1L)
-			.name("가솔린 3.8")
-			.description("가솔린 3.8 Description")
-			.price(0)
-			.ratio(22)
-			.imgUrl("imgUrl")
-			.power(295)
-			.toque(36.2)
-			.fuelMin(8.0)
-			.fuelMax(9.2)
-			.build();
-		getEnginesResponse.setEngines(Arrays.asList(engineDto));
+			GetEnginesResponse getEnginesResponse = new GetEnginesResponse();
+			EngineDto engineDto = EngineDto.builder()
+				.id(1L)
+				.name("가솔린 3.8")
+				.description("가솔린 3.8 Description")
+				.price(0)
+				.ratio(22)
+				.imgUrl("imgUrl")
+				.power(295)
+				.toque(36.2)
+				.fuelMin(8.0)
+				.fuelMax(9.2)
+				.build();
+			getEnginesResponse.setEngines(Arrays.asList(engineDto));
 
-		given(getEnginesUseCase.execute(any())).willReturn(getEnginesResponse);
+			given(getEnginesUseCase.execute(any())).willReturn(getEnginesResponse);
 
-		Response successResponse = Response.createSuccessResponse(getEnginesResponse);
-		String responseBody = objectMapper.writeValueAsString(successResponse);
+			Response successResponse = Response.createSuccessResponse(getEnginesResponse);
+			String responseBody = objectMapper.writeValueAsString(successResponse);
 
-		//when
-		ResultActions perform = mockMvc.perform(
-			get("/engines")
-				.contentType("application/json")
-				.content(requestBody)
-		);
+			//when
+			ResultActions perform = mockMvc.perform(
+				get("/engines")
+					.contentType("application/json")
+					.content(requestBody)
+			);
 
-		//then
-		perform
-			.andExpect(status().isOk())
-			.andExpect(content().contentType("application/json"))
-			.andExpect(content().json(responseBody, true));
+			//then
+			perform
+				.andExpect(status().isOk())
+				.andExpect(content().contentType("application/json"))
+				.andExpect(content().json(responseBody, true));
+		}
+
+		@Test
+		@DisplayName("trimId는 1 이상이어야 합니다")
+		void minimumTrimId() throws Exception {
+			//given
+			String requestBody = getRequestBody(new GetEnginesRequest(0L));
+
+			String responseBody = getClientErrorResponseBody();
+
+			//when
+			ResultActions perform = mockMvc.perform(
+				get("/engines")
+					.contentType("application/json")
+					.content(requestBody)
+			);
+
+			//then
+			perform
+				.andExpect(status().is4xxClientError())
+				.andExpect(content().contentType("application/json"))
+				.andExpect(content().json(responseBody, false));
+		}
+
+		@Test
+		@DisplayName("trimId는 null값 일 수 없습니다")
+		void nonNullTrimId() throws Exception {
+			//given
+			String requestBody = getRequestBody(new GetEnginesRequest(null));
+
+			String responseBody = getClientErrorResponseBody();
+
+			//when
+			ResultActions perform = mockMvc.perform(
+				get("/engines")
+					.contentType("application/json")
+					.content(requestBody)
+			);
+
+			//then
+			perform
+				.andExpect(status().is4xxClientError())
+				.andExpect(content().contentType("application/json"))
+				.andExpect(content().json(responseBody, false));
+		}
 	}
 
-	@Test
-	@DisplayName("trimId는 1 이상이어야 합니다")
-	void minimumTrimId() throws Exception {
-		//given
-		String requestBody = getRequestBody(new GetEnginesRequest(0L));
+	@Nested
+	@DisplayName("getUnselectableOptionsByEngine Test")
+	class GetUnselectableOptionsByEngineTest {
+		@Test
+		@DisplayName("변경하려는 엔진에 따라 선택불가능해지는 옵션 목록을 조회합니다")
+		void getUnselectableOptionsByEngine() throws Exception {
+			//given
+			String requestBody = getRequestBody(new GetUnselectableOptionsByEngineRequest(1L, List.of(1L, 2L)));
 
-		String responseBody = getClientErrorResponseBody();
+			GetUnselectableOptionsByEngineResponse getUnselectableOptionsByEngineResponse =
+				new GetUnselectableOptionsByEngineResponse();
+			UnselectableOptionDto unselectableOptionDto = UnselectableOptionDto.builder()
+				.id(1L)
+				.name("주차보조 시스템||")
+				.price(1280000)
+				.build();
+			getUnselectableOptionsByEngineResponse.setUnselectableOptions(Arrays.asList(unselectableOptionDto));
 
-		//when
-		ResultActions perform = mockMvc.perform(
-			get("/engines")
-				.contentType("application/json")
-				.content(requestBody)
-		);
+			given(getUnselectableOptionsByEngineUseCase.execute(any(), any(), any())).willReturn(
+				getUnselectableOptionsByEngineResponse);
 
-		//then
-		perform
-			.andExpect(status().is4xxClientError())
-			.andExpect(content().contentType("application/json"))
-			.andExpect(content().json(responseBody, false));
-	}
+			Response successResponse = Response.createSuccessResponse(getUnselectableOptionsByEngineResponse);
+			String responseBody = objectMapper.writeValueAsString(successResponse);
 
-	@Test
-	@DisplayName("trimId는 null값 일 수 없습니다")
-	void nonNullTrimId() throws Exception {
-		//given
-		String requestBody = getRequestBody(new GetEnginesRequest(null));
+			//when
+			ResultActions perform = mockMvc.perform(
+				get("/engines/1/unselectable-options")
+					.contentType("application/json")
+					.content(requestBody)
+			);
 
-		String responseBody = getClientErrorResponseBody();
+			//then
+			perform
+				.andExpect(status().isOk())
+				.andExpect(content().contentType("application/json"))
+				.andExpect(content().json(responseBody, true));
+		}
 
-		//when
-		ResultActions perform = mockMvc.perform(
-			get("/engines")
-				.contentType("application/json")
-				.content(requestBody)
-		);
+		@Test
+		@DisplayName("trimId는 1 이상이어야 합니다")
+		void minimumTrimId() throws Exception {
+			//given
+			String requestBody = getRequestBody(new GetUnselectableOptionsByEngineRequest(0L, List.of(1L, 2L)));
 
-		//then
-		perform
-			.andExpect(status().is4xxClientError())
-			.andExpect(content().contentType("application/json"))
-			.andExpect(content().json(responseBody, false));
+			String responseBody = getClientErrorResponseBody();
+
+			//when
+			ResultActions perform = mockMvc.perform(
+				get("/engines/1/unselectable-options")
+					.contentType("application/json")
+					.content(requestBody)
+			);
+
+			//then
+			perform
+				.andExpect(status().is4xxClientError())
+				.andExpect(content().contentType("application/json"))
+				.andExpect(content().json(responseBody, false));
+		}
+
+		@Test
+		@DisplayName("trimId는 null값 일 수 없습니다")
+		void nonNullTrimId() throws Exception {
+			//given
+			String requestBody = getRequestBody(new GetUnselectableOptionsByEngineRequest(null, List.of(1L, 2L)));
+
+			String responseBody = getClientErrorResponseBody();
+
+			//when
+			ResultActions perform = mockMvc.perform(
+				get("/engines/1/unselectable-options")
+					.contentType("application/json")
+					.content(requestBody)
+			);
+
+			//then
+			perform
+				.andExpect(status().is4xxClientError())
+				.andExpect(content().contentType("application/json"))
+				.andExpect(content().json(responseBody, false));
+		}
+
+		@Test
+		@DisplayName("optionIds는 null값 일 수 없습니다")
+		void nonNullOptionIds() throws Exception {
+			//given
+			String requestBody = getRequestBody(new GetUnselectableOptionsByEngineRequest(1L, null));
+
+			String responseBody = getClientErrorResponseBody();
+
+			//when
+			ResultActions perform = mockMvc.perform(
+				get("/engines/1/unselectable-options")
+					.contentType("application/json")
+					.content(requestBody)
+			);
+
+			//then
+			perform
+				.andExpect(status().is4xxClientError())
+				.andExpect(content().contentType("application/json"))
+				.andExpect(content().json(responseBody, false));
+		}
+
+		@Test
+		@DisplayName("optionIds는 빈 List일 수 없습니다")
+		void nonEmptyOptionIds() throws Exception {
+			//given
+			String requestBody = getRequestBody(new GetUnselectableOptionsByEngineRequest(1L, List.of()));
+
+			String responseBody = getClientErrorResponseBody();
+
+			//when
+			ResultActions perform = mockMvc.perform(
+				get("/engines/1/unselectable-options")
+					.contentType("application/json")
+					.content(requestBody)
+			);
+
+			//then
+			perform
+				.andExpect(status().is4xxClientError())
+				.andExpect(content().contentType("application/json"))
+				.andExpect(content().json(responseBody, false));
+		}
 	}
 
 	private String getClientErrorResponseBody() throws JsonProcessingException {
@@ -130,9 +266,9 @@ class EngineControllerTest {
 		return responseBody;
 	}
 
-	private String getRequestBody(GetEnginesRequest getEnginesRequest) throws
+	private String getRequestBody(Object request) throws
 		JsonProcessingException {
-		String requestBody = objectMapper.writeValueAsString(getEnginesRequest);
+		String requestBody = objectMapper.writeValueAsString(request);
 		return requestBody;
 	}
 }

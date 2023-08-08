@@ -1,11 +1,16 @@
 package softeer.bemycarmaster.api.domain.engine.dto.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class UnselectableOptionDto {
 	@Schema(description = "옵션 식별자", example = "1")
 	private Long id;
