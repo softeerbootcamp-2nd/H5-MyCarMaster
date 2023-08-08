@@ -14,19 +14,15 @@ import softeer.be_my_car_master.infrastructure.jpa.color_exterior.entity.Exterio
 public class UnselectableExteriorColorInteriorColorEntity {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "exterior_color_id")
-    private ExteriorColorEntity exteriorColor;
+	@JoinColumn(name = "exterior_color_id")
+	private ExteriorColorEntity exteriorColor;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "interior_color_id")
 	private InteriorColorEntity interiorColor;
-
-	public Long getInteriorColorId() {
-		return interiorColor.getId();
-	}
 }
 
