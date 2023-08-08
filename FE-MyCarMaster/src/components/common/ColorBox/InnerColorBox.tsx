@@ -11,12 +11,12 @@ type innerColorProps = {
   $active: boolean;
   $colorImgUrl?: string;
   $coloredImgUrl?: string[];
-  onClick?: () => void;
+  handleClick?: () => void;
 };
 
 function InnerColorBox(props: innerColorProps) {
   return (
-    <Container>
+    <Container onClick={props.handleClick}>
       <InnerColorImage src={InnerColor} />
       <InnerColorText>
         <Text>
