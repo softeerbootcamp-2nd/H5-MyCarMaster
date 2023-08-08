@@ -3,11 +3,15 @@ import { BLACK, COOLGREY2, GREY2, GREY3 } from "../../../styles/Color";
 import InnerColor from "../../../assets/images/InnerColor.png";
 
 type innerColorProps = {
-  // colorImgUrl: string;
-  name: string;
-  trim: string;
-  ratio: number;
+  $id: number;
+  $name: string;
+  ratio?: number;
   price: number;
+  trim: string;
+  $active: boolean;
+  $colorImgUrl?: string;
+  $coloredImgUrl?: string[];
+  onClick?: () => void;
 };
 
 function InnerColorBox(props: innerColorProps) {
@@ -16,7 +20,7 @@ function InnerColorBox(props: innerColorProps) {
       <InnerColorImage src={InnerColor} />
       <InnerColorText>
         <Text>
-          <ColorName>{props.name}</ColorName>
+          <ColorName>{props.$name}</ColorName>
           <Ratio>
             {props.trim} 구매자의 {props.ratio}%가 선택
           </Ratio>

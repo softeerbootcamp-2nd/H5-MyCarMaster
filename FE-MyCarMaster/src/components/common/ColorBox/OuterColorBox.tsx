@@ -1,29 +1,45 @@
 import styled from "styled-components";
 
 type ContainerProp = {
-  name?: string;
-  ratio?: number;
-  price?: number;
-  active?: boolean;
+  $id: number;
+  $name: string;
+  ratio: number;
+  price: number;
+  trim: string;
+  $active: boolean;
+  $colorImgUrl?: string;
+  $coloredImgUrl?: string[];
+  onClick?: () => void;
 };
 
-type TextColor = {
+type ActiveProp = {
+  $active: boolean;
+};
+
+type TextProp = {
   color?: string;
+  size?: number;
 };
 
 function OuterColorBox(props: ContainerProp) {
   return (
-    <Container active={props.active}>
+    <Container $active={props.$active}>
       <TextContainer>
-        <Text color="#fff">{props.name}</Text>
-        <Text color="#7B7B7B">{props.ratio}</Text>
-        <Text color="#fff">+{props.price}</Text>
+        <Text color="#fff" size={0.75}>
+          {props.$name}
+        </Text>
+        <Text color="#7B7B7B" size={0.625}>
+          {props.trim} 구매자의 {props.ratio}%가 선택
+        </Text>
+        <Text color="#fff" size={0.75}>
+          +{props.price.toLocaleString("ko-KR")}원
+        </Text>
       </TextContainer>
     </Container>
   );
 }
 
-const Container = styled.div<ContainerProp>`
+const Container = styled.div<ActiveProp>`
   display: flex;
   width: 12.5rem;
   height: 5rem;
@@ -38,10 +54,10 @@ const TextContainer = styled.div`
   gap: 0.6875rem;
 `;
 
-const Text = styled.p<TextColor>`
+const Text = styled.p<TextProp>`
   color: ${(props) => props.color};
   line-height: 1.25rem;
-  font-size: 0.75rem;
+  font-size: ${(props) => props.size}rem;
 `;
 
 export default OuterColorBox;
