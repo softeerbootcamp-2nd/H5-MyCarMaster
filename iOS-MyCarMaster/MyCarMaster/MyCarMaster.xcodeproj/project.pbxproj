@@ -26,6 +26,8 @@
 		B58A323B2A7C0B35005FC831 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A323A2A7C0B35005FC831 /* OnboardingViewController.swift */; };
 		B5A600FE2A81E1FC00CF2983 /* MCMCombineExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */; };
 		B5A600FF2A81E1FC00CF2983 /* MCMCombineExtension.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B5A601942A8209E700CF2983 /* MCMNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A6014B2A81EB2600CF2983 /* MCMNetwork.framework */; };
+		B5A601952A8209E700CF2983 /* MCMNetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5A6014B2A81EB2600CF2983 /* MCMNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,13 @@
 			remoteGlobalIDString = B58289C12A80014000FAD6AA;
 			remoteInfo = MCMCombineExtension;
 		};
+		B5A6014A2A81EB2600CF2983 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5A601452A81EB2600CF2983 /* MCMNetwork.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B5A6013B2A81EADC00CF2983;
+			remoteInfo = MCMNetwork;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -76,6 +85,7 @@
 				B58799742A8177EA0051E6E7 /* MVIFoundation.framework in Embed Frameworks */,
 				B58799722A8177E90051E6E7 /* MCMResource.framework in Embed Frameworks */,
 				B5A600FF2A81E1FC00CF2983 /* MCMCombineExtension.framework in Embed Frameworks */,
+				B5A601952A8209E700CF2983 /* MCMNetwork.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -103,6 +113,7 @@
 		B58A32332A7BA452005FC831 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		B58A323A2A7C0B35005FC831 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMCombineExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5A601452A81EB2600CF2983 /* MCMNetwork.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MCMNetwork.xcodeproj; path = "../../../../../../../문서 - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/MCMNetwork/MCMNetwork.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +124,7 @@
 				B5A600FE2A81E1FC00CF2983 /* MCMCombineExtension.framework in Frameworks */,
 				B58799712A8177E90051E6E7 /* MCMResource.framework in Frameworks */,
 				B58799732A8177EA0051E6E7 /* MVIFoundation.framework in Frameworks */,
+				B5A601942A8209E700CF2983 /* MCMNetwork.framework in Frameworks */,
 				B58A32382A7BA47D005FC831 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,6 +228,7 @@
 		B58289842A7FFDD400FAD6AA /* Dependency */ = {
 			isa = PBXGroup;
 			children = (
+				B5A601452A81EB2600CF2983 /* MCMNetwork.xcodeproj */,
 				B58289EE2A800B8D00FAD6AA /* MVIFoundation.xcodeproj */,
 				B58289A62A7FFE5A00FAD6AA /* MCMCombineExtension.xcodeproj */,
 				B52955512A7B878600BEDDE7 /* MCMResource.xcodeproj */,
@@ -252,6 +265,14 @@
 			isa = PBXGroup;
 			children = (
 				B5A6012B2A81E70400CF2983 /* MCMCombineExtension.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B5A601462A81EB2600CF2983 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B5A6014B2A81EB2600CF2983 /* MCMNetwork.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -360,6 +381,10 @@
 					ProjectRef = B58289A62A7FFE5A00FAD6AA /* MCMCombineExtension.xcodeproj */;
 				},
 				{
+					ProductGroup = B5A601462A81EB2600CF2983 /* Products */;
+					ProjectRef = B5A601452A81EB2600CF2983 /* MCMNetwork.xcodeproj */;
+				},
+				{
 					ProductGroup = B58289852A7FFDDC00FAD6AA /* Products */;
 					ProjectRef = B52955512A7B878600BEDDE7 /* MCMResource.xcodeproj */;
 				},
@@ -397,6 +422,13 @@
 			fileType = wrapper.framework;
 			path = MCMCombineExtension.framework;
 			remoteRef = B5A6012A2A81E70400CF2983 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B5A6014B2A81EB2600CF2983 /* MCMNetwork.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MCMNetwork.framework;
+			remoteRef = B5A6014A2A81EB2600CF2983 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
