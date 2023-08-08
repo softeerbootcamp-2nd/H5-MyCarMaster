@@ -6,7 +6,7 @@
 //
 
 import Combine
-import CombineExtension
+import MCMCombineExtension
 
 public class Stub<Reactor: MVIFoundation.Reactor> {
 

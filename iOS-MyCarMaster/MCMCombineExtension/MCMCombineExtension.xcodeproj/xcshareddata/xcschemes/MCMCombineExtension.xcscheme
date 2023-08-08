@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B58289C02A80014000FAD6AA"
-               BuildableName = "CombineExtension.framework"
-               BlueprintName = "CombineExtension"
-               ReferencedContainer = "container:CombineExtension.xcodeproj">
+               BuildableName = "MCMCombineExtension.framework"
+               BlueprintName = "MCMCombineExtension"
+               ReferencedContainer = "container:MCMCombineExtension.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -50,9 +50,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B58289C02A80014000FAD6AA"
-            BuildableName = "CombineExtension.framework"
-            BlueprintName = "CombineExtension"
-            ReferencedContainer = "container:CombineExtension.xcodeproj">
+            BuildableName = "MCMCombineExtension.framework"
+            BlueprintName = "MCMCombineExtension"
+            ReferencedContainer = "container:MCMCombineExtension.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

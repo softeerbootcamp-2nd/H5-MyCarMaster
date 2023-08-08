@@ -1,6 +1,6 @@
 //
 //  ConcatenateMany.swift
-//  CombineExtension
+//  MCMCombineExtension
 //
 //  Created by SEUNGMIN OH on 2023/08/08.
 //

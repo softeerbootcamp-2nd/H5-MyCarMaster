@@ -6,7 +6,7 @@
 //
 
 import Combine
-import CombineExtension
+import MCMCombineExtension
 
 private typealias AnyReactor = AnyObject
 

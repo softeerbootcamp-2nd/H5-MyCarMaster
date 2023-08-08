@@ -8,19 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		B521BADB2A8022A90057BBA1 /* PassthroughRelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B521BADA2A8022A90057BBA1 /* PassthroughRelay.swift */; };
-		B58289C52A80014000FAD6AA /* CombineExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = B58289C42A80014000FAD6AA /* CombineExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B58289D02A8001A600FAD6AA /* CurrentValueRelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58289CF2A8001A600FAD6AA /* CurrentValueRelay.swift */; };
 		B58289D22A80023B00FAD6AA /* DemandBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58289D12A80023B00FAD6AA /* DemandBuffer.swift */; };
 		B58289D42A80040E00FAD6AA /* Relay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58289D32A80040E00FAD6AA /* Relay.swift */; };
 		B58289D62A80048C00FAD6AA /* Sink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58289D52A80048C00FAD6AA /* Sink.swift */; };
 		B5A600D32A81804300CF2983 /* ConcatenateMany.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A600D22A81804300CF2983 /* ConcatenateMany.swift */; };
+		B5A6012C2A81E8B400CF2983 /* MCMCombineExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = B58289C42A80014000FAD6AA /* MCMCombineExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5F80AE02A81312F0001C2D2 /* ReplaySubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F80ADF2A81312F0001C2D2 /* ReplaySubject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B521BADA2A8022A90057BBA1 /* PassthroughRelay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassthroughRelay.swift; sourceTree = "<group>"; };
-		B58289C12A80014000FAD6AA /* CombineExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CombineExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B58289C42A80014000FAD6AA /* CombineExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CombineExtension.h; sourceTree = "<group>"; };
+		B58289C12A80014000FAD6AA /* MCMCombineExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MCMCombineExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B58289C42A80014000FAD6AA /* MCMCombineExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCMCombineExtension.h; sourceTree = "<group>"; };
 		B58289CF2A8001A600FAD6AA /* CurrentValueRelay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentValueRelay.swift; sourceTree = "<group>"; };
 		B58289D12A80023B00FAD6AA /* DemandBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemandBuffer.swift; sourceTree = "<group>"; };
 		B58289D32A80040E00FAD6AA /* Relay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relay.swift; sourceTree = "<group>"; };
@@ -43,7 +43,7 @@
 		B58289B72A80014000FAD6AA = {
 			isa = PBXGroup;
 			children = (
-				B58289C32A80014000FAD6AA /* CombineExtension */,
+				B58289C32A80014000FAD6AA /* MCMCombineExtension */,
 				B58289C22A80014000FAD6AA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -51,21 +51,21 @@
 		B58289C22A80014000FAD6AA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B58289C12A80014000FAD6AA /* CombineExtension.framework */,
+				B58289C12A80014000FAD6AA /* MCMCombineExtension.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B58289C32A80014000FAD6AA /* CombineExtension */ = {
+		B58289C32A80014000FAD6AA /* MCMCombineExtension */ = {
 			isa = PBXGroup;
 			children = (
 				B5A600D12A81803700CF2983 /* Operator */,
 				B5F80ADE2A8131150001C2D2 /* Subject */,
 				B58289D82A8004BE00FAD6AA /* Relay */,
 				B58289D72A80049100FAD6AA /* Common */,
-				B58289C42A80014000FAD6AA /* CombineExtension.h */,
+				B58289C42A80014000FAD6AA /* MCMCombineExtension.h */,
 			);
-			path = CombineExtension;
+			path = MCMCombineExtension;
 			sourceTree = "<group>";
 		};
 		B58289D72A80049100FAD6AA /* Common */ = {
@@ -110,16 +110,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B58289C52A80014000FAD6AA /* CombineExtension.h in Headers */,
+				B5A6012C2A81E8B400CF2983 /* MCMCombineExtension.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		B58289C02A80014000FAD6AA /* CombineExtension */ = {
+		B58289C02A80014000FAD6AA /* MCMCombineExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B58289C82A80014000FAD6AA /* Build configuration list for PBXNativeTarget "CombineExtension" */;
+			buildConfigurationList = B58289C82A80014000FAD6AA /* Build configuration list for PBXNativeTarget "MCMCombineExtension" */;
 			buildPhases = (
 				B58289BC2A80014000FAD6AA /* Headers */,
 				B58289BD2A80014000FAD6AA /* Sources */,
@@ -130,9 +130,9 @@
 			);
 			dependencies = (
 			);
-			name = CombineExtension;
+			name = MCMCombineExtension;
 			productName = CombineExtension;
-			productReference = B58289C12A80014000FAD6AA /* CombineExtension.framework */;
+			productReference = B58289C12A80014000FAD6AA /* MCMCombineExtension.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -150,7 +150,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B58289BB2A80014000FAD6AA /* Build configuration list for PBXProject "CombineExtension" */;
+			buildConfigurationList = B58289BB2A80014000FAD6AA /* Build configuration list for PBXProject "MCMCombineExtension" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -163,7 +163,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B58289C02A80014000FAD6AA /* CombineExtension */,
+				B58289C02A80014000FAD6AA /* MCMCombineExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -344,7 +344,7 @@
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = com.minios.CombineExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.minios.MCMCombineExtension;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -380,7 +380,7 @@
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = com.minios.CombineExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.minios.MCMCombineExtension;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -392,7 +392,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B58289BB2A80014000FAD6AA /* Build configuration list for PBXProject "CombineExtension" */ = {
+		B58289BB2A80014000FAD6AA /* Build configuration list for PBXProject "MCMCombineExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B58289C62A80014000FAD6AA /* Debug */,
@@ -401,7 +401,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B58289C82A80014000FAD6AA /* Build configuration list for PBXNativeTarget "CombineExtension" */ = {
+		B58289C82A80014000FAD6AA /* Build configuration list for PBXNativeTarget "MCMCombineExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B58289C92A80014000FAD6AA /* Debug */,

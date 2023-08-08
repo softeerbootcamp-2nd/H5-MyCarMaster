@@ -1,5 +1,5 @@
 //
-//  PassthroughRelay.swift
+//  CurrentValueRelay.swift
 //  CombineExt
 //
 //  Created by Shai Mishali on 15/03/2020.
@@ -9,23 +9,24 @@
 #if canImport(Combine)
 import Combine
 
-/// A relay that broadcasts values to downstream subscribers.
+/// A relay that wraps a single value and publishes a new element whenever the value changes.
 ///
 /// Unlike its subject-counterpart, it may only accept values, and only sends a finishing event on deallocation.
 /// It cannot send a failure event.
 ///
-/// - note: Unlike CurrentValueRelay, a PassthroughRelay doesn’t have an initial value or a buffer of the most recently-published value.
+/// - note: Unlike PassthroughRelay, CurrentValueRelay maintains a buffer of the most recently published value.
 @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-public class PassthroughRelay<Output>: Relay {
-    private let storage: PassthroughSubject<Output, Never>
-    private var subscriptions = [Subscription<PassthroughSubject<Output, Never>,
+public class CurrentValueRelay<Output>: Relay {
+    public var value: Output { storage.value }
+    private let storage: CurrentValueSubject<Output, Never>
+    private var subscriptions = [Subscription<CurrentValueSubject<Output, Never>,
                                  AnySubscriber<Output, Never>>]()
 
     /// Create a new relay
     ///
     /// - parameter value: Initial value for the relay
-    public init() {
-        self.storage = .init()
+    public init(_ value: Output) {
+        storage = .init(value)
     }
 
     /// Relay a value to downstream subscribers
@@ -56,7 +57,7 @@ public class PassthroughRelay<Output>: Relay {
 }
 
 @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-private extension PassthroughRelay {
+private extension CurrentValueRelay {
     class Subscription<Upstream: Publisher, Downstream: Subscriber>: Combine.Subscription where Upstream.Output == Downstream.Input, Upstream.Failure == Downstream.Failure {
         private var sink: Sink<Upstream, Downstream>?
         var shouldForwardCompletion: Bool {
@@ -74,6 +75,7 @@ private extension PassthroughRelay {
         func forceFinish() {
             self.sink?.shouldForwardCompletion = true
             self.sink?.receive(completion: .finished)
+            self.sink = nil
         }
 
         func request(_ demand: Subscribers.Demand) {
@@ -81,14 +83,14 @@ private extension PassthroughRelay {
         }
 
         func cancel() {
-            sink = nil
+            forceFinish()
         }
     }
 }
 
 @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-private extension PassthroughRelay {
-    class Sink<Upstream: Publisher, Downstream: Subscriber>: CombineExtension.Sink<Upstream, Downstream> {
+private extension CurrentValueRelay {
+    class Sink<Upstream: Publisher, Downstream: Subscriber>: MCMCombineExtension.Sink<Upstream, Downstream> {
         var shouldForwardCompletion = false
         override func receive(completion: Subscribers.Completion<Upstream.Failure>) {
             guard shouldForwardCompletion else { return }
