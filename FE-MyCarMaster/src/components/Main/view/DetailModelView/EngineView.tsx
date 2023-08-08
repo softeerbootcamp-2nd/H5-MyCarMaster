@@ -5,26 +5,19 @@ import GraphList from "../../../common/Graph/GraphList";
 function EngineView() {
   return (
     <Container>
-      <EngineContainer>
-        <EngineImg src={diesel} />
-        <EngineGraph>
-          <GraphList />
-        </EngineGraph>
-      </EngineContainer>
+      <EngineImg src={diesel} />
+      <EngineGraph>
+        <GraphList />
+      </EngineGraph>
     </Container>
   );
 }
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
-  height: 100%;
-`;
-
-const EngineContainer = styled.div`
-  display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  gap: 2rem;
   height: 100%;
 `;
 

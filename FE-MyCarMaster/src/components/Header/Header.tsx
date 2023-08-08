@@ -12,13 +12,13 @@ function Header({ isHome, logo }: HeaderProps) {
   return (
     <Container>
       <Img src={logo} />
-      {isHome ? (
-        <></>
-      ) : (
-        <ModelSelector>
-          <ModelName>{modelName}</ModelName>
-          <ModelButton src={ArrowBottom} />
-        </ModelSelector>
+      {!isHome && (
+        <>
+          <ModelSelector>
+            <ModelName>{modelName}</ModelName>
+            <ModelButton src={ArrowBottom} />
+          </ModelSelector>
+        </>
       )}
     </Container>
   );

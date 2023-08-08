@@ -3,17 +3,20 @@ import styled from "styled-components";
 type CategoryItemProp = {
   name?: string;
   $active?: boolean;
+  onClickHandler?: () => void;
 };
 
-function CategoryItem({ name, $active }: CategoryItemProp) {
+function CategoryItem({ name, $active, onClickHandler }: CategoryItemProp) {
   return (
-    <Container>
+    <Container onClick={onClickHandler}>
       <Text $active={$active}>{name}</Text>
     </Container>
   );
 }
 
-const Container = styled.li``;
+const Container = styled.li`
+  cursor: pointer;
+`;
 
 const Text = styled.p<CategoryItemProp>`
   font-size: 1rem;
