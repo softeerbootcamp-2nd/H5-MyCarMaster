@@ -9,34 +9,42 @@ import Foundation
 
 enum GithubTarget {
     case repo(query: String)
-    case user(query: String)
+    case userImage
 }
 
 extension GithubTarget: TargetType {
-
-    var baseURL: String {
-        return "https://api.github.com"
+    var baseURL: URL {
+        switch self {
+        case .repo:
+            return URL(string: "https://api.github.com")!
+        case .userImage:
+            return URL(string: "https://avatars.githubusercontent.com/u/46219689?v=4")!
+        }
     }
 
     var path: String {
         switch self {
         case .repo:
             return "/search/repositories"
-        case .user:
-            return "/search/users"
+        case .userImage:
+            return ""
         }
     }
 
-    var parameters: [URLQueryItem] {
+    var task: Task {
         switch self {
         case let .repo(query):
-            return [URLQueryItem(name: "q", value: query)]
-        case let .user(query):
-            return [URLQueryItem(name: "q", value: query)]
+            return .requestParameters(parameters: ["q": query])
+        case .userImage:
+            return .downloadContent
         }
     }
 
     var httpMethod: MCMNetwork.HTTPMethod {
         return .get
+    }
+
+    var headers: [String : String]? {
+        return nil
     }
 }
