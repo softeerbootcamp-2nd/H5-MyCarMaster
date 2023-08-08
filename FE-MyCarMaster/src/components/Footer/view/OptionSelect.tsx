@@ -24,10 +24,10 @@ export default function OptionSelect() {
 
   return (
     <Container>
-      {filteredOptionList.map((option) => {
+      {filteredOptionList.map((option, index) => {
         return (
           <OptionBox
-            key={option.id}
+            key={index}
             $id={option.id}
             $name={option.name}
             $description={option.description}

@@ -17,8 +17,6 @@ export default function TrimSelect() {
   const quotationDispatch = useQuotationDispatch();
   const carPaintDispatch = useCarPaintDispatch();
 
-  console.log("exteriorId", exteriorId);
-  console.log("interiorId", interiorId);
   const selectExterior = (id: number) => {
     quotationDispatch({
       type: "SET_CAR_PAINT_QUOTATION",
