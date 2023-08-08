@@ -41,9 +41,14 @@ function NavigationItem({ name, quotation }: NavigationItemProp) {
       payload: { navigationId: start },
     });
   };
+
   return (
     <Container
-      $active={navigationId && navigationId >= start && navigationId <= end}
+      $active={
+        navigationId !== undefined &&
+        navigationId >= start &&
+        navigationId <= end
+      }
       onClick={handleNavigate}
     >
       <TopContainer>

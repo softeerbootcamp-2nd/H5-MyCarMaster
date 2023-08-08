@@ -1,13 +1,35 @@
 import styled from "styled-components";
 import CategoryItem from "./CategoryItem";
+import { useQuotationState } from "../../../contexts/QuotationContext";
+import { useOptionState } from "../../../contexts/OptionContext";
 
-function CategoryList() {
+type CagetoryListProps = {
+  categories: string[];
+  onClickHandler: (index: number) => void;
+  indexSetter?: number;
+};
+
+function CategoryList({
+  categories,
+  onClickHandler,
+  indexSetter,
+}: CagetoryListProps) {
+  const { navigationId } = useQuotationState();
+  const { optionCategoryId } = useOptionState();
   return (
     <Container>
-      <CategoryItem name="전체" $active={true} />
-      <CategoryItem name="엔진" $active={false} />
-      <CategoryItem name="구동방식" $active={false} />
-      <CategoryItem name="타입" $active={false} />
+      {categories.map((category, index) => (
+        <CategoryItem
+          name={category}
+          key={index}
+          $active={
+            indexSetter !== undefined
+              ? index === navigationId - indexSetter
+              : index === optionCategoryId // 해당 줄은 optionCategoryId 로 교체 필요
+          }
+          onClickHandler={() => onClickHandler(index)}
+        />
+      ))}
     </Container>
   );
 }
