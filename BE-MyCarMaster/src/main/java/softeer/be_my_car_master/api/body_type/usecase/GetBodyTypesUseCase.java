@@ -6,7 +6,7 @@ import softeer.be_my_car_master.global.annotation.UseCase;
 @UseCase
 public class GetBodyTypesUseCase {
 
-	public GetBodyTypesResponse execute(Integer trimId) {
+	public GetBodyTypesResponse execute(Long modelId) {
 
 		return new GetBodyTypesResponse();
 	}

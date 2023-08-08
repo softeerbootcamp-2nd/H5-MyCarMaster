@@ -13,7 +13,7 @@ import lombok.Setter;
 public class BodyTypeDto {
 
 	@Schema(description = "바디타입 식별자", example = "1")
-	private Integer id;
+	private Long id;
 
 	@Schema(description = "바디타입명", example = "7인승")
 	private String name;

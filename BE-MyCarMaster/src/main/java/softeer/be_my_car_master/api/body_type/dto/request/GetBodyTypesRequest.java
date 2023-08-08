@@ -15,8 +15,8 @@ import lombok.Setter;
 @AllArgsConstructor
 public class GetBodyTypesRequest {
 
-	@Schema(description = "트림 식별자", example = "1")
-	@NotNull(message = "trimId는 Null일 수 없습니다.")
-	@Min(value = 1, message = "trimId는 1 이상의 값입니다.")
-	private Integer trimId;
+	@Schema(description = "모델 식별자", example = "1")
+	@NotNull(message = "modelId는 Null일 수 없습니다.")
+	@Min(value = 1, message = "modelId는 1 이상의 값입니다.")
+	private Long modelId;
 }
