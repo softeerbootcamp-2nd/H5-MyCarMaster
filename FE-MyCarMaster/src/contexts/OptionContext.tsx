@@ -23,18 +23,24 @@ type OptionState = {
   optionList: options[];
 };
 
-type OptionAction = {
-  type: "SELECT_OPTION" | "SET_OPTION_LIST";
-  payload: {
-    selectedOption: number[];
-    consideredOption: number[];
-    optionList: options[];
-  };
-};
+type OptionAction =
+  | {
+      type: "SET_CHOICE_OPTION";
+      payload: {
+        where: "selectedOption" | "consideredOption";
+        id: number;
+      };
+    }
+  | {
+      type: "SET_OPTION_LIST";
+      payload: {
+        optionList: options[];
+      };
+    };
 
 const initialOptionState: OptionState = {
-  selectedOption: [0],
-  consideredOption: [0],
+  selectedOption: [],
+  consideredOption: [],
   optionList: [
     {
       id: 0,
@@ -87,6 +93,23 @@ const initialOptionState: OptionState = {
         },
       ],
     },
+    {
+      id: 3,
+      name: "Select Option4",
+      description: "Select Option4",
+      price: 4123210,
+      ratio: 30,
+      imgUrl: "",
+      category: "",
+      tag: "",
+      subOptions: [
+        {
+          name: "",
+          imgUrl: "",
+          description: "",
+        },
+      ],
+    },
   ],
 };
 
@@ -97,12 +120,21 @@ const optionReducer = (
   action: OptionAction
 ): OptionState => {
   switch (action.type) {
-    case "SELECT_OPTION":
-      return {
-        ...state,
-        selectedOption: action.payload.selectedOption,
-        consideredOption: action.payload.consideredOption,
-      };
+    case "SET_CHOICE_OPTION": {
+      const { where, id } = action.payload;
+      const existingIds = state[where];
+      if (existingIds.includes(id)) {
+        return {
+          ...state,
+          [where]: existingIds.filter((existingId) => existingId !== id),
+        };
+      } else {
+        return {
+          ...state,
+          [where]: [...existingIds, id],
+        };
+      }
+    }
     case "SET_OPTION_LIST":
       return {
         ...state,
