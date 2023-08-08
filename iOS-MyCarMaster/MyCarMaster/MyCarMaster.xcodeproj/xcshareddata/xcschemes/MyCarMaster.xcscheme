@@ -28,30 +28,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       shouldAutocreateTestPlan = "YES">
-      <Testables>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B50C7E5D2A79027A005AFE0B"
-               BuildableName = "MyCarMasterTests.xctest"
-               BlueprintName = "MyCarMasterTests"
-               ReferencedContainer = "container:MyCarMaster.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO"
-            parallelizable = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B50C7E672A79027A005AFE0B"
-               BuildableName = "MyCarMasterUITests.xctest"
-               BlueprintName = "MyCarMasterUITests"
-               ReferencedContainer = "container:MyCarMaster.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
