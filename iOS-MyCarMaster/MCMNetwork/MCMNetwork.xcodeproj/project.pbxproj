@@ -11,6 +11,12 @@
 		B5A601502A81EB6200CF2983 /* MCMCombineExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A6014F2A81EB6200CF2983 /* MCMCombineExtension.framework */; };
 		B5A601912A8205B500CF2983 /* Dependency.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5A601902A8205B500CF2983 /* Dependency.plist */; };
 		B5A601932A82061400CF2983 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A601922A82061400CF2983 /* Dependency.swift */; };
+		B5A601BC2A82265400CF2983 /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A601BB2A82265400CF2983 /* TargetType.swift */; };
+		B5A601BE2A8228BE00CF2983 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A601BD2A8228BE00CF2983 /* HTTPMethod.swift */; };
+		B5A601D92A822E3D00CF2983 /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A601D82A822E3D00CF2983 /* NetworkProvider.swift */; };
+		B5A601DB2A82323F00CF2983 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A601DA2A82323F00CF2983 /* NetworkResponse.swift */; };
+		B5A601DD2A82334900CF2983 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A601DC2A82334900CF2983 /* NetworkError.swift */; };
+		B5A601DF2A823BFB00CF2983 /* RequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A601DE2A823BFB00CF2983 /* RequestModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +25,12 @@
 		B5A6014F2A81EB6200CF2983 /* MCMCombineExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMCombineExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A601902A8205B500CF2983 /* Dependency.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Dependency.plist; sourceTree = "<group>"; };
 		B5A601922A82061400CF2983 /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
+		B5A601BB2A82265400CF2983 /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
+		B5A601BD2A8228BE00CF2983 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		B5A601D82A822E3D00CF2983 /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
+		B5A601DA2A82323F00CF2983 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
+		B5A601DC2A82334900CF2983 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		B5A601DE2A823BFB00CF2983 /* RequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +45,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B524A5642A828F7C0095F0E2 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				B5A601BB2A82265400CF2983 /* TargetType.swift */,
+				B5A601D82A822E3D00CF2983 /* NetworkProvider.swift */,
+				B5A601DA2A82323F00CF2983 /* NetworkResponse.swift */,
+				B5A601BD2A8228BE00CF2983 /* HTTPMethod.swift */,
+				B5A601DC2A82334900CF2983 /* NetworkError.swift */,
+				B5A601DE2A823BFB00CF2983 /* RequestModel.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
 		B5A601312A81EADC00CF2983 = {
 			isa = PBXGroup;
 			children = (
@@ -53,9 +78,9 @@
 		B5A6013D2A81EADC00CF2983 /* MCMNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				B524A5642A828F7C0095F0E2 /* Sources */,
 				B5A601962A820BD900CF2983 /* Resources */,
 				B5A6013E2A81EADC00CF2983 /* MCMNetwork.h */,
-				B5A601922A82061400CF2983 /* Dependency.swift */,
 			);
 			path = MCMNetwork;
 			sourceTree = "<group>";
@@ -72,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				B5A601902A8205B500CF2983 /* Dependency.plist */,
+				B5A601922A82061400CF2983 /* Dependency.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -157,7 +183,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5A601DF2A823BFB00CF2983 /* RequestModel.swift in Sources */,
+				B5A601BC2A82265400CF2983 /* TargetType.swift in Sources */,
+				B5A601D92A822E3D00CF2983 /* NetworkProvider.swift in Sources */,
 				B5A601932A82061400CF2983 /* Dependency.swift in Sources */,
+				B5A601DD2A82334900CF2983 /* NetworkError.swift in Sources */,
+				B5A601BE2A8228BE00CF2983 /* HTTPMethod.swift in Sources */,
+				B5A601DB2A82323F00CF2983 /* NetworkResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
