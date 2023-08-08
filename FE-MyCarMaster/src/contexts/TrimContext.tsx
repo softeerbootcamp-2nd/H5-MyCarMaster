@@ -17,8 +17,8 @@ type TrimState = {
 type TrimAction = {
   type: "SELECT_TRIM" | "SET_TRIM_LIST";
   payload: {
-    trimId: number;
-    trimList: Trims[];
+    trimId?: number;
+    trimList?: Trims[];
   };
 };
 
@@ -67,12 +67,12 @@ const trimReducer = (state: TrimState, action: TrimAction): TrimState => {
     case "SELECT_TRIM":
       return {
         ...state,
-        trimId: action.payload.trimId,
+        trimId: action.payload.trimId as number,
       };
     case "SET_TRIM_LIST":
       return {
         ...state,
-        trimList: action.payload.trimList,
+        trimList: action.payload.trimList as Trims[],
       };
 
     default:
