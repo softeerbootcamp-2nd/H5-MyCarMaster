@@ -13,8 +13,6 @@
 		B5F80ADB2A80DB790001C2D2 /* WeakMapTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F80ADA2A80DB790001C2D2 /* WeakMapTable.swift */; };
 		B5F80AE22A8136510001C2D2 /* Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F80AE12A8136510001C2D2 /* Stub.swift */; };
 		B5F80AE42A8138090001C2D2 /* Reactable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F80AE32A8138090001C2D2 /* Reactable.swift */; };
-		B5F80AE92A815C260001C2D2 /* ReactorRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = B5F80AE82A815C260001C2D2 /* ReactorRuntime.m */; };
-		B5F80AEC2A815D4C0001C2D2 /* ReactorRuntime.h in Headers */ = {isa = PBXBuildFile; fileRef = B5F80AEB2A815C500001C2D2 /* ReactorRuntime.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,8 +34,6 @@
 		B5F80ADA2A80DB790001C2D2 /* WeakMapTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakMapTable.swift; sourceTree = "<group>"; };
 		B5F80AE12A8136510001C2D2 /* Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stub.swift; sourceTree = "<group>"; };
 		B5F80AE32A8138090001C2D2 /* Reactable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reactable.swift; sourceTree = "<group>"; };
-		B5F80AE82A815C260001C2D2 /* ReactorRuntime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReactorRuntime.m; sourceTree = "<group>"; };
-		B5F80AEB2A815C500001C2D2 /* ReactorRuntime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReactorRuntime.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,30 +94,12 @@
 		B5F80AD72A80AFE20001C2D2 /* ReactorKitCombine */ = {
 			isa = PBXGroup;
 			children = (
-				B5F80AE72A815BD30001C2D2 /* Runtime */,
 				B5F80ADA2A80DB790001C2D2 /* WeakMapTable.swift */,
 				B5F80AD82A80B00C0001C2D2 /* Reactor.swift */,
 				B5F80AE12A8136510001C2D2 /* Stub.swift */,
 				B5F80AE32A8138090001C2D2 /* Reactable.swift */,
 			);
 			path = ReactorKitCombine;
-			sourceTree = "<group>";
-		};
-		B5F80AE72A815BD30001C2D2 /* Runtime */ = {
-			isa = PBXGroup;
-			children = (
-				B5F80AEA2A815C420001C2D2 /* include */,
-				B5F80AE82A815C260001C2D2 /* ReactorRuntime.m */,
-			);
-			path = Runtime;
-			sourceTree = "<group>";
-		};
-		B5F80AEA2A815C420001C2D2 /* include */ = {
-			isa = PBXGroup;
-			children = (
-				B5F80AEB2A815C500001C2D2 /* ReactorRuntime.h */,
-			);
-			path = include;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,7 +110,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B58289E72A800B6000FAD6AA /* MVIFoundation.h in Headers */,
-				B5F80AEC2A815D4C0001C2D2 /* ReactorRuntime.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,7 +202,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5F80AE92A815C260001C2D2 /* ReactorRuntime.m in Sources */,
 				B5F80AE22A8136510001C2D2 /* Stub.swift in Sources */,
 				B5F80AE42A8138090001C2D2 /* Reactable.swift in Sources */,
 				B5F80ADB2A80DB790001C2D2 /* WeakMapTable.swift in Sources */,
