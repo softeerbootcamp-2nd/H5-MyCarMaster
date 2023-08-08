@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import { OptionType, SuboptionsType } from "../../../types/options.types";
 import theme from "../../../styles/Theme";
@@ -53,8 +53,7 @@ function OptionDescription({ option }: { option: OptionType }) {
 const Container = styled.div`
   width: 327px;
   height: 334px;
-  padding: 1.5rem;
-  padding-bottom: 0rem;
+  padding: 0 1.5rem;
 
   display: flex;
   flex-direction: column;
