@@ -1,14 +1,30 @@
 import styled from "styled-components";
 import { useOptionState } from "../../../contexts/OptionContext";
-import { useQuotationState } from "../../../contexts/QuotationContext";
 import OptionBox from "../../../components/common/OptionBox/OptionBox";
+import { useEffect, useState } from "react";
+import { OptionType } from "../../../types/options.types";
+import filterOptionCategory from "../../../utils/Option/filterOptionCategory";
+import { categories } from "../../../constants/Option.constants";
 
 export default function OptionSelect() {
-  const { optionList, selectedOption, consideredOption } = useOptionState();
-  const { navigationId } = useQuotationState();
+  const { optionList, selectedOption, consideredOption, optionCategoryId } =
+    useOptionState();
+  const [filteredOptionList, setFilteredOptionList] =
+    useState<OptionType[]>(optionList);
+
+  useEffect(() => {
+    const filteredList = filterOptionCategory(
+      categories,
+      optionCategoryId,
+      optionList
+    );
+
+    setFilteredOptionList(filteredList);
+  }, [optionCategoryId]);
+
   return (
     <Container>
-      {optionList.map((option) => {
+      {filteredOptionList.map((option) => {
         return (
           <OptionBox
             $id={option.id}
