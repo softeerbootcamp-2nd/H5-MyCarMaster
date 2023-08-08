@@ -1,14 +1,12 @@
 import { styled } from "styled-components";
-import { useQuotationState } from "../../../contexts/QuotationContext";
+import {
+  useQuotationState,
+  useQuotationDispatch,
+} from "../../../contexts/QuotationContext";
+import { useOptionDispatch } from "../../../contexts/OptionContext";
 import theme from "../../../styles/Theme";
 import Button from "../Button/Button";
-import {
-  BLACK,
-  GREY2,
-  GREY3,
-  NAVYBLUE4,
-  NAVYBLUE5,
-} from "../../../styles/Color";
+import { BLACK, GREY2, GREY3, NAVYBLUE5 } from "../../../styles/Color";
 
 type OptionBoxProp = {
   $id: number;
@@ -19,6 +17,7 @@ type OptionBoxProp = {
   $imgUrl?: string;
   $selected?: boolean;
   $considered?: boolean;
+  $choice?: boolean;
   handleClick?: () => void;
 };
 
@@ -29,42 +28,67 @@ function OptionBox({
   $price,
   $ratio,
   $imgUrl,
-  handleClick,
   $selected,
   $considered,
+  handleClick,
 }: OptionBoxProp) {
   const { navigationId } = useQuotationState();
-  const navindex = 0;
+  const quotationDispatch = useQuotationDispatch();
+  const optionDispatch = useOptionDispatch();
 
-  const considerButtonHandler = () => {
-    console.log("considerButtonHandler");
+  const considerButtonHandler = (id: number) => {
+    optionDispatch({
+      type: "SET_CHOICE_OPTION",
+      payload: {
+        where: "consideredOption",
+        id: id,
+      },
+    });
+    quotationDispatch({
+      type: "SET_CONSIDER_QUOTATION",
+      payload: {
+        name: $name,
+        price: $price,
+      },
+    });
   };
 
-  const addButtonHandler = () => {
-    console.log("addButtonHandler");
+  const addButtonHandler = (id: number) => {
+    optionDispatch({
+      type: "SET_CHOICE_OPTION",
+      payload: {
+        where: "selectedOption",
+        id: id,
+      },
+    });
+    quotationDispatch({
+      type: "SET_SELECT_QUOTATION",
+      payload: {
+        name: $name,
+        price: $price,
+      },
+    });
   };
 
   return (
-    <Container>
+    <Container
+      onClick={handleClick}
+      $color={$selected ? "#1A3276" : $considered ? "#9B6D54" : "#ffffff"}
+    >
       <TopContainer>
         {navigationId === 0 || navigationId === 6 ? (
           <>
-            <Decoration navindex={navindex}>New</Decoration>
-            <OptionName navindex={navindex}>{$name}</OptionName>
+            <Decoration>
+              {$ratio === 0 ? "New" : `구매자 ${$ratio}%가 선택`}
+            </Decoration>
 
-            {navigationId !== 6 && <Description>{$description}</Description>}
+            <OptionName>{$name}</OptionName>
 
-            {navigationId === 6 ? (
-              <Price navindex={navindex}>
-                + {$price?.toLocaleString("ko-KR")} 원
-              </Price>
-            ) : (
-              <PriceContainer>
-                <Price navindex={navindex}>
-                  {$price?.toLocaleString("ko-KR")} 원
-                </Price>
-                {/* {navindex === 0 ? <Tag>기본 제공</Tag> : <></>} */}
-              </PriceContainer>
+            {navigationId !== 6 && (
+              <>
+                <Description>{$description}</Description>
+                <Price>{$price?.toLocaleString("ko-KR")} 원</Price>
+              </>
             )}
           </>
         ) : (
@@ -77,7 +101,9 @@ function OptionBox({
           </>
         )}
       </TopContainer>
-
+      {navigationId === 6 && (
+        <Price>+ {$price?.toLocaleString("ko-KR")} 원</Price>
+      )}
       <BottomContainer>
         {navigationId === 6 ? (
           <>
@@ -88,8 +114,8 @@ function OptionBox({
                 $backgroundcolor={`${theme.colors.White}`}
                 $textcolor={`${theme.colors.NavyBlue5}`}
                 $bordercolor={`${theme.colors.NavyBlue5}`}
-                text={"고민해보기"}
-                handleClick={considerButtonHandler}
+                text={$considered ? "취소하기" : "고민해보기"}
+                handleClick={() => considerButtonHandler($id)}
               />
               <Button
                 $x={4.875}
@@ -97,14 +123,18 @@ function OptionBox({
                 $backgroundcolor={`${theme.colors.White}`}
                 $textcolor={`${theme.colors.NavyBlue5}`}
                 $bordercolor={`${theme.colors.NavyBlue5}`}
-                text={"추가하기"}
-                handleClick={addButtonHandler}
+                text={$selected ? "취소하기" : "추가하기"}
+                handleClick={() => addButtonHandler($id)}
               />
             </ButtonContainer>
           </>
         ) : (
           <>
-            <Detail>자세히보기 &gt;</Detail>
+            {navigationId === 0 ? (
+              <Detail>자세히보기 &gt;</Detail>
+            ) : (
+              <Price>+ {$price?.toLocaleString("ko-KR")} 원</Price>
+            )}
           </>
         )}
       </BottomContainer>
@@ -112,12 +142,13 @@ function OptionBox({
   );
 }
 
-const Container = styled.div`
+const Container = styled.div<{ $color: string }>`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
   gap: 0.5rem;
+  background-color: ${({ $color }) => $color};
 
   border: 1px solid ${GREY2};
   width: 12.5rem;
@@ -129,55 +160,37 @@ const TopContainer = styled.div`
   height: 5.75rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
+  gap: 0.5rem;
 `;
 
 const BottomContainer = styled.div`
-  height: 1.5rem;
-
   display: flex;
   justify-content: space-around;
 `;
 
-const Decoration = styled.p<{ navindex: number }>`
-  color: ${({ navindex }) => (navindex ? `${NAVYBLUE4}` : `${NAVYBLUE5}`)};
+const Decoration = styled.p`
   font-size: 0.625rem;
   font-weight: 400;
 `;
 
-const OptionName = styled.p<{ navindex: number }>`
-  font-size: ${({ navindex }) => (navindex ? "1rem" : "1.375rem")};
-  font-weight: 700;
-  line-height: 1.5rem;
+const OptionName = styled.p`
+  ${(props) => props.theme.fonts.titleLarge};
 `;
 
 const Description = styled.p`
   color: ${GREY3};
-  font-size: 0.8125rem;
-  font-weight: 400;
-  line-height: 165%;
+  ${(props) => props.theme.fonts.contentMedium};
 `;
 
-const PriceContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 0.5rem;
+const Price = styled.p`
+  ${(props) => props.theme.fonts.contentLarge};
 `;
 
-const Price = styled.p<{ navindex: number }>`
-  font-size: ${({ navindex }) => (navindex === 3 ? "0.875rem" : "1rem")};
-  font-weight: 500;
-  line-height: 1.5rem;
-  padding-top: ${({ navindex }) => (navindex === 3 ? "1rem" : "0rem")};
-`;
-
-const Tag = styled.button`
-  width: 3.25rem;
-  height: 1.25rem;
-  font-size: 0.625rem;
-`;
+// const Tag = styled.button`
+//   width: 3.25rem;
+//   height: 1.25rem;
+//   font-size: 0.625rem;
+// `;
 
 const DetailModelOptionContainer = styled.div`
   display: flex;
@@ -188,9 +201,7 @@ const DetailModelOptionContainer = styled.div`
 
 const Name = styled.p`
   color: ${BLACK};
-  font-size: 1rem;
-  font-weight: 700;
-  line-height: 1.5rem;
+  ${(props) => props.theme.fonts.titleSmall};
 `;
 
 const Ratio = styled.p`
@@ -202,17 +213,14 @@ const Ratio = styled.p`
 
 const Detail = styled.p`
   color: ${BLACK};
-  font-size: 0.625rem;
-  font-weight: 400;
-  line-height: 150%;
-  margin-top: 1rem;
+  ${(props) => props.theme.fonts.subContent};
 `;
 
 const ButtonContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
 `;
 
 export default OptionBox;
