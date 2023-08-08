@@ -7,6 +7,8 @@
 
 import UIKit
 
+import MVIFoundation
+
 final class OnboardingViewController: UIViewController {
 
     private var onboardingView: OnboardingView {
