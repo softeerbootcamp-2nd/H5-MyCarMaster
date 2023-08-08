@@ -30,7 +30,7 @@ class GetExteriorColorsUseCaseTest {
 	private ExteriorColorPort exteriorColorPort;
 
 	@Test
-	@DisplayName("모델 목록을 조회합니다")
+	@DisplayName("외장 색상 목록을 조회합니다")
 	void execute() {
 		// given
 		ExteriorColor exteriorColor = ExteriorColor.builder()
