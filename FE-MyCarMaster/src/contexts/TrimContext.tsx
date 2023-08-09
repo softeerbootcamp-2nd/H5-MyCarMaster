@@ -1,4 +1,9 @@
 import { useReducer, createContext, useContext } from "react";
+import Exclusive from "../assets/images/Exclusive.png";
+import Leblanc from "../assets/images/LeBlanc.png";
+import Prestige from "../assets/images/Prestige.png";
+import Calligraphy from "../assets/images/Calligraphy.png";
+// 백엔드 API 나오면 실제 imgUrl로 대체
 
 type Trims = {
   id: number;
@@ -31,7 +36,7 @@ const initialTrimState: TrimState = {
       description: "실용적이고 기본적인 기능을 갖춘 베이직 트림",
       price: 40440000,
       ratio: 22,
-      imgUrl: "",
+      imgUrl: Exclusive,
     },
     {
       id: 1,
@@ -39,7 +44,7 @@ const initialTrimState: TrimState = {
       description: "실용적이고 기본적인 기능을 갖춘 베이직 트림",
       price: 43460000,
       ratio: 0,
-      imgUrl: "",
+      imgUrl: Leblanc,
     },
     {
       id: 2,
@@ -47,7 +52,7 @@ const initialTrimState: TrimState = {
       description: "실용적이고 기본적인 기능을 갖춘 베이직 트림",
       price: 47720000,
       ratio: 22,
-      imgUrl: "",
+      imgUrl: Prestige,
     },
     {
       id: 3,
@@ -55,7 +60,7 @@ const initialTrimState: TrimState = {
       description: "실용적이고 기본적인 기능을 갖춘 베이직 트림",
       price: 52540000,
       ratio: 22,
-      imgUrl: "",
+      imgUrl: Calligraphy,
     },
   ],
 };
