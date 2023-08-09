@@ -1,19 +1,21 @@
 package softeer.be_my_car_master.api.body_type.dto.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import softeer.be_my_car_master.domain.body_type.BodyType;
 
 @Getter
 @Setter
 @Builder
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class BodyTypeDto {
 
 	@Schema(description = "바디타입 식별자", example = "1")
-	private Integer id;
+	private Long id;
 
 	@Schema(description = "바디타입명", example = "7인승")
 	private String name;
@@ -29,4 +31,15 @@ public class BodyTypeDto {
 
 	@Schema(description = "바디타입 이미지", example = "s3 url")
 	private String imgUrl;
+
+	public static BodyTypeDto from(BodyType bodyType) {
+		return BodyTypeDto.builder()
+			.id(bodyType.getId())
+			.name(bodyType.getName())
+			.description(bodyType.getDescription())
+			.price(bodyType.getPrice())
+			.ratio(bodyType.getRatio())
+			.imgUrl(bodyType.getImgUrl())
+			.build();
+	}
 }
