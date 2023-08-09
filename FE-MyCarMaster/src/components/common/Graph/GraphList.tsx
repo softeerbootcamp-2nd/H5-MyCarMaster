@@ -1,16 +1,29 @@
 import React from "react";
 import { styled } from "styled-components";
 import GraphItem from "./GraphItem";
+import { useDetailState } from "../../../contexts/DetailContext";
 
 function GraphList() {
+  const { engineId, engineList } = useDetailState();
   return (
     <Container>
-      <GraphItem koName="최고출력" enName="PS" $value={{ power: 295 }} />
-      <GraphItem koName="최대토크" enName="kgf-m" $value={{ torque: 36.2 }} />
+      <GraphItem
+        koName="최고출력"
+        enName="PS"
+        $value={{ power: engineList[engineId].power }}
+      />
+      <GraphItem
+        koName="최대토크"
+        enName="kgf-m"
+        $value={{ torque: engineList[engineId].torque }}
+      />
       <GraphItem
         koName="복합연비"
         enName="km/L"
-        $value={{ fuelMin: 8.0, fuelMax: 9.2 }}
+        $value={{
+          fuelMin: engineList[engineId].fuelMin,
+          fuelMax: engineList[engineId].fuelMax,
+        }}
       />
     </Container>
   );

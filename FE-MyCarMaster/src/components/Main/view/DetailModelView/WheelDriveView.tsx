@@ -1,8 +1,11 @@
 import { styled } from "styled-components";
-import twoWD from "../../../../assets/images/2WD.png";
+import { useDetailState } from "../../../../contexts/DetailContext";
 
 function WheelDriveView() {
-  return <WheelDriveImg src={twoWD} />;
+  const { wheelDriveId, wheelDriveList } = useDetailState();
+  console.log(wheelDriveId, wheelDriveList);
+
+  return <WheelDriveImg src={wheelDriveList[wheelDriveId].imgUrl} />;
 }
 
 const WheelDriveImg = styled.img`

@@ -1,8 +1,9 @@
 import { styled } from "styled-components";
-import BodyType_7 from "../../../../assets/images/BodyType_7.png";
+import { useDetailState } from "../../../../contexts/DetailContext";
 
 function BodyTypeView() {
-  return <BodyTypeImg src={BodyType_7} />;
+  const { bodyTypeId, bodyTypeList } = useDetailState();
+  return <BodyTypeImg src={bodyTypeList[bodyTypeId].imgUrl} />;
 }
 
 const BodyTypeImg = styled.img`
