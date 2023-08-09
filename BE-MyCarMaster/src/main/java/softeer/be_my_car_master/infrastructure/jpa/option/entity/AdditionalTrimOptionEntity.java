@@ -31,7 +31,7 @@ public class AdditionalTrimOptionEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(name = "ratio", nullable = false)
+	@Column(name = "ratio")
 	private Integer ratio;
 
 	@Column(name = "price", nullable = false)

@@ -30,7 +30,7 @@ public class TrimEntity {
 	@Column(name = "description", nullable = false)
 	private String description;
 
-	@Column(name = "ratio", nullable = false)
+	@Column(name = "ratio")
 	private Integer ratio;
 
 	@Column(name = "price", nullable = false)
