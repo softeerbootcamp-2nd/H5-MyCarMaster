@@ -22,11 +22,11 @@ public class BodyTypeController {
 	private final GetBodyTypesUseCase getBodyTypesUseCase;
 
 	@GetMapping("/body-types")
-	@Operation(summary = "트림에 따른 바디타입 목록을 반환합니다")
+	@Operation(summary = "모델에 따른 바디타입 목록을 반환합니다")
 	public Response<GetBodyTypesResponse> getBodyTypes(@RequestBody @Valid GetBodyTypesRequest getBodytypesRequest) {
 
-		Integer trimId = getBodytypesRequest.getTrimId();
-		GetBodyTypesResponse getBodyTypesResponse = getBodyTypesUseCase.execute(trimId);
+		Long modelId = getBodytypesRequest.getModelId();
+		GetBodyTypesResponse getBodyTypesResponse = getBodyTypesUseCase.execute(modelId);
 		return Response.createSuccessResponse(getBodyTypesResponse);
 	}
 }

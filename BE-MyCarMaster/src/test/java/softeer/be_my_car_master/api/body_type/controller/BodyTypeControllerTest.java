@@ -42,11 +42,11 @@ class BodyTypeControllerTest {
 	@DisplayName("바디 타입 목록을 조회합니다")
 	void getBodyTypes() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetBodyTypesRequest(1));
+		String requestBody = getRequestBody(new GetBodyTypesRequest(1L));
 
 		GetBodyTypesResponse getBodyTypesResponse = new GetBodyTypesResponse();
 		BodyTypeDto bodyTypeDto = BodyTypeDto.builder()
-			.id(1)
+			.id(1L)
 			.name("7인승")
 			.description("7인승 Description")
 			.price(0)
@@ -75,10 +75,10 @@ class BodyTypeControllerTest {
 	}
 
 	@Test
-	@DisplayName("trimId는 1 이상이어야 합니다")
+	@DisplayName("modelId는 1 이상이어야 합니다")
 	void minimumTrimId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetBodyTypesRequest(0));
+		String requestBody = getRequestBody(new GetBodyTypesRequest(0L));
 
 		String responseBody = getClientErrorResponseBody();
 
@@ -97,7 +97,7 @@ class BodyTypeControllerTest {
 	}
 
 	@Test
-	@DisplayName("trimId는 null값 일 수 없습니다")
+	@DisplayName("modelId는 null값 일 수 없습니다")
 	void nonNullTrimId() throws Exception {
 		//given
 		String requestBody = getRequestBody(new GetBodyTypesRequest(null));
