@@ -21,7 +21,7 @@ import softeer.be_my_car_master.infrastructure.jpa.body_type.entity.BodyTypeEnti
 public class UnselectableBodyTypeOptionEntity {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.LAZY)

@@ -15,7 +15,7 @@ import softeer.be_my_car_master.infrastructure.jpa.trim.entity.TrimEntity;
 public class TrimEngineEntity {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
