@@ -32,10 +32,10 @@ type CarPaintAction = {
     | "SET_EXTERIOR_LIST"
     | "SET_INTERIOR_LIST";
   payload: {
-    exteriorId: number;
-    interiorId: number;
-    exteriorList: exteriorColors[];
-    interiorList: interiorColors[];
+    exteriorId?: number;
+    interiorId?: number;
+    exteriorList?: exteriorColors[];
+    interiorList?: interiorColors[];
   };
 };
 
@@ -46,7 +46,7 @@ const initialCarPaintState: CarPaintState = {
     {
       id: 0,
       name: "Select Exterior1",
-      price: 0,
+      price: 10,
       ratio: 0,
       colorImgUrl: "",
       coloredImgUrl: [""],
@@ -54,7 +54,7 @@ const initialCarPaintState: CarPaintState = {
     {
       id: 1,
       name: "Select Exterior2",
-      price: 0,
+      price: 20,
       ratio: 0,
       colorImgUrl: "",
       coloredImgUrl: [""],
@@ -62,7 +62,7 @@ const initialCarPaintState: CarPaintState = {
     {
       id: 2,
       name: "Select Exterior3",
-      price: 0,
+      price: 30,
       ratio: 0,
       colorImgUrl: "",
       coloredImgUrl: [""],
@@ -70,7 +70,7 @@ const initialCarPaintState: CarPaintState = {
     {
       id: 3,
       name: "Select Exterior4",
-      price: 0,
+      price: 40,
       ratio: 0,
       colorImgUrl: "",
       coloredImgUrl: [""],
@@ -104,7 +104,7 @@ const initialCarPaintState: CarPaintState = {
     {
       id: 1,
       name: "Select Interior2",
-      price: 0,
+      price: 10,
       ratio: 0,
       colorImgUrl: "",
       coloredImgUrl: [""],
@@ -112,7 +112,7 @@ const initialCarPaintState: CarPaintState = {
     {
       id: 2,
       name: "Select Interior3",
-      price: 0,
+      price: 20,
       ratio: 0,
       colorImgUrl: "",
       coloredImgUrl: [""],
@@ -130,22 +130,22 @@ const detailReducer = (
     case "SELECT_EXTERIOR":
       return {
         ...state,
-        exteriorId: action.payload.exteriorId,
+        exteriorId: action.payload.exteriorId as number,
       };
     case "SELECT_INTERIOR":
       return {
         ...state,
-        interiorId: action.payload.interiorId,
+        interiorId: action.payload.interiorId as number,
       };
     case "SET_EXTERIOR_LIST":
       return {
         ...state,
-        exteriorList: action.payload.exteriorList,
+        exteriorList: action.payload.exteriorList as exteriorColors[],
       };
     case "SET_INTERIOR_LIST":
       return {
         ...state,
-        interiorList: action.payload.interiorList,
+        interiorList: action.payload.interiorList as interiorColors[],
       };
     default:
       return state;

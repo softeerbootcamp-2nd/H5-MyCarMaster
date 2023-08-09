@@ -28,8 +28,10 @@ export type OptionState = {
 };
 
 export type OptionAction = {
-  type: "SELECT_OPTION" | "SET_OPTION_LIST" | "SET_OPTION_CATEGORY_INDEX";
+  type: "SET_CHOICE_OPTION" | "SET_OPTION_LIST" | "SET_OPTION_CATEGORY_INDEX";
   payload: {
+    where?: "selectedOption" | "consideredOption";
+    id?: number;
     selectedOption?: number[];
     consideredOption?: number[];
     optionList?: OptionType[];

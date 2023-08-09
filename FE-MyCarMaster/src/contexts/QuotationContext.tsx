@@ -7,7 +7,7 @@ import {
 } from "../types/quotation.types";
 
 type QuotationState = {
-  navigationId: number;
+  navigationId: undefined | number;
   isFirst: boolean[];
   trimQuotation: TrimQuotationType;
   detailQuotation: DetailQuotationType;
@@ -16,36 +16,43 @@ type QuotationState = {
 };
 
 type QuotationAction = {
-  type: "NAVIGATE";
-  payload: { navigationId: number; isFirst?: boolean[] };
+  type:
+    | "NAVIGATE"
+    | "SET_TRIM_QUOTATION"
+    | "SET_DETAIL_QUOTATION"
+    | "SET_SELECT_QUOTATION"
+    | "SET_CONSIDER_QUOTATION"
+    | "SET_CAR_PAINT_QUOTATION";
+  payload: {
+    navigationId?: number;
+    isFirst?: boolean[];
+    type?: string;
+    name?: string | undefined;
+    price?: number | undefined;
+  };
 };
 
 const initialQuotationState: QuotationState = {
   navigationId: 0,
   isFirst: [false, true, true, true, true, true, true],
   trimQuotation: {
-    trimQuotation: { name: "Le Blanc (르블랑)", price: 10000000 },
+    trimQuotation: {
+      name: "",
+      price: 0,
+    },
   },
   detailQuotation: {
-    engineQuotation: { name: "가솔린3.8", price: 20000 },
-    wheelDriveQuotation: { name: "4WD", price: 30000 },
-    bodyTypeQuotation: { name: "7인승", price: 40500 },
+    engineQuotation: { name: "", price: 0 },
+    wheelDriveQuotation: { name: "", price: 0 },
+    bodyTypeQuotation: { name: "", price: 0 },
   },
   carPaintQuotation: {
-    exteriorColorQuotation: { name: "그라파이드 그레이 메탈릭", price: 50700 },
-    interiorColorQuotation: { name: "퀼팅천연(블랙)", price: 60400 },
+    exteriorColorQuotation: { name: "", price: 0 },
+    interiorColorQuotation: { name: "", price: 0 },
   },
   optionQuotation: {
-    selectedQuotation: [
-      { name: "파노라마 선루프", price: 70200 },
-      { name: "헤드업 디스플레이", price: 84000 },
-      { name: "하이패스", price: 90110 },
-    ],
-    consideredQuotation: [
-      { name: "파노라마 선루프", price: 70 },
-      { name: "헤드업 디스플레이", price: 80 },
-      { name: "하이패스", price: 90 },
-    ],
+    selectedQuotation: [],
+    consideredQuotation: [],
   },
 };
 
@@ -61,13 +68,93 @@ const quotationReducer = (
         ...state,
         navigationId:
           action.payload.navigationId === -1
-            ? 0
+            ? (0 as number)
             : action.payload.navigationId === 8
-            ? 7
+            ? (7 as number)
             : action.payload.navigationId,
         isFirst: action.payload.isFirst
-          ? action.payload.isFirst
-          : state.isFirst,
+          ? (action.payload.isFirst as boolean[])
+          : (state.isFirst as boolean[]),
+      };
+    case "SET_TRIM_QUOTATION":
+      return {
+        ...state,
+        trimQuotation: {
+          trimQuotation: {
+            name: action.payload.name as string,
+            price: action.payload.price as number,
+          },
+        },
+      };
+    case "SET_DETAIL_QUOTATION":
+      return {
+        ...state,
+        detailQuotation: {
+          ...state.detailQuotation,
+          [action.payload.type as string]: {
+            name: action.payload.name as string,
+            price: action.payload.price as number,
+          },
+        },
+      };
+    case "SET_CAR_PAINT_QUOTATION":
+      return {
+        ...state,
+        carPaintQuotation: {
+          ...state.carPaintQuotation,
+          [action.payload.type as string]: {
+            name: action.payload.name as string,
+            price: action.payload.price as number,
+          },
+        },
+      };
+    case "SET_SELECT_QUOTATION": {
+      const { name, price } = action.payload;
+      const isOptionSelected = state.optionQuotation.selectedQuotation.some(
+        (option) => option.name === (name as string)
+      );
+
+      // 이미 선택된 옵션이 있는 경우 해당 옵션을 제거
+      if (isOptionSelected) {
+        return {
+          ...state,
+          optionQuotation: {
+            ...state.optionQuotation,
+            selectedQuotation: state.optionQuotation.selectedQuotation.filter(
+              (option) => option.name !== (name as string)
+            ),
+          },
+        };
+      } else {
+        // 선택된 옵션이 없는 경우 해당 옵션을 추가
+        return {
+          ...state,
+          optionQuotation: {
+            ...state.optionQuotation,
+            selectedQuotation: [
+              ...state.optionQuotation.selectedQuotation,
+              {
+                name: name as string,
+                price: price as number,
+              },
+            ],
+          },
+        };
+      }
+    }
+    case "SET_CONSIDER_QUOTATION":
+      return {
+        ...state,
+        optionQuotation: {
+          ...state.optionQuotation,
+          consideredQuotation: [
+            ...state.optionQuotation.consideredQuotation,
+            {
+              name: action.payload.name as string,
+              price: action.payload.price as number,
+            },
+          ],
+        },
       };
     default:
       return state;

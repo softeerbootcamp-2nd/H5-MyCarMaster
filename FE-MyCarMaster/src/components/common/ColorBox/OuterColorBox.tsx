@@ -9,7 +9,7 @@ type ContainerProp = {
   $active: boolean;
   $colorImgUrl?: string;
   $coloredImgUrl?: string[];
-  onClick?: () => void;
+  handleClick?: () => void;
 };
 
 type ActiveProp = {
@@ -23,7 +23,7 @@ type TextProp = {
 
 function OuterColorBox(props: ContainerProp) {
   return (
-    <Container $active={props.$active}>
+    <Container $active={props.$active} onClick={props.handleClick}>
       <TextContainer>
         <Text color="#fff" size={0.75}>
           {props.$name}

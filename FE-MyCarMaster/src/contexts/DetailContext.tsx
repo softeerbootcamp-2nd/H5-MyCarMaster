@@ -43,12 +43,12 @@ type DetailState = {
 type DetailAction = {
   type: "SELECT_DETAIL" | "SET_DETAIL_LIST";
   payload: {
-    engineId: number;
-    wheelDriveId: number;
-    bodyTypeId: number;
-    engineList: engines[];
-    wheelDriveList: wheelDrives[];
-    bodyTypeList: bodyTypes[];
+    engineId?: number;
+    wheelDriveId?: number;
+    bodyTypeId?: number;
+    engineList?: engines[];
+    wheelDriveList?: wheelDrives[];
+    bodyTypeList?: bodyTypes[];
   };
 };
 
@@ -136,17 +136,17 @@ const detailReducer = (
     case "SELECT_DETAIL":
       return {
         ...state,
-        engineId: action.payload.engineId,
-        wheelDriveId: action.payload.wheelDriveId,
-        bodyTypeId: action.payload.bodyTypeId,
+        engineId: action.payload.engineId as number,
+        wheelDriveId: action.payload.wheelDriveId as number,
+        bodyTypeId: action.payload.bodyTypeId as number,
       };
 
     case "SET_DETAIL_LIST":
       return {
         ...state,
-        engineList: action.payload.engineList,
-        wheelDriveList: action.payload.wheelDriveList,
-        bodyTypeList: action.payload.bodyTypeList,
+        engineList: action.payload.engineList as engines[],
+        wheelDriveList: action.payload.wheelDriveList as wheelDrives[],
+        bodyTypeList: action.payload.bodyTypeList as bodyTypes[],
       };
     default:
       return state;

@@ -2,20 +2,18 @@ import { useReducer, createContext, useContext } from "react";
 import { OptionAction, OptionState, OptionType } from "../types/options.types";
 
 const initialOptionState: OptionState = {
-  selectedOption: [0],
-  consideredOption: [0],
+  selectedOption: [],
+  consideredOption: [],
   optionCategoryId: 0,
   optionList: [
     {
-      id: 1,
-      category: "SAFE",
-      name: "주차보조 시스템||",
-      price: 999999,
-      ratio: 22,
-      imgUrl: "S3 url",
-      description:
-        "주차가 어려우신가요? 주차보조 시스템2와 함께 안전한 주차해보세요",
-      // tag: "N Performance",
+      id: 0,
+      name: "Select Option",
+      description: "Select Option",
+      price: 0,
+      ratio: 10,
+      imgUrl: "",
+      category: "",
       tag: null,
       subOptions: [
         {
@@ -49,9 +47,53 @@ const initialOptionState: OptionState = {
     },
     {
       id: 3,
-      category: "CAR_PROTECTION",
+      category: "SAFE",
       name: "차량 보호 필름",
       price: 50000,
+      ratio: 30,
+      imgUrl: "S3 Url",
+      description: "흠집으로 부터 차량을 보호하고 싶다면?....",
+      tag: "H Genuine Accessories",
+      subOptions: null,
+    },
+    {
+      id: 4,
+      category: "CONVENIENCE",
+      name: "2열 통풍 시트",
+      price: 400000,
+      ratio: 22,
+      imgUrl: "S3 Url",
+      description: "시동이 걸린 상태에서 해당 좌석....",
+      tag: null,
+      subOptions: null,
+    },
+    {
+      id: 5,
+      category: "CONVENIENCE",
+      name: "적외선 무릎 워머",
+      price: 800000,
+      ratio: 25,
+      imgUrl: "S3 Url",
+      description: "무릎까지 따뜻한 드라이빙을 원한다면,...",
+      tag: "H Genuine Accessories",
+      subOptions: null,
+    },
+    {
+      id: 6,
+      category: "CONVENIENCE",
+      name: "빌트인 공기 청정기",
+      price: 800000,
+      ratio: 22,
+      imgUrl: "S3 Url",
+      description: "더 깨끗한 차량 내 공기를 위해...",
+      tag: "H Genuine Accessories",
+      subOptions: null,
+    },
+    {
+      id: 3,
+      category: "CAR_PROTECTION",
+      name: "Select Option4",
+      price: 4123210,
       ratio: 30,
       imgUrl: "S3 Url",
       description: "흠집으로 부터 차량을 보호하고 싶다면?....",
@@ -101,12 +143,21 @@ const optionReducer = (
   action: OptionAction
 ): OptionState => {
   switch (action.type) {
-    case "SELECT_OPTION":
-      return {
-        ...state,
-        selectedOption: action.payload.selectedOption as number[],
-        consideredOption: action.payload.consideredOption as number[],
-      };
+    case "SET_CHOICE_OPTION": {
+      const { where, id } = action.payload;
+      const existingIds = state[where];
+      if (existingIds.includes(id)) {
+        return {
+          ...state,
+          [where]: existingIds.filter((existingId) => existingId !== id),
+        };
+      } else {
+        return {
+          ...state,
+          [where]: [...existingIds, id],
+        };
+      }
+    }
     case "SET_OPTION_LIST":
       return {
         ...state,
