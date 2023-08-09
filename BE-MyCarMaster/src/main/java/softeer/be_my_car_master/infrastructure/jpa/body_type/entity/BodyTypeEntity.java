@@ -1,4 +1,4 @@
-package softeer.be_my_car_master.infrastructure.jpa.body_type;
+package softeer.be_my_car_master.infrastructure.jpa.body_type.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
