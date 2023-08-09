@@ -22,11 +22,18 @@ internal typealias Font = FontConvertible.Font
 internal enum RawFont {
   internal enum HyundaiSansHeadKR {
     internal static let bold = FontConvertible(name: "HyundaiSansHeadKRBold", family: "Hyundai Sans Head KR", path: "HyundaiSansHeadKRBold.ttf")
+    internal static let light = FontConvertible(name: "HyundaiSansHeadKRLight", family: "Hyundai Sans Head KR", path: "HyundaiSansHeadKRLight.ttf")
     internal static let medium = FontConvertible(name: "HyundaiSansHeadKRMedium", family: "Hyundai Sans Head KR", path: "HyundaiSansHeadKRMedium.ttf")
     internal static let regular = FontConvertible(name: "HyundaiSansHeadKRRegular", family: "Hyundai Sans Head KR", path: "HyundaiSansHeadKRRegular.ttf")
+    internal static let all: [FontConvertible] = [bold, light, medium, regular]
+  }
+  internal enum HyundaiSansTextKR {
+    internal static let bold = FontConvertible(name: "HyundaiSansTextKRBold", family: "Hyundai Sans Text KR", path: "HyundaiSansTextKRBold.ttf")
+    internal static let medium = FontConvertible(name: "HyundaiSansTextKRMedium", family: "Hyundai Sans Text KR", path: "HyundaiSansTextKRMedium.ttf")
+    internal static let regular = FontConvertible(name: "HyundaiSansTextKRRegular", family: "Hyundai Sans Text KR", path: "HyundaiSansTextKRRegular.ttf")
     internal static let all: [FontConvertible] = [bold, medium, regular]
   }
-  internal static let allCustomFonts: [FontConvertible] = [HyundaiSansHeadKR.all].flatMap { $0 }
+  internal static let allCustomFonts: [FontConvertible] = [HyundaiSansHeadKR.all, HyundaiSansTextKR.all].flatMap { $0 }
   internal static func registerAllCustomFonts() {
     allCustomFonts.forEach { $0.register() }
   }
