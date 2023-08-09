@@ -14,7 +14,7 @@ import softeer.be_my_car_master.domain.color_exterior.ExteriorColor;
 import softeer.be_my_car_master.domain.color_interior.InteriorColor;
 
 @Entity
-@Table(name = "exterior_color")
+@Table(name = "interior_color")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class InteriorColorEntity {
