@@ -59,9 +59,9 @@ function Footer() {
               <Button
                 $x={9.625}
                 $y={2.25}
-                $backgroundcolor={`${theme.colors.White}`}
-                $textcolor={`${theme.colors.NavyBlue5}`}
-                $bordercolor={`${theme.colors.NavyBlue5}`}
+                $backgroundcolor={`${theme.colors.WHITE}`}
+                $textcolor={`${theme.colors.NAVYBLUE5}`}
+                $bordercolor={`${theme.colors.NAVYBLUE5}`}
                 text={"이전"}
                 handleClick={prevButtonHandler}
               />
@@ -70,9 +70,9 @@ function Footer() {
             <Button
               $x={9.625}
               $y={2.25}
-              $backgroundcolor={`${theme.colors.NavyBlue5}`}
-              $textcolor={`${theme.colors.White}`}
-              $bordercolor={`${theme.colors.NavyBlue5}`}
+              $backgroundcolor={`${theme.colors.NAVYBLUE5}`}
+              $textcolor={`${theme.colors.WHITE}`}
+              $bordercolor={`${theme.colors.NAVYBLUE5}`}
               text={navigationId === 7 ? "견적서 완성" : "다음"}
               handleClick={nextButtonHandler}
             />

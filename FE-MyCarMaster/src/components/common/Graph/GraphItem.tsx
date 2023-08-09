@@ -61,7 +61,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  border-bottom: 1px solid ${theme.colors.Grey2};
+  border-bottom: 1px solid ${theme.colors.GREY2};
 `;
 
 const NameContainer = styled.div`
@@ -81,11 +81,11 @@ const KoreanName = styled.p`
 const Bar = styled.p<{ $value: ValueProps }>`
   color: ${(props) =>
     props.$value.power !== undefined
-      ? theme.colors.NavyBlue5
+      ? theme.colors.NAVYBLUE5
       : props.$value.torque !== undefined
-      ? theme.colors.Gold5
+      ? theme.colors.GOLD5
       : props.$value.fuelMin !== undefined && props.$value.fuelMax !== undefined
-      ? theme.colors.CoolGrey2
+      ? theme.colors.COOLGREY2
       : "black"}; // 기본 색상
 `;
 
@@ -103,11 +103,11 @@ const ValueContainer = styled.div<{ $value: ValueProps }>`
   line-height: 2.75rem; /* 122.222% */
   color: ${(props) =>
     props.$value.power !== undefined
-      ? theme.colors.NavyBlue5
+      ? theme.colors.NAVYBLUE5
       : props.$value.torque !== undefined
-      ? theme.colors.Gold5
+      ? theme.colors.GOLD5
       : props.$value.fuelMin !== undefined && props.$value.fuelMax !== undefined
-      ? theme.colors.CoolGrey2
+      ? theme.colors.COOLGREY2
       : "black"};
 `;
 
