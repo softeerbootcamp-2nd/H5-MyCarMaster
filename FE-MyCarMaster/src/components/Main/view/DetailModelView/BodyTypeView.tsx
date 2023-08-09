@@ -3,6 +3,7 @@ import { useDetailState } from "../../../../contexts/DetailContext";
 
 function BodyTypeView() {
   const { bodyTypeId, bodyTypeList } = useDetailState();
+
   return <BodyTypeImg src={bodyTypeList[bodyTypeId].imgUrl} />;
 }
 

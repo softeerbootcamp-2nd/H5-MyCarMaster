@@ -3,7 +3,6 @@ import { useDetailState } from "../../../../contexts/DetailContext";
 
 function WheelDriveView() {
   const { wheelDriveId, wheelDriveList } = useDetailState();
-  console.log(wheelDriveId, wheelDriveList);
 
   return <WheelDriveImg src={wheelDriveList[wheelDriveId].imgUrl} />;
 }
