@@ -7,12 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B524A5892A8336B40095F0E2 /* TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B524A5882A8336B40095F0E2 /* TextStyle.swift */; };
+		B524A5932A8361960095F0E2 /* String+TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B524A5922A8361960095F0E2 /* String+TextStyle.swift */; };
+		B524A5952A8369450095F0E2 /* UILabel+TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B524A5942A8369450095F0E2 /* UILabel+TextStyle.swift */; };
+		B524A5982A8369900095F0E2 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B524A5972A8369900095F0E2 /* UIButton+Extension.swift */; };
+		B524A5992A836B530095F0E2 /* HyundaiSansTextKRRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B524A5902A83587F0095F0E2 /* HyundaiSansTextKRRegular.ttf */; };
+		B524A59A2A836B530095F0E2 /* HyundaiSansTextKRMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B524A5912A83587F0095F0E2 /* HyundaiSansTextKRMedium.ttf */; };
+		B524A59B2A836B530095F0E2 /* HyundaiSansHeadKRRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B524A58F2A83587F0095F0E2 /* HyundaiSansHeadKRRegular.ttf */; };
+		B524A59C2A836B530095F0E2 /* HyundaiSansHeadKRBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B524A58D2A83587F0095F0E2 /* HyundaiSansHeadKRBold.ttf */; };
+		B524A59D2A836B530095F0E2 /* HyundaiSansHeadKRLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B524A58C2A83587F0095F0E2 /* HyundaiSansHeadKRLight.ttf */; };
+		B524A59E2A836B530095F0E2 /* HyundaiSansHeadKRMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B524A58E2A83587F0095F0E2 /* HyundaiSansHeadKRMedium.ttf */; };
+		B524A59F2A836B530095F0E2 /* HyundaiSansTextKRBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B524A58B2A83587F0095F0E2 /* HyundaiSansTextKRBold.ttf */; };
 		B529551E2A7B782900BEDDE7 /* MCMResource.h in Headers */ = {isa = PBXBuildFile; fileRef = B529551D2A7B782900BEDDE7 /* MCMResource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B52955382A7B797E00BEDDE7 /* launchScreen.json in Resources */ = {isa = PBXBuildFile; fileRef = B52955372A7B797E00BEDDE7 /* launchScreen.json */; };
 		B529553A2A7B79D700BEDDE7 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52955392A7B79D700BEDDE7 /* Resource.swift */; };
-		B529553F2A7B7A7100BEDDE7 /* HyundaiSansHeadKRRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B529553C2A7B7A7000BEDDE7 /* HyundaiSansHeadKRRegular.ttf */; };
-		B52955402A7B7A7100BEDDE7 /* HyundaiSansHeadKRMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B529553D2A7B7A7100BEDDE7 /* HyundaiSansHeadKRMedium.ttf */; };
-		B52955412A7B7A7100BEDDE7 /* HyundaiSansHeadKRBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B529553E2A7B7A7100BEDDE7 /* HyundaiSansHeadKRBold.ttf */; };
 		B52955432A7B7B4C00BEDDE7 /* Font+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52955422A7B7B4C00BEDDE7 /* Font+Generated.swift */; };
 		B52955482A7B7D7900BEDDE7 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B52955472A7B7D7900BEDDE7 /* Color.xcassets */; };
 		B529554A2A7B7DC400BEDDE7 /* Color+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52955492A7B7DC400BEDDE7 /* Color+Generated.swift */; };
@@ -20,13 +28,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B524A5882A8336B40095F0E2 /* TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyle.swift; sourceTree = "<group>"; };
+		B524A58A2A833F720095F0E2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B524A58B2A83587F0095F0E2 /* HyundaiSansTextKRBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HyundaiSansTextKRBold.ttf; sourceTree = "<group>"; };
+		B524A58C2A83587F0095F0E2 /* HyundaiSansHeadKRLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HyundaiSansHeadKRLight.ttf; sourceTree = "<group>"; };
+		B524A58D2A83587F0095F0E2 /* HyundaiSansHeadKRBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HyundaiSansHeadKRBold.ttf; sourceTree = "<group>"; };
+		B524A58E2A83587F0095F0E2 /* HyundaiSansHeadKRMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HyundaiSansHeadKRMedium.ttf; sourceTree = "<group>"; };
+		B524A58F2A83587F0095F0E2 /* HyundaiSansHeadKRRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HyundaiSansHeadKRRegular.ttf; sourceTree = "<group>"; };
+		B524A5902A83587F0095F0E2 /* HyundaiSansTextKRRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HyundaiSansTextKRRegular.ttf; sourceTree = "<group>"; };
+		B524A5912A83587F0095F0E2 /* HyundaiSansTextKRMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HyundaiSansTextKRMedium.ttf; sourceTree = "<group>"; };
+		B524A5922A8361960095F0E2 /* String+TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+TextStyle.swift"; sourceTree = "<group>"; };
+		B524A5942A8369450095F0E2 /* UILabel+TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+TextStyle.swift"; sourceTree = "<group>"; };
+		B524A5972A8369900095F0E2 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		B529551A2A7B782900BEDDE7 /* MCMResource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MCMResource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B529551D2A7B782900BEDDE7 /* MCMResource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCMResource.h; sourceTree = "<group>"; };
 		B52955372A7B797E00BEDDE7 /* launchScreen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = launchScreen.json; sourceTree = "<group>"; };
 		B52955392A7B79D700BEDDE7 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
-		B529553C2A7B7A7000BEDDE7 /* HyundaiSansHeadKRRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HyundaiSansHeadKRRegular.ttf; sourceTree = "<group>"; };
-		B529553D2A7B7A7100BEDDE7 /* HyundaiSansHeadKRMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HyundaiSansHeadKRMedium.ttf; sourceTree = "<group>"; };
-		B529553E2A7B7A7100BEDDE7 /* HyundaiSansHeadKRBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HyundaiSansHeadKRBold.ttf; sourceTree = "<group>"; };
 		B52955422A7B7B4C00BEDDE7 /* Font+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Font+Generated.swift"; path = "../../../../../../../../문서 - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/MCMResource/MCMResource/Generated/Font+Generated.swift"; sourceTree = "<group>"; };
 		B52955472A7B7D7900BEDDE7 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		B52955492A7B7DC400BEDDE7 /* Color+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Color+Generated.swift"; path = "../../../../../../../../문서 - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/MCMResource/MCMResource/Generated/Color+Generated.swift"; sourceTree = "<group>"; };
@@ -44,9 +61,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B524A5962A8369560095F0E2 /* UIKit+Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B524A5942A8369450095F0E2 /* UILabel+TextStyle.swift */,
+				B524A5972A8369900095F0E2 /* UIButton+Extension.swift */,
+			);
+			path = "UIKit+Extension";
+			sourceTree = "<group>";
+		};
 		B52955102A7B782900BEDDE7 = {
 			isa = PBXGroup;
 			children = (
+				B524A58A2A833F720095F0E2 /* README.md */,
 				B529554F2A7B866400BEDDE7 /* swiftgen.yml */,
 				B529551C2A7B782900BEDDE7 /* MCMResource */,
 				B529551B2A7B782900BEDDE7 /* Products */,
@@ -67,7 +94,10 @@
 				B529551D2A7B782900BEDDE7 /* MCMResource.h */,
 				B52955342A7B795900BEDDE7 /* Raw */,
 				B52955352A7B795F00BEDDE7 /* Generated */,
+				B524A5962A8369560095F0E2 /* UIKit+Extension */,
 				B52955392A7B79D700BEDDE7 /* Resource.swift */,
+				B524A5882A8336B40095F0E2 /* TextStyle.swift */,
+				B524A5922A8361960095F0E2 /* String+TextStyle.swift */,
 			);
 			path = MCMResource;
 			sourceTree = "<group>";
@@ -102,9 +132,13 @@
 		B529553B2A7B7A6300BEDDE7 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				B529553E2A7B7A7100BEDDE7 /* HyundaiSansHeadKRBold.ttf */,
-				B529553D2A7B7A7100BEDDE7 /* HyundaiSansHeadKRMedium.ttf */,
-				B529553C2A7B7A7000BEDDE7 /* HyundaiSansHeadKRRegular.ttf */,
+				B524A58D2A83587F0095F0E2 /* HyundaiSansHeadKRBold.ttf */,
+				B524A58E2A83587F0095F0E2 /* HyundaiSansHeadKRMedium.ttf */,
+				B524A58F2A83587F0095F0E2 /* HyundaiSansHeadKRRegular.ttf */,
+				B524A58C2A83587F0095F0E2 /* HyundaiSansHeadKRLight.ttf */,
+				B524A58B2A83587F0095F0E2 /* HyundaiSansTextKRBold.ttf */,
+				B524A5912A83587F0095F0E2 /* HyundaiSansTextKRMedium.ttf */,
+				B524A5902A83587F0095F0E2 /* HyundaiSansTextKRRegular.ttf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -182,10 +216,14 @@
 			files = (
 				B52955382A7B797E00BEDDE7 /* launchScreen.json in Resources */,
 				B52955502A7B866400BEDDE7 /* swiftgen.yml in Resources */,
-				B529553F2A7B7A7100BEDDE7 /* HyundaiSansHeadKRRegular.ttf in Resources */,
-				B52955402A7B7A7100BEDDE7 /* HyundaiSansHeadKRMedium.ttf in Resources */,
-				B52955412A7B7A7100BEDDE7 /* HyundaiSansHeadKRBold.ttf in Resources */,
 				B52955482A7B7D7900BEDDE7 /* Color.xcassets in Resources */,
+				B524A59A2A836B530095F0E2 /* HyundaiSansTextKRMedium.ttf in Resources */,
+				B524A59D2A836B530095F0E2 /* HyundaiSansHeadKRLight.ttf in Resources */,
+				B524A59F2A836B530095F0E2 /* HyundaiSansTextKRBold.ttf in Resources */,
+				B524A59B2A836B530095F0E2 /* HyundaiSansHeadKRRegular.ttf in Resources */,
+				B524A59E2A836B530095F0E2 /* HyundaiSansHeadKRMedium.ttf in Resources */,
+				B524A5992A836B530095F0E2 /* HyundaiSansTextKRRegular.ttf in Resources */,
+				B524A59C2A836B530095F0E2 /* HyundaiSansHeadKRBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,8 +256,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B52955432A7B7B4C00BEDDE7 /* Font+Generated.swift in Sources */,
+				B524A5952A8369450095F0E2 /* UILabel+TextStyle.swift in Sources */,
+				B524A5932A8361960095F0E2 /* String+TextStyle.swift in Sources */,
 				B529553A2A7B79D700BEDDE7 /* Resource.swift in Sources */,
 				B529554A2A7B7DC400BEDDE7 /* Color+Generated.swift in Sources */,
+				B524A5892A8336B40095F0E2 /* TextStyle.swift in Sources */,
+				B524A5982A8369900095F0E2 /* UIButton+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
