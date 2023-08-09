@@ -27,7 +27,7 @@ public class InteriorColorJpaAdaptor implements InteriorColorPort {
 	@Override
 	public List<Long> findUnselectableInteriorColorIdsByExteriorColorId(Long exteriorColorId) {
 		return unselectableExteriorInteriorJpaRepository
-			.findUnselectableInteriorColorIdByExteriorColorId(exteriorColorId);
+			.findUnselectableInteriorColorIdsByExteriorColorId(exteriorColorId);
 	}
 }
 
