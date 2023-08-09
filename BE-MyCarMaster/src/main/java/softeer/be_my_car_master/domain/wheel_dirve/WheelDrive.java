@@ -1,5 +1,6 @@
-package softeer.be_my_car_master.domain.engine;
+package softeer.be_my_car_master.domain.wheel_dirve;
 
+import java.util.List;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -11,16 +12,15 @@ import softeer.be_my_car_master.global.annotation.Domain;
 @Getter
 @Builder
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class Engine {
-
+public class WheelDrive {
 	private Long id;
 	private String name;
 	private String description;
 	private Integer ratio;
 	private Integer price;
 	private String imgUrl;
-	private Double fuelMin;
-	private Double fuelMax;
-	private Integer power;
-	private Double toque;
+
+	public boolean isSelectable(List<Long> unselectableWheelDriveIds) {
+		return !unselectableWheelDriveIds.contains(id);
+	}
 }

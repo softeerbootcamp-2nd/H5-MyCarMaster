@@ -19,4 +19,9 @@ public class GetWheelDrivesRequest {
 	@NotNull(message = "trimId는 Null일 수 없습니다.")
 	@Min(value = 1, message = "trimId는 1 이상의 값입니다.")
 	private Long trimId;
+
+	@Schema(description = "엔진 식별자", example = "1")
+	@NotNull(message = "engineId는 Null일 수 없습니다.")
+	@Min(value = 1, message = "engineId는 1 이상의 값입니다.")
+	private Long engineId;
 }

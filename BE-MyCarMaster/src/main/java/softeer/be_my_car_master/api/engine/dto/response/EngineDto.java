@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import softeer.be_my_car_master.domain.engine.Engine;
 
 @Getter
 @Setter
@@ -41,4 +42,19 @@ public class EngineDto {
 
 	@Schema(description = "최대 연비", example = "9.2")
 	private Double fuelMax;
+
+	public static EngineDto from(Engine engine) {
+		return EngineDto.builder()
+			.id(engine.getId())
+			.name(engine.getName())
+			.description(engine.getDescription())
+			.price(engine.getPrice())
+			.ratio(engine.getRatio())
+			.imgUrl(engine.getImgUrl())
+			.power(engine.getPower())
+			.toque(engine.getToque())
+			.fuelMin(engine.getFuelMin())
+			.fuelMax(engine.getFuelMax())
+			.build();
+	}
 }
