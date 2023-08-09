@@ -1,19 +1,14 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { styled } from "styled-components";
-import { OptionType, SuboptionsType } from "../../../types/options.types";
+import { OptionType } from "../../../types/options.types";
 import theme from "../../../styles/Theme";
 import NPerformance from "../../../assets/images/NPerformance.png";
 import ArrowLeft from "../../../assets/icons/ArrowLeft.svg";
 import ArrowRight from "../../../assets/icons/ArrowRight.svg";
 
 function OptionDescription({ option }: { option: OptionType }) {
-  const [subOptions, setSubOptions] = useState<SuboptionsType[] | null>();
-  const [page, setPage] = useState(0);
-  const maxPage = subOptions && subOptions.length;
-
-  useEffect(() => {
-    setSubOptions(option.subOptions);
-  }, []);
+  const [page, setPage] = useState<number>(0);
+  const maxPage = option.subOptions && option.subOptions.length;
 
   const prevButtonHandler = () => {
     if (page === 0) setPage(maxPage - 1);
@@ -34,14 +29,14 @@ function OptionDescription({ option }: { option: OptionType }) {
         <Border />
       </MainOptionContainer>
 
-      {subOptions && subOptions ? (
+      {option.subOptions && option.subOptions ? (
         <SubOptionContainer>
           <SubOptionNameContainer>
             <PrevButton onClick={prevButtonHandler} />
-            <SubOptionName>{subOptions[page].name}</SubOptionName>
+            <SubOptionName>{option.subOptions[page].name}</SubOptionName>
             <NextButton onClick={nextButtonHandler} />
           </SubOptionNameContainer>
-          <Description>{subOptions[page].description}</Description>
+          <Description>{option.subOptions[page].description}</Description>
         </SubOptionContainer>
       ) : (
         <></>

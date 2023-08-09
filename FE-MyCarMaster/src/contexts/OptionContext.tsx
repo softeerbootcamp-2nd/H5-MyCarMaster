@@ -4,6 +4,7 @@ import { OptionAction, OptionState, OptionType } from "../types/options.types";
 const initialOptionState: OptionState = {
   selectedOption: [],
   consideredOption: [],
+  optionId: 0,
   optionCategoryId: 0,
   optionList: [
     {
@@ -35,7 +36,7 @@ const initialOptionState: OptionState = {
       ],
     },
     {
-      id: 2,
+      id: 1,
       category: "STYLE_PERFORMANCE",
       name: "20인치 다크 스파터링 휠",
       price: 400000,
@@ -46,7 +47,7 @@ const initialOptionState: OptionState = {
       subOptions: null,
     },
     {
-      id: 3,
+      id: 2,
       category: "SAFE",
       name: "차량 보호 필름",
       price: 50000,
@@ -57,7 +58,7 @@ const initialOptionState: OptionState = {
       subOptions: null,
     },
     {
-      id: 4,
+      id: 3,
       category: "CONVENIENCE",
       name: "2열 통풍 시트",
       price: 400000,
@@ -68,7 +69,7 @@ const initialOptionState: OptionState = {
       subOptions: null,
     },
     {
-      id: 5,
+      id: 4,
       category: "CONVENIENCE",
       name: "적외선 무릎 워머",
       price: 800000,
@@ -79,7 +80,7 @@ const initialOptionState: OptionState = {
       subOptions: null,
     },
     {
-      id: 6,
+      id: 5,
       category: "CONVENIENCE",
       name: "빌트인 공기 청정기",
       price: 800000,
@@ -90,7 +91,7 @@ const initialOptionState: OptionState = {
       subOptions: null,
     },
     {
-      id: 3,
+      id: 6,
       category: "CAR_PROTECTION",
       name: "Select Option4",
       price: 4123210,
@@ -101,7 +102,7 @@ const initialOptionState: OptionState = {
       subOptions: null,
     },
     {
-      id: 4,
+      id: 7,
       category: "CONVENIENCE",
       name: "2열 통풍 시트",
       price: 400000,
@@ -112,7 +113,7 @@ const initialOptionState: OptionState = {
       subOptions: null,
     },
     {
-      id: 5,
+      id: 8,
       category: "CONVENIENCE",
       name: "적외선 무릎 워머",
       price: 800000,
@@ -123,7 +124,7 @@ const initialOptionState: OptionState = {
       subOptions: null,
     },
     {
-      id: 6,
+      id: 9,
       category: "CONVENIENCE",
       name: "빌트인 공기 청정기",
       price: 800000,
@@ -167,6 +168,12 @@ const optionReducer = (
       return {
         ...state,
         optionCategoryId: action.payload.optionCategoryId as number,
+        optionId: action.payload.optionId as number,
+      };
+    case "SET_OPTION_ID":
+      return {
+        ...state,
+        optionId: action.payload.optionId as number,
       };
     default:
       return state;

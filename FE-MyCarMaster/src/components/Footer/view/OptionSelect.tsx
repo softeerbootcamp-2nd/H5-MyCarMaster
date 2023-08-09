@@ -1,5 +1,8 @@
 import styled from "styled-components";
-import { useOptionState } from "../../../contexts/OptionContext";
+import {
+  useOptionDispatch,
+  useOptionState,
+} from "../../../contexts/OptionContext";
 import OptionBox from "../../common/OptionBox/OptionBox";
 import { useEffect, useState } from "react";
 import { OptionType } from "../../../types/options.types";
@@ -9,6 +12,7 @@ import { categories } from "../../../constants/Option.constants";
 export default function OptionSelect() {
   const { optionList, selectedOption, consideredOption, optionCategoryId } =
     useOptionState();
+  const optionDispatch = useOptionDispatch();
   const [filteredOptionList, setFilteredOptionList] =
     useState<OptionType[]>(optionList);
 
@@ -21,6 +25,15 @@ export default function OptionSelect() {
 
     setFilteredOptionList(filteredList);
   }, [optionCategoryId]);
+
+  const changeOptionId = (index: number) => {
+    optionDispatch({
+      type: "SET_OPTION_ID",
+      payload: {
+        optionId: index,
+      },
+    });
+  };
 
   return (
     <Container>
@@ -36,6 +49,7 @@ export default function OptionSelect() {
             $price={option.price}
             $selected={selectedOption.includes(option.id)}
             $considered={consideredOption.includes(option.id)}
+            handleClick={() => changeOptionId(option.id)}
           />
         );
       })}
