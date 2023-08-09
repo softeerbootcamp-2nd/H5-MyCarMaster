@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
 import { styled } from "styled-components";
-import { OptionType, SuboptionsType } from "../../../types/options.types";
+import { OptionType } from "../../../types/options.types";
 import theme from "../../../styles/Theme";
 import NPerformance from "../../../assets/images/NPerformance.png";
 import ArrowLeft from "../../../assets/icons/ArrowLeft.svg";
 import ArrowRight from "../../../assets/icons/ArrowRight.svg";
+import CirclePagination from "../../../assets/icons/CirclePagination.svg";
+import { useOptionState } from "../../../contexts/OptionContext";
 
 function OptionDescription({ option }: { option: OptionType }) {
-  const [subOptions, setSubOptions] = useState<SuboptionsType[] | null>();
-  const [page, setPage] = useState(0);
-  const maxPage = subOptions && subOptions.length;
-
-  useEffect(() => {
-    setSubOptions(option.subOptions);
-  }, []);
+  const [page, setPage] = useState<number>(0);
+  const { optionId } = useOptionState();
+  const maxPage = (option.subOptions && option.subOptions?.length) || 0;
+  const $transformX = -page * 279;
 
   const prevButtonHandler = () => {
     if (page === 0) setPage(maxPage - 1);
@@ -25,6 +24,24 @@ function OptionDescription({ option }: { option: OptionType }) {
     else setPage(page + 1);
   };
 
+  const paginationButtonHandler = (index: number) => {
+    setPage(index);
+  };
+
+  useEffect(() => {
+    setPage(0);
+  }, [optionId]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (page === maxPage - 1) setPage(0);
+      else setPage(page + 1);
+    }, 5000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [page]);
+
   return (
     <Container>
       <MainOptionContainer>
@@ -34,18 +51,35 @@ function OptionDescription({ option }: { option: OptionType }) {
         <Border />
       </MainOptionContainer>
 
-      {subOptions && subOptions ? (
-        <SubOptionContainer>
-          <SubOptionNameContainer>
-            <PrevButton onClick={prevButtonHandler} />
-            <SubOptionName>{subOptions[page].name}</SubOptionName>
-            <NextButton onClick={nextButtonHandler} />
-          </SubOptionNameContainer>
-          <Description>{subOptions[page].description}</Description>
-        </SubOptionContainer>
-      ) : (
-        <></>
-      )}
+      <SubOptionContainer>
+        <SubOptionList
+          style={{ width: `${maxPage * 279}px` }}
+          $transformX={$transformX}
+        >
+          {option.subOptions &&
+            option.subOptions.map((subOption, index) => (
+              <SubOptionItem key={index}>
+                <SubOption>
+                  <SubOptionNameContainer>
+                    <PrevButton onClick={prevButtonHandler} />
+                    <SubOptionName>{subOption.name}</SubOptionName>
+                    <NextButton onClick={nextButtonHandler} />
+                  </SubOptionNameContainer>
+                  <Description>{subOption.description}</Description>
+                </SubOption>
+              </SubOptionItem>
+            ))}
+        </SubOptionList>
+        <PaginationContainer>
+          {Array.from({ length: maxPage }).map((_, index) => (
+            <PaginationButton
+              key={index}
+              onClick={() => paginationButtonHandler(index)}
+              $active={index === page}
+            />
+          ))}
+        </PaginationContainer>
+      </SubOptionContainer>
     </Container>
   );
 }
@@ -98,9 +132,28 @@ const Border = styled.div`
 `;
 
 const SubOptionContainer = styled.div`
+  width: 100%;
+  height: 100%;
+
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  overflow: hidden;
+`;
+
+const SubOptionList = styled.div<{ $transformX: number }>`
+  display: flex;
+  width: 100%;
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(${({ $transformX }) => $transformX}px);
+`;
+
+const SubOptionItem = styled.div`
+  width: 100%;
+`;
+
+const SubOption = styled.div`
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
 `;
 
@@ -137,6 +190,26 @@ const Description = styled.p`
   font-style: normal;
   font-weight: 400;
   line-height: 165%; /* 1.34063rem */
+`;
+
+const PaginationContainer = styled.div`
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
+const PaginationButton = styled.button<{ $active: boolean }>`
+  width: 1rem;
+  height: 1rem;
+  background-image: url(${CirclePagination});
+  background-position: center;
+  background-repeat: no-repeat;
+  ${({ $active }) =>
+    $active
+      ? `filter: invert(12%) sepia(38%) saturate(5531%) hue-rotate(221deg) brightness(90%) contrast(89%);`
+      : `filter: invert(85%) sepia(6%) saturate(273%) hue-rotate(184deg) brightness(96%) contrast(90%);`};
 `;
 
 export default OptionDescription;

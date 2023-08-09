@@ -24,17 +24,23 @@ export type OptionState = {
   selectedOption: number[];
   consideredOption: number[];
   optionList: OptionType[];
+  optionId: number;
   optionCategoryId: number;
 };
 
 export type OptionAction = {
-  type: "SET_CHOICE_OPTION" | "SET_OPTION_LIST" | "SET_OPTION_CATEGORY_INDEX";
+  type:
+    | "SET_CHOICE_OPTION"
+    | "SET_OPTION_LIST"
+    | "SET_OPTION_CATEGORY_INDEX"
+    | "SET_OPTION_ID";
   payload: {
     where?: "selectedOption" | "consideredOption";
     id?: number;
     selectedOption?: number[];
     consideredOption?: number[];
     optionList?: OptionType[];
+    optionId?: number;
     optionCategoryId?: number;
   };
 };
