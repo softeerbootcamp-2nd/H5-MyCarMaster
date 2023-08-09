@@ -48,7 +48,7 @@ class GetUnselectableOptionsByEngineUseCaseTest {
 			.build();
 
 		given(optionPort.findSelectableOptionsByTrimId(any())).willReturn(Arrays.asList(option));
-		given(optionPort.findUnselectableOptionIdsByEngineId(any())).willReturn(Arrays.asList(2L, 3L));
+		given(optionPort.findUnselectableOptionIdsByEngineId(any())).willReturn(Arrays.asList(1L, 3L));
 
 		// when
 		GetUnselectableOptionsByEngineResponse getUnselectableOptionsByEngineResponse =
