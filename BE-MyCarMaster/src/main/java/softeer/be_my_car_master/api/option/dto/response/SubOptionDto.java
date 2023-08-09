@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class SubOption {
+public class SubOptionDto {
 
 	@Schema(description = "하위 옵션명", example = "후방 주차 감지 어쩌구")
 	private String name;

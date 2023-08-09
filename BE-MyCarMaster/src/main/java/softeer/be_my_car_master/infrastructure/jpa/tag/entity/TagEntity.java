@@ -1,4 +1,4 @@
-package softeer.be_my_car_master.infrastructure.jpa.color_interior.entity;
+package softeer.be_my_car_master.infrastructure.jpa.tag.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,14 +10,13 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import softeer.be_my_car_master.domain.color_exterior.ExteriorColor;
-import softeer.be_my_car_master.domain.color_interior.InteriorColor;
+import softeer.be_my_car_master.domain.option.Tag;
 
 @Entity
-@Table(name = "interior_color")
+@Table(name = "tag")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class InteriorColorEntity {
+public class TagEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,14 +25,18 @@ public class InteriorColorEntity {
 	@Column(name = "name", nullable = false)
 	private String name;
 
-	@Column(name = "color_img_url", nullable = false)
-	private String colorImgUrl;
+	@Column(name = "img_url")
+	private String imgUrl;
 
-	public InteriorColor toInteriorColor() {
-		return InteriorColor.builder()
+	@Column(name = "is_multi_selectable", nullable = false)
+	private Boolean isMultiSelectable;
+
+	public Tag toTag() {
+		return Tag.builder()
 			.id(id)
 			.name(name)
-			.colorImgUrl(colorImgUrl)
+			.imgUrl(imgUrl)
+			.isMultiSelectable(isMultiSelectable)
 			.build();
 	}
 }

@@ -1,4 +1,4 @@
-package softeer.be_my_car_master.infrastructure.jpa.color_interior.adaptor;
+package softeer.be_my_car_master.infrastructure.jpa.color_interior.repository;
 
 import java.util.List;
 

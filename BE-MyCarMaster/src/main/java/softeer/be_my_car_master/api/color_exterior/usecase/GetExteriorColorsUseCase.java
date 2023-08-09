@@ -15,7 +15,7 @@ public class GetExteriorColorsUseCase {
 	private final ExteriorColorPort exteriorColorPort;
 
 	public GetExteriorColorsResponse execute(Long trimId) {
-		List<ExteriorColor> exteriorColors = exteriorColorPort.findSelectableExteriorColorsByTrimId(trimId);
-		return GetExteriorColorsResponse.from(exteriorColors);
+		List<ExteriorColor> selectableExteriorColors = exteriorColorPort.findSelectableExteriorColorsByTrimId(trimId);
+		return GetExteriorColorsResponse.from(selectableExteriorColors);
 	}
 }

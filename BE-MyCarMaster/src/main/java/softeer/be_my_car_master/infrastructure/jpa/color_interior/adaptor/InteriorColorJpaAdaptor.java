@@ -9,6 +9,7 @@ import softeer.be_my_car_master.domain.color_interior.InteriorColor;
 import softeer.be_my_car_master.global.annotation.Adaptor;
 import softeer.be_my_car_master.infrastructure.jpa.color_interior.entity.TrimInteriorColorEntity;
 import softeer.be_my_car_master.infrastructure.jpa.color_interior.repository.TrimInteriorColorJpaRepository;
+import softeer.be_my_car_master.infrastructure.jpa.color_interior.repository.UnselectableExteriorInteriorJpaRepository;
 
 @Adaptor
 @RequiredArgsConstructor

@@ -19,6 +19,7 @@ import softeer.be_my_car_master.infrastructure.jpa.model.entity.ModelEntity;
 @Table(name = "wheel_drive")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class WheelDriveEntity {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
