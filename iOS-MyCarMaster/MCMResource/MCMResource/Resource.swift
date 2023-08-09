@@ -8,7 +8,6 @@
 import UIKit
 
 public enum Resource {
-    private static let bundle = Bundle(identifier: "com.minios.MCMResource")!
 
     public enum Lottie {
         public static var launchScreenPath = bundle.path(forResource: "launchScreen", ofType: "json")!
@@ -34,4 +33,9 @@ public enum Resource {
         public static let gold1 = RawColor.gold1.color as UIColor
         public static let gold2 = RawColor.gold2.color as UIColor
     }
+}
+
+extension Resource {
+
+    private static let bundle = Bundle(identifier: "com.minios.MCMResource")!
 }
