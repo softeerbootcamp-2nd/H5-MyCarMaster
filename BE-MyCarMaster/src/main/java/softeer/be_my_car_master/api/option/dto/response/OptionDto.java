@@ -8,7 +8,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Option {
+public class OptionDto {
 
 	@Schema(description = "옵션 식별자", example = "1")
 	private Integer id;
@@ -34,5 +34,5 @@ public class Option {
 	@Schema(description = "태그", example = "null")
 	private String tag;
 
-	private List<SubOption> subOptions;
+	private List<SubOptionDto> subOptions;
 }
