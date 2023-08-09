@@ -42,7 +42,7 @@ class WheelDriveControllerTest {
 	@DisplayName("구동방식 목록을 조회합니다")
 	void getWheelDrives() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetWheelDrivesRequest(1L));
+		String requestBody = getRequestBody(new GetWheelDrivesRequest(1L, 1L));
 
 		GetWheelDrivesResponse getWheelDrivesResponse = new GetWheelDrivesResponse();
 		WheelDriveDto wheelDriveDto = WheelDriveDto.builder()
@@ -55,7 +55,7 @@ class WheelDriveControllerTest {
 			.build();
 		getWheelDrivesResponse.setWheelDrives(Arrays.asList(wheelDriveDto));
 
-		given(getWheelDrivesUseCase.execute(any())).willReturn(getWheelDrivesResponse);
+		given(getWheelDrivesUseCase.execute(any(), any())).willReturn(getWheelDrivesResponse);
 
 		Response successResponse = Response.createSuccessResponse(getWheelDrivesResponse);
 		String responseBody = objectMapper.writeValueAsString(successResponse);
@@ -78,7 +78,7 @@ class WheelDriveControllerTest {
 	@DisplayName("trimId는 1 이상이어야 합니다")
 	void minimumTrimId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetWheelDrivesRequest(0L));
+		String requestBody = getRequestBody(new GetWheelDrivesRequest(0L, 1L));
 
 		String responseBody = getClientErrorResponseBody();
 
@@ -100,7 +100,51 @@ class WheelDriveControllerTest {
 	@DisplayName("trimId는 null값 일 수 없습니다")
 	void nonNullTrimId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetWheelDrivesRequest(null));
+		String requestBody = getRequestBody(new GetWheelDrivesRequest(null, 1L));
+
+		String responseBody = getClientErrorResponseBody();
+
+		//when
+		ResultActions perform = mockMvc.perform(
+			get("/wheel-drives")
+				.contentType("application/json")
+				.content(requestBody)
+		);
+
+		//then
+		perform
+			.andExpect(status().is4xxClientError())
+			.andExpect(content().contentType("application/json"))
+			.andExpect(content().json(responseBody, false));
+	}
+
+	@Test
+	@DisplayName("engineId는 1 이상이어야 합니다")
+	void minimumEngineId() throws Exception {
+		//given
+		String requestBody = getRequestBody(new GetWheelDrivesRequest(1L, 0L));
+
+		String responseBody = getClientErrorResponseBody();
+
+		//when
+		ResultActions perform = mockMvc.perform(
+			get("/wheel-drives")
+				.contentType("application/json")
+				.content(requestBody)
+		);
+
+		//then
+		perform
+			.andExpect(status().is4xxClientError())
+			.andExpect(content().contentType("application/json"))
+			.andExpect(content().json(responseBody, false));
+	}
+
+	@Test
+	@DisplayName("engineId는 null값 일 수 없습니다")
+	void nonNullEngineId() throws Exception {
+		//given
+		String requestBody = getRequestBody(new GetWheelDrivesRequest(1L, null));
 
 		String responseBody = getClientErrorResponseBody();
 
