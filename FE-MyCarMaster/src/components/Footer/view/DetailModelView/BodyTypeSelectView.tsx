@@ -6,7 +6,7 @@ import { useQuotationDispatch } from "../../../../contexts/QuotationContext";
 import OptionBox from "../../../common/OptionBox/OptionBox";
 
 export default function BodyTypeSelectView() {
-  const { bodyTypeList } = useDetailState();
+  const { bodyTypeList, engineId, wheelDriveId } = useDetailState();
   const detailDispatch = useDetailDispatch();
   const quotationDispatch = useQuotationDispatch();
 
@@ -22,6 +22,8 @@ export default function BodyTypeSelectView() {
     detailDispatch({
       type: "SELECT_DETAIL",
       payload: {
+        engineId,
+        wheelDriveId,
         bodyTypeId: id,
       },
     });

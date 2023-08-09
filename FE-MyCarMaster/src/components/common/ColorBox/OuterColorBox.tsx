@@ -44,6 +44,8 @@ const Container = styled.div`
   flex-shrink: 0;
   border: 1px solid ${(props) => props.theme.colors.BLACK}; // 수정 필요1
   background-color: black;
+
+  cursor: pointer;
 `;
 
 const SelectedFrame = styled.div`

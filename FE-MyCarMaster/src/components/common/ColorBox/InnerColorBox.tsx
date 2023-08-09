@@ -38,6 +38,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+  cursor: pointer;
 `;
 
 const InnerColorImage = styled.img`

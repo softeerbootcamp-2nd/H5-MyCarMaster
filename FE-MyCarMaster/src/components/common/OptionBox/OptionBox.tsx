@@ -153,6 +153,8 @@ const Container = styled.div<{ $color: string }>`
   width: 12.5rem;
   height: 10.25rem;
   padding: 0.75rem 1rem;
+
+  cursor: pointer;
 `;
 
 const TopContainer = styled.div`

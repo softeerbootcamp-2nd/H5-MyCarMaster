@@ -1,11 +1,13 @@
 import { styled } from "styled-components";
-import diesel from "../../../../assets/images/diesel.png";
 import GraphList from "../../../common/Graph/GraphList";
+import { useDetailState } from "../../../../contexts/DetailContext";
 
 function EngineView() {
+  const { engineId, engineList } = useDetailState();
+
   return (
     <Container>
-      <EngineImg src={diesel} />
+      <EngineImg src={engineList[engineId].imgUrl} />
       <EngineGraph>
         <GraphList />
       </EngineGraph>
@@ -24,7 +26,7 @@ const Container = styled.div`
 const EngineImg = styled.img`
   flex: 1;
   width: calc(100% / 2);
-  height: 100%;
+  height: 25rem;
   object-fit: contain;
   object-position: center;
 `;
