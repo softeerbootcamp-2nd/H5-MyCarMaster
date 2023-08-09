@@ -63,7 +63,7 @@ public class GetOptionsUseCase {
 		Set<Long> unselectableOptionIdsSet
 	) {
 		return selectableOptions.stream()
-			.filter(option -> unselectableOptionIdsSet.contains(option.getId()))
+			.filter(option -> !unselectableOptionIdsSet.contains(option.getId()))
 			.collect(Collectors.toList());
 	}
 }
