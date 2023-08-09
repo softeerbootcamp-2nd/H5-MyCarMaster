@@ -6,6 +6,7 @@ import {
   MAX_POWER,
   MAX_TORQUE,
 } from "../../../constants/Graph.constants";
+import { useDetailState } from "../../../contexts/DetailContext";
 
 export type ValueProps = {
   power?: number;
@@ -25,6 +26,8 @@ function GraphItem<T extends ValueProps>({
   koName,
   enName,
 }: GraphItemProps<T>) {
+  const { engineId } = useDetailState();
+
   const calculateProgress = () => {
     return $value.power !== undefined
       ? ($value.power / MAX_POWER) * 100
@@ -51,7 +54,11 @@ function GraphItem<T extends ValueProps>({
           </p>
         )}
       </ValueContainer>
-      <ProgressBar progress={calculateProgress()} $value={$value} />
+      <ProgressBar
+        key={engineId}
+        progress={calculateProgress()}
+        $value={$value}
+      />
     </Container>
   );
 }
