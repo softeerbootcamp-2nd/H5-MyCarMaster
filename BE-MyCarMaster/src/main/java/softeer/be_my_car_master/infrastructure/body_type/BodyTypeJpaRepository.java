@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.Query;
 public interface BodyTypeJpaRepository extends JpaRepository<BodyTypeEntity, Long> {
 
 	@Query(value = "SELECT b FROM BodyTypeEntity b WHERE b.model.id = :modelId")
-	List<BodyTypeEntity> findBodyTypesByModelId(Long modelId);
+	List<BodyTypeEntity> findAllByModelId(Long modelId);
 }
