@@ -10,7 +10,7 @@
 		B524A5892A8336B40095F0E2 /* TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B524A5882A8336B40095F0E2 /* TextStyle.swift */; };
 		B524A5932A8361960095F0E2 /* String+TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B524A5922A8361960095F0E2 /* String+TextStyle.swift */; };
 		B524A5952A8369450095F0E2 /* UILabel+TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B524A5942A8369450095F0E2 /* UILabel+TextStyle.swift */; };
-		B524A5982A8369900095F0E2 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B524A5972A8369900095F0E2 /* UIButton+Extension.swift */; };
+		B524A5982A8369900095F0E2 /* UIButton+TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B524A5972A8369900095F0E2 /* UIButton+TextStyle.swift */; };
 		B524A5992A836B530095F0E2 /* HyundaiSansTextKRRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B524A5902A83587F0095F0E2 /* HyundaiSansTextKRRegular.ttf */; };
 		B524A59A2A836B530095F0E2 /* HyundaiSansTextKRMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B524A5912A83587F0095F0E2 /* HyundaiSansTextKRMedium.ttf */; };
 		B524A59B2A836B530095F0E2 /* HyundaiSansHeadKRRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B524A58F2A83587F0095F0E2 /* HyundaiSansHeadKRRegular.ttf */; };
@@ -39,7 +39,7 @@
 		B524A5912A83587F0095F0E2 /* HyundaiSansTextKRMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HyundaiSansTextKRMedium.ttf; sourceTree = "<group>"; };
 		B524A5922A8361960095F0E2 /* String+TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+TextStyle.swift"; sourceTree = "<group>"; };
 		B524A5942A8369450095F0E2 /* UILabel+TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+TextStyle.swift"; sourceTree = "<group>"; };
-		B524A5972A8369900095F0E2 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		B524A5972A8369900095F0E2 /* UIButton+TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+TextStyle.swift"; sourceTree = "<group>"; };
 		B529551A2A7B782900BEDDE7 /* MCMResource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MCMResource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B529551D2A7B782900BEDDE7 /* MCMResource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCMResource.h; sourceTree = "<group>"; };
 		B52955372A7B797E00BEDDE7 /* launchScreen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = launchScreen.json; sourceTree = "<group>"; };
@@ -65,7 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				B524A5942A8369450095F0E2 /* UILabel+TextStyle.swift */,
-				B524A5972A8369900095F0E2 /* UIButton+Extension.swift */,
+				B524A5972A8369900095F0E2 /* UIButton+TextStyle.swift */,
 				B5F909C52A83DC1F009C2075 /* UIColor+Extension.swift */,
 			);
 			path = "UIKit+Extension";
@@ -260,7 +260,7 @@
 				B529553A2A7B79D700BEDDE7 /* Resource.swift in Sources */,
 				B529554A2A7B7DC400BEDDE7 /* Color+Generated.swift in Sources */,
 				B524A5892A8336B40095F0E2 /* TextStyle.swift in Sources */,
-				B524A5982A8369900095F0E2 /* UIButton+Extension.swift in Sources */,
+				B524A5982A8369900095F0E2 /* UIButton+TextStyle.swift in Sources */,
 				B5F909C62A83DC1F009C2075 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
