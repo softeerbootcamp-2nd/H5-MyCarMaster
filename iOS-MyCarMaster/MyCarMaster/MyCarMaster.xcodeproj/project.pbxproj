@@ -17,6 +17,7 @@
 		B510BBDB2A840BD4009E5752 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510BBDA2A840BD4009E5752 /* Formatter.swift */; };
 		B560B2182A83827600A4B9A9 /* TrimView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B560B2172A83827600A4B9A9 /* TrimView.swift */; };
 		B56A765C2A83EC5200F7E3EF /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56A765B2A83EC5200F7E3EF /* Preview.swift */; };
+		B56A765F2A83EFB000F7E3EF /* ListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56A765E2A83EFB000F7E3EF /* ListViewCell.swift */; };
 		B58799712A8177E90051E6E7 /* MCMResource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58289892A7FFDDC00FAD6AA /* MCMResource.framework */; };
 		B58799722A8177E90051E6E7 /* MCMResource.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B58289892A7FFDDC00FAD6AA /* MCMResource.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B58799732A8177EA0051E6E7 /* MVIFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58289F32A800B8E00FAD6AA /* MVIFoundation.framework */; };
@@ -109,6 +110,7 @@
 		B52955512A7B878600BEDDE7 /* MCMResource.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MCMResource.xcodeproj; path = ../../MCMResource/MCMResource.xcodeproj; sourceTree = "<group>"; };
 		B560B2172A83827600A4B9A9 /* TrimView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrimView.swift; path = MyCarMaster/Trim/TrimView.swift; sourceTree = SOURCE_ROOT; };
 		B56A765B2A83EC5200F7E3EF /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
+		B56A765E2A83EFB000F7E3EF /* ListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewCell.swift; sourceTree = "<group>"; };
 		B58289A62A7FFE5A00FAD6AA /* MCMCombineExtension.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MCMCombineExtension.xcodeproj; path = ../../MCMCombineExtension/MCMCombineExtension.xcodeproj; sourceTree = "<group>"; };
 		B58289EE2A800B8D00FAD6AA /* MVIFoundation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MVIFoundation.xcodeproj; path = "../../../../../../../문서 - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/MVIFoundation/MVIFoundation.xcodeproj"; sourceTree = "<group>"; };
 		B58A32332A7BA452005FC831 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -178,7 +180,7 @@
 				B50C7E7E2A790434005AFE0B /* Resources */,
 				B58A323C2A7C0B3B005FC831 /* Onboarding */,
 				B560B2162A83826C00A4B9A9 /* Trim */,
-				B50C7E4F2A790279005AFE0B /* ViewController.swift */,
+				B56A765D2A83EF9100F7E3EF /* General */,
 			);
 			path = MyCarMaster;
 			sourceTree = "<group>";
@@ -244,6 +246,14 @@
 				B510BBDA2A840BD4009E5752 /* Formatter.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		B56A765D2A83EF9100F7E3EF /* General */ = {
+			isa = PBXGroup;
+			children = (
+				B56A765E2A83EFB000F7E3EF /* ListViewCell.swift */,
+			);
+			path = General;
 			sourceTree = "<group>";
 		};
 		B58289842A7FFDD400FAD6AA /* Dependency */ = {
@@ -512,6 +522,7 @@
 				B5F1AE062A838B8E00E7E392 /* TrimViewController.swift in Sources */,
 				B510BBDB2A840BD4009E5752 /* Formatter.swift in Sources */,
 				B58A323B2A7C0B35005FC831 /* OnboardingViewController.swift in Sources */,
+				B56A765F2A83EFB000F7E3EF /* ListViewCell.swift in Sources */,
 				B50C7E4C2A790279005AFE0B /* AppDelegate.swift in Sources */,
 				B560B2182A83827600A4B9A9 /* TrimView.swift in Sources */,
 				B50C7E4E2A790279005AFE0B /* SceneDelegate.swift in Sources */,
