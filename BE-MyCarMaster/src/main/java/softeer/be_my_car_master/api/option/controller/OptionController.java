@@ -24,7 +24,7 @@ public class OptionController {
 	private final GetOptionsUseCase getOptionsUseCase;
 
 	@GetMapping
-	@Operation(summary = "모델, 트림, 엔진에서 선택 가능한 옵션 목록을 반환합니다")
+	@Operation(summary = "트림, 엔진, 구동 방식, 바디 타입, 내장 색상에서 선택 가능한 옵션 목록을 반환합니다")
 	public Response<GetOptionsResponse> getOptions(@RequestBody @Valid GetOptionsRequest getOptionsRequest) {
 		Long trimId = getOptionsRequest.getTrimId();
 		Long engineId = getOptionsRequest.getEngineId();
