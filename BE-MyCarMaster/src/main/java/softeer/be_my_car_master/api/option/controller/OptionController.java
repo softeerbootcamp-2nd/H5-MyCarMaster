@@ -1,5 +1,7 @@
 package softeer.be_my_car_master.api.option.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,12 +25,20 @@ public class OptionController {
 
 	@GetMapping
 	@Operation(summary = "모델, 트림, 엔진에서 선택 가능한 옵션 목록을 반환합니다")
-	public Response<GetOptionsResponse> getOptions(@RequestBody GetOptionsRequest getOptionsRequest) {
+	public Response<GetOptionsResponse> getOptions(@RequestBody @Valid GetOptionsRequest getOptionsRequest) {
+		Long trimId = getOptionsRequest.getTrimId();
+		Long engineId = getOptionsRequest.getEngineId();
+		Long wheelDriveId = getOptionsRequest.getWheelDriveId();
+		Long bodyTypeId = getOptionsRequest.getBodyTypeId();
+		Long interiorColorId = getOptionsRequest.getInteriorColorId();
 
-		Integer modelId = getOptionsRequest.getModelId();
-		Integer trimId = getOptionsRequest.getTrimId();
-		Integer engineId = getOptionsRequest.getEngineId();
-		GetOptionsResponse getOptionsResponse = getOptionsUseCase.execute(modelId, trimId, engineId);
-		return new Response<>(getOptionsResponse);
+		GetOptionsResponse getOptionsResponse = getOptionsUseCase.execute(
+			trimId,
+			engineId,
+			wheelDriveId,
+			bodyTypeId,
+			interiorColorId
+		);
+		return Response.createSuccessResponse(getOptionsResponse);
 	}
 }
