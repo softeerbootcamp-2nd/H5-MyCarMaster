@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useOptionState } from "../../../contexts/OptionContext";
-import OptionBox from "../../../components/common/OptionBox/OptionBox";
+import OptionBox from "../../common/OptionBox/OptionBox";
 import { useEffect, useState } from "react";
 import { OptionType } from "../../../types/options.types";
 import filterOptionCategory from "../../../utils/Option/filterOptionCategory";
