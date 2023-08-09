@@ -7,7 +7,7 @@ function ColorContent() {
   const quotationDispatch = useQuotationDispatch();
 
   const onClickHandler = (index: number) => {
-    const nextNavigationId = 1 + index;
+    const nextNavigationId = 4 + index;
     quotationDispatch({
       type: "NAVIGATE",
       payload: {
