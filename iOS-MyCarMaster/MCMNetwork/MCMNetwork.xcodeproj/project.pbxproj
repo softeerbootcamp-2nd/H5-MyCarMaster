@@ -32,6 +32,7 @@
 		B524A5612A828DB90095F0E2 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		B524A56D2A82B9640095F0E2 /* DecodedDataTaskPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodedDataTaskPublisher.swift; sourceTree = "<group>"; };
 		B524A56F2A82B9E10095F0E2 /* DownloadTaskPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadTaskPublisher.swift; sourceTree = "<group>"; };
+		B524A5712A832C1E0095F0E2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B5A6013B2A81EADC00CF2983 /* MCMNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MCMNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A6013E2A81EADC00CF2983 /* MCMNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCMNetwork.h; sourceTree = "<group>"; };
 		B5A6014F2A81EB6200CF2983 /* MCMCombineExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMCombineExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +113,7 @@
 				B524A5572A826A8B0095F0E2 /* Examples */,
 				B5A601962A820BD900CF2983 /* Resources */,
 				B5A6013E2A81EADC00CF2983 /* MCMNetwork.h */,
+				B524A5712A832C1E0095F0E2 /* README.md */,
 			);
 			path = MCMNetwork;
 			sourceTree = "<group>";
