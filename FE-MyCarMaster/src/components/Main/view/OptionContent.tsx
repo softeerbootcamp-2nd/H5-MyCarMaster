@@ -6,15 +6,12 @@ import {
   useOptionDispatch,
   useOptionState,
 } from "../../../contexts/OptionContext";
-import { OptionState, OptionType } from "../../../types/options.types";
+import { OptionState } from "../../../types/options.types";
 import filterOptionCategory from "../../../utils/Option/filterOptionCategory";
-import { useState } from "react";
 import { categories } from "../../../constants/Option.constants";
 
 function OptionContent() {
   const { optionList, optionId }: OptionState = useOptionState();
-  const [filterdOptionList, setFilteredOptionList] =
-    useState<OptionType[]>(optionList);
   const optionDispatch = useOptionDispatch();
 
   const onClickHandler = (index: number) => {
@@ -34,8 +31,6 @@ function OptionContent() {
         optionId: filteredList[0].id,
       },
     });
-
-    setFilteredOptionList(filteredList);
   };
 
   return (
@@ -64,6 +59,7 @@ const OptionContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
 `;
 
 const OptionImg = styled.img`
