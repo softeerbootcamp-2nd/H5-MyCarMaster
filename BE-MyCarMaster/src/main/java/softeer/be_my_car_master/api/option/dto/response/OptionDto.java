@@ -34,6 +34,9 @@ public class OptionDto {
 	@Schema(description = "옵션 이미지", example = "null")
 	private String imgUrl;
 
+	@Schema(description = "옵션 요약", example = "null")
+	private String summary;
+
 	@Schema(description = "옵션 설명", example = "null")
 	private String description;
 
@@ -50,6 +53,7 @@ public class OptionDto {
 			.price(option.getPrice())
 			.ratio(option.getRatio())
 			.imgUrl(option.getImgUrl())
+			.summary(option.getSummary())
 			.description(option.getDescription())
 			.tag(option.getTagName())
 			.build();
