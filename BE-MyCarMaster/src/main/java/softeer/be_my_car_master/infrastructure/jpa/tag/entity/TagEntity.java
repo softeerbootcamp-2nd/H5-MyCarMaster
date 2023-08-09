@@ -36,7 +36,7 @@ public class TagEntity {
 			.id(id)
 			.name(name)
 			.imgUrl(imgUrl)
-			.isMultiSelectEnabled(isMultiSelectable)
+			.isMultiSelectable(isMultiSelectable)
 			.build();
 	}
 }

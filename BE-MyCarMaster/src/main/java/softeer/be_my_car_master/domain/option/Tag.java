@@ -13,5 +13,5 @@ public class Tag {
 	private Long id;
 	private String name;
 	private String imgUrl;
-	private Boolean isMultiSelectEnabled;
+	private Boolean isMultiSelectable;
 }
