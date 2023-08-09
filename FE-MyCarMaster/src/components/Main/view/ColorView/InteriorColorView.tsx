@@ -1,9 +1,9 @@
-import React from "react";
 import { styled } from "styled-components";
-import interiorImage from "../../../../assets/images/interiorImage.png";
+import { useCarPaintState } from "../../../../contexts/CarPaintContext";
 
 function InteriorColorView() {
-  return <InteriorColorImg src={interiorImage} />;
+  const { interiorId, interiorList } = useCarPaintState();
+  return <InteriorColorImg src={interiorList[interiorId].coloredImgUrl} />;
 }
 
 const InteriorColorImg = styled.img`

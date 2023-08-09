@@ -6,7 +6,7 @@ type exteriorColors = {
   price: number;
   ratio: number;
   colorImgUrl: string;
-  coloredImgUrl: string[];
+  coloredImgUrl: string;
 };
 
 type interiorColors = {
@@ -15,7 +15,7 @@ type interiorColors = {
   price: number;
   ratio: number;
   colorImgUrl: string;
-  coloredImgUrl: string[];
+  coloredImgUrl: string;
 };
 
 type CarPaintState = {
@@ -49,7 +49,7 @@ const initialCarPaintState: CarPaintState = {
       price: 10,
       ratio: 0,
       colorImgUrl: "",
-      coloredImgUrl: [""],
+      coloredImgUrl: "/images/exterior/black/image_001.png",
     },
     {
       id: 1,
@@ -57,7 +57,7 @@ const initialCarPaintState: CarPaintState = {
       price: 20,
       ratio: 0,
       colorImgUrl: "",
-      coloredImgUrl: [""],
+      coloredImgUrl: "/images/exterior/black/image_002.png",
     },
     {
       id: 2,
@@ -65,7 +65,7 @@ const initialCarPaintState: CarPaintState = {
       price: 30,
       ratio: 0,
       colorImgUrl: "",
-      coloredImgUrl: [""],
+      coloredImgUrl: "/images/exterior/black/image_003.png",
     },
     {
       id: 3,
@@ -73,7 +73,7 @@ const initialCarPaintState: CarPaintState = {
       price: 40,
       ratio: 0,
       colorImgUrl: "",
-      coloredImgUrl: [""],
+      coloredImgUrl: "/images/exterior/black/image_004.png",
     },
     {
       id: 4,
@@ -81,7 +81,7 @@ const initialCarPaintState: CarPaintState = {
       price: 0,
       ratio: 0,
       colorImgUrl: "",
-      coloredImgUrl: [""],
+      coloredImgUrl: "/images/exterior/black/image_005.png",
     },
     {
       id: 5,
@@ -89,7 +89,7 @@ const initialCarPaintState: CarPaintState = {
       price: 0,
       ratio: 0,
       colorImgUrl: "",
-      coloredImgUrl: [""],
+      coloredImgUrl: "/images/exterior/black/image_006.png",
     },
   ],
   interiorList: [
@@ -99,7 +99,7 @@ const initialCarPaintState: CarPaintState = {
       price: 0,
       ratio: 0,
       colorImgUrl: "",
-      coloredImgUrl: [""],
+      coloredImgUrl: "/images/interior/interiorImage.png",
     },
     {
       id: 1,
@@ -107,7 +107,7 @@ const initialCarPaintState: CarPaintState = {
       price: 10,
       ratio: 0,
       colorImgUrl: "",
-      coloredImgUrl: [""],
+      coloredImgUrl: "", // 일부러 안넣음.
     },
     {
       id: 2,
@@ -115,7 +115,7 @@ const initialCarPaintState: CarPaintState = {
       price: 20,
       ratio: 0,
       colorImgUrl: "",
-      coloredImgUrl: [""],
+      coloredImgUrl: "/images/interior/interiorImage.png",
     },
   ],
 };

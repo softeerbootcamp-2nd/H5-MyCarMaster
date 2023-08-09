@@ -1,0 +1,58 @@
+import OuterColorBox from "../../../common/ColorBox/OuterColorBox";
+import {
+  useCarPaintState,
+  useCarPaintDispatch,
+} from "../../../../contexts/CarPaintContext";
+import {
+  useQuotationState,
+  useQuotationDispatch,
+} from "../../../../contexts/QuotationContext";
+import { TrimQuotationType } from "../../../../types/quotation.types";
+
+export default function InteriorColorSelectView() {
+  const { exteriorList, exteriorId } = useCarPaintState();
+  const { trimQuotation } = useQuotationState() as {
+    trimQuotation: TrimQuotationType;
+  };
+
+  const quotationDispatch = useQuotationDispatch();
+  const carPaintDispatch = useCarPaintDispatch();
+
+  const selectExterior = (id: number) => {
+    quotationDispatch({
+      type: "SET_CAR_PAINT_QUOTATION",
+      payload: {
+        type: "exteriorColorQuotation",
+        name: exteriorList[id].name,
+        price: exteriorList[id].price,
+      },
+    });
+    carPaintDispatch({
+      type: "SELECT_EXTERIOR",
+      payload: {
+        exteriorId: id,
+      },
+    });
+  };
+
+  return (
+    <>
+      {exteriorList.map((exterior) => {
+        return (
+          <OuterColorBox
+            key={exterior.id}
+            $id={exterior.id}
+            $name={exterior.name}
+            ratio={exterior.ratio}
+            price={exterior.price}
+            trim={trimQuotation?.trimQuotation?.name}
+            $active={exterior.id === exteriorId}
+            $colorImgUrl={exterior.colorImgUrl}
+            $coloredImgUrl={exterior.coloredImgUrl}
+            handleClick={() => selectExterior(exterior.id)}
+          />
+        );
+      })}
+    </>
+  );
+}

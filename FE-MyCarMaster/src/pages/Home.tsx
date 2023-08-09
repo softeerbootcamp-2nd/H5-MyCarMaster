@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Button from "../components/common/Button/Button.tsx";
 import homeVideo from "../assets/video/homeVideo.mp4";
 import white_logo from "../assets/images/white_logo.svg";
-import { Header } from "../components";
+import { Header } from "../components/index.tsx";
 import { useNavigate } from "react-router-dom";
 
 type TextProp = {

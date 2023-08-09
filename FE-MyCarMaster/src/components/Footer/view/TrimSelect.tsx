@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useTrimState, useTrimDispatch } from "../../../contexts/TrimContext";
 import { useQuotationDispatch } from "../../../contexts/QuotationContext";
-import OptionBox from "../../../components/common/OptionBox/OptionBox";
+import OptionBox from "../../common/OptionBox/OptionBox";
 
 export default function TrimSelect() {
   const { trimList, trimId } = useTrimState();

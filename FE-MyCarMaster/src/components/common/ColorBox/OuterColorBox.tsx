@@ -5,10 +5,10 @@ type ContainerProp = {
   $name: string;
   ratio: number;
   price: number;
-  trim: string;
+  trim?: string;
   $active: boolean;
   $colorImgUrl?: string;
-  $coloredImgUrl?: string[];
+  $coloredImgUrl?: string;
   handleClick?: () => void;
 };
 

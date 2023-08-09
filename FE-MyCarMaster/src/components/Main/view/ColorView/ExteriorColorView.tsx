@@ -1,7 +1,9 @@
 import { styled } from "styled-components";
+import { useCarPaintState } from "../../../../contexts/CarPaintContext";
 
 function ExteriorColorView() {
-  return <ExteriorColorImg src="/images/exterior/black/image_001.png" />;
+  const { exteriorId, exteriorList } = useCarPaintState();
+  return <ExteriorColorImg src={exteriorList[exteriorId].coloredImgUrl} />;
 }
 
 const ExteriorColorImg = styled.img`

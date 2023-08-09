@@ -1,4 +1,3 @@
-import React from "react";
 import { useQuotationState } from "../../../../contexts/QuotationContext";
 import ExteriorColorView from "./ExteriorColorView";
 import InteriorColorView from "./InteriorColorView";

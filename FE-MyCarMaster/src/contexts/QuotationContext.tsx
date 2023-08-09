@@ -7,7 +7,7 @@ import {
 } from "../types/quotation.types";
 
 type QuotationState = {
-  navigationId: undefined | number;
+  navigationId: number;
   isFirst: boolean[];
   trimQuotation: TrimQuotationType;
   detailQuotation: DetailQuotationType;
@@ -71,7 +71,7 @@ const quotationReducer = (
             ? (0 as number)
             : action.payload.navigationId === 8
             ? (7 as number)
-            : action.payload.navigationId,
+            : (action.payload.navigationId as number),
         isFirst: action.payload.isFirst
           ? (action.payload.isFirst as boolean[])
           : (state.isFirst as boolean[]),
