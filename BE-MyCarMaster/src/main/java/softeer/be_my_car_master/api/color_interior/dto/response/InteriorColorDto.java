@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import softeer.be_my_car_master.domain.color_interior.InteriorColor;
 
 @Getter
 @Setter
@@ -13,7 +14,7 @@ import lombok.Setter;
 public class InteriorColorDto {
 
 	@Schema(description = "내장 색상 식별자", example = "1")
-	private Integer id;
+	private Long id;
 
 	@Schema(description = "내장 색상명", example = "퀄팅 천연(블랙)")
 	private String name;
@@ -29,4 +30,15 @@ public class InteriorColorDto {
 
 	@Schema(description = "내장 색상이 적용된 차량 내부 이미지", example = "coloredImgUrl")
 	private String coloredImgUrl;
+
+	public static InteriorColorDto from(InteriorColor interiorColor) {
+		return InteriorColorDto.builder()
+			.id(interiorColor.getId())
+			.name(interiorColor.getName())
+			.price(interiorColor.getPrice())
+			.ratio(interiorColor.getRatio())
+			.colorImgUrl(interiorColor.getColorImgUrl())
+			.coloredImgUrl(interiorColor.getColoredImgUrl())
+			.build();
+	}
 }

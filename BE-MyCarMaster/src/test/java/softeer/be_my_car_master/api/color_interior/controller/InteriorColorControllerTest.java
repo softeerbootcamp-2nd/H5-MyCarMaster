@@ -42,11 +42,11 @@ class InteriorColorControllerTest {
 	@DisplayName("내장 색상 목록을 조회합니다")
 	void getInteriorColors() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetInteriorColorsRequest(1, 1));
+		String requestBody = getRequestBody(new GetInteriorColorsRequest(1L, 1L));
 
 		GetInteriorColorsResponse getInteriorColorsResponse = new GetInteriorColorsResponse();
 		InteriorColorDto interiorColorDto = InteriorColorDto.builder()
-			.id(1)
+			.id(1L)
 			.name("Interior Color")
 			.price(0)
 			.ratio(32)
@@ -78,7 +78,7 @@ class InteriorColorControllerTest {
 	@DisplayName("trimId는 1 이상이어야 합니다")
 	void minimumTrimId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetInteriorColorsRequest(0, 1));
+		String requestBody = getRequestBody(new GetInteriorColorsRequest(0L, 1L));
 
 		String responseBody = getClientErrorResponseBody();
 
@@ -100,7 +100,7 @@ class InteriorColorControllerTest {
 	@DisplayName("trimId는 null값 일 수 없습니다")
 	void nonNullTrimId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetInteriorColorsRequest(null, 1));
+		String requestBody = getRequestBody(new GetInteriorColorsRequest(null, 1L));
 
 		String responseBody = getClientErrorResponseBody();
 
@@ -122,7 +122,7 @@ class InteriorColorControllerTest {
 	@DisplayName("ExteriorColorId는 1 이상이어야 합니다")
 	void minimumExteriorColorId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetInteriorColorsRequest(0, 1));
+		String requestBody = getRequestBody(new GetInteriorColorsRequest(0L, 1L));
 
 		String responseBody = getClientErrorResponseBody();
 
@@ -144,7 +144,7 @@ class InteriorColorControllerTest {
 	@DisplayName("ExteriorColorId는 null값 일 수 없습니다")
 	void nonNullExteriorColorId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetInteriorColorsRequest(1, null));
+		String requestBody = getRequestBody(new GetInteriorColorsRequest(1L, null));
 
 		String responseBody = getClientErrorResponseBody();
 

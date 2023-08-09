@@ -1,4 +1,4 @@
-package softeer.be_my_car_master.infrastructure.trim;
+package softeer.be_my_car_master.infrastructure.jpa.trim.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import softeer.be_my_car_master.domain.trim.Trim;
-import softeer.be_my_car_master.infrastructure.model.ModelEntity;
+import softeer.be_my_car_master.infrastructure.jpa.model.entity.ModelEntity;
 
 @Entity
 @Table(name = "trim")

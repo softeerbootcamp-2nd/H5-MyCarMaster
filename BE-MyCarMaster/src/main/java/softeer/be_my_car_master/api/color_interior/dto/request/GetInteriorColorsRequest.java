@@ -18,10 +18,10 @@ public class GetInteriorColorsRequest {
 	@Schema(description = "트림 식별자", example = "1")
 	@NotNull(message = "trimId는 Null 일 수 없습니다.")
 	@Min(value = 1, message = "trimId는 1 이상의 값입니다.")
-	private Integer trimId;
+	private Long trimId;
 
 	@Schema(description = "외장 색상 식별자", example = "1")
 	@NotNull(message = "exteriorColorId는 Null 일 수 없습니다.")
 	@Min(value = 1, message = "exteriorColorId는 1 이상의 값입니다.")
-	private Integer exteriorColorId;
+	private Long exteriorColorId;
 }

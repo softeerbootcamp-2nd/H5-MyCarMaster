@@ -1,4 +1,4 @@
-package softeer.be_my_car_master.infrastructure.model;
+package softeer.be_my_car_master.infrastructure.jpa.color_interior.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,13 +8,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
-import softeer.be_my_car_master.domain.model.Model;
+import softeer.be_my_car_master.domain.color_exterior.ExteriorColor;
+import softeer.be_my_car_master.domain.color_interior.InteriorColor;
 
 @Entity
-@Table(name = "model")
+@Table(name = "exterior_color")
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ModelEntity {
+public class InteriorColorEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,14 +26,14 @@ public class ModelEntity {
 	@Column(name = "name", nullable = false)
 	private String name;
 
-	@Column(name = "img_url", nullable = false)
-	private String imgUrl;
+	@Column(name = "color_img_url", nullable = false)
+	private String colorImgUrl;
 
-	public Model toModel() {
-		return Model.builder()
+	public InteriorColor toInteriorColor() {
+		return InteriorColor.builder()
 			.id(id)
 			.name(name)
-			.imgUrl(imgUrl)
+			.colorImgUrl(colorImgUrl)
 			.build();
 	}
 }
