@@ -47,6 +47,8 @@ const Container = styled.div<ActiveProp>`
   align-items: center;
   flex-shrink: 0;
   background-color: black;
+
+  cursor: pointer;
 `;
 
 const TextContainer = styled.div`

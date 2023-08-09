@@ -36,6 +36,8 @@ const Container = styled.div`
   height: 10.25rem;
   display: flex;
   flex-direction: column;
+
+  cursor: pointer;
 `;
 
 const InnerColorImage = styled.img`
