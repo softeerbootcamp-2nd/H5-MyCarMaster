@@ -1,4 +1,4 @@
-package softeer.be_my_car_master.infrastructure.jpa.body_type;
+package softeer.be_my_car_master.infrastructure.jpa.engine.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,13 +12,13 @@ import javax.persistence.Table;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import softeer.be_my_car_master.domain.body_type.BodyType;
+import softeer.be_my_car_master.domain.engine.Engine;
 import softeer.be_my_car_master.infrastructure.jpa.model.entity.ModelEntity;
 
 @Entity
-@Table(name = "body_type")
+@Table(name = "engine")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class BodyTypeEntity {
+public class EngineEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,18 +39,33 @@ public class BodyTypeEntity {
 	@Column(name = "img_url", nullable = false)
 	private String imgUrl;
 
+	@Column(name = "fuel_min", nullable = false)
+	private Double fuelMin;
+
+	@Column(name = "fuel_max", nullable = false)
+	private Double fuelMax;
+
+	@Column(name = "power", nullable = false)
+	private Integer power;
+
+	@Column(name = "toque", nullable = false)
+	private Double toque;
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "model_id")
 	private ModelEntity model;
 
-	public BodyType toBodyType() {
-		return BodyType.builder()
+	public Engine toEngine() {
+		return Engine.builder()
 			.id(id)
 			.name(name)
 			.description(description)
 			.ratio(ratio)
 			.price(price)
 			.imgUrl(imgUrl)
+			.fuelMin(fuelMin)
+			.fuelMax(fuelMax)
+			.power(power)
 			.build();
 	}
 }

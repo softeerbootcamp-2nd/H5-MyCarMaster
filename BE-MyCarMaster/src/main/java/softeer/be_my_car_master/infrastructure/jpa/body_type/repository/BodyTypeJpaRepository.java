@@ -1,9 +1,11 @@
-package softeer.be_my_car_master.infrastructure.jpa.body_type;
+package softeer.be_my_car_master.infrastructure.jpa.body_type.repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+
+import softeer.be_my_car_master.infrastructure.jpa.body_type.entity.BodyTypeEntity;
 
 public interface BodyTypeJpaRepository extends JpaRepository<BodyTypeEntity, Long> {
 
