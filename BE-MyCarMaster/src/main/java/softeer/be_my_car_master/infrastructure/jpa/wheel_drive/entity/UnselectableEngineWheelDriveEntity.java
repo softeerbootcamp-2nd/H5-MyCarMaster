@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import softeer.be_my_car_master.infrastructure.jpa.engine.entity.EngineEntity;
 
 @Entity
-@Table(name = "trim_engine_wheel_drive")
+@Table(name = "unselectable_engine_wheel_drive")
 public class UnselectableEngineWheelDriveEntity {
 
 	@Id
