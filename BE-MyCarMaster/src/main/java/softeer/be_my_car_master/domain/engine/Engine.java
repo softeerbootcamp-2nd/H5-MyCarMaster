@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import softeer.be_my_car_master.global.annotation.Domain;
-import softeer.be_my_car_master.infrastructure.jpa.model.entity.ModelEntity;
 
 @Domain
 @Getter
@@ -24,5 +23,4 @@ public class Engine {
 	private Double fuelMax;
 	private Integer power;
 	private Double toque;
-	private ModelEntity model;
 }
