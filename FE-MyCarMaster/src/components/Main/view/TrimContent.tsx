@@ -1,14 +1,10 @@
 import styled from "styled-components";
-
-// dummy data
-import exclusive from "../../../assets/images/exclusive.png";
+import { useTrimState } from "../../../contexts/TrimContext";
 
 function TrimContent() {
-  return (
-    <>
-      <TrimImage src={exclusive} />
-    </>
-  );
+  const { trimId, trimList } = useTrimState();
+
+  return <TrimImage src={trimList[trimId].imgUrl} />;
 }
 
 const TrimImage = styled.img`
