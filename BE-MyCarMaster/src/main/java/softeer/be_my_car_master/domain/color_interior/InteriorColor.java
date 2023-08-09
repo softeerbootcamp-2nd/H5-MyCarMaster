@@ -1,4 +1,6 @@
-package softeer.be_my_car_master.domain.color_exterior;
+package softeer.be_my_car_master.domain.color_interior;
+
+import java.util.List;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -10,7 +12,7 @@ import softeer.be_my_car_master.global.annotation.Domain;
 @Getter
 @Builder
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class ExteriorColor {
+public class InteriorColor {
 
 	private Long id;
 	private String name;
@@ -18,4 +20,8 @@ public class ExteriorColor {
 	private Integer ratio;
 	private String colorImgUrl;
 	private String coloredImgUrl;
+
+	public boolean isSelectable(List<Long> unselectableColorIds) {
+		return !unselectableColorIds.contains(id);
+	}
 }
