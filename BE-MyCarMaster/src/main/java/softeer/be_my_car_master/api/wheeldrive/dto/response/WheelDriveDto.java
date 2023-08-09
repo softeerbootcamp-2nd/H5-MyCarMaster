@@ -1,15 +1,17 @@
 package softeer.be_my_car_master.api.wheeldrive.dto.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import softeer.be_my_car_master.domain.wheel_dirve.WheelDrive;
 
 @Getter
 @Setter
 @Builder
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class WheelDriveDto {
 
 	@Schema(description = "구동방식 식별자", example = "1")
@@ -29,4 +31,15 @@ public class WheelDriveDto {
 
 	@Schema(description = "구동방식 이미지", example = "s3 url")
 	private String imgUrl;
+
+	public static WheelDriveDto from(WheelDrive wheelDrive) {
+		return WheelDriveDto.builder()
+			.id(wheelDrive.getId())
+			.name(wheelDrive.getName())
+			.description(wheelDrive.getDescription())
+			.price(wheelDrive.getPrice())
+			.ratio(wheelDrive.getRatio())
+			.imgUrl(wheelDrive.getImgUrl())
+			.build();
+	}
 }
