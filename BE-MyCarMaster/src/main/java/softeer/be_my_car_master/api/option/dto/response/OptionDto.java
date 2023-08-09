@@ -3,15 +3,21 @@ package softeer.be_my_car_master.api.option.dto.response;
 import java.util.List;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import softeer.be_my_car_master.domain.option.Option;
 
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class OptionDto {
 
 	@Schema(description = "옵션 식별자", example = "1")
-	private Integer id;
+	private Long id;
 
 	@Schema(description = "카테고리", example = "SAFE")
 	private String category;
@@ -35,4 +41,17 @@ public class OptionDto {
 	private String tag;
 
 	private List<SubOptionDto> subOptions;
+
+	public static OptionDto from(Option option) {
+		return OptionDto.builder()
+			.id(option.getId())
+			.category(option.getCategory())
+			.name(option.getName())
+			.price(option.getPrice())
+			.ratio(option.getRatio())
+			.imgUrl(option.getImgUrl())
+			.description(option.getDescription())
+			.tag(option.getTagName())
+			.build();
+	}
 }
