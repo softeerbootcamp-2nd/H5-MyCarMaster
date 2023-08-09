@@ -9,9 +9,9 @@ export default function DetailModelSelect() {
 
   return (
     <Container>
-      {navigationId === 1 && <BodyTypeSelectView />}
-      {navigationId === 2 && <EngineSelectView />}
-      {navigationId === 3 && <WheelDriveSelectView />}
+      {navigationId === 1 && <EngineSelectView />}
+      {navigationId === 2 && <WheelDriveSelectView />}
+      {navigationId === 3 && <BodyTypeSelectView />}
     </Container>
   );
 }
