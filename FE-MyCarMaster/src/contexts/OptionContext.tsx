@@ -1,7 +1,6 @@
 import { useReducer, createContext, useContext } from "react";
 import { OptionAction, OptionState, OptionType } from "../types/options.types";
 
-
 const initialOptionState: OptionState = {
   selectedOption: [],
   consideredOption: [],
@@ -48,7 +47,7 @@ const initialOptionState: OptionState = {
     },
     {
       id: 3,
-      category: "CAR_PROTECTION",
+      category: "SAFE",
       name: "차량 보호 필름",
       price: 50000,
       ratio: 30,
@@ -92,8 +91,8 @@ const initialOptionState: OptionState = {
     },
     {
       id: 3,
+      category: "CAR_PROTECTION",
       name: "Select Option4",
-      description: "Select Option4",
       price: 4123210,
       ratio: 30,
       imgUrl: "S3 Url",
@@ -164,7 +163,7 @@ const optionReducer = (
         ...state,
         optionList: action.payload.optionList as OptionType[],
       };
-      case "SET_OPTION_CATEGORY_INDEX":
+    case "SET_OPTION_CATEGORY_INDEX":
       return {
         ...state,
         optionCategoryId: action.payload.optionCategoryId as number,
