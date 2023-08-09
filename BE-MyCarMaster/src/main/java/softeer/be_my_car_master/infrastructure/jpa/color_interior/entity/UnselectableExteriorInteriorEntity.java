@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import softeer.be_my_car_master.infrastructure.jpa.color_exterior.entity.ExteriorColorEntity;
 
 @Entity
-public class UnselectableExteriorColorInteriorColorEntity {
+public class UnselectableExteriorInteriorEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
