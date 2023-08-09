@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 import softeer.be_my_car_master.domain.engine.Engine;
 import softeer.be_my_car_master.infrastructure.jpa.model.entity.ModelEntity;
 
+@Entity
 @Table(name = "engine")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class EngineEntity {
