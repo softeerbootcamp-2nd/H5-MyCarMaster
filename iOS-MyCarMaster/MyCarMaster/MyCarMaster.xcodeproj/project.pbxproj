@@ -15,8 +15,8 @@
 		B50C7E632A79027A005AFE0B /* MyCarMasterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C7E622A79027A005AFE0B /* MyCarMasterTests.swift */; };
 		B50C7E6D2A79027A005AFE0B /* MyCarMasterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C7E6C2A79027A005AFE0B /* MyCarMasterUITests.swift */; };
 		B50C7E6F2A79027A005AFE0B /* MyCarMasterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C7E6E2A79027A005AFE0B /* MyCarMasterUITestsLaunchTests.swift */; };
-		B50C7E812A7905D8005AFE0B /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B50C7E802A7905D8005AFE0B /* .swiftlint.yml */; };
-		B50C7E832A7924E1005AFE0B /* .swiftlint.auto.yml in Resources */ = {isa = PBXBuildFile; fileRef = B50C7E822A7924E1005AFE0B /* .swiftlint.auto.yml */; };
+		
+		
 		B58799712A8177E90051E6E7 /* MCMResource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58289892A7FFDDC00FAD6AA /* MCMResource.framework */; };
 		B58799722A8177E90051E6E7 /* MCMResource.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B58289892A7FFDDC00FAD6AA /* MCMResource.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B58799732A8177EA0051E6E7 /* MVIFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58289F32A800B8E00FAD6AA /* MVIFoundation.framework */; };

@@ -24,7 +24,6 @@
 		B52955432A7B7B4C00BEDDE7 /* Font+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52955422A7B7B4C00BEDDE7 /* Font+Generated.swift */; };
 		B52955482A7B7D7900BEDDE7 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B52955472A7B7D7900BEDDE7 /* Color.xcassets */; };
 		B529554A2A7B7DC400BEDDE7 /* Color+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52955492A7B7DC400BEDDE7 /* Color+Generated.swift */; };
-		B52955502A7B866400BEDDE7 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = B529554F2A7B866400BEDDE7 /* swiftgen.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,7 +46,6 @@
 		B52955422A7B7B4C00BEDDE7 /* Font+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Font+Generated.swift"; path = "../../../../../../../../문서 - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/MCMResource/MCMResource/Generated/Font+Generated.swift"; sourceTree = "<group>"; };
 		B52955472A7B7D7900BEDDE7 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		B52955492A7B7DC400BEDDE7 /* Color+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Color+Generated.swift"; path = "../../../../../../../../문서 - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/MCMResource/MCMResource/Generated/Color+Generated.swift"; sourceTree = "<group>"; };
-		B529554F2A7B866400BEDDE7 /* swiftgen.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +72,6 @@
 			isa = PBXGroup;
 			children = (
 				B524A58A2A833F720095F0E2 /* README.md */,
-				B529554F2A7B866400BEDDE7 /* swiftgen.yml */,
 				B529551C2A7B782900BEDDE7 /* MCMResource */,
 				B529551B2A7B782900BEDDE7 /* Products */,
 			);
@@ -215,7 +212,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B52955382A7B797E00BEDDE7 /* launchScreen.json in Resources */,
-				B52955502A7B866400BEDDE7 /* swiftgen.yml in Resources */,
 				B52955482A7B7D7900BEDDE7 /* Color.xcassets in Resources */,
 				B524A59A2A836B530095F0E2 /* HyundaiSansTextKRMedium.ttf in Resources */,
 				B524A59D2A836B530095F0E2 /* HyundaiSansHeadKRLight.ttf in Resources */,
