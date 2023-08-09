@@ -15,7 +15,7 @@ public class BodyTypeJpaAdaptor implements BodyTypePort {
 	private final BodyTypeJpaRepository bodyTypeJpaRepository;
 
 	@Override
-	public List<BodyType> findBodyTypes(Long modelId) {
+	public List<BodyType> findSelectableBodyTypesByModelId(Long modelId) {
 		return bodyTypeJpaRepository.findAllByModelId(modelId).stream()
 			.map(BodyTypeEntity::toBodyType)
 			.collect(Collectors.toList());

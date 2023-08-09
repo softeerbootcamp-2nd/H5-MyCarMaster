@@ -8,5 +8,5 @@ import softeer.be_my_car_master.global.annotation.Port;
 @Port
 public interface BodyTypePort {
 
-	List<BodyType> findBodyTypes(Long modelId);
+	List<BodyType> findSelectableBodyTypesByModelId(Long modelId);
 }

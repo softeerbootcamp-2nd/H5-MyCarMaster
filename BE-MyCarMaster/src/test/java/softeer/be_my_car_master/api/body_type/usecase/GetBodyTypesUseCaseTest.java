@@ -40,7 +40,7 @@ class GetBodyTypesUseCaseTest {
 			.ratio(22)
 			.imgUrl("imgUrl")
 			.build();
-		given(bodyTypePort.findBodyTypes(any())).willReturn(Arrays.asList(bodyType));
+		given(bodyTypePort.findSelectableBodyTypesByModelId(any())).willReturn(Arrays.asList(bodyType));
 
 		// when
 		GetBodyTypesResponse getBodyTypesResponse = getBodyTypesUseCase.execute(1L);

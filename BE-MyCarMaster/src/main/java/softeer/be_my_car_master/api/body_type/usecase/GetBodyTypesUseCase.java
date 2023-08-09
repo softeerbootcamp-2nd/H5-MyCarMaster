@@ -15,7 +15,7 @@ public class GetBodyTypesUseCase {
 	private final BodyTypePort bodyTypePort;
 
 	public GetBodyTypesResponse execute(Long modelId) {
-		List<BodyType> bodyTypes = bodyTypePort.findBodyTypes(modelId);
-		return GetBodyTypesResponse.from(bodyTypes);
+		List<BodyType> selectableBodyTypes = bodyTypePort.findSelectableBodyTypesByModelId(modelId);
+		return GetBodyTypesResponse.from(selectableBodyTypes);
 	}
 }
