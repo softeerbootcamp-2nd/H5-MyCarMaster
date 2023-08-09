@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { BLACK, COOLGREY2, GREY2, GREY3 } from "../../../styles/Color";
+import { Text, DefaultColor } from "./style";
 import InnerColor from "../../../assets/images/InnerColor.png";
 
 type innerColorProps = {
@@ -14,19 +14,20 @@ type innerColorProps = {
   handleClick?: () => void;
 };
 
-function InnerColorBox(props: innerColorProps) {
+export default function InnerColorBox(props: innerColorProps) {
   return (
     <Container onClick={props.handleClick}>
       <InnerColorImage src={InnerColor} />
       <InnerColorText>
-        <Text>
-          <ColorName>{props.$name}</ColorName>
-          <Ratio>
+        <div>
+          <Text $style={DefaultColor.Head}>{props.$name}</Text>
+          <Text $style={DefaultColor.Content}>
             {props.trim} 구매자의 {props.ratio}%가 선택
-          </Ratio>
-        </Text>
-        <Price>+ {props.price}원</Price>
+          </Text>
+        </div>
+        <Text $style={DefaultColor.Price}>+ {props.price}원</Text>
       </InnerColorText>
+      {props.$active && <SelectedFrame />}
     </Container>
   );
 }
@@ -36,7 +37,7 @@ const Container = styled.div`
   height: 10.25rem;
   display: flex;
   flex-direction: column;
-
+  position: relative;
   cursor: pointer;
 `;
 
@@ -47,37 +48,19 @@ const InnerColorImage = styled.img`
 const InnerColorText = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
+  justify-content: space-between;
   padding: 0.75rem 1rem;
   gap: 0.6875rem;
-  width: 100%;
-  height: 5rem;
-
-  border: 1px solid ${GREY2};
+  border: 1px solid ${(props) => props.theme.colors.GREY2};
 `;
 
-const Text = styled.div`
-  height: 100%;
+const SelectedFrame = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 12.6rem;
+  height: 10.35rem;
+  border: 2px solid ${(props) => props.theme.colors.NAVYBLUE5};
+  z-index: 1;
 `;
-
-const ColorName = styled.p`
-  color: ${BLACK};
-  font-size: 0.75rem;
-  font-weight: 500;
-`;
-
-const Ratio = styled.p`
-  color: ${GREY3};
-  font-size: 0.625rem;
-  font-weight: 400;
-  line-height: 150%;
-`;
-
-const Price = styled.p`
-  color: ${COOLGREY2};
-  font-size: 0.75rem;
-  font-weight: 500;
-`;
-
-export default InnerColorBox;

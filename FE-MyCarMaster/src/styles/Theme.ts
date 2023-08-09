@@ -1,20 +1,20 @@
 import { DefaultTheme } from "styled-components";
 
 const colors = {
-  Black: "#222222",
-  White: "#FFFFFF",
-  CoolGrey1: "#C5C9D2",
-  CoolGrey2: "#81899E",
-  Grey1: "#F6F6F6",
-  Grey2: "#DDDDDD",
-  Grey3: "#7B7B7B",
-  NavyBlue1: "#E7ECF9",
-  NavyBlue2: "#D2D9EC",
-  NavyBlue3: "#C6D2F0",
-  NavyBlue4: "#96A9DC",
-  NavyBlue5: "#1A3276",
-  Gold4: "#FAF2ED",
-  Gold5: "#9B6D54",
+  BLACK: "#222222",
+  WHITE: "#FFFFFF",
+  COOLGREY1: "#C5C9D2",
+  COOLGREY2: "#81899E",
+  GREY1: "#F6F6F6",
+  GREY2: "#DDDDDD",
+  GREY3: "#7B7B7B",
+  GOLD4: "#FAF2ED",
+  GOLD5: "#9B6D54",
+  NAVYBLUE1: "#E7ECF9",
+  NAVYBLUE2: "#D2D9EC",
+  NAVYBLUE3: "#C6D2F0",
+  NAVYBLUE4: "#96A9DC",
+  NAVYBLUE5: "#1A3276",
 };
 
 const fontSize = {
@@ -49,6 +49,22 @@ const lineHeight = {
 };
 
 const fonts = {
+  BodyMedium: {
+    fontFamily: "HyundaiSansMedium",
+    fontSize: fontSize.Microscopic,
+    fontStyle: "normal",
+    fontWeight: fontWeight.medium,
+    lineHeight: lineHeight.ExtraCompact,
+  },
+
+  BodySmall: {
+    fontFamily: "HyundaiSansRegular",
+    fontSize: fontSize.Nano,
+    fontStyle: "normal",
+    fontWeight: fontWeight.regular,
+    lineHeight: lineHeight.ExtraCompact,
+  },
+
   display: {
     fontFamily: "HyundaiSansBold",
     fontSize: fontSize.Enormous,

@@ -40,8 +40,8 @@ const Container = styled.li`
   align-items: flex-start;
   justify-content: space-between;
 
-  color: ${theme.colors.Black};
-  border: 1px solid ${theme.colors.Grey2};
+  color: ${theme.colors.BLACK};
+  border: 1px solid ${theme.colors.GREY2};
 `;
 
 const Text = styled.p`

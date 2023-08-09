@@ -6,7 +6,6 @@ import {
 import { useOptionDispatch } from "../../../contexts/OptionContext";
 import theme from "../../../styles/Theme";
 import Button from "../Button/Button";
-import { BLACK, GREY2, GREY3, NAVYBLUE5 } from "../../../styles/Color";
 
 type OptionBoxProp = {
   $id: number;
@@ -111,18 +110,18 @@ function OptionBox({
               <Button
                 $x={4.875}
                 $y={1.5}
-                $backgroundcolor={`${theme.colors.White}`}
-                $textcolor={`${theme.colors.NavyBlue5}`}
-                $bordercolor={`${theme.colors.NavyBlue5}`}
+                $backgroundcolor={`${theme.colors.WHITE}`}
+                $textcolor={`${theme.colors.NAVYBLUE5}`}
+                $bordercolor={`${theme.colors.NAVYBLUE5}`}
                 text={$considered ? "취소하기" : "고민해보기"}
                 handleClick={() => considerButtonHandler($id)}
               />
               <Button
                 $x={4.875}
                 $y={1.5}
-                $backgroundcolor={`${theme.colors.White}`}
-                $textcolor={`${theme.colors.NavyBlue5}`}
-                $bordercolor={`${theme.colors.NavyBlue5}`}
+                $backgroundcolor={`${theme.colors.WHITE}`}
+                $textcolor={`${theme.colors.NAVYBLUE5}`}
+                $bordercolor={`${theme.colors.NAVYBLUE5}`}
                 text={$selected ? "취소하기" : "추가하기"}
                 handleClick={() => addButtonHandler($id)}
               />
@@ -150,7 +149,7 @@ const Container = styled.div<{ $color: string }>`
   gap: 0.5rem;
   background-color: ${({ $color }) => $color};
 
-  border: 1px solid ${GREY2};
+  border: 1px solid ${(props) => props.theme.colors.GREY2};
   width: 12.5rem;
   height: 10.25rem;
   padding: 0.75rem 1rem;
@@ -180,7 +179,7 @@ const OptionName = styled.p`
 `;
 
 const Description = styled.p`
-  color: ${GREY3};
+  color: ${(props) => props.theme.colors.GREY3};
   ${(props) => props.theme.fonts.contentMedium};
 `;
 
@@ -202,19 +201,19 @@ const DetailModelOptionContainer = styled.div`
 `;
 
 const Name = styled.p`
-  color: ${BLACK};
+  color: ${(props) => props.theme.colors.BLACK};
   ${(props) => props.theme.fonts.titleSmall};
 `;
 
 const Ratio = styled.p`
-  color: ${NAVYBLUE5};
+  color: ${(props) => props.theme.colors.NAVYBLUE5};
   font-size: 0.625rem;
   font-weight: 400;
   line-height: 1rem;
 `;
 
 const Detail = styled.p`
-  color: ${BLACK};
+  color: ${(props) => props.theme.colors.BLACK};
   ${(props) => props.theme.fonts.subContent};
 `;
 

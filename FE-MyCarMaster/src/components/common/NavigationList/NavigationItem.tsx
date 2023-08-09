@@ -111,11 +111,11 @@ const Container = styled.li<activeProp>`
   }
 
   background-color: ${({ $active }) =>
-    $active ? `${theme.colors.NavyBlue1}` : `${theme.colors.White}`};
+    $active ? `${theme.colors.NAVYBLUE1}` : `${theme.colors.WHITE}`};
   border: ${({ $active }) =>
     $active
-      ? `1px solid ${theme.colors.NavyBlue4}`
-      : `1px solid ${theme.colors.Grey2}`};
+      ? `1px solid ${theme.colors.NAVYBLUE4}`
+      : `1px solid ${theme.colors.GREY2}`};
 `;
 
 const TopContainer = styled.div`

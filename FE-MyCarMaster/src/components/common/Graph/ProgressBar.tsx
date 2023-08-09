@@ -52,10 +52,10 @@ const ProgressValue = styled.div<{ $value: ValueProps }>`
   height: 100%;
   background-color: ${(props) =>
     props.$value.power !== undefined
-      ? theme.colors.NavyBlue5
+      ? theme.colors.NAVYBLUE5
       : props.$value.torque !== undefined
-      ? theme.colors.Gold5
-      : theme.colors.CoolGrey1};
+      ? theme.colors.GOLD5
+      : theme.colors.COOLGREY1};
   width: 0;
   animation: ${progressAnimation} 0.5s linear forwards;
 `;
@@ -64,10 +64,10 @@ const SecondaryProgressValue = styled.div<{ $value: ValueProps }>`
   height: 100%;
   background-color: ${(props) =>
     props.$value.power !== undefined
-      ? theme.colors.NavyBlue5
+      ? theme.colors.NAVYBLUE5
       : props.$value.torque !== undefined
-      ? theme.colors.Gold5
-      : theme.colors.CoolGrey2};
+      ? theme.colors.GOLD5
+      : theme.colors.COOLGREY2};
   width: 0;
   animation: ${progressAnimation} 0.5s linear forwards;
   position: absolute;
