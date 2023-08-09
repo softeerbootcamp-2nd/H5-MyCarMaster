@@ -1,4 +1,4 @@
-package softeer.be_my_car_master.infrastructure.body_type;
+package softeer.be_my_car_master.infrastructure.jpa.body_type;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import softeer.be_my_car_master.domain.body_type.BodyType;
-import softeer.be_my_car_master.infrastructure.model.ModelEntity;
+import softeer.be_my_car_master.infrastructure.jpa.model.entity.ModelEntity;
 
 @Entity
 @Table(name = "body_type")

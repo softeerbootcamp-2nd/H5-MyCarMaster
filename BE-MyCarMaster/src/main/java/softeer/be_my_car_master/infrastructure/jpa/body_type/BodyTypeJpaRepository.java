@@ -1,4 +1,4 @@
-package softeer.be_my_car_master.infrastructure.body_type;
+package softeer.be_my_car_master.infrastructure.jpa.body_type;
 
 import java.util.List;
 
