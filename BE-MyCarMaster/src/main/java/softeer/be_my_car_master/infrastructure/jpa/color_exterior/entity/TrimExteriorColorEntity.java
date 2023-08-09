@@ -16,10 +16,10 @@ import softeer.be_my_car_master.infrastructure.jpa.trim.entity.TrimEntity;
 public class TrimExteriorColorEntity {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "ratio", nullable = false)
+	@Column(name = "ratio")
 	private Integer ratio;
 
 	@Column(name = "price", nullable = false)

@@ -36,10 +36,10 @@ public class OptionEntity {
 	@Column(name = "name", nullable = false)
 	private String name;
 
-	@Column(name = "summary", nullable = false)
+	@Column(name = "summary")
 	private String summary;
 
-	@Column(name = "description", nullable = false)
+	@Column(name = "description")
 	private String description;
 
 	@Column(name = "category", nullable = false)

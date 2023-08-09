@@ -21,7 +21,7 @@ import softeer.be_my_car_master.infrastructure.jpa.color_interior.entity.Interio
 public class UnselectableInteriorColorOptionEntity {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
