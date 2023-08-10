@@ -137,14 +137,6 @@ const fonts = {
     fontWeight: fontWeight.regular,
     lineHeight: lineHeight.Compact,
   },
-
-  subContent: {
-    fontFamily: "HyundaiSansRegular",
-    fontSize: fontSize.Nano,
-    fontStyle: "normal",
-    fontWeight: fontWeight.regular,
-    lineHeight: lineHeight.ExtraCompact,
-  },
 };
 
 export type ColorsTypes = typeof colors;
