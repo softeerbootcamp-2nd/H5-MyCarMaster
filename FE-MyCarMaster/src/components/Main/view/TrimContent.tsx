@@ -15,7 +15,7 @@ function TrimContent() {
   const { trimId, trimList } = useTrimState();
   const trimDispatch = useTrimDispatch();
 
-  const { data, loading, error } = useFetch<Trims[]>(
+  const { data } = useFetch<Trims[]>(
     `${SERVER_URL}/trims/?modelId=${modelId}`,
     {
       method: "GET",

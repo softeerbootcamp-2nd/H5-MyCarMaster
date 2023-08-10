@@ -23,8 +23,8 @@ export default function InteriorColorSelectView() {
       type: "SET_CAR_PAINT_QUOTATION",
       payload: {
         type: "exteriorColorQuotation",
-        name: exteriorList[id].name,
-        price: exteriorList[id].price,
+        name: exteriorList[id - 1].name,
+        price: exteriorList[id - 1].price,
       },
     });
     carPaintDispatch({
@@ -37,22 +37,23 @@ export default function InteriorColorSelectView() {
 
   return (
     <>
-      {exteriorList.map((exterior) => {
-        return (
-          <OuterColorBox
-            key={exterior.id}
-            $id={exterior.id}
-            $name={exterior.name}
-            ratio={exterior.ratio}
-            price={exterior.price}
-            trim={trimQuotation?.trimQuotation?.name}
-            $active={exterior.id === exteriorId}
-            $colorImgUrl={exterior.colorImgUrl}
-            $coloredImgUrl={exterior.coloredImgUrl}
-            handleClick={() => selectExterior(exterior.id)}
-          />
-        );
-      })}
+      {exteriorList &&
+        exteriorList.map((exterior) => {
+          return (
+            <OuterColorBox
+              key={exterior.id}
+              $id={exterior.id}
+              $name={exterior.name}
+              ratio={exterior.ratio}
+              price={exterior.price}
+              trim={trimQuotation?.trimQuotation?.name}
+              $active={exterior.id === exteriorId}
+              $colorImgUrl={exterior.colorImgUrl}
+              $coloredImgUrl={exterior.coloredImgUrl}
+              handleClick={() => selectExterior(exterior.id)}
+            />
+          );
+        })}
     </>
   );
 }

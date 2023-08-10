@@ -1,6 +1,6 @@
 import { useReducer, createContext, useContext } from "react";
 
-type exteriorColors = {
+export type ExteriorColors = {
   id: number;
   name: string;
   price: number;
@@ -9,7 +9,7 @@ type exteriorColors = {
   coloredImgUrl: string;
 };
 
-type interiorColors = {
+type InteriorColors = {
   id: number;
   name: string;
   price: number;
@@ -21,8 +21,8 @@ type interiorColors = {
 type CarPaintState = {
   exteriorId: number;
   interiorId: number;
-  exteriorList: exteriorColors[];
-  interiorList: interiorColors[];
+  exteriorList: ExteriorColors[];
+  interiorList: InteriorColors[];
 };
 
 type CarPaintAction = {
@@ -34,17 +34,17 @@ type CarPaintAction = {
   payload: {
     exteriorId?: number;
     interiorId?: number;
-    exteriorList?: exteriorColors[];
-    interiorList?: interiorColors[];
+    exteriorList?: ExteriorColors[];
+    interiorList?: InteriorColors[];
   };
 };
 
 const initialCarPaintState: CarPaintState = {
-  exteriorId: 0,
-  interiorId: 0,
+  exteriorId: 1,
+  interiorId: 1,
   exteriorList: [
     {
-      id: 0,
+      id: 1,
       name: "Select Exterior1",
       price: 10,
       ratio: 0,
@@ -52,7 +52,7 @@ const initialCarPaintState: CarPaintState = {
       coloredImgUrl: "/images/exterior/black/image_001.png",
     },
     {
-      id: 1,
+      id: 2,
       name: "Select Exterior2",
       price: 20,
       ratio: 0,
@@ -60,7 +60,7 @@ const initialCarPaintState: CarPaintState = {
       coloredImgUrl: "/images/exterior/black/image_002.png",
     },
     {
-      id: 2,
+      id: 3,
       name: "Select Exterior3",
       price: 30,
       ratio: 0,
@@ -68,7 +68,7 @@ const initialCarPaintState: CarPaintState = {
       coloredImgUrl: "/images/exterior/black/image_003.png",
     },
     {
-      id: 3,
+      id: 4,
       name: "Select Exterior4",
       price: 40,
       ratio: 0,
@@ -76,7 +76,7 @@ const initialCarPaintState: CarPaintState = {
       coloredImgUrl: "/images/exterior/black/image_004.png",
     },
     {
-      id: 4,
+      id: 5,
       name: "Select Exterior5",
       price: 0,
       ratio: 0,
@@ -84,7 +84,7 @@ const initialCarPaintState: CarPaintState = {
       coloredImgUrl: "/images/exterior/black/image_005.png",
     },
     {
-      id: 5,
+      id: 6,
       name: "Select Exterior6",
       price: 0,
       ratio: 0,
@@ -140,12 +140,12 @@ const detailReducer = (
     case "SET_EXTERIOR_LIST":
       return {
         ...state,
-        exteriorList: action.payload.exteriorList as exteriorColors[],
+        exteriorList: action.payload.exteriorList as ExteriorColors[],
       };
     case "SET_INTERIOR_LIST":
       return {
         ...state,
-        interiorList: action.payload.interiorList as interiorColors[],
+        interiorList: action.payload.interiorList as InteriorColors[],
       };
     default:
       return state;

@@ -1,10 +1,41 @@
 import { styled } from "styled-components";
-import { useDetailState } from "../../../../contexts/DetailContext";
+import {
+  WheelDrives,
+  useDetailDispatch,
+  useDetailState,
+} from "../../../../contexts/DetailContext";
+import { useTrimState } from "../../../../contexts/TrimContext";
+import useFetch from "../../../../hooks/useFetch";
+import { useEffect } from "react";
 
 function WheelDriveView() {
-  const { wheelDriveId, wheelDriveList } = useDetailState();
+  const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 
-  return <WheelDriveImg src={wheelDriveList[wheelDriveId].imgUrl} />;
+  const { trimId } = useTrimState();
+  const { engineId, wheelDriveId, wheelDriveList } = useDetailState();
+  const wheelDriveDispatch = useDetailDispatch();
+
+  const { data } = useFetch<WheelDrives[]>(
+    `${SERVER_URL}/wheel-drives/?trimId=${trimId}&engineId=${engineId}`,
+    {
+      method: "GET",
+    }
+  );
+
+  useEffect(() => {
+    if (data) {
+      wheelDriveDispatch({
+        type: "SET_DETAIL_LIST",
+        payload: { wheelDriveList: data.result.wheelDrives },
+      });
+    }
+  }, [data, wheelDriveDispatch]);
+
+  return (
+    wheelDriveList && (
+      <WheelDriveImg src={wheelDriveList[wheelDriveId - 1].imgUrl} />
+    )
+  );
 }
 
 const WheelDriveImg = styled.img`
