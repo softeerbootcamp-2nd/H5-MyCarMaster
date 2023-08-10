@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +20,7 @@ import softeer.be_my_car_master.api.engine.dto.response.GetEnginesResponse;
 import softeer.be_my_car_master.api.engine.dto.response.GetUnselectableOptionsByEngineResponse;
 import softeer.be_my_car_master.api.engine.usecase.GetEnginesUseCase;
 import softeer.be_my_car_master.api.engine.usecase.GetUnselectableOptionsByEngineUseCase;
+import softeer.be_my_car_master.global.exception.BindingParamException;
 import softeer.be_my_car_master.global.response.Response;
 
 @RestController
@@ -32,7 +34,12 @@ public class EngineController {
 
 	@GetMapping
 	@Operation(summary = "트림에 따른 엔진 목록을 반환합니다")
-	public Response<GetEnginesResponse> getEngines(@RequestBody @Valid GetEnginesRequest getEnginesRequest) {
+	public Response<GetEnginesResponse> getEngines(@Valid GetEnginesRequest getEnginesRequest,
+		BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+			throw new BindingParamException(bindingResult.getFieldErrors());
+		}
+
 		Long trimId = getEnginesRequest.getTrimId();
 		GetEnginesResponse getEnginesResponse = getEnginesUseCase.execute(trimId);
 		return Response.createSuccessResponse(getEnginesResponse);
