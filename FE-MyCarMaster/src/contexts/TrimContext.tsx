@@ -5,7 +5,7 @@ import Prestige from "../assets/images/Prestige.png";
 import Calligraphy from "../assets/images/Calligraphy.png";
 // 백엔드 API 나오면 실제 imgUrl로 대체
 
-type Trims = {
+export type Trims = {
   id: number;
   name: string;
   description: string;
