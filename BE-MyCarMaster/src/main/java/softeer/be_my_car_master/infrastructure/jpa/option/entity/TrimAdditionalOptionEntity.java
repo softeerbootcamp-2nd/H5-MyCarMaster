@@ -22,10 +22,10 @@ import softeer.be_my_car_master.infrastructure.jpa.tag.entity.TagEntity;
 import softeer.be_my_car_master.infrastructure.jpa.trim.entity.TrimEntity;
 
 @Entity
-@Table(name = "additional_trim_option")
+@Table(name = "trim_additional_option")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class AdditionalTrimOptionEntity {
+public class TrimAdditionalOptionEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

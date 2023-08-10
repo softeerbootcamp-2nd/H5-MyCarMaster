@@ -12,21 +12,21 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import softeer.be_my_car_master.infrastructure.jpa.body_type.entity.BodyTypeEntity;
+import softeer.be_my_car_master.infrastructure.jpa.engine.entity.EngineEntity;
 
 @Entity
-@Table(name = "unselectable_body_type_option")
+@Table(name = "engine_unselectable_option")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class UnselectableBodyTypeOptionEntity {
+public class EngineUnselectableOptionEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "body_type_id")
-	private BodyTypeEntity bodyType;
+	@JoinColumn(name = "engine_id")
+	private EngineEntity engine;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "option_id")

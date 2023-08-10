@@ -1,4 +1,4 @@
-package softeer.be_my_car_master.infrastructure.jpa.option.entity;
+package softeer.be_my_car_master.infrastructure.jpa.wheel_drive.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,16 +9,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 import softeer.be_my_car_master.infrastructure.jpa.engine.entity.EngineEntity;
 
 @Entity
-@Table(name = "unselectable_engine_option")
-@Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class UnselectableEngineOptionEntity {
+@Table(name = "engine_unselectable_wheel_drive")
+public class EngineUnselectableWheelDriveEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +24,6 @@ public class UnselectableEngineOptionEntity {
 	private EngineEntity engine;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "option_id")
-	private OptionEntity option;
+	@JoinColumn(name = "wheel_drive_id")
+	private WheelDriveEntity wheelDrive;
 }

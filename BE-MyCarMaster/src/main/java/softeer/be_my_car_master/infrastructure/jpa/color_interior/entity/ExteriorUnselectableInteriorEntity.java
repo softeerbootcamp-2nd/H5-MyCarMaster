@@ -1,4 +1,4 @@
-package softeer.be_my_car_master.infrastructure.jpa.wheel_drive.entity;
+package softeer.be_my_car_master.infrastructure.jpa.color_interior.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,21 +9,22 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import softeer.be_my_car_master.infrastructure.jpa.engine.entity.EngineEntity;
+import softeer.be_my_car_master.infrastructure.jpa.color_exterior.entity.ExteriorColorEntity;
 
 @Entity
-@Table(name = "unselectable_engine_wheel_drive")
-public class UnselectableEngineWheelDriveEntity {
+@Table(name = "exterior_unselectable_interior")
+public class ExteriorUnselectableInteriorEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "engine_id")
-	private EngineEntity engine;
+	@JoinColumn(name = "exterior_color_id")
+	private ExteriorColorEntity exteriorColor;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "wheel_drive_id")
-	private WheelDriveEntity wheelDrive;
+	@JoinColumn(name = "interior_color_id")
+	private InteriorColorEntity interiorColor;
 }
+
