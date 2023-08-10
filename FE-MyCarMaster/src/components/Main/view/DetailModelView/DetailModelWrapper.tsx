@@ -1,4 +1,3 @@
-import React from "react";
 import EngineView from "./EngineView";
 import WheelDriveView from "./WheelDriveView";
 import BodyTypeView from "./BodyTypeView";

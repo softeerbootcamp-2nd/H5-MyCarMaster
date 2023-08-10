@@ -8,6 +8,12 @@ import { useTrimState } from "../../../../contexts/TrimContext";
 import useFetch from "../../../../hooks/useFetch";
 import { useEffect } from "react";
 
+interface FetchExteriorProps extends ExteriorColors {
+  result: {
+    colors: ExteriorColors[];
+  };
+}
+
 function ExteriorColorView() {
   const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 
@@ -15,7 +21,7 @@ function ExteriorColorView() {
   const { exteriorId, exteriorList } = useCarPaintState();
   const exteriorDispatch = useCarPaintDispatch();
 
-  const { data } = useFetch<ExteriorColors>(
+  const { data } = useFetch<FetchExteriorProps>(
     `${SERVER_URL}/exterior-colors/?trimId=${trimId}`,
     {
       method: "GET",

@@ -9,6 +9,12 @@ import { useTrimState } from "../../../../contexts/TrimContext";
 import useFetch from "../../../../hooks/useFetch";
 import { useEffect } from "react";
 
+interface FetchEngineProps extends Engines {
+  result: {
+    engines: Engines[];
+  };
+}
+
 function EngineView() {
   const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 
@@ -16,7 +22,7 @@ function EngineView() {
   const { engineId, engineList } = useDetailState();
   const engineDispatch = useDetailDispatch();
 
-  const { data } = useFetch<Engines[]>(
+  const { data } = useFetch<FetchEngineProps>(
     `${SERVER_URL}/engines/?trimId=${trimId}`,
     { method: "GET" }
   );

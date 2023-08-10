@@ -155,15 +155,17 @@ const optionReducer = (
           where === "consideredOption" ? "selectedOption" : "consideredOption"
         ];
 
-      if (existingIds.includes(id)) {
+      if (existingIds.includes(id as number)) {
         return {
           ...state,
-          [where]: existingIds.filter((existingId) => existingId !== id),
+          [where as string]: existingIds.filter(
+            (existingId) => existingId !== id
+          ),
         };
       } else {
         return {
           ...state,
-          [where]: [...existingIds, id],
+          [where as string]: [...existingIds, id],
           [where === "consideredOption"
             ? "selectedOption"
             : "consideredOption"]: existingOtherId.filter(

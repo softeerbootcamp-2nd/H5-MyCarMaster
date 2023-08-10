@@ -8,6 +8,12 @@ import { useTrimState } from "../../../../contexts/TrimContext";
 import useFetch from "../../../../hooks/useFetch";
 import { useEffect } from "react";
 
+interface FetchWheelDriveProps extends WheelDrives {
+  result: {
+    wheelDrives: WheelDrives[];
+  };
+}
+
 function WheelDriveView() {
   const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 
@@ -15,7 +21,7 @@ function WheelDriveView() {
   const { engineId, wheelDriveId, wheelDriveList } = useDetailState();
   const wheelDriveDispatch = useDetailDispatch();
 
-  const { data } = useFetch<WheelDrives[]>(
+  const { data } = useFetch<FetchWheelDriveProps>(
     `${SERVER_URL}/wheel-drives/?trimId=${trimId}&engineId=${engineId}`,
     {
       method: "GET",

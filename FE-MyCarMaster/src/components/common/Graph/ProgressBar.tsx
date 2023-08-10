@@ -1,5 +1,4 @@
 import styled, { keyframes } from "styled-components";
-import { useEffect, useState } from "react";
 import { ValueProps } from "./GraphItem";
 import theme from "../../../styles/Theme";
 
@@ -9,15 +8,6 @@ type ProgressBarProps = {
 };
 
 const ProgressBar = ({ progress, $value }: ProgressBarProps) => {
-  const [width, setWidth] = useState<number | number[]>(0);
-
-  useEffect(() => {
-    const progressArray: number[] = Array.isArray(progress)
-      ? progress
-      : [progress];
-    setWidth(progressArray);
-  }, [progress]);
-
   return (
     <ProgressContainer>
       <ProgressValue
