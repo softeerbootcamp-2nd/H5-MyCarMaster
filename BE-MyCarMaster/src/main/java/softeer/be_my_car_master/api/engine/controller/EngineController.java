@@ -45,7 +45,7 @@ public class EngineController {
 		@RequestBody @Valid GetUnselectableOptionsByEngineRequest getUnselectableOptionsByEngineRequest
 	) {
 		Long trimId = getUnselectableOptionsByEngineRequest.getTrimId();
-		List<Long> optionIds = getUnselectableOptionsByEngineRequest.getOptionsIds();
+		List<Long> optionIds = getUnselectableOptionsByEngineRequest.getOptionIds();
 		GetUnselectableOptionsByEngineResponse getUnselectableOptionsByEngineResponse =
 			getUnselectableOptionsByEngineUseCase.execute(engineId, trimId, optionIds);
 		return Response.createSuccessResponse(getUnselectableOptionsByEngineResponse);

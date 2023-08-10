@@ -24,6 +24,6 @@ public class GetUnselectableOptionsByEngineRequest {
 	private Long trimId;
 
 	@Schema(description = "기존에 선택된 옵션 식별자 목록", example = "[1, 2, 3]")
-	@NotEmpty(message = "옵션 식별자 목록은 비어있을 수 없습니다.")
-	private List<Long> optionsIds;
+	@NotEmpty(message = "optionIds는 비어있을 수 없습니다.")
+	private List<Long> optionIds;
 }
