@@ -25,7 +25,7 @@ function CategoryList({
           $active={
             indexSetter !== undefined
               ? index === navigationId - indexSetter
-              : index === optionCategoryId // 해당 줄은 optionCategoryId 로 교체 필요
+              : index === optionCategoryId
           }
           onClickHandler={() => onClickHandler(index)}
         />

@@ -6,7 +6,7 @@ import FOUR_WD from "../assets/images/4WD.png";
 import BodyType_7 from "../assets/images/BodyType_7.png";
 import BodyType_8 from "../assets/images/BodyType_8.png";
 
-type engines = {
+export type Engines = {
   id: number;
   name: string;
   description: string;
@@ -19,7 +19,7 @@ type engines = {
   fuelMax: number;
 };
 
-type wheelDrives = {
+export type WheelDrives = {
   id: number;
   name: string;
   description: string;
@@ -28,7 +28,7 @@ type wheelDrives = {
   imgUrl: string;
 };
 
-type bodyTypes = {
+export type BodyTypes = {
   id: number;
   name: string;
   description: string;
@@ -41,9 +41,9 @@ type DetailState = {
   engineId: number;
   wheelDriveId: number;
   bodyTypeId: number;
-  engineList: engines[];
-  wheelDriveList: wheelDrives[];
-  bodyTypeList: bodyTypes[];
+  engineList: Engines[];
+  wheelDriveList: WheelDrives[];
+  bodyTypeList: BodyTypes[];
 };
 
 type DetailAction = {
@@ -52,19 +52,19 @@ type DetailAction = {
     engineId?: number;
     wheelDriveId?: number;
     bodyTypeId?: number;
-    engineList?: engines[];
-    wheelDriveList?: wheelDrives[];
-    bodyTypeList?: bodyTypes[];
+    engineList?: Engines[];
+    wheelDriveList?: WheelDrives[];
+    bodyTypeList?: BodyTypes[];
   };
 };
 
 const initialDetailState: DetailState = {
-  engineId: 0,
-  wheelDriveId: 0,
-  bodyTypeId: 0,
+  engineId: 1,
+  wheelDriveId: 1,
+  bodyTypeId: 1,
   engineList: [
     {
-      id: 0,
+      id: 1,
       name: "가솔린 3.8",
       description:
         "우수한 가속 성능으로 안정적이고 엔진의 진동이 적어 조용한 드라이빙이 가능합니다.",
@@ -77,7 +77,7 @@ const initialDetailState: DetailState = {
       fuelMax: 9.2,
     },
     {
-      id: 1,
+      id: 2,
       name: "디젤 2.2",
       description:
         "높은 토크로 파워풀한 드라이빙이 가능하고 연비 효율이 우수합니다.",
@@ -92,7 +92,7 @@ const initialDetailState: DetailState = {
   ],
   wheelDriveList: [
     {
-      id: 0,
+      id: 1,
       name: "2WD",
       description:
         "엔진 동력이 전륜 후륜 중 하나로 전달되어 움직입니다. 차체가 가벼워 연료 효율이 높습니다.",
@@ -101,7 +101,7 @@ const initialDetailState: DetailState = {
       imgUrl: TWO_WD,
     },
     {
-      id: 1,
+      id: 2,
       name: "4WD",
       description:
         "상시 4륜 구동 시스템으로 주행 환경에 맞춰 전후륜 구동력을 자동배분해 안전성을 높입니다",
@@ -112,7 +112,7 @@ const initialDetailState: DetailState = {
   ],
   bodyTypeList: [
     {
-      id: 0,
+      id: 1,
       name: "7인승",
       description:
         "2열 가운데 시트를 없애 2열 탑승객의 편의는 물론, 3열 탑승객의 승하차가 편리합니다",
@@ -121,7 +121,7 @@ const initialDetailState: DetailState = {
       imgUrl: BodyType_7,
     },
     {
-      id: 1,
+      id: 2,
       name: "8인승",
       description:
         "1열 2명, 2열 3명, 3열 3명이 탑승할 수 있는 구조로, 많은 인원이 탑승할 수 있습니다",
@@ -150,9 +150,9 @@ const detailReducer = (
     case "SET_DETAIL_LIST":
       return {
         ...state,
-        engineList: action.payload.engineList as engines[],
-        wheelDriveList: action.payload.wheelDriveList as wheelDrives[],
-        bodyTypeList: action.payload.bodyTypeList as bodyTypes[],
+        engineList: action.payload.engineList as Engines[],
+        wheelDriveList: action.payload.wheelDriveList as WheelDrives[],
+        bodyTypeList: action.payload.bodyTypeList as BodyTypes[],
       };
     default:
       return state;

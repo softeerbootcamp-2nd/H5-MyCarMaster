@@ -4,11 +4,11 @@ import { OptionAction, OptionState, OptionType } from "../types/options.types";
 const initialOptionState: OptionState = {
   selectedOption: [],
   consideredOption: [],
-  optionId: 0,
+  optionId: 1,
   optionCategoryId: 0,
   optionList: [
     {
-      id: 0,
+      id: 1,
       name: "Select Option",
       description: "Select Option",
       price: 0,
@@ -36,7 +36,7 @@ const initialOptionState: OptionState = {
       ],
     },
     {
-      id: 1,
+      id: 2,
       category: "STYLE_PERFORMANCE",
       name: "20인치 다크 스파터링 휠",
       price: 400000,
@@ -47,7 +47,7 @@ const initialOptionState: OptionState = {
       subOptions: null,
     },
     {
-      id: 2,
+      id: 3,
       category: "SAFE",
       name: "차량 보호 필름",
       price: 50000,
@@ -58,7 +58,7 @@ const initialOptionState: OptionState = {
       subOptions: null,
     },
     {
-      id: 3,
+      id: 4,
       category: "CONVENIENCE",
       name: "2열 통풍 시트",
       price: 400000,
@@ -69,7 +69,7 @@ const initialOptionState: OptionState = {
       subOptions: null,
     },
     {
-      id: 4,
+      id: 5,
       category: "CONVENIENCE",
       name: "적외선 무릎 워머",
       price: 800000,
@@ -80,7 +80,7 @@ const initialOptionState: OptionState = {
       subOptions: null,
     },
     {
-      id: 5,
+      id: 6,
       category: "CONVENIENCE",
       name: "빌트인 공기 청정기",
       price: 800000,
@@ -91,7 +91,7 @@ const initialOptionState: OptionState = {
       subOptions: null,
     },
     {
-      id: 6,
+      id: 7,
       category: "CAR_PROTECTION",
       name: "Select Option4",
       price: 4123210,
@@ -102,7 +102,7 @@ const initialOptionState: OptionState = {
       subOptions: null,
     },
     {
-      id: 7,
+      id: 8,
       category: "CONVENIENCE",
       name: "2열 통풍 시트",
       price: 400000,
@@ -113,7 +113,7 @@ const initialOptionState: OptionState = {
       subOptions: null,
     },
     {
-      id: 8,
+      id: 9,
       category: "CONVENIENCE",
       name: "적외선 무릎 워머",
       price: 800000,
@@ -124,7 +124,7 @@ const initialOptionState: OptionState = {
       subOptions: null,
     },
     {
-      id: 9,
+      id: 10,
       category: "CONVENIENCE",
       name: "빌트인 공기 청정기",
       price: 800000,

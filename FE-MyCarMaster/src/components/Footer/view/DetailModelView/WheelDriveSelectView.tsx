@@ -17,8 +17,8 @@ export default function BodyTypeSelectView() {
       type: "SET_DETAIL_QUOTATION",
       payload: {
         type: "wheelDriveQuotation",
-        name: wheelDriveList[id].name,
-        price: wheelDriveList[id].price,
+        name: wheelDriveList[id - 1].name,
+        price: wheelDriveList[id - 1].price,
       },
     });
     detailDispatch({
@@ -33,21 +33,22 @@ export default function BodyTypeSelectView() {
 
   return (
     <>
-      {wheelDriveList.map((wheelDrive) => {
-        return (
-          <OptionBox
-            key={wheelDrive.id}
-            $id={wheelDrive.id}
-            $name={wheelDrive.name}
-            $description={wheelDrive.description}
-            $imgUrl={wheelDrive.imgUrl}
-            $ratio={wheelDrive.ratio}
-            $price={wheelDrive.price}
-            $choice={wheelDrive.id === wheelDriveId}
-            handleClick={() => selectWheelDrive(wheelDrive.id)}
-          />
-        );
-      })}
+      {wheelDriveList &&
+        wheelDriveList.map((wheelDrive) => {
+          return (
+            <OptionBox
+              key={wheelDrive.id}
+              $id={wheelDrive.id}
+              $name={wheelDrive.name}
+              $description={wheelDrive.description}
+              $imgUrl={wheelDrive.imgUrl}
+              $ratio={wheelDrive.ratio}
+              $price={wheelDrive.price}
+              $choice={wheelDrive.id === wheelDriveId}
+              handleClick={() => selectWheelDrive(wheelDrive.id)}
+            />
+          );
+        })}
     </>
   );
 }

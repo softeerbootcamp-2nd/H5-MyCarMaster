@@ -28,7 +28,7 @@ type TrimAction = {
 };
 
 const initialTrimState: TrimState = {
-  trimId: 0,
+  trimId: 1,
   trimList: [
     {
       id: 0,

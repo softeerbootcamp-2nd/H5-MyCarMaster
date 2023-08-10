@@ -11,7 +11,7 @@ type ModelAction = {
 };
 
 const initialModelState: ModelState = {
-  modelId: 0,
+  modelId: 1,
   modelName: "Palisade",
 };
 

@@ -10,19 +10,19 @@ function GraphList() {
       <GraphItem
         koName="최고출력"
         enName="PS"
-        $value={{ power: engineList[engineId].power }}
+        $value={{ power: engineList[engineId - 1].power }}
       />
       <GraphItem
         koName="최대토크"
         enName="kgf-m"
-        $value={{ torque: engineList[engineId].torque }}
+        $value={{ torque: engineList[engineId - 1].toque }}
       />
       <GraphItem
         koName="복합연비"
         enName="km/L"
         $value={{
-          fuelMin: engineList[engineId].fuelMin,
-          fuelMax: engineList[engineId].fuelMax,
+          fuelMin: engineList[engineId - 1].fuelMin,
+          fuelMax: engineList[engineId - 1].fuelMax,
         }}
       />
     </Container>

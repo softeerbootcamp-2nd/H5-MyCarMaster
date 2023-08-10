@@ -15,8 +15,8 @@ export default function BodyTypeSelectView() {
       type: "SET_DETAIL_QUOTATION",
       payload: {
         type: "bodyTypeQuotation",
-        name: bodyTypeList[id].name,
-        price: bodyTypeList[id].price,
+        name: bodyTypeList[id - 1].name,
+        price: bodyTypeList[id - 1].price,
       },
     });
     detailDispatch({
@@ -31,21 +31,22 @@ export default function BodyTypeSelectView() {
 
   return (
     <>
-      {bodyTypeList.map((bodyType) => {
-        return (
-          <OptionBox
-            key={bodyType.id}
-            $id={bodyType.id}
-            $name={bodyType.name}
-            $description={bodyType.description}
-            $imgUrl={bodyType.imgUrl}
-            $ratio={bodyType.ratio}
-            $price={bodyType.price}
-            $choice={bodyType.id === bodyTypeId}
-            handleClick={() => selectBodyType(bodyType.id)}
-          />
-        );
-      })}
+      {bodyTypeList &&
+        bodyTypeList.map((bodyType) => {
+          return (
+            <OptionBox
+              key={bodyType.id}
+              $id={bodyType.id}
+              $name={bodyType.name}
+              $description={bodyType.description}
+              $imgUrl={bodyType.imgUrl}
+              $ratio={bodyType.ratio}
+              $price={bodyType.price}
+              $choice={bodyType.id === bodyTypeId}
+              handleClick={() => selectBodyType(bodyType.id)}
+            />
+          );
+        })}
     </>
   );
 }

@@ -16,8 +16,8 @@ export default function BodyTypeSelectView() {
       type: "SET_DETAIL_QUOTATION",
       payload: {
         type: "engineQuotation",
-        name: engineList[id].name,
-        price: engineList[id].price,
+        name: engineList[id - 1].name,
+        price: engineList[id - 1].price,
       },
     });
     detailDispatch({
@@ -32,21 +32,22 @@ export default function BodyTypeSelectView() {
 
   return (
     <>
-      {engineList.map((engine) => {
-        return (
-          <OptionBox
-            key={engine.id}
-            $id={engine.id}
-            $name={engine.name}
-            $description={engine.description}
-            $imgUrl={engine.imgUrl}
-            $ratio={engine.ratio}
-            $price={engine.price}
-            $choice={engine.id === engineId}
-            handleClick={() => selectEngine(engine.id)}
-          />
-        );
-      })}
+      {engineList &&
+        engineList.map((engine) => {
+          return (
+            <OptionBox
+              key={engine.id}
+              $id={engine.id}
+              $name={engine.name}
+              $description={engine.description}
+              $imgUrl={engine.imgUrl}
+              $ratio={engine.ratio}
+              $price={engine.price}
+              $choice={engine.id === engineId}
+              handleClick={() => selectEngine(engine.id)}
+            />
+          );
+        })}
     </>
   );
 }
