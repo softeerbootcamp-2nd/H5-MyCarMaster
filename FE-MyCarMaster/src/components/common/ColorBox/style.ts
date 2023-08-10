@@ -1,6 +1,6 @@
 import styled, { css, RuleSet } from "styled-components";
 
-export type CSSProps = {
+type CSSProps = {
   $style?: RuleSet;
 };
 
