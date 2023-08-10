@@ -86,13 +86,13 @@ final class EstimationView: UIView {
         return label
     }()
 
-    private let backButton: GeneralButton = {
+    let backButton: GeneralButton = {
         let button = GeneralButton(isHighlight: false)
         button.setStyledTitle("이전", for: .normal)
         return button
     }()
 
-    private let nextButton: GeneralButton = {
+    let nextButton: GeneralButton = {
         let button = GeneralButton(isHighlight: true)
         button.setStyledTitle("다음", for: .normal)
         button.highlightStyled()

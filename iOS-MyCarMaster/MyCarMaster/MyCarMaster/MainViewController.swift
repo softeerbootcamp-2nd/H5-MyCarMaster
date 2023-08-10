@@ -7,11 +7,81 @@
 
 import UIKit
 
+enum Step {
+    case trim
+    case engine
+    case wheelDrive
+    case bodyType
+
+    var title: String {
+        switch self {
+        case .trim:
+            return "트림 선택"
+        case .engine:
+            return "엔진 종류"
+        case .wheelDrive:
+            return "구동 방식"
+        case .bodyType:
+            return "바디 타입"
+        }
+    }
+
+    var next: Step {
+        switch self {
+        case .trim:
+            return .engine
+        case .engine:
+            return .wheelDrive
+        case .wheelDrive:
+            return .bodyType
+        case .bodyType:
+            return .trim
+        }
+    }
+
+    var back: Step {
+        switch self {
+        case .trim:
+            return .bodyType
+        case .engine:
+            return .trim
+        case .wheelDrive:
+            return .engine
+        case .bodyType:
+            return .wheelDrive
+        }
+    }
+
+    var progress: Float {
+        switch self {
+        case .trim:
+            return 0.01
+        case .engine:
+            return 0.25
+        case .wheelDrive:
+            return 0.5
+        case .bodyType:
+            return 0.5
+        }
+    }
+}
+
 final class MainViewController: UIViewController {
+
+    private var currentStep: Step?
 
     let stepNavigatorView = StepNavigatorView()
     var stepViewController: UIViewController?
     let estimationView = EstimationView()
+
+    init(entryStep: Step) {
+        super.init(nibName: nil, bundle: nil)
+        moveTo(entryStep)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,23 +93,7 @@ final class MainViewController: UIViewController {
         estimationView.translatesAutoresizingMaskIntoConstraints = false
         estimationView.layer.zPosition = 1
 
-        changeStepTo(WheelDriveViewController())
-    }
-
-    private func changeStepTo(_ stepViewController: UIViewController) {
-        self.stepViewController?.willMove(toParent: nil)
-        self.stepViewController?.view.removeFromSuperview()
-        self.stepViewController?.removeFromParent()
-
-        self.stepViewController = stepViewController
-
-        addChild(stepViewController)
-        view.addSubview(stepViewController.view)
-        stepViewController.view.translatesAutoresizingMaskIntoConstraints = false
-        stepViewController.view.layer.zPosition = 0
-        configureLayout()
-
-        stepViewController.didMove(toParent: self)
+        setCoordiante()
     }
 
     private func configureLayout() {
@@ -62,13 +116,59 @@ final class MainViewController: UIViewController {
             stepViewController.view.bottomAnchor.constraint(equalTo: estimationView.topAnchor),
         ])
     }
+
+    private func setCoordiante() {
+        estimationView.nextButton.addTarget(self, action: #selector(moveNext), for: .touchUpInside)
+        estimationView.backButton.addTarget(self, action: #selector(moveBack), for: .touchUpInside)
+    }
+
+    @objc
+    private func moveNext() {
+        moveTo(currentStep?.next ?? .trim)
+    }
+
+    @objc
+    private func moveBack() {
+        moveTo(currentStep?.back ?? .trim)
+    }
+
+    private func moveTo(_ step: Step) {
+        currentStep = step
+        stepNavigatorView.progressView.progressLine.progress = step.progress
+        stepNavigatorView.progressView.progressIndicatorLabel.setText(step.title)
+        switch step {
+        case .trim:
+            moveTo(TrimViewController())
+        case .engine:
+            moveTo(EngineViewController())
+        case .wheelDrive:
+            moveTo(WheelDriveViewController())
+        case .bodyType:
+            moveTo(BodyTypeViewController())
+        }
+    }
+
+    private func changeStepViewControllerTo(_ stepViewController: UIViewController) {
+        self.stepViewController?.willMove(toParent: nil)
+        self.stepViewController?.view.removeFromSuperview()
+        self.stepViewController?.removeFromParent()
+
+        self.stepViewController = stepViewController
+
+        addChild(stepViewController)
+        view.addSubview(stepViewController.view)
+        stepViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        stepViewController.view.layer.zPosition = 0
+        configureLayout()
+
+        stepViewController.didMove(toParent: self)
+    }
 }
 
 // MARK: - API
 extension MainViewController {
     func moveTo(_ stepViewController: UIViewController) {
-        stepNavigatorView.progressView.progressIndicatorLabel.setText("구동 방식")
-        changeStepTo(stepViewController)
+        changeStepViewControllerTo(stepViewController)
     }
 }
 
@@ -76,12 +176,11 @@ extension MainViewController {
 import SwiftUI
 
 struct MainViewController_Previews: PreviewProvider {
-    static let vc = MainViewController()
+    static let vc = MainViewController(entryStep: .trim)
 
     static var previews: some View {
 
         UIViewControllerPreview {
-            vc.moveTo(WheelDriveViewController())
             vc.estimationView.configure(with: 93896000)
             return vc
         }

@@ -42,6 +42,7 @@ final class TrimViewController: UIViewController {
     }
 
     private func configureUI() {
+        trimView.setDelegate(self)
         trimView.setDataSource(self)
         trimView.registerCellClass(BasicListCell.self)
     }
@@ -51,7 +52,7 @@ final class TrimViewController: UIViewController {
     }
 }
 
-extension TrimViewController: UICollectionViewDataSource {
+extension TrimViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(
         _ collectionView: UICollectionView,
@@ -74,6 +75,26 @@ extension TrimViewController: UICollectionViewDataSource {
 
         let cellState = BasicListCellState(from: trimList[indexPath.row])
         cell.configure(with: cellState)
+
+        // FIXME: 초기값 선택이 동작하지 않음
+        if indexPath.row == 0 {
+            cell.isSelected = true
+            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
+        }
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? BasicListCell else {
+            fatalError("알 수 없는 오류가 발생했습니다.")
+        }
+        cell.select()
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? BasicListCell else {
+            fatalError("알 수 없는 오류가 발생했습니다.")
+        }
+        cell.deselect()
     }
 }
