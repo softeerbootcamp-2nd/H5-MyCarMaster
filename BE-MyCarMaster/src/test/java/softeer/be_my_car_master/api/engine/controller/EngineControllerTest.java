@@ -21,7 +21,6 @@ import org.springframework.test.web.servlet.ResultActions;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import softeer.be_my_car_master.api.engine.dto.request.GetEnginesRequest;
 import softeer.be_my_car_master.api.engine.dto.request.GetUnselectableOptionsByEngineRequest;
 import softeer.be_my_car_master.api.engine.dto.response.EngineDto;
 import softeer.be_my_car_master.api.engine.dto.response.GetEnginesResponse;
@@ -111,8 +110,6 @@ class EngineControllerTest {
 		@DisplayName("trimId는 null값 일 수 없습니다")
 		void nonNullTrimId() throws Exception {
 			//given
-			String requestBody = getRequestBody(new GetEnginesRequest(null));
-
 			String responseBody = getClientErrorResponseBody();
 
 			//when
