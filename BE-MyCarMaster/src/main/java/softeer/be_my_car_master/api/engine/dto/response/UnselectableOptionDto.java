@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import softeer.be_my_car_master.domain.option.Option;
 
 @Getter
 @Setter
@@ -20,4 +21,12 @@ public class UnselectableOptionDto {
 
 	@Schema(description = "옵션 추가 비용", example = "1280000")
 	private Integer price;
+
+	public static UnselectableOptionDto from(Option option) {
+		return UnselectableOptionDto.builder()
+			.id(option.getId())
+			.name(option.getName())
+			.price(option.getPrice())
+			.build();
+	}
 }
