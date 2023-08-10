@@ -8,6 +8,12 @@ import useFetch from "../../../hooks/useFetch";
 import { useModelState } from "../../../contexts/ModelContext";
 import { useEffect } from "react";
 
+interface FetchTrimsProps extends Trims {
+  result: {
+    trims: Trims[];
+  };
+}
+
 function TrimContent() {
   const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 
@@ -15,7 +21,7 @@ function TrimContent() {
   const { trimId, trimList } = useTrimState();
   const trimDispatch = useTrimDispatch();
 
-  const { data } = useFetch<Trims[]>(
+  const { data } = useFetch<FetchTrimsProps>(
     `${SERVER_URL}/trims/?modelId=${modelId}`,
     {
       method: "GET",

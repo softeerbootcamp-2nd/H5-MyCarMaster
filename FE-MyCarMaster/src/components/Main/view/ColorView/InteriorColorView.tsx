@@ -8,6 +8,12 @@ import useFetch from "../../../../hooks/useFetch";
 import { useTrimState } from "../../../../contexts/TrimContext";
 import { useEffect } from "react";
 
+interface FetchInteriorProps extends InteriorColors {
+  result: {
+    colors: InteriorColors[];
+  };
+}
+
 function InteriorColorView() {
   const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 
@@ -15,7 +21,7 @@ function InteriorColorView() {
   const { exteriorId, interiorId, interiorList } = useCarPaintState();
   const interiorDispatch = useCarPaintDispatch();
 
-  const { data } = useFetch<InteriorColors>(
+  const { data } = useFetch<FetchInteriorProps>(
     `${SERVER_URL}/interior-colors/?trimId=${trimId}&exteriorColorId=${exteriorId}`
   );
 
