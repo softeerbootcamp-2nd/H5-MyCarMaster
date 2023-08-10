@@ -26,6 +26,7 @@ final class TrimView: UIView {
         let label = UILabel()
         label.style = .bodyMedium1
         label.setText("어떤 트림을 고를지 고민되나요?")
+        label.textColor = .MCM.black
         return label
     }()
 
@@ -41,7 +42,7 @@ final class TrimView: UIView {
             button.setTitleColor(.MCM.black, for: .normal)
         }
         button.style = .bodySmall1
-        button.layer.borderColor = UIColor.MCM.navyBlue1.cgColor
+        button.layer.borderColor = UIColor.MCM.coolGrey1.cgColor
         button.layer.borderWidth = 1.0
         button.setStyledTitle("내게 맞는 트림 찾기", for: .normal)
         return button
@@ -49,16 +50,14 @@ final class TrimView: UIView {
 
     private lazy var trimListView: UICollectionView = {
         let listView = UICollectionView(frame: .zero, collectionViewLayout: createListLayout())
+        listView.backgroundColor = .MCM.white
         listView.bounces = false
-        listView.backgroundColor = .systemGray
-        listView.indicatorStyle = .white
         return listView
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
-        configureLayout()
     }
 
     required init?(coder: NSCoder) {
@@ -96,7 +95,6 @@ final class TrimView: UIView {
             recommendStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: inset),
             recommendStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -inset),
             recommendStackView.bottomAnchor.constraint(equalTo: previewImageView.bottomAnchor),
-            //            RecommendStackView.heightAnchor.constraint(equalToConstant: 28),
 
             trimListView.topAnchor.constraint(equalTo: previewImageView.bottomAnchor, constant: firstSpacing),
             trimListView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: inset),
@@ -106,9 +104,17 @@ final class TrimView: UIView {
     }
 
     private func createListLayout() -> UICollectionViewLayout {
-        let configuration = UICollectionLayoutListConfiguration(appearance: .grouped)
-        let layout = UICollectionViewCompositionalLayout.list(using: configuration)
-        layout.configuration.interSectionSpacing = listSpacing
+        let layoutSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .absolute(120)
+        )
+        let item = NSCollectionLayoutItem(layoutSize: layoutSize)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: layoutSize, subitems: [item])
+
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = listSpacing
+
+        let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
 }
@@ -126,15 +132,19 @@ extension TrimView {
     func registerCellClass(_ cellClass: UICollectionViewCell.Type) {
         trimListView.register(cellClass, forCellWithReuseIdentifier: cellClass.reuseIdentifier)
     }
+
+    func updateLayout() {
+        configureLayout()
+    }
 }
 
-#if canImport(SwiftUI) && DEBUG
+#if canImport(SwiftUI)
 import SwiftUI
 
-struct ViewPreviews_Previews: PreviewProvider {
+struct TrimViewController_Previews: PreviewProvider {
     static var previews: some View {
-        UIViewPreview {
-            return TrimView()
+        UIViewControllerPreview {
+            return TrimViewController()
         }
     }
 }
