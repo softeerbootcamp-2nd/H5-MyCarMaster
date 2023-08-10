@@ -20,7 +20,6 @@ import org.springframework.test.web.servlet.ResultActions;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import softeer.be_my_car_master.api.engine.dto.request.GetEnginesRequest;
 import softeer.be_my_car_master.api.engine.dto.response.EngineDto;
 import softeer.be_my_car_master.api.engine.dto.response.GetEnginesResponse;
 import softeer.be_my_car_master.api.engine.dto.response.GetUnselectableOptionsByEngineResponse;
@@ -51,8 +50,6 @@ class EngineControllerTest {
 		@DisplayName("엔진 목록을 조회합니다")
 		void getEngines() throws Exception {
 			//given
-			String requestBody = getRequestBody(new GetEnginesRequest(1L));
-
 			GetEnginesResponse getEnginesResponse = new GetEnginesResponse();
 			EngineDto engineDto = EngineDto.builder()
 				.id(1L)
@@ -76,8 +73,8 @@ class EngineControllerTest {
 			//when
 			ResultActions perform = mockMvc.perform(
 				get("/engines")
-					.contentType("application/json")
-					.content(requestBody)
+					.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+					.param("trimId", "1")
 			);
 
 			//then
@@ -91,15 +88,13 @@ class EngineControllerTest {
 		@DisplayName("trimId는 1 이상이어야 합니다")
 		void minimumTrimId() throws Exception {
 			//given
-			String requestBody = getRequestBody(new GetEnginesRequest(0L));
-
 			String responseBody = getClientErrorResponseBody();
 
 			//when
 			ResultActions perform = mockMvc.perform(
 				get("/engines")
-					.contentType("application/json")
-					.content(requestBody)
+					.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+					.param("trimId", "0")
 			);
 
 			//then
@@ -113,15 +108,12 @@ class EngineControllerTest {
 		@DisplayName("trimId는 null값 일 수 없습니다")
 		void nonNullTrimId() throws Exception {
 			//given
-			String requestBody = getRequestBody(new GetEnginesRequest(null));
-
 			String responseBody = getClientErrorResponseBody();
 
 			//when
 			ResultActions perform = mockMvc.perform(
 				get("/engines")
-					.contentType("application/json")
-					.content(requestBody)
+					.contentType(MediaType.APPLICATION_FORM_URLENCODED)
 			);
 
 			//then
@@ -256,11 +248,5 @@ class EngineControllerTest {
 		Response errorResponse = Response.createErrorResponse(ResponseStatus.BAD_REQUEST);
 		String responseBody = objectMapper.writeValueAsString(errorResponse);
 		return responseBody;
-	}
-
-	private String getRequestBody(Object request) throws
-		JsonProcessingException {
-		String requestBody = objectMapper.writeValueAsString(request);
-		return requestBody;
 	}
 }
