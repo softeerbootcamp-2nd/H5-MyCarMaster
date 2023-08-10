@@ -90,6 +90,7 @@ function OptionBox(props: OptionBoxProp) {
           choice={props.$choice}
           considered={props.$considered}
           isDetail={navigationId !== 0 && navigationId !== 6}
+          isTrim={navigationId === 0}
         />
         <OptionBoxTopPrice
           $description={props.$description}

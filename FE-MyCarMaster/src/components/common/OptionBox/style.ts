@@ -6,7 +6,7 @@ export const Decoration = styled.p<CSSProps>`
 `;
 
 export const OptionName = styled.p<CSSProps>`
-  ${(props) => props.theme.fonts.titleLarge};
+  ${(props) => props.$size}
   ${(props) => props.$style}
 `;
 
@@ -85,6 +85,7 @@ export const Container = styled.div<{ $style?: RuleSet }>`
 
 type CSSProps = {
   $style?: RuleSet;
+  $size?: RuleSet;
 };
 
 export const ActiveColor = {
@@ -142,6 +143,14 @@ export const DefaultColor = {
   `,
   Name: css`
     color: ${(props) => props.theme.colors.BLACK};
+  `,
+
+  SizeDown: css`
+    ${(props) => props.theme.fonts.titleSmall};
+  `,
+
+  SizeUp: css`
+    ${(props) => props.theme.fonts.titleLarge};
   `,
 };
 

@@ -13,9 +13,10 @@ type OptionBoxNameProp = {
   $name?: string;
   $description?: string;
   $ratio?: number;
-  isDetail: boolean;
   choice?: boolean;
   considered?: boolean;
+  isDetail: boolean;
+  isTrim: boolean;
 };
 export default function OptionBoxName(props: OptionBoxNameProp) {
   return (
@@ -57,6 +58,9 @@ export default function OptionBoxName(props: OptionBoxNameProp) {
                 : props.choice
                 ? ActiveColor.OptionName
                 : DefaultColor.OptionName
+            }
+            $size={
+                props.isTrim ? DefaultColor.SizeUp : DefaultColor.SizeDown
             }
           >
             {props.$name}
