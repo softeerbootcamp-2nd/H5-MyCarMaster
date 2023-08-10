@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springdoc.api.annotations.ParameterObject;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,7 +35,7 @@ public class EngineController {
 	@GetMapping
 	@Operation(summary = "트림에 따른 엔진 목록을 반환합니다")
 	public Response<GetEnginesResponse> getEngines(
-		@Valid GetEnginesRequest getEnginesRequest,
+		@Valid @ParameterObject GetEnginesRequest getEnginesRequest,
 		BindingResult bindingResult
 	) {
 		if (bindingResult.hasErrors()) {
@@ -50,7 +51,7 @@ public class EngineController {
 	@Operation(summary = "엔진 변경 시도시 기존에 선택된 옵션들 중 변경하려는 엔진에서 선택 불가능한 옵션 목록을 반환합니다.")
 	public Response<GetUnselectableOptionsByEngineResponse> getUnselectableOptionsByEngine(
 		@PathVariable Long engineId,
-		@Valid GetUnselectableOptionsByEngineRequest getUnselectableOptionsByEngineRequest,
+		@Valid @ParameterObject GetUnselectableOptionsByEngineRequest getUnselectableOptionsByEngineRequest,
 		BindingResult bindingResult
 	) {
 		if (bindingResult.hasErrors()) {
