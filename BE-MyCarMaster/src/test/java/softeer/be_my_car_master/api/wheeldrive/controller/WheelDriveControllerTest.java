@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
@@ -42,8 +43,6 @@ class WheelDriveControllerTest {
 	@DisplayName("구동방식 목록을 조회합니다")
 	void getWheelDrives() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetWheelDrivesRequest(1L, 1L));
-
 		GetWheelDrivesResponse getWheelDrivesResponse = new GetWheelDrivesResponse();
 		WheelDriveDto wheelDriveDto = WheelDriveDto.builder()
 			.id(1L)
@@ -63,8 +62,9 @@ class WheelDriveControllerTest {
 		//when
 		ResultActions perform = mockMvc.perform(
 			get("/wheel-drives")
-				.contentType("application/json")
-				.content(requestBody)
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				.param("trimId", "1")
+				.param("engineId", "1")
 		);
 
 		//then
@@ -85,8 +85,9 @@ class WheelDriveControllerTest {
 		//when
 		ResultActions perform = mockMvc.perform(
 			get("/wheel-drives")
-				.contentType("application/json")
-				.content(requestBody)
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				.param("trimId", "0")
+				.param("engineId", "1")
 		);
 
 		//then
@@ -107,8 +108,8 @@ class WheelDriveControllerTest {
 		//when
 		ResultActions perform = mockMvc.perform(
 			get("/wheel-drives")
-				.contentType("application/json")
-				.content(requestBody)
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				.param("engineId", "1")
 		);
 
 		//then
@@ -129,8 +130,9 @@ class WheelDriveControllerTest {
 		//when
 		ResultActions perform = mockMvc.perform(
 			get("/wheel-drives")
-				.contentType("application/json")
-				.content(requestBody)
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				.param("trimId", "1")
+				.param("engineId", "0")
 		);
 
 		//then
@@ -151,8 +153,8 @@ class WheelDriveControllerTest {
 		//when
 		ResultActions perform = mockMvc.perform(
 			get("/wheel-drives")
-				.contentType("application/json")
-				.content(requestBody)
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				.param("trimId", "1")
 		);
 
 		//then
