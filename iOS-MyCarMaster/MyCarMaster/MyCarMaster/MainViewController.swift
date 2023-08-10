@@ -17,8 +17,11 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(stepNavigatorView)
         stepNavigatorView.translatesAutoresizingMaskIntoConstraints = false
+        stepNavigatorView.layer.zPosition = 1
+
         view.addSubview(estimationView)
         estimationView.translatesAutoresizingMaskIntoConstraints = false
+        estimationView.layer.zPosition = 1
 
         changeStepTo(TrimViewController())
     }
@@ -33,6 +36,7 @@ final class MainViewController: UIViewController {
         addChild(stepViewController)
         view.addSubview(stepViewController.view)
         stepViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        stepViewController.view.layer.zPosition = 0
         configureLayout()
         stepViewController.didMove(toParent: self)
     }

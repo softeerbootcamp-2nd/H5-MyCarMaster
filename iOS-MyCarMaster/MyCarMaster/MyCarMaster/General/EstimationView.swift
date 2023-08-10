@@ -50,6 +50,10 @@ extension GeneralButton {
 
 final class EstimationView: UIView {
 
+    override var intrinsicContentSize: CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: 143)
+    }
+
     private let inset: CGFloat = 16
 
     private let topContainer: UIView = {
@@ -117,7 +121,11 @@ final class EstimationView: UIView {
 
     private func configureUI() {
         backgroundColor = .MCM.white
-        // TODO: Shadow
+        addShadow(
+            color: .MCM.black.withAlphaComponent(0.08),
+            radius: 4,
+            offset: CGSize(width: 0, height: -4)
+        )
     }
 
     private func configureLayout() {

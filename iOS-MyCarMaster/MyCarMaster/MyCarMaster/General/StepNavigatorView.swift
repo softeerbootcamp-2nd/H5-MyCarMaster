@@ -61,7 +61,7 @@ final class ProgressView: UIView {
 final class StepNavigatorView: UIView {
 
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: 0, height: 104)
+        return CGSize(width: UIScreen.main.bounds.width, height: 104)
     }
 
     let backButton: UIButton = {
@@ -93,6 +93,11 @@ final class StepNavigatorView: UIView {
 
     private func configureUI() {
         backgroundColor = .MCM.white
+        addShadow(
+            color: .MCM.black.withAlphaComponent(0.08),
+            radius: 1,
+            offset: CGSize(width: 0, height: 1)
+        )
     }
 
     private func configureLayout() {
