@@ -88,7 +88,7 @@ function NavigationItem({ name, quotation }: NavigationItemProp) {
         Object.entries(quotation).map(([key, value]) =>
           key === "selectedQuotation" ? (
             value.map((item: QuotationType) => (
-              <BottomContainer key={item.name}>{item.name}</BottomContainer>
+              <BottomContainer key={item.id}>{item.name}</BottomContainer>
             ))
           ) : (
             <BottomContainer key={key}>{value.name}</BottomContainer>
@@ -116,6 +116,7 @@ const Container = styled.li<activeProp>`
     $active
       ? `1px solid ${theme.colors.NAVYBLUE4}`
       : `1px solid ${theme.colors.GREY2}`};
+  cursor: pointer;
 `;
 
 const TopContainer = styled.div`

@@ -47,7 +47,7 @@ export default function OptionSelect() {
             $imgUrl={option.imgUrl}
             $ratio={option.ratio}
             $price={option.price}
-            $selected={selectedOption.includes(option.id)}
+            $choice={selectedOption.includes(option.id)}
             $considered={consideredOption.includes(option.id)}
             handleClick={() => changeOptionId(option.id)}
           />
@@ -63,4 +63,8 @@ const Container = styled.div`
   width: 51.5rem;
   gap: 0.5rem;
   overflow: hidden;
+  overflow-x: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;

@@ -6,7 +6,7 @@ import { useQuotationDispatch } from "../../../../contexts/QuotationContext";
 import OptionBox from "../../../common/OptionBox/OptionBox";
 
 export default function BodyTypeSelectView() {
-  const { bodyTypeList, engineId, wheelDriveId } = useDetailState();
+  const { bodyTypeList, engineId, wheelDriveId, bodyTypeId } = useDetailState();
   const detailDispatch = useDetailDispatch();
   const quotationDispatch = useQuotationDispatch();
 
@@ -41,6 +41,7 @@ export default function BodyTypeSelectView() {
             $imgUrl={bodyType.imgUrl}
             $ratio={bodyType.ratio}
             $price={bodyType.price}
+            $choice={bodyType.id === bodyTypeId}
             handleClick={() => selectBodyType(bodyType.id)}
           />
         );
