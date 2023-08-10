@@ -8,7 +8,7 @@ export type Engines = {
   ratio: number;
   imgUrl: string;
   power: number;
-  torque: number;
+  toque: number;
   fuelMin: number;
   fuelMax: number;
 };
