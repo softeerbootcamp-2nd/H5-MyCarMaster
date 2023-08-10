@@ -199,8 +199,8 @@ extension BasicListCellState {
     init(from engine: Engine) {
         self.init(model: engine.model, name: engine.name, description: engine.description, ratio: engine.ratio, price: engine.price, hasDetailButton: false)
     }
-}
-
+    init(from wheelDrive: WheelDrive) {
+        self.init(model: wheelDrive.model, name: wheelDrive.name, description: wheelDrive.description, ratio: wheelDrive.ratio, price: wheelDrive.price, hasDetailButton: false)
 struct Trim {
     let model: String
     let name: String

@@ -23,7 +23,7 @@ final class MainViewController: UIViewController {
         estimationView.translatesAutoresizingMaskIntoConstraints = false
         estimationView.layer.zPosition = 1
 
-        changeStepTo(TrimViewController())
+        changeStepTo(WheelDriveViewController())
     }
 
     private func changeStepTo(_ stepViewController: UIViewController) {
@@ -38,6 +38,7 @@ final class MainViewController: UIViewController {
         stepViewController.view.translatesAutoresizingMaskIntoConstraints = false
         stepViewController.view.layer.zPosition = 0
         configureLayout()
+
         stepViewController.didMove(toParent: self)
     }
 
@@ -66,7 +67,7 @@ final class MainViewController: UIViewController {
 // MARK: - API
 extension MainViewController {
     func moveTo(_ stepViewController: UIViewController) {
-        stepNavigatorView.progressView.progressIndicatorLabel.setText("엔진 종류")
+        stepNavigatorView.progressView.progressIndicatorLabel.setText("구동 방식")
         changeStepTo(stepViewController)
     }
 }
@@ -80,7 +81,7 @@ struct MainViewController_Previews: PreviewProvider {
     static var previews: some View {
 
         UIViewControllerPreview {
-            vc.moveTo(EngineViewController())
+            vc.moveTo(WheelDriveViewController())
             vc.estimationView.configure(with: 93896000)
             return vc
         }
