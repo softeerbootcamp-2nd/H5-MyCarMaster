@@ -36,7 +36,7 @@ final class ProgressView: UIView {
     }
 
     private func configureUI() {
-        backgroundColor = .systemBackground
+        backgroundColor = .MCM.white
     }
 
     private func configureLayout() {
@@ -75,6 +75,7 @@ final class StepNavigatorView: UIView {
         let button = UIButton()
         button.style = .titleLarge2
         button.setStyledTitle("Palisade", for: .normal)
+        button.setTitleColor(.MCM.black, for: .normal)
         return button
     }()
 
@@ -91,7 +92,7 @@ final class StepNavigatorView: UIView {
     }
 
     private func configureUI() {
-        backgroundColor = .systemBackground
+        backgroundColor = .MCM.white
     }
 
     private func configureLayout() {
