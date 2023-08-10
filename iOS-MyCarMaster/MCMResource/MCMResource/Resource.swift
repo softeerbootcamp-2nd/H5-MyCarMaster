@@ -77,20 +77,38 @@ public enum Resource {
     }
 
     public enum Color {
+        /// #222222
         public static let black = RawColor.black.color as UIColor
+        /// #FFFFFF
         public static let white = RawColor.white.color as UIColor
+        /// #C5C9D2
         public static let coolGrey1 = RawColor.coolGrey1.color as UIColor
+        /// #81899E
         public static let coolGrey2 = RawColor.coolGrey2.color as UIColor
+        /// #F6F6F6
         public static let grey1 = RawColor.grey1.color as UIColor
+        /// #DDDDDD
         public static let grey2 = RawColor.grey2.color as UIColor
+        /// #7B7B7B
         public static let grey3 = RawColor.grey3.color as UIColor
+        /// #E7ECF9
         public static let navyBlue1 = RawColor.navyBlue1.color as UIColor
+        /// #C6D2F0
         public static let navyBlue2 = RawColor.navyBlue2.color as UIColor
+        /// #D2D9Ec
         public static let navyBlue3 = RawColor.navyBlue3.color as UIColor
+        /// #96A9DC
         public static let navyBlue4 = RawColor.navyBlue4.color as UIColor
+        /// #1A3276
         public static let navyBlue5 = RawColor.navyBlue5.color as UIColor
+        /// #FAF2ED
         public static let gold1 = RawColor.gold1.color as UIColor
+        /// #F0DCCF
         public static let gold2 = RawColor.gold2.color as UIColor
+        /// #9B6D54
+        public static let gold3 = RawColor.gold3.color as UIColor
+        /// #007FA8
+        public static let activeBlue = RawColor.activeBlue.color as UIColor
     }
 }
 
