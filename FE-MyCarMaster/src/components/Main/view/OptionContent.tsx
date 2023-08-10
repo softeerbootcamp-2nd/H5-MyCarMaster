@@ -38,7 +38,7 @@ function OptionContent() {
       <OptionContainer>
         <OptionImg src={optionImg} />
         {/* API 완성 시, optionList[optionId].imgUrl 로 교체*/}
-        <OptionDescription option={optionList[optionId]} />
+        <OptionDescription option={optionList[optionId - 1]} />
       </OptionContainer>
       <CategoryList categories={categories} onClickHandler={onClickHandler} />
     </Container>
