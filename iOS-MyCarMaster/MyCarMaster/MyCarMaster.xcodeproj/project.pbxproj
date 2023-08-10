@@ -127,7 +127,7 @@
 		B53C3C512A8566270019ECA1 /* WheelDriveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelDriveViewController.swift; sourceTree = "<group>"; };
 		B53C3C532A856DF00019ECA1 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		B53E028D2A84BE5100F464FC /* StepNavigatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepNavigatorView.swift; sourceTree = "<group>"; };
-		B560B2172A83827600A4B9A9 /* TrimView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrimView.swift; path = MyCarMaster/Trim/TrimView.swift; sourceTree = SOURCE_ROOT; };
+		B560B2172A83827600A4B9A9 /* TrimView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrimView.swift; path = MyCarMaster/Sceen/Trim/TrimView.swift; sourceTree = SOURCE_ROOT; };
 		B56A765B2A83EC5200F7E3EF /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
 		B56A765E2A83EFB000F7E3EF /* BasicListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicListCell.swift; sourceTree = "<group>"; };
 		B58289A62A7FFE5A00FAD6AA /* MCMCombineExtension.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MCMCombineExtension.xcodeproj; path = ../../MCMCombineExtension/MCMCombineExtension.xcodeproj; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 		B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMCombineExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A601452A81EB2600CF2983 /* MCMNetwork.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MCMNetwork.xcodeproj; path = "../../../../../../../문서 - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/MCMNetwork/MCMNetwork.xcodeproj"; sourceTree = "<group>"; };
 		B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		B5F1AE052A838B8E00E7E392 /* TrimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrimViewController.swift; path = MyCarMaster/Trim/TrimViewController.swift; sourceTree = SOURCE_ROOT; };
+		B5F1AE052A838B8E00E7E392 /* TrimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrimViewController.swift; path = MyCarMaster/Sceen/Trim/TrimViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,14 +195,11 @@
 		B50C7E4A2A790279005AFE0B /* MyCarMaster */ = {
 			isa = PBXGroup;
 			children = (
-				B56A765A2A83EC4000F7E3EF /* Util */,
 				B50C7E7D2A790430005AFE0B /* App */,
 				B50C7E7E2A790434005AFE0B /* Resources */,
-				B58A323C2A7C0B3B005FC831 /* Onboarding */,
-				B560B2162A83826C00A4B9A9 /* Trim */,
-				B53C3C422A8548330019ECA1 /* Engine */,
-				B53C3C4E2A85653A0019ECA1 /* WheelDrive */,
+				B53C3C562A8577760019ECA1 /* Sceen */,
 				B56A765D2A83EF9100F7E3EF /* General */,
+				B56A765A2A83EC4000F7E3EF /* Util */,
 				B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */,
 			);
 			path = MyCarMaster;
@@ -270,14 +267,25 @@
 			path = WheelDrive;
 			sourceTree = "<group>";
 		};
+		B53C3C562A8577760019ECA1 /* Sceen */ = {
+			isa = PBXGroup;
+			children = (
+				B58A323C2A7C0B3B005FC831 /* Onboarding */,
+				B560B2162A83826C00A4B9A9 /* Trim */,
+				B53C3C422A8548330019ECA1 /* Engine */,
+				B53C3C4E2A85653A0019ECA1 /* WheelDrive */,
+				B53C3C552A85776B0019ECA1 /* BodyType */,
+			);
+			path = Sceen;
+			sourceTree = "<group>";
+		};
 		B560B2162A83826C00A4B9A9 /* Trim */ = {
 			isa = PBXGroup;
 			children = (
 				B560B2172A83827600A4B9A9 /* TrimView.swift */,
 				B5F1AE052A838B8E00E7E392 /* TrimViewController.swift */,
 			);
-			name = Trim;
-			path = "../../../../../../../문서 - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/MyCarMaster/MyCarMaster/Trim";
+			path = Trim;
 			sourceTree = "<group>";
 		};
 		B56A765A2A83EC4000F7E3EF /* Util */ = {
