@@ -17,8 +17,8 @@ final class WheelDriveViewController: UIViewController {
         WheelDrive(model: "펠리세이드", name: "4WD", description: "전자식 상시 4륜 구동 시스템으로 환경에 맞춰 구동력을 자동 배분해 안정성을 높입니다.", ratio: 54, price: 1000000, imageURL: nil),
     ]
 
-    private var engineView: EngineView {
-        return view as? EngineView ?? EngineView()
+    private var wheelDriveView: WheelDriveView {
+        return view as? WheelDriveView ?? WheelDriveView()
     }
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -31,7 +31,7 @@ final class WheelDriveViewController: UIViewController {
 
     override func loadView() {
         super.loadView()
-        view = EngineView(frame: .zero)
+        view = WheelDriveView(frame: .zero)
     }
 
     override func viewDidLoad() {
@@ -40,12 +40,12 @@ final class WheelDriveViewController: UIViewController {
     }
 
     private func configureUI() {
-        engineView.setDataSource(self)
-        engineView.registerCellClass(BasicListCell.self)
+        wheelDriveView.setDataSource(self)
+        wheelDriveView.registerCellClass(BasicListCell.self)
     }
 
     override func didMove(toParent parent: UIViewController?) {
-        engineView.updateLayout()
+        wheelDriveView.updateLayout()
     }
 }
 
