@@ -6,7 +6,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import java.util.Arrays;
-import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -14,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
@@ -21,7 +21,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import softeer.be_my_car_master.api.engine.dto.request.GetEnginesRequest;
-import softeer.be_my_car_master.api.engine.dto.request.GetUnselectableOptionsByEngineRequest;
 import softeer.be_my_car_master.api.engine.dto.response.EngineDto;
 import softeer.be_my_car_master.api.engine.dto.response.GetEnginesResponse;
 import softeer.be_my_car_master.api.engine.dto.response.GetUnselectableOptionsByEngineResponse;
@@ -140,8 +139,6 @@ class EngineControllerTest {
 		@DisplayName("변경하려는 엔진에 따라 선택불가능해지는 옵션 목록을 조회합니다")
 		void getUnselectableOptionsByEngine() throws Exception {
 			//given
-			String requestBody = getRequestBody(new GetUnselectableOptionsByEngineRequest(1L, List.of(1L, 2L)));
-
 			GetUnselectableOptionsByEngineResponse getUnselectableOptionsByEngineResponse =
 				new GetUnselectableOptionsByEngineResponse();
 			UnselectableOptionDto unselectableOptionDto = UnselectableOptionDto.builder()
@@ -160,8 +157,9 @@ class EngineControllerTest {
 			//when
 			ResultActions perform = mockMvc.perform(
 				get("/engines/1/unselectable-options")
-					.contentType("application/json")
-					.content(requestBody)
+					.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+					.param("trimId", "1")
+					.param("optionIds", "1,2")
 			);
 
 			//then
@@ -175,15 +173,14 @@ class EngineControllerTest {
 		@DisplayName("trimId는 1 이상이어야 합니다")
 		void minimumTrimId() throws Exception {
 			//given
-			String requestBody = getRequestBody(new GetUnselectableOptionsByEngineRequest(0L, List.of(1L, 2L)));
-
 			String responseBody = getClientErrorResponseBody();
 
 			//when
 			ResultActions perform = mockMvc.perform(
 				get("/engines/1/unselectable-options")
-					.contentType("application/json")
-					.content(requestBody)
+					.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+					.param("trimId", "0")
+					.param("optionIds", "1,2")
 			);
 
 			//then
@@ -197,15 +194,13 @@ class EngineControllerTest {
 		@DisplayName("trimId는 null값 일 수 없습니다")
 		void nonNullTrimId() throws Exception {
 			//given
-			String requestBody = getRequestBody(new GetUnselectableOptionsByEngineRequest(null, List.of(1L, 2L)));
-
 			String responseBody = getClientErrorResponseBody();
 
 			//when
 			ResultActions perform = mockMvc.perform(
 				get("/engines/1/unselectable-options")
-					.contentType("application/json")
-					.content(requestBody)
+					.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+					.param("optionIds", "1,2")
 			);
 
 			//then
@@ -219,15 +214,13 @@ class EngineControllerTest {
 		@DisplayName("optionIds는 null값 일 수 없습니다")
 		void nonNullOptionIds() throws Exception {
 			//given
-			String requestBody = getRequestBody(new GetUnselectableOptionsByEngineRequest(1L, null));
-
 			String responseBody = getClientErrorResponseBody();
 
 			//when
 			ResultActions perform = mockMvc.perform(
 				get("/engines/1/unselectable-options")
-					.contentType("application/json")
-					.content(requestBody)
+					.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+					.param("trimId", "1")
 			);
 
 			//then
@@ -241,15 +234,14 @@ class EngineControllerTest {
 		@DisplayName("optionIds는 빈 List일 수 없습니다")
 		void nonEmptyOptionIds() throws Exception {
 			//given
-			String requestBody = getRequestBody(new GetUnselectableOptionsByEngineRequest(1L, List.of()));
-
 			String responseBody = getClientErrorResponseBody();
 
 			//when
 			ResultActions perform = mockMvc.perform(
 				get("/engines/1/unselectable-options")
-					.contentType("application/json")
-					.content(requestBody)
+					.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+					.param("trimId", "1")
+					.param("optionIds", "")
 			);
 
 			//then
