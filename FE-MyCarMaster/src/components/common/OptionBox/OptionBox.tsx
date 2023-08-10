@@ -114,6 +114,13 @@ function OptionBox({
                 $textcolor={`${theme.colors.NAVYBLUE5}`}
                 $bordercolor={`${theme.colors.NAVYBLUE5}`}
                 text={$considered ? "취소하기" : "고민해보기"}
+                $tool={
+                  $selected
+                    ? "AddSelectedToConsider"
+                    : $considered
+                    ? "ConsiderSelected"
+                    : "ConsiderDefault"
+                }
                 handleClick={() => considerButtonHandler($id)}
               />
               <Button
@@ -123,6 +130,13 @@ function OptionBox({
                 $textcolor={`${theme.colors.NAVYBLUE5}`}
                 $bordercolor={`${theme.colors.NAVYBLUE5}`}
                 text={$selected ? "취소하기" : "추가하기"}
+                $tool={
+                  $selected
+                    ? "AddSelected"
+                    : $considered
+                    ? "ConsiderSelectToAdd"
+                    : "AddDefault"
+                }
                 handleClick={() => addButtonHandler($id)}
               />
             </ButtonContainer>
