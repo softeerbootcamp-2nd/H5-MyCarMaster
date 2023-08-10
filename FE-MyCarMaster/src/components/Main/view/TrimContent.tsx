@@ -31,7 +31,7 @@ function TrimContent() {
     }
   }, [data, trimDispatch]);
 
-  return <TrimImage src={trimList[trimId - 1].imgUrl} />;
+  return trimList.length && <TrimImage src={trimList[trimId - 1].imgUrl} />;
 }
 
 const TrimImage = styled.img`

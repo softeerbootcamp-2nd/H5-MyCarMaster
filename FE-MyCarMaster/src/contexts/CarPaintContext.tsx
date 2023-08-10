@@ -9,7 +9,7 @@ export type ExteriorColors = {
   coloredImgUrl: string;
 };
 
-type InteriorColors = {
+export type InteriorColors = {
   id: number;
   name: string;
   price: number;
@@ -41,83 +41,9 @@ type CarPaintAction = {
 
 const initialCarPaintState: CarPaintState = {
   exteriorId: 1,
-  interiorId: 1,
-  exteriorList: [
-    {
-      id: 1,
-      name: "Select Exterior1",
-      price: 10,
-      ratio: 0,
-      colorImgUrl: "",
-      coloredImgUrl: "/images/exterior/black/image_001.png",
-    },
-    {
-      id: 2,
-      name: "Select Exterior2",
-      price: 20,
-      ratio: 0,
-      colorImgUrl: "",
-      coloredImgUrl: "/images/exterior/black/image_002.png",
-    },
-    {
-      id: 3,
-      name: "Select Exterior3",
-      price: 30,
-      ratio: 0,
-      colorImgUrl: "",
-      coloredImgUrl: "/images/exterior/black/image_003.png",
-    },
-    {
-      id: 4,
-      name: "Select Exterior4",
-      price: 40,
-      ratio: 0,
-      colorImgUrl: "",
-      coloredImgUrl: "/images/exterior/black/image_004.png",
-    },
-    {
-      id: 5,
-      name: "Select Exterior5",
-      price: 0,
-      ratio: 0,
-      colorImgUrl: "",
-      coloredImgUrl: "/images/exterior/black/image_005.png",
-    },
-    {
-      id: 6,
-      name: "Select Exterior6",
-      price: 0,
-      ratio: 0,
-      colorImgUrl: "",
-      coloredImgUrl: "/images/exterior/black/image_006.png",
-    },
-  ],
-  interiorList: [
-    {
-      id: 0,
-      name: "Select Interior",
-      price: 0,
-      ratio: 0,
-      colorImgUrl: "/images/interior/interiorColor.png",
-      coloredImgUrl: "/images/interior/interiorImage.png",
-    },
-    {
-      id: 1,
-      name: "Select Interior2",
-      price: 10,
-      ratio: 0,
-      colorImgUrl: "/images/interior/interiorColor.png",
-      coloredImgUrl: "", // 일부러 안넣음.
-    },
-    {
-      id: 2,
-      name: "Select Interior3",
-      price: 20,
-      ratio: 0,
-      colorImgUrl: "/images/interior/interiorColor.png",
-      coloredImgUrl: "/images/interior/interiorImage.png",
-    },
-  ],
+  interiorId: 0,
+  exteriorList: [],
+  interiorList: [],
 };
 
 type CarPaintDispatch = (action: CarPaintAction) => void;

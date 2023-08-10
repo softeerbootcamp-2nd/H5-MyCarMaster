@@ -37,22 +37,23 @@ export default function InteriorColorSelectView() {
 
   return (
     <>
-      {interiorList.map((interior) => {
-        return (
-          <InnerColorBox
-            key={interior.id}
-            $id={interior.id}
-            $name={interior.name}
-            ratio={interior.ratio}
-            price={interior.price}
-            trim={trimQuotation?.trimQuotation?.name}
-            $active={interior.id === interiorId}
-            $colorImgUrl={interior.colorImgUrl}
-            $coloredImgUrl={interior.coloredImgUrl}
-            handleClick={() => selectInterior(interior.id)}
-          />
-        );
-      })}
+      {interiorList.length &&
+        interiorList.map((interior, index) => {
+          return (
+            <InnerColorBox
+              key={index}
+              $id={interior.id}
+              $name={interior.name}
+              ratio={interior.ratio}
+              price={interior.price}
+              trim={trimQuotation?.trimQuotation?.name}
+              $active={index === interiorId}
+              $colorImgUrl={interior.colorImgUrl}
+              $coloredImgUrl={interior.coloredImgUrl}
+              handleClick={() => selectInterior(index)}
+            />
+          );
+        })}
     </>
   );
 }
