@@ -100,7 +100,6 @@ const MainOptionContainer = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   gap: 0.5rem;
-  /* border-bottom: 1px solid ${theme.colors.Grey2}; */
 `;
 
 const MainOptionName = styled.p`
@@ -116,7 +115,7 @@ const Summary = styled.p`
   font-weight: 500;
   line-height: 165%; /* 1.34063rem */
 
-  color: ${theme.colors.CoolGrey2};
+  color: ${theme.colors.COOLGREY2};
 `;
 
 const Tag = styled.img`
@@ -128,7 +127,7 @@ const Tag = styled.img`
 const Border = styled.div`
   margin-top: 1rem;
   width: 100%;
-  border: 1px solid ${theme.colors.Grey2};
+  border: 1px solid ${theme.colors.GREY2};
 `;
 
 const SubOptionContainer = styled.div`
@@ -175,7 +174,7 @@ const SubOptionName = styled.p`
   font-weight: 500;
   line-height: 1.25rem; /* 142.857% */
 
-  color: ${theme.colors.NavyBlue5};
+  color: ${theme.colors.NAVYBLUE5};
 `;
 
 const NextButton = styled.button`
