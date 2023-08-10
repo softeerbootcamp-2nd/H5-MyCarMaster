@@ -2,6 +2,7 @@ package softeer.be_my_car_master.api.body_type.controller;
 
 import javax.validation.Valid;
 
+import org.springdoc.api.annotations.ParameterObject;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,7 +26,7 @@ public class BodyTypeController {
 	@GetMapping("/body-types")
 	@Operation(summary = "모델에 따른 바디타입 목록을 반환합니다")
 	public Response<GetBodyTypesResponse> getBodyTypes(
-		@Valid GetBodyTypesRequest getBodytypesRequest,
+		@Valid @ParameterObject GetBodyTypesRequest getBodytypesRequest,
 		BindingResult bindingResult
 	) {
 		if (bindingResult.hasErrors()) {

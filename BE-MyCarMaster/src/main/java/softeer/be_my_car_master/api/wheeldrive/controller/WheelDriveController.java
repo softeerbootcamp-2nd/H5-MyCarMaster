@@ -2,6 +2,7 @@ package softeer.be_my_car_master.api.wheeldrive.controller;
 
 import javax.validation.Valid;
 
+import org.springdoc.api.annotations.ParameterObject;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,7 +26,7 @@ public class WheelDriveController {
 	@GetMapping("/wheel-drives")
 	@Operation(summary = "트림, 엔진에 따른 구동 방식 목록을 반환합니다")
 	public Response<GetWheelDrivesResponse> getWheelDrives(
-		@Valid GetWheelDrivesRequest getWheelDrivesRequest,
+		@Valid @ParameterObject GetWheelDrivesRequest getWheelDrivesRequest,
 		BindingResult bindingResult
 	) {
 		if (bindingResult.hasErrors()) {
