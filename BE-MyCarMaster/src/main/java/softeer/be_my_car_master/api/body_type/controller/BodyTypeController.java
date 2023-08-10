@@ -24,7 +24,8 @@ public class BodyTypeController {
 
 	@GetMapping("/body-types")
 	@Operation(summary = "모델에 따른 바디타입 목록을 반환합니다")
-	public Response<GetBodyTypesResponse> getBodyTypes(@Valid GetBodyTypesRequest getBodytypesRequest,
+	public Response<GetBodyTypesResponse> getBodyTypes(
+		@Valid GetBodyTypesRequest getBodytypesRequest,
 		BindingResult bindingResult
 	) {
 		if (bindingResult.hasErrors()) {
