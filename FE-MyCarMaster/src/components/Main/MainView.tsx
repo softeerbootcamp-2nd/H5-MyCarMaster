@@ -3,11 +3,10 @@ import MainWrapper from "./MainWrapper";
 import NavigationList from "../common/NavigationList/NavigationList";
 
 function MainView() {
-  const navIndex = 0;
   return (
     <Container>
       <MainContent>
-        <MainWrapper navIndex={navIndex} />
+        <MainWrapper />
       </MainContent>
       <NavigationList />
     </Container>

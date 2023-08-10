@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import ArrowBottom from "../../assets/icons/ArrowBottom.svg";
+import { useModelState } from "../../contexts/ModelContext";
 
 type HeaderProps = {
   isHome: boolean;
@@ -7,16 +8,17 @@ type HeaderProps = {
 };
 
 function Header({ isHome, logo }: HeaderProps) {
+  const { modelName } = useModelState();
   return (
     <Container>
       <Img src={logo} />
-      {isHome ? (
-        <></>
-      ) : (
-        <ModelSelector>
-          <ModelName>Palisade</ModelName>
-          <ModelButton src={ArrowBottom} />
-        </ModelSelector>
+      {!isHome && (
+        <>
+          <ModelSelector>
+            <ModelName>{modelName}</ModelName>
+            <ModelButton src={ArrowBottom} />
+          </ModelSelector>
+        </>
       )}
     </Container>
   );

@@ -1,47 +1,60 @@
 import styled from "styled-components";
+import { Text, DarkColor, LightColor } from "./style";
 
 type ContainerProp = {
-  name?: string;
-  ratio?: number;
-  price?: number;
-  active?: boolean;
+  $id: number;
+  $name: string;
+  ratio: number;
+  price: number;
+  trim?: string;
+  $active: boolean;
+  $colorImgUrl?: string;
+  $coloredImgUrl?: string;
+  handleClick?: () => void;
 };
 
-type TextColor = {
-  color?: string;
-};
-
-function OuterColorBox(props: ContainerProp) {
+export default function OuterColorBox(props: ContainerProp) {
+  const isColorBright = 2 as number; // 임시로 2로 설정
   return (
-    <Container active={props.active}>
-      <TextContainer>
-        <Text color="#fff">{props.name}</Text>
-        <Text color="#7B7B7B">{props.ratio}</Text>
-        <Text color="#fff">+{props.price}</Text>
-      </TextContainer>
+    <Container onClick={props.handleClick}>
+      <Text $style={isColorBright === 1 ? LightColor.Head : DarkColor.Head}>
+        {props.$name}
+      </Text>
+      <Text
+        $style={isColorBright === 1 ? LightColor.Content : DarkColor.Content}
+      >
+        {props.trim} 구매자의 {props.ratio}%가 선택
+      </Text>
+      <Text $style={isColorBright === 1 ? LightColor.Price : DarkColor.Price}>
+        +{props.price.toLocaleString("ko-KR")}원
+      </Text>
+      {props.$active && <SelectedFrame />}
     </Container>
   );
 }
 
-const Container = styled.div<ContainerProp>`
+const Container = styled.div`
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
   width: 12.5rem;
   height: 5rem;
   padding: 0.75rem;
-  align-items: center;
   flex-shrink: 0;
+  border: 1px solid ${(props) => props.theme.colors.BLACK}; // 수정 필요1
   background-color: black;
+
+  cursor: pointer;
 `;
 
-const TextContainer = styled.div`
-  height: 3.5rem;
-  gap: 0.6875rem;
+const SelectedFrame = styled.div`
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 12.1rem;
+  height: 4.6rem;
+  border: 3px solid ${(props) => props.theme.colors.WHITE}; // 수정 필요2
+  z-index: 1;
 `;
-
-const Text = styled.p<TextColor>`
-  color: ${(props) => props.color};
-  line-height: 1.25rem;
-  font-size: 0.75rem;
-`;
-
-export default OuterColorBox;

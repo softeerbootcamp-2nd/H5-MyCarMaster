@@ -1,15 +1,31 @@
 import { styled } from "styled-components";
 import theme from "../../../styles/Theme";
+import { useQuotationState } from "../../../contexts/QuotationContext";
 
-type EstimatedPriceProp = {
-  sumPrice: number;
-};
+function EstimatedPrice() {
+  const {
+    trimQuotation,
+    detailQuotation,
+    carPaintQuotation,
+    optionQuotation,
+  }: any = useQuotationState();
 
-function EstimatedPrice({ sumPrice }: EstimatedPriceProp) {
+  const sum: number =
+    trimQuotation?.trimQuotation.price +
+    detailQuotation?.engineQuotation.price +
+    detailQuotation?.wheelDriveQuotation.price +
+    detailQuotation?.bodyTypeQuotation.price +
+    carPaintQuotation?.exteriorColorQuotation.price +
+    carPaintQuotation?.interiorColorQuotation.price +
+    optionQuotation?.selectedQuotation.reduce(
+      (acc: number, cur: any) => acc + cur.price,
+      0
+    );
+
   return (
     <Container>
       <Text>예상 가격</Text>
-      <Price>{sumPrice.toLocaleString("ko-KR")}원</Price>
+      <Price>{sum.toLocaleString("ko-KR")}원</Price>
     </Container>
   );
 }
@@ -24,8 +40,8 @@ const Container = styled.li`
   align-items: flex-start;
   justify-content: space-between;
 
-  color: ${theme.colors.Black};
-  border: 1px solid ${theme.colors.Grey2};
+  color: ${theme.colors.BLACK};
+  border: 1px solid ${theme.colors.GREY2};
 `;
 
 const Text = styled.p`

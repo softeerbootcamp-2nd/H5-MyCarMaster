@@ -1,61 +1,79 @@
 import styled from "styled-components";
-import { GREY1 } from "../../styles/Color";
-import InnerColorBox from "../common/ColorBox/InnerColorBox";
+import SelectListWrapper from "./SelectListWrapper";
 import Button from "../common/Button/Button";
 import theme from "../../styles/Theme";
+import {
+  useQuotationState,
+  useQuotationDispatch,
+} from "../../contexts/QuotationContext";
+import indexNameSwitching from "../../utils/indexNameSwitching";
 
 function Footer() {
-  // api 연동 후 Props 재정의 필요
-  const InnerColorProps = {
-    id: 1,
-    name: "퀼팅천연(블랙)",
-    trim: "Le Blanc",
-    ratio: 33,
-    price: 100000,
-    // colorImgUrl
-    // coloredImgUrl
+  const { navigationId, isFirst } = useQuotationState();
+  const quotationDispatch = useQuotationDispatch();
+  const name = indexNameSwitching(navigationId) as string;
+
+  const prevButtonHandler = () => {
+    const navigationIndex = navigationId - 1;
+    quotationDispatch({
+      type: "NAVIGATE",
+      payload: {
+        navigationId: navigationIndex,
+        isFirst: {
+          ...isFirst,
+          [navigationIndex]: false,
+        },
+      },
+    });
   };
 
-  const prevButtonHandler = () => {};
-
-  const nextButtonHandler = () => {};
+  const nextButtonHandler = () => {
+    const navigationIndex = navigationId + 1;
+    quotationDispatch({
+      type: "NAVIGATE",
+      payload: {
+        navigationId: navigationIndex,
+        isFirst: {
+          ...isFirst,
+          [navigationIndex]: false,
+        },
+      },
+    });
+  };
 
   return (
     <Container>
-      {/* 각 단계에 맞는 상품 아이템이 들어감 */}
-      <LeftContainer>
-        <InnerColorBox {...InnerColorProps} />
-        <InnerColorBox {...InnerColorProps} />
-        <InnerColorBox {...InnerColorProps} />
-        <InnerColorBox {...InnerColorProps} />
-      </LeftContainer>
+      <SelectListWrapper />
       <RightContainer>
         <HeightFittingContainer>
           <TextContainer>
-            <HeadText>트림 선택</HeadText>
-            <DescriptionText>원하는 트림을 선택해주세요.</DescriptionText>
+            {name && (
+              <>
+                <HeadText>{name} 선택</HeadText>
+                <DescriptionText>원하는 {name}을 선택해주세요.</DescriptionText>
+              </>
+            )}
           </TextContainer>
           <ButtonContainer>
-            {/* {navigationIndex === 0 ? (
-              <></>
-            ) : ( */}
+            {navigationId !== 0 && (
+              <Button
+                $x={9.625}
+                $y={2.25}
+                $backgroundcolor={`${theme.colors.WHITE}`}
+                $textcolor={`${theme.colors.NAVYBLUE5}`}
+                $bordercolor={`${theme.colors.NAVYBLUE5}`}
+                text={"이전"}
+                handleClick={prevButtonHandler}
+              />
+            )}
+
             <Button
               $x={9.625}
               $y={2.25}
-              $backgroundcolor={`${theme.colors.White}`}
-              $textcolor={`${theme.colors.NavyBlue5}`}
-              $bordercolor={`${theme.colors.NavyBlue5}`}
-              text={"이전"}
-              handleClick={prevButtonHandler}
-            />
-            {/* )} */}
-            <Button
-              $x={9.625}
-              $y={2.25}
-              $backgroundcolor={`${theme.colors.NavyBlue5}`}
-              $textcolor={`${theme.colors.White}`}
-              $bordercolor={`${theme.colors.NavyBlue5}`}
-              text={"다음"}
+              $backgroundcolor={`${theme.colors.NAVYBLUE5}`}
+              $textcolor={`${theme.colors.WHITE}`}
+              $bordercolor={`${theme.colors.NAVYBLUE5}`}
+              text={navigationId === 7 ? "견적서 완성" : "다음"}
               handleClick={nextButtonHandler}
             />
           </ButtonContainer>
@@ -72,14 +90,6 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
   height: 16rem;
-  background-color: ${GREY1};
-`;
-
-const LeftContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 51.5rem;
-  gap: 0.5rem;
 `;
 
 const RightContainer = styled.div`
