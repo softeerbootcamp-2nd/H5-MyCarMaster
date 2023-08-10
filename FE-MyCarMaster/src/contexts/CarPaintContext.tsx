@@ -41,7 +41,7 @@ type CarPaintAction = {
 
 const initialCarPaintState: CarPaintState = {
   exteriorId: 1,
-  interiorId: 1,
+  interiorId: 0,
   exteriorList: [],
   interiorList: [],
 };

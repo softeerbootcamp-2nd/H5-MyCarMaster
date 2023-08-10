@@ -47,7 +47,7 @@ export default function InteriorColorSelectView() {
               ratio={interior.ratio}
               price={interior.price}
               trim={trimQuotation?.trimQuotation?.name}
-              $active={interior.id === interiorId}
+              $active={index === interiorId}
               $colorImgUrl={interior.colorImgUrl}
               $coloredImgUrl={interior.coloredImgUrl}
               handleClick={() => selectInterior(index)}
