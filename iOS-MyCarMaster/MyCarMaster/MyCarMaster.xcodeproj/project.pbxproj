@@ -32,6 +32,7 @@
 		B5A600FF2A81E1FC00CF2983 /* MCMCombineExtension.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5A601942A8209E700CF2983 /* MCMNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A6014B2A81EB2600CF2983 /* MCMNetwork.framework */; };
 		B5A601952A8209E700CF2983 /* MCMNetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5A6014B2A81EB2600CF2983 /* MCMNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B5C3EAC12A84B1AA00D9577C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */; };
 		B5F1AE062A838B8E00E7E392 /* TrimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1AE052A838B8E00E7E392 /* TrimViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -123,6 +124,7 @@
 		B58A323A2A7C0B35005FC831 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMCombineExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A601452A81EB2600CF2983 /* MCMNetwork.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MCMNetwork.xcodeproj; path = "../../../../../../../문서 - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/MCMNetwork/MCMNetwork.xcodeproj"; sourceTree = "<group>"; };
+		B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B5F1AE052A838B8E00E7E392 /* TrimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrimViewController.swift; path = MyCarMaster/Trim/TrimViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -187,6 +189,7 @@
 				B58A323C2A7C0B3B005FC831 /* Onboarding */,
 				B560B2162A83826C00A4B9A9 /* Trim */,
 				B56A765D2A83EF9100F7E3EF /* General */,
+				B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */,
 			);
 			path = MyCarMaster;
 			sourceTree = "<group>";
@@ -530,6 +533,7 @@
 				B53E028E2A84BE5100F464FC /* StepNavigatorView.swift in Sources */,
 				B56A765C2A83EC5200F7E3EF /* Preview.swift in Sources */,
 				B510BBDF2A84895D009E5752 /* EstimationView.swift in Sources */,
+				B5C3EAC12A84B1AA00D9577C /* MainViewController.swift in Sources */,
 				B5F1AE062A838B8E00E7E392 /* TrimViewController.swift in Sources */,
 				B510BBDB2A840BD4009E5752 /* Formatter.swift in Sources */,
 				B510BBDD2A841A25009E5752 /* Reusable.swift in Sources */,
