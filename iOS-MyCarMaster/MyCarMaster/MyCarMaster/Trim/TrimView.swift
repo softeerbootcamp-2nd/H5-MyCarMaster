@@ -64,14 +64,11 @@ final class TrimView: BasicStepView {
     }
 }
 
-#if canImport(SwiftUI)
-import SwiftUI
-
-struct TrimViewController_Previews: PreviewProvider {
-    static var previews: some View {
-        UIViewControllerPreview {
-            return TrimViewController()
-        }
-    }
+struct Trim {
+    let model: String
+    let name: String
+    let ratio: Int
+    let description: String
+    var price: Int
+    var imageURL: URL?
 }
-#endif
