@@ -1,37 +1,53 @@
-import { useCallback } from "react";
+import { useState, useEffect } from "react";
 
-const useGet = (url: string) => {
-  const get = useCallback(async () => {
-    const response = await fetch(url);
-    const data = await response.json();
+interface FetchResult<T> {
+  data: T | null;
+  loading: boolean;
+  error: Error | null;
+}
 
-    if (!response.ok) {
-      throw new Error(data.message);
-    } else {
-      return data;
-    }
-  }, [url]);
-  return get;
-};
+type HttpMethod = "GET" | "POST" | "PATCH";
 
-const usePost = (url: string) => {
-  const post = useCallback(
-    async (body: object) => {
-      const response = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.message);
-      } else {
-        return data;
+interface FetchOptions {
+  method: HttpMethod;
+  body?: object;
+  headers?: Record<string, string>;
+}
+
+function useFetch<T>(
+  url: string,
+  options: FetchOptions = { method: "GET" }
+): FetchResult<T> {
+  const [data, setData] = useState<T | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<Error | null>(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch(url, {
+          method: options.method,
+          body: options.body ? JSON.stringify(options.body) : undefined,
+          headers: options.headers || { "Content-Type": "application/json" },
+        });
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const responseData: T = await response.json();
+        setData(responseData);
+      } catch (err) {
+        setError(err as Error);
+      } finally {
+        setLoading(false);
       }
-    },
-    [url]
-  );
-  return post;
-};
+    }
 
-export { useGet, usePost };
+    fetchData();
+  }, [url, options.method, options.body, options.headers]);
+
+  return { data, loading, error };
+}
+
+export default useFetch;
