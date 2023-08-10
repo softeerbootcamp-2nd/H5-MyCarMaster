@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
@@ -42,8 +43,6 @@ class TrimControllerTest {
 	@DisplayName("트림 목록을 조회합니다")
 	void getTrims() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetTrimsRequest(1L));
-
 		GetTrimsResponse getTrimsResponse = new GetTrimsResponse();
 		TrimDto trimDto = TrimDto.builder()
 			.id(1L)
@@ -63,8 +62,8 @@ class TrimControllerTest {
 		//when
 		ResultActions perform = mockMvc.perform(
 			get("/trims")
-				.contentType("application/json")
-				.content(requestBody)
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				.param("modelId", "1")
 		);
 
 		//then
@@ -78,15 +77,13 @@ class TrimControllerTest {
 	@DisplayName("modelId는 1 이상이어야 합니다")
 	void minimumModelId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetTrimsRequest(0L));
-
 		String responseBody = getClientErrorResponseBody();
 
 		//when
 		ResultActions perform = mockMvc.perform(
 			get("/trims")
-				.contentType("application/json")
-				.content(requestBody)
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				.param("modelId", "0")
 		);
 
 		//then
@@ -100,15 +97,12 @@ class TrimControllerTest {
 	@DisplayName("modelId는 null값 일 수 없습니다")
 	void nonNullModelId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetTrimsRequest(null));
-
 		String responseBody = getClientErrorResponseBody();
 
 		//when
 		ResultActions perform = mockMvc.perform(
 			get("/trims")
-				.contentType("application/json")
-				.content(requestBody)
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
 		);
 
 		//then
