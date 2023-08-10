@@ -15,8 +15,7 @@ extension Int {
         if style == .currency {
             number = NSNumber(value: self)
             numberFormatter.numberStyle = .decimal
-            let sign = self >= 0 ? "+" : "-"
-            return "\(sign)\(numberFormatter.string(from: number)!)원"
+            return "\(numberFormatter.string(from: number)!)원"
         } else if style == .percent {
             number = NSNumber(value: Double(self) / 100)
         } else {
