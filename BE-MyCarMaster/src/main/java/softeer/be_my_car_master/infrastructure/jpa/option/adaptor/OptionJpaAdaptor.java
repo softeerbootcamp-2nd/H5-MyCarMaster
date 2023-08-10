@@ -3,10 +3,13 @@ package softeer.be_my_car_master.infrastructure.jpa.option.adaptor;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.api.option.usecase.port.OptionPort;
 import softeer.be_my_car_master.domain.option.Option;
 import softeer.be_my_car_master.global.annotation.Adaptor;
+import softeer.be_my_car_master.infrastructure.jpa.option.entity.OptionEntity;
 import softeer.be_my_car_master.infrastructure.jpa.option.entity.TrimAdditionalOptionEntity;
 import softeer.be_my_car_master.infrastructure.jpa.option.repository.BodyTypeUnselectableOptionJpaRepository;
 import softeer.be_my_car_master.infrastructure.jpa.option.repository.EngineUnselectableOptionJpaRepository;
@@ -25,18 +28,22 @@ public class OptionJpaAdaptor implements OptionPort {
 	private final InteriorColorUnselectableOptionJpaRepository interiorColorUnselectableOptionJpaRepository;
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<Option> findSelectableOptionsByTrimId(Long trimId) {
 		List<TrimAdditionalOptionEntity> additionalTrimOptionEntities =
 			trimAdditionalOptionJpaRepository.findAllByTrimId(trimId);
 
-		// todo: 불필요해보이는 로직. 데이터 삽입후 테스트 필요
-		// additionalTrimOptionEntities.stream()
-		// 	.map(AdditionalTrimOptionEntity::getOption)
-		// 	.forEach(OptionEntity::getSubOptions);
+		loadTag(additionalTrimOptionEntities);
 
 		return additionalTrimOptionEntities.stream()
 			.map(TrimAdditionalOptionEntity::toOption)
 			.collect(Collectors.toList());
+	}
+
+	private void loadTag(List<TrimAdditionalOptionEntity> additionalTrimOptionEntities) {
+		additionalTrimOptionEntities.stream()
+			.map(TrimAdditionalOptionEntity::getOption)
+			.forEach(OptionEntity::getTag);
 	}
 
 	@Override
