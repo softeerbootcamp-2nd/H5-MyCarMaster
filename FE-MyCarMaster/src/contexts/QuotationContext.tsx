@@ -24,6 +24,7 @@ type QuotationAction = {
     | "SET_CONSIDER_QUOTATION"
     | "SET_CAR_PAINT_QUOTATION";
   payload: {
+    id?: number;
     navigationId?: number;
     isFirst?: boolean[];
     type?: string;
@@ -109,53 +110,57 @@ const quotationReducer = (
         },
       };
     case "SET_SELECT_QUOTATION": {
-      const { name, price } = action.payload;
+      const { id, name, price } = action.payload;
       const isOptionSelected = state.optionQuotation.selectedQuotation.some(
-        (option) => option.name === (name as string)
+        (option) => option.id === (id as number)
       );
 
-      // 이미 선택된 옵션이 있는 경우 해당 옵션을 제거
-      if (isOptionSelected) {
-        return {
-          ...state,
-          optionQuotation: {
-            ...state.optionQuotation,
-            selectedQuotation: state.optionQuotation.selectedQuotation.filter(
-              (option) => option.name !== (name as string)
-            ),
-          },
-        };
-      } else {
-        // 선택된 옵션이 없는 경우 해당 옵션을 추가
-        return {
-          ...state,
-          optionQuotation: {
-            ...state.optionQuotation,
-            selectedQuotation: [
-              ...state.optionQuotation.selectedQuotation,
-              {
-                name: name as string,
-                price: price as number,
-              },
-            ],
-          },
-        };
-      }
-    }
-    case "SET_CONSIDER_QUOTATION":
       return {
         ...state,
         optionQuotation: {
           ...state.optionQuotation,
-          consideredQuotation: [
-            ...state.optionQuotation.consideredQuotation,
-            {
-              name: action.payload.name as string,
-              price: action.payload.price as number,
-            },
-          ],
+          selectedQuotation: isOptionSelected
+            ? state.optionQuotation.selectedQuotation.filter(
+                (option) => option.id !== (id as number)
+              )
+            : [
+                ...state.optionQuotation.selectedQuotation,
+                {
+                  id: id as number,
+                  name: name as string,
+                  price: price as number,
+                },
+              ],
         },
       };
+    }
+    case "SET_CONSIDER_QUOTATION": {
+      const { id, name, price } = action.payload;
+      const isOptionConsidered = state.optionQuotation.consideredQuotation.some(
+        (option) => option.id === (id as number)
+      );
+      return {
+        ...state,
+        optionQuotation: {
+          ...state.optionQuotation,
+          selectedQuotation: state.optionQuotation.selectedQuotation.filter(
+            (option) => option.id !== (id as number)
+          ),
+          consideredQuotation: isOptionConsidered
+            ? state.optionQuotation.consideredQuotation.filter(
+                (option) => option.id !== (id as number)
+              )
+            : [
+                ...state.optionQuotation.consideredQuotation,
+                {
+                  id: id as number,
+                  name: name as string,
+                  price: price as number,
+                },
+              ],
+        },
+      };
+    }
     default:
       return state;
   }

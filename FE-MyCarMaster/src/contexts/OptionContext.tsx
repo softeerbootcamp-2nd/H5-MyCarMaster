@@ -146,7 +146,15 @@ const optionReducer = (
   switch (action.type) {
     case "SET_CHOICE_OPTION": {
       const { where, id } = action.payload;
-      const existingIds = state[where];
+      const existingIds =
+        state[
+          where === "consideredOption" ? "consideredOption" : "selectedOption"
+        ];
+      const existingOtherId =
+        state[
+          where === "consideredOption" ? "selectedOption" : "consideredOption"
+        ];
+
       if (existingIds.includes(id)) {
         return {
           ...state,
@@ -156,6 +164,11 @@ const optionReducer = (
         return {
           ...state,
           [where]: [...existingIds, id],
+          [where === "consideredOption"
+            ? "selectedOption"
+            : "consideredOption"]: existingOtherId.filter(
+            (existingId) => existingId !== id
+          ),
         };
       }
     }
