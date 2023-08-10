@@ -1,6 +1,5 @@
 import { styled } from "styled-components";
 import { Text, DefaultColor } from "./style";
-import InnerColor from "../../../assets/images/InnerColor.png";
 
 type innerColorProps = {
   $id: number;
@@ -17,7 +16,7 @@ type innerColorProps = {
 export default function InnerColorBox(props: innerColorProps) {
   return (
     <Container onClick={props.handleClick}>
-      <InnerColorImage src={InnerColor} />
+      <InnerColorImage src={props.$colorImgUrl} />
       <InnerColorText>
         <div>
           <Text $style={DefaultColor.Head}>{props.$name}</Text>

@@ -98,7 +98,7 @@ const initialCarPaintState: CarPaintState = {
       name: "Select Interior",
       price: 0,
       ratio: 0,
-      colorImgUrl: "",
+      colorImgUrl: "/images/interior/interiorColor.png",
       coloredImgUrl: "/images/interior/interiorImage.png",
     },
     {
@@ -106,7 +106,7 @@ const initialCarPaintState: CarPaintState = {
       name: "Select Interior2",
       price: 10,
       ratio: 0,
-      colorImgUrl: "",
+      colorImgUrl: "/images/interior/interiorColor.png",
       coloredImgUrl: "", // 일부러 안넣음.
     },
     {
@@ -114,7 +114,7 @@ const initialCarPaintState: CarPaintState = {
       name: "Select Interior3",
       price: 20,
       ratio: 0,
-      colorImgUrl: "",
+      colorImgUrl: "/images/interior/interiorColor.png",
       coloredImgUrl: "/images/interior/interiorImage.png",
     },
   ],
