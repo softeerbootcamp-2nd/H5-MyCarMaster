@@ -22,8 +22,6 @@ function TrimContent() {
     }
   );
 
-  console.log(data?.result);
-
   useEffect(() => {
     if (data) {
       trimDispatch({
@@ -33,7 +31,7 @@ function TrimContent() {
     }
   }, [data, trimDispatch]);
 
-  return <TrimImage src={trimList[trimId].imgUrl} />;
+  return <TrimImage src={trimList[trimId - 1].imgUrl} />;
 }
 
 const TrimImage = styled.img`
