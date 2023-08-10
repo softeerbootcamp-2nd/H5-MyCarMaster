@@ -48,6 +48,7 @@ function App() {
             <Route path="/quotation" element={<Quotation />} />
           </Routes>
         </Container>
+        <Filler />
       </AppProvider>
     </ThemeProvider>
   );
@@ -65,6 +66,15 @@ const Container = styled.div`
 
   width: 80rem;
   height: 45rem;
+`;
+
+const Filler = styled.div`
+  position: absolute;
+  top: 64%;
+  width: 100%;
+  height: 36%;
+  background-color: #f2f2f2;
+  z-index: -1;
 `;
 
 export default App;
