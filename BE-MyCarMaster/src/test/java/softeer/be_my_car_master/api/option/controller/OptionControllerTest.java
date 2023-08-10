@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
@@ -42,8 +43,6 @@ class OptionControllerTest {
 	@DisplayName("선택 가능한 옵션 목록을 조회합니다")
 	void getOptions() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetOptionsRequest(1L, 1L, 1L, 1L, 1L));
-
 		GetOptionsResponse getOptionsResponse = new GetOptionsResponse();
 		getOptionsResponse.setExclusiveTags(Arrays.asList("N Performance"));
 		OptionDto optionDto = OptionDto.builder()
@@ -66,8 +65,12 @@ class OptionControllerTest {
 		//when
 		ResultActions perform = mockMvc.perform(
 			get("/options")
-				.contentType("application/json")
-				.content(requestBody)
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				.param("trimId", "1")
+				.param("engineId", "1")
+				.param("wheelDriveId", "1")
+				.param("bodyTypeId", "1")
+				.param("interiorColorId", "1")
 		);
 
 		//then
@@ -81,15 +84,17 @@ class OptionControllerTest {
 	@DisplayName("trimId는 1 이상이어야 합니다")
 	void minimumTrimId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetOptionsRequest(0L, 1L, 1L, 1L, 1L));
-
 		String responseBody = getClientErrorResponseBody();
 
 		//when
 		ResultActions perform = mockMvc.perform(
 			get("/options")
-				.contentType("application/json")
-				.content(requestBody)
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				.param("trimId", "0")
+				.param("engineId", "1")
+				.param("wheelDriveId", "1")
+				.param("bodyTypeId", "1")
+				.param("interiorColorId", "1")
 		);
 
 		//then
@@ -103,15 +108,16 @@ class OptionControllerTest {
 	@DisplayName("trimId는 null값 일 수 없습니다")
 	void nonNullTrimId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetOptionsRequest(null, 1L, 1L, 1L, 1L));
-
 		String responseBody = getClientErrorResponseBody();
 
 		//when
 		ResultActions perform = mockMvc.perform(
 			get("/options")
-				.contentType("application/json")
-				.content(requestBody)
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				.param("engineId", "1")
+				.param("wheelDriveId", "1")
+				.param("bodyTypeId", "1")
+				.param("interiorColorId", "1")
 		);
 
 		//then
@@ -125,15 +131,17 @@ class OptionControllerTest {
 	@DisplayName("engineId는 1 이상이어야 합니다")
 	void minimumEngineId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetOptionsRequest(1L, 0L, 1L, 1L, 1L));
-
 		String responseBody = getClientErrorResponseBody();
 
 		//when
 		ResultActions perform = mockMvc.perform(
 			get("/options")
-				.contentType("application/json")
-				.content(requestBody)
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				.param("trimId", "1")
+				.param("engineId", "0")
+				.param("wheelDriveId", "1")
+				.param("bodyTypeId", "1")
+				.param("interiorColorId", "1")
 		);
 
 		//then
@@ -147,15 +155,16 @@ class OptionControllerTest {
 	@DisplayName("engineId는 null값 일 수 없습니다")
 	void nonNullEngineId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetOptionsRequest(1L, null, 1L, 1L, 1L));
-
 		String responseBody = getClientErrorResponseBody();
 
 		//when
 		ResultActions perform = mockMvc.perform(
 			get("/options")
-				.contentType("application/json")
-				.content(requestBody)
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				.param("trimId", "1")
+				.param("wheelDriveId", "1")
+				.param("bodyTypeId", "1")
+				.param("interiorColorId", "1")
 		);
 
 		//then
@@ -169,15 +178,17 @@ class OptionControllerTest {
 	@DisplayName("wheelDriveId는 1 이상이어야 합니다")
 	void minimumWheelDriveId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetOptionsRequest(1L, 1L, 0L, 1L, 1L));
-
 		String responseBody = getClientErrorResponseBody();
 
 		//when
 		ResultActions perform = mockMvc.perform(
 			get("/options")
-				.contentType("application/json")
-				.content(requestBody)
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				.param("trimId", "1")
+				.param("engineId", "1")
+				.param("wheelDriveId", "0")
+				.param("bodyTypeId", "1")
+				.param("interiorColorId", "1")
 		);
 
 		//then
@@ -191,15 +202,16 @@ class OptionControllerTest {
 	@DisplayName("wheelDriveId는 null값 일 수 없습니다")
 	void nonNullWheelDriveId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetOptionsRequest(1L, 1L, null, 1L, 1L));
-
 		String responseBody = getClientErrorResponseBody();
 
 		//when
 		ResultActions perform = mockMvc.perform(
 			get("/options")
-				.contentType("application/json")
-				.content(requestBody)
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				.param("trimId", "1")
+				.param("engineId", "1")
+				.param("bodyTypeId", "1")
+				.param("interiorColorId", "1")
 		);
 
 		//then
@@ -213,15 +225,17 @@ class OptionControllerTest {
 	@DisplayName("bodyTypeId는 1 이상이어야 합니다")
 	void minimumBodyTypeId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetOptionsRequest(1L, 1L, 1L, 0L, 1L));
-
 		String responseBody = getClientErrorResponseBody();
 
 		//when
 		ResultActions perform = mockMvc.perform(
 			get("/options")
-				.contentType("application/json")
-				.content(requestBody)
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				.param("trimId", "1")
+				.param("engineId", "1")
+				.param("wheelDriveId", "1")
+				.param("bodyTypeId", "0")
+				.param("interiorColorId", "1")
 		);
 
 		//then
@@ -235,15 +249,16 @@ class OptionControllerTest {
 	@DisplayName("bodyTypeId는 null값 일 수 없습니다")
 	void nonNullBodyTypeId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetOptionsRequest(1L, 1L, 1L, null, 1L));
-
 		String responseBody = getClientErrorResponseBody();
 
 		//when
 		ResultActions perform = mockMvc.perform(
 			get("/options")
-				.contentType("application/json")
-				.content(requestBody)
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				.param("trimId", "1")
+				.param("engineId", "1")
+				.param("wheelDriveId", "1")
+				.param("interiorColorId", "1")
 		);
 
 		//then
@@ -257,15 +272,17 @@ class OptionControllerTest {
 	@DisplayName("interiorColorId는 1 이상이어야 합니다")
 	void minimumInteriorColorId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetOptionsRequest(1L, 1L, 1L, 1L, 0L));
-
 		String responseBody = getClientErrorResponseBody();
 
 		//when
 		ResultActions perform = mockMvc.perform(
 			get("/options")
-				.contentType("application/json")
-				.content(requestBody)
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				.param("trimId", "1")
+				.param("engineId", "1")
+				.param("wheelDriveId", "1")
+				.param("bodyTypeId", "1")
+				.param("interiorColorId", "0")
 		);
 
 		//then
@@ -279,15 +296,16 @@ class OptionControllerTest {
 	@DisplayName("interiorColorId는 null값 일 수 없습니다")
 	void nonNullInteriorColorId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetOptionsRequest(1L, 1L, 1L, 1L, null));
-
 		String responseBody = getClientErrorResponseBody();
 
 		//when
 		ResultActions perform = mockMvc.perform(
 			get("/options")
-				.contentType("application/json")
-				.content(requestBody)
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				.param("trimId", "1")
+				.param("engineId", "1")
+				.param("wheelDriveId", "1")
+				.param("bodyTypeId", "1")
 		);
 
 		//then
