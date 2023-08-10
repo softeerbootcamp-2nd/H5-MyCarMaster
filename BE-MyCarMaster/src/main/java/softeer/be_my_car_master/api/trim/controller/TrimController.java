@@ -2,8 +2,8 @@ package softeer.be_my_car_master.api.trim.controller;
 
 import javax.validation.Valid;
 
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.api.trim.dto.request.GetTrimsRequest;
 import softeer.be_my_car_master.api.trim.dto.response.GetTrimsResponse;
 import softeer.be_my_car_master.api.trim.usecase.GetTrimsUseCase;
+import softeer.be_my_car_master.global.exception.BindingParamException;
 import softeer.be_my_car_master.global.response.Response;
 
 @RestController
@@ -25,7 +26,11 @@ public class TrimController {
 
 	@GetMapping
 	@Operation(summary = "모델에 따른 트림 목록을 반환합니다")
-	public Response<GetTrimsResponse> getTrims(@RequestBody @Valid GetTrimsRequest getTrimsRequest) {
+	public Response<GetTrimsResponse> getTrims(@Valid GetTrimsRequest getTrimsRequest, BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+			throw new BindingParamException(bindingResult.getFieldErrors());
+		}
+
 		Long modelId = getTrimsRequest.getModelId();
 		GetTrimsResponse getTrimsResponse = getTrimsUseCase.execute(modelId);
 		return Response.createSuccessResponse(getTrimsResponse);
