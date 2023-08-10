@@ -11,13 +11,6 @@ import MCMResource
 
 final class TrimView: BasicStepView {
 
-    private let previewImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "Exclusive")
-        return imageView
-    }()
-
     private let recommendLabel: UILabel = {
         let label = UILabel()
         label.style = .bodyMedium1
@@ -44,15 +37,13 @@ final class TrimView: BasicStepView {
         return button
     }()
 
+    override func configureUI() {
+        super.configureUI()
+        previewImageView.image = UIImage(named: "Exclusive")
+    }
+
     override func configureLayout() {
         super.configureLayout()
-
-        previewView.addSubview(previewImageView)
-        previewImageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            previewImageView.centerXAnchor.constraint(equalTo: previewView.centerXAnchor),
-            previewImageView.centerYAnchor.constraint(equalTo: previewView.centerYAnchor),
-        ])
 
         let recommendStackView = UIStackView()
         recommendStackView.axis = .horizontal

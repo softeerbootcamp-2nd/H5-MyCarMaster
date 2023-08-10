@@ -19,6 +19,12 @@ class BasicStepView: UIView {
         return view
     }()
 
+    let previewImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+
     lazy var listView: UICollectionView = {
         let listView = UICollectionView(frame: .zero, collectionViewLayout: createListLayout())
         listView.backgroundColor = .MCM.white
@@ -56,6 +62,13 @@ class BasicStepView: UIView {
             listView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: inset),
             listView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -inset),
             listView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+        ])
+
+        previewView.addSubview(previewImageView)
+        previewImageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            previewImageView.centerXAnchor.constraint(equalTo: previewView.centerXAnchor),
+            previewImageView.centerYAnchor.constraint(equalTo: previewView.centerYAnchor),
         ])
     }
 }
