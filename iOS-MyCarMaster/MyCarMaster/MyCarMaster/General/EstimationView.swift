@@ -52,39 +52,56 @@ final class EstimationView: UIView {
 
     private let inset: CGFloat = 16
 
-    let priceTitleLabel: UILabel = {
+    private let topContainer: UIView = {
+        let view = UIView()
+        view.backgroundColor = .MCM.white
+        return view
+    }()
+
+    private let bottomContainer: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 12
+        stackView.distribution = .fillEqually
+        return stackView
+    }()
+
+    private let priceTitleLabel: UILabel = {
         let label = UILabel()
         label.style = .bodyMedium2
+        label.textColor = .MCM.black
         label.setText("예상 가격")
         return label
     }()
 
-    let priceLabel: UILabel = {
+    private let priceLabel: UILabel = {
         let label = UILabel()
         label.style = .titleLarge1
+        label.textColor = .MCM.black
+        label.setText("93,896,000원")
         return label
     }()
 
-    let backButton: GeneralButton = {
+    private let backButton: GeneralButton = {
         let button = GeneralButton(isHighlight: false)
         button.setStyledTitle("이전", for: .normal)
         return button
     }()
 
-    let nextButton: GeneralButton = {
+    private let nextButton: GeneralButton = {
         let button = GeneralButton(isHighlight: true)
         button.setStyledTitle("다음", for: .normal)
         button.highlightStyled()
         return button
     }()
 
-    let summaryButton: UIButton = {
+    private let summaryButton: UIButton = {
         let button = UIButton()
         button.style = .bodyMedium1
         button.layer.borderWidth = 1.0
         button.layer.borderColor = UIColor.MCM.black.cgColor
+        button.setTitleColor(.MCM.black, for: .normal)
         button.setStyledTitle("견적요약", for: .normal)
-        button.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return button
     }()
 
@@ -99,86 +116,71 @@ final class EstimationView: UIView {
     }
 
     private func configureUI() {
-        backgroundColor = .systemBackground
-        layer.shadowColor = UIColor.MCM.black.withAlphaComponent(0.08).cgColor
-        layer.shadowOpacity = 1
-        layer.shadowRadius = 10
-        layer.shadowOffset = CGSize(width: 0, height: -4)
-        clipsToBounds = true
+        backgroundColor = .MCM.white
+        // TODO: Shadow
     }
 
     private func configureLayout() {
-        let contentView = UIView()
-
-        addSubview(contentView)
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(equalTo: topAnchor, constant: inset),
-            contentView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset),
-            contentView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset),
-            contentView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -inset),
-        ])
-
-        let estimationStackView: UIStackView = {
-            let stackView = UIStackView()
-            stackView.axis = .horizontal
-            stackView.backgroundColor = .systemBrown
-            stackView.distribution = .fillProportionally
-            stackView.alignment = .center
-            return stackView
-        }()
-
-        contentView.addSubview(estimationStackView)
-        estimationStackView.translatesAutoresizingMaskIntoConstraints = false
+        [topContainer, bottomContainer].forEach { container in
+            addSubview(container)
+            container.translatesAutoresizingMaskIntoConstraints = false
+        }
 
         NSLayoutConstraint.activate([
-            estimationStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            estimationStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            estimationStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            topContainer.topAnchor.constraint(equalTo: topAnchor, constant: inset),
+            topContainer.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset),
+            topContainer.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset),
+            topContainer.heightAnchor.constraint(equalToConstant: 48),
+
+            bottomContainer.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset),
+            bottomContainer.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset),
+            bottomContainer.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -inset),
+            bottomContainer.heightAnchor.constraint(equalToConstant: 44),
         ])
 
+        configureTopContainer()
+        configureBottomContainer()
+    }
+
+    private func configureTopContainer() {
         let priceStackView: UIStackView = {
             let stackView = UIStackView()
             stackView.axis = .vertical
             stackView.spacing = 0
-            stackView.backgroundColor = .systemPink
             return stackView
         }()
-
-        estimationStackView.addArrangedSubview(priceStackView)
 
         priceStackView.addArrangedSubview(priceTitleLabel)
         priceStackView.addArrangedSubview(priceLabel)
 
-        estimationStackView.addArrangedSubview(summaryButton)
-
-        let controlButtonStackView: UIStackView = {
-            let stackView = UIStackView()
-            stackView.axis = .horizontal
-            stackView.spacing = 12
-            stackView.distribution = .fillEqually
-            return stackView
-        }()
-
-        contentView.addSubview(controlButtonStackView)
-        controlButtonStackView.translatesAutoresizingMaskIntoConstraints = false
+        [priceStackView, summaryButton].forEach { subview in
+            topContainer.addSubview(subview)
+            subview.translatesAutoresizingMaskIntoConstraints = false
+        }
 
         NSLayoutConstraint.activate([
-            controlButtonStackView.topAnchor.constraint(equalTo: estimationStackView.bottomAnchor, constant: 20),
-            controlButtonStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            controlButtonStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-        ])
+            priceStackView.topAnchor.constraint(equalTo: topContainer.topAnchor),
+            priceStackView.leadingAnchor.constraint(equalTo: topContainer.leadingAnchor, constant: 12),
+            priceStackView.bottomAnchor.constraint(equalTo: topContainer.bottomAnchor),
+            priceStackView.widthAnchor.constraint(equalToConstant: 136),
 
-        controlButtonStackView.addArrangedSubview(backButton)
-        controlButtonStackView.addArrangedSubview(nextButton)
+            summaryButton.topAnchor.constraint(equalTo: topContainer.topAnchor, constant: 6),
+            summaryButton.trailingAnchor.constraint(equalTo: topContainer.trailingAnchor, constant: -12),
+            summaryButton.bottomAnchor.constraint(equalTo: topContainer.bottomAnchor, constant: -6),
+            summaryButton.widthAnchor.constraint(equalToConstant: 75),
+        ])
+    }
+
+    private func configureBottomContainer() {
+        bottomContainer.addArrangedSubview(backButton)
+        bottomContainer.addArrangedSubview(nextButton)
     }
 }
 
 // MARK: - API
 extension EstimationView {
-    func configure(with estimation: Int) {
-        priceLabel.setText(estimation.formatted(style: .currency))
+    func configure(with estimationPrice: Int) {
+        priceLabel.setText(estimationPrice.formatted(style: .currency))
     }
 }
 
