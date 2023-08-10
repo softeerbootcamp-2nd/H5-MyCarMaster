@@ -25,11 +25,22 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public Response<?> inputValueInvalidExceptionHandler(
 		HttpServletResponse response,
-		MethodArgumentNotValidException error) {
-
+		MethodArgumentNotValidException error
+	) {
 		response.setStatus(HttpStatus.BAD_REQUEST.value());
 
 		List<String> errorMessages = error.getBindingResult().getAllErrors().stream()
+			.map(objectError -> objectError.getDefaultMessage())
+			.collect(Collectors.toList());
+
+		return Response.createErrorResponse(ResponseStatus.BAD_REQUEST, errorMessages);
+	}
+
+	@ExceptionHandler(BindingParamException.class)
+	public Response<?> bindingParamExceptionHandler(HttpServletResponse response, BindingParamException error) {
+		response.setStatus(HttpStatus.BAD_REQUEST.value());
+
+		List<String> errorMessages = error.getFieldErrors().stream()
 			.map(objectError -> objectError.getDefaultMessage())
 			.collect(Collectors.toList());
 
