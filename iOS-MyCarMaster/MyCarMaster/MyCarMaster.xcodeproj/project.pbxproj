@@ -17,6 +17,8 @@
 		B510BBDB2A840BD4009E5752 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510BBDA2A840BD4009E5752 /* Formatter.swift */; };
 		B510BBDD2A841A25009E5752 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510BBDC2A841A25009E5752 /* Reusable.swift */; };
 		B510BBDF2A84895D009E5752 /* EstimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510BBDE2A84895D009E5752 /* EstimationView.swift */; };
+		B53C3C442A85483F0019ECA1 /* EngineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53C3C432A85483F0019ECA1 /* EngineView.swift */; };
+		B53C3C462A8548450019ECA1 /* EngineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53C3C452A8548450019ECA1 /* EngineViewController.swift */; };
 		B53C3C492A854AF50019ECA1 /* BasicStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53C3C482A854AF50019ECA1 /* BasicStepView.swift */; };
 		B53E028E2A84BE5100F464FC /* StepNavigatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53E028D2A84BE5100F464FC /* StepNavigatorView.swift */; };
 		B560B2182A83827600A4B9A9 /* TrimView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B560B2172A83827600A4B9A9 /* TrimView.swift */; };
@@ -115,6 +117,8 @@
 		B510BBDC2A841A25009E5752 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		B510BBDE2A84895D009E5752 /* EstimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimationView.swift; sourceTree = "<group>"; };
 		B52955512A7B878600BEDDE7 /* MCMResource.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MCMResource.xcodeproj; path = ../../MCMResource/MCMResource.xcodeproj; sourceTree = "<group>"; };
+		B53C3C432A85483F0019ECA1 /* EngineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineView.swift; sourceTree = "<group>"; };
+		B53C3C452A8548450019ECA1 /* EngineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineViewController.swift; sourceTree = "<group>"; };
 		B53C3C482A854AF50019ECA1 /* BasicStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicStepView.swift; sourceTree = "<group>"; };
 		B53E028D2A84BE5100F464FC /* StepNavigatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepNavigatorView.swift; sourceTree = "<group>"; };
 		B560B2172A83827600A4B9A9 /* TrimView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrimView.swift; path = MyCarMaster/Trim/TrimView.swift; sourceTree = SOURCE_ROOT; };
@@ -190,6 +194,7 @@
 				B50C7E7E2A790434005AFE0B /* Resources */,
 				B58A323C2A7C0B3B005FC831 /* Onboarding */,
 				B560B2162A83826C00A4B9A9 /* Trim */,
+				B53C3C422A8548330019ECA1 /* Engine */,
 				B56A765D2A83EF9100F7E3EF /* General */,
 				B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */,
 			);
@@ -238,6 +243,15 @@
 				B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B53C3C422A8548330019ECA1 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				B53C3C432A85483F0019ECA1 /* EngineView.swift */,
+				B53C3C452A8548450019ECA1 /* EngineViewController.swift */,
+			);
+			path = Engine;
 			sourceTree = "<group>";
 		};
 		B560B2162A83826C00A4B9A9 /* Trim */ = {
@@ -536,6 +550,7 @@
 				B53E028E2A84BE5100F464FC /* StepNavigatorView.swift in Sources */,
 				B56A765C2A83EC5200F7E3EF /* Preview.swift in Sources */,
 				B510BBDF2A84895D009E5752 /* EstimationView.swift in Sources */,
+				B53C3C442A85483F0019ECA1 /* EngineView.swift in Sources */,
 				B5C3EAC12A84B1AA00D9577C /* MainViewController.swift in Sources */,
 				B5F1AE062A838B8E00E7E392 /* TrimViewController.swift in Sources */,
 				B53C3C492A854AF50019ECA1 /* BasicStepView.swift in Sources */,
@@ -546,6 +561,7 @@
 				B50C7E4C2A790279005AFE0B /* AppDelegate.swift in Sources */,
 				B560B2182A83827600A4B9A9 /* TrimView.swift in Sources */,
 				B50C7E4E2A790279005AFE0B /* SceneDelegate.swift in Sources */,
+				B53C3C462A8548450019ECA1 /* EngineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

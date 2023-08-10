@@ -59,6 +59,14 @@ final class MainViewController: UIViewController {
     }
 }
 
+// MARK: - API
+extension MainViewController {
+    func moveTo(_ stepViewController: UIViewController) {
+        stepNavigatorView.progressView.progressIndicatorLabel.setText("엔진 종류")
+        changeStepTo(stepViewController)
+    }
+}
+
 #if canImport(SwiftUI)
 import SwiftUI
 
@@ -68,6 +76,7 @@ struct MainViewController_Previews: PreviewProvider {
     static var previews: some View {
 
         UIViewControllerPreview {
+            vc.moveTo(EngineViewController())
             vc.estimationView.configure(with: 93896000)
             return vc
         }
