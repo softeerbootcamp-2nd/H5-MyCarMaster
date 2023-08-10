@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import ArrowRight from "../../../assets/icons/ArrowRight.svg";
+import { Text, DefaultStyle } from "./style";
 
 type TextProp = {
   size?: string;
@@ -23,7 +24,7 @@ const Container = styled.div<TextProp>`
 function TextButton(props: TextProp) {
   return (
     <Container size={props.size}>
-      <p>{props.text}</p>
+      <Text $style={DefaultStyle.Text}>{props.text}</Text>
       <img src={ArrowRight} alt="arrow-right" />
     </Container>
   );

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import styled, { RuleSet } from "styled-components";
+import { Text, DefaultStyle, OptionStyle, StyleKey } from "./style";
 
 type ContainerProp = {
   $x: number;
@@ -8,7 +8,9 @@ type ContainerProp = {
   $textcolor?: string;
   $bordercolor?: string;
   text?: string | undefined;
-  hanldeClick?: () => void;
+  $tool?: string;
+  $style?: RuleSet | string;
+  handleClick?: () => void;
 };
 
 function Button({
@@ -18,16 +20,9 @@ function Button({
   $textcolor,
   $bordercolor,
   text,
+  $tool,
+  handleClick,
 }: ContainerProp) {
-  const navigate = useNavigate();
-  const handleClick = (text: string | undefined) => {
-    // text에 따라 버튼의 기능을 다르게 해야함
-    // 현재는 home에서만 사용됨
-    if (text === "마이 카마스터 시작하기") {
-      navigate("/estimation");
-    }
-  };
-
   return (
     <Container
       $x={$x}
@@ -35,9 +30,20 @@ function Button({
       $backgroundcolor={$backgroundcolor}
       $textcolor={$textcolor}
       $bordercolor={$bordercolor}
-      onClick={() => handleClick(text)}
+      onClick={handleClick}
+      $style={$tool && OptionStyle[$tool as StyleKey]}
     >
-      <Text>{text}</Text>
+      <Text
+        $style={
+          $tool === "Qutoation"
+            ? DefaultStyle.Qutoation
+            : $tool
+            ? DefaultStyle.Option
+            : DefaultStyle.General
+        }
+      >
+        {text}
+      </Text>
     </Container>
   );
 }
@@ -46,21 +52,14 @@ const Container = styled.button<ContainerProp>`
   display: flex;
   width: ${(props) => props.$x}rem;
   height: ${(props) => props.$y}rem;
-  padding: 0.25 0.75rem;
+  padding: 0.25rem 0.75rem;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  border: 0.5px solid ${(props) => props.$bordercolor};
+  border: 1px solid ${(props) => props.$bordercolor};
   background: ${(props) => props.$backgroundcolor};
   color: ${(props) => props.$textcolor};
-`;
-
-const Text = styled.div`
-  font-size: 0.75rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 1rem;
-  letter-spacing: -0.0225rem;
+  ${(props) => props.$style}
 `;
 
 export default Button;

@@ -1,14 +1,12 @@
-import React from "react";
 import styled from "styled-components";
 import MainWrapper from "./MainWrapper";
 import NavigationList from "../common/NavigationList/NavigationList";
 
 function MainView() {
-  const navIndex = 0;
   return (
     <Container>
       <MainContent>
-        <MainWrapper navIndex={navIndex} />
+        <MainWrapper />
       </MainContent>
       <NavigationList />
     </Container>

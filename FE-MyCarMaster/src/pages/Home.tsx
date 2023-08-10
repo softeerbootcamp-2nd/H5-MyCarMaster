@@ -1,9 +1,9 @@
-import React from "react";
 import styled from "styled-components";
 import Button from "../components/common/Button/Button.tsx";
 import homeVideo from "../assets/video/homeVideo.mp4";
 import white_logo from "../assets/images/white_logo.svg";
-import { Header } from "../components";
+import { Header } from "../components/index.tsx";
+import { useNavigate } from "react-router-dom";
 
 type TextProp = {
   $size: number;
@@ -12,11 +12,17 @@ type TextProp = {
 };
 
 function Home() {
+  const navigate = useNavigate();
+  const homeButtonHandler = () => {
+    navigate("/estimation");
+  };
+
   return (
     <>
       <Video autoPlay muted loop>
         <source src={homeVideo} type="video/mp4" />
       </Video>
+
       <Container>
         <Header logo={white_logo} isHome={true} />
         <IntroduceBox>
@@ -34,6 +40,7 @@ function Home() {
             $textcolor="#222222"
             $bordercolor="#FFFFFF"
             text="마이 카마스터 시작하기"
+            handleClick={homeButtonHandler}
           />
         </IntroduceBox>
       </Container>
@@ -44,8 +51,8 @@ function Home() {
 const Video = styled.video`
   object-fit: fill;
 
-  position: fixed;
-  min-width: 100%;
+  position: absolute;
+  max-width: 100vw;
   min-height: 100vh;
 `;
 
@@ -54,9 +61,9 @@ const Container = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80rem;
+  width: 64rem;
   height: 45rem;
-  margin: 0 8rem;
+  margin: 0;
 `;
 
 const IntroduceBox = styled.div`

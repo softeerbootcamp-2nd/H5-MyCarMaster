@@ -1,15 +1,43 @@
 import styled from "styled-components";
+import {
+  Trims,
+  useTrimDispatch,
+  useTrimState,
+} from "../../../contexts/TrimContext";
+import useFetch from "../../../hooks/useFetch";
+import { useModelState } from "../../../contexts/ModelContext";
+import { useEffect } from "react";
 
-// dummy data
-import exclusive from "../../../assets/images/exclusive.png";
-import leblanc from "../../../assets/images/leblanc.png";
+interface FetchTrimsProps extends Trims {
+  result: {
+    trims: Trims[];
+  };
+}
 
 function TrimContent() {
-  return (
-    <>
-      <TrimImage src={exclusive} />
-    </>
+  const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
+
+  const { modelId } = useModelState();
+  const { trimId, trimList } = useTrimState();
+  const trimDispatch = useTrimDispatch();
+
+  const { data } = useFetch<FetchTrimsProps>(
+    `${SERVER_URL}/trims/?modelId=${modelId}`,
+    {
+      method: "GET",
+    }
   );
+
+  useEffect(() => {
+    if (data) {
+      trimDispatch({
+        type: "SET_TRIM_LIST",
+        payload: { trimList: data.result.trims },
+      });
+    }
+  }, [data, trimDispatch]);
+
+  return trimList.length && <TrimImage src={trimList[trimId - 1].imgUrl} />;
 }
 
 const TrimImage = styled.img`
@@ -18,4 +46,5 @@ const TrimImage = styled.img`
   object-fit: contain;
   object-position: center;
 `;
+
 export default TrimContent;
