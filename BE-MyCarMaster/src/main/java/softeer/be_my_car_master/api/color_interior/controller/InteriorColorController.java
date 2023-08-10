@@ -2,6 +2,7 @@ package softeer.be_my_car_master.api.color_interior.controller;
 
 import javax.validation.Valid;
 
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.api.color_interior.dto.request.GetInteriorColorsRequest;
 import softeer.be_my_car_master.api.color_interior.dto.response.GetInteriorColorsResponse;
 import softeer.be_my_car_master.api.color_interior.usecase.GetInteriorColorsUseCase;
+import softeer.be_my_car_master.global.exception.BindingParamException;
 import softeer.be_my_car_master.global.response.Response;
 
 @RestController
@@ -24,7 +26,13 @@ public class InteriorColorController {
 	@GetMapping("/interior-colors")
 	@Operation(summary = "트림, 외장 색상에서 선택가능한 내장 색상 목록을 반환합니다")
 	public Response<GetInteriorColorsResponse> getInterior(
-		@RequestBody @Valid GetInteriorColorsRequest getInteriorColorsRequest) {
+		@Valid GetInteriorColorsRequest getInteriorColorsRequest,
+		BindingResult bindingResult
+	) {
+		if (bindingResult.hasErrors()) {
+			throw new BindingParamException(bindingResult.getFieldErrors());
+		}
+
 		Long trimId = getInteriorColorsRequest.getTrimId();
 		Long exteriorColorId = getInteriorColorsRequest.getExteriorColorId();
 		GetInteriorColorsResponse getInteriorColorsResponse = getInteriorColorsUseCase.execute(trimId, exteriorColorId);

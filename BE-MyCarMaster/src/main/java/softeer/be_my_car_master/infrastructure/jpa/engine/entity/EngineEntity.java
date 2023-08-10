@@ -66,6 +66,7 @@ public class EngineEntity {
 			.fuelMin(fuelMin)
 			.fuelMax(fuelMax)
 			.power(power)
+			.toque(toque)
 			.build();
 	}
 }

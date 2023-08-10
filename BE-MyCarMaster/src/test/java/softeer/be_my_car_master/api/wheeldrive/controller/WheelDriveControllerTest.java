@@ -12,13 +12,13 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import softeer.be_my_car_master.api.wheeldrive.dto.request.GetWheelDrivesRequest;
 import softeer.be_my_car_master.api.wheeldrive.dto.response.GetWheelDrivesResponse;
 import softeer.be_my_car_master.api.wheeldrive.dto.response.WheelDriveDto;
 import softeer.be_my_car_master.api.wheeldrive.usecase.GetWheelDrivesUseCase;
@@ -42,8 +42,6 @@ class WheelDriveControllerTest {
 	@DisplayName("구동방식 목록을 조회합니다")
 	void getWheelDrives() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetWheelDrivesRequest(1L, 1L));
-
 		GetWheelDrivesResponse getWheelDrivesResponse = new GetWheelDrivesResponse();
 		WheelDriveDto wheelDriveDto = WheelDriveDto.builder()
 			.id(1L)
@@ -63,8 +61,9 @@ class WheelDriveControllerTest {
 		//when
 		ResultActions perform = mockMvc.perform(
 			get("/wheel-drives")
-				.contentType("application/json")
-				.content(requestBody)
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				.param("trimId", "1")
+				.param("engineId", "1")
 		);
 
 		//then
@@ -78,15 +77,14 @@ class WheelDriveControllerTest {
 	@DisplayName("trimId는 1 이상이어야 합니다")
 	void minimumTrimId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetWheelDrivesRequest(0L, 1L));
-
 		String responseBody = getClientErrorResponseBody();
 
 		//when
 		ResultActions perform = mockMvc.perform(
 			get("/wheel-drives")
-				.contentType("application/json")
-				.content(requestBody)
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				.param("trimId", "0")
+				.param("engineId", "1")
 		);
 
 		//then
@@ -100,15 +98,13 @@ class WheelDriveControllerTest {
 	@DisplayName("trimId는 null값 일 수 없습니다")
 	void nonNullTrimId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetWheelDrivesRequest(null, 1L));
-
 		String responseBody = getClientErrorResponseBody();
 
 		//when
 		ResultActions perform = mockMvc.perform(
 			get("/wheel-drives")
-				.contentType("application/json")
-				.content(requestBody)
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				.param("engineId", "1")
 		);
 
 		//then
@@ -122,15 +118,14 @@ class WheelDriveControllerTest {
 	@DisplayName("engineId는 1 이상이어야 합니다")
 	void minimumEngineId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetWheelDrivesRequest(1L, 0L));
-
 		String responseBody = getClientErrorResponseBody();
 
 		//when
 		ResultActions perform = mockMvc.perform(
 			get("/wheel-drives")
-				.contentType("application/json")
-				.content(requestBody)
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				.param("trimId", "1")
+				.param("engineId", "0")
 		);
 
 		//then
@@ -144,15 +139,13 @@ class WheelDriveControllerTest {
 	@DisplayName("engineId는 null값 일 수 없습니다")
 	void nonNullEngineId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetWheelDrivesRequest(1L, null));
-
 		String responseBody = getClientErrorResponseBody();
 
 		//when
 		ResultActions perform = mockMvc.perform(
 			get("/wheel-drives")
-				.contentType("application/json")
-				.content(requestBody)
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				.param("trimId", "1")
 		);
 
 		//then
@@ -166,11 +159,5 @@ class WheelDriveControllerTest {
 		Response errorResponse = Response.createErrorResponse(ResponseStatus.BAD_REQUEST);
 		String responseBody = objectMapper.writeValueAsString(errorResponse);
 		return responseBody;
-	}
-
-	private String getRequestBody(GetWheelDrivesRequest getWheelDrivesRequest) throws
-		JsonProcessingException {
-		String requestBody = objectMapper.writeValueAsString(getWheelDrivesRequest);
-		return requestBody;
 	}
 }

@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
@@ -40,8 +41,6 @@ class ExteriorColorControllerTest {
 	@DisplayName("외장 색상 목록을 조회합니다")
 	void getExteriorColors() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetExteriorColorsRequest(1L));
-
 		GetExteriorColorsResponse getExteriorColorsResponse = new GetExteriorColorsResponse();
 		ExteriorColorDto exteriorColorDto = ExteriorColorDto.builder()
 			.id(1L)
@@ -61,8 +60,8 @@ class ExteriorColorControllerTest {
 		//when
 		ResultActions perform = mockMvc.perform(
 			get("/exterior-colors")
-				.contentType("application/json")
-				.content(requestBody)
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				.param("trimId", "1")
 		);
 
 		//then
@@ -76,15 +75,13 @@ class ExteriorColorControllerTest {
 	@DisplayName("trimId는 1 이상이어야 합니다")
 	void minimumTrimId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetExteriorColorsRequest(0L));
-
 		String responseBody = getClientErrorResponseBody();
 
 		//when
 		ResultActions perform = mockMvc.perform(
 			get("/exterior-colors")
-				.contentType("application/json")
-				.content(requestBody)
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				.param("trimId", "0")
 		);
 
 		//then
@@ -98,15 +95,12 @@ class ExteriorColorControllerTest {
 	@DisplayName("trimId는 null값 일 수 없습니다")
 	void nonNullTrimId() throws Exception {
 		//given
-		String requestBody = getRequestBody(new GetExteriorColorsRequest(null));
-
 		String responseBody = getClientErrorResponseBody();
 
 		//when
 		ResultActions perform = mockMvc.perform(
 			get("/exterior-colors")
-				.contentType("application/json")
-				.content(requestBody)
+				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
 		);
 
 		//then
