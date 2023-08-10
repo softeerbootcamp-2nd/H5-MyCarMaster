@@ -40,10 +40,5 @@ struct UIViewPreview<View: UIView>: UIViewRepresentable {
         view.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         view.setContentHuggingPriority(.defaultHigh, for: .vertical)
     }
-
-    @available(iOS 16.0, *)
-    func sizeThatFits(_ proposal: ProposedViewSize, uiView: UIView, context: Context) -> CGSize? {
-        return CGSize(width: proposal.width ?? 0, height: uiView.intrinsicContentSize.height)
-    }
 }
 #endif
