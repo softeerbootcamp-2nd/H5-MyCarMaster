@@ -1,9 +1,4 @@
 import { useReducer, createContext, useContext } from "react";
-import Exclusive from "../assets/images/Exclusive.png";
-import Leblanc from "../assets/images/LeBlanc.png";
-import Prestige from "../assets/images/Prestige.png";
-import Calligraphy from "../assets/images/Calligraphy.png";
-// 백엔드 API 나오면 실제 imgUrl로 대체
 
 export type Trims = {
   id: number;
@@ -29,40 +24,7 @@ type TrimAction = {
 
 const initialTrimState: TrimState = {
   trimId: 1,
-  trimList: [
-    {
-      id: 0,
-      name: "Exclusive",
-      description: "실용적이고 기본적인 기능을 갖춘 베이직 트림",
-      price: 40440000,
-      ratio: 22,
-      imgUrl: Exclusive,
-    },
-    {
-      id: 1,
-      name: "Le Blanc",
-      description: "실용적이고 기본적인 기능을 갖춘 베이직 트림",
-      price: 43460000,
-      ratio: 0,
-      imgUrl: Leblanc,
-    },
-    {
-      id: 2,
-      name: "Prestige",
-      description: "실용적이고 기본적인 기능을 갖춘 베이직 트림",
-      price: 47720000,
-      ratio: 22,
-      imgUrl: Prestige,
-    },
-    {
-      id: 3,
-      name: "Calligraphy",
-      description: "실용적이고 기본적인 기능을 갖춘 베이직 트림",
-      price: 52540000,
-      ratio: 22,
-      imgUrl: Calligraphy,
-    },
-  ],
+  trimList: [],
 };
 
 type TrimDispatch = (action: TrimAction) => void;

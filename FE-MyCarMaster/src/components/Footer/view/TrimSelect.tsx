@@ -25,21 +25,22 @@ export default function TrimSelect() {
   };
   return (
     <Container>
-      {trimList.map((trim) => {
-        return (
-          <OptionBox
-            key={trim.id}
-            $id={trim.id}
-            $name={trim.name}
-            $description={trim.description}
-            $imgUrl={trim.imgUrl}
-            $ratio={trim.ratio}
-            $price={trim.price}
-            $choice={trimId === trim.id}
-            handleClick={() => selectTrim(trim.id)}
-          />
-        );
-      })}
+      {trimList.length &&
+        trimList.map((trim) => {
+          return (
+            <OptionBox
+              key={trim.id}
+              $id={trim.id}
+              $name={trim.name}
+              $description={trim.description}
+              $imgUrl={trim.imgUrl}
+              $ratio={trim.ratio}
+              $price={trim.price}
+              $choice={trimId === trim.id}
+              handleClick={() => selectTrim(trim.id)}
+            />
+          );
+        })}
     </Container>
   );
 }

@@ -32,7 +32,7 @@ function ExteriorColorView() {
   }, [data, exteriorDispatch]);
 
   return (
-    exteriorList && (
+    exteriorList.length && (
       <ExteriorColorImg src={exteriorList[exteriorId - 1].coloredImgUrl} />
     )
   );

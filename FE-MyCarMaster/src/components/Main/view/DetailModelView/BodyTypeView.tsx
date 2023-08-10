@@ -30,7 +30,6 @@ function BodyTypeView() {
       });
     }
   }, [data, bodyTypeDispatch]);
-  console.log(bodyTypeList);
 
   return (
     bodyTypeList && <BodyTypeImg src={bodyTypeList[bodyTypeId - 1].imgUrl} />
