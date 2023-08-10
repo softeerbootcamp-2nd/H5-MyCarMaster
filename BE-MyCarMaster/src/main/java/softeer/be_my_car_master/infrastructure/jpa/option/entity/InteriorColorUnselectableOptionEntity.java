@@ -15,10 +15,10 @@ import lombok.NoArgsConstructor;
 import softeer.be_my_car_master.infrastructure.jpa.color_interior.entity.InteriorColorEntity;
 
 @Entity
-@Table(name = "unselectable_interior_color_option")
+@Table(name = "interior_color_unselectable_option")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class UnselectableInteriorColorOptionEntity {
+public class InteriorColorUnselectableOptionEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

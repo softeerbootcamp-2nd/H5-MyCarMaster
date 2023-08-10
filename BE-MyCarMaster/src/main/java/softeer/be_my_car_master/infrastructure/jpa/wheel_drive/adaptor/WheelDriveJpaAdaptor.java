@@ -8,15 +8,15 @@ import softeer.be_my_car_master.api.wheeldrive.usecase.port.WheelDrivePort;
 import softeer.be_my_car_master.domain.wheel_dirve.WheelDrive;
 import softeer.be_my_car_master.global.annotation.Adaptor;
 import softeer.be_my_car_master.infrastructure.jpa.wheel_drive.entity.TrimWheelDriveEntity;
+import softeer.be_my_car_master.infrastructure.jpa.wheel_drive.repository.EngineUnselectableWheelDriveJpaRepository;
 import softeer.be_my_car_master.infrastructure.jpa.wheel_drive.repository.TrimWheelDriveJpaRepository;
-import softeer.be_my_car_master.infrastructure.jpa.wheel_drive.repository.UnselectableEngineWheelDriveJpaRepository;
 
 @Adaptor
 @RequiredArgsConstructor
 public class WheelDriveJpaAdaptor implements WheelDrivePort {
 
 	private final TrimWheelDriveJpaRepository trimWheelDriveJpaRepository;
-	private final UnselectableEngineWheelDriveJpaRepository unselectableEngineWheelDriveJpaRepository;
+	private final EngineUnselectableWheelDriveJpaRepository engineUnselectableWheelDriveJpaRepository;
 
 	@Override
 	public List<WheelDrive> findSelectableWheelDrivesByTrimId(Long trimId) {
@@ -27,7 +27,7 @@ public class WheelDriveJpaAdaptor implements WheelDrivePort {
 
 	@Override
 	public List<Long> findUnselectableWheelDriveIdsByEngineId(Long engineId) {
-		return unselectableEngineWheelDriveJpaRepository
+		return engineUnselectableWheelDriveJpaRepository
 			.findUnselectableWheelDriveIdsByEngineId(engineId);
 	}
 }

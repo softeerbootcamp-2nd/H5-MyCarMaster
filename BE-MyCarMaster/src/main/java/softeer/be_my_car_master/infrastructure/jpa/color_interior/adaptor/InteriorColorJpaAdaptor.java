@@ -8,15 +8,15 @@ import softeer.be_my_car_master.api.color_interior.usecase.port.InteriorColorPor
 import softeer.be_my_car_master.domain.color_interior.InteriorColor;
 import softeer.be_my_car_master.global.annotation.Adaptor;
 import softeer.be_my_car_master.infrastructure.jpa.color_interior.entity.TrimInteriorColorEntity;
+import softeer.be_my_car_master.infrastructure.jpa.color_interior.repository.ExteriorUnselectableInteriorJpaRepository;
 import softeer.be_my_car_master.infrastructure.jpa.color_interior.repository.TrimInteriorColorJpaRepository;
-import softeer.be_my_car_master.infrastructure.jpa.color_interior.repository.UnselectableExteriorInteriorJpaRepository;
 
 @Adaptor
 @RequiredArgsConstructor
 public class InteriorColorJpaAdaptor implements InteriorColorPort {
 
 	private final TrimInteriorColorJpaRepository trimInteriorColorJpaRepository;
-	private final UnselectableExteriorInteriorJpaRepository unselectableExteriorInteriorJpaRepository;
+	private final ExteriorUnselectableInteriorJpaRepository exteriorUnselectableInteriorJpaRepository;
 
 	@Override
 	public List<InteriorColor> findSelectableInteriorColorsByTrimId(Long trimId) {
@@ -27,7 +27,7 @@ public class InteriorColorJpaAdaptor implements InteriorColorPort {
 
 	@Override
 	public List<Long> findUnselectableInteriorColorIdsByExteriorColorId(Long exteriorColorId) {
-		return unselectableExteriorInteriorJpaRepository
+		return exteriorUnselectableInteriorJpaRepository
 			.findUnselectableInteriorColorIdsByExteriorColorId(exteriorColorId);
 	}
 }
