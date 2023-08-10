@@ -59,11 +59,15 @@ public class OptionEntity {
 	@JoinColumn(name = "tag_id")
 	private TagEntity tag;
 
-	@OneToMany(mappedBy = "superOption")
+	@OneToMany(mappedBy = "subOption")
 	private List<SuperSubEntity> superOptions = new ArrayList<>();
 
-	@OneToMany(mappedBy = "subOption")
+	@OneToMany(mappedBy = "superOption")
 	private List<SuperSubEntity> subOptions = new ArrayList<>();
+
+	public Tag getTag() {
+		return tag == null ? null : tag.toTag();
+	}
 
 	public Option toOption() {
 		return Option.builder()
@@ -74,7 +78,7 @@ public class OptionEntity {
 			.category(category)
 			.imgUrl(imgUrl)
 			.isSuper(isSuper)
-			.tag(tag.toTag())
+			.tag(getTag())
 			.build();
 	}
 }

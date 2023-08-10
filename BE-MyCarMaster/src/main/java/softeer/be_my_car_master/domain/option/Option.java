@@ -30,4 +30,8 @@ public class Option {
 	public String getTagName() {
 		return tag == null ? null : tag.getName();
 	}
+
+	public Boolean hasSubOption() {
+		return isSuper;
+	}
 }
