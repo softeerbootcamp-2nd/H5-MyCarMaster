@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
@@ -52,8 +53,6 @@ class EngineControllerTest {
 		@DisplayName("엔진 목록을 조회합니다")
 		void getEngines() throws Exception {
 			//given
-			String requestBody = getRequestBody(new GetEnginesRequest(1L));
-
 			GetEnginesResponse getEnginesResponse = new GetEnginesResponse();
 			EngineDto engineDto = EngineDto.builder()
 				.id(1L)
@@ -77,8 +76,8 @@ class EngineControllerTest {
 			//when
 			ResultActions perform = mockMvc.perform(
 				get("/engines")
-					.contentType("application/json")
-					.content(requestBody)
+					.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+					.param("trimId", "1")
 			);
 
 			//then
@@ -92,15 +91,13 @@ class EngineControllerTest {
 		@DisplayName("trimId는 1 이상이어야 합니다")
 		void minimumTrimId() throws Exception {
 			//given
-			String requestBody = getRequestBody(new GetEnginesRequest(0L));
-
 			String responseBody = getClientErrorResponseBody();
 
 			//when
 			ResultActions perform = mockMvc.perform(
 				get("/engines")
-					.contentType("application/json")
-					.content(requestBody)
+					.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+					.param("trimId", "0")
 			);
 
 			//then
@@ -121,8 +118,7 @@ class EngineControllerTest {
 			//when
 			ResultActions perform = mockMvc.perform(
 				get("/engines")
-					.contentType("application/json")
-					.content(requestBody)
+					.contentType(MediaType.APPLICATION_FORM_URLENCODED)
 			);
 
 			//then
