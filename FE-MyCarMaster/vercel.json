@@ -5,5 +5,8 @@
       "use": "@vercel/static"
     }
   ],
+  "ignore": {
+    "branches": ["!fe-main", ".*"]
+  },
   "routes": [{ "src": "/[^.]+", "dest": "/", "status": 200 }]
 }
