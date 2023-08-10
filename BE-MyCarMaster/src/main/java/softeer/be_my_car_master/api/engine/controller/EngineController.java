@@ -7,7 +7,6 @@ import javax.validation.Valid;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -51,10 +50,15 @@ public class EngineController {
 	@Operation(summary = "엔진 변경 시도시 기존에 선택된 옵션들 중 변경하려는 엔진에서 선택 불가능한 옵션 목록을 반환합니다.")
 	public Response<GetUnselectableOptionsByEngineResponse> getUnselectableOptionsByEngine(
 		@PathVariable Long engineId,
-		@RequestBody @Valid GetUnselectableOptionsByEngineRequest getUnselectableOptionsByEngineRequest
+		@Valid GetUnselectableOptionsByEngineRequest getUnselectableOptionsByEngineRequest,
+		BindingResult bindingResult
 	) {
+		if (bindingResult.hasErrors()) {
+			throw new BindingParamException(bindingResult.getFieldErrors());
+		}
+
 		Long trimId = getUnselectableOptionsByEngineRequest.getTrimId();
-		List<Long> optionIds = getUnselectableOptionsByEngineRequest.getOptionsIds();
+		List<Long> optionIds = getUnselectableOptionsByEngineRequest.getOptionIds();
 		GetUnselectableOptionsByEngineResponse getUnselectableOptionsByEngineResponse =
 			getUnselectableOptionsByEngineUseCase.execute(engineId, trimId, optionIds);
 		return Response.createSuccessResponse(getUnselectableOptionsByEngineResponse);
