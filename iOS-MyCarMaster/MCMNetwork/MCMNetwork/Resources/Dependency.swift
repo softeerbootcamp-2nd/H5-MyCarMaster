@@ -7,9 +7,9 @@
 
 import Foundation
 
-enum Dependency {
+public enum Dependency {
 
-    static let serverURL = valueFrom(plist: "Dependency", forKey: "serverURL") as! String
+    public static let serverURL = valueFrom(plist: "Dependency", forKey: "serverURL") as! String
 }
 
 extension Dependency {
