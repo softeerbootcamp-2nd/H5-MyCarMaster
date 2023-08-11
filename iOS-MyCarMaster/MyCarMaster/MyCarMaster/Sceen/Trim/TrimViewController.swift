@@ -12,12 +12,13 @@ import MVIFoundation
 
 final class TrimViewController: UIViewController {
 
-    let trimList = [
+    let dummyTrimList = [
         Trim(model: "펠리세이드", name: "Exclusive", ratio: 54, description: "실용적인 기본 기능을 갖춘 베이직 트림실용적인 기본 기능을 갖춘 베이직 트림실용적인 기본 기능을 갖춘 베이직 트림실용적인 기본 기능을 갖춘 베이직 트림", price: 40440000, imageURL: nil),
         Trim(model: "펠리세이드", name: "Exclusive", ratio: 54, description: "실용적인 기본 기능을 갖춘 베이직 트림", price: 40440000, imageURL: nil),
         Trim(model: "펠리세이드", name: "Exclusive", ratio: 54, description: "실용적인 기본 기능을 갖춘 베이직 트림", price: 40440000, imageURL: nil),
         Trim(model: "펠리세이드", name: "Exclusive", ratio: 54, description: "실용적인 기본 기능을 갖춘 베이직 트림", price: 40440000, imageURL: nil),
     ]
+    var trimList: [Trim] = []
 
     private var trimView: TrimView {
         return view as? TrimView ?? TrimView()
@@ -39,6 +40,35 @@ final class TrimViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+
+        let request = URLRequest(url: URL(string: Dependency.serverURL + "trims?modelId=1")!)
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard error == nil else {
+                print(error?.localizedDescription)
+                return
+            }
+
+            guard let response = response as? HTTPURLResponse else {
+                print("Sever Error")
+                return
+            }
+
+            print(response.statusCode)
+            guard 200..<300 ~= response.statusCode else {
+                return
+            }
+
+            if let data,
+               case let .trims(trimDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
+                self.trimList = trimDTOList.map { Trim($0) }
+                DispatchQueue.main.async {
+                    self.trimView.listView.reloadData()
+                }
+            } else {
+                print("Decoding Error")
+                return
+            }
+        }.resume()
     }
 
     private func configureUI() {
@@ -77,10 +107,10 @@ extension TrimViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.configure(with: cellState)
 
         // FIXME: 초기값 선택이 동작하지 않음
-        if indexPath.row == 0 {
-            cell.isSelected = true
-            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
-        }
+//        if indexPath.row == 0 {
+//            cell.isSelected = true
+//            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
+//        }
         return cell
     }
 
