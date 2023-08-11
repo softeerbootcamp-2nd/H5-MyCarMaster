@@ -17,10 +17,13 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(stepNavigatorView)
         stepNavigatorView.translatesAutoresizingMaskIntoConstraints = false
+        stepNavigatorView.layer.zPosition = 1
+
         view.addSubview(estimationView)
         estimationView.translatesAutoresizingMaskIntoConstraints = false
+        estimationView.layer.zPosition = 1
 
-        changeStepTo(TrimViewController())
+        changeStepTo(WheelDriveViewController())
     }
 
     private func changeStepTo(_ stepViewController: UIViewController) {
@@ -33,7 +36,9 @@ final class MainViewController: UIViewController {
         addChild(stepViewController)
         view.addSubview(stepViewController.view)
         stepViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        stepViewController.view.layer.zPosition = 0
         configureLayout()
+
         stepViewController.didMove(toParent: self)
     }
 
@@ -62,7 +67,7 @@ final class MainViewController: UIViewController {
 // MARK: - API
 extension MainViewController {
     func moveTo(_ stepViewController: UIViewController) {
-        stepNavigatorView.progressView.progressIndicatorLabel.setText("엔진 종류")
+        stepNavigatorView.progressView.progressIndicatorLabel.setText("구동 방식")
         changeStepTo(stepViewController)
     }
 }
@@ -76,7 +81,7 @@ struct MainViewController_Previews: PreviewProvider {
     static var previews: some View {
 
         UIViewControllerPreview {
-            vc.moveTo(EngineViewController())
+            vc.moveTo(WheelDriveViewController())
             vc.estimationView.configure(with: 93896000)
             return vc
         }
