@@ -38,7 +38,7 @@ function EngineView() {
 
   return (
     <Container>
-      {engineList.length && <EngineImg src={engineList[engineId - 1].imgUrl} />}
+      {engineList?.length && <EngineImg src={engineList[engineId - 1].imgUrl} />}
       <EngineGraph>
         <GraphList />
       </EngineGraph>

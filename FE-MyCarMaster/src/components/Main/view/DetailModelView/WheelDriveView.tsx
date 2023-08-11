@@ -19,6 +19,7 @@ function WheelDriveView() {
 
   const { trimId } = useTrimState();
   const { engineId, wheelDriveId, wheelDriveList } = useDetailState();
+
   const wheelDriveDispatch = useDetailDispatch();
 
   const { data } = useFetch<FetchWheelDriveProps>(
@@ -38,7 +39,7 @@ function WheelDriveView() {
   }, [data, wheelDriveDispatch]);
 
   return (
-    wheelDriveList && (
+    wheelDriveList?.length && (
       <WheelDriveImg src={wheelDriveList[wheelDriveId - 1].imgUrl} />
     )
   );

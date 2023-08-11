@@ -35,7 +35,7 @@ function InteriorColorView() {
   }, [data, interiorDispatch]);
 
   return (
-    interiorList.length && (
+    interiorList?.length && (
       <InteriorColorImg src={interiorList[interiorId].coloredImgUrl} />
     )
   );

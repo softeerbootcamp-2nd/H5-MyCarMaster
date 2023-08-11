@@ -33,7 +33,7 @@ export default function BodyTypeSelectView() {
 
   return (
     <>
-      {wheelDriveList &&
+      {wheelDriveList?.length &&
         wheelDriveList.map((wheelDrive) => {
           return (
             <OptionBox

@@ -37,7 +37,7 @@ export default function InteriorColorSelectView() {
 
   return (
     <>
-      {interiorList.length &&
+      {interiorList?.length &&
         interiorList.map((interior, index) => {
           return (
             <InnerColorBox

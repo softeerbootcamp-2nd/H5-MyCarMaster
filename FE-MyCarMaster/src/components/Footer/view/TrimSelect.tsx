@@ -25,7 +25,7 @@ export default function TrimSelect() {
   };
   return (
     <Container>
-      {trimList.length &&
+      {trimList?.length &&
         trimList.map((trim) => {
           return (
             <OptionBox
