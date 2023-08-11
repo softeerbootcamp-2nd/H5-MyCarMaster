@@ -1,6 +1,7 @@
 package softeer.be_my_car_master.api.option.dto.response;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AccessLevel;
@@ -46,6 +47,13 @@ public class OptionDto {
 	private List<SubOptionDto> subOptions;
 
 	public static OptionDto from(Option option) {
+		List<SubOptionDto> subOptionDtos = null;
+		if (option.hasSubOption()) {
+			subOptionDtos = option.getSubOptions().stream()
+				.map(SubOptionDto::from)
+				.collect(Collectors.toList());
+		}
+
 		return OptionDto.builder()
 			.id(option.getId())
 			.category(option.getCategory())
@@ -56,6 +64,7 @@ public class OptionDto {
 			.summary(option.getSummary())
 			.description(option.getDescription())
 			.tag(option.getTagName())
+			.subOptions(subOptionDtos)
 			.build();
 	}
 }

@@ -12,7 +12,6 @@ public interface TrimAdditionalOptionJpaRepository extends JpaRepository<TrimAdd
 	@Query(value = "SELECT tao "
 		+ "FROM TrimAdditionalOptionEntity tao "
 		+ "JOIN FETCH tao.option o "
-		+ "JOIN FETCH o.tag "
 		+ "WHERE tao.trim.id = :trimId")
 	List<TrimAdditionalOptionEntity> findAllByTrimId(Long trimId);
 }

@@ -17,8 +17,6 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import softeer.be_my_car_master.domain.option.Option;
-import softeer.be_my_car_master.domain.option.Tag;
-import softeer.be_my_car_master.infrastructure.jpa.tag.entity.TagEntity;
 import softeer.be_my_car_master.infrastructure.jpa.trim.entity.TrimEntity;
 
 @Entity
@@ -46,16 +44,13 @@ public class TrimAdditionalOptionEntity {
 	private OptionEntity option;
 
 	public Option toOption() {
-		TagEntity tagEntity = option.getTag();
-		Tag tag = tagEntity.toTag();
-
 		List<Option> subOptions = option.getSubOptions().stream()
 			.map(SuperSubEntity::getSubOption)
 			.map(OptionEntity::toOption)
 			.collect(Collectors.toList());
 
 		return Option.builder()
-			.id(id)
+			.id(option.getId())
 			.name(option.getName())
 			.category(option.getCategory())
 			.summary(option.getSummary())
@@ -65,7 +60,7 @@ public class TrimAdditionalOptionEntity {
 			.ratio(ratio)
 			.isSuper(option.getIsSuper())
 			.subOptions(subOptions)
-			.tag(tag)
+			.tag(option.getTag())
 			.build();
 	}
 }
