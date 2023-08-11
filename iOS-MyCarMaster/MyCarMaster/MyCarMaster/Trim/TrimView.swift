@@ -9,18 +9,7 @@ import UIKit
 
 import MCMResource
 
-final class TrimView: UIView {
-
-    private let inset: CGFloat = 16
-    private let firstSpacing: CGFloat = 16
-    private let listSpacing: CGFloat = 12
-
-    private let previewImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "Exclusive")
-        return imageView
-    }()
+final class TrimView: BasicStepView {
 
     private let recommendLabel: UILabel = {
         let label = UILabel()
@@ -48,29 +37,13 @@ final class TrimView: UIView {
         return button
     }()
 
-    private lazy var trimListView: UICollectionView = {
-        let listView = UICollectionView(frame: .zero, collectionViewLayout: createListLayout())
-        listView.backgroundColor = .MCM.white
-        listView.bounces = false
-        return listView
-    }()
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        configureUI()
+    override func configureUI() {
+        super.configureUI()
+        previewImageView.image = UIImage(named: "Exclusive")
     }
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    private func configureUI() {
-        backgroundColor = .white
-    }
-
-    private func configureLayout() {
-        addSubview(previewImageView)
-        previewImageView.translatesAutoresizingMaskIntoConstraints = false
+    override func configureLayout() {
+        super.configureLayout()
 
         let recommendStackView = UIStackView()
         recommendStackView.axis = .horizontal
@@ -83,58 +56,11 @@ final class TrimView: UIView {
         addSubview(recommendStackView)
         recommendStackView.translatesAutoresizingMaskIntoConstraints = false
 
-        addSubview(trimListView)
-        trimListView.translatesAutoresizingMaskIntoConstraints = false
-
         NSLayoutConstraint.activate([
-            previewImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            previewImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: inset),
-            previewImageView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -inset),
-            previewImageView.heightAnchor.constraint(equalTo: previewImageView.widthAnchor, multiplier: 216/375), // 제시된 크기 (375 * 216)
-
             recommendStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: inset),
             recommendStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -inset),
-            recommendStackView.bottomAnchor.constraint(equalTo: previewImageView.bottomAnchor),
-
-            trimListView.topAnchor.constraint(equalTo: previewImageView.bottomAnchor, constant: firstSpacing),
-            trimListView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: inset),
-            trimListView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -inset),
-            trimListView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+            recommendStackView.bottomAnchor.constraint(equalTo: previewView.bottomAnchor),
         ])
-    }
-
-    private func createListLayout() -> UICollectionViewLayout {
-        let layoutSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1.0),
-            heightDimension: .absolute(120)
-        )
-        let item = NSCollectionLayoutItem(layoutSize: layoutSize)
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: layoutSize, subitems: [item])
-
-        let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = listSpacing
-
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        return layout
-    }
-}
-
-// MARK: - API
-extension TrimView {
-    func setDelegate(_ delegator: UICollectionViewDelegate) {
-        trimListView.delegate = delegator
-    }
-
-    func setDataSource(_ dataSource: UICollectionViewDataSource) {
-        trimListView.dataSource = dataSource
-    }
-
-    func registerCellClass(_ cellClass: UICollectionViewCell.Type) {
-        trimListView.register(cellClass, forCellWithReuseIdentifier: cellClass.reuseIdentifier)
-    }
-
-    func updateLayout() {
-        configureLayout()
     }
 }
 
