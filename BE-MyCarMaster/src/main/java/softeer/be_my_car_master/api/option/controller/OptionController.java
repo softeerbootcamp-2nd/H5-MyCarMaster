@@ -2,6 +2,7 @@ package softeer.be_my_car_master.api.option.controller;
 
 import javax.validation.Valid;
 
+import org.springdoc.api.annotations.ParameterObject;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,7 @@ public class OptionController {
 	@GetMapping
 	@Operation(summary = "트림, 엔진, 구동 방식, 바디 타입, 내장 색상에서 선택 가능한 옵션 목록을 반환합니다")
 	public Response<GetOptionsResponse> getOptions(
-		@Valid GetOptionsRequest getOptionsRequest,
+		@Valid @ParameterObject GetOptionsRequest getOptionsRequest,
 		BindingResult bindingResult
 	) {
 		if (bindingResult.hasErrors()) {

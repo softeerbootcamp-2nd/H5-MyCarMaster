@@ -2,9 +2,9 @@ package softeer.be_my_car_master.api.color_exterior.controller;
 
 import javax.validation.Valid;
 
+import org.springdoc.api.annotations.ParameterObject;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -26,7 +26,7 @@ public class ExteriorColorController {
 	@GetMapping("/exterior-colors")
 	@Operation(summary = "트림에서 선택가능한 외장 색상 목록을 반환합니다")
 	public Response<GetExteriorColorsResponse> getExteriorColors(
-		@Valid GetExteriorColorsRequest getExteriorColorsRequest,
+		@Valid @ParameterObject GetExteriorColorsRequest getExteriorColorsRequest,
 		BindingResult bindingResult
 	) {
 		if (bindingResult.hasErrors()) {
