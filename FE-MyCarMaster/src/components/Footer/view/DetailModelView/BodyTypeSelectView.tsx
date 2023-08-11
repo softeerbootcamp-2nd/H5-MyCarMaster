@@ -31,7 +31,7 @@ export default function BodyTypeSelectView() {
 
   return (
     <>
-      {bodyTypeList &&
+      {bodyTypeList?.length &&
         bodyTypeList.map((bodyType) => {
           return (
             <OptionBox

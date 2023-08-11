@@ -32,7 +32,7 @@ export default function BodyTypeSelectView() {
 
   return (
     <>
-      {engineList.length &&
+      {engineList?.length &&
         engineList.map((engine) => {
           return (
             <OptionBox

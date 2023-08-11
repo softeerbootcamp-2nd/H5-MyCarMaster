@@ -38,7 +38,9 @@ function BodyTypeView() {
   }, [data, bodyTypeDispatch]);
 
   return (
-    bodyTypeList && <BodyTypeImg src={bodyTypeList[bodyTypeId - 1].imgUrl} />
+    bodyTypeList?.length && (
+      <BodyTypeImg src={bodyTypeList[bodyTypeId - 1].imgUrl} />
+    )
   );
 }
 
