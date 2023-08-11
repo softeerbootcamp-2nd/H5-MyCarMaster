@@ -16,7 +16,10 @@ type ContainerProp = {
 export default function OuterColorBox(props: ContainerProp) {
   const isColorBright = 2 as number; // 임시로 2로 설정
   return (
-    <Container onClick={props.handleClick}>
+    <Container
+      onClick={props.handleClick}
+      $colorImgUrl={props.$colorImgUrl as string}
+    >
       <Text $style={isColorBright === 1 ? LightColor.Head : DarkColor.Head}>
         {props.$name}
       </Text>
@@ -33,7 +36,7 @@ export default function OuterColorBox(props: ContainerProp) {
   );
 }
 
-const Container = styled.div`
+const Container = styled.div<{ $colorImgUrl: string }>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -43,8 +46,8 @@ const Container = styled.div`
   padding: 0.75rem;
   flex-shrink: 0;
   border: 1px solid ${(props) => props.theme.colors.BLACK}; // 수정 필요1
-  background-color: black;
-
+  background-image: url(${(props) => props.$colorImgUrl});
+  background-repeat: round;
   cursor: pointer;
 `;
 
