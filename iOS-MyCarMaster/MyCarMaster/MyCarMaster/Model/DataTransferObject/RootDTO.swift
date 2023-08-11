@@ -15,10 +15,16 @@ struct RootDTO: Codable {
 
 enum Result: Codable {
     case unknown
-    
+    case trims([TrimDTO])
+
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        
+
+        if let trimDTOList = try? container.decode([TrimDTO].self, forKey: .trims) {
+            self = .trims(trimDTOList)
+            return
+        }
+
         self = .unknown
     }
 }
