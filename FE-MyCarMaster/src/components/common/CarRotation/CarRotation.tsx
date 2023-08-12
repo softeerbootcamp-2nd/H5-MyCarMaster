@@ -10,7 +10,12 @@ for (let i = 1; i <= 60; i++) {
   );
 }
 
-function CarRotation() {
+interface CarRotationProps {
+  $isQuotation: boolean;
+  // coloredImgUrl: string[]; 추가 예정
+}
+
+function CarRotation({ $isQuotation }: CarRotationProps) {
   const [currentImg, setCurrentImg] = useState<number>(0);
   const [isMouseDown, setIsMouseDown] = useState<boolean>(false);
   const [beforeX, setBeforeX] = useState(0);
@@ -49,7 +54,7 @@ function CarRotation() {
         ))}
       </ImgContainer>
       <Circle />
-      <Text>360도 돌려보세요!</Text>
+      <Text $isQuotation={$isQuotation}>360도 돌려보세요!</Text>
     </Container>
   );
 }
@@ -71,6 +76,7 @@ const ImgContainer = styled.div``;
 
 const Image = styled.img<{ $display: boolean }>`
   width: 100%;
+  height: 25rem;
   flex-shrink: 0;
   display: ${({ $display }) => ($display ? "" : "none")};
   -webkit-user-drag: none;
@@ -91,9 +97,10 @@ const Circle = styled.div`
   margin-top: 15rem;
 `;
 
-const Text = styled.div`
+const Text = styled.div<{ $isQuotation: boolean }>`
   position: absolute;
   margin-top: 22rem;
   color: ${theme.colors.NAVYBLUE5};
   font: ${theme.fonts.contentMedium};
+  display: ${({ $isQuotation }) => ($isQuotation ? "none" : "")};
 `;
