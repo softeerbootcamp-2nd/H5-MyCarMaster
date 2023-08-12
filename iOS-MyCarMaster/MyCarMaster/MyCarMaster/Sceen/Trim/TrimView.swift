@@ -63,12 +63,3 @@ final class TrimView: BasicStepView {
         ])
     }
 }
-
-struct Trim {
-    let model: String
-    let name: String
-    let ratio: Int
-    let description: String
-    var price: Int
-    var imageURL: URL?
-}

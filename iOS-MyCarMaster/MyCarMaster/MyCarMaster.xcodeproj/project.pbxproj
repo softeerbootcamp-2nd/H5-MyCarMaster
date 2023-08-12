@@ -29,6 +29,10 @@
 		B560B2182A83827600A4B9A9 /* TrimView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B560B2172A83827600A4B9A9 /* TrimView.swift */; };
 		B56A765C2A83EC5200F7E3EF /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56A765B2A83EC5200F7E3EF /* Preview.swift */; };
 		B56A765F2A83EFB000F7E3EF /* BasicListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56A765E2A83EFB000F7E3EF /* BasicListCell.swift */; };
+		B56F55D22A86BBE50055E382 /* RootDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56F55D12A86BBE50055E382 /* RootDTO.swift */; };
+		B56F55D42A86BC3B0055E382 /* TrimDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56F55D32A86BC3B0055E382 /* TrimDTO.swift */; };
+		B56F55D72A86BC7D0055E382 /* Trim.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56F55D62A86BC7D0055E382 /* Trim.swift */; };
+		B56F55DA2A86BD240055E382 /* TrimDTODummy.json in Sources */ = {isa = PBXBuildFile; fileRef = B56F55D92A86BD240055E382 /* TrimDTODummy.json */; };
 		B58799712A8177E90051E6E7 /* MCMResource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58289892A7FFDDC00FAD6AA /* MCMResource.framework */; };
 		B58799722A8177E90051E6E7 /* MCMResource.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B58289892A7FFDDC00FAD6AA /* MCMResource.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B58799732A8177EA0051E6E7 /* MVIFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58289F32A800B8E00FAD6AA /* MVIFoundation.framework */; };
@@ -134,6 +138,10 @@
 		B560B2172A83827600A4B9A9 /* TrimView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrimView.swift; path = MyCarMaster/Sceen/Trim/TrimView.swift; sourceTree = SOURCE_ROOT; };
 		B56A765B2A83EC5200F7E3EF /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
 		B56A765E2A83EFB000F7E3EF /* BasicListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicListCell.swift; sourceTree = "<group>"; };
+		B56F55D12A86BBE50055E382 /* RootDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootDTO.swift; sourceTree = "<group>"; };
+		B56F55D32A86BC3B0055E382 /* TrimDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrimDTO.swift; sourceTree = "<group>"; };
+		B56F55D62A86BC7D0055E382 /* Trim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trim.swift; sourceTree = "<group>"; };
+		B56F55D92A86BD240055E382 /* TrimDTODummy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TrimDTODummy.json; sourceTree = "<group>"; };
 		B58289A62A7FFE5A00FAD6AA /* MCMCombineExtension.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MCMCombineExtension.xcodeproj; path = ../../MCMCombineExtension/MCMCombineExtension.xcodeproj; sourceTree = "<group>"; };
 		B58289EE2A800B8D00FAD6AA /* MVIFoundation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MVIFoundation.xcodeproj; path = "../../../../../../../문서 - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/MVIFoundation/MVIFoundation.xcodeproj"; sourceTree = "<group>"; };
 		B58A32332A7BA452005FC831 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -202,6 +210,7 @@
 				B50C7E7D2A790430005AFE0B /* App */,
 				B50C7E7E2A790434005AFE0B /* Resources */,
 				B53C3C562A8577760019ECA1 /* Sceen */,
+				B56F55CF2A86BBB10055E382 /* Model */,
 				B56A765D2A83EF9100F7E3EF /* General */,
 				B56A765A2A83EC4000F7E3EF /* Util */,
 				B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */,
@@ -321,6 +330,41 @@
 				B53C3C482A854AF50019ECA1 /* BasicStepView.swift */,
 			);
 			path = General;
+			sourceTree = "<group>";
+		};
+		B56F55CF2A86BBB10055E382 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B56F55D52A86BC760055E382 /* Entity */,
+				B56F55D02A86BBB90055E382 /* DataTransferObject */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B56F55D02A86BBB90055E382 /* DataTransferObject */ = {
+			isa = PBXGroup;
+			children = (
+				B56F55D82A86BD060055E382 /* Dummy */,
+				B56F55D12A86BBE50055E382 /* RootDTO.swift */,
+				B56F55D32A86BC3B0055E382 /* TrimDTO.swift */,
+			);
+			path = DataTransferObject;
+			sourceTree = "<group>";
+		};
+		B56F55D52A86BC760055E382 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				B56F55D62A86BC7D0055E382 /* Trim.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		B56F55D82A86BD060055E382 /* Dummy */ = {
+			isa = PBXGroup;
+			children = (
+				B56F55D92A86BD240055E382 /* TrimDTODummy.json */,
+			);
+			path = Dummy;
 			sourceTree = "<group>";
 		};
 		B58289842A7FFDD400FAD6AA /* Dependency */ = {
@@ -585,6 +629,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B58A32342A7BA452005FC831 /* OnboardingView.swift in Sources */,
+				B56F55D22A86BBE50055E382 /* RootDTO.swift in Sources */,
+				B56F55DA2A86BD240055E382 /* TrimDTODummy.json in Sources */,
 				B53C3C582A8578310019ECA1 /* BodyTypeView.swift in Sources */,
 				B53E028E2A84BE5100F464FC /* StepNavigatorView.swift in Sources */,
 				B56A765C2A83EC5200F7E3EF /* Preview.swift in Sources */,
@@ -592,6 +638,7 @@
 				B53C3C442A85483F0019ECA1 /* EngineView.swift in Sources */,
 				B53C3C502A85661D0019ECA1 /* WheelDrive.swift in Sources */,
 				B5C3EAC12A84B1AA00D9577C /* MainViewController.swift in Sources */,
+				B56F55D72A86BC7D0055E382 /* Trim.swift in Sources */,
 				B53C3C522A8566270019ECA1 /* WheelDriveViewController.swift in Sources */,
 				B5F1AE062A838B8E00E7E392 /* TrimViewController.swift in Sources */,
 				B53C3C492A854AF50019ECA1 /* BasicStepView.swift in Sources */,
@@ -601,6 +648,7 @@
 				B58A323B2A7C0B35005FC831 /* OnboardingViewController.swift in Sources */,
 				B56A765F2A83EFB000F7E3EF /* BasicListCell.swift in Sources */,
 				B50C7E4C2A790279005AFE0B /* AppDelegate.swift in Sources */,
+				B56F55D42A86BC3B0055E382 /* TrimDTO.swift in Sources */,
 				B560B2182A83827600A4B9A9 /* TrimView.swift in Sources */,
 				B50C7E4E2A790279005AFE0B /* SceneDelegate.swift in Sources */,
 				B53C3C5A2A8578650019ECA1 /* BodyTypeViewController.swift in Sources */,
