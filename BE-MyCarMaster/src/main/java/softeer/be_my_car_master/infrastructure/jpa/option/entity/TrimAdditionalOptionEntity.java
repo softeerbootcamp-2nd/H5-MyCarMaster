@@ -63,4 +63,12 @@ public class TrimAdditionalOptionEntity {
 			.tag(option.getTag())
 			.build();
 	}
+
+	public Option toSimpleOption() {
+		return Option.builder()
+			.id(option.getId())
+			.name(option.getName())
+			.price(price)
+			.build();
+	}
 }

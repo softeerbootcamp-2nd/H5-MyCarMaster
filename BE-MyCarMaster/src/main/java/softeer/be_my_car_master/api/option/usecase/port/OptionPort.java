@@ -10,6 +10,10 @@ public interface OptionPort {
 
 	List<Option> findSelectableOptionsByTrimId(Long trimId);
 
+	List<Option> findUnselectableOptions(Long trimId, List<Long> optionIds);
+
+	List<Long> findSelectableOptionIdsByTrimId(Long trimId);
+
 	List<Long> findUnselectableOptionIdsByEngineId(Long engineId);
 
 	List<Long> findUnselectableOptionIdsByWheelDriveId(Long wheelDriveId);
