@@ -13,15 +13,17 @@ import Home from "./pages/Home";
 import Estimation from "./pages/Estimation";
 import Quotation from "./pages/Quotation";
 
+type ContextProvider = React.ComponentType<{ children: React.ReactNode }>;
+
 const AppProvider = ({
   providers,
   children,
 }: {
-  providers: any[];
+  providers: ContextProvider[];
   children: React.ReactNode;
 }) =>
   providers.reduce(
-    (prev: React.ReactNode, context: any) =>
+    (prev: React.ReactNode, context: ContextProvider) =>
       createElement(context, {
         children: prev,
       }),
@@ -29,6 +31,7 @@ const AppProvider = ({
   );
 
 function App() {
+  const { pathname } = window.location;
   return (
     <ThemeProvider theme={theme}>
       <AppProvider
@@ -48,7 +51,7 @@ function App() {
             <Route path="/quotation" element={<Quotation />} />
           </Routes>
         </Container>
-        <Filler />
+        {pathname === "/estimation" && <Filler />}
       </AppProvider>
     </ThemeProvider>
   );
@@ -65,7 +68,6 @@ const Container = styled.div`
   transform: translate(-50%, -50%);
 
   width: 80rem;
-  height: 45rem;
 `;
 
 const Filler = styled.div`
