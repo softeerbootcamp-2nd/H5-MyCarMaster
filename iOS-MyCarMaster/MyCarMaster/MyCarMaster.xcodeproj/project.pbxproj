@@ -54,6 +54,7 @@
 		B5DD64DF2A876EED00B44F61 /* BodyTypeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64DE2A876EED00B44F61 /* BodyTypeDTO.swift */; };
 		B5DD64E12A8770FB00B44F61 /* WheelDriveDTO.json in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64E02A8770FB00B44F61 /* WheelDriveDTO.json */; };
 		B5DD64E32A87714000B44F61 /* BodyTypeDTO.json in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64E22A87714000B44F61 /* BodyTypeDTO.json */; };
+		B5DD64EF2A877DDD00B44F61 /* ExteriorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64EE2A877DDD00B44F61 /* ExteriorView.swift */; };
 		B5DD64F32A8783D800B44F61 /* Exterior.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64F22A8783D800B44F61 /* Exterior.swift */; };
 		B5DD64F52A87844A00B44F61 /* ExteriorDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64F42A87844A00B44F61 /* ExteriorDTO.swift */; };
 		B5DD650E2A880A4100B44F61 /* UIImage+Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD650D2A880A4100B44F61 /* UIImage+Merge.swift */; };
@@ -171,6 +172,7 @@
 		B5DD64DE2A876EED00B44F61 /* BodyTypeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyTypeDTO.swift; sourceTree = "<group>"; };
 		B5DD64E02A8770FB00B44F61 /* WheelDriveDTO.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = WheelDriveDTO.json; sourceTree = "<group>"; };
 		B5DD64E22A87714000B44F61 /* BodyTypeDTO.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = BodyTypeDTO.json; sourceTree = "<group>"; };
+		B5DD64EE2A877DDD00B44F61 /* ExteriorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExteriorView.swift; sourceTree = "<group>"; };
 		B5DD64F22A8783D800B44F61 /* Exterior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exterior.swift; sourceTree = "<group>"; };
 		B5DD64F42A87844A00B44F61 /* ExteriorDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExteriorDTO.swift; sourceTree = "<group>"; };
 		B5DD650D2A880A4100B44F61 /* UIImage+Merge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Merge.swift"; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 				B53C3C422A8548330019ECA1 /* Engine */,
 				B53C3C4E2A85653A0019ECA1 /* WheelDrive */,
 				B53C3C552A85776B0019ECA1 /* BodyType */,
+				B5DD64ED2A877DC700B44F61 /* Exterior */,
 			);
 			path = Sceen;
 			sourceTree = "<group>";
@@ -456,6 +459,14 @@
 				B5A6014B2A81EB2600CF2983 /* MCMNetwork.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B5DD64ED2A877DC700B44F61 /* Exterior */ = {
+			isa = PBXGroup;
+			children = (
+				B5DD64EE2A877DDD00B44F61 /* ExteriorView.swift */,
+			);
+			path = Exterior;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -669,6 +680,7 @@
 			files = (
 				B58A32342A7BA452005FC831 /* OnboardingView.swift in Sources */,
 				B56F55E52A8761F90055E382 /* Engine.swift in Sources */,
+				B5DD64EF2A877DDD00B44F61 /* ExteriorView.swift in Sources */,
 				B5DD64DD2A876ED800B44F61 /* BodyType.swift in Sources */,
 				B5DD65122A880B3100B44F61 /* CGSize+Operator.swift in Sources */,
 				B5DD64DF2A876EED00B44F61 /* BodyTypeDTO.swift in Sources */,
