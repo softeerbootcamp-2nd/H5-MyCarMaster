@@ -36,21 +36,13 @@ function CarRotation() {
     }
   };
 
-  const onMouseDown = () => {
-    setIsMouseDown(true);
-  };
-
-  const onMouseUp = () => {
-    setIsMouseDown(false);
-  };
-
   return (
     <Container>
       <ImgContainer
-        onMouseUp={onMouseUp}
-        onMouseDown={onMouseDown}
+        onMouseUp={() => setIsMouseDown(false)}
+        onMouseDown={() => setIsMouseDown(true)}
         onMouseMove={turnCar}
-        onMouseLeave={onMouseUp}
+        onMouseLeave={() => setIsMouseDown(false)}
       >
         {coloredImgUrl.map((img, index) => (
           <Image key={index} src={img} $display={currentImg === index} />
