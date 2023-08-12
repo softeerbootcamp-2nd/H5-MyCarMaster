@@ -47,6 +47,18 @@ public class OptionJpaAdaptor implements OptionPort {
 	}
 
 	@Override
+	public List<Long> findSelectableOptionIdsByTrimId(Long trimId) {
+		return trimAdditionalOptionJpaRepository.findUnselectableOptionIdsByTrimId(trimId);
+	}
+
+	@Override
+	public List<Option> findUnselectableOptions(Long trimId, List<Long> optionIds) {
+		return trimAdditionalOptionJpaRepository.findAllByIdIn(trimId, optionIds).stream()
+			.map(TrimAdditionalOptionEntity::toSimpleOption)
+			.collect(Collectors.toList());
+	}
+
+	@Override
 	public List<Long> findUnselectableOptionIdsByEngineId(Long engineId) {
 		return engineUnselectableOptionJpaRepository.findUnselectableOptionIdsByEngineId(engineId);
 	}
