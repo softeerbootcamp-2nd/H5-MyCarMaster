@@ -17,6 +17,7 @@ enum Result: Codable {
     case unknown
     case trims([TrimDTO])
     case engines([EngineDTO])
+    case wheelDrives([WheelDriveDTO])
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -28,6 +29,11 @@ enum Result: Codable {
 
         if let engineDTOList = try? container.decode([EngineDTO].self, forKey: .engines) {
             self = .engines(engineDTOList)
+            return
+        }
+
+        if let wheelDriveDTOList = try? container.decode([WheelDriveDTO].self, forKey: .wheelDrives) {
+            self = .wheelDrives(wheelDriveDTOList)
             return
         }
 

@@ -12,12 +12,14 @@ import MVIFoundation
 
 final class WheelDriveViewController: UIViewController {
 
-    let wheelDriveList = [
+    var dummyWheelDriveList = [
         WheelDrive(model: "펠리세이드", name: "2WD", description: "엔진 동력이 전후륜 중 한쪽으로만 전달돼 움직입니다. 차체가 가벼워 연료 효율이 높습니다.", ratio: 54, price: 0, imageURL: nil),
         WheelDrive(model: "펠리세이드", name: "4WD", description: "전자식 상시 4륜 구동 시스템으로 환경에 맞춰 구동력을 자동 배분해 안정성을 높입니다.", ratio: 54, price: 1000000, imageURL: nil),
     ]
 
-    private var wheelDriveView: WheelDriveView {
+    var wheelDriveList: [WheelDrive] = []
+
+    private var contentView: WheelDriveView {
         return view as? WheelDriveView ?? WheelDriveView()
     }
 
@@ -37,16 +39,45 @@ final class WheelDriveViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+
+        let request = URLRequest(url: URL(string: Dependency.serverURL + "wheel-drives?trimId=1&engineId=1")!)
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard error == nil else {
+                print(error?.localizedDescription)
+                return
+            }
+
+            guard let response = response as? HTTPURLResponse else {
+                print("Sever Error")
+                return
+            }
+
+            print(response.statusCode)
+            guard 200..<300 ~= response.statusCode else {
+                return
+            }
+
+            if let data,
+               case let .wheelDrives(wheelDriveDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
+                self.wheelDriveList = wheelDriveDTOList.map { WheelDrive($0) }
+                DispatchQueue.main.async {
+                    self.contentView.listView.reloadData()
+                }
+            } else {
+                print("Decoding Error")
+                return
+            }
+        }.resume()
     }
 
     private func configureUI() {
-        wheelDriveView.setDelegate(self)
-        wheelDriveView.setDataSource(self)
-        wheelDriveView.registerCellClass(BasicListCell.self)
+        contentView.setDelegate(self)
+        contentView.setDataSource(self)
+        contentView.registerCellClass(BasicListCell.self)
     }
 
     override func didMove(toParent parent: UIViewController?) {
-        wheelDriveView.updateLayout()
+        contentView.updateLayout()
     }
 }
 
@@ -75,10 +106,10 @@ extension WheelDriveViewController: UICollectionViewDelegate, UICollectionViewDa
         cell.configure(with: cellState)
 
         // FIXME: 초기값 선택이 동작하지 않음
-        if indexPath.item == 0 {
-            cell.isSelected = true
-            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
-        }
+//        if indexPath.item == 0 {
+//            cell.isSelected = true
+//            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
+//        }
         return cell
     }
 
