@@ -7,6 +7,7 @@ import {
 import { useTrimState } from "../../../../contexts/TrimContext";
 import useFetch from "../../../../hooks/useFetch";
 import { useEffect } from "react";
+import CarRotation from "../../../common/CarRotation/CarRotation";
 
 interface FetchExteriorProps extends ExteriorColors {
   result: {
@@ -37,9 +38,12 @@ function ExteriorColorView() {
     }
   }, [data, exteriorDispatch]);
 
+  // 360도 회전에 사용될 이미지 배열을 <CarRotation />로 넘겨줘서 구현
+
   return (
     exteriorList?.length && (
-      <ExteriorColorImg src={exteriorList[exteriorId - 1].coloredImgUrl} />
+      // <ExteriorColorImg src={exteriorList[exteriorId - 1].coloredImgUrl} />
+      <CarRotation />
     )
   );
 }
