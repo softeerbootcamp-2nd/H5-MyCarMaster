@@ -50,6 +50,8 @@
 		B5C3EAC12A84B1AA00D9577C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */; };
 		B5DD64D02A876ABD00B44F61 /* WheelDriveDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64CF2A876ABD00B44F61 /* WheelDriveDTO.swift */; };
 		B5DD64D22A876B5000B44F61 /* WheelDrive.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64D12A876B5000B44F61 /* WheelDrive.swift */; };
+		B5DD64DD2A876ED800B44F61 /* BodyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64DC2A876ED800B44F61 /* BodyType.swift */; };
+		B5DD64DF2A876EED00B44F61 /* BodyTypeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64DE2A876EED00B44F61 /* BodyTypeDTO.swift */; };
 		B5F1AE062A838B8E00E7E392 /* TrimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1AE052A838B8E00E7E392 /* TrimViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -159,6 +161,8 @@
 		B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B5DD64CF2A876ABD00B44F61 /* WheelDriveDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelDriveDTO.swift; sourceTree = "<group>"; };
 		B5DD64D12A876B5000B44F61 /* WheelDrive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelDrive.swift; sourceTree = "<group>"; };
+		B5DD64DC2A876ED800B44F61 /* BodyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyType.swift; sourceTree = "<group>"; };
+		B5DD64DE2A876EED00B44F61 /* BodyTypeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyTypeDTO.swift; sourceTree = "<group>"; };
 		B5F1AE052A838B8E00E7E392 /* TrimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrimViewController.swift; path = MyCarMaster/Sceen/Trim/TrimViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -359,6 +363,7 @@
 				B56F55D32A86BC3B0055E382 /* TrimDTO.swift */,
 				B56F55E62A87621A0055E382 /* EngineDTO.swift */,
 				B5DD64CF2A876ABD00B44F61 /* WheelDriveDTO.swift */,
+				B5DD64DE2A876EED00B44F61 /* BodyTypeDTO.swift */,
 			);
 			path = DataTransferObject;
 			sourceTree = "<group>";
@@ -369,6 +374,7 @@
 				B56F55D62A86BC7D0055E382 /* Trim.swift */,
 				B56F55E42A8761F90055E382 /* Engine.swift */,
 				B5DD64D12A876B5000B44F61 /* WheelDrive.swift */,
+				B5DD64DC2A876ED800B44F61 /* BodyType.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -645,6 +651,8 @@
 			files = (
 				B58A32342A7BA452005FC831 /* OnboardingView.swift in Sources */,
 				B56F55E52A8761F90055E382 /* Engine.swift in Sources */,
+				B5DD64DD2A876ED800B44F61 /* BodyType.swift in Sources */,
+				B5DD64DF2A876EED00B44F61 /* BodyTypeDTO.swift in Sources */,
 				B56F55D22A86BBE50055E382 /* RootDTO.swift in Sources */,
 				B56F55DA2A86BD240055E382 /* TrimDTODummy.json in Sources */,
 				B56F55E92A8762540055E382 /* EngineDTODummy.json in Sources */,
