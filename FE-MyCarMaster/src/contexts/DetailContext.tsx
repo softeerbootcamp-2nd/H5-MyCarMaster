@@ -1,56 +1,11 @@
 import { useReducer, createContext, useContext } from "react";
-
-export type Engines = {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  ratio: number;
-  imgUrl: string;
-  power: number;
-  toque: number;
-  fuelMin: number;
-  fuelMax: number;
-};
-
-export type WheelDrives = {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  ratio: number;
-  imgUrl: string;
-};
-
-export type BodyTypes = {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  ratio: number;
-  imgUrl: string;
-};
-
-type DetailState = {
-  engineId: number;
-  wheelDriveId: number;
-  bodyTypeId: number;
-  engineList: Engines[];
-  wheelDriveList: WheelDrives[];
-  bodyTypeList: BodyTypes[];
-};
-
-type DetailAction = {
-  type: "SELECT_DETAIL" | "SET_DETAIL_LIST";
-  payload: {
-    engineId?: number;
-    wheelDriveId?: number;
-    bodyTypeId?: number;
-    engineList?: Engines[];
-    wheelDriveList?: WheelDrives[];
-    bodyTypeList?: BodyTypes[];
-  };
-};
+import {
+  Engines,
+  WheelDrives,
+  BodyTypes,
+  DetailAction,
+  DetailState,
+} from "../types/detail.types";
 
 const initialDetailState: DetailState = {
   engineId: 1,
