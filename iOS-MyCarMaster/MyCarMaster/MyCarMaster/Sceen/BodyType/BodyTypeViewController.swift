@@ -52,7 +52,7 @@ final class BodyTypeViewController: UIViewController {
                 return
             }
             
-            print("bodyType:", response.statusCode)
+            print("BodyType:", response.statusCode)
             guard 200..<300 ~= response.statusCode else {
                 return
             }

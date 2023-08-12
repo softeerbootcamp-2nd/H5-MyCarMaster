@@ -53,7 +53,7 @@ final class TrimViewController: UIViewController {
                 return
             }
 
-            print(response.statusCode)
+            print("Trim:", response.statusCode)
             guard 200..<300 ~= response.statusCode else {
                 return
             }
