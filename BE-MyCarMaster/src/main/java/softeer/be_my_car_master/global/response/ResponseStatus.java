@@ -9,9 +9,9 @@ public enum ResponseStatus {
 
 	BAD_REQUEST(4000, "잘못된 요청입니다"),
 
-	INTERNAL_SERVER_ERROR(5000, "서버 내부에서 문제가 발생했습니다."),
+	INVALID_OPTION(4100, "선택 불가능한 옵션이 포함되어 있습니다."),
 
-	INVALID_OPTION_ID(4001, "선택 불가능한 옵션 ID입니다.");
+	INTERNAL_SERVER_ERROR(5000, "서버 내부에서 문제가 발생했습니다.");
 
 	private final int code;
 
