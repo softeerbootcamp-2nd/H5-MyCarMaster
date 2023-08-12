@@ -7,11 +7,14 @@ import {
   useQuotationDispatch,
 } from "../../contexts/QuotationContext";
 import indexNameSwitching from "../../utils/indexNameSwitching";
+import { useNavigate } from "react-router-dom";
 
 function Footer() {
   const { navigationId, isFirst } = useQuotationState();
   const quotationDispatch = useQuotationDispatch();
   const name = indexNameSwitching(navigationId) as string;
+
+  const navigate = useNavigate();
 
   const prevButtonHandler = () => {
     const navigationIndex = navigationId - 1;
@@ -39,6 +42,11 @@ function Footer() {
         },
       },
     });
+  };
+
+  const navigateQuotationHandler = () => {
+    // validation api code
+    navigate("/quotation");
   };
 
   return (
@@ -73,8 +81,12 @@ function Footer() {
               $backgroundcolor={`${theme.colors.NAVYBLUE5}`}
               $textcolor={`${theme.colors.WHITE}`}
               $bordercolor={`${theme.colors.NAVYBLUE5}`}
-              text={navigationId === 7 ? "견적서 완성" : "다음"}
-              handleClick={nextButtonHandler}
+              text={navigationId === 6 ? "견적서 완성" : "다음"}
+              handleClick={
+                navigationId === 6
+                  ? navigateQuotationHandler
+                  : nextButtonHandler
+              }
             />
           </ButtonContainer>
         </HeightFittingContainer>
