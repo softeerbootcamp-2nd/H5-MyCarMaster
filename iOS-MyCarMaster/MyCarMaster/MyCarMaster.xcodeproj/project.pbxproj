@@ -52,6 +52,7 @@
 		B5DD64D22A876B5000B44F61 /* WheelDrive.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64D12A876B5000B44F61 /* WheelDrive.swift */; };
 		B5DD64DD2A876ED800B44F61 /* BodyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64DC2A876ED800B44F61 /* BodyType.swift */; };
 		B5DD64DF2A876EED00B44F61 /* BodyTypeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64DE2A876EED00B44F61 /* BodyTypeDTO.swift */; };
+		B5DD64E32A87714000B44F61 /* BodyTypeDTO.json in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64E22A87714000B44F61 /* BodyTypeDTO.json */; };
 		B5F1AE062A838B8E00E7E392 /* TrimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1AE052A838B8E00E7E392 /* TrimViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -163,6 +164,7 @@
 		B5DD64D12A876B5000B44F61 /* WheelDrive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelDrive.swift; sourceTree = "<group>"; };
 		B5DD64DC2A876ED800B44F61 /* BodyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyType.swift; sourceTree = "<group>"; };
 		B5DD64DE2A876EED00B44F61 /* BodyTypeDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyTypeDTO.swift; sourceTree = "<group>"; };
+		B5DD64E22A87714000B44F61 /* BodyTypeDTO.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = BodyTypeDTO.json; sourceTree = "<group>"; };
 		B5F1AE052A838B8E00E7E392 /* TrimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrimViewController.swift; path = MyCarMaster/Sceen/Trim/TrimViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -384,6 +386,7 @@
 			children = (
 				B56F55D92A86BD240055E382 /* TrimDTODummy.json */,
 				B56F55E82A8762540055E382 /* EngineDTODummy.json */,
+				B5DD64E22A87714000B44F61 /* BodyTypeDTO.json */,
 			);
 			path = Dummy;
 			sourceTree = "<group>";
@@ -656,6 +659,7 @@
 				B56F55D22A86BBE50055E382 /* RootDTO.swift in Sources */,
 				B56F55DA2A86BD240055E382 /* TrimDTODummy.json in Sources */,
 				B56F55E92A8762540055E382 /* EngineDTODummy.json in Sources */,
+				B5DD64E32A87714000B44F61 /* BodyTypeDTO.json in Sources */,
 				B53C3C582A8578310019ECA1 /* BodyTypeView.swift in Sources */,
 				B53E028E2A84BE5100F464FC /* StepNavigatorView.swift in Sources */,
 				B56A765C2A83EC5200F7E3EF /* Preview.swift in Sources */,
