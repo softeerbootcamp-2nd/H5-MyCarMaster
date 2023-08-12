@@ -86,13 +86,13 @@ function NavigationItem({ name, quotation }: NavigationItemProp) {
       ) : (
         quotation &&
         Object.entries(quotation).map(([key, value]) =>
-          key === "selectedQuotation" ? (
-            value.map((item: QuotationType) => (
-              <BottomContainer key={item.id}>{item.name}</BottomContainer>
-            ))
-          ) : (
-            <BottomContainer key={key}>{value.name}</BottomContainer>
-          )
+          key === "selectedQuotation"
+            ? value.map((item: QuotationType) => (
+                <BottomContainer key={item.id}>{item.name}</BottomContainer>
+              ))
+            : key !== "consideredQuotation" && (
+                <BottomContainer key={key}>{value.name}</BottomContainer>
+              )
         )
       )}
     </Container>
@@ -107,7 +107,7 @@ const Container = styled.li<activeProp>`
   flex-direction: column;
   justify-content: space-between;
   & + & {
-    gap: 0.25rem;
+    gap: 0.45rem;
   }
 
   background-color: ${({ $active }) =>
@@ -142,13 +142,13 @@ const BottomContainer = styled.div`
   display: flex;
   flex-direction: row;
 
-  gap: 0.75rem;
+  gap: 0.45rem;
   font-family: "Hyundai Sans Text KR";
   font-size: 0.5rem;
   font-style: normal;
   font-weight: 400;
-  line-height: 165%; /* 0.825rem */
   letter-spacing: -0.015rem;
+  flex-wrap: wrap;
 `;
 
 const Text = styled.p``;
