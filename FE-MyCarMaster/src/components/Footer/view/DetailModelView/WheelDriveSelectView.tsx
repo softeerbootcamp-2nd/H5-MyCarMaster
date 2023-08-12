@@ -41,9 +41,9 @@ export default function BodyTypeSelectView() {
               $id={wheelDrive.id}
               $name={wheelDrive.name}
               $description={wheelDrive.description}
-              $imgUrl={wheelDrive.imgUrl}
               $ratio={wheelDrive.ratio}
               $price={wheelDrive.price}
+              $switch="detail"
               $choice={wheelDrive.id === wheelDriveId}
               handleClick={() => selectWheelDrive(wheelDrive.id)}
             />
