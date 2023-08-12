@@ -69,6 +69,8 @@ class BasicStepView: UIView {
         NSLayoutConstraint.activate([
             previewImageView.centerXAnchor.constraint(equalTo: previewView.centerXAnchor),
             previewImageView.centerYAnchor.constraint(equalTo: previewView.centerYAnchor),
+            previewImageView.widthAnchor.constraint(lessThanOrEqualTo: previewView.widthAnchor, multiplier: 1.0),
+            previewImageView.heightAnchor.constraint(lessThanOrEqualTo: previewView.heightAnchor, multiplier: 1.0),
         ])
     }
 }
