@@ -18,6 +18,7 @@ import softeer.be_my_car_master.api.option.dto.response.GetOptionsResponse;
 import softeer.be_my_car_master.api.option.dto.response.OptionDto;
 import softeer.be_my_car_master.api.option.usecase.port.OptionPort;
 import softeer.be_my_car_master.api.option.usecase.port.TagPort;
+import softeer.be_my_car_master.domain.option.Category;
 import softeer.be_my_car_master.domain.option.Option;
 
 @ExtendWith(MockitoExtension.class)
@@ -40,7 +41,7 @@ class GetOptionsUseCaseTest {
 		Option option = Option.builder()
 			.id(1L)
 			.name("임의의 옵션")
-			.category("SAFE")
+			.category(Category.SAFE)
 			.summary("옵션 요약")
 			.description("옵션 상세설명")
 			.imgUrl("imgUrl")

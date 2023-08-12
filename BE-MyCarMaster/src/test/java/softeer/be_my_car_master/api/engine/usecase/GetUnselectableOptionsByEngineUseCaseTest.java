@@ -17,6 +17,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import softeer.be_my_car_master.api.engine.dto.response.GetUnselectableOptionsByEngineResponse;
 import softeer.be_my_car_master.api.engine.dto.response.UnselectableOptionDto;
 import softeer.be_my_car_master.api.option.usecase.port.OptionPort;
+import softeer.be_my_car_master.domain.option.Category;
 import softeer.be_my_car_master.domain.option.Option;
 
 @ExtendWith(MockitoExtension.class)
@@ -36,7 +37,7 @@ class GetUnselectableOptionsByEngineUseCaseTest {
 		Option option = Option.builder()
 			.id(1L)
 			.name("임의의 옵션")
-			.category("SAFE")
+			.category(Category.SAFE)
 			.summary("옵션 요약")
 			.description("옵션 상세설명")
 			.imgUrl("imgUrl")
