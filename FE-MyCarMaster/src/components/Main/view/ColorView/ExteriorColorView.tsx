@@ -43,7 +43,7 @@ function ExteriorColorView() {
   return (
     exteriorList?.length && (
       // <ExteriorColorImg src={exteriorList[exteriorId - 1].coloredImgUrl} />
-      <CarRotation />
+      <CarRotation $isQuotation={false} />
     )
   );
 }
