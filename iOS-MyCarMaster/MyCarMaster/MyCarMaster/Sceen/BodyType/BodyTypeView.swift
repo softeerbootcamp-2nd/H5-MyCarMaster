@@ -13,13 +13,3 @@ final class BodyTypeView: BasicStepView {
         previewImageView.image = UIImage(named: "BodyType_7")
     }
 }
-
-struct BodyType {
-    var model: String
-    var name: String
-    var summary: String
-    var description: String
-    var ratio: Int
-    var price: Int
-    var imageURL: URL?
-}
