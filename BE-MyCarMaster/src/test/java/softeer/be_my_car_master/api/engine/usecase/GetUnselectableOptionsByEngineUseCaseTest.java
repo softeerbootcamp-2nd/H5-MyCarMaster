@@ -19,7 +19,7 @@ import softeer.be_my_car_master.api.engine.dto.response.GetUnselectableOptionsBy
 import softeer.be_my_car_master.api.engine.dto.response.UnselectableOptionDto;
 import softeer.be_my_car_master.api.option.usecase.port.OptionPort;
 import softeer.be_my_car_master.domain.option.Option;
-import softeer.be_my_car_master.global.exception.InvalidOptionIdException;
+import softeer.be_my_car_master.global.exception.InvalidOptionException;
 
 @ExtendWith(MockitoExtension.class)
 @DisplayName("GetUnselectableOptionsByEngineUseCase Test")
@@ -49,22 +49,9 @@ class GetUnselectableOptionsByEngineUseCaseTest {
 			.tag(null)
 			.build();
 
-		Option option2 = Option.builder()
-			.id(2L)
-			.name("임의의 옵션2")
-			.category("SAFE")
-			.summary("옵션 요약")
-			.description("옵션 상세설명")
-			.imgUrl("imgUrl")
-			.price(100000)
-			.ratio(22)
-			.isSuper(false)
-			.subOptions(null)
-			.tag(null)
-			.build();
-
-		given(optionPort.findSelectableOptionsByTrimId(any())).willReturn(Arrays.asList(option1, option2));
+		given(optionPort.findSelectableOptionIdsByTrimId(any())).willReturn(Arrays.asList(1L, 2L, 3L));
 		given(optionPort.findUnselectableOptionIdsByEngineId(any())).willReturn(Arrays.asList(1L, 3L));
+		given(optionPort.findUnselectableOptions(any(), any())).willReturn(Arrays.asList(option1));
 
 		// when
 		GetUnselectableOptionsByEngineResponse getUnselectableOptionsByEngineResponse =
@@ -84,30 +71,15 @@ class GetUnselectableOptionsByEngineUseCaseTest {
 	}
 
 	@Test
-	@DisplayName("OptionIds가 트림에서 선택 불가능한 옵션을 포함한다면 InvalidOptionIdException이 발생합니다")
+	@DisplayName("OptionIds가 트림에서 선택 불가능한 옵션을 포함한다면 InvalidOptionException이 발생합니다")
 	void invalidOptionIds() {
 		// given
-		Option option1 = Option.builder()
-			.id(1L)
-			.name("임의의 옵션")
-			.category("SAFE")
-			.summary("옵션 요약")
-			.description("옵션 상세설명")
-			.imgUrl("imgUrl")
-			.price(100000)
-			.ratio(22)
-			.isSuper(false)
-			.subOptions(null)
-			.tag(null)
-			.build();
-
-		given(optionPort.findSelectableOptionsByTrimId(any())).willReturn(Arrays.asList(option1));
-		given(optionPort.findUnselectableOptionIdsByEngineId(any())).willReturn(Arrays.asList(1L, 3L));
+		given(optionPort.findSelectableOptionIdsByTrimId(any())).willReturn(Arrays.asList(2L, 3L));
 
 		// when
 		// then
 		assertThrows(
-			InvalidOptionIdException.class,
+			InvalidOptionException.class,
 			() -> getUnselectableOptionsByEngineUseCase.execute(1L, 1L, Arrays.asList(1L, 2L))
 		);
 	}
