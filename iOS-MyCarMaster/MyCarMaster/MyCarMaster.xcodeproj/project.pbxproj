@@ -35,7 +35,7 @@
 		B56F55DA2A86BD240055E382 /* TrimDTODummy.json in Sources */ = {isa = PBXBuildFile; fileRef = B56F55D92A86BD240055E382 /* TrimDTODummy.json */; };
 		B56F55E52A8761F90055E382 /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56F55E42A8761F90055E382 /* Engine.swift */; };
 		B56F55E72A87621A0055E382 /* EngineDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56F55E62A87621A0055E382 /* EngineDTO.swift */; };
-		B56F55E92A8762540055E382 /* EngineDTODummy.json in Sources */ = {isa = PBXBuildFile; fileRef = B56F55E82A8762540055E382 /* EngineDTODummy.json */; };
+		B56F55E92A8762540055E382 /* EngineDTO.json in Sources */ = {isa = PBXBuildFile; fileRef = B56F55E82A8762540055E382 /* EngineDTO.json */; };
 		B58799712A8177E90051E6E7 /* MCMResource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58289892A7FFDDC00FAD6AA /* MCMResource.framework */; };
 		B58799722A8177E90051E6E7 /* MCMResource.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B58289892A7FFDDC00FAD6AA /* MCMResource.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B58799732A8177EA0051E6E7 /* MVIFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58289F32A800B8E00FAD6AA /* MVIFoundation.framework */; };
@@ -153,7 +153,7 @@
 		B56F55D92A86BD240055E382 /* TrimDTODummy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TrimDTODummy.json; sourceTree = "<group>"; };
 		B56F55E42A8761F90055E382 /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
 		B56F55E62A87621A0055E382 /* EngineDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineDTO.swift; sourceTree = "<group>"; };
-		B56F55E82A8762540055E382 /* EngineDTODummy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EngineDTODummy.json; sourceTree = "<group>"; };
+		B56F55E82A8762540055E382 /* EngineDTO.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EngineDTO.json; sourceTree = "<group>"; };
 		B58289A62A7FFE5A00FAD6AA /* MCMCombineExtension.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MCMCombineExtension.xcodeproj; path = ../../MCMCombineExtension/MCMCombineExtension.xcodeproj; sourceTree = "<group>"; };
 		B58289EE2A800B8D00FAD6AA /* MVIFoundation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MVIFoundation.xcodeproj; path = "../../../../../../../문서 - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/MVIFoundation/MVIFoundation.xcodeproj"; sourceTree = "<group>"; };
 		B58A32332A7BA452005FC831 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -387,7 +387,7 @@
 			isa = PBXGroup;
 			children = (
 				B56F55D92A86BD240055E382 /* TrimDTODummy.json */,
-				B56F55E82A8762540055E382 /* EngineDTODummy.json */,
+				B56F55E82A8762540055E382 /* EngineDTO.json */,
 				B5DD64E02A8770FB00B44F61 /* WheelDriveDTO.json */,
 				B5DD64E22A87714000B44F61 /* BodyTypeDTO.json */,
 			);
@@ -661,7 +661,7 @@
 				B5DD64DF2A876EED00B44F61 /* BodyTypeDTO.swift in Sources */,
 				B56F55D22A86BBE50055E382 /* RootDTO.swift in Sources */,
 				B56F55DA2A86BD240055E382 /* TrimDTODummy.json in Sources */,
-				B56F55E92A8762540055E382 /* EngineDTODummy.json in Sources */,
+				B56F55E92A8762540055E382 /* EngineDTO.json in Sources */,
 				B5DD64E32A87714000B44F61 /* BodyTypeDTO.json in Sources */,
 				B53C3C582A8578310019ECA1 /* BodyTypeView.swift in Sources */,
 				B53E028E2A84BE5100F464FC /* StepNavigatorView.swift in Sources */,
