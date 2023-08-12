@@ -37,7 +37,7 @@ enum Result: Codable {
             self = .wheelDrives(wheelDriveDTOList)
             return
         }
-        
+
         if let bodyTypeDTOList = try? container.decode([BodyTypeDTO].self, forKey: .bodyTypes) {
             self = .bodyTypes(bodyTypeDTOList)
             return

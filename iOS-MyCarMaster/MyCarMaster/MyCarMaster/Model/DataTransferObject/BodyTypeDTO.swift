@@ -14,7 +14,7 @@ struct BodyTypeDTO: Codable {
     var price: Int
     var ratio: Int
     var imgURL: String
-    
+
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case name = "name"
