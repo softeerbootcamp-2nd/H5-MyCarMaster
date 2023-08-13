@@ -13,8 +13,8 @@ function Footer() {
   const quotationDispatch = useQuotationDispatch();
   const name = indexNameSwitching(navigationId) as string;
 
-  const prevButtonHandler = () => {
-    const navigationIndex = navigationId - 1;
+  const buttonHandler = (cal: number) => {
+    const navigationIndex = navigationId + cal;
     quotationDispatch({
       type: "NAVIGATE",
       payload: {
@@ -25,21 +25,7 @@ function Footer() {
         },
       },
     });
-  };
-
-  const nextButtonHandler = () => {
-    const navigationIndex = navigationId + 1;
-    quotationDispatch({
-      type: "NAVIGATE",
-      payload: {
-        navigationId: navigationIndex,
-        isFirst: {
-          ...isFirst,
-          [navigationIndex]: false,
-        },
-      },
-    });
-  };
+  }
 
   return (
     <Container>
@@ -63,7 +49,7 @@ function Footer() {
                 $textcolor={`${theme.colors.NAVYBLUE5}`}
                 $bordercolor={`${theme.colors.NAVYBLUE5}`}
                 text={"이전"}
-                handleClick={prevButtonHandler}
+                handleClick={() => buttonHandler(-1)}
               />
             )}
 
@@ -74,7 +60,7 @@ function Footer() {
               $textcolor={`${theme.colors.WHITE}`}
               $bordercolor={`${theme.colors.NAVYBLUE5}`}
               text={navigationId === 7 ? "견적서 완성" : "다음"}
-              handleClick={nextButtonHandler}
+              handleClick={() => buttonHandler(1)}
             />
           </ButtonContainer>
         </HeightFittingContainer>
