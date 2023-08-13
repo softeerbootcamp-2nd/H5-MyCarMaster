@@ -7,6 +7,8 @@ export const Text = styled.p<CSSProps>`
 export const TextContainer = styled.div<CSSProps>`
   ${(props) => props.$padding}
   ${(props) => props.$background}
+  display: flex;
+  align-items: center;
 `;
 
 type CSSProps = {
