@@ -2,10 +2,12 @@ import React from "react";
 import { useQuotationState } from "../../../contexts/QuotationContext";
 import { styled } from "styled-components";
 import QuotationItem from "./QuotationItem";
+import QuotationOptionList from "./QuotationOptionList";
 
 function QuotationList() {
-  const { trimQuotation, detailQuotation, carPaintQuotation, optionQuotation } =
+  const { trimQuotation, detailQuotation, carPaintQuotation } =
     useQuotationState();
+
   return (
     <QuotationSummary>
       <QuotationText>최종 견적</QuotationText>
@@ -41,6 +43,7 @@ function QuotationList() {
         price={carPaintQuotation.interiorColorQuotation.price}
         imgUrl={carPaintQuotation.interiorColorQuotation.imgUrl}
       />
+      <QuotationOptionList />
     </QuotationSummary>
   );
 }

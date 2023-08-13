@@ -54,5 +54,7 @@ export type QuotationAction = {
     name?: string | undefined;
     price?: number | undefined;
     imgUrl?: string;
+    category?: string;
+    description?: string;
   };
 };

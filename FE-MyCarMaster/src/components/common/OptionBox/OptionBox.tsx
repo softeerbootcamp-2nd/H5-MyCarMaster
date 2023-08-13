@@ -14,8 +14,8 @@ type OptionBoxProp = {
   $id: number;
   $name: string;
   $description: string;
-  $price: number;
-  $ratio: number;
+  $price: number | undefined;
+  $ratio: number | undefined;
   $choice: boolean;
   $switch: string;
   $considered?: boolean;

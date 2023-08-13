@@ -1,15 +1,17 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Header } from "../components";
 import dark_logo from "../assets/images/dark_logo.svg";
 import NavigationList from "../components/common/NavigationList/NavigationList";
 import CarRotation from "../components/common/CarRotation/CarRotation";
 import Button from "../components/common/Button/Button";
 import theme from "../styles/Theme";
-import QuotationList from "../components/common/QuotationItem/QuotationList";
+import QuotationList from "../components/common/QuotationList/QuotationList";
+import findCarmasterTooltip from "../assets/images/FindCarmasterTooltip.png";
 
 function Quotation() {
   return (
     <Container>
+      {/* <BlueBackground /> */}
       <Header logo={dark_logo} isHome={false} />
       <QuotationMain>
         <QuotationContent>
@@ -19,7 +21,9 @@ function Quotation() {
             드라이브 떠나볼까요?
           </MainText>
           <SubText>카마스터 찾기를 통해 구매 상담을 할 수 있어요</SubText>
-          <CarRotation $isQuotation={true} />
+          <AnimationContainer>
+            <CarRotation $isQuotation={true} />
+          </AnimationContainer>
         </QuotationContent>
         <NavigationList />
       </QuotationMain>
@@ -50,9 +54,39 @@ function Quotation() {
         </ButtonContainer>
       </QuotationFooter>
       <QuotationList />
+      <ToolTip src={findCarmasterTooltip} />
     </Container>
   );
 }
+
+const appearAnimation = keyframes`
+  0%{
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+const boundAnimation = keyframes`
+  0%, 100%{
+    transform: translateY(0);
+  }
+  50%{
+    transform: translateY(-20px);
+  }
+`;
+
+const fadeoutAnimation = keyframes`
+  from {
+    opacity: 1;
+  }
+  to{
+    opacity: 0;
+  }
+`;
 
 const Container = styled.div`
   display: flex;
@@ -61,6 +95,17 @@ const Container = styled.div`
   height: 45rem;
   margin: 0 8rem;
 `;
+
+// const BlueBackground = styled.div`
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 600px;
+//   margin: 0;
+//   background: linear-gradient(180deg, #dde4f8 0%, rgba(231, 235, 246, 0) 100%);
+//   z-index: -1;
+// `;
 
 const QuotationMain = styled.div`
   display: flex;
@@ -95,8 +140,13 @@ const SubText = styled.p`
   line-height: 1.5rem; /* 150% */
 `;
 
+const AnimationContainer = styled.div`
+  animation: ${appearAnimation} 2s ease-in-out;
+  width: 100%;
+`;
+
 const QuotationFooter = styled.div`
-  height: 4.75rem;
+  min-height: 4.75rem;
   display: flex;
   justify-content: space-between;
 `;
@@ -129,6 +179,17 @@ const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+`;
+
+const ToolTip = styled.img`
+  width: 12.4375rem;
+  position: absolute;
+  top: 510px;
+  left: 955px;
+
+  animation: ${boundAnimation} 1s ease-in-out 5 forwards,
+    ${fadeoutAnimation} 1.5s ease-in-out 5s forwards;
+  opacity: 1;
 `;
 
 export default Quotation;
