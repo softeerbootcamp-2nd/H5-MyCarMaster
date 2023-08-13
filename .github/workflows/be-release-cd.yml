@@ -39,6 +39,10 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      - name: Generate random pinpoint value
+        id: generate-pinpoint
+        run: echo "::set-output name=pinpoint::$(uuidgen)"
+
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v4.0.0
         with:
@@ -50,6 +54,7 @@ jobs:
             DB_URL=${{ secrets.DB_URL }} 
             DB_USERNAME=${{ secrets.DB_USERNAME }} 
             DB_PASSWORD=${{ secrets.DB_PASSWORD }}
+            PINPOINT_AGENT_ID=${{ steps.generate-pinpoint.outputs.pinpoint }}
           tags: |
             softeerh5/my-car-master:latest
 
