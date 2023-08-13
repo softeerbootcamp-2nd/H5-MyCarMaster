@@ -9,9 +9,9 @@ import UIKit
 
 import MCMResource
 
-final class BasicListCell: UICollectionViewCell {
+final class BasicListCell: UICollectionViewCell, Selectable, ContentSizeEstimatable {
 
-    override var intrinsicContentSize: CGSize {
+    static var intrinsicContentSize: CGSize {
         return CGSize(width: UIScreen.main.bounds.width - 16 * 2, height: 118)
     }
 
@@ -170,16 +170,6 @@ extension BasicListCell {
         if state.hasDetailButton {
             updateConstraintsIfHasDetailButton()
         }
-    }
-
-    func select() {
-        backgroundColor = .MCM.navyBlue1
-        layer.borderColor = UIColor.MCM.navyBlue4.cgColor
-    }
-
-    func deselect() {
-        backgroundColor = .MCM.grey1
-        layer.borderColor = UIColor.MCM.grey2.cgColor
     }
 }
 

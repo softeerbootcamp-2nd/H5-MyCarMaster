@@ -61,6 +61,7 @@
 		B5DD650E2A880A4100B44F61 /* UIImage+Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD650D2A880A4100B44F61 /* UIImage+Merge.swift */; };
 		B5DD65122A880B3100B44F61 /* CGSize+Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD65112A880B3100B44F61 /* CGSize+Operator.swift */; };
 		B5DD65172A88F8D100B44F61 /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD65162A88F8D100B44F61 /* Then.swift */; };
+		B5DD65192A88FB6F00B44F61 /* Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD65182A88FB6F00B44F61 /* Selectable.swift */; };
 		B5F1AE062A838B8E00E7E392 /* TrimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1AE052A838B8E00E7E392 /* TrimViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -181,6 +182,7 @@
 		B5DD650D2A880A4100B44F61 /* UIImage+Merge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Merge.swift"; sourceTree = "<group>"; };
 		B5DD65112A880B3100B44F61 /* CGSize+Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Operator.swift"; sourceTree = "<group>"; };
 		B5DD65162A88F8D100B44F61 /* Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
+		B5DD65182A88FB6F00B44F61 /* Selectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selectable.swift; sourceTree = "<group>"; };
 		B5F1AE052A838B8E00E7E392 /* TrimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrimViewController.swift; path = MyCarMaster/Sceen/Trim/TrimViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -360,7 +362,7 @@
 		B56A765D2A83EF9100F7E3EF /* General */ = {
 			isa = PBXGroup;
 			children = (
-				B56A765E2A83EFB000F7E3EF /* BasicListCell.swift */,
+				B5DD65132A88F5C500B44F61 /* Cell */,
 				B53E028D2A84BE5100F464FC /* StepNavigatorView.swift */,
 				B510BBDE2A84895D009E5752 /* EstimationView.swift */,
 				B53C3C482A854AF50019ECA1 /* BasicStepView.swift */,
@@ -473,6 +475,15 @@
 				B5DD64F02A87833200B44F61 /* ExteriorViewController.swift */,
 			);
 			path = Exterior;
+			sourceTree = "<group>";
+		};
+		B5DD65132A88F5C500B44F61 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B56A765E2A83EFB000F7E3EF /* BasicListCell.swift */,
+				B5DD65182A88FB6F00B44F61 /* Selectable.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -705,6 +716,7 @@
 				B56F55D72A86BC7D0055E382 /* Trim.swift in Sources */,
 				B53C3C522A8566270019ECA1 /* WheelDriveViewController.swift in Sources */,
 				B5F1AE062A838B8E00E7E392 /* TrimViewController.swift in Sources */,
+				B5DD65192A88FB6F00B44F61 /* Selectable.swift in Sources */,
 				B5DD64F12A87833200B44F61 /* ExteriorViewController.swift in Sources */,
 				B53C3C492A854AF50019ECA1 /* BasicStepView.swift in Sources */,
 				B5DD64E12A8770FB00B44F61 /* WheelDriveDTO.json in Sources */,
