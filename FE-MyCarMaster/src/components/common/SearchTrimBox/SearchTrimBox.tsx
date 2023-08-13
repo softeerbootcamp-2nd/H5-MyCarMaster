@@ -9,12 +9,16 @@ import {
   NoneCSS,
 } from "./style";
 import TagItem from "../TagItem/TagItem";
+
+type StatusType = "default" | "choice" | "none";
+type OptionType = "default" | "add" | "none";
+
 type SearchTrimBoxProps = {
   name: string;
   description: string;
   price: number;
-  status: string;
-  isOption?: "default" | "add" | "none";
+  status: StatusType;
+  isOption?: OptionType;
 };
 
 export default function SearchTrimBox({
@@ -28,12 +32,14 @@ export default function SearchTrimBox({
   const nameStyle = calculateName(status);
   const descriptionStyle = calculateDescription(status);
   const priceStyle = calculatePrice(status);
+
+  console.log(nameStyle);
   return (
     <Container $background={backgroundStyle}>
       <Name $text={nameStyle}>{name}</Name>
       <Description $text={descriptionStyle}>{description}</Description>
       <BottomContainer>
-        <Price $text={priceStyle}>{price}</Price>
+        <Price $text={priceStyle}>{price.toLocaleString("ko-KR")} 원</Price>
         {isOption === "default" ? (
           <TagItem text={"기본 제공"} $switch="DefaultsearchTrim" />
         ) : (
@@ -46,7 +52,7 @@ export default function SearchTrimBox({
   );
 }
 
-const calculateBackground = (status: string) => {
+const calculateBackground = (status: StatusType) => {
   switch (status) {
     case "none":
       return NoneCSS.Background;
@@ -57,7 +63,7 @@ const calculateBackground = (status: string) => {
   }
 };
 
-const calculateName = (status: string) => {
+const calculateName = (status: StatusType) => {
   switch (status) {
     case "none":
       return NoneCSS.Name;
@@ -68,7 +74,7 @@ const calculateName = (status: string) => {
   }
 };
 
-const calculateDescription = (status: string) => {
+const calculateDescription = (status: StatusType) => {
   switch (status) {
     case "none":
       return NoneCSS.Description;
@@ -79,7 +85,7 @@ const calculateDescription = (status: string) => {
   }
 };
 
-const calculatePrice = (status: string) => {
+const calculatePrice = (status: StatusType) => {
   switch (status) {
     case "none":
       return NoneCSS.Price;
