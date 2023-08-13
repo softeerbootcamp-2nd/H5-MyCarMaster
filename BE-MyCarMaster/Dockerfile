@@ -7,6 +7,7 @@ ARG DB_USERNAME
 ARG DB_PASSWORD
 
 COPY ${JAR_FILE} app.jar
+COPY config/pinpoint-agent pinpoint-agent
 
 ENV PROFILE=${PROFILE}
 ENV DB_URL=${DB_URL}
@@ -20,7 +21,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", \
     "-Dspring.profiles.active=${PROFILE}", \
-    "-javaagent:./config/pinpoint-agent/pinpoint-bootstrap-2.2.2.jar", \
+    "-javaagent:/pinpoint-agent/pinpoint-bootstrap-2.2.2.jar", \
     "-Dpinpoint.agentId=${PINPOINT_AGENT_ID}","-Dpinpoint.applicationName=h5", \
-    "-Dpinpoint.config=./config/pinpoint-agent/pinpoint-root.config", \
+    "-Dpinpoint.config=/pinpoint-agent/pinpoint-root.config", \
     "/app.jar"]
