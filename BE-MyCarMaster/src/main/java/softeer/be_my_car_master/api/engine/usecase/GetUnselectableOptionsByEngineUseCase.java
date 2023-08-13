@@ -8,6 +8,7 @@ import softeer.be_my_car_master.api.engine.dto.response.GetUnselectableOptionsBy
 import softeer.be_my_car_master.api.option.usecase.port.OptionPort;
 import softeer.be_my_car_master.domain.option.Option;
 import softeer.be_my_car_master.global.annotation.UseCase;
+import softeer.be_my_car_master.global.exception.InvalidOptionException;
 
 @UseCase
 @RequiredArgsConstructor
@@ -15,19 +16,35 @@ public class GetUnselectableOptionsByEngineUseCase {
 
 	private final OptionPort optionPort;
 
-	public GetUnselectableOptionsByEngineResponse execute(Long engineId, Long trimId, List<Long> selectedOptionIds) {
-		List<Option> selectableOptions = optionPort.findSelectableOptionsByTrimId(trimId);
-		List<Long> unselectableOptionIdsByEngine = optionPort.findUnselectableOptionIdsByEngineId(engineId);
+	public GetUnselectableOptionsByEngineResponse execute(Long selectedEngineId, Long trimId,
+		List<Long> selectedOptionIds) {
+		List<Long> selectableOptionIdsInTrim = optionPort.findSelectableOptionIdsByTrimId(trimId);
+		validateTrimOptions(selectedOptionIds, selectableOptionIdsInTrim);
 
-		List<Option> unselectableOptionsByEngine = selectableOptions.stream()
-			.filter(option -> isUnselectableOptionByEngine(option, selectedOptionIds, unselectableOptionIdsByEngine))
-			.collect(Collectors.toList());
+		List<Long> unselectableOptionIdsByEngine = optionPort.findUnselectableOptionIdsByEngineId(selectedEngineId);
+		List<Long> unselectableOptionIds =
+			getUnselectableOptionIdsByEngine(selectedOptionIds, unselectableOptionIdsByEngine);
 
-		return GetUnselectableOptionsByEngineResponse.from(unselectableOptionsByEngine);
+		List<Option> unselectableOptions = optionPort.findUnselectableOptions(trimId, unselectableOptionIds);
+
+		return GetUnselectableOptionsByEngineResponse.from(unselectableOptions);
 	}
 
-	private static boolean isUnselectableOptionByEngine(Option option, List<Long> selectedOptionIds,
-		List<Long> unselectableOptionIdsByEngine) {
-		return selectedOptionIds.contains(option.getId()) && unselectableOptionIdsByEngine.contains(option.getId());
+	private void validateTrimOptions(
+		List<Long> selectedOptions,
+		List<Long> selectableOptionIdsInTrim
+	) {
+		if (!selectableOptionIdsInTrim.containsAll(selectedOptions)) {
+			throw InvalidOptionException.EXCEPTION;
+		}
+	}
+
+	private List<Long> getUnselectableOptionIdsByEngine(
+		List<Long> selectedOptionIds,
+		List<Long> unselectableOptionIdsByEngine
+	) {
+		return selectedOptionIds.stream()
+			.filter(selectedOptionId -> unselectableOptionIdsByEngine.contains(selectedOptionId))
+			.collect(Collectors.toList());
 	}
 }

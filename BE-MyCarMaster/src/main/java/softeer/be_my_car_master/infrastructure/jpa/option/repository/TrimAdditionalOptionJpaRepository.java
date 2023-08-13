@@ -12,7 +12,17 @@ public interface TrimAdditionalOptionJpaRepository extends JpaRepository<TrimAdd
 	@Query(value = "SELECT tao "
 		+ "FROM TrimAdditionalOptionEntity tao "
 		+ "JOIN FETCH tao.option o "
-		+ "JOIN FETCH o.tag "
 		+ "WHERE tao.trim.id = :trimId")
 	List<TrimAdditionalOptionEntity> findAllByTrimId(Long trimId);
+
+	@Query("SELECT tao.option.id "
+		+ "FROM TrimAdditionalOptionEntity tao "
+		+ "WHERE tao.trim.id = :trimId")
+	List<Long> findUnselectableOptionIdsByTrimId(Long trimId);
+
+	@Query("SELECT tao "
+		+ "FROM TrimAdditionalOptionEntity tao "
+		+ "JOIN FETCH tao.option o "
+		+ "WHERE tao.trim.id = :trimId AND tao.option.id IN :optionIds")
+	List<TrimAdditionalOptionEntity> findAllByIdIn(Long trimId, List<Long> optionIds);
 }

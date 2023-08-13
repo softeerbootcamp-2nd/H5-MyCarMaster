@@ -1,7 +1,6 @@
 package softeer.be_my_car_master.domain.option;
 
 import java.util.List;
-import java.util.Objects;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -17,7 +16,7 @@ public class Option {
 
 	private Long id;
 	private String name;
-	private String category;
+	private Category category;
 	private String summary;
 	private String description;
 	private String imgUrl;
@@ -29,5 +28,9 @@ public class Option {
 
 	public String getTagName() {
 		return tag == null ? null : tag.getName();
+	}
+
+	public Boolean hasSubOption() {
+		return isSuper;
 	}
 }
