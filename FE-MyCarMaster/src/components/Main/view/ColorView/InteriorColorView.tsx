@@ -1,9 +1,9 @@
 import { styled } from "styled-components";
 import {
-  InteriorColors,
   useCarPaintDispatch,
   useCarPaintState,
 } from "../../../../contexts/CarPaintContext";
+import { InteriorColors } from "../../../../types/carpaint.types";
 import useFetch from "../../../../hooks/useFetch";
 import { useTrimState } from "../../../../contexts/TrimContext";
 import { useEffect } from "react";

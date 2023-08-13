@@ -33,9 +33,9 @@ export default function TrimSelect() {
               $id={trim.id}
               $name={trim.name}
               $description={trim.description}
-              $imgUrl={trim.imgUrl}
               $ratio={trim.ratio}
               $price={trim.price}
+              $switch="trim"
               $choice={trimId === trim.id}
               handleClick={() => selectTrim(trim.id)}
             />

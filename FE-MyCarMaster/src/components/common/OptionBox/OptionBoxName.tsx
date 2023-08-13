@@ -1,71 +1,66 @@
 import {
-  DetailModelOptionContainer,
-  Name,
   Ratio,
   Description,
   Decoration,
-  OptionName,
-  ActiveColor,
-  DefaultColor,
+  Name,
+  ActiveCSS,
+  DefaultCSS,
 } from "./style";
 
 type OptionBoxNameProp = {
-  $name?: string;
-  $description?: string;
-  $ratio?: number;
+  name?: string;
+  description?: string;
+  ratio?: number;
   choice?: boolean;
   considered?: boolean;
   isDetail: boolean;
   isTrim: boolean;
 };
-export default function OptionBoxName(props: OptionBoxNameProp) {
+export default function OptionBoxName({
+  name,
+  description,
+  ratio,
+  choice,
+  considered,
+  isDetail,
+  isTrim,
+}: OptionBoxNameProp) {
   return (
     <>
-      {props.isDetail ? (
-        <>
-          <DetailModelOptionContainer>
-            <Name $style={props.choice ? ActiveColor.Name : DefaultColor.Name}>
-              {props.$name}
-            </Name>
-            <Ratio>구매자 {props.$ratio}%가 선택</Ratio>
-          </DetailModelOptionContainer>
-          <Description
-            $style={
-              props.choice ? ActiveColor.Description : DefaultColor.Description
-            }
-          >
-            {props.$description}
-          </Description>
-        </>
+      {isDetail ? (
+        <Ratio>구매자 {ratio}%가 선택</Ratio>
       ) : (
-        <>
-          <Decoration
-            $style={
-              props.considered
-                ? ActiveColor.DecorationConsider
-                : props.choice
-                ? ActiveColor.Decoration
-                : DefaultColor.Decoration
-            }
-          >
-            {props.$ratio === 0 ? "New" : `구매자 ${props.$ratio}%가 선택`}
-          </Decoration>
+        <Decoration
+          $style={
+            considered
+              ? ActiveCSS.DecorationConsider
+              : choice
+              ? ActiveCSS.Decoration
+              : DefaultCSS.Decoration
+          }
+        >
+          {ratio === 0 ? "New" : `구매자 ${ratio}%가 선택`}
+        </Decoration>
+      )}
 
-          <OptionName
-            $style={
-              props.considered
-                ? ActiveColor.OptionName
-                : props.choice
-                ? ActiveColor.OptionName
-                : DefaultColor.OptionName
-            }
-            $size={
-                props.isTrim ? DefaultColor.SizeUp : DefaultColor.SizeDown
-            }
-          >
-            {props.$name}
-          </OptionName>
-        </>
+      <Name
+        $style={
+          considered
+            ? ActiveCSS.NameConsider
+            : choice
+            ? ActiveCSS.Name
+            : DefaultCSS.Name
+        }
+        $size={isTrim ? DefaultCSS.SizeUp : DefaultCSS.SizeDown}
+      >
+        {name}
+      </Name>
+      {(isDetail || isTrim) && (
+        <Description
+          $style={choice ? ActiveCSS.Description : DefaultCSS.Description}
+        >
+          {description}
+        </Description>
       )}
     </>
   );

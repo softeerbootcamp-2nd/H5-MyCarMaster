@@ -1,37 +1,5 @@
 import { useReducer, createContext, useContext } from "react";
-import {
-  TrimQuotationType,
-  DetailQuotationType,
-  CarPaintQuotationType,
-  OptionQuotationType,
-} from "../types/quotation.types";
-
-type QuotationState = {
-  navigationId: number;
-  isFirst: boolean[];
-  trimQuotation: TrimQuotationType;
-  detailQuotation: DetailQuotationType;
-  carPaintQuotation: CarPaintQuotationType;
-  optionQuotation: OptionQuotationType;
-};
-
-type QuotationAction = {
-  type:
-    | "NAVIGATE"
-    | "SET_TRIM_QUOTATION"
-    | "SET_DETAIL_QUOTATION"
-    | "SET_SELECT_QUOTATION"
-    | "SET_CONSIDER_QUOTATION"
-    | "SET_CAR_PAINT_QUOTATION";
-  payload: {
-    id?: number;
-    navigationId?: number;
-    isFirst?: boolean[];
-    type?: string;
-    name?: string | undefined;
-    price?: number | undefined;
-  };
-};
+import { QuotationAction, QuotationState } from "../types/quotation.types";
 
 const initialQuotationState: QuotationState = {
   navigationId: 0,

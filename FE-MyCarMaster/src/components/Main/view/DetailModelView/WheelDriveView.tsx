@@ -1,9 +1,9 @@
 import { styled } from "styled-components";
 import {
-  WheelDrives,
   useDetailDispatch,
   useDetailState,
 } from "../../../../contexts/DetailContext";
+import { WheelDrives } from "../../../../types/detail.types";
 import { useTrimState } from "../../../../contexts/TrimContext";
 import useFetch from "../../../../hooks/useFetch";
 import { useEffect } from "react";

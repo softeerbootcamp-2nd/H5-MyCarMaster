@@ -28,12 +28,14 @@ export type OptionState = {
   optionCategoryId: number;
 };
 
+type OptionActionType =
+  | "SET_CHOICE_OPTION"
+  | "SET_OPTION_LIST"
+  | "SET_OPTION_CATEGORY_INDEX"
+  | "SET_OPTION_ID";
+
 export type OptionAction = {
-  type:
-    | "SET_CHOICE_OPTION"
-    | "SET_OPTION_LIST"
-    | "SET_OPTION_CATEGORY_INDEX"
-    | "SET_OPTION_ID";
+  type: OptionActionType;
   payload: {
     where?: "selectedOption" | "consideredOption";
     id?: number;

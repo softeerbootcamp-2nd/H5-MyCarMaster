@@ -1,10 +1,10 @@
 import { styled } from "styled-components";
 import GraphList from "../../../common/Graph/GraphList";
 import {
-  Engines,
   useDetailDispatch,
   useDetailState,
 } from "../../../../contexts/DetailContext";
+import { Engines } from "../../../../types/detail.types";
 import { useTrimState } from "../../../../contexts/TrimContext";
 import useFetch from "../../../../hooks/useFetch";
 import { useEffect } from "react";
@@ -38,7 +38,9 @@ function EngineView() {
 
   return (
     <Container>
-      {engineList?.length && <EngineImg src={engineList[engineId - 1].imgUrl} />}
+      {engineList?.length && (
+        <EngineImg src={engineList[engineId - 1].imgUrl} />
+      )}
       <EngineGraph>
         <GraphList />
       </EngineGraph>
