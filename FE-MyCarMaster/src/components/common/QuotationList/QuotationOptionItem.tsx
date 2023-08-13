@@ -34,10 +34,10 @@ function QuotationOptionItem({
         $y={2}
         text={isSelected ? "고민해보기" : "확정하기"}
         $backgroundcolor={
-          isSelected ? `${theme.colors.GOLD4}` : `${theme.colors.NAVYBLUE5}`
+          isSelected ? `${theme.colors.GOLD5}` : `${theme.colors.NAVYBLUE5}`
         }
         $bordercolor={
-          isSelected ? `${theme.colors.GOLD4}` : `${theme.colors.NAVYBLUE5}`
+          isSelected ? `${theme.colors.GOLD5}` : `${theme.colors.NAVYBLUE5}`
         }
         $textcolor={`${theme.colors.WHITE}`}
         handleClick={isSelected ? considerHandler : confirmHandler}

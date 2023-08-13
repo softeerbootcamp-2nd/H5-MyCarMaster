@@ -93,7 +93,7 @@ const ColorName = styled.p`
   font-weight: 500;
   line-height: 1.5rem;
 
-  border: 1px solid ${theme.colors.GREY3};
+  border: 1px solid ${theme.colors.GREY2};
   border-top: none;
 `;
 
