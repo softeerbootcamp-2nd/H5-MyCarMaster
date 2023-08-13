@@ -5,7 +5,7 @@ export const Decoration = styled.p<CSSProps>`
   ${(props) => props.$style}
 `;
 
-export const OptionName = styled.p<CSSProps>`
+export const Name = styled.p<CSSProps>`
   ${(props) => props.$size}
   ${(props) => props.$style}
 `;
@@ -17,17 +17,6 @@ export const Description = styled.p<CSSProps>`
 
 export const Price = styled.p<CSSProps>`
   ${(props) => props.theme.fonts.contentLarge};
-  ${(props) => props.$style}
-`;
-
-// export const Tag = styled.button`
-//   width: 3.25rem;
-//   height: 1.25rem;
-//   font-size: 0.625rem;
-// `;
-
-export const Name = styled.p<CSSProps>`
-  ${(props) => props.theme.fonts.titleSmall};
   ${(props) => props.$style}
 `;
 
@@ -57,6 +46,7 @@ export const TopContainer = styled.div`
 
 export const BottomContainer = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
 `;
 
@@ -88,7 +78,7 @@ type CSSProps = {
   $size?: RuleSet;
 };
 
-export const ActiveColor = {
+export const ActiveCSS = {
   Background: css`
     background-color: ${(props) => props.theme.colors.NAVYBLUE5};
   `,
@@ -104,7 +94,10 @@ export const ActiveColor = {
     color: ${(props) => props.theme.colors.WHITE};
     opacity: 0.5;
   `,
-  OptionName: css`
+  Name: css`
+    color: ${(props) => props.theme.colors.WHITE};
+  `,
+  NameConsider: css`
     color: ${(props) => props.theme.colors.WHITE};
   `,
   Description: css`
@@ -117,19 +110,16 @@ export const ActiveColor = {
   Detail: css`
     color: ${(props) => props.theme.colors.WHITE};
   `,
-  Name: css`
-    color: ${(props) => props.theme.colors.WHITE};
-  `,
 };
 
-export const DefaultColor = {
+export const DefaultCSS = {
   Background: css`
     background-color: ${(props) => props.theme.colors.WHITE};
   `,
   Decoration: css`
     color: ${(props) => props.theme.colors.NAVYBLUE5};
   `,
-  OptionName: css`
+  Name: css`
     color: ${(props) => props.theme.colors.BLACK};
   `,
   Description: css`
@@ -139,9 +129,6 @@ export const DefaultColor = {
     color: ${(props) => props.theme.colors.BLACK};
   `,
   Detail: css`
-    color: ${(props) => props.theme.colors.BLACK};
-  `,
-  Name: css`
     color: ${(props) => props.theme.colors.BLACK};
   `,
 
@@ -154,7 +141,7 @@ export const DefaultColor = {
   `,
 };
 
-export const NoneColor = {
+export const NoneCSS = {
   Background: css`
     background-color: ${(props) => props.theme.colors.GREY2};
   `,

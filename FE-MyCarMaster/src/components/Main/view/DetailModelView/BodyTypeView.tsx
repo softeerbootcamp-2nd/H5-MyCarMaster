@@ -1,9 +1,9 @@
 import { styled } from "styled-components";
 import {
-  BodyTypes,
   useDetailDispatch,
   useDetailState,
 } from "../../../../contexts/DetailContext";
+import { BodyTypes } from "../../../../types/detail.types";
 import { useModelState } from "../../../../contexts/ModelContext";
 import useFetch from "../../../../hooks/useFetch";
 import { useEffect } from "react";

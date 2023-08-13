@@ -1,14 +1,5 @@
 import { useReducer, createContext, useContext } from "react";
-
-type ModelState = {
-  modelId: number;
-  modelName: string;
-};
-
-type ModelAction = {
-  type: "SET_MODEL";
-  payload: { modelId: number; modelName: string };
-};
+import { ModelState, ModelAction } from "../types/model.types";
 
 const initialModelState: ModelState = {
   modelId: 1,

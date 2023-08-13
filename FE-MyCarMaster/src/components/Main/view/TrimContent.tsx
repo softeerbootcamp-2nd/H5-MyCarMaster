@@ -1,9 +1,6 @@
 import styled from "styled-components";
-import {
-  Trims,
-  useTrimDispatch,
-  useTrimState,
-} from "../../../contexts/TrimContext";
+import { useTrimDispatch, useTrimState } from "../../../contexts/TrimContext";
+import { Trims } from "../../../types/trim.types";
 import useFetch from "../../../hooks/useFetch";
 import { useModelState } from "../../../contexts/ModelContext";
 import { useEffect } from "react";
