@@ -32,6 +32,7 @@ export const Detail = styled.p<CSSProps>`
 `;
 
 export const TopContainer = styled.div`
+  width: 100%;
   height: 5.75rem;
   display: flex;
   flex-direction: column;
@@ -48,6 +49,12 @@ export const ButtonContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
+`;
+
+export const DecorationContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 `;
 
 export const Container = styled.div<{ $style?: RuleSet }>`
