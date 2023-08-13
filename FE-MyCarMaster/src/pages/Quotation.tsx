@@ -5,6 +5,7 @@ import NavigationList from "../components/common/NavigationList/NavigationList";
 import CarRotation from "../components/common/CarRotation/CarRotation";
 import Button from "../components/common/Button/Button";
 import theme from "../styles/Theme";
+import QuotationList from "../components/common/QuotationItem/QuotationList";
 
 function Quotation() {
   return (
@@ -48,7 +49,7 @@ function Quotation() {
           />
         </ButtonContainer>
       </QuotationFooter>
-      <QuotationSummary></QuotationSummary>
+      <QuotationList />
     </Container>
   );
 }
@@ -65,6 +66,7 @@ const QuotationMain = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: flex-start;
   height: 32rem;
 `;
 
@@ -128,7 +130,5 @@ const ButtonContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
 `;
-
-const QuotationSummary = styled.div``;
 
 export default Quotation;
