@@ -94,7 +94,7 @@ const Circle = styled.div`
   background-clip: content-box, border-box;
   z-index: -1;
 
-  margin-top: 15rem;
+  margin-top: 13rem;
 `;
 
 const Text = styled.div<{ $isQuotation: boolean }>`
