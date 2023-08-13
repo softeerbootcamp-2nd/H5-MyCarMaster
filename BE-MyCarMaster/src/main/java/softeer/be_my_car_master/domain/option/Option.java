@@ -16,7 +16,7 @@ public class Option {
 
 	private Long id;
 	private String name;
-	private String category;
+	private Category category;
 	private String summary;
 	private String description;
 	private String imgUrl;

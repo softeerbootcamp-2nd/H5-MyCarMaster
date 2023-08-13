@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +19,7 @@ import javax.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import softeer.be_my_car_master.domain.option.Category;
 import softeer.be_my_car_master.domain.option.Option;
 import softeer.be_my_car_master.domain.option.Tag;
 import softeer.be_my_car_master.infrastructure.jpa.model.entity.ModelEntity;
@@ -42,7 +45,8 @@ public class OptionEntity {
 	private String description;
 
 	@Column(name = "category", nullable = false)
-	private String category;
+	@Enumerated(EnumType.STRING)
+	private Category category;
 
 	@Column(name = "img_url", nullable = false)
 	private String imgUrl;
