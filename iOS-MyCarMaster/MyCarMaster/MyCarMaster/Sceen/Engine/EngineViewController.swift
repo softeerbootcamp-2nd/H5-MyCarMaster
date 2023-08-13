@@ -12,13 +12,15 @@ import MVIFoundation
 
 final class EngineViewController: UIViewController {
 
+    typealias ListCellClass = BasicListCell
+
     var dummyEngineList = [
         Engine(model: "펠리세이드", name: "가솔린 3.8", ratio: 54, description: "엔진의 진동이 적어 편안하고 조용한 드라이빙 감성을 제공합니다", fuelMin: 8.0, fuelMax: 9.2, power: 295, toque: 36.2, price: 0),
         Engine(model: "펠리세이드", name: "디젤 2.2", ratio: 54, description: "높은 토크로 파워풀한 드라이빙이 가능하며, 차급대비 연비 효율이 우수합니다", fuelMin: 11.4, fuelMax: 12.4, power: 202, toque: 45.0, price: 1000000)
     ]
     var engineList: [Engine] = []
 
-    private var contentView: EngineView {
+    private var contentView: EngineView<ListCellClass> {
         return view as? EngineView ?? EngineView()
     }
 
@@ -32,7 +34,7 @@ final class EngineViewController: UIViewController {
 
     override func loadView() {
         super.loadView()
-        view = EngineView(frame: .zero)
+        view = EngineView<ListCellClass>(frame: .zero)
     }
 
     override func viewDidLoad() {
@@ -59,6 +61,7 @@ final class EngineViewController: UIViewController {
             if let data,
                case let .engines(engineDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
                 self.engineList = engineDTOList.map { Engine($0) }
+                print(self.engineList)
                 DispatchQueue.main.async {
                     self.contentView.listView.reloadData()
                 }
@@ -72,7 +75,6 @@ final class EngineViewController: UIViewController {
     private func configureUI() {
         contentView.setDelegate(self)
         contentView.setDataSource(self)
-        contentView.registerCellClass(BasicListCell.self)
     }
 
     override func didMove(toParent parent: UIViewController?) {
@@ -86,6 +88,7 @@ extension EngineViewController: UICollectionViewDelegate, UICollectionViewDataSo
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
+        NSLog("engineList: %d개", engineList.count)
         return engineList.count
     }
 
@@ -94,14 +97,15 @@ extension EngineViewController: UICollectionViewDelegate, UICollectionViewDataSo
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
 
+        print("indexPath.row:",indexPath.row)
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: BasicListCell.reuseIdentifier,
+            withReuseIdentifier: ListCellClass.reuseIdentifier,
             for: indexPath
-        ) as? BasicListCell else {
+        ) as? ListCellClass else {
             fatalError("등록되지 않은 cell입니다.")
         }
 
-        let cellState = BasicListCellState(from: engineList[indexPath.row])
+        let cellState = engineList[indexPath.row].basicListCellState
         cell.configure(with: cellState)
 
         // FIXME: 초기값 선택이 동작하지 않음
@@ -113,14 +117,14 @@ extension EngineViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? BasicListCell else {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ListCellClass else {
             fatalError("알 수 없는 오류가 발생했습니다.")
         }
         cell.select()
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? BasicListCell else {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ListCellClass else {
             fatalError("알 수 없는 오류가 발생했습니다.")
         }
         cell.deselect()

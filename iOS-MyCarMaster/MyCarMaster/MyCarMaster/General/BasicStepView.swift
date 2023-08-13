@@ -7,7 +7,8 @@
 
 import UIKit
 
-class BasicStepView: UIView {
+class BasicStepView<ListCellClass>: UIView
+where ListCellClass: UICollectionViewCell & ContentSizeEstimatable & Selectable {
 
     let inset: CGFloat = 16
     let firstSpacing: CGFloat = 16
@@ -25,7 +26,7 @@ class BasicStepView: UIView {
         return imageView
     }()
 
-    private var collectionViewCellEstimatedHeight: CGFloat = 0
+    private var collectionViewCellEstimatedHeight: CGFloat = ListCellClass.intrinsicContentSize.height
 
     lazy var listView: UICollectionView = {
         let listView = UICollectionView(frame: .zero, collectionViewLayout: createListLayout())
@@ -46,6 +47,7 @@ class BasicStepView: UIView {
 
     func configureUI() {
         backgroundColor = .white
+        listView.register(ListCellClass.self, forCellWithReuseIdentifier: ListCellClass.reuseIdentifier)
     }
 
     func configureLayout() {
@@ -106,15 +108,5 @@ extension BasicStepView {
 
     func updateLayout() {
         configureLayout()
-    }
-
-    func configureListView<CellClass>(withCellClass cellClass: CellClass.Type)
-    where CellClass: Reusable & ContentSizeEstimatable {
-        collectionViewCellEstimatedHeight = cellClass.intrinsicContentSize.height
-        listView.register(cellClass, forCellWithReuseIdentifier: cellClass.reuseIdentifier)
-    }
-
-    func registerCellClass(_ cellClass: UICollectionViewCell.Type) {
-        listView.register(cellClass, forCellWithReuseIdentifier: cellClass.reuseIdentifier)
     }
 }

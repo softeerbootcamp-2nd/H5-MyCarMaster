@@ -12,6 +12,8 @@ import MVIFoundation
 
 final class TrimViewController: UIViewController {
 
+    typealias ListCellClass = BasicListCell
+
     let dummyTrimList = [
         Trim(model: "펠리세이드", name: "Exclusive", ratio: 54, description: "실용적인 기본 기능을 갖춘 베이직 트림실용적인 기본 기능을 갖춘 베이직 트림실용적인 기본 기능을 갖춘 베이직 트림실용적인 기본 기능을 갖춘 베이직 트림", price: 40440000, imageURL: nil),
         Trim(model: "펠리세이드", name: "Exclusive", ratio: 54, description: "실용적인 기본 기능을 갖춘 베이직 트림", price: 40440000, imageURL: nil),
@@ -20,7 +22,7 @@ final class TrimViewController: UIViewController {
     ]
     var trimList: [Trim] = []
 
-    private var trimView: TrimView {
+    private var trimView: TrimView<ListCellClass> {
         return view as? TrimView ?? TrimView()
     }
 
@@ -34,7 +36,7 @@ final class TrimViewController: UIViewController {
 
     override func loadView() {
         super.loadView()
-        view = TrimView(frame: .zero)
+        view = TrimView<ListCellClass>(frame: .zero)
     }
 
     override func viewDidLoad() {
@@ -74,7 +76,6 @@ final class TrimViewController: UIViewController {
     private func configureUI() {
         trimView.setDelegate(self)
         trimView.setDataSource(self)
-        trimView.registerCellClass(BasicListCell.self)
     }
 
     override func didMove(toParent parent: UIViewController?) {
@@ -97,13 +98,13 @@ extension TrimViewController: UICollectionViewDelegate, UICollectionViewDataSour
     ) -> UICollectionViewCell {
 
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: BasicListCell.reuseIdentifier,
+            withReuseIdentifier: ListCellClass.reuseIdentifier,
             for: indexPath
-        ) as? BasicListCell else {
+        ) as? ListCellClass else {
             fatalError("등록되지 않은 cell입니다.")
         }
 
-        let cellState = BasicListCellState(from: trimList[indexPath.row])
+        let cellState = trimList[indexPath.row].basicListCellState
         cell.configure(with: cellState)
 
         // FIXME: 초기값 선택이 동작하지 않음
@@ -115,16 +116,20 @@ extension TrimViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? BasicListCell else {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ListCellClass else {
             fatalError("알 수 없는 오류가 발생했습니다.")
         }
-        cell.select()
+        DispatchQueue.main.async {
+            cell.select()
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? BasicListCell else {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ListCellClass else {
             fatalError("알 수 없는 오류가 발생했습니다.")
         }
-        cell.deselect()
+        DispatchQueue.main.async {
+            cell.deselect()
+        }
     }
 }
