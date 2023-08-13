@@ -491,11 +491,11 @@
 		B5DD65132A88F5C500B44F61 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				B5DD65232A8935FB00B44F61 /* Protocol */,
 				B5DD65142A88F5CF00B44F61 /* ColorListCell.swift */,
 				B5DD651A2A8905B400B44F61 /* ColorListCellState.swift */,
 				B56A765E2A83EFB000F7E3EF /* BasicListCell.swift */,
 				B5DD65212A8935F200B44F61 /* BasicListCellState.swift */,
-				B5DD651F2A8926E700B44F61 /* ContentSizeEstimatable.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -506,6 +506,15 @@
 				B5DD651D2A89066400B44F61 /* Exterior+.swift */,
 			);
 			path = "Entity+";
+			sourceTree = "<group>";
+		};
+		B5DD65232A8935FB00B44F61 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				B5DD65182A88FB6F00B44F61 /* Selectable.swift */,
+				B5DD651F2A8926E700B44F61 /* ContentSizeEstimatable.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
