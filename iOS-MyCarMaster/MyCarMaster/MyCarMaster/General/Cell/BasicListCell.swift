@@ -15,6 +15,16 @@ final class BasicListCell: UICollectionViewCell, Selectable, ContentSizeEstimata
         return CGSize(width: UIScreen.main.bounds.width - 16 * 2, height: 118)
     }
 
+    override var isSelected: Bool {
+        willSet {
+            if newValue {
+                self.select()
+            } else {
+                self.deselect()
+            }
+        }
+    }
+
     private let leftContainer: UIView = {
         let view = UIView()
         return view
@@ -172,4 +182,3 @@ extension BasicListCell {
         }
     }
 }
-

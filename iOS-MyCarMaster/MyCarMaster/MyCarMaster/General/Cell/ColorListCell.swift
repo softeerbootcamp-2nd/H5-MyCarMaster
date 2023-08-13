@@ -13,6 +13,16 @@ final class ColorListCell: UICollectionViewCell, Selectable, ContentSizeEstimata
         return CGSize(width: UIScreen.main.bounds.width - 16 * 2, height: 70)
     }
 
+    override var isSelected: Bool {
+        willSet {
+            if newValue {
+                self.select()
+            } else {
+                self.deselect()
+            }
+        }
+    }
+
     private let colorImageView = UIImageView().then { imageView in
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
