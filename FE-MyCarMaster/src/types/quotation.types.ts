@@ -8,13 +8,13 @@ export type QuotationType = {
 };
 
 export type TrimQuotationType = {
-  trimQuotation?: QuotationType;
+  trimQuotation: QuotationType;
 };
 
 export type DetailQuotationType = {
-  engineQuotation?: QuotationType;
-  wheelDriveQuotation?: QuotationType;
-  bodyTypeQuotation?: QuotationType;
+  engineQuotation: QuotationType;
+  wheelDriveQuotation: QuotationType;
+  bodyTypeQuotation: QuotationType;
 };
 
 export type CarPaintQuotationType = {
@@ -53,5 +53,6 @@ export type QuotationAction = {
     type?: string;
     name?: string | undefined;
     price?: number | undefined;
+    imgUrl?: string;
   };
 };

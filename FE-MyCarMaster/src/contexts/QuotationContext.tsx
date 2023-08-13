@@ -16,8 +16,8 @@ const initialQuotationState: QuotationState = {
     bodyTypeQuotation: { name: "", price: 0 },
   },
   carPaintQuotation: {
-    exteriorColorQuotation: { name: "", price: 0 },
-    interiorColorQuotation: { name: "", price: 0 },
+    exteriorColorQuotation: { name: "", price: 0, imgUrl: "" },
+    interiorColorQuotation: { name: "", price: 0, imgUrl: "" },
   },
   optionQuotation: {
     selectedQuotation: [],
@@ -74,6 +74,7 @@ const quotationReducer = (
           [action.payload.type as string]: {
             name: action.payload.name as string,
             price: action.payload.price as number,
+            imgUrl: action.payload.imgUrl as string,
           },
         },
       };
