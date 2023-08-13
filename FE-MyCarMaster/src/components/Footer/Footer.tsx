@@ -2,6 +2,7 @@ import styled from "styled-components";
 import SelectListWrapper from "./SelectListWrapper";
 import Button from "../common/Button/Button";
 import theme from "../../styles/Theme";
+import FoldScreen from "./FoldScreen";
 import {
   useQuotationState,
   useQuotationDispatch,
@@ -25,7 +26,7 @@ function Footer() {
         },
       },
     });
-  }
+  };
 
   return (
     <Container>
@@ -65,6 +66,7 @@ function Footer() {
           </ButtonContainer>
         </HeightFittingContainer>
       </RightContainer>
+      <FoldScreen text={"내게 맞는 트림 찾기"} $switch={"searchTrim"} />
     </Container>
   );
 }
@@ -74,6 +76,7 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  position: relative;
   width: 100%;
   height: 16rem;
 `;
