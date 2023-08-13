@@ -110,8 +110,7 @@ extension WheelDriveViewController: UICollectionViewDelegate, UICollectionViewDa
             fatalError("등록되지 않은 cell입니다.")
         }
 
-        let cellState = dataList[indexPath.row].basicListCellState
-        cell.configure(with: cellState)
+        cell.configure(with: dataList[indexPath.row])
 
         // 프리셋을 선택한다.
         if selectedCellIndexPath == indexPath {

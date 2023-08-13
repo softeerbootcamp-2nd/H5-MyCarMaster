@@ -172,7 +172,9 @@ final class BasicListCell: UICollectionViewCell, Selectable, ContentSizeEstimata
 
 // MARK: - API
 extension BasicListCell {
-    func configure(with state: BasicListCellState) {
+    func configure(with stateConvertible: BasicListCellStateConvertible) {
+        let state = stateConvertible.basicListCellState
+
         titleLabel.setText(state.name)
         descriptionLabel.setText(state.description)
         additoryLabel.setText("\(state.model) 구매자의 \(state.ratio.formatted(style: .percent))가 선택")
