@@ -68,6 +68,7 @@
 		B5DD65202A8926E700B44F61 /* ContentSizeEstimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD651F2A8926E700B44F61 /* ContentSizeEstimatable.swift */; };
 		B5DD65222A8935F200B44F61 /* BasicListCellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD65212A8935F200B44F61 /* BasicListCellState.swift */; };
 		B5DD65252A89363C00B44F61 /* Trim+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD65242A89363C00B44F61 /* Trim+.swift */; };
+		B5DD65272A8937A500B44F61 /* Engine+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD65262A8937A500B44F61 /* Engine+.swift */; };
 		B5F1AE062A838B8E00E7E392 /* TrimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1AE052A838B8E00E7E392 /* TrimViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -195,6 +196,7 @@
 		B5DD651F2A8926E700B44F61 /* ContentSizeEstimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizeEstimatable.swift; sourceTree = "<group>"; };
 		B5DD65212A8935F200B44F61 /* BasicListCellState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicListCellState.swift; sourceTree = "<group>"; };
 		B5DD65242A89363C00B44F61 /* Trim+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Trim+.swift"; sourceTree = "<group>"; };
+		B5DD65262A8937A500B44F61 /* Engine+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Engine+.swift"; sourceTree = "<group>"; };
 		B5F1AE052A838B8E00E7E392 /* TrimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrimViewController.swift; path = MyCarMaster/Sceen/Trim/TrimViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -506,6 +508,7 @@
 			isa = PBXGroup;
 			children = (
 				B5DD65242A89363C00B44F61 /* Trim+.swift */,
+				B5DD65262A8937A500B44F61 /* Engine+.swift */,
 				B5DD651D2A89066400B44F61 /* Exterior+.swift */,
 			);
 			path = "Entity+";
@@ -762,6 +765,7 @@
 				B5DD650E2A880A4100B44F61 /* UIImage+Merge.swift in Sources */,
 				B5DD64F52A87844A00B44F61 /* ExteriorDTO.swift in Sources */,
 				B510BBDB2A840BD4009E5752 /* Formatter.swift in Sources */,
+				B5DD65272A8937A500B44F61 /* Engine+.swift in Sources */,
 				B510BBDD2A841A25009E5752 /* Reusable.swift in Sources */,
 				B53C3C542A856DF00019ECA1 /* UIView+Extension.swift in Sources */,
 				B5DD64F32A8783D800B44F61 /* Exterior.swift in Sources */,
