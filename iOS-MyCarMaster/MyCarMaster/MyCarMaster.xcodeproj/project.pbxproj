@@ -64,6 +64,7 @@
 		B5DD65172A88F8D100B44F61 /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD65162A88F8D100B44F61 /* Then.swift */; };
 		B5DD65192A88FB6F00B44F61 /* Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD65182A88FB6F00B44F61 /* Selectable.swift */; };
 		B5DD651B2A8905B400B44F61 /* ColorListCellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD651A2A8905B400B44F61 /* ColorListCellState.swift */; };
+		B5DD651E2A89066400B44F61 /* Exterior+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD651D2A89066400B44F61 /* Exterior+.swift */; };
 		B5F1AE062A838B8E00E7E392 /* TrimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1AE052A838B8E00E7E392 /* TrimViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -187,6 +188,7 @@
 		B5DD65162A88F8D100B44F61 /* Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
 		B5DD65182A88FB6F00B44F61 /* Selectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selectable.swift; sourceTree = "<group>"; };
 		B5DD651A2A8905B400B44F61 /* ColorListCellState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorListCellState.swift; sourceTree = "<group>"; };
+		B5DD651D2A89066400B44F61 /* Exterior+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Exterior+.swift"; sourceTree = "<group>"; };
 		B5F1AE052A838B8E00E7E392 /* TrimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrimViewController.swift; path = MyCarMaster/Sceen/Trim/TrimViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -378,6 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				B56F55D52A86BC760055E382 /* Entity */,
+				B5DD651C2A89064D00B44F61 /* Entity+ */,
 				B56F55D02A86BBB90055E382 /* DataTransferObject */,
 			);
 			path = Model;
@@ -490,6 +493,14 @@
 				B5DD65182A88FB6F00B44F61 /* Selectable.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		B5DD651C2A89064D00B44F61 /* Entity+ */ = {
+			isa = PBXGroup;
+			children = (
+				B5DD651D2A89066400B44F61 /* Exterior+.swift */,
+			);
+			path = "Entity+";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -719,6 +730,7 @@
 				B53C3C442A85483F0019ECA1 /* EngineView.swift in Sources */,
 				B5DD64D02A876ABD00B44F61 /* WheelDriveDTO.swift in Sources */,
 				B53C3C502A85661D0019ECA1 /* WheelDriveView.swift in Sources */,
+				B5DD651E2A89066400B44F61 /* Exterior+.swift in Sources */,
 				B5C3EAC12A84B1AA00D9577C /* MainViewController.swift in Sources */,
 				B56F55D72A86BC7D0055E382 /* Trim.swift in Sources */,
 				B53C3C522A8566270019ECA1 /* WheelDriveViewController.swift in Sources */,
