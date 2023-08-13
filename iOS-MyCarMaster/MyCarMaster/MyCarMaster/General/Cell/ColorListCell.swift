@@ -56,13 +56,14 @@ final class ColorListCell: UICollectionViewCell, Selectable, ContentSizeEstimata
             subview.translatesAutoresizingMaskIntoConstraints = false
         }
 
+        let imageInset: CGFloat = 6
         let inset: CGFloat = 12
         NSLayoutConstraint.activate([
-            colorImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 2),
-            colorImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 2),
-            colorImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -2),
-            colorImageView.widthAnchor.constraint(equalToConstant: 98),
-            colorImageView.heightAnchor.constraint(equalToConstant: 66),
+            colorImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: imageInset),
+            colorImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: imageInset),
+            colorImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -imageInset),
+            colorImageView.heightAnchor.constraint(equalToConstant: Self.intrinsicContentSize.height - 2 * imageInset),
+            colorImageView.widthAnchor.constraint(equalTo: colorImageView.heightAnchor, multiplier: 16 / 9),
 
             rightContainer.topAnchor.constraint(equalTo: contentView.topAnchor, constant: inset),
             rightContainer.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -inset),
