@@ -14,7 +14,13 @@ final class WheelDriveViewController: UIViewController {
 
     typealias ListCellClass = BasicListCell
 
-    var wheelDriveList: [WheelDrive] = []
+    var dataList: [WheelDrive] = []
+
+    var selectedCellIndexPath: IndexPath = IndexPath(row: 0, section: 0) {
+        didSet {
+            print(#function, selectedCellIndexPath)
+        }
+    }
 
     private var contentView: WheelDriveView<ListCellClass> {
         return view as? WheelDriveView ?? WheelDriveView()
@@ -36,8 +42,23 @@ final class WheelDriveViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        fetchData()
+    }
 
+    private func configureUI() {
+        contentView.setDelegate(self)
+        contentView.setDataSource(self)
+    }
+
+    override func didMove(toParent parent: UIViewController?) {
+        contentView.updateLayout()
+    }
+}
+
+extension WheelDriveViewController {
+    private func fetchData() {
         let request = URLRequest(url: URL(string: Dependency.serverURL + "wheel-drives?trimId=1&engineId=1")!)
+
         URLSession.shared.dataTask(with: request) { data, response, error in
             guard error == nil else {
                 print(error?.localizedDescription)
@@ -56,7 +77,7 @@ final class WheelDriveViewController: UIViewController {
 
             if let data,
                case let .wheelDrives(wheelDriveDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
-                self.wheelDriveList = wheelDriveDTOList.map { WheelDrive($0) }
+                self.dataList = wheelDriveDTOList.map { WheelDrive($0) }
                 DispatchQueue.main.async {
                     self.contentView.listView.reloadData()
                 }
@@ -66,15 +87,6 @@ final class WheelDriveViewController: UIViewController {
             }
         }.resume()
     }
-
-    private func configureUI() {
-        contentView.setDelegate(self)
-        contentView.setDataSource(self)
-    }
-
-    override func didMove(toParent parent: UIViewController?) {
-        contentView.updateLayout()
-    }
 }
 
 extension WheelDriveViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -83,7 +95,7 @@ extension WheelDriveViewController: UICollectionViewDelegate, UICollectionViewDa
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return wheelDriveList.count
+        return dataList.count
     }
 
     func collectionView(
@@ -98,14 +110,22 @@ extension WheelDriveViewController: UICollectionViewDelegate, UICollectionViewDa
             fatalError("등록되지 않은 cell입니다.")
         }
 
-        let cellState = wheelDriveList[indexPath.row].basicListCellState
+        let cellState = dataList[indexPath.row].basicListCellState
         cell.configure(with: cellState)
 
-        // FIXME: 초기값 선택이 동작하지 않음
-//        if indexPath.item == 0 {
-//            cell.isSelected = true
-//            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
-//        }
+        // 프리셋을 선택한다.
+        if selectedCellIndexPath == indexPath {
+            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
+        }
+
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ListCellClass else {
+            fatalError("알 수 없는 오류가 발생했습니다.")
+        }
+        guard selectedCellIndexPath != indexPath else { return }
+        selectedCellIndexPath = indexPath
     }
 }

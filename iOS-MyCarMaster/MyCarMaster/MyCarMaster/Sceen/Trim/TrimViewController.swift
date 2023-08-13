@@ -14,9 +14,15 @@ final class TrimViewController: UIViewController {
 
     typealias ListCellClass = BasicListCell
 
-    var trimList: [Trim] = []
+    var dataList: [Trim] = []
 
-    private var trimView: TrimView<ListCellClass> {
+    var selectedCellIndexPath: IndexPath = IndexPath(row: 0, section: 0) {
+        didSet {
+            print(#function, selectedCellIndexPath)
+        }
+    }
+
+    private var contentView: TrimView<ListCellClass> {
         return view as? TrimView ?? TrimView()
     }
 
@@ -36,8 +42,23 @@ final class TrimViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        fetchData()
+    }
 
+    private func configureUI() {
+        contentView.setDelegate(self)
+        contentView.setDataSource(self)
+    }
+
+    override func didMove(toParent parent: UIViewController?) {
+        contentView.updateLayout()
+    }
+}
+
+extension TrimViewController {
+    private func fetchData() {
         let request = URLRequest(url: URL(string: Dependency.serverURL + "trims?modelId=1")!)
+
         URLSession.shared.dataTask(with: request) { data, response, error in
             guard error == nil else {
                 print(error?.localizedDescription)
@@ -56,24 +77,15 @@ final class TrimViewController: UIViewController {
 
             if let data,
                case let .trims(trimDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
-                self.trimList = trimDTOList.map { Trim($0) }
+                self.dataList = trimDTOList.map { Trim($0) }
                 DispatchQueue.main.async {
-                    self.trimView.listView.reloadData()
+                    self.contentView.listView.reloadData()
                 }
             } else {
                 print("Decoding Error")
                 return
             }
         }.resume()
-    }
-
-    private func configureUI() {
-        trimView.setDelegate(self)
-        trimView.setDataSource(self)
-    }
-
-    override func didMove(toParent parent: UIViewController?) {
-        trimView.updateLayout()
     }
 }
 
@@ -83,7 +95,7 @@ extension TrimViewController: UICollectionViewDelegate, UICollectionViewDataSour
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return trimList.count
+        return dataList.count
     }
 
     func collectionView(
@@ -98,23 +110,22 @@ extension TrimViewController: UICollectionViewDelegate, UICollectionViewDataSour
             fatalError("등록되지 않은 cell입니다.")
         }
 
-        let cellState = trimList[indexPath.row].basicListCellState
+        let cellState = dataList[indexPath.row].basicListCellState
         cell.configure(with: cellState)
 
-        // FIXME: 초기값 선택이 동작하지 않음
-//        if indexPath.row == 0 {
-//            cell.isSelected = true
-//            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
-//        }
+        // 프리셋을 선택한다.
+        if selectedCellIndexPath == indexPath {
+            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
+        }
+
         return cell
     }
 
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        guard let cell = collectionView.cellForItem(at: indexPath) as? ListCellClass else {
-//            fatalError("알 수 없는 오류가 발생했습니다.")
-//        }
-//        if let last = selectedTrimIndexPath, last == indexPath { return }
-//        guard selectedTrimIndexPath != indexPath else { return }
-//        selectedTrimIndexPath = indexPath
-//    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ListCellClass else {
+            fatalError("알 수 없는 오류가 발생했습니다.")
+        }
+        guard selectedCellIndexPath != indexPath else { return }
+        selectedCellIndexPath = indexPath
+    }
 }
