@@ -25,6 +25,8 @@ class BasicStepView: UIView {
         return imageView
     }()
 
+    private var collectionViewCellEstimatedHeight: CGFloat = 0
+
     lazy var listView: UICollectionView = {
         let listView = UICollectionView(frame: .zero, collectionViewLayout: createListLayout())
         listView.backgroundColor = .MCM.white
@@ -79,7 +81,7 @@ extension BasicStepView {
     private func createListLayout() -> UICollectionViewLayout {
         let layoutSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .absolute(120)
+            heightDimension: .estimated(collectionViewCellEstimatedHeight)
         )
         let item = NSCollectionLayoutItem(layoutSize: layoutSize)
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: layoutSize, subitems: [item])
@@ -102,11 +104,17 @@ extension BasicStepView {
         listView.dataSource = dataSource
     }
 
-    func registerCellClass(_ cellClass: UICollectionViewCell.Type) {
+    func updateLayout() {
+        configureLayout()
+    }
+
+    func configureListView<CellClass>(withCellClass cellClass: CellClass.Type)
+    where CellClass: Reusable & ContentSizeEstimatable {
+        collectionViewCellEstimatedHeight = cellClass.intrinsicContentSize.height
         listView.register(cellClass, forCellWithReuseIdentifier: cellClass.reuseIdentifier)
     }
 
-    func updateLayout() {
-        configureLayout()
+    func registerCellClass(_ cellClass: UICollectionViewCell.Type) {
+        listView.register(cellClass, forCellWithReuseIdentifier: cellClass.reuseIdentifier)
     }
 }
