@@ -1,9 +1,9 @@
 package softeer.be_my_car_master.api.option.usecase;
 
-import java.util.HashSet;
+import static softeer.be_my_car_master.domain.option.Option.*;
+
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.api.option.dto.response.GetOptionsResponse;
@@ -48,22 +48,5 @@ public class GetOptionsUseCase {
 		List<String> singleSelectableTags = tagPort.findSingleSelectableTags();
 
 		return GetOptionsResponse.from(filteredSelectableOptions, singleSelectableTags);
-	}
-
-	private Set<Long> combineUnselectableOptionIds(List<Long>... unselectableOptionIdsLists) {
-		Set<Long> combinedSet = new HashSet<>();
-		for (List<Long> list : unselectableOptionIdsLists) {
-			combinedSet.addAll(list);
-		}
-		return combinedSet;
-	}
-
-	private List<Option> filterOptionsByUnselectableIds(
-		List<Option> selectableOptions,
-		Set<Long> unselectableOptionIdsSet
-	) {
-		return selectableOptions.stream()
-			.filter(option -> !unselectableOptionIdsSet.contains(option.getId()))
-			.collect(Collectors.toList());
 	}
 }
