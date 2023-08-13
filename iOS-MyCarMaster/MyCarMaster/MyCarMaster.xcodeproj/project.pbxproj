@@ -63,6 +63,7 @@
 		B5DD65152A88F5CF00B44F61 /* ColorListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD65142A88F5CF00B44F61 /* ColorListCell.swift */; };
 		B5DD65172A88F8D100B44F61 /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD65162A88F8D100B44F61 /* Then.swift */; };
 		B5DD65192A88FB6F00B44F61 /* Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD65182A88FB6F00B44F61 /* Selectable.swift */; };
+		B5DD651B2A8905B400B44F61 /* ColorListCellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD651A2A8905B400B44F61 /* ColorListCellState.swift */; };
 		B5F1AE062A838B8E00E7E392 /* TrimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1AE052A838B8E00E7E392 /* TrimViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -185,6 +186,7 @@
 		B5DD65142A88F5CF00B44F61 /* ColorListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorListCell.swift; sourceTree = "<group>"; };
 		B5DD65162A88F8D100B44F61 /* Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
 		B5DD65182A88FB6F00B44F61 /* Selectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selectable.swift; sourceTree = "<group>"; };
+		B5DD651A2A8905B400B44F61 /* ColorListCellState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorListCellState.swift; sourceTree = "<group>"; };
 		B5F1AE052A838B8E00E7E392 /* TrimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrimViewController.swift; path = MyCarMaster/Sceen/Trim/TrimViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -483,6 +485,7 @@
 			isa = PBXGroup;
 			children = (
 				B5DD65142A88F5CF00B44F61 /* ColorListCell.swift */,
+				B5DD651A2A8905B400B44F61 /* ColorListCellState.swift */,
 				B56A765E2A83EFB000F7E3EF /* BasicListCell.swift */,
 				B5DD65182A88FB6F00B44F61 /* Selectable.swift */,
 			);
@@ -721,6 +724,7 @@
 				B53C3C522A8566270019ECA1 /* WheelDriveViewController.swift in Sources */,
 				B5F1AE062A838B8E00E7E392 /* TrimViewController.swift in Sources */,
 				B5DD65192A88FB6F00B44F61 /* Selectable.swift in Sources */,
+				B5DD651B2A8905B400B44F61 /* ColorListCellState.swift in Sources */,
 				B5DD64F12A87833200B44F61 /* ExteriorViewController.swift in Sources */,
 				B53C3C492A854AF50019ECA1 /* BasicStepView.swift in Sources */,
 				B5DD64E12A8770FB00B44F61 /* WheelDriveDTO.json in Sources */,
