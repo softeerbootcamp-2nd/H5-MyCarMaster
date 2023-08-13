@@ -65,6 +65,7 @@
 		B5DD65192A88FB6F00B44F61 /* Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD65182A88FB6F00B44F61 /* Selectable.swift */; };
 		B5DD651B2A8905B400B44F61 /* ColorListCellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD651A2A8905B400B44F61 /* ColorListCellState.swift */; };
 		B5DD651E2A89066400B44F61 /* Exterior+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD651D2A89066400B44F61 /* Exterior+.swift */; };
+		B5DD65202A8926E700B44F61 /* ContentSizeEstimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD651F2A8926E700B44F61 /* ContentSizeEstimatable.swift */; };
 		B5F1AE062A838B8E00E7E392 /* TrimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1AE052A838B8E00E7E392 /* TrimViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -189,6 +190,7 @@
 		B5DD65182A88FB6F00B44F61 /* Selectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selectable.swift; sourceTree = "<group>"; };
 		B5DD651A2A8905B400B44F61 /* ColorListCellState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorListCellState.swift; sourceTree = "<group>"; };
 		B5DD651D2A89066400B44F61 /* Exterior+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Exterior+.swift"; sourceTree = "<group>"; };
+		B5DD651F2A8926E700B44F61 /* ContentSizeEstimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizeEstimatable.swift; sourceTree = "<group>"; };
 		B5F1AE052A838B8E00E7E392 /* TrimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrimViewController.swift; path = MyCarMaster/Sceen/Trim/TrimViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -491,6 +493,7 @@
 				B5DD651A2A8905B400B44F61 /* ColorListCellState.swift */,
 				B56A765E2A83EFB000F7E3EF /* BasicListCell.swift */,
 				B5DD65182A88FB6F00B44F61 /* Selectable.swift */,
+				B5DD651F2A8926E700B44F61 /* ContentSizeEstimatable.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -718,6 +721,7 @@
 				B5DD64EF2A877DDD00B44F61 /* ExteriorView.swift in Sources */,
 				B5DD64DD2A876ED800B44F61 /* BodyType.swift in Sources */,
 				B5DD65122A880B3100B44F61 /* CGSize+Operator.swift in Sources */,
+				B5DD65202A8926E700B44F61 /* ContentSizeEstimatable.swift in Sources */,
 				B5DD64DF2A876EED00B44F61 /* BodyTypeDTO.swift in Sources */,
 				B56F55D22A86BBE50055E382 /* RootDTO.swift in Sources */,
 				B56F55DA2A86BD240055E382 /* TrimDTO.json in Sources */,
