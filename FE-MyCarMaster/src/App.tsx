@@ -1,6 +1,6 @@
-import React, { createElement } from "react";
+import React, { createElement, useEffect, useState } from "react";
 import { styled } from "styled-components";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { ModelProvider } from "./contexts/ModelContext";
 import { TrimProvider } from "./contexts/TrimContext";
@@ -31,7 +31,13 @@ const AppProvider = ({
   );
 
 function App() {
-  const { pathname } = window.location;
+  const location = useLocation();
+  const [isEstimation, setIsEstimation] = useState<boolean>(true);
+
+  useEffect(() => {
+    setIsEstimation(location.pathname === "/estimation");
+  }, [location.pathname]);
+
   return (
     <ThemeProvider theme={theme}>
       <AppProvider
@@ -51,7 +57,7 @@ function App() {
             <Route path="/quotation" element={<Quotation />} />
           </Routes>
         </Container>
-        {pathname === "/estimation" && <Filler />}
+        {isEstimation && <Filler />}
       </AppProvider>
     </ThemeProvider>
   );
