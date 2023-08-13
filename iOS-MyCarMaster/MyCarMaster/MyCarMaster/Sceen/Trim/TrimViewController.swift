@@ -14,12 +14,6 @@ final class TrimViewController: UIViewController {
 
     typealias ListCellClass = BasicListCell
 
-    let dummyTrimList = [
-        Trim(model: "펠리세이드", name: "Exclusive", ratio: 54, description: "실용적인 기본 기능을 갖춘 베이직 트림실용적인 기본 기능을 갖춘 베이직 트림실용적인 기본 기능을 갖춘 베이직 트림실용적인 기본 기능을 갖춘 베이직 트림", price: 40440000, imageURL: nil),
-        Trim(model: "펠리세이드", name: "Exclusive", ratio: 54, description: "실용적인 기본 기능을 갖춘 베이직 트림", price: 40440000, imageURL: nil),
-        Trim(model: "펠리세이드", name: "Exclusive", ratio: 54, description: "실용적인 기본 기능을 갖춘 베이직 트림", price: 40440000, imageURL: nil),
-        Trim(model: "펠리세이드", name: "Exclusive", ratio: 54, description: "실용적인 기본 기능을 갖춘 베이직 트림", price: 40440000, imageURL: nil),
-    ]
     var trimList: [Trim] = []
 
     private var trimView: TrimView<ListCellClass> {
@@ -115,21 +109,12 @@ extension TrimViewController: UICollectionViewDelegate, UICollectionViewDataSour
         return cell
     }
 
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? ListCellClass else {
-            fatalError("알 수 없는 오류가 발생했습니다.")
-        }
-        DispatchQueue.main.async {
-            cell.select()
-        }
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? ListCellClass else {
-            fatalError("알 수 없는 오류가 발생했습니다.")
-        }
-        DispatchQueue.main.async {
-            cell.deselect()
-        }
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        guard let cell = collectionView.cellForItem(at: indexPath) as? ListCellClass else {
+//            fatalError("알 수 없는 오류가 발생했습니다.")
+//        }
+//        if let last = selectedTrimIndexPath, last == indexPath { return }
+//        guard selectedTrimIndexPath != indexPath else { return }
+//        selectedTrimIndexPath = indexPath
+//    }
 }

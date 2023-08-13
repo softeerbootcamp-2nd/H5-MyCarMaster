@@ -14,10 +14,6 @@ final class EngineViewController: UIViewController {
 
     typealias ListCellClass = BasicListCell
 
-    var dummyEngineList = [
-        Engine(model: "펠리세이드", name: "가솔린 3.8", ratio: 54, description: "엔진의 진동이 적어 편안하고 조용한 드라이빙 감성을 제공합니다", fuelMin: 8.0, fuelMax: 9.2, power: 295, toque: 36.2, price: 0),
-        Engine(model: "펠리세이드", name: "디젤 2.2", ratio: 54, description: "높은 토크로 파워풀한 드라이빙이 가능하며, 차급대비 연비 효율이 우수합니다", fuelMin: 11.4, fuelMax: 12.4, power: 202, toque: 45.0, price: 1000000)
-    ]
     var engineList: [Engine] = []
 
     private var contentView: EngineView<ListCellClass> {
@@ -88,7 +84,6 @@ extension EngineViewController: UICollectionViewDelegate, UICollectionViewDataSo
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        NSLog("engineList: %d개", engineList.count)
         return engineList.count
     }
 
@@ -97,7 +92,6 @@ extension EngineViewController: UICollectionViewDelegate, UICollectionViewDataSo
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
 
-        print("indexPath.row:",indexPath.row)
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: ListCellClass.reuseIdentifier,
             for: indexPath
@@ -114,19 +108,5 @@ extension EngineViewController: UICollectionViewDelegate, UICollectionViewDataSo
 //            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
 //        }
         return cell
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? ListCellClass else {
-            fatalError("알 수 없는 오류가 발생했습니다.")
-        }
-        cell.select()
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? ListCellClass else {
-            fatalError("알 수 없는 오류가 발생했습니다.")
-        }
-        cell.deselect()
     }
 }

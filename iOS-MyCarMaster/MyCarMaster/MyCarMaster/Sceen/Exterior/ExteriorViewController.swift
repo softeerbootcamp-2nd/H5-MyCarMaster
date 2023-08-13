@@ -14,8 +14,6 @@ final class ExteriorViewController: UIViewController {
 
     typealias ListCellClass = ColorListCell
 
-    var dummyExteriorList: [Exterior] = []
-
     var exteriorList: [Exterior] = []
 
     private var contentView: ExteriorView<ListCellClass> {
@@ -107,19 +105,5 @@ extension ExteriorViewController: UICollectionViewDelegate, UICollectionViewData
 //            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
 //        }
         return cell
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? ListCellClass else {
-            fatalError("알 수 없는 오류가 발생했습니다.")
-        }
-        cell.select()
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? ListCellClass else {
-            fatalError("알 수 없는 오류가 발생했습니다.")
-        }
-        cell.deselect()
     }
 }
