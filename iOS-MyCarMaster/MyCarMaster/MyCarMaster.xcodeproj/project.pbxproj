@@ -60,6 +60,7 @@
 		B5DD64F52A87844A00B44F61 /* ExteriorDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64F42A87844A00B44F61 /* ExteriorDTO.swift */; };
 		B5DD650E2A880A4100B44F61 /* UIImage+Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD650D2A880A4100B44F61 /* UIImage+Merge.swift */; };
 		B5DD65122A880B3100B44F61 /* CGSize+Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD65112A880B3100B44F61 /* CGSize+Operator.swift */; };
+		B5DD65172A88F8D100B44F61 /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD65162A88F8D100B44F61 /* Then.swift */; };
 		B5F1AE062A838B8E00E7E392 /* TrimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1AE052A838B8E00E7E392 /* TrimViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -179,6 +180,7 @@
 		B5DD64F42A87844A00B44F61 /* ExteriorDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExteriorDTO.swift; sourceTree = "<group>"; };
 		B5DD650D2A880A4100B44F61 /* UIImage+Merge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Merge.swift"; sourceTree = "<group>"; };
 		B5DD65112A880B3100B44F61 /* CGSize+Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Operator.swift"; sourceTree = "<group>"; };
+		B5DD65162A88F8D100B44F61 /* Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
 		B5F1AE052A838B8E00E7E392 /* TrimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrimViewController.swift; path = MyCarMaster/Sceen/Trim/TrimViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -350,6 +352,7 @@
 				B53C3C532A856DF00019ECA1 /* UIView+Extension.swift */,
 				B5DD650D2A880A4100B44F61 /* UIImage+Merge.swift */,
 				B5DD65112A880B3100B44F61 /* CGSize+Operator.swift */,
+				B5DD65162A88F8D100B44F61 /* Then.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -714,6 +717,7 @@
 				B58A323B2A7C0B35005FC831 /* OnboardingViewController.swift in Sources */,
 				B56A765F2A83EFB000F7E3EF /* BasicListCell.swift in Sources */,
 				B50C7E4C2A790279005AFE0B /* AppDelegate.swift in Sources */,
+				B5DD65172A88F8D100B44F61 /* Then.swift in Sources */,
 				B56F55E72A87621A0055E382 /* EngineDTO.swift in Sources */,
 				B56F55D42A86BC3B0055E382 /* TrimDTO.swift in Sources */,
 				B560B2182A83827600A4B9A9 /* TrimView.swift in Sources */,
