@@ -1,11 +1,13 @@
 import {
   Ratio,
   Description,
+  DecorationContainer,
   Decoration,
   Name,
   ActiveCSS,
   DefaultCSS,
 } from "./style";
+import TagItem from "../TagItem/TagItem";
 
 type OptionBoxNameProp = {
   name?: string;
@@ -30,17 +32,20 @@ export default function OptionBoxName({
       {isDetail ? (
         <Ratio>구매자 {ratio}%가 선택</Ratio>
       ) : (
-        <Decoration
-          $style={
-            considered
-              ? ActiveCSS.DecorationConsider
-              : choice
-              ? ActiveCSS.Decoration
-              : DefaultCSS.Decoration
-          }
-        >
-          {ratio === 0 ? "New" : `구매자 ${ratio}%가 선택`}
-        </Decoration>
+        <DecorationContainer>
+          <Decoration
+            $style={
+              considered
+                ? ActiveCSS.DecorationConsider
+                : choice
+                ? ActiveCSS.Decoration
+                : DefaultCSS.Decoration
+            }
+          >
+            {ratio === 0 ? "New" : `구매자 ${ratio}%가 선택`}
+          </Decoration>
+          {considered && <TagItem text={"고민중인 옵션"} $switch="consider" />}
+        </DecorationContainer>
       )}
 
       <Name

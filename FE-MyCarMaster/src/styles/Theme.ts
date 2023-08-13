@@ -73,7 +73,6 @@ const fonts = {
     lineHeight: lineHeight.Normal, // 1.25
   },
 
-  //between Large and Medium
   ContentMedium1: {
     fontFamily: "HyundaiSansRegular",
     fontSize: fontSize.ExtraSmall, // 0.875
@@ -96,6 +95,14 @@ const fonts = {
     fontStyle: "normal",
     fontWeight: fontWeight.medium,
     lineHeight: lineHeight.Compact, // 1
+  },
+
+  ContentSmall2: {
+    fontFamily: "HyundaiSansRegular",
+    fontSize: fontSize.Nano,
+    fontStyle: "normal",
+    fontWeight: fontWeight.medium,
+    lineHeight: lineHeight.ExtraCompact, // 1
   },
 
   display: {
