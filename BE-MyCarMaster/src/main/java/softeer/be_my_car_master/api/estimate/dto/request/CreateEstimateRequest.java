@@ -90,12 +90,10 @@ public class CreateEstimateRequest {
 	private List<EstimateOptionDto> selectOptions;
 
 	@Schema(description = "additionalOptionPrice 가격", example = "100000")
-	@NotNull(message = "additionalOptionPrice는 Null일 수 없습니다.")
 	@Range(min = 0, max = 2000000000, message = "additionalOptionPrice는 0 이상 ~ 2,000,000,000 이하의 값입니다.")
 	private Integer selectOptionPrice;
 
 	@Schema(description = "고민 옵션 식별자 목록", example = "[1, 2, 3]")
-	@NotEmpty(message = "considerOptions는 비어있을 수 없습니다.")
 	private List<EstimateOptionDto> considerOptions;
 
 	@Schema(description = "전체 가격", example = "100000")
