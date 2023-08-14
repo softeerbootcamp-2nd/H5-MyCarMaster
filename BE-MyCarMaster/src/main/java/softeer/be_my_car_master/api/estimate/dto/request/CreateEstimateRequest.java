@@ -50,7 +50,7 @@ public class CreateEstimateRequest {
 	@Min(value = 1, message = "wheelDriveId는 1 이상의 값입니다.")
 	private Long wheelDriveId;
 
-	@Schema(description = "wheelDrive 가격", example = "100000")
+	@Schema(description = "구동 방식 가격", example = "100000")
 	@NotNull(message = "wheelDrivePrice는 Null일 수 없습니다.")
 	@Range(min = 0, max = 2000000000, message = "wheelDrivePrice는 0 이상 ~ 2,000,000,000 이하의 값입니다.")
 	private Integer wheelDrivePrice;
@@ -60,7 +60,7 @@ public class CreateEstimateRequest {
 	@Min(value = 1, message = "bodyTypeId는 1 이상의 값입니다.")
 	private Long bodyTypeId;
 
-	@Schema(description = "bodyType 가격", example = "100000")
+	@Schema(description = "바디 타입 가격", example = "100000")
 	@NotNull(message = "bodyTypePrice는 Null일 수 없습니다.")
 	@Range(min = 0, max = 2000000000, message = "bodyTypePrice는 0 이상 ~ 2,000,000,000 이하의 값입니다.")
 	private Integer bodyTypePrice;
@@ -70,7 +70,7 @@ public class CreateEstimateRequest {
 	@Min(value = 1, message = "ExteriorColorId는 1 이상의 값입니다.")
 	private Long exteriorColorId;
 
-	@Schema(description = "exteriorColor 가격", example = "100000")
+	@Schema(description = "외장 색상 가격", example = "100000")
 	@NotNull(message = "exteriorColorPrice는 Null일 수 없습니다.")
 	@Range(min = 0, max = 2000000000, message = "exteriorColorPrice는 0 이상 ~ 2,000,000,000 이하의 값입니다.")
 	private Integer exteriorColorPrice;
@@ -80,7 +80,7 @@ public class CreateEstimateRequest {
 	@Min(value = 1, message = "InteriorColorId는 1 이상의 값입니다.")
 	private Long interiorColorId;
 
-	@Schema(description = "interiorColor 가격", example = "100000")
+	@Schema(description = "내장 색상 가격", example = "100000")
 	@NotNull(message = "interiorColorPrice는 Null일 수 없습니다.")
 	@Range(min = 0, max = 2000000000, message = "interiorColorPrice는 0 이상 ~ 2,000,000,000 이하의 값입니다.")
 	private Integer interiorColorPrice;
@@ -89,7 +89,7 @@ public class CreateEstimateRequest {
 	@NotEmpty(message = "selectOptions는 비어있을 수 없습니다.")
 	private List<EstimateOptionDto> selectOptions;
 
-	@Schema(description = "additionalOptionPrice 가격", example = "100000")
+	@Schema(description = "선택 옵션 가격", example = "100000")
 	@Range(min = 0, max = 2000000000, message = "additionalOptionPrice는 0 이상 ~ 2,000,000,000 이하의 값입니다.")
 	private Integer selectOptionPrice;
 
