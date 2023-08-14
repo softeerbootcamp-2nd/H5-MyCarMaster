@@ -13,6 +13,7 @@ export const Name = styled.p<CSSProps>`
 export const Description = styled.p<CSSProps>`
   ${(props) => props.theme.fonts.contentMedium};
   ${(props) => props.$style}
+  margin: auto 0;
 `;
 
 export const Price = styled.p<CSSProps>`
@@ -30,18 +31,11 @@ export const Detail = styled.p<CSSProps>`
   ${(props) => props.$style}
 `;
 
-export const DetailModelOptionContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.5rem;
-`;
-
 export const TopContainer = styled.div`
+  width: 100%;
   height: 5.75rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
 `;
 
 export const BottomContainer = styled.div`
@@ -55,6 +49,12 @@ export const ButtonContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
+`;
+
+export const DecorationContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 `;
 
 export const Container = styled.div<{ $style?: RuleSet }>`

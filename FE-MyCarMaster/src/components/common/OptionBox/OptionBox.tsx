@@ -19,6 +19,7 @@ type OptionBoxProp = {
   $choice: boolean;
   $switch: string;
   $considered?: boolean;
+  $none?: boolean; // 추후, 선택할 수 없는 옵션에 대한 처리를 위해 추가
   handleClick?: () => void;
 };
 

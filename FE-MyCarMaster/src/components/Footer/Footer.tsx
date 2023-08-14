@@ -2,6 +2,7 @@ import styled from "styled-components";
 import SelectListWrapper from "./SelectListWrapper";
 import Button from "../common/Button/Button";
 import theme from "../../styles/Theme";
+import FoldScreen from "./FoldScreen";
 import {
   useQuotationState,
   useQuotationDispatch,
@@ -14,24 +15,8 @@ function Footer() {
   const quotationDispatch = useQuotationDispatch();
   const name = indexNameSwitching(navigationId) as string;
 
-  const navigate = useNavigate();
-
-  const prevButtonHandler = () => {
-    const navigationIndex = navigationId - 1;
-    quotationDispatch({
-      type: "NAVIGATE",
-      payload: {
-        navigationId: navigationIndex,
-        isFirst: {
-          ...isFirst,
-          [navigationIndex]: false,
-        },
-      },
-    });
-  };
-
-  const nextButtonHandler = () => {
-    const navigationIndex = navigationId + 1;
+  const buttonHandler = (cal: number) => {
+    const navigationIndex = navigationId + cal;
     quotationDispatch({
       type: "NAVIGATE",
       payload: {
@@ -71,7 +56,7 @@ function Footer() {
                 $textcolor={`${theme.colors.NAVYBLUE5}`}
                 $bordercolor={`${theme.colors.NAVYBLUE5}`}
                 text={"이전"}
-                handleClick={prevButtonHandler}
+                handleClick={() => buttonHandler(-1)}
               />
             )}
 
@@ -82,15 +67,12 @@ function Footer() {
               $textcolor={`${theme.colors.WHITE}`}
               $bordercolor={`${theme.colors.NAVYBLUE5}`}
               text={navigationId === 6 ? "견적서 완성" : "다음"}
-              handleClick={
-                navigationId === 6
-                  ? navigateQuotationHandler
-                  : nextButtonHandler
-              }
+              handleClick={() => buttonHandler(1)}
             />
           </ButtonContainer>
         </HeightFittingContainer>
       </RightContainer>
+      <FoldScreen text={"내게 맞는 트림 찾기"} $switch={"searchTrim"} />
     </Container>
   );
 }
@@ -100,6 +82,7 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  position: relative;
   width: 100%;
   height: 16rem;
 `;
