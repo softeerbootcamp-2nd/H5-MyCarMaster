@@ -14,6 +14,7 @@ function Footer() {
   const { navigationId, isFirst } = useQuotationState();
   const quotationDispatch = useQuotationDispatch();
   const name = indexNameSwitching(navigationId) as string;
+  const navigate = useNavigate();
 
   const buttonHandler = (cal: number) => {
     const navigationIndex = navigationId + cal;
@@ -67,7 +68,11 @@ function Footer() {
               $textcolor={`${theme.colors.WHITE}`}
               $bordercolor={`${theme.colors.NAVYBLUE5}`}
               text={navigationId === 6 ? "견적서 완성" : "다음"}
-              handleClick={() => buttonHandler(1)}
+              handleClick={
+                navigationId === 6
+                  ? navigateQuotationHandler
+                  : () => buttonHandler(1)
+              }
             />
           </ButtonContainer>
         </HeightFittingContainer>

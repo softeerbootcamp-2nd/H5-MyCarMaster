@@ -1,4 +1,3 @@
-import React from "react";
 import { useQuotationState } from "../../../contexts/QuotationContext";
 import { styled } from "styled-components";
 import QuotationItem from "./QuotationItem";

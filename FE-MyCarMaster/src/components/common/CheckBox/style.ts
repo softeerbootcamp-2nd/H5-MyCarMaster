@@ -1,4 +1,4 @@
-import styled, { css, RuleSet } from "styled-components";
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
@@ -36,7 +36,7 @@ export const Detail = styled.p`
   margin-right: 1rem;
 `;
 
-type CSSProps = {
-  $background?: RuleSet;
-  $text?: RuleSet;
-};
+// type CSSProps = {
+//   $background?: RuleSet;
+//   $text?: RuleSet;
+// };
