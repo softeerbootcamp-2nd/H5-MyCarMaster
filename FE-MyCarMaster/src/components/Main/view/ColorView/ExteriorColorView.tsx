@@ -1,4 +1,3 @@
-import { styled } from "styled-components";
 import {
   useCarPaintDispatch,
   useCarPaintState,
@@ -11,7 +10,7 @@ import CarRotation from "../../../common/CarRotation/CarRotation";
 
 interface FetchExteriorProps extends ExteriorColors {
   result: {
-    colors: ExteriorColors[];
+    exteriorColors: ExteriorColors[];
   };
 }
 
@@ -19,7 +18,7 @@ function ExteriorColorView() {
   const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 
   const { trimId } = useTrimState();
-  const { exteriorId, exteriorList } = useCarPaintState();
+  const { exteriorList } = useCarPaintState();
   const exteriorDispatch = useCarPaintDispatch();
 
   const { data } = useFetch<FetchExteriorProps>(
@@ -33,7 +32,7 @@ function ExteriorColorView() {
     if (data) {
       exteriorDispatch({
         type: "SET_EXTERIOR_LIST",
-        payload: { exteriorList: data.result.colors },
+        payload: { exteriorList: data.result.exteriorColors },
       });
     }
   }, [data, exteriorDispatch]);
@@ -47,12 +46,5 @@ function ExteriorColorView() {
     )
   );
 }
-
-const ExteriorColorImg = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-`;
 
 export default ExteriorColorView;

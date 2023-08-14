@@ -10,7 +10,7 @@ import { useEffect } from "react";
 
 interface FetchInteriorProps extends InteriorColors {
   result: {
-    colors: InteriorColors[];
+    interiorColors: InteriorColors[];
   };
 }
 
@@ -29,7 +29,7 @@ function InteriorColorView() {
     if (data) {
       interiorDispatch({
         type: "SET_INTERIOR_LIST",
-        payload: { interiorList: data.result.colors },
+        payload: { interiorList: data.result.interiorColors },
       });
     }
   }, [data, interiorDispatch]);
