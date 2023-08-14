@@ -16,7 +16,7 @@ import softeer.be_my_car_master.domain.color_exterior.ExteriorColor;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class GetExteriorColorsResponse {
 
-	private List<ExteriorColorDto> colors;
+	private List<ExteriorColorDto> exteriorColors;
 
 	public static GetExteriorColorsResponse from(List<ExteriorColor> selectableColors) {
 		List<ExteriorColorDto> exteriorColorDtos = selectableColors.stream()

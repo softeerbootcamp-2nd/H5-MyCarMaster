@@ -1,6 +1,6 @@
 package softeer.be_my_car_master.api.color_exterior.usecase;
 
-import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.BDDMockito.*;
 
 import java.util.Arrays;
@@ -47,7 +47,7 @@ class GetExteriorColorsUseCaseTest {
 		GetExteriorColorsResponse getExteriorColorsResponse = getExteriorColorsUseCase.execute(1L);
 
 		// then
-		List<ExteriorColorDto> exteriorColors = getExteriorColorsResponse.getColors();
+		List<ExteriorColorDto> exteriorColors = getExteriorColorsResponse.getExteriorColors();
 		ExteriorColorDto expected = exteriorColors.get(0);
 
 		SoftAssertions.assertSoftly(softAssertions -> {
