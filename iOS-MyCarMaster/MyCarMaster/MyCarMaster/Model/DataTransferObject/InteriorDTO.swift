@@ -14,7 +14,7 @@ struct InteriorDTO: Codable {
     let ratio: Int
     let colorImgURL: String
     let coloredImgURL: String
-    
+
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case name = "name"

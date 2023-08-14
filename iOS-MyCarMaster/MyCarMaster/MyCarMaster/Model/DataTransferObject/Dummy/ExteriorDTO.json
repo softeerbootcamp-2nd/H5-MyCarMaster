@@ -2,7 +2,7 @@
     "code": 2000,
     "message": "요청에 성공하셨습니다.",
     "result": {
-        "colors": [
+        "exteriorColors": [
             {
                 "id": 1,
                 "name": "어비스 블랙 펄",

@@ -2,7 +2,7 @@
     "code": 2000,
     "message": "요청에 성공하셨습니다.",
     "result": {
-        "colors": [
+        "interiorColors": [
             {
                 "id": 1,
                 "name": "퀼팅천연 (블랙)",
