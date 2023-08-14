@@ -14,12 +14,13 @@ final class BodyTypeViewController: UIViewController {
 
     typealias ListCellClass = BasicListCell
 
-    var dummyBodyTypeList = [
-        BodyType(model: "펠리세이드", name: "7인승", description: "8인승 시트에서 2열 가운데 시트를 없애 2열 탑승객의 편의는 물론, 3열 탑승객의 승하차가 편리합니다.", ratio: 54, price: 0, imageURL: nil),
-        BodyType(model: "펠리세이드", name: "4WD", description: "1열 2명, 2열 3명, 3열 3명이 탑승할 수 있는 구조로, 많은 인원이 탑승할 수 있습니다", ratio: 54, price: 1000000, imageURL: nil),
-    ]
+    var dataList: [BodyType] = []
 
-    var bodyTypeList: [BodyType] = []
+    var selectedCellIndexPath: IndexPath = IndexPath(row: 0, section: 0) {
+        didSet {
+            print(#function, selectedCellIndexPath)
+        }
+    }
 
     private var contentView: BodyTypeView<ListCellClass> {
         return view as? BodyTypeView ?? BodyTypeView()
@@ -61,7 +62,7 @@ final class BodyTypeViewController: UIViewController {
 
             if let data,
                case let .bodyTypes(bodyTypeDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
-                self.bodyTypeList = bodyTypeDTOList.map { BodyType($0) }
+                self.dataList = bodyTypeDTOList.map { BodyType($0) }
                 DispatchQueue.main.async {
                     self.contentView.listView.reloadData()
                 }
@@ -88,7 +89,7 @@ extension BodyTypeViewController: UICollectionViewDelegate, UICollectionViewData
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return bodyTypeList.count
+        return dataList.count
     }
 
     func collectionView(
@@ -103,14 +104,13 @@ extension BodyTypeViewController: UICollectionViewDelegate, UICollectionViewData
             fatalError("등록되지 않은 cell입니다.")
         }
 
-        let cellState = bodyTypeList[indexPath.row].basicListCellState
-        cell.configure(with: cellState)
+        cell.configure(with: dataList[indexPath.row])
 
-        // FIXME: 초기값 선택이 동작하지 않음
-//        if indexPath.item == 0 {
-//            cell.isSelected = true
-//            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
-//        }
+        // 프리셋을 선택한다.
+        if selectedCellIndexPath == indexPath {
+            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
+        }
+
         return cell
     }
 
@@ -118,13 +118,7 @@ extension BodyTypeViewController: UICollectionViewDelegate, UICollectionViewData
         guard let cell = collectionView.cellForItem(at: indexPath) as? ListCellClass else {
             fatalError("알 수 없는 오류가 발생했습니다.")
         }
-        cell.select()
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? ListCellClass else {
-            fatalError("알 수 없는 오류가 발생했습니다.")
-        }
-        cell.deselect()
+        guard selectedCellIndexPath != indexPath else { return }
+        selectedCellIndexPath = indexPath
     }
 }

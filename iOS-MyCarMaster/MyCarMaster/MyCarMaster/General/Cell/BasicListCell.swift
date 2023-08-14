@@ -15,6 +15,16 @@ final class BasicListCell: UICollectionViewCell, Selectable, ContentSizeEstimata
         return CGSize(width: UIScreen.main.bounds.width - 16 * 2, height: 118)
     }
 
+    override var isSelected: Bool {
+        willSet {
+            if newValue {
+                self.select()
+            } else {
+                self.deselect()
+            }
+        }
+    }
+
     private let leftContainer: UIView = {
         let view = UIView()
         return view
@@ -162,7 +172,9 @@ final class BasicListCell: UICollectionViewCell, Selectable, ContentSizeEstimata
 
 // MARK: - API
 extension BasicListCell {
-    func configure(with state: BasicListCellState) {
+    func configure(with stateConvertible: BasicListCellStateConvertible) {
+        let state = stateConvertible.basicListCellState
+
         titleLabel.setText(state.name)
         descriptionLabel.setText(state.description)
         additoryLabel.setText("\(state.model) 구매자의 \(state.ratio.formatted(style: .percent))가 선택")
@@ -172,4 +184,3 @@ extension BasicListCell {
         }
     }
 }
-

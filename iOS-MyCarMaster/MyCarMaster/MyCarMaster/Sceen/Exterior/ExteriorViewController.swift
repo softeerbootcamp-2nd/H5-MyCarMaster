@@ -14,9 +14,13 @@ final class ExteriorViewController: UIViewController {
 
     typealias ListCellClass = ColorListCell
 
-    var dummyExteriorList: [Exterior] = []
+    var dataList: [Exterior] = []
 
-    var exteriorList: [Exterior] = []
+    var selectedCellIndexPath: IndexPath = IndexPath(row: 0, section: 0) {
+        didSet {
+            print(#function, selectedCellIndexPath)
+        }
+    }
 
     private var contentView: ExteriorView<ListCellClass> {
         return view as? ExteriorView ?? ExteriorView()
@@ -59,7 +63,7 @@ final class ExteriorViewController: UIViewController {
             if let data,
                case let .exteriors(exteriorDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
                 DispatchQueue.main.async {
-                    self.exteriorList = exteriorDTOList.map { Exterior($0) }
+                    self.dataList = exteriorDTOList.map { Exterior($0) }
                     self.contentView.listView.reloadData()
                 }
             } else {
@@ -85,7 +89,7 @@ extension ExteriorViewController: UICollectionViewDelegate, UICollectionViewData
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        return exteriorList.count
+        return dataList.count
     }
 
     func collectionView(
@@ -99,13 +103,15 @@ extension ExteriorViewController: UICollectionViewDelegate, UICollectionViewData
         ) as? ListCellClass else {
             fatalError("등록되지 않은 cell입니다.")
         }
-        cell.configure(with: exteriorList[indexPath.row])
 
-        // FIXME: 초기값 선택이 동작하지 않음
-//        if indexPath.item == 0 {
-//            cell.isSelected = true
-//            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
-//        }
+        let cellState = dataList[indexPath.row]
+        cell.configure(with: cellState)
+
+        // 프리셋을 선택한다.
+        if selectedCellIndexPath == indexPath {
+            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
+        }
+
         return cell
     }
 
@@ -113,13 +119,7 @@ extension ExteriorViewController: UICollectionViewDelegate, UICollectionViewData
         guard let cell = collectionView.cellForItem(at: indexPath) as? ListCellClass else {
             fatalError("알 수 없는 오류가 발생했습니다.")
         }
-        cell.select()
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? ListCellClass else {
-            fatalError("알 수 없는 오류가 발생했습니다.")
-        }
-        cell.deselect()
+        guard selectedCellIndexPath != indexPath else { return }
+        selectedCellIndexPath = indexPath
     }
 }

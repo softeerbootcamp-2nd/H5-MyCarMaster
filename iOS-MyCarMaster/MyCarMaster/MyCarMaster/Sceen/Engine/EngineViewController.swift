@@ -14,11 +14,13 @@ final class EngineViewController: UIViewController {
 
     typealias ListCellClass = BasicListCell
 
-    var dummyEngineList = [
-        Engine(model: "펠리세이드", name: "가솔린 3.8", ratio: 54, description: "엔진의 진동이 적어 편안하고 조용한 드라이빙 감성을 제공합니다", fuelMin: 8.0, fuelMax: 9.2, power: 295, toque: 36.2, price: 0),
-        Engine(model: "펠리세이드", name: "디젤 2.2", ratio: 54, description: "높은 토크로 파워풀한 드라이빙이 가능하며, 차급대비 연비 효율이 우수합니다", fuelMin: 11.4, fuelMax: 12.4, power: 202, toque: 45.0, price: 1000000)
-    ]
-    var engineList: [Engine] = []
+    var dataList: [Engine] = []
+
+    var selectedCellIndexPath: IndexPath = IndexPath(row: 0, section: 0) {
+        didSet {
+            print(#function, selectedCellIndexPath)
+        }
+    }
 
     private var contentView: EngineView<ListCellClass> {
         return view as? EngineView ?? EngineView()
@@ -40,8 +42,23 @@ final class EngineViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        fetchData()
+    }
 
+    private func configureUI() {
+        contentView.setDelegate(self)
+        contentView.setDataSource(self)
+    }
+
+    override func didMove(toParent parent: UIViewController?) {
+        contentView.updateLayout()
+    }
+}
+
+extension EngineViewController {
+    private func fetchData() {
         let request = URLRequest(url: URL(string: Dependency.serverURL + "engines?trimId=1")!)
+
         URLSession.shared.dataTask(with: request) { data, response, error in
             guard error == nil else {
                 print(error?.localizedDescription)
@@ -60,8 +77,7 @@ final class EngineViewController: UIViewController {
 
             if let data,
                case let .engines(engineDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
-                self.engineList = engineDTOList.map { Engine($0) }
-                print(self.engineList)
+                self.dataList = engineDTOList.map { Engine($0) }
                 DispatchQueue.main.async {
                     self.contentView.listView.reloadData()
                 }
@@ -71,15 +87,6 @@ final class EngineViewController: UIViewController {
             }
         }.resume()
     }
-
-    private func configureUI() {
-        contentView.setDelegate(self)
-        contentView.setDataSource(self)
-    }
-
-    override func didMove(toParent parent: UIViewController?) {
-        contentView.updateLayout()
-    }
 }
 
 extension EngineViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -88,8 +95,7 @@ extension EngineViewController: UICollectionViewDelegate, UICollectionViewDataSo
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        NSLog("engineList: %d개", engineList.count)
-        return engineList.count
+        return dataList.count
     }
 
     func collectionView(
@@ -97,7 +103,6 @@ extension EngineViewController: UICollectionViewDelegate, UICollectionViewDataSo
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
 
-        print("indexPath.row:",indexPath.row)
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: ListCellClass.reuseIdentifier,
             for: indexPath
@@ -105,14 +110,13 @@ extension EngineViewController: UICollectionViewDelegate, UICollectionViewDataSo
             fatalError("등록되지 않은 cell입니다.")
         }
 
-        let cellState = engineList[indexPath.row].basicListCellState
-        cell.configure(with: cellState)
+        cell.configure(with: dataList[indexPath.row])
 
-        // FIXME: 초기값 선택이 동작하지 않음
-//        if indexPath.row == 0 {
-//            cell.isSelected = true
-//            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
-//        }
+        // 프리셋을 선택한다.
+        if selectedCellIndexPath == indexPath {
+            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
+        }
+
         return cell
     }
 
@@ -120,13 +124,7 @@ extension EngineViewController: UICollectionViewDelegate, UICollectionViewDataSo
         guard let cell = collectionView.cellForItem(at: indexPath) as? ListCellClass else {
             fatalError("알 수 없는 오류가 발생했습니다.")
         }
-        cell.select()
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? ListCellClass else {
-            fatalError("알 수 없는 오류가 발생했습니다.")
-        }
-        cell.deselect()
+        guard selectedCellIndexPath != indexPath else { return }
+        selectedCellIndexPath = indexPath
     }
 }

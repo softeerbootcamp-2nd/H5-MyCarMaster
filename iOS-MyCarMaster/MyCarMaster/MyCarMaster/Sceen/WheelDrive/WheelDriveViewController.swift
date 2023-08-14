@@ -14,12 +14,13 @@ final class WheelDriveViewController: UIViewController {
 
     typealias ListCellClass = BasicListCell
 
-    var dummyWheelDriveList = [
-        WheelDrive(model: "펠리세이드", name: "2WD", description: "엔진 동력이 전후륜 중 한쪽으로만 전달돼 움직입니다. 차체가 가벼워 연료 효율이 높습니다.", ratio: 54, price: 0, imageURL: nil),
-        WheelDrive(model: "펠리세이드", name: "4WD", description: "전자식 상시 4륜 구동 시스템으로 환경에 맞춰 구동력을 자동 배분해 안정성을 높입니다.", ratio: 54, price: 1000000, imageURL: nil),
-    ]
+    var dataList: [WheelDrive] = []
 
-    var wheelDriveList: [WheelDrive] = []
+    var selectedCellIndexPath: IndexPath = IndexPath(row: 0, section: 0) {
+        didSet {
+            print(#function, selectedCellIndexPath)
+        }
+    }
 
     private var contentView: WheelDriveView<ListCellClass> {
         return view as? WheelDriveView ?? WheelDriveView()
@@ -41,8 +42,23 @@ final class WheelDriveViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        fetchData()
+    }
 
+    private func configureUI() {
+        contentView.setDelegate(self)
+        contentView.setDataSource(self)
+    }
+
+    override func didMove(toParent parent: UIViewController?) {
+        contentView.updateLayout()
+    }
+}
+
+extension WheelDriveViewController {
+    private func fetchData() {
         let request = URLRequest(url: URL(string: Dependency.serverURL + "wheel-drives?trimId=1&engineId=1")!)
+
         URLSession.shared.dataTask(with: request) { data, response, error in
             guard error == nil else {
                 print(error?.localizedDescription)
@@ -61,7 +77,7 @@ final class WheelDriveViewController: UIViewController {
 
             if let data,
                case let .wheelDrives(wheelDriveDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
-                self.wheelDriveList = wheelDriveDTOList.map { WheelDrive($0) }
+                self.dataList = wheelDriveDTOList.map { WheelDrive($0) }
                 DispatchQueue.main.async {
                     self.contentView.listView.reloadData()
                 }
@@ -71,15 +87,6 @@ final class WheelDriveViewController: UIViewController {
             }
         }.resume()
     }
-
-    private func configureUI() {
-        contentView.setDelegate(self)
-        contentView.setDataSource(self)
-    }
-
-    override func didMove(toParent parent: UIViewController?) {
-        contentView.updateLayout()
-    }
 }
 
 extension WheelDriveViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -88,8 +95,7 @@ extension WheelDriveViewController: UICollectionViewDelegate, UICollectionViewDa
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        NSLog("wheelDriveList: %d개", wheelDriveList.count)
-        return wheelDriveList.count
+        return dataList.count
     }
 
     func collectionView(
@@ -104,14 +110,13 @@ extension WheelDriveViewController: UICollectionViewDelegate, UICollectionViewDa
             fatalError("등록되지 않은 cell입니다.")
         }
 
-        let cellState = wheelDriveList[indexPath.row].basicListCellState
-        cell.configure(with: cellState)
+        cell.configure(with: dataList[indexPath.row])
 
-        // FIXME: 초기값 선택이 동작하지 않음
-//        if indexPath.item == 0 {
-//            cell.isSelected = true
-//            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
-//        }
+        // 프리셋을 선택한다.
+        if selectedCellIndexPath == indexPath {
+            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
+        }
+
         return cell
     }
 
@@ -119,13 +124,7 @@ extension WheelDriveViewController: UICollectionViewDelegate, UICollectionViewDa
         guard let cell = collectionView.cellForItem(at: indexPath) as? ListCellClass else {
             fatalError("알 수 없는 오류가 발생했습니다.")
         }
-        cell.select()
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? ListCellClass else {
-            fatalError("알 수 없는 오류가 발생했습니다.")
-        }
-        cell.deselect()
+        guard selectedCellIndexPath != indexPath else { return }
+        selectedCellIndexPath = indexPath
     }
 }
