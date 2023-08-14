@@ -32,10 +32,9 @@
 		B56F55D22A86BBE50055E382 /* RootDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56F55D12A86BBE50055E382 /* RootDTO.swift */; };
 		B56F55D42A86BC3B0055E382 /* TrimDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56F55D32A86BC3B0055E382 /* TrimDTO.swift */; };
 		B56F55D72A86BC7D0055E382 /* Trim.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56F55D62A86BC7D0055E382 /* Trim.swift */; };
-		B56F55DA2A86BD240055E382 /* TrimDTO.json in Sources */ = {isa = PBXBuildFile; fileRef = B56F55D92A86BD240055E382 /* TrimDTO.json */; };
 		B56F55E52A8761F90055E382 /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56F55E42A8761F90055E382 /* Engine.swift */; };
 		B56F55E72A87621A0055E382 /* EngineDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56F55E62A87621A0055E382 /* EngineDTO.swift */; };
-		B56F55E92A8762540055E382 /* EngineDTO.json in Sources */ = {isa = PBXBuildFile; fileRef = B56F55E82A8762540055E382 /* EngineDTO.json */; };
+		B570C0FA2A89ADA7000E9B75 /* InteriorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B570C0F92A89ADA7000E9B75 /* InteriorView.swift */; };
 		B58799712A8177E90051E6E7 /* MCMResource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58289892A7FFDDC00FAD6AA /* MCMResource.framework */; };
 		B58799722A8177E90051E6E7 /* MCMResource.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B58289892A7FFDDC00FAD6AA /* MCMResource.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B58799732A8177EA0051E6E7 /* MVIFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58289F32A800B8E00FAD6AA /* MVIFoundation.framework */; };
@@ -50,15 +49,17 @@
 		B5BBB3512A89C7BF00AAFC84 /* Interior.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBB3502A89C7BF00AAFC84 /* Interior.swift */; };
 		B5BBB3532A89C7ED00AAFC84 /* Interior+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBB3522A89C7ED00AAFC84 /* Interior+.swift */; };
 		B5BBB3552A89C95200AAFC84 /* InteriorDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBB3542A89C95200AAFC84 /* InteriorDTO.swift */; };
-		B5BBB3572A89C9AC00AAFC84 /* InteriorDTO.json in Sources */ = {isa = PBXBuildFile; fileRef = B5BBB3562A89C9AC00AAFC84 /* InteriorDTO.json */; };
-		B5BBB3592A89CA5200AAFC84 /* ExteriorDTO.json in Sources */ = {isa = PBXBuildFile; fileRef = B5BBB3582A89CA5200AAFC84 /* ExteriorDTO.json */; };
+		B5BBB35A2A8A1D6400AAFC84 /* TrimDTO.json in Resources */ = {isa = PBXBuildFile; fileRef = B56F55D92A86BD240055E382 /* TrimDTO.json */; };
+		B5BBB35B2A8A1D6400AAFC84 /* EngineDTO.json in Resources */ = {isa = PBXBuildFile; fileRef = B56F55E82A8762540055E382 /* EngineDTO.json */; };
+		B5BBB35C2A8A1D6400AAFC84 /* WheelDriveDTO.json in Resources */ = {isa = PBXBuildFile; fileRef = B5DD64E02A8770FB00B44F61 /* WheelDriveDTO.json */; };
+		B5BBB35D2A8A1D6400AAFC84 /* BodyTypeDTO.json in Resources */ = {isa = PBXBuildFile; fileRef = B5DD64E22A87714000B44F61 /* BodyTypeDTO.json */; };
+		B5BBB35E2A8A1D6400AAFC84 /* ExteriorDTO.json in Resources */ = {isa = PBXBuildFile; fileRef = B5BBB3582A89CA5200AAFC84 /* ExteriorDTO.json */; };
+		B5BBB35F2A8A1D6400AAFC84 /* InteriorDTO.json in Resources */ = {isa = PBXBuildFile; fileRef = B5BBB3562A89C9AC00AAFC84 /* InteriorDTO.json */; };
 		B5C3EAC12A84B1AA00D9577C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */; };
 		B5DD64D02A876ABD00B44F61 /* WheelDriveDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64CF2A876ABD00B44F61 /* WheelDriveDTO.swift */; };
 		B5DD64D22A876B5000B44F61 /* WheelDrive.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64D12A876B5000B44F61 /* WheelDrive.swift */; };
 		B5DD64DD2A876ED800B44F61 /* BodyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64DC2A876ED800B44F61 /* BodyType.swift */; };
 		B5DD64DF2A876EED00B44F61 /* BodyTypeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64DE2A876EED00B44F61 /* BodyTypeDTO.swift */; };
-		B5DD64E12A8770FB00B44F61 /* WheelDriveDTO.json in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64E02A8770FB00B44F61 /* WheelDriveDTO.json */; };
-		B5DD64E32A87714000B44F61 /* BodyTypeDTO.json in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64E22A87714000B44F61 /* BodyTypeDTO.json */; };
 		B5DD64EF2A877DDD00B44F61 /* ExteriorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64EE2A877DDD00B44F61 /* ExteriorView.swift */; };
 		B5DD64F12A87833200B44F61 /* ExteriorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64F02A87833200B44F61 /* ExteriorViewController.swift */; };
 		B5DD64F32A8783D800B44F61 /* Exterior.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64F22A8783D800B44F61 /* Exterior.swift */; };
@@ -705,6 +706,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5BBB35A2A8A1D6400AAFC84 /* TrimDTO.json in Resources */,
+				B5BBB35B2A8A1D6400AAFC84 /* EngineDTO.json in Resources */,
+				B5BBB35C2A8A1D6400AAFC84 /* WheelDriveDTO.json in Resources */,
+				B5BBB35D2A8A1D6400AAFC84 /* BodyTypeDTO.json in Resources */,
+				B5BBB35E2A8A1D6400AAFC84 /* ExteriorDTO.json in Resources */,
+				B5BBB35F2A8A1D6400AAFC84 /* InteriorDTO.json in Resources */,
 				B50C7E582A79027A005AFE0B /* LaunchScreen.storyboard in Resources */,
 				B50C7E552A79027A005AFE0B /* Assets.xcassets in Resources */,
 			);
@@ -763,9 +770,6 @@
 				B5DD65202A8926E700B44F61 /* ContentSizeEstimatable.swift in Sources */,
 				B5DD64DF2A876EED00B44F61 /* BodyTypeDTO.swift in Sources */,
 				B56F55D22A86BBE50055E382 /* RootDTO.swift in Sources */,
-				B56F55DA2A86BD240055E382 /* TrimDTO.json in Sources */,
-				B56F55E92A8762540055E382 /* EngineDTO.json in Sources */,
-				B5DD64E32A87714000B44F61 /* BodyTypeDTO.json in Sources */,
 				B53C3C582A8578310019ECA1 /* BodyTypeView.swift in Sources */,
 				B53E028E2A84BE5100F464FC /* StepNavigatorView.swift in Sources */,
 				B56A765C2A83EC5200F7E3EF /* Preview.swift in Sources */,
@@ -784,7 +788,6 @@
 				B5DD64F12A87833200B44F61 /* ExteriorViewController.swift in Sources */,
 				B53C3C492A854AF50019ECA1 /* BasicStepView.swift in Sources */,
 				B5BBB3552A89C95200AAFC84 /* InteriorDTO.swift in Sources */,
-				B5DD64E12A8770FB00B44F61 /* WheelDriveDTO.json in Sources */,
 				B5DD65252A89363C00B44F61 /* Trim+.swift in Sources */,
 				B5DD650E2A880A4100B44F61 /* UIImage+Merge.swift in Sources */,
 				B5BBB3532A89C7ED00AAFC84 /* Interior+.swift in Sources */,
@@ -796,8 +799,7 @@
 				B5DD64F32A8783D800B44F61 /* Exterior.swift in Sources */,
 				B58A323B2A7C0B35005FC831 /* OnboardingViewController.swift in Sources */,
 				B56A765F2A83EFB000F7E3EF /* BasicListCell.swift in Sources */,
-				B5BBB3592A89CA5200AAFC84 /* ExteriorDTO.json in Sources */,
-				B5BBB3572A89C9AC00AAFC84 /* InteriorDTO.json in Sources */,
+				B570C0FA2A89ADA7000E9B75 /* InteriorView.swift in Sources */,
 				B50C7E4C2A790279005AFE0B /* AppDelegate.swift in Sources */,
 				B5DD65172A88F8D100B44F61 /* Then.swift in Sources */,
 				B56F55E72A87621A0055E382 /* EngineDTO.swift in Sources */,
