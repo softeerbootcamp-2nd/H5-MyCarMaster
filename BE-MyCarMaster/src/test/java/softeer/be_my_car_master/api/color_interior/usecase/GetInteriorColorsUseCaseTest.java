@@ -50,7 +50,7 @@ class GetInteriorColorsUseCaseTest {
 		GetInteriorColorsResponse getInteriorColorsResponse = getInteriorColorsUseCase.execute(1L, 1L);
 
 		// then
-		List<InteriorColorDto> interiorColors = getInteriorColorsResponse.getColors();
+		List<InteriorColorDto> interiorColors = getInteriorColorsResponse.getInteriorColors();
 		InteriorColorDto expected = interiorColors.get(0);
 
 		SoftAssertions.assertSoftly(softAssertions -> {
@@ -85,7 +85,7 @@ class GetInteriorColorsUseCaseTest {
 		GetInteriorColorsResponse getInteriorColorsResponse = getInteriorColorsUseCase.execute(1L, 1L);
 
 		// then
-		List<InteriorColorDto> interiorColors = getInteriorColorsResponse.getColors();
+		List<InteriorColorDto> interiorColors = getInteriorColorsResponse.getInteriorColors();
 
 		SoftAssertions.assertSoftly(softAssertions -> {
 			softAssertions.assertThat(interiorColors).isNotNull();
