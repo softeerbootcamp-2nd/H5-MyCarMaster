@@ -8,7 +8,6 @@ import {
   useQuotationDispatch,
 } from "../../contexts/QuotationContext";
 import indexNameSwitching from "../../utils/indexNameSwitching";
-import { useNavigate } from "react-router-dom";
 
 function Footer() {
   const { navigationId, isFirst } = useQuotationState();
@@ -27,11 +26,6 @@ function Footer() {
         },
       },
     });
-  };
-
-  const navigateQuotationHandler = () => {
-    // validation api code
-    navigate("/quotation");
   };
 
   return (
