@@ -14,6 +14,7 @@ function Footer() {
   const { navigationId, isFirst } = useQuotationState();
   const quotationDispatch = useQuotationDispatch();
   const name = indexNameSwitching(navigationId) as string;
+  const navigate = useNavigate();
 
   const navigate = useNavigate();
 

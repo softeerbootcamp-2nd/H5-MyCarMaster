@@ -1,0 +1,42 @@
+name: Frontend-CD
+on: 
+  push: 
+    branches:
+      - fe-main
+  pull_request:
+    branches:
+      - fe-main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code.
+        uses: actions/checkout@main
+
+      - name: .env setting
+        run: |
+          cd ./FE-MyCarMaster
+          touch ./.env.production
+          echo "VITE_APP_SERVER_URL=${{ secrets.VITE_APP_SERVER_URL  }}" >> ./.env.production
+
+      - name: Cache node modules 
+        uses: actions/cache@v1
+        with:
+          path: FE-MyCarMaster/node_modules
+          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.OS }}-build-
+            ${{ runner.OS }}-
+
+      - name: Install Dependencies
+        run: cd ./FE-MyCarMaster && npm install
+
+      - name: Build
+        run: cd ./FE-MyCarMaster && npm run build 
+
+      - name: Deploy 
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.FE_AWS_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.FE_AWS_SECRET_ACCESS_KEY }}
+        run: aws s3 cp --recursive --region ap-northeast-2 FE-MyCarMaster/dist s3://my-car-master.shop
