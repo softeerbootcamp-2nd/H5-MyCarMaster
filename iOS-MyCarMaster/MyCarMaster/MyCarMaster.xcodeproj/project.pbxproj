@@ -51,6 +51,7 @@
 		B5BBB3532A89C7ED00AAFC84 /* Interior+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBB3522A89C7ED00AAFC84 /* Interior+.swift */; };
 		B5BBB3552A89C95200AAFC84 /* InteriorDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBB3542A89C95200AAFC84 /* InteriorDTO.swift */; };
 		B5BBB3572A89C9AC00AAFC84 /* InteriorDTO.json in Sources */ = {isa = PBXBuildFile; fileRef = B5BBB3562A89C9AC00AAFC84 /* InteriorDTO.json */; };
+		B5BBB3592A89CA5200AAFC84 /* ExteriorDTO.json in Sources */ = {isa = PBXBuildFile; fileRef = B5BBB3582A89CA5200AAFC84 /* ExteriorDTO.json */; };
 		B5C3EAC12A84B1AA00D9577C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */; };
 		B5DD64D02A876ABD00B44F61 /* WheelDriveDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64CF2A876ABD00B44F61 /* WheelDriveDTO.swift */; };
 		B5DD64D22A876B5000B44F61 /* WheelDrive.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64D12A876B5000B44F61 /* WheelDrive.swift */; };
@@ -185,6 +186,7 @@
 		B5BBB3522A89C7ED00AAFC84 /* Interior+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Interior+.swift"; sourceTree = "<group>"; };
 		B5BBB3542A89C95200AAFC84 /* InteriorDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteriorDTO.swift; sourceTree = "<group>"; };
 		B5BBB3562A89C9AC00AAFC84 /* InteriorDTO.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = InteriorDTO.json; sourceTree = "<group>"; };
+		B5BBB3582A89CA5200AAFC84 /* ExteriorDTO.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ExteriorDTO.json; sourceTree = "<group>"; };
 		B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B5DD64CF2A876ABD00B44F61 /* WheelDriveDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelDriveDTO.swift; sourceTree = "<group>"; };
 		B5DD64D12A876B5000B44F61 /* WheelDrive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelDrive.swift; sourceTree = "<group>"; };
@@ -441,6 +443,7 @@
 				B56F55E82A8762540055E382 /* EngineDTO.json */,
 				B5DD64E02A8770FB00B44F61 /* WheelDriveDTO.json */,
 				B5DD64E22A87714000B44F61 /* BodyTypeDTO.json */,
+				B5BBB3582A89CA5200AAFC84 /* ExteriorDTO.json */,
 				B5BBB3562A89C9AC00AAFC84 /* InteriorDTO.json */,
 			);
 			path = Dummy;
@@ -793,6 +796,7 @@
 				B5DD64F32A8783D800B44F61 /* Exterior.swift in Sources */,
 				B58A323B2A7C0B35005FC831 /* OnboardingViewController.swift in Sources */,
 				B56A765F2A83EFB000F7E3EF /* BasicListCell.swift in Sources */,
+				B5BBB3592A89CA5200AAFC84 /* ExteriorDTO.json in Sources */,
 				B5BBB3572A89C9AC00AAFC84 /* InteriorDTO.json in Sources */,
 				B50C7E4C2A790279005AFE0B /* AppDelegate.swift in Sources */,
 				B5DD65172A88F8D100B44F61 /* Then.swift in Sources */,
