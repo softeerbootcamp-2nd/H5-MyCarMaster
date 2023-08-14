@@ -17,10 +17,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import softeer.be_my_car_master.api.engine.dto.response.GetUnselectableOptionsByEngineResponse;
 import softeer.be_my_car_master.api.engine.dto.response.UnselectableOptionDto;
+import softeer.be_my_car_master.api.engine.exception.InvalidOptionException;
 import softeer.be_my_car_master.api.option.usecase.port.OptionPort;
 import softeer.be_my_car_master.domain.option.Category;
 import softeer.be_my_car_master.domain.option.Option;
-import softeer.be_my_car_master.global.exception.InvalidOptionException;
 
 @ExtendWith(MockitoExtension.class)
 @DisplayName("GetUnselectableOptionsByEngineUseCase Test")

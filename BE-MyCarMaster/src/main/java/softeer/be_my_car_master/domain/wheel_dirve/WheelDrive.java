@@ -23,4 +23,8 @@ public class WheelDrive {
 	public boolean isSelectable(List<Long> unselectableWheelDriveIds) {
 		return !unselectableWheelDriveIds.contains(id);
 	}
+
+	public boolean isRightWheelDrive(Long engineId, Integer enginePrice) {
+		return engineId.equals(id) && enginePrice.equals(price);
+	}
 }

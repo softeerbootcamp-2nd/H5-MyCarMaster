@@ -1,6 +1,7 @@
 package softeer.be_my_car_master.infrastructure.jpa.model.adaptor;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import lombok.RequiredArgsConstructor;

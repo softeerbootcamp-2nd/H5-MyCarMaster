@@ -12,13 +12,13 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
+        default_batch_fetch_size: 100
     show-sql: true
     open-in-view : false
-    default_batch_fetch_size: 100
 
 ---
 spring:
@@ -38,6 +38,6 @@ spring:
     properties:
       hibernate:
         format_sql: true
+        default_batch_fetch_size: 100
     show-sql: true
     open-in-view : false
-    default_batch_fetch_size: 100
