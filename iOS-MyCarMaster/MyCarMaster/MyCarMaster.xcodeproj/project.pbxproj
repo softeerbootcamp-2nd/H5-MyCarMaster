@@ -946,7 +946,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MACH_O_TYPE = mh_bundle;
@@ -968,7 +968,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MACH_O_TYPE = mh_bundle;
@@ -989,7 +989,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AVZ9493N69;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				MACH_O_TYPE = mh_bundle;
 				MARKETING_VERSION = 1.0;
@@ -1008,7 +1008,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AVZ9493N69;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				MACH_O_TYPE = mh_bundle;
 				MARKETING_VERSION = 1.0;
@@ -1021,7 +1021,7 @@
 			};
 			name = Release;
 		};
-		B53C3C4A2A8553CD0019ECA1 /* Preview */ = {
+		B5BBB3602A8A24FA00AAFC84 /* Offline */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1082,9 +1082,9 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
-			name = Preview;
+			name = Offline;
 		};
-		B53C3C4B2A8553CD0019ECA1 /* Preview */ = {
+		B5BBB3612A8A24FA00AAFC84 /* Offline */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1115,16 +1115,16 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
-			name = Preview;
+			name = Offline;
 		};
-		B53C3C4C2A8553CD0019ECA1 /* Preview */ = {
+		B5BBB3622A8A24FA00AAFC84 /* Offline */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MACH_O_TYPE = mh_bundle;
@@ -1137,15 +1137,15 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MyCarMaster.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/MyCarMaster";
 			};
-			name = Preview;
+			name = Offline;
 		};
-		B53C3C4D2A8553CD0019ECA1 /* Preview */ = {
+		B5BBB3632A8A24FA00AAFC84 /* Offline */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AVZ9493N69;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				MACH_O_TYPE = mh_bundle;
 				MARKETING_VERSION = 1.0;
@@ -1156,7 +1156,7 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = MyCarMaster;
 			};
-			name = Preview;
+			name = Offline;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1165,7 +1165,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B50C7E702A79027A005AFE0B /* Debug */,
-				B53C3C4A2A8553CD0019ECA1 /* Preview */,
+				B5BBB3602A8A24FA00AAFC84 /* Offline */,
 				B50C7E712A79027A005AFE0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1175,7 +1175,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B50C7E732A79027A005AFE0B /* Debug */,
-				B53C3C4B2A8553CD0019ECA1 /* Preview */,
+				B5BBB3612A8A24FA00AAFC84 /* Offline */,
 				B50C7E742A79027A005AFE0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1185,7 +1185,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B50C7E762A79027A005AFE0B /* Debug */,
-				B53C3C4C2A8553CD0019ECA1 /* Preview */,
+				B5BBB3622A8A24FA00AAFC84 /* Offline */,
 				B50C7E772A79027A005AFE0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1195,7 +1195,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B50C7E792A79027A005AFE0B /* Debug */,
-				B53C3C4D2A8553CD0019ECA1 /* Preview */,
+				B5BBB3632A8A24FA00AAFC84 /* Offline */,
 				B50C7E7A2A79027A005AFE0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
