@@ -1,7 +1,10 @@
 import { ButtonContainer } from "./style";
 import { QuotationActionType } from "../../../types/quotation.types";
 import { useQuotationDispatch } from "../../../contexts/QuotationContext";
-import { useOptionDispatch } from "../../../contexts/OptionContext";
+import {
+  useOptionDispatch,
+  useOptionState,
+} from "../../../contexts/OptionContext";
 import Button from "../Button/Button";
 import theme from "../../../styles/Theme";
 
@@ -22,10 +25,18 @@ export default function OptionBoxButtonContainer({
 }: OptionBoxButtonContainerProp) {
   const quotationDispatch = useQuotationDispatch();
   const optionDispatch = useOptionDispatch();
+  const optionState = useOptionState();
+
+  const findOptionById = (id: number) => {
+    const option = optionState.optionList.find((item) => item.id === id);
+    return option;
+  };
 
   const buttonHandler = (id: number, type: QuotationActionType) => {
     const where =
       type === "SET_SELECT_QUOTATION" ? "selectedOption" : "consideredOption";
+
+    const option = findOptionById(id);
     optionDispatch({
       type: "SET_CHOICE_OPTION",
       payload: {
@@ -39,6 +50,13 @@ export default function OptionBoxButtonContainer({
         id: id,
         name: name,
         price: price,
+        category: option?.category,
+        imgUrl: option?.subOptions
+          ? option.subOptions[0].imgUrl
+          : option?.imgUrl,
+        description: option?.subOptions
+          ? option.subOptions[0].description
+          : option?.description,
       },
     });
   };
