@@ -58,13 +58,7 @@ final class InteriorViewController: UIViewController {
 extension InteriorViewController {
     private func fetchFromDisk() {
         guard let fileURL = Bundle.main.url(forResource: "InteriorDTO.json", withExtension: nil) else { return }
-        if let data = try? Data(contentsOf: fileURL),
-           case let .interiors(interiorDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
-            self.dataList = interiorDTOList.map { Interior($0) }
-            DispatchQueue.main.async {
-                self.contentView.listView.reloadData()
-            }
-        }
+        applyData(try? Data(contentsOf: fileURL))
     }
 
     private func fetchData() {
@@ -86,18 +80,21 @@ extension InteriorViewController {
                 return
             }
 
-            if let data,
-               case let .interiors(interiorDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
-                self.dataList = interiorDTOList.map { Interior($0) }
-                DispatchQueue.main.async {
-                    self.contentView.listView.reloadData()
-                }
-            } else {
-                print(String(data: data!, encoding: .utf8))
-                print("Decoding Error")
-                return
-            }
+            self.applyData(data)
         }.resume()
+    }
+
+    private func applyData(_ data: Data?) {
+        if let data,
+           case let .interiors(interiorDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
+            self.dataList = interiorDTOList.map { Interior($0) }
+            DispatchQueue.main.async {
+                self.contentView.listView.reloadData()
+            }
+        } else {
+            print("Decoding Error")
+            return
+        }
     }
 }
 

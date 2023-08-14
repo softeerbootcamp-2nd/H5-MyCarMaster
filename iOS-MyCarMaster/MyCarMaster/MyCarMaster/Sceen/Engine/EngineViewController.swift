@@ -56,6 +56,11 @@ final class EngineViewController: UIViewController {
 }
 
 extension EngineViewController {
+    private func fetchFromDisk() {
+        guard let fileURL = Bundle.main.url(forResource: "EngineDTO.json", withExtension: nil) else { return }
+        applyData(try? Data(contentsOf: fileURL))
+    }
+
     private func fetchData() {
         let request = URLRequest(url: URL(string: Dependency.serverURL + "engines?trimId=1")!)
 
@@ -75,17 +80,21 @@ extension EngineViewController {
                 return
             }
 
-            if let data,
-               case let .engines(engineDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
-                self.dataList = engineDTOList.map { Engine($0) }
-                DispatchQueue.main.async {
-                    self.contentView.listView.reloadData()
-                }
-            } else {
-                print("Decoding Error")
-                return
-            }
+            self.applyData(data)
         }.resume()
+    }
+
+    private func applyData(_ data: Data?) {
+        if let data,
+           case let .engines(engineDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
+            self.dataList = engineDTOList.map { Engine($0) }
+            DispatchQueue.main.async {
+                self.contentView.listView.reloadData()
+            }
+        } else {
+            print("Decoding Error")
+            return
+        }
     }
 }
 

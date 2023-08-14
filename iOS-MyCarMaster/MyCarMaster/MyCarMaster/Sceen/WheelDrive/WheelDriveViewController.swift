@@ -56,6 +56,11 @@ final class WheelDriveViewController: UIViewController {
 }
 
 extension WheelDriveViewController {
+    private func fetchFromDisk() {
+        guard let fileURL = Bundle.main.url(forResource: "WheelDriveDTO.json", withExtension: nil) else { return }
+        applyData(try? Data(contentsOf: fileURL))
+    }
+
     private func fetchData() {
         let request = URLRequest(url: URL(string: Dependency.serverURL + "wheel-drives?trimId=1&engineId=1")!)
 
@@ -75,17 +80,21 @@ extension WheelDriveViewController {
                 return
             }
 
-            if let data,
-               case let .wheelDrives(wheelDriveDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
-                self.dataList = wheelDriveDTOList.map { WheelDrive($0) }
-                DispatchQueue.main.async {
-                    self.contentView.listView.reloadData()
-                }
-            } else {
-                print("Decoding Error")
-                return
-            }
+            self.applyData(data)
         }.resume()
+    }
+
+    private func applyData(_ data: Data?) {
+        if let data,
+           case let .wheelDrives(wheelDriveDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
+            self.dataList = wheelDriveDTOList.map { WheelDrive($0) }
+            DispatchQueue.main.async {
+                self.contentView.listView.reloadData()
+            }
+        } else {
+            print("Decoding Error")
+            return
+        }
     }
 }
 
