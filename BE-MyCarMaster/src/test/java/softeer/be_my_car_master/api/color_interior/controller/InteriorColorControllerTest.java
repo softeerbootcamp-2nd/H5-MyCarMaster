@@ -19,7 +19,6 @@ import org.springframework.test.web.servlet.ResultActions;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import softeer.be_my_car_master.api.color_interior.dto.request.GetInteriorColorsRequest;
 import softeer.be_my_car_master.api.color_interior.dto.response.GetInteriorColorsResponse;
 import softeer.be_my_car_master.api.color_interior.dto.response.InteriorColorDto;
 import softeer.be_my_car_master.api.color_interior.usecase.GetInteriorColorsUseCase;
@@ -52,7 +51,7 @@ class InteriorColorControllerTest {
 			.colorImgUrl("colorImgUrl")
 			.coloredImgUrl("coloredImgUrl")
 			.build();
-		getInteriorColorsResponse.setColors(Arrays.asList(interiorColorDto));
+		getInteriorColorsResponse.setInteriorColors(Arrays.asList(interiorColorDto));
 
 		given(getInteriorColorsUseCase.execute(any(), any())).willReturn(getInteriorColorsResponse);
 

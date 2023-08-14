@@ -50,7 +50,7 @@ class ExteriorColorControllerTest {
 			.colorImgUrl("colorImgUrl")
 			.coloredImgUrl("coloredImgUrl")
 			.build();
-		getExteriorColorsResponse.setColors(Arrays.asList(exteriorColorDto));
+		getExteriorColorsResponse.setExteriorColors(Arrays.asList(exteriorColorDto));
 
 		given(getExteriorColorsUseCase.execute(any())).willReturn(getExteriorColorsResponse);
 
