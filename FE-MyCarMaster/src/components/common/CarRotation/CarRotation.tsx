@@ -101,6 +101,5 @@ const Text = styled.div<{ $isQuotation: boolean }>`
   position: absolute;
   margin-top: 22rem;
   color: ${theme.colors.NAVYBLUE5};
-  font: ${theme.fonts.contentMedium};
   display: ${({ $isQuotation }) => ($isQuotation ? "none" : "")};
 `;

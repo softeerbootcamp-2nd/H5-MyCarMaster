@@ -1,4 +1,3 @@
-import React from "react";
 import { styled } from "styled-components";
 import TextButton from "../Button/TextButton";
 import { useQuotationState } from "../../../contexts/QuotationContext";
