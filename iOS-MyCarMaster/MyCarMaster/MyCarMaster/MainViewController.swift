@@ -7,12 +7,13 @@
 
 import UIKit
 
-enum Step {
-    case trim
+enum Step: Int, CaseIterable {
+    case trim = 1
     case engine
     case wheelDrive
     case bodyType
     case exterior
+    case interior
 
     var title: String {
         switch self {
@@ -26,6 +27,8 @@ enum Step {
             return "바디 타입"
         case .exterior:
             return "외장 색상"
+        case .interior:
+            return "내장 색상"
         }
     }
 
@@ -40,6 +43,8 @@ enum Step {
         case .bodyType:
             return .exterior
         case .exterior:
+            return .interior
+        case .interior:
             return .trim
         }
     }
@@ -47,7 +52,7 @@ enum Step {
     var back: Step {
         switch self {
         case .trim:
-            return .exterior
+            return .interior
         case .engine:
             return .trim
         case .wheelDrive:
@@ -56,22 +61,13 @@ enum Step {
             return .wheelDrive
         case .exterior:
             return .bodyType
+        case .interior:
+            return .exterior
         }
     }
 
     var progress: Float {
-        switch self {
-        case .trim:
-            return 0.01
-        case .engine:
-            return 0.25
-        case .wheelDrive:
-            return 0.5
-        case .bodyType:
-            return 0.5
-        case .exterior:
-            return 0.5
-        }
+        return Float(self.rawValue) / Float(Self.allCases.count)
     }
 }
 
@@ -156,6 +152,8 @@ final class MainViewController: UIViewController {
             moveTo(BodyTypeViewController())
         case .exterior:
             moveTo(ExteriorViewController())
+        case .interior:
+            moveTo(InteriorViewController())
         }
     }
 
