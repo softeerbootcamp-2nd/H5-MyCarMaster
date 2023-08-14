@@ -18,7 +18,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class MakeUpEstimateRequest {
+public class CreateEstimateRequest {
 
 	@Schema(description = "모델 식별자", example = "1")
 	@NotNull(message = "modelId는 Null일 수 없습니다.")

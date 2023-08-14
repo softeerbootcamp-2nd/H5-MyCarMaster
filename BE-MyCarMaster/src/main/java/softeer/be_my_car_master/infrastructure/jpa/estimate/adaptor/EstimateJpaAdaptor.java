@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import lombok.RequiredArgsConstructor;
+import softeer.be_my_car_master.api.estimate.dto.request.CreateEstimateRequest;
 import softeer.be_my_car_master.api.estimate.dto.request.EstimateOptionDto;
-import softeer.be_my_car_master.api.estimate.dto.request.MakeUpEstimateRequest;
 import softeer.be_my_car_master.api.estimate.usecase.port.EstimatePort;
 import softeer.be_my_car_master.global.annotation.Adaptor;
 import softeer.be_my_car_master.infrastructure.jpa.body_type.entity.BodyTypeEntity;
@@ -21,7 +21,6 @@ import softeer.be_my_car_master.infrastructure.jpa.estimate.repository.EstimateJ
 import softeer.be_my_car_master.infrastructure.jpa.model.entity.ModelEntity;
 import softeer.be_my_car_master.infrastructure.jpa.model.repository.ModelJpaRepository;
 import softeer.be_my_car_master.infrastructure.jpa.option.entity.OptionEntity;
-import softeer.be_my_car_master.infrastructure.jpa.option.entity.TrimAdditionalOptionEntity;
 import softeer.be_my_car_master.infrastructure.jpa.option.repository.OptionJpaRepository;
 import softeer.be_my_car_master.infrastructure.jpa.trim.entity.TrimEntity;
 import softeer.be_my_car_master.infrastructure.jpa.trim.repository.TrimJpaRepository;
@@ -43,23 +42,23 @@ public class EstimateJpaAdaptor implements EstimatePort {
 	private final OptionJpaRepository optionJpaRepository;
 
 	@Override
-	public Long makeUpEstimate(MakeUpEstimateRequest makeUpEstimateRequest) {
-		ModelEntity model = modelJpaRepository.findById(makeUpEstimateRequest.getModelId()).get();
-		TrimEntity trim = trimJpaRepository.findById(makeUpEstimateRequest.getTrimId()).get();
-		EngineEntity engine = engineJpaRepository.findById(makeUpEstimateRequest.getEngineId()).get();
-		WheelDriveEntity wheelDrive = wheelDriveJpaRepository.findById(makeUpEstimateRequest.getWheelDriveId()).get();
-		BodyTypeEntity bodyType = bodyTypeJpaRepository.findById(makeUpEstimateRequest.getBodyTypeId()).get();
+	public Long createEstimate(CreateEstimateRequest createEstimateRequest) {
+		ModelEntity model = modelJpaRepository.findById(createEstimateRequest.getModelId()).get();
+		TrimEntity trim = trimJpaRepository.findById(createEstimateRequest.getTrimId()).get();
+		EngineEntity engine = engineJpaRepository.findById(createEstimateRequest.getEngineId()).get();
+		WheelDriveEntity wheelDrive = wheelDriveJpaRepository.findById(createEstimateRequest.getWheelDriveId()).get();
+		BodyTypeEntity bodyType = bodyTypeJpaRepository.findById(createEstimateRequest.getBodyTypeId()).get();
 		ExteriorColorEntity exteriorColor =
-			exteriorColorJpaRepository.findById(makeUpEstimateRequest.getExteriorColorId()).get();
+			exteriorColorJpaRepository.findById(createEstimateRequest.getExteriorColorId()).get();
 		InteriorColorEntity interiorColor =
-			interiorColorJpaRepository.findById(makeUpEstimateRequest.getInteriorColorId()).get();
+			interiorColorJpaRepository.findById(createEstimateRequest.getInteriorColorId()).get();
 
-		List<Long> selectOptionIds = makeUpEstimateRequest.getSelectOptions().stream()
+		List<Long> selectOptionIds = createEstimateRequest.getSelectOptions().stream()
 			.map(EstimateOptionDto::getId)
 			.collect(Collectors.toList());
 		List<OptionEntity> selectOptions = optionJpaRepository.findAllByIdIn(selectOptionIds);
 
-		List<Long> considerOptionIds = makeUpEstimateRequest.getConsiderOptions().stream()
+		List<Long> considerOptionIds = createEstimateRequest.getConsiderOptions().stream()
 			.map(EstimateOptionDto::getId)
 			.collect(Collectors.toList());
 		List<OptionEntity> considerOptions = optionJpaRepository.findAllByIdIn(considerOptionIds);

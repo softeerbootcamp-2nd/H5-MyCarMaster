@@ -13,9 +13,9 @@ import softeer.be_my_car_master.api.body_type.usecase.port.BodyTypePort;
 import softeer.be_my_car_master.api.color_exterior.usecase.port.ExteriorColorPort;
 import softeer.be_my_car_master.api.color_interior.usecase.port.InteriorColorPort;
 import softeer.be_my_car_master.api.engine.usecase.port.EnginePort;
+import softeer.be_my_car_master.api.estimate.dto.request.CreateEstimateRequest;
 import softeer.be_my_car_master.api.estimate.dto.request.EstimateOptionDto;
-import softeer.be_my_car_master.api.estimate.dto.request.MakeUpEstimateRequest;
-import softeer.be_my_car_master.api.estimate.dto.response.MakeUpEstimateResponse;
+import softeer.be_my_car_master.api.estimate.dto.response.CreateEstimateResponse;
 import softeer.be_my_car_master.api.estimate.exception.InvalidEstimationException;
 import softeer.be_my_car_master.api.estimate.usecase.port.EstimatePort;
 import softeer.be_my_car_master.api.model.usecase.port.ModelPort;
@@ -34,7 +34,7 @@ import softeer.be_my_car_master.global.annotation.UseCase;
 
 @UseCase
 @RequiredArgsConstructor
-public class MakeUpEstimateUseCase {
+public class CreateEstimateUseCase {
 
 	private final ModelPort modelPort;
 	private final TrimPort trimPort;
@@ -47,52 +47,52 @@ public class MakeUpEstimateUseCase {
 	private final EstimatePort estimatePort;
 
 	@Transactional
-	public MakeUpEstimateResponse execute(MakeUpEstimateRequest makeUpEstimateRequest) {
-		Long modelId = makeUpEstimateRequest.getModelId();
+	public CreateEstimateResponse execute(CreateEstimateRequest createEstimateRequest) {
+		Long modelId = createEstimateRequest.getModelId();
 		List<Model> models = modelPort.findModels();
 		validateModel(modelId, models);
 
 		List<Trim> trims = trimPort.findTrims(modelId);
-		validateTrim(makeUpEstimateRequest, trims);
+		validateTrim(createEstimateRequest, trims);
 
-		List<Engine> engines = enginePort.findSelectableEnginesByTrimId(makeUpEstimateRequest.getTrimId());
-		validateEngine(makeUpEstimateRequest, engines);
+		List<Engine> engines = enginePort.findSelectableEnginesByTrimId(createEstimateRequest.getTrimId());
+		validateEngine(createEstimateRequest, engines);
 
 		List<BodyType> bodyTypes = bodyTypePort.findSelectableBodyTypesByModelId(modelId);
-		validateBodyType(makeUpEstimateRequest, bodyTypes);
+		validateBodyType(createEstimateRequest, bodyTypes);
 
 		List<WheelDrive> wheelDrives =
-			wheelDrivePort.findSelectableWheelDrivesByTrimId(makeUpEstimateRequest.getTrimId());
+			wheelDrivePort.findSelectableWheelDrivesByTrimId(createEstimateRequest.getTrimId());
 		List<Long> unselectableWheelDriveIds =
-			wheelDrivePort.findUnselectableWheelDriveIdsByEngineId(makeUpEstimateRequest.getEngineId());
+			wheelDrivePort.findUnselectableWheelDriveIdsByEngineId(createEstimateRequest.getEngineId());
 		List<WheelDrive> selectableWheelDrives = wheelDrives.stream()
 			.filter(wheelDrive -> wheelDrive.isSelectable(unselectableWheelDriveIds))
 			.collect(Collectors.toList());
-		validateWheelDrive(makeUpEstimateRequest, selectableWheelDrives);
+		validateWheelDrive(createEstimateRequest, selectableWheelDrives);
 
 		List<ExteriorColor> exteriorColors =
-			exteriorColorPort.findSelectableExteriorColorsByTrimId(makeUpEstimateRequest.getTrimId());
-		validateExteriorColor(makeUpEstimateRequest, exteriorColors);
+			exteriorColorPort.findSelectableExteriorColorsByTrimId(createEstimateRequest.getTrimId());
+		validateExteriorColor(createEstimateRequest, exteriorColors);
 
 		List<InteriorColor> interiorColors =
-			interiorColorPort.findSelectableInteriorColorsByTrimId(makeUpEstimateRequest.getTrimId());
+			interiorColorPort.findSelectableInteriorColorsByTrimId(createEstimateRequest.getTrimId());
 		List<Long> unselectableInteriorColorIds =
 			interiorColorPort.findUnselectableInteriorColorIdsByExteriorColorId(
-				makeUpEstimateRequest.getExteriorColorId());
+				createEstimateRequest.getExteriorColorId());
 		List<InteriorColor> selectableInteriorColors = interiorColors.stream()
 			.filter(interiorColor -> interiorColor.isSelectable(unselectableInteriorColorIds))
 			.collect(Collectors.toList());
-		validateInteriorColor(makeUpEstimateRequest, selectableInteriorColors);
+		validateInteriorColor(createEstimateRequest, selectableInteriorColors);
 
-		List<Option> selectableOptions = optionPort.findSelectableOptionsByTrimId(makeUpEstimateRequest.getTrimId());
+		List<Option> selectableOptions = optionPort.findSelectableOptionsByTrimId(createEstimateRequest.getTrimId());
 		List<Long> unselectableOptionIdsByEngine
-			= optionPort.findUnselectableOptionIdsByEngineId(makeUpEstimateRequest.getEngineId());
+			= optionPort.findUnselectableOptionIdsByEngineId(createEstimateRequest.getEngineId());
 		List<Long> unselectableOptionIdsByWheelDrive
-			= optionPort.findUnselectableOptionIdsByWheelDriveId(makeUpEstimateRequest.getWheelDriveId());
+			= optionPort.findUnselectableOptionIdsByWheelDriveId(createEstimateRequest.getWheelDriveId());
 		List<Long> unselectableOptionIdsByBodyType
-			= optionPort.findUnselectableOptionIdsByBodyTypeId(makeUpEstimateRequest.getBodyTypeId());
+			= optionPort.findUnselectableOptionIdsByBodyTypeId(createEstimateRequest.getBodyTypeId());
 		List<Long> unselectableOptionIdsByInteriorColor =
-			optionPort.findUnselectableOptionIdsByInteriorColorId(makeUpEstimateRequest.getInteriorColorId());
+			optionPort.findUnselectableOptionIdsByInteriorColorId(createEstimateRequest.getInteriorColorId());
 
 		Set<Long> unselectableOptionIdsSet = combineUnselectableOptionIds(
 			unselectableOptionIdsByEngine,
@@ -105,10 +105,10 @@ public class MakeUpEstimateUseCase {
 			selectableOptions,
 			unselectableOptionIdsSet
 		);
-		validateOptions(makeUpEstimateRequest, filteredSelectableOptions);
+		validateOptions(createEstimateRequest, filteredSelectableOptions);
 
-		Long estimateId = estimatePort.makeUpEstimate(makeUpEstimateRequest);
-		return MakeUpEstimateResponse.from(estimateId);
+		Long estimateId = estimatePort.createEstimate(createEstimateRequest);
+		return CreateEstimateResponse.from(estimateId);
 	}
 
 	private void validateModel(Long modelId, List<Model> models) {
@@ -118,76 +118,76 @@ public class MakeUpEstimateUseCase {
 			.orElseThrow(() -> InvalidEstimationException.EXCEPTION);
 	}
 
-	private void validateTrim(MakeUpEstimateRequest makeUpEstimateRequest, List<Trim> trims) {
+	private void validateTrim(CreateEstimateRequest createEstimateRequest, List<Trim> trims) {
 		trims.stream()
-			.filter(trim -> trim.isRightTrim(makeUpEstimateRequest.getTrimId(), makeUpEstimateRequest.getTrimPrice()))
+			.filter(trim -> trim.isRightTrim(createEstimateRequest.getTrimId(), createEstimateRequest.getTrimPrice()))
 			.findAny()
 			.orElseThrow(() -> InvalidEstimationException.EXCEPTION);
 	}
 
-	private void validateEngine(MakeUpEstimateRequest makeUpEstimateRequest, List<Engine> engines) {
+	private void validateEngine(CreateEstimateRequest createEstimateRequest, List<Engine> engines) {
 		engines.stream()
 			.filter(engine -> engine.isRightEngine(
-				makeUpEstimateRequest.getEngineId(),
-				makeUpEstimateRequest.getEnginePrice()
+				createEstimateRequest.getEngineId(),
+				createEstimateRequest.getEnginePrice()
 			))
 			.findAny()
 			.orElseThrow(() -> InvalidEstimationException.EXCEPTION);
 	}
 
-	private void validateBodyType(MakeUpEstimateRequest makeUpEstimateRequest, List<BodyType> bodyTypes) {
+	private void validateBodyType(CreateEstimateRequest createEstimateRequest, List<BodyType> bodyTypes) {
 		bodyTypes.stream()
 			.filter(bodyType -> bodyType.isRightBodyType(
-				makeUpEstimateRequest.getBodyTypeId(),
-				makeUpEstimateRequest.getBodyTypePrice()
+				createEstimateRequest.getBodyTypeId(),
+				createEstimateRequest.getBodyTypePrice()
 			))
 			.findAny()
 			.orElseThrow(() -> InvalidEstimationException.EXCEPTION);
 	}
 
 	private void validateWheelDrive(
-		MakeUpEstimateRequest makeUpEstimateRequest,
+		CreateEstimateRequest createEstimateRequest,
 		List<WheelDrive> wheelDrives
 	) {
 		wheelDrives.stream()
 			.filter(wheelDrive -> wheelDrive.isRightWheelDrive(
-				makeUpEstimateRequest.getWheelDriveId(),
-				makeUpEstimateRequest.getWheelDrivePrice()
+				createEstimateRequest.getWheelDriveId(),
+				createEstimateRequest.getWheelDrivePrice()
 			))
 			.findAny()
 			.orElseThrow(() -> InvalidEstimationException.EXCEPTION);
 	}
 
 	private void validateExteriorColor(
-		MakeUpEstimateRequest makeUpEstimateRequest,
+		CreateEstimateRequest createEstimateRequest,
 		List<ExteriorColor> exteriorColors
 	) {
 		exteriorColors.stream()
 			.filter(exteriorColor -> exteriorColor.isRightExteriorColor(
-				makeUpEstimateRequest.getExteriorColorId(),
-				makeUpEstimateRequest.getExteriorColorPrice()
+				createEstimateRequest.getExteriorColorId(),
+				createEstimateRequest.getExteriorColorPrice()
 			))
 			.findAny()
 			.orElseThrow(() -> InvalidEstimationException.EXCEPTION);
 	}
 
 	private void validateInteriorColor(
-		MakeUpEstimateRequest makeUpEstimateRequest,
+		CreateEstimateRequest createEstimateRequest,
 		List<InteriorColor> selectableInteriorColors
 	) {
 		selectableInteriorColors.stream()
 			.filter(interiorColor -> interiorColor.isRightInteriorColor(
-				makeUpEstimateRequest.getInteriorColorId(),
-				makeUpEstimateRequest.getInteriorColorPrice()
+				createEstimateRequest.getInteriorColorId(),
+				createEstimateRequest.getInteriorColorPrice()
 			))
 			.findAny()
 			.orElseThrow(() -> InvalidEstimationException.EXCEPTION);
 	}
 
-	private void validateOptions(MakeUpEstimateRequest makeUpEstimateRequest, List<Option> filteredSelectableOptions) {
+	private void validateOptions(CreateEstimateRequest createEstimateRequest, List<Option> filteredSelectableOptions) {
 		List<Long> optionIds = Stream.concat(
-				makeUpEstimateRequest.getSelectOptions().stream(),
-				makeUpEstimateRequest.getConsiderOptions().stream()
+				createEstimateRequest.getSelectOptions().stream(),
+				createEstimateRequest.getConsiderOptions().stream()
 			)
 			.map(EstimateOptionDto::getId)
 			.collect(Collectors.toList());

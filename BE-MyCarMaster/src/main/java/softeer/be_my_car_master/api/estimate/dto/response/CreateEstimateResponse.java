@@ -9,11 +9,11 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class MakeUpEstimateResponse {
+public class CreateEstimateResponse {
 
 	private Long estimateId;
 
-	public static MakeUpEstimateResponse from(Long id) {
-		return new MakeUpEstimateResponse(id);
+	public static CreateEstimateResponse from(Long id) {
+		return new CreateEstimateResponse(id);
 	}
 }

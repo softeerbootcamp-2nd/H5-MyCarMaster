@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import softeer.be_my_car_master.api.estimate.dto.request.MakeUpEstimateRequest;
-import softeer.be_my_car_master.api.estimate.dto.response.MakeUpEstimateResponse;
-import softeer.be_my_car_master.api.estimate.usecase.MakeUpEstimateUseCase;
+import softeer.be_my_car_master.api.estimate.dto.request.CreateEstimateRequest;
+import softeer.be_my_car_master.api.estimate.dto.response.CreateEstimateResponse;
+import softeer.be_my_car_master.api.estimate.usecase.CreateEstimateUseCase;
 import softeer.be_my_car_master.global.response.Response;
 
 @RestController
@@ -18,11 +18,11 @@ import softeer.be_my_car_master.global.response.Response;
 @Tag(name = "Estimate", description = "Estimate API Document")
 public class EstimateController {
 
-	private final MakeUpEstimateUseCase makeUpEstimateUseCase;
+	private final CreateEstimateUseCase createEstimateUseCase;
 
 	@PostMapping("/estimate")
-	public Response makeUpEstimate(@RequestBody @Valid MakeUpEstimateRequest makeUpEstimateRequest) {
-		MakeUpEstimateResponse makeUpEstimateResponse = makeUpEstimateUseCase.execute(makeUpEstimateRequest);
-		return Response.createSuccessResponse(makeUpEstimateResponse);
+	public Response createEstimate(@RequestBody @Valid CreateEstimateRequest createEstimateRequest) {
+		CreateEstimateResponse createEstimateResponse = createEstimateUseCase.execute(createEstimateRequest);
+		return Response.createSuccessResponse(createEstimateResponse);
 	}
 }
