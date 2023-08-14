@@ -23,4 +23,8 @@ public class Engine {
 	private Double fuelMax;
 	private Integer power;
 	private Double toque;
+
+	public boolean isRightEngine(Long engineId, Integer enginePrice) {
+		return engineId.equals(id) && enginePrice.equals(price);
+	}
 }

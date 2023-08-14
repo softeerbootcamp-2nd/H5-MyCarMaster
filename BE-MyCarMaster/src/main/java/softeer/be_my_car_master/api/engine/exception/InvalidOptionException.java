@@ -1,8 +1,10 @@
-package softeer.be_my_car_master.global.exception;
+package softeer.be_my_car_master.api.engine.exception;
 
+import softeer.be_my_car_master.global.exception.MyCarMasterException;
 import softeer.be_my_car_master.global.response.ResponseStatus;
 
 public class InvalidOptionException extends MyCarMasterException {
+
 	public static final MyCarMasterException EXCEPTION = new InvalidOptionException();
 
 	private InvalidOptionException() {

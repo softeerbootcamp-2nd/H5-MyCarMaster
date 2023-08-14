@@ -24,4 +24,8 @@ public class InteriorColor {
 	public boolean isSelectable(List<Long> unselectableColorIds) {
 		return !unselectableColorIds.contains(id);
 	}
+
+	public boolean isRightInteriorColor(Long interiorColorId, Integer interiorColorPrice) {
+		return interiorColorId.equals(id) && interiorColorPrice.equals(price);
+	}
 }
