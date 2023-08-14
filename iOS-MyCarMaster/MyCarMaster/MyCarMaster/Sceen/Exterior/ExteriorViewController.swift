@@ -1,8 +1,8 @@
 //
-//  EngineViewController.swift
+//  ExteriorImageView.swift
 //  MyCarMaster
 //
-//  Created by SEUNGMIN OH on 2023/08/11.
+//  Created by SEUNGMIN OH on 2023/08/12.
 //
 
 import UIKit
@@ -10,18 +10,16 @@ import UIKit
 import MCMNetwork
 import MVIFoundation
 
-final class EngineViewController: UIViewController {
+final class ExteriorViewController: UIViewController {
 
-    typealias ListCellClass = BasicListCell
+    typealias ListCellClass = ColorListCell
 
-    var dummyEngineList = [
-        Engine(model: "펠리세이드", name: "가솔린 3.8", ratio: 54, description: "엔진의 진동이 적어 편안하고 조용한 드라이빙 감성을 제공합니다", fuelMin: 8.0, fuelMax: 9.2, power: 295, toque: 36.2, price: 0),
-        Engine(model: "펠리세이드", name: "디젤 2.2", ratio: 54, description: "높은 토크로 파워풀한 드라이빙이 가능하며, 차급대비 연비 효율이 우수합니다", fuelMin: 11.4, fuelMax: 12.4, power: 202, toque: 45.0, price: 1000000)
-    ]
-    var engineList: [Engine] = []
+    var dummyExteriorList: [Exterior] = []
 
-    private var contentView: EngineView<ListCellClass> {
-        return view as? EngineView ?? EngineView()
+    var exteriorList: [Exterior] = []
+
+    private var contentView: ExteriorView<ListCellClass> {
+        return view as? ExteriorView ?? ExteriorView()
     }
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -34,14 +32,14 @@ final class EngineViewController: UIViewController {
 
     override func loadView() {
         super.loadView()
-        view = EngineView<ListCellClass>(frame: .zero)
+        view = ExteriorView<ListCellClass>(frame: .zero)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
 
-        let request = URLRequest(url: URL(string: Dependency.serverURL + "engines?trimId=1")!)
+        let request = URLRequest(url: URL(string: Dependency.serverURL + "exterior-colors?trimId=1")!)
         URLSession.shared.dataTask(with: request) { data, response, error in
             guard error == nil else {
                 print(error?.localizedDescription)
@@ -53,16 +51,15 @@ final class EngineViewController: UIViewController {
                 return
             }
 
-            print("Engine:", response.statusCode)
+            print("Exterior:", response.statusCode)
             guard 200..<300 ~= response.statusCode else {
                 return
             }
 
             if let data,
-               case let .engines(engineDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
-                self.engineList = engineDTOList.map { Engine($0) }
-                print(self.engineList)
+               case let .exteriors(exteriorDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
                 DispatchQueue.main.async {
+                    self.exteriorList = exteriorDTOList.map { Exterior($0) }
                     self.contentView.listView.reloadData()
                 }
             } else {
@@ -82,14 +79,13 @@ final class EngineViewController: UIViewController {
     }
 }
 
-extension EngineViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ExteriorViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        NSLog("engineList: %d개", engineList.count)
-        return engineList.count
+        return exteriorList.count
     }
 
     func collectionView(
@@ -97,21 +93,18 @@ extension EngineViewController: UICollectionViewDelegate, UICollectionViewDataSo
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
 
-        print("indexPath.row:",indexPath.row)
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: ListCellClass.reuseIdentifier,
             for: indexPath
         ) as? ListCellClass else {
             fatalError("등록되지 않은 cell입니다.")
         }
-
-        let cellState = engineList[indexPath.row].basicListCellState
-        cell.configure(with: cellState)
+        cell.configure(with: exteriorList[indexPath.row])
 
         // FIXME: 초기값 선택이 동작하지 않음
-//        if indexPath.row == 0 {
+//        if indexPath.item == 0 {
 //            cell.isSelected = true
-//            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .top)
+//            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .init())
 //        }
         return cell
     }

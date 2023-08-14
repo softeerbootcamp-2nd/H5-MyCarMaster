@@ -9,7 +9,8 @@ import UIKit
 
 import MCMResource
 
-final class TrimView: BasicStepView {
+final class TrimView<ListCellClass>: BasicStepView<ListCellClass>
+where ListCellClass: UICollectionViewCell & Selectable & ContentSizeEstimatable {
 
     private let recommendLabel: UILabel = {
         let label = UILabel()

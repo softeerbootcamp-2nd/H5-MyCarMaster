@@ -19,6 +19,16 @@ enum Result: Codable {
     case engines([EngineDTO])
     case wheelDrives([WheelDriveDTO])
     case bodyTypes([BodyTypeDTO])
+    case exteriors([ExteriorDTO])
+
+    enum CodingKeys: String, CodingKey {
+        case unknown
+        case trims
+        case engines
+        case wheelDrives
+        case bodyTypes
+        case exteriors = "colors"
+    }
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -40,6 +50,11 @@ enum Result: Codable {
 
         if let bodyTypeDTOList = try? container.decode([BodyTypeDTO].self, forKey: .bodyTypes) {
             self = .bodyTypes(bodyTypeDTOList)
+            return
+        }
+
+        if let exteriorDTOList = try? container.decode([ExteriorDTO].self, forKey: .exteriors) {
+            self = .exteriors(exteriorDTOList)
             return
         }
 

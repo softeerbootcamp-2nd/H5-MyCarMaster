@@ -12,6 +12,7 @@ enum Step {
     case engine
     case wheelDrive
     case bodyType
+    case exterior
 
     var title: String {
         switch self {
@@ -23,6 +24,8 @@ enum Step {
             return "구동 방식"
         case .bodyType:
             return "바디 타입"
+        case .exterior:
+            return "외장 색상"
         }
     }
 
@@ -35,6 +38,8 @@ enum Step {
         case .wheelDrive:
             return .bodyType
         case .bodyType:
+            return .exterior
+        case .exterior:
             return .trim
         }
     }
@@ -42,13 +47,15 @@ enum Step {
     var back: Step {
         switch self {
         case .trim:
-            return .bodyType
+            return .exterior
         case .engine:
             return .trim
         case .wheelDrive:
             return .engine
         case .bodyType:
             return .wheelDrive
+        case .exterior:
+            return .bodyType
         }
     }
 
@@ -61,6 +68,8 @@ enum Step {
         case .wheelDrive:
             return 0.5
         case .bodyType:
+            return 0.5
+        case .exterior:
             return 0.5
         }
     }
@@ -145,6 +154,8 @@ final class MainViewController: UIViewController {
             moveTo(WheelDriveViewController())
         case .bodyType:
             moveTo(BodyTypeViewController())
+        case .exterior:
+            moveTo(ExteriorViewController())
         }
     }
 

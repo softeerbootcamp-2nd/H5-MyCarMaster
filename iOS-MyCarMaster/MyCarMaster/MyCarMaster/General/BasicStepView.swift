@@ -7,7 +7,8 @@
 
 import UIKit
 
-class BasicStepView: UIView {
+class BasicStepView<ListCellClass>: UIView
+where ListCellClass: UICollectionViewCell & ContentSizeEstimatable & Selectable {
 
     let inset: CGFloat = 16
     let firstSpacing: CGFloat = 16
@@ -24,6 +25,8 @@ class BasicStepView: UIView {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
+
+    private var collectionViewCellEstimatedHeight: CGFloat = ListCellClass.intrinsicContentSize.height
 
     lazy var listView: UICollectionView = {
         let listView = UICollectionView(frame: .zero, collectionViewLayout: createListLayout())
@@ -44,6 +47,7 @@ class BasicStepView: UIView {
 
     func configureUI() {
         backgroundColor = .white
+        listView.register(ListCellClass.self, forCellWithReuseIdentifier: ListCellClass.reuseIdentifier)
     }
 
     func configureLayout() {
@@ -69,6 +73,8 @@ class BasicStepView: UIView {
         NSLayoutConstraint.activate([
             previewImageView.centerXAnchor.constraint(equalTo: previewView.centerXAnchor),
             previewImageView.centerYAnchor.constraint(equalTo: previewView.centerYAnchor),
+            previewImageView.widthAnchor.constraint(lessThanOrEqualTo: previewView.widthAnchor, multiplier: 1.0),
+            previewImageView.heightAnchor.constraint(lessThanOrEqualTo: previewView.heightAnchor, multiplier: 1.0),
         ])
     }
 }
@@ -77,7 +83,7 @@ extension BasicStepView {
     private func createListLayout() -> UICollectionViewLayout {
         let layoutSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .absolute(120)
+            heightDimension: .estimated(collectionViewCellEstimatedHeight)
         )
         let item = NSCollectionLayoutItem(layoutSize: layoutSize)
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: layoutSize, subitems: [item])
@@ -98,10 +104,6 @@ extension BasicStepView {
 
     func setDataSource(_ dataSource: UICollectionViewDataSource) {
         listView.dataSource = dataSource
-    }
-
-    func registerCellClass(_ cellClass: UICollectionViewCell.Type) {
-        listView.register(cellClass, forCellWithReuseIdentifier: cellClass.reuseIdentifier)
     }
 
     func updateLayout() {

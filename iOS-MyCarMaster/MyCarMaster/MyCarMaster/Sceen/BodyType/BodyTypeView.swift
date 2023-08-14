@@ -7,7 +7,9 @@
 
 import UIKit
 
-final class BodyTypeView: BasicStepView {
+final class BodyTypeView<ListCellClass>: BasicStepView<ListCellClass>
+where ListCellClass: UICollectionViewCell & ContentSizeEstimatable & Selectable {
+
     override func configureUI() {
         super.configureUI()
         previewImageView.image = UIImage(named: "BodyType_7")
