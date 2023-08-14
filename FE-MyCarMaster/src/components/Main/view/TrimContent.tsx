@@ -1,9 +1,6 @@
 import styled from "styled-components";
-import {
-  Trims,
-  useTrimDispatch,
-  useTrimState,
-} from "../../../contexts/TrimContext";
+import { useTrimDispatch, useTrimState } from "../../../contexts/TrimContext";
+import { Trims } from "../../../types/trim.types";
 import useFetch from "../../../hooks/useFetch";
 import { useModelState } from "../../../contexts/ModelContext";
 import { useEffect } from "react";
@@ -37,7 +34,7 @@ function TrimContent() {
     }
   }, [data, trimDispatch]);
 
-  return trimList.length && <TrimImage src={trimList[trimId - 1].imgUrl} />;
+  return trimList?.length && <TrimImage src={trimList[trimId - 1].imgUrl} />;
 }
 
 const TrimImage = styled.img`

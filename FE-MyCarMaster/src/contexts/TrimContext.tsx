@@ -1,26 +1,5 @@
 import { useReducer, createContext, useContext } from "react";
-
-export type Trims = {
-  id: number;
-  name: string;
-  description: string;
-  price: number;
-  ratio: number;
-  imgUrl: string;
-};
-
-type TrimState = {
-  trimId: number;
-  trimList: Trims[];
-};
-
-type TrimAction = {
-  type: "SELECT_TRIM" | "SET_TRIM_LIST";
-  payload: {
-    trimId?: number;
-    trimList?: Trims[];
-  };
-};
+import { TrimAction, TrimState, Trims } from "../types/trim.types";
 
 const initialTrimState: TrimState = {
   trimId: 1,

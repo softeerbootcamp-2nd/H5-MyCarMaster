@@ -1,6 +1,6 @@
-import React, { createElement } from "react";
+import React, { createElement, useEffect, useState } from "react";
 import { styled } from "styled-components";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { ModelProvider } from "./contexts/ModelContext";
 import { TrimProvider } from "./contexts/TrimContext";
@@ -13,15 +13,17 @@ import Home from "./pages/Home";
 import Estimation from "./pages/Estimation";
 import Quotation from "./pages/Quotation";
 
+type ContextProvider = React.ComponentType<{ children: React.ReactNode }>;
+
 const AppProvider = ({
   providers,
   children,
 }: {
-  providers: any[];
+  providers: ContextProvider[];
   children: React.ReactNode;
 }) =>
   providers.reduce(
-    (prev: React.ReactNode, context: any) =>
+    (prev: React.ReactNode, context: ContextProvider) =>
       createElement(context, {
         children: prev,
       }),
@@ -29,6 +31,13 @@ const AppProvider = ({
   );
 
 function App() {
+  const location = useLocation();
+  const [isEstimation, setIsEstimation] = useState<boolean>(true);
+
+  useEffect(() => {
+    setIsEstimation(location.pathname === "/estimation");
+  }, [location.pathname]);
+
   return (
     <ThemeProvider theme={theme}>
       <AppProvider
@@ -48,7 +57,7 @@ function App() {
             <Route path="/quotation" element={<Quotation />} />
           </Routes>
         </Container>
-        <Filler />
+        {isEstimation && <Filler />}
       </AppProvider>
     </ThemeProvider>
   );
@@ -65,7 +74,6 @@ const Container = styled.div`
   transform: translate(-50%, -50%);
 
   width: 80rem;
-  height: 45rem;
 `;
 
 const Filler = styled.div`
@@ -73,7 +81,7 @@ const Filler = styled.div`
   top: 64%;
   width: 100%;
   height: 36%;
-  background-color: #f2f2f2;
+  background-color: ${({ theme }) => theme.colors.GREY1};
   z-index: -1;
 `;
 

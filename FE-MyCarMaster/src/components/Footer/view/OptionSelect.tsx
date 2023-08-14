@@ -44,9 +44,9 @@ export default function OptionSelect() {
             $id={option.id}
             $name={option.name}
             $description={option.description}
-            $imgUrl={option.imgUrl}
             $ratio={option.ratio}
             $price={option.price}
+            $switch="option"
             $choice={selectedOption.includes(option.id)}
             $considered={consideredOption.includes(option.id)}
             handleClick={() => changeOptionId(option.id)}

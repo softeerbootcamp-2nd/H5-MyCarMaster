@@ -32,7 +32,7 @@ export default function BodyTypeSelectView() {
 
   return (
     <>
-      {engineList.length &&
+      {engineList?.length &&
         engineList.map((engine) => {
           return (
             <OptionBox
@@ -40,9 +40,9 @@ export default function BodyTypeSelectView() {
               $id={engine.id}
               $name={engine.name}
               $description={engine.description}
-              $imgUrl={engine.imgUrl}
               $ratio={engine.ratio}
               $price={engine.price}
+              $switch="detail"
               $choice={engine.id === engineId}
               handleClick={() => selectEngine(engine.id)}
             />

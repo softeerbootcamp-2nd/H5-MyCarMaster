@@ -5,6 +5,7 @@ import { useQuotationState } from "../../../contexts/QuotationContext";
 
 function NavigationList() {
   const quotationState = useQuotationState();
+  const { pathname } = window.location;
 
   return (
     <Container>
@@ -22,7 +23,7 @@ function NavigationList() {
         quotation={quotationState.optionQuotation}
       />
       <NavigationItem name={"견적서 완성"} />
-      <EstimatedPrice />
+      {pathname === "/estimation" && <EstimatedPrice />}
     </Container>
   );
 }

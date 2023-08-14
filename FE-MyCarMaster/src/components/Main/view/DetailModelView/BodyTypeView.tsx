@@ -1,9 +1,9 @@
 import { styled } from "styled-components";
 import {
-  BodyTypes,
   useDetailDispatch,
   useDetailState,
 } from "../../../../contexts/DetailContext";
+import { BodyTypes } from "../../../../types/detail.types";
 import { useModelState } from "../../../../contexts/ModelContext";
 import useFetch from "../../../../hooks/useFetch";
 import { useEffect } from "react";
@@ -38,7 +38,9 @@ function BodyTypeView() {
   }, [data, bodyTypeDispatch]);
 
   return (
-    bodyTypeList && <BodyTypeImg src={bodyTypeList[bodyTypeId - 1].imgUrl} />
+    bodyTypeList?.length && (
+      <BodyTypeImg src={bodyTypeList[bodyTypeId - 1].imgUrl} />
+    )
   );
 }
 

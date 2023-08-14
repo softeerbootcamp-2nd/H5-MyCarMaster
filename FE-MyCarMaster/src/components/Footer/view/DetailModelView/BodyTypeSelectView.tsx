@@ -31,7 +31,7 @@ export default function BodyTypeSelectView() {
 
   return (
     <>
-      {bodyTypeList &&
+      {bodyTypeList?.length &&
         bodyTypeList.map((bodyType) => {
           return (
             <OptionBox
@@ -39,9 +39,9 @@ export default function BodyTypeSelectView() {
               $id={bodyType.id}
               $name={bodyType.name}
               $description={bodyType.description}
-              $imgUrl={bodyType.imgUrl}
               $ratio={bodyType.ratio}
               $price={bodyType.price}
+              $switch="detail"
               $choice={bodyType.id === bodyTypeId}
               handleClick={() => selectBodyType(bodyType.id)}
             />

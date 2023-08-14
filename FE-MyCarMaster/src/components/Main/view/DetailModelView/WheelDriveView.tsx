@@ -1,9 +1,9 @@
 import { styled } from "styled-components";
 import {
-  WheelDrives,
   useDetailDispatch,
   useDetailState,
 } from "../../../../contexts/DetailContext";
+import { WheelDrives } from "../../../../types/detail.types";
 import { useTrimState } from "../../../../contexts/TrimContext";
 import useFetch from "../../../../hooks/useFetch";
 import { useEffect } from "react";
@@ -19,6 +19,7 @@ function WheelDriveView() {
 
   const { trimId } = useTrimState();
   const { engineId, wheelDriveId, wheelDriveList } = useDetailState();
+
   const wheelDriveDispatch = useDetailDispatch();
 
   const { data } = useFetch<FetchWheelDriveProps>(
@@ -38,7 +39,7 @@ function WheelDriveView() {
   }, [data, wheelDriveDispatch]);
 
   return (
-    wheelDriveList && (
+    wheelDriveList?.length && (
       <WheelDriveImg src={wheelDriveList[wheelDriveId - 1].imgUrl} />
     )
   );

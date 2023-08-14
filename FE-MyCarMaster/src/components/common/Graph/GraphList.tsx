@@ -5,7 +5,7 @@ import { useDetailState } from "../../../contexts/DetailContext";
 function GraphList() {
   const { engineId, engineList } = useDetailState();
   return (
-    engineList.length && (
+    engineList?.length && (
       <Container>
         <GraphItem
           koName="최고출력"

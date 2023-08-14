@@ -1,37 +1,5 @@
 import { useReducer, createContext, useContext } from "react";
-import {
-  TrimQuotationType,
-  DetailQuotationType,
-  CarPaintQuotationType,
-  OptionQuotationType,
-} from "../types/quotation.types";
-
-type QuotationState = {
-  navigationId: number;
-  isFirst: boolean[];
-  trimQuotation: TrimQuotationType;
-  detailQuotation: DetailQuotationType;
-  carPaintQuotation: CarPaintQuotationType;
-  optionQuotation: OptionQuotationType;
-};
-
-type QuotationAction = {
-  type:
-    | "NAVIGATE"
-    | "SET_TRIM_QUOTATION"
-    | "SET_DETAIL_QUOTATION"
-    | "SET_SELECT_QUOTATION"
-    | "SET_CONSIDER_QUOTATION"
-    | "SET_CAR_PAINT_QUOTATION";
-  payload: {
-    id?: number;
-    navigationId?: number;
-    isFirst?: boolean[];
-    type?: string;
-    name?: string | undefined;
-    price?: number | undefined;
-  };
-};
+import { QuotationAction, QuotationState } from "../types/quotation.types";
 
 const initialQuotationState: QuotationState = {
   navigationId: 0,
@@ -48,8 +16,8 @@ const initialQuotationState: QuotationState = {
     bodyTypeQuotation: { name: "", price: 0 },
   },
   carPaintQuotation: {
-    exteriorColorQuotation: { name: "", price: 0 },
-    interiorColorQuotation: { name: "", price: 0 },
+    exteriorColorQuotation: { name: "", price: 0, imgUrl: "" },
+    interiorColorQuotation: { name: "", price: 0, imgUrl: "" },
   },
   optionQuotation: {
     selectedQuotation: [],
@@ -106,11 +74,12 @@ const quotationReducer = (
           [action.payload.type as string]: {
             name: action.payload.name as string,
             price: action.payload.price as number,
+            imgUrl: action.payload.imgUrl as string,
           },
         },
       };
     case "SET_SELECT_QUOTATION": {
-      const { id, name, price } = action.payload;
+      const { id, name, price, imgUrl, category, description } = action.payload;
       const isOptionSelected = state.optionQuotation.selectedQuotation.some(
         (option) => option.id === (id as number)
       );
@@ -129,13 +98,16 @@ const quotationReducer = (
                   id: id as number,
                   name: name as string,
                   price: price as number,
+                  imgUrl: imgUrl as string,
+                  category: category as string,
+                  description: description as string,
                 },
               ],
         },
       };
     }
     case "SET_CONSIDER_QUOTATION": {
-      const { id, name, price } = action.payload;
+      const { id, name, price, imgUrl, category, description } = action.payload;
       const isOptionConsidered = state.optionQuotation.consideredQuotation.some(
         (option) => option.id === (id as number)
       );
@@ -156,6 +128,9 @@ const quotationReducer = (
                   id: id as number,
                   name: name as string,
                   price: price as number,
+                  imgUrl: imgUrl as string,
+                  category: category as string,
+                  description: description as string,
                 },
               ],
         },

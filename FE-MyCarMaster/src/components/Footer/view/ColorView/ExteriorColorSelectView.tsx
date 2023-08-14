@@ -25,6 +25,7 @@ export default function InteriorColorSelectView() {
         type: "exteriorColorQuotation",
         name: exteriorList[id - 1].name,
         price: exteriorList[id - 1].price,
+        imgUrl: exteriorList[id - 1].colorImgUrl,
       },
     });
     carPaintDispatch({
@@ -37,7 +38,7 @@ export default function InteriorColorSelectView() {
 
   return (
     <>
-      {exteriorList.length &&
+      {exteriorList?.length &&
         exteriorList.map((exterior) => {
           return (
             <OuterColorBox

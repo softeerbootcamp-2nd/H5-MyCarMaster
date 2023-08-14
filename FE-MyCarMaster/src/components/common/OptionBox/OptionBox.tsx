@@ -1,172 +1,99 @@
-import {
-  useQuotationState,
-  useQuotationDispatch,
-} from "../../../contexts/QuotationContext";
-import { useOptionDispatch } from "../../../contexts/OptionContext";
-import theme from "../../../styles/Theme";
-import Button from "../Button/Button";
 import OptionBoxName from "./OptionBoxName";
-import OptionBoxTopPrice from "./OptionBoxTopPrice";
+import OptionBoxButtonContainer from "./OptionBoxButtonContainer";
 import {
   Container,
   TopContainer,
   BottomContainer,
-  ButtonContainer,
   Detail,
   Price,
-  ActiveColor,
-  DefaultColor,
+  ActiveCSS,
+  DefaultCSS,
 } from "./style";
 
 type OptionBoxProp = {
   $id: number;
-  $name?: string;
-  $description?: string;
-  $price?: number;
-  $ratio?: number;
-  $imgUrl?: string;
-  $choice?: boolean;
+  $name: string;
+  $description: string;
+  $price: number | undefined;
+  $ratio: number | undefined;
+  $choice: boolean;
+  $switch: string;
   $considered?: boolean;
+  $none?: boolean; // 추후, 선택할 수 없는 옵션에 대한 처리를 위해 추가
   handleClick?: () => void;
 };
 
-function OptionBox(props: OptionBoxProp) {
-  const { navigationId } = useQuotationState();
-  const quotationDispatch = useQuotationDispatch();
-  const optionDispatch = useOptionDispatch();
-
-  const considerButtonHandler = (id: number) => {
-    optionDispatch({
-      type: "SET_CHOICE_OPTION",
-      payload: {
-        where: "consideredOption",
-        id: id,
-      },
-    });
-    quotationDispatch({
-      type: "SET_CONSIDER_QUOTATION",
-      payload: {
-        id: id,
-        name: props.$name,
-        price: props.$price,
-      },
-    });
-  };
-
-  const addButtonHandler = (id: number) => {
-    optionDispatch({
-      type: "SET_CHOICE_OPTION",
-      payload: {
-        where: "selectedOption",
-        id: id,
-      },
-    });
-    quotationDispatch({
-      type: "SET_SELECT_QUOTATION",
-      payload: {
-        id: id,
-        name: props.$name,
-        price: props.$price,
-      },
-    });
-  };
-
+function OptionBox({
+  $id,
+  $name,
+  $description,
+  $price,
+  $ratio,
+  $choice,
+  $switch,
+  $considered,
+  handleClick,
+}: OptionBoxProp) {
   return (
     <Container
-      onClick={props.handleClick}
+      onClick={handleClick}
       $style={
-        props.$choice
-          ? ActiveColor.Background
-          : props.$considered
-          ? ActiveColor.BackgroundConsider
-          : DefaultColor.Background
+        $choice
+          ? ActiveCSS.Background
+          : $considered
+          ? ActiveCSS.BackgroundConsider
+          : DefaultCSS.Background
       }
     >
       <TopContainer>
         <OptionBoxName
-          $name={props.$name}
-          $description={props.$description}
-          $ratio={props.$ratio}
-          choice={props.$choice}
-          considered={props.$considered}
-          isDetail={navigationId !== 0 && navigationId !== 6}
-          isTrim={navigationId === 0}
-        />
-        <OptionBoxTopPrice
-          $description={props.$description}
-          $price={props.$price}
-          choice={props.$choice}
-          isTrim={navigationId === 0}
+          name={$name}
+          description={$description}
+          ratio={$ratio}
+          choice={$choice}
+          considered={$considered}
+          isDetail={$switch === "detail"}
+          isTrim={$switch === "trim"}
         />
       </TopContainer>
 
-      {navigationId === 6 && (
+      {$switch === "option" && (
         <Price
           $style={
-            props.$considered
-              ? ActiveColor.Price
-              : props.$choice
-              ? ActiveColor.Price
-              : DefaultColor.Price
+            $considered
+              ? ActiveCSS.Price
+              : $choice
+              ? ActiveCSS.Price
+              : DefaultCSS.Price
           }
         >
-          + {props.$price?.toLocaleString("ko-KR")} 원
+          + {$price?.toLocaleString("ko-KR")} 원
         </Price>
       )}
 
       <BottomContainer>
-        {navigationId === 6 ? (
-          <>
-            <ButtonContainer>
-              <Button
-                $x={4.875}
-                $y={1.5}
-                $backgroundcolor={`${theme.colors.WHITE}`}
-                $textcolor={`${theme.colors.NAVYBLUE5}`}
-                $bordercolor={`${theme.colors.NAVYBLUE5}`}
-                text={props.$considered ? "취소하기" : "고민해보기"}
-                $tool={
-                  props.$choice
-                    ? "AddSelectedToConsider"
-                    : props.$considered
-                    ? "ConsiderSelected"
-                    : "ConsiderDefault"
-                }
-                handleClick={() => considerButtonHandler(props.$id)}
-              />
-              <Button
-                $x={4.875}
-                $y={1.5}
-                $backgroundcolor={`${theme.colors.WHITE}`}
-                $textcolor={`${theme.colors.NAVYBLUE5}`}
-                $bordercolor={`${theme.colors.NAVYBLUE5}`}
-                text={props.$choice ? "취소하기" : "추가하기"}
-                $tool={
-                  props.$choice
-                    ? "AddSelected"
-                    : props.$considered
-                    ? "ConsiderSelectToAdd"
-                    : "AddDefault"
-                }
-                handleClick={() => addButtonHandler(props.$id)}
-              />
-            </ButtonContainer>
-          </>
+        {$switch === "option" ? (
+          <OptionBoxButtonContainer
+            id={$id}
+            name={$name}
+            price={$price}
+            choice={$choice}
+            considered={$considered}
+          />
         ) : (
           <>
-            {navigationId === 0 ? (
-              <Detail
-                $style={
-                  props.$choice ? ActiveColor.Detail : DefaultColor.Detail
-                }
-              >
-                자세히보기 &gt;
-              </Detail>
+            {$switch === "trim" ? (
+              <>
+                <Price $style={$choice ? ActiveCSS.Price : DefaultCSS.Price}>
+                  {$price?.toLocaleString("ko-KR")} 원
+                </Price>
+                <Detail $style={$choice ? ActiveCSS.Detail : DefaultCSS.Detail}>
+                  자세히보기 &gt;
+                </Detail>
+              </>
             ) : (
-              <Price
-                $style={props.$choice ? ActiveColor.Price : DefaultColor.Price}
-              >
-                + {props.$price?.toLocaleString("ko-KR")} 원
+              <Price $style={$choice ? ActiveCSS.Price : DefaultCSS.Price}>
+                + {$price?.toLocaleString("ko-KR")} 원
               </Price>
             )}
           </>
