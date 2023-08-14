@@ -3,11 +3,14 @@ import styled, { css, RuleSet } from "styled-components";
 export const Container = styled.div<CSSProps>`
   width: 12.5rem;
   height: 10.25rem;
-  padding: 0.75rem 1.5rem;
+  padding: 1rem;
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
+
+  ${(props) => props.$background}
+  border: 1px solid ${(props) => props.theme.colors.GREY2};
 `;
 
 export const Name = styled.p<CSSProps>`

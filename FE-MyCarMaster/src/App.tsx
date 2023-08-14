@@ -73,7 +73,7 @@ const Filler = styled.div`
   top: 64%;
   width: 100%;
   height: 36%;
-  background-color: #f2f2f2;
+  background-color: ${({ theme }) => theme.colors.GREY1};
   z-index: -1;
 `;
 

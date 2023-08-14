@@ -15,6 +15,7 @@ const colors = {
   NAVYBLUE3: "#C6D2F0",
   NAVYBLUE4: "#96A9DC",
   NAVYBLUE5: "#1A3276",
+  ACTIVE_BLUE: "#007FA8",
 };
 
 const fontSize = {
