@@ -21,7 +21,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", \
     "-Dspring.profiles.active=${PROFILE}", \
-    "-javaagent:/pinpoint-agent/pinpoint-bootstrap-2.2.2.jar", \
+    "-javaagent:/pinpoint-agent/pinpoint-bootstrap-2.5.0.jar", \
     "-Dpinpoint.agentId=${PINPOINT_AGENT_ID}","-Dpinpoint.applicationName=h5", \
     "-Dpinpoint.config=/pinpoint-agent/pinpoint-root.config", \
     "/app.jar"]
