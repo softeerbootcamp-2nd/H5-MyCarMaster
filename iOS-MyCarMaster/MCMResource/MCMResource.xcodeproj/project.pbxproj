@@ -13,9 +13,6 @@
 		B524A5982A8369900095F0E2 /* UIButton+TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B524A5972A8369900095F0E2 /* UIButton+TextStyle.swift */; };
 		B524A5992A836B530095F0E2 /* HyundaiSansTextKRRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B524A5902A83587F0095F0E2 /* HyundaiSansTextKRRegular.ttf */; };
 		B524A59A2A836B530095F0E2 /* HyundaiSansTextKRMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B524A5912A83587F0095F0E2 /* HyundaiSansTextKRMedium.ttf */; };
-		B524A59B2A836B530095F0E2 /* HyundaiSansHeadKRRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B524A58F2A83587F0095F0E2 /* HyundaiSansHeadKRRegular.ttf */; };
-		B524A59C2A836B530095F0E2 /* HyundaiSansHeadKRBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B524A58D2A83587F0095F0E2 /* HyundaiSansHeadKRBold.ttf */; };
-		B524A59D2A836B530095F0E2 /* HyundaiSansHeadKRLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B524A58C2A83587F0095F0E2 /* HyundaiSansHeadKRLight.ttf */; };
 		B524A59E2A836B530095F0E2 /* HyundaiSansHeadKRMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B524A58E2A83587F0095F0E2 /* HyundaiSansHeadKRMedium.ttf */; };
 		B524A59F2A836B530095F0E2 /* HyundaiSansTextKRBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B524A58B2A83587F0095F0E2 /* HyundaiSansTextKRBold.ttf */; };
 		B529551E2A7B782900BEDDE7 /* MCMResource.h in Headers */ = {isa = PBXBuildFile; fileRef = B529551D2A7B782900BEDDE7 /* MCMResource.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -31,10 +28,7 @@
 		B524A5882A8336B40095F0E2 /* TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextStyle.swift; sourceTree = "<group>"; };
 		B524A58A2A833F720095F0E2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B524A58B2A83587F0095F0E2 /* HyundaiSansTextKRBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HyundaiSansTextKRBold.ttf; sourceTree = "<group>"; };
-		B524A58C2A83587F0095F0E2 /* HyundaiSansHeadKRLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HyundaiSansHeadKRLight.ttf; sourceTree = "<group>"; };
-		B524A58D2A83587F0095F0E2 /* HyundaiSansHeadKRBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HyundaiSansHeadKRBold.ttf; sourceTree = "<group>"; };
 		B524A58E2A83587F0095F0E2 /* HyundaiSansHeadKRMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HyundaiSansHeadKRMedium.ttf; sourceTree = "<group>"; };
-		B524A58F2A83587F0095F0E2 /* HyundaiSansHeadKRRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HyundaiSansHeadKRRegular.ttf; sourceTree = "<group>"; };
 		B524A5902A83587F0095F0E2 /* HyundaiSansTextKRRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HyundaiSansTextKRRegular.ttf; sourceTree = "<group>"; };
 		B524A5912A83587F0095F0E2 /* HyundaiSansTextKRMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = HyundaiSansTextKRMedium.ttf; sourceTree = "<group>"; };
 		B524A5922A8361960095F0E2 /* String+TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+TextStyle.swift"; sourceTree = "<group>"; };
@@ -132,10 +126,7 @@
 		B529553B2A7B7A6300BEDDE7 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				B524A58D2A83587F0095F0E2 /* HyundaiSansHeadKRBold.ttf */,
 				B524A58E2A83587F0095F0E2 /* HyundaiSansHeadKRMedium.ttf */,
-				B524A58F2A83587F0095F0E2 /* HyundaiSansHeadKRRegular.ttf */,
-				B524A58C2A83587F0095F0E2 /* HyundaiSansHeadKRLight.ttf */,
 				B524A58B2A83587F0095F0E2 /* HyundaiSansTextKRBold.ttf */,
 				B524A5912A83587F0095F0E2 /* HyundaiSansTextKRMedium.ttf */,
 				B524A5902A83587F0095F0E2 /* HyundaiSansTextKRRegular.ttf */,
@@ -217,12 +208,9 @@
 				B52955382A7B797E00BEDDE7 /* launchScreen.json in Resources */,
 				B52955482A7B7D7900BEDDE7 /* Color.xcassets in Resources */,
 				B524A59A2A836B530095F0E2 /* HyundaiSansTextKRMedium.ttf in Resources */,
-				B524A59D2A836B530095F0E2 /* HyundaiSansHeadKRLight.ttf in Resources */,
 				B524A59F2A836B530095F0E2 /* HyundaiSansTextKRBold.ttf in Resources */,
-				B524A59B2A836B530095F0E2 /* HyundaiSansHeadKRRegular.ttf in Resources */,
 				B524A59E2A836B530095F0E2 /* HyundaiSansHeadKRMedium.ttf in Resources */,
 				B524A5992A836B530095F0E2 /* HyundaiSansTextKRRegular.ttf in Resources */,
-				B524A59C2A836B530095F0E2 /* HyundaiSansHeadKRBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
