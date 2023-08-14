@@ -1,4 +1,4 @@
-name: React build
+name: Frontend-CD
 on: 
   push: 
     branches:
@@ -33,8 +33,4 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.FE_AWS_ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.FE_AWS_SECRET_ACCESS_KEY }}
-        run: |
-          aws s3 cp \
-            --recursive \
-            --region ap-northeast-2 \
-            dist s3://h5-front-bucket
+        run: aws s3 cp --recursive --region ap-northeast-2 FE-MyCarMaster/dist s3://h5-front-bucket
