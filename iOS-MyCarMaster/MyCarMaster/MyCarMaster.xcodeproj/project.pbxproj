@@ -46,6 +46,7 @@
 		B5A600FF2A81E1FC00CF2983 /* MCMCombineExtension.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5A601942A8209E700CF2983 /* MCMNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A6014B2A81EB2600CF2983 /* MCMNetwork.framework */; };
 		B5A601952A8209E700CF2983 /* MCMNetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5A6014B2A81EB2600CF2983 /* MCMNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B5BBB34F2A89C74C00AAFC84 /* InteriorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBB34E2A89C74C00AAFC84 /* InteriorViewController.swift */; };
 		B5BBB3512A89C7BF00AAFC84 /* Interior.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBB3502A89C7BF00AAFC84 /* Interior.swift */; };
 		B5BBB3532A89C7ED00AAFC84 /* Interior+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBB3522A89C7ED00AAFC84 /* Interior+.swift */; };
 		B5BBB3552A89C95200AAFC84 /* InteriorDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBB3542A89C95200AAFC84 /* InteriorDTO.swift */; };
@@ -177,12 +178,14 @@
 		B56F55E42A8761F90055E382 /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
 		B56F55E62A87621A0055E382 /* EngineDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineDTO.swift; sourceTree = "<group>"; };
 		B56F55E82A8762540055E382 /* EngineDTO.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EngineDTO.json; sourceTree = "<group>"; };
+		B570C0F92A89ADA7000E9B75 /* InteriorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteriorView.swift; sourceTree = "<group>"; };
 		B58289A62A7FFE5A00FAD6AA /* MCMCombineExtension.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MCMCombineExtension.xcodeproj; path = ../../MCMCombineExtension/MCMCombineExtension.xcodeproj; sourceTree = "<group>"; };
 		B58289EE2A800B8D00FAD6AA /* MVIFoundation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MVIFoundation.xcodeproj; path = "../../../../../../../문서 - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/MVIFoundation/MVIFoundation.xcodeproj"; sourceTree = "<group>"; };
 		B58A32332A7BA452005FC831 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		B58A323A2A7C0B35005FC831 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMCombineExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A601452A81EB2600CF2983 /* MCMNetwork.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MCMNetwork.xcodeproj; path = "../../../../../../../문서 - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/MCMNetwork/MCMNetwork.xcodeproj"; sourceTree = "<group>"; };
+		B5BBB34E2A89C74C00AAFC84 /* InteriorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteriorViewController.swift; sourceTree = "<group>"; };
 		B5BBB3502A89C7BF00AAFC84 /* Interior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interior.swift; sourceTree = "<group>"; };
 		B5BBB3522A89C7ED00AAFC84 /* Interior+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Interior+.swift"; sourceTree = "<group>"; };
 		B5BBB3542A89C95200AAFC84 /* InteriorDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteriorDTO.swift; sourceTree = "<group>"; };
@@ -361,6 +364,7 @@
 				B53C3C4E2A85653A0019ECA1 /* WheelDrive */,
 				B53C3C552A85776B0019ECA1 /* BodyType */,
 				B5DD64ED2A877DC700B44F61 /* Exterior */,
+				B570C0F82A89AD93000E9B75 /* Interior */,
 			);
 			path = Sceen;
 			sourceTree = "<group>";
@@ -448,6 +452,15 @@
 				B5BBB3562A89C9AC00AAFC84 /* InteriorDTO.json */,
 			);
 			path = Dummy;
+			sourceTree = "<group>";
+		};
+		B570C0F82A89AD93000E9B75 /* Interior */ = {
+			isa = PBXGroup;
+			children = (
+				B570C0F92A89ADA7000E9B75 /* InteriorView.swift */,
+				B5BBB34E2A89C74C00AAFC84 /* InteriorViewController.swift */,
+			);
+			path = Interior;
 			sourceTree = "<group>";
 		};
 		B58289842A7FFDD400FAD6AA /* Dependency */ = {
@@ -766,6 +779,7 @@
 				B5DD65152A88F5CF00B44F61 /* ColorListCell.swift in Sources */,
 				B5DD64EF2A877DDD00B44F61 /* ExteriorView.swift in Sources */,
 				B5DD64DD2A876ED800B44F61 /* BodyType.swift in Sources */,
+				B5BBB34F2A89C74C00AAFC84 /* InteriorViewController.swift in Sources */,
 				B5DD65122A880B3100B44F61 /* CGSize+Operator.swift in Sources */,
 				B5DD65202A8926E700B44F61 /* ContentSizeEstimatable.swift in Sources */,
 				B5DD64DF2A876EED00B44F61 /* BodyTypeDTO.swift in Sources */,
