@@ -1,0 +1,24 @@
+{
+    "code": 2000,
+    "message": "요청에 성공하셨습니다.",
+    "result": {
+        "colors": [
+            {
+                "id": 1,
+                "name": "퀼팅천연 (블랙)",
+                "price": 0,
+                "ratio": 60,
+                "colorImgUrl": "https://h5-image.s3.ap-northeast-2.amazonaws.com/palisade/interior-color/quilting-natural-black.png",
+                "coloredImgUrl": "https://h5-image.s3.ap-northeast-2.amazonaws.com/palisade/interior-color/car/quilting-natural-black.png"
+            },
+            {
+                "id": 2,
+                "name": "쿨그레이",
+                "price": 0,
+                "ratio": 40,
+                "colorImgUrl": "https://h5-image.s3.ap-northeast-2.amazonaws.com/palisade/interior-color/cool-gray.png",
+                "coloredImgUrl": "https://h5-image.s3.ap-northeast-2.amazonaws.com/palisade/interior-color/car/cool-gray.png"
+            }
+        ]
+    }
+}
