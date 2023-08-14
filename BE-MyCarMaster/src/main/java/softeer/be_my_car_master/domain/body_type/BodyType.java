@@ -18,4 +18,8 @@ public class BodyType {
 	private final Integer ratio;
 	private final Integer price;
 	private final String imgUrl;
+
+	public boolean isRightBodyType(Long bodyTypeId, Integer bodyTypePrice) {
+		return id.equals(bodyTypeId) && price.equals(bodyTypePrice);
+	}
 }
