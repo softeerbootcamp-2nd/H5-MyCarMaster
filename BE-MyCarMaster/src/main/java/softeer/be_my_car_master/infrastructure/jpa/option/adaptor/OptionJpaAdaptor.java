@@ -11,10 +11,12 @@ import softeer.be_my_car_master.domain.option.Option;
 import softeer.be_my_car_master.global.annotation.Adaptor;
 import softeer.be_my_car_master.infrastructure.jpa.option.entity.OptionEntity;
 import softeer.be_my_car_master.infrastructure.jpa.option.entity.TrimAdditionalOptionEntity;
+import softeer.be_my_car_master.infrastructure.jpa.option.entity.TrimDefaultOptionEntity;
 import softeer.be_my_car_master.infrastructure.jpa.option.repository.BodyTypeUnselectableOptionJpaRepository;
 import softeer.be_my_car_master.infrastructure.jpa.option.repository.EngineUnselectableOptionJpaRepository;
 import softeer.be_my_car_master.infrastructure.jpa.option.repository.InteriorColorUnselectableOptionJpaRepository;
 import softeer.be_my_car_master.infrastructure.jpa.option.repository.TrimAdditionalOptionJpaRepository;
+import softeer.be_my_car_master.infrastructure.jpa.option.repository.TrimDefaultOptionJpaRepository;
 import softeer.be_my_car_master.infrastructure.jpa.option.repository.WheelDriveUnselectableOptionJpaRepository;
 
 @Adaptor
@@ -26,6 +28,7 @@ public class OptionJpaAdaptor implements OptionPort {
 	private final WheelDriveUnselectableOptionJpaRepository wheelDriveUnselectableOptionJpaRepository;
 	private final BodyTypeUnselectableOptionJpaRepository bodyTypeUnselectableOptionJpaRepository;
 	private final InteriorColorUnselectableOptionJpaRepository interiorColorUnselectableOptionJpaRepository;
+	private final TrimDefaultOptionJpaRepository trimDefaultOptionJpaRepository;
 
 	@Override
 	@Transactional(readOnly = true)
@@ -76,5 +79,12 @@ public class OptionJpaAdaptor implements OptionPort {
 	@Override
 	public List<Long> findUnselectableOptionIdsByInteriorColorId(Long interiorColorId) {
 		return interiorColorUnselectableOptionJpaRepository.findUnselectableOptionIdsByInteriorColorId(interiorColorId);
+	}
+
+	@Override
+	public List<Option> findDefaultOptionsByTrimId(Long trimId) {
+		return trimDefaultOptionJpaRepository.findAllByTrimId(trimId).stream()
+			.map(TrimDefaultOptionEntity::toDefaultOption)
+			.collect(Collectors.toList());
 	}
 }
