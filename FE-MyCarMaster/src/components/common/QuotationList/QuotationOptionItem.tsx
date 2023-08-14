@@ -1,9 +1,11 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import Button from "../Button/Button";
 import theme from "../../../styles/Theme";
+import { useQuotationDispatch } from "../../../contexts/QuotationContext";
 
 interface QuotationOptionProps {
+  id: number;
   imgUrl: string;
   category: string;
   name: string;
@@ -12,15 +14,40 @@ interface QuotationOptionProps {
 }
 
 function QuotationOptionItem({
+  id,
   imgUrl,
   category,
   name,
   price,
-  isSelected,
+  isSelected: initialIsSelected,
 }: QuotationOptionProps) {
-  const confirmHandler = () => {};
+  const quotationDispatch = useQuotationDispatch();
 
-  const considerHandler = () => {};
+  const [isSelected, setIsSelected] = useState(initialIsSelected);
+
+  useEffect(() => {
+    setIsSelected(initialIsSelected);
+  }, [initialIsSelected]);
+
+  const toggleSelect = (id: number) => {
+    console.log(isSelected);
+    const updatedIsSelected = !isSelected;
+    const actionType = updatedIsSelected
+      ? "SET_SELECT_QUOTATION"
+      : "SET_CONSIDER_QUOTATION";
+
+    quotationDispatch({
+      type: actionType,
+      payload: {
+        id,
+        name,
+        price,
+        category,
+        imgUrl,
+      },
+    });
+    setIsSelected(updatedIsSelected);
+  };
 
   return (
     <Container>
@@ -40,7 +67,7 @@ function QuotationOptionItem({
           isSelected ? `${theme.colors.GOLD5}` : `${theme.colors.NAVYBLUE5}`
         }
         $textcolor={`${theme.colors.WHITE}`}
-        handleClick={isSelected ? considerHandler : confirmHandler}
+        handleClick={() => toggleSelect(id)}
       />
       <OptionPrice>+{price.toLocaleString("ko-KR")}원</OptionPrice>
     </Container>

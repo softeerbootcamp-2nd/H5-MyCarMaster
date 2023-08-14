@@ -1,4 +1,3 @@
-import React from "react";
 import { styled } from "styled-components";
 import TextButton from "../Button/TextButton";
 import { useQuotationState } from "../../../contexts/QuotationContext";
@@ -28,9 +27,10 @@ function QuotationOptionList() {
         <TotalOptionContainer>
           <OptionContainer>
             <Option>추가 옵션</Option>
-            {optionQuotation.selectedQuotation.map((option, index) => (
+            {optionQuotation.selectedQuotation.map((option) => (
               <QuotationOptionItem
-                key={index}
+                key={option.id}
+                id={option.id as number}
                 imgUrl={option.imgUrl as string}
                 category={option.category as string}
                 name={option.name}
@@ -41,9 +41,10 @@ function QuotationOptionList() {
           </OptionContainer>
           <OptionContainer>
             <Option>고민 옵션</Option>
-            {optionQuotation.consideredQuotation.map((option, index) => (
+            {optionQuotation.consideredQuotation.map((option) => (
               <QuotationOptionItem
-                key={index}
+                key={option.id}
+                id={option.id as number}
                 imgUrl={option.imgUrl as string}
                 category={option.category as string}
                 name={option.name}
