@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout source code. # 레포지토리 체크아웃
+      - name: Checkout source code.
         uses: actions/checkout@main
 
       - name: Cache node modules 
@@ -20,13 +20,13 @@ jobs:
             ${{ runner.OS }}-build-
             ${{ runner.OS }}-
 
-      - name: Install Dependencies # 의존 파일 설치
+      - name: Install Dependencies
         run: cd ./FE-MyCarMaster && npm install
 
-      - name: Build # React Build
+      - name: Build
         run: cd ./FE-MyCarMaster && npm run build 
 
-      - name: Deploy # S3에 배포하기
+      - name: Deploy 
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.FE_AWS_ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.FE_AWS_SECRET_ACCESS_KEY }}
@@ -34,4 +34,4 @@ jobs:
           aws s3 cp \
             --recursive \
             --region ap-northeast-2 \
-            dist s3://h5-frontend-bucket # 본인의 bucket 이름으로 변경, build가 된 경로로 설정
+            dist s3://h5-front-bucket
