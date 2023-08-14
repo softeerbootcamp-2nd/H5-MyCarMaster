@@ -42,8 +42,28 @@ final class ExteriorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        fetchData()
+    }
 
+    private func configureUI() {
+        contentView.setDelegate(self)
+        contentView.setDataSource(self)
+    }
+
+    override func didMove(toParent parent: UIViewController?) {
+        contentView.updateLayout()
+    }
+}
+
+extension ExteriorViewController {
+    private func fetchFromDisk() {
+        guard let fileURL = Bundle.main.url(forResource: "InteriorDTO.json", withExtension: nil) else { return }
+        applyData(try? Data(contentsOf: fileURL))
+    }
+
+    private func fetchData() {
         let request = URLRequest(url: URL(string: Dependency.serverURL + "exterior-colors?trimId=1")!)
+
         URLSession.shared.dataTask(with: request) { data, response, error in
             guard error == nil else {
                 print(error?.localizedDescription)
@@ -60,26 +80,21 @@ final class ExteriorViewController: UIViewController {
                 return
             }
 
-            if let data,
-               case let .exteriors(exteriorDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
-                DispatchQueue.main.async {
-                    self.dataList = exteriorDTOList.map { Exterior($0) }
-                    self.contentView.listView.reloadData()
-                }
-            } else {
-                print("Decoding Error")
-                return
-            }
+            self.applyData(data)
         }.resume()
     }
 
-    private func configureUI() {
-        contentView.setDelegate(self)
-        contentView.setDataSource(self)
-    }
-
-    override func didMove(toParent parent: UIViewController?) {
-        contentView.updateLayout()
+    private func applyData(_ data: Data?) {
+        if let data,
+           case let .exteriors(exteriorDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
+            DispatchQueue.main.async {
+                self.dataList = exteriorDTOList.map { Exterior($0) }
+                self.contentView.listView.reloadData()
+            }
+        } else {
+            print("Decoding Error")
+            return
+        }
     }
 }
 

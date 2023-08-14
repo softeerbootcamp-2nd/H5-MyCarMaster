@@ -42,8 +42,28 @@ final class BodyTypeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        fetchData()
+    }
 
+    private func configureUI() {
+        contentView.setDelegate(self)
+        contentView.setDataSource(self)
+    }
+
+    override func didMove(toParent parent: UIViewController?) {
+        contentView.updateLayout()
+    }
+}
+
+extension BodyTypeViewController {
+    private func fetchFromDisk() {
+        guard let fileURL = Bundle.main.url(forResource: "BodyTypeDTO.json", withExtension: nil) else { return }
+        applyData(try? Data(contentsOf: fileURL))
+    }
+    
+    private func fetchData() {
         let request = URLRequest(url: URL(string: Dependency.serverURL + "body-types?modelId=1")!)
+
         URLSession.shared.dataTask(with: request) { data, response, error in
             guard error == nil else {
                 print(error?.localizedDescription)
@@ -60,26 +80,21 @@ final class BodyTypeViewController: UIViewController {
                 return
             }
 
-            if let data,
-               case let .bodyTypes(bodyTypeDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
-                self.dataList = bodyTypeDTOList.map { BodyType($0) }
-                DispatchQueue.main.async {
-                    self.contentView.listView.reloadData()
-                }
-            } else {
-                print("Decoding Error")
-                return
-            }
+            self.applyData(data)
         }.resume()
     }
 
-    private func configureUI() {
-        contentView.setDelegate(self)
-        contentView.setDataSource(self)
-    }
-
-    override func didMove(toParent parent: UIViewController?) {
-        contentView.updateLayout()
+    private func applyData(_ data: Data?) {
+        if let data,
+           case let .bodyTypes(bodyTypeDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
+            self.dataList = bodyTypeDTOList.map { BodyType($0) }
+            DispatchQueue.main.async {
+                self.contentView.listView.reloadData()
+            }
+        } else {
+            print("Decoding Error")
+            return
+        }
     }
 }
 

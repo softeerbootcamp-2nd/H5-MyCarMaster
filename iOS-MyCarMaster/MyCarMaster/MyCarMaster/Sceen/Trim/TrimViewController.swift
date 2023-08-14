@@ -56,6 +56,11 @@ final class TrimViewController: UIViewController {
 }
 
 extension TrimViewController {
+    private func fetchFromDisk() {
+        guard let fileURL = Bundle.main.url(forResource: "TrimDTO.json", withExtension: nil) else { return }
+        applyData(try? Data(contentsOf: fileURL))
+    }
+
     private func fetchData() {
         let request = URLRequest(url: URL(string: Dependency.serverURL + "trims?modelId=1")!)
 
@@ -75,17 +80,21 @@ extension TrimViewController {
                 return
             }
 
-            if let data,
-               case let .trims(trimDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
-                self.dataList = trimDTOList.map { Trim($0) }
-                DispatchQueue.main.async {
-                    self.contentView.listView.reloadData()
-                }
-            } else {
-                print("Decoding Error")
-                return
-            }
+            self.applyData(data)
         }.resume()
+    }
+
+    private func applyData(_ data: Data?) {
+        if let data,
+           case let .trims(trimDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
+            self.dataList = trimDTOList.map { Trim($0) }
+            DispatchQueue.main.async {
+                self.contentView.listView.reloadData()
+            }
+        } else {
+            print("Decoding Error")
+            return
+        }
     }
 }
 

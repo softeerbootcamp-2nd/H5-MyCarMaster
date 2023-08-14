@@ -1,8 +1,8 @@
 //
-//  WheelDriveViewController.swift
+//  InteriorViewController.swift
 //  MyCarMaster
 //
-//  Created by SEUNGMIN OH on 2023/08/11.
+//  Created by SEUNGMIN OH on 2023/08/14.
 //
 
 import UIKit
@@ -10,11 +10,11 @@ import UIKit
 import MCMNetwork
 import MVIFoundation
 
-final class WheelDriveViewController: UIViewController {
+final class InteriorViewController: UIViewController {
 
-    typealias ListCellClass = BasicListCell
+    typealias ListCellClass = ColorListCell
 
-    var dataList: [WheelDrive] = []
+    var dataList: [Interior] = []
 
     var selectedCellIndexPath: IndexPath = IndexPath(row: 0, section: 0) {
         didSet {
@@ -22,8 +22,8 @@ final class WheelDriveViewController: UIViewController {
         }
     }
 
-    private var contentView: WheelDriveView<ListCellClass> {
-        return view as? WheelDriveView ?? WheelDriveView()
+    private var contentView: InteriorView<ListCellClass> {
+        return view as? InteriorView ?? InteriorView()
     }
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -36,7 +36,7 @@ final class WheelDriveViewController: UIViewController {
 
     override func loadView() {
         super.loadView()
-        view = WheelDriveView<ListCellClass>(frame: .zero)
+        view = InteriorView<ListCellClass>(frame: .zero)
     }
 
     override func viewDidLoad() {
@@ -55,14 +55,14 @@ final class WheelDriveViewController: UIViewController {
     }
 }
 
-extension WheelDriveViewController {
+extension InteriorViewController {
     private func fetchFromDisk() {
-        guard let fileURL = Bundle.main.url(forResource: "WheelDriveDTO.json", withExtension: nil) else { return }
+        guard let fileURL = Bundle.main.url(forResource: "InteriorDTO.json", withExtension: nil) else { return }
         applyData(try? Data(contentsOf: fileURL))
     }
 
     private func fetchData() {
-        let request = URLRequest(url: URL(string: Dependency.serverURL + "wheel-drives?trimId=1&engineId=1")!)
+        let request = URLRequest(url: URL(string: Dependency.serverURL + "interior-colors?trimId=1&exteriorColorId=1")!)
 
         URLSession.shared.dataTask(with: request) { data, response, error in
             guard error == nil else {
@@ -75,7 +75,7 @@ extension WheelDriveViewController {
                 return
             }
 
-            print("WheelDrive:", response.statusCode)
+            print("Interior:", response.statusCode)
             guard 200..<300 ~= response.statusCode else {
                 return
             }
@@ -86,8 +86,8 @@ extension WheelDriveViewController {
 
     private func applyData(_ data: Data?) {
         if let data,
-           case let .wheelDrives(wheelDriveDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
-            self.dataList = wheelDriveDTOList.map { WheelDrive($0) }
+           case let .interiors(interiorDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
+            self.dataList = interiorDTOList.map { Interior($0) }
             DispatchQueue.main.async {
                 self.contentView.listView.reloadData()
             }
@@ -98,7 +98,7 @@ extension WheelDriveViewController {
     }
 }
 
-extension WheelDriveViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension InteriorViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(
         _ collectionView: UICollectionView,
@@ -119,7 +119,8 @@ extension WheelDriveViewController: UICollectionViewDelegate, UICollectionViewDa
             fatalError("등록되지 않은 cell입니다.")
         }
 
-        cell.configure(with: dataList[indexPath.row])
+        let cellState = dataList[indexPath.row]
+        cell.configure(with: cellState)
 
         // 프리셋을 선택한다.
         if selectedCellIndexPath == indexPath {
