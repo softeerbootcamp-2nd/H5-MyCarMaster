@@ -1,12 +1,18 @@
 import { styled } from "styled-components";
 import TextButton from "../Button/TextButton";
-import { useQuotationState } from "../../../contexts/QuotationContext";
+import {
+  useQuotationDispatch,
+  useQuotationState,
+} from "../../../contexts/QuotationContext";
 import QuotationOptionItem from "./QuotationOptionItem";
 import theme from "../../../styles/Theme";
+import { useNavigate } from "react-router-dom";
 
 function QuotationOptionList() {
   const { optionQuotation } = useQuotationState();
-  console.log(optionQuotation);
+  const quotationDispatch = useQuotationDispatch();
+
+  const navigate = useNavigate();
 
   const calculateOptionTotalPrice = () => {
     const totalPrice = optionQuotation.selectedQuotation.reduce(
@@ -16,11 +22,20 @@ function QuotationOptionList() {
     return totalPrice;
   };
 
+  const navigateOption = (navigationId: number) => {
+    quotationDispatch({ type: "NAVIGATE", payload: { navigationId } });
+    navigate("/estimation");
+  };
+
   return (
     <Container>
       <CategoryContainer>
         <Category>옵션</Category>
-        <TextButton size={"1"} text={"변경하기"} />
+        <TextButton
+          size={"1"}
+          text={"변경하기"}
+          handleClick={() => navigateOption(6)}
+        />
       </CategoryContainer>
       <ItemContainer>
         <TextButton size={"1.25"} text={"기본 포함 옵션"} />

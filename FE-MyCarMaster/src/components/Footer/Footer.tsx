@@ -33,6 +33,10 @@ function Footer() {
 
   const navigateQuotationHandler = () => {
     // validation api code
+    quotationDispatch({
+      type: "NAVIGATE",
+      payload: { navigationId: navigationId + 1 },
+    });
     navigate("/quotation");
   };
 
