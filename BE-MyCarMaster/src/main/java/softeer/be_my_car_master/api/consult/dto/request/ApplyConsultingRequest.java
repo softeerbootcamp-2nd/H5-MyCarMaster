@@ -4,6 +4,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,14 +28,17 @@ public class ApplyConsultingRequest {
 	@Valid
 	private ClientDto client;
 
+	@Hidden
 	public String getClientName() {
 		return client.getName();
 	}
 
+	@Hidden
 	public String getClientEmail() {
 		return client.getEmail();
 	}
 
+	@Hidden
 	public String getClientPhone() {
 		return client.getPhone();
 	}
