@@ -42,7 +42,11 @@ final class EngineViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+#if ONLINE
         fetchData()
+#elseif OFFLINE
+        fetchFromDisk()
+#endif
     }
 
     private func configureUI() {

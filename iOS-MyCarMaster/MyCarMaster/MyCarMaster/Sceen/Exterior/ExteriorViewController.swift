@@ -42,7 +42,11 @@ final class ExteriorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+#if ONLINE
         fetchData()
+#elseif OFFLINE
+        fetchFromDisk()
+#endif
     }
 
     private func configureUI() {
@@ -57,7 +61,7 @@ final class ExteriorViewController: UIViewController {
 
 extension ExteriorViewController {
     private func fetchFromDisk() {
-        guard let fileURL = Bundle.main.url(forResource: "InteriorDTO.json", withExtension: nil) else { return }
+        guard let fileURL = Bundle.main.url(forResource: "ExteriorDTO.json", withExtension: nil) else { return }
         applyData(try? Data(contentsOf: fileURL))
     }
 

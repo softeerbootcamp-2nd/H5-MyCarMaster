@@ -21,11 +21,8 @@ internal typealias Font = FontConvertible.Font
 // swiftlint:disable identifier_name line_length type_body_length
 internal enum RawFont {
   internal enum HyundaiSansHeadKR {
-    internal static let bold = FontConvertible(name: "HyundaiSansHeadKRBold", family: "Hyundai Sans Head KR", path: "HyundaiSansHeadKRBold.ttf")
-    internal static let light = FontConvertible(name: "HyundaiSansHeadKRLight", family: "Hyundai Sans Head KR", path: "HyundaiSansHeadKRLight.ttf")
     internal static let medium = FontConvertible(name: "HyundaiSansHeadKRMedium", family: "Hyundai Sans Head KR", path: "HyundaiSansHeadKRMedium.ttf")
-    internal static let regular = FontConvertible(name: "HyundaiSansHeadKRRegular", family: "Hyundai Sans Head KR", path: "HyundaiSansHeadKRRegular.ttf")
-    internal static let all: [FontConvertible] = [bold, light, medium, regular]
+    internal static let all: [FontConvertible] = [medium]
   }
   internal enum HyundaiSansTextKR {
     internal static let bold = FontConvertible(name: "HyundaiSansTextKRBold", family: "Hyundai Sans Text KR", path: "HyundaiSansTextKRBold.ttf")

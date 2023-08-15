@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "container:MyCarMaster/MyCarMaster.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../../../&#xbb38;&#xc11c; - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/MCMNetwork/MCMNetwork.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../../../&#xbb38;&#xc11c; - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/MVIFoundation/MVIFoundation.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../../../&#xbb38;&#xc11c; - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/MCMCombineExtension/MCMCombineExtension.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:../../../../../&#xbb38;&#xc11c; - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/MCMResource/MCMResource.xcodeproj">
+   </FileRef>
+</Workspace>

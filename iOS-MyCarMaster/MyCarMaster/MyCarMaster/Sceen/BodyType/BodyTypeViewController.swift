@@ -42,7 +42,11 @@ final class BodyTypeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+#if ONLINE
         fetchData()
+#elseif OFFLINE
+        fetchFromDisk()
+#endif
     }
 
     private func configureUI() {
@@ -60,7 +64,7 @@ extension BodyTypeViewController {
         guard let fileURL = Bundle.main.url(forResource: "BodyTypeDTO.json", withExtension: nil) else { return }
         applyData(try? Data(contentsOf: fileURL))
     }
-    
+
     private func fetchData() {
         let request = URLRequest(url: URL(string: Dependency.serverURL + "body-types?modelId=1")!)
 
