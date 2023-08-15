@@ -32,9 +32,6 @@ public class TrimAdditionalOptionEntity {
 	@Column(name = "ratio")
 	private Integer ratio;
 
-	@Column(name = "price", nullable = false)
-	private Integer price;
-
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "trim_id")
 	private TrimEntity trim;
@@ -56,7 +53,7 @@ public class TrimAdditionalOptionEntity {
 			.summary(option.getSummary())
 			.description(option.getDescription())
 			.imgUrl(option.getImgUrl())
-			.price(price)
+			.price(option.getPrice())
 			.ratio(ratio)
 			.isSuper(option.getIsSuper())
 			.subOptions(subOptions)
@@ -65,10 +62,6 @@ public class TrimAdditionalOptionEntity {
 	}
 
 	public Option toSimpleOption() {
-		return Option.builder()
-			.id(option.getId())
-			.name(option.getName())
-			.price(price)
-			.build();
+		return option.toSimpleOption();
 	}
 }
