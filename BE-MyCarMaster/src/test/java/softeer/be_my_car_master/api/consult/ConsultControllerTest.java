@@ -1,6 +1,6 @@
 package softeer.be_my_car_master.api.consult;
 
-import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.BDDMockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -17,8 +17,10 @@ import org.springframework.test.web.servlet.ResultActions;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import softeer.be_my_car_master.api.consult.controller.ConsultController;
 import softeer.be_my_car_master.api.consult.dto.request.ApplyConsultingRequest;
 import softeer.be_my_car_master.api.consult.dto.request.ClientDto;
+import softeer.be_my_car_master.api.consult.usecase.ApplyConsultingUseCase;
 import softeer.be_my_car_master.global.response.Response;
 import softeer.be_my_car_master.global.response.ResponseStatus;
 
@@ -41,7 +43,7 @@ class ConsultControllerTest {
 		//given
 		ClientDto clientDto = new ClientDto("Hyundai", "Hyundai@email.com", "010-0000-0000");
 		ApplyConsultingRequest applyConsultingRequest = new ApplyConsultingRequest(
-			"62dd98f0-bd8e-11ed-93ab-325096b39f47", clientDto);
+			"62dd98f0-bd8e-11ed-93ab-325096b39f47", 1L, clientDto);
 
 		String requestBody = objectMapper.writeValueAsString(applyConsultingRequest);
 		willDoNothing().given(applyConsultingUseCase).execute(any(), any(), any(), any());
@@ -65,7 +67,7 @@ class ConsultControllerTest {
 		//given
 		ClientDto clientDto = new ClientDto("Hyundai", "Hyundai@email.com", "010-0000-0000");
 		ApplyConsultingRequest applyConsultingRequest = new ApplyConsultingRequest(
-			"abcd-efgh-1234", clientDto);
+			"abcd-efgh-1234", 1L, clientDto);
 
 		String requestBody = objectMapper.writeValueAsString(applyConsultingRequest);
 		willDoNothing().given(applyConsultingUseCase).execute(any(), any(), any(), any());
@@ -92,7 +94,7 @@ class ConsultControllerTest {
 		//given
 		ClientDto clientDto = new ClientDto(null, "Hyundai@email.com", "010-0000-0000");
 		ApplyConsultingRequest applyConsultingRequest = new ApplyConsultingRequest(
-			"62dd98f0-bd8e-11ed-93ab-325096b39f47", clientDto);
+			"62dd98f0-bd8e-11ed-93ab-325096b39f47", 1L, clientDto);
 
 		String requestBody = objectMapper.writeValueAsString(applyConsultingRequest);
 		willDoNothing().given(applyConsultingUseCase).execute(any(), any(), any(), any());
@@ -119,7 +121,7 @@ class ConsultControllerTest {
 		//given
 		ClientDto clientDto = new ClientDto("Hyundai", "Hyundai!!email.com", "010-0000-0000");
 		ApplyConsultingRequest applyConsultingRequest = new ApplyConsultingRequest(
-			"62dd98f0-bd8e-11ed-93ab-325096b39f47", clientDto);
+			"62dd98f0-bd8e-11ed-93ab-325096b39f47", 1L, clientDto);
 
 		String requestBody = objectMapper.writeValueAsString(applyConsultingRequest);
 		willDoNothing().given(applyConsultingUseCase).execute(any(), any(), any(), any());
@@ -146,7 +148,7 @@ class ConsultControllerTest {
 		//given
 		ClientDto clientDto = new ClientDto("Hyundai", "Hyundai@email.com", "010-00000000");
 		ApplyConsultingRequest applyConsultingRequest = new ApplyConsultingRequest(
-			"62dd98f0-bd8e-11ed-93ab-325096b39f47", clientDto);
+			"62dd98f0-bd8e-11ed-93ab-325096b39f47", 1L, clientDto);
 
 		String requestBody = objectMapper.writeValueAsString(applyConsultingRequest);
 		willDoNothing().given(applyConsultingUseCase).execute(any(), any(), any(), any());

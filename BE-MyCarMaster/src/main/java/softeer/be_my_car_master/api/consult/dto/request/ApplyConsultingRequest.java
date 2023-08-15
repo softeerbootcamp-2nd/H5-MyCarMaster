@@ -1,6 +1,7 @@
 package softeer.be_my_car_master.api.consult.dto.request;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -24,6 +25,11 @@ public class ApplyConsultingRequest {
 		message = "잘못된 estimateId 형식입니다."
 	)
 	private String estimateId;
+
+	@Schema(description = "카마스터 식별자", example = "1")
+	@NotNull(message = "carMasterId는 Null일 수 없습니다.")
+	@Min(value = 1, message = "carMasterId는 1 이상의 값입니다.")
+	private Long carMasterId;
 
 	@Valid
 	private ClientDto client;

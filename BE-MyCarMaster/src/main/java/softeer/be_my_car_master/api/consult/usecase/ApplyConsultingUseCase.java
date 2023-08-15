@@ -1,4 +1,4 @@
-package softeer.be_my_car_master.api.consult;
+package softeer.be_my_car_master.api.consult.usecase;
 
 import softeer.be_my_car_master.global.annotation.UseCase;
 
