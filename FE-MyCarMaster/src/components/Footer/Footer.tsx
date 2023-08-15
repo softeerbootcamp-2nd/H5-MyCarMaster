@@ -16,8 +16,6 @@ function Footer() {
   const name = indexNameSwitching(navigationId) as string;
   const navigate = useNavigate();
 
-  const navigate = useNavigate();
-
   const buttonHandler = (cal: number) => {
     const navigationIndex = navigationId + cal;
     quotationDispatch({
