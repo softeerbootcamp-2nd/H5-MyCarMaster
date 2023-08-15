@@ -24,7 +24,6 @@ public class ApplyConsultingUseCase {
 	private final ConsultingPort consultingPort;
 	private final CarMasterPort carMasterPort;
 	private final EstimatePort estimatePort;
-
 	private final ApplicationEventPublisher eventPublisher;
 
 	@Transactional
@@ -36,10 +35,10 @@ public class ApplyConsultingUseCase {
 		String clientPhone
 	) {
 		// 카마스터 구매 상담 신청
-		Estimate estimate = estimatePort
-		.findById(estimateId).orElseThrow(() -> InvalidEstimateIdException.EXCEPTION);
-		CarMaster carMaster = carMasterPort.findById(carMasterId)
-			.orElseThrow(() -> InvalidCarMasterIdException.EXCEPTION);
+		Estimate estimate =
+			estimatePort.findById(estimateId).orElseThrow(() -> InvalidEstimateIdException.EXCEPTION);
+		CarMaster carMaster
+			= carMasterPort.findById(carMasterId).orElseThrow(() -> InvalidCarMasterIdException.EXCEPTION);
 
 		Consulting consulting = Consulting.create(clientName, clientEmail, clientPhone, estimate, carMaster);
 		consultingPort.createConsulting(consulting);
