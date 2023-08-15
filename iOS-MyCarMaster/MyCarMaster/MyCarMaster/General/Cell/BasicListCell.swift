@@ -9,7 +9,7 @@ import UIKit
 
 import MCMResource
 
-final class BasicListCell: UICollectionViewCell, Selectable, ContentSizeEstimatable {
+final class BasicListCell: UICollectionViewCell, CellStyleSelectable, ContentSizeEstimatable {
 
     static var intrinsicContentSize: CGSize {
         return CGSize(width: UIScreen.main.bounds.width - 16 * 2, height: 118)
@@ -18,9 +18,9 @@ final class BasicListCell: UICollectionViewCell, Selectable, ContentSizeEstimata
     override var isSelected: Bool {
         willSet {
             if newValue {
-                self.select()
+                selectedStyle()
             } else {
-                self.deselect()
+                unselectedStyle()
             }
         }
     }
@@ -90,7 +90,7 @@ final class BasicListCell: UICollectionViewCell, Selectable, ContentSizeEstimata
 
     private func configureUI() {
         layer.borderWidth = 1.0
-        deselect()
+        unselectedStyle()
     }
 
     private func configureLayout() {

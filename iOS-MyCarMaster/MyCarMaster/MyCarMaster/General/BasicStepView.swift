@@ -8,7 +8,7 @@
 import UIKit
 
 class BasicStepView<ListCellClass>: UIView
-where ListCellClass: UICollectionViewCell & ContentSizeEstimatable & Selectable {
+where ListCellClass: UICollectionViewCell & ContentSizeEstimatable & CellStyleSelectable {
 
     let inset: CGFloat = 16
     let firstSpacing: CGFloat = 16

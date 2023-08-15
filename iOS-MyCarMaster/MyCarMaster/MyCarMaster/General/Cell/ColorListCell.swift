@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ColorListCell: UICollectionViewCell, Selectable, ContentSizeEstimatable {
+final class ColorListCell: UICollectionViewCell, CellStyleSelectable, ContentSizeEstimatable {
 
     static var intrinsicContentSize: CGSize {
         return CGSize(width: UIScreen.main.bounds.width - 16 * 2, height: 70)
@@ -16,9 +16,9 @@ final class ColorListCell: UICollectionViewCell, Selectable, ContentSizeEstimata
     override var isSelected: Bool {
         willSet {
             if newValue {
-                self.select()
+                selectedStyle()
             } else {
-                self.deselect()
+                unselectedStyle()
             }
         }
     }
@@ -49,7 +49,7 @@ final class ColorListCell: UICollectionViewCell, Selectable, ContentSizeEstimata
         super.init(frame: frame)
         configureUI()
         configureLayout()
-        deselect()
+        unselectedStyle()
     }
 
     required init?(coder: NSCoder) {
@@ -135,7 +135,7 @@ struct ColorListCellPreviews_Previews: PreviewProvider {
             UIViewPreview {
                 let cell = ColorListCell()
                 cell.configure(with: exterior)
-                cell.select()
+                cell.selectedStyle()
                 return cell
             }
             UIViewPreview {
