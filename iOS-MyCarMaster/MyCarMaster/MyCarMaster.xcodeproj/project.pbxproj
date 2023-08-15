@@ -82,6 +82,7 @@
 		B5DD65272A8937A500B44F61 /* Engine+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD65262A8937A500B44F61 /* Engine+.swift */; };
 		B5DD65292A893AC600B44F61 /* WheelDrive+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD65282A893AC600B44F61 /* WheelDrive+.swift */; };
 		B5DD652B2A893B1E00B44F61 /* BodyType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD652A2A893B1E00B44F61 /* BodyType+.swift */; };
+		B5E233FD2A8B4B0F0013BEB1 /* OptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E233FC2A8B4B0F0013BEB1 /* OptionView.swift */; };
 		B5F1AE062A838B8E00E7E392 /* TrimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1AE052A838B8E00E7E392 /* TrimViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -194,6 +195,7 @@
 		B5DD65262A8937A500B44F61 /* Engine+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Engine+.swift"; sourceTree = "<group>"; };
 		B5DD65282A893AC600B44F61 /* WheelDrive+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WheelDrive+.swift"; sourceTree = "<group>"; };
 		B5DD652A2A893B1E00B44F61 /* BodyType+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BodyType+.swift"; sourceTree = "<group>"; };
+		B5E233FC2A8B4B0F0013BEB1 /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
 		B5F1AE052A838B8E00E7E392 /* TrimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrimViewController.swift; path = MyCarMaster/Sceen/Trim/TrimViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -391,6 +393,7 @@
 				B5C079072A8BD4FD00747B11 /* Selectable */,
 				B5DD65132A88F5C500B44F61 /* Cell */,
 				B53C3C482A854AF50019ECA1 /* BasicStepView.swift */,
+				B53BA1112A8C0A8F009F94BE /* PaddingLabel.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -529,6 +532,7 @@
 			isa = PBXGroup;
 			children = (
 				B5C079022A8BD32B00747B11 /* Cell */,
+				B5E233FC2A8B4B0F0013BEB1 /* OptionView.swift */,
 			);
 			path = Option;
 			sourceTree = "<group>";
@@ -742,6 +746,7 @@
 				B510BBDB2A840BD4009E5752 /* Formatter.swift in Sources */,
 				B5DD65272A8937A500B44F61 /* Engine+.swift in Sources */,
 				B510BBDD2A841A25009E5752 /* Reusable.swift in Sources */,
+				B5E233FD2A8B4B0F0013BEB1 /* OptionView.swift in Sources */,
 				B53C3C542A856DF00019ECA1 /* UIView+Extension.swift in Sources */,
 				B5DD64F32A8783D800B44F61 /* Exterior.swift in Sources */,
 				B58A323B2A7C0B35005FC831 /* OnboardingViewController.swift in Sources */,
