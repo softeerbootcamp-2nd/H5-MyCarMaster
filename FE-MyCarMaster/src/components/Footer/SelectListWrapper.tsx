@@ -18,7 +18,6 @@ export default function SelectListWrapper() {
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  width: 51.5rem;
   gap: 0.5rem;
   flex-wrap: wrap;
 `;

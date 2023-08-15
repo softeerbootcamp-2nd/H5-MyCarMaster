@@ -19,6 +19,6 @@ export default function DetailModelSelect() {
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  width: 51.5rem;
+  width: 59.5rem;
   gap: 0.5rem;
 `;

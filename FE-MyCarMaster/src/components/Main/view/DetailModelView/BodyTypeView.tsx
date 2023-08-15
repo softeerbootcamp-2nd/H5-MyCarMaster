@@ -46,6 +46,7 @@ function BodyTypeView() {
 
 const BodyTypeImg = styled.img`
   width: 100%;
+  max-width: 40rem;
   height: 100%;
   object-fit: scale-down;
   object-position: center;

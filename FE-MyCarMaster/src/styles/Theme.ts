@@ -38,72 +38,54 @@ const fontWeight = {
   bold: 700,
 };
 
-const lineHeight = {
-  ExtraCompact: "1rem",
-  Compact: "1.25rem",
-  Normal: "1.5rem",
-  Loose: "1.75rem",
-  Tight: "2rem",
-  Spacious: "2.25rem",
-  Expanded: "2.5rem",
-  ExtraExpanded: "2.75rem",
-};
-
 const fonts = {
   BodyMedium: {
     fontFamily: "HyundaiSansMedium",
-    fontSize: fontSize.Microscopic, // 0.75
+    fontSize: fontSize.ExtraSmall, // 0.75
     fontStyle: "normal",
     fontWeight: fontWeight.medium, // 500
-    lineHeight: lineHeight.ExtraCompact, // 1
   },
 
   BodySmall: {
     fontFamily: "HyundaiSansRegular",
-    fontSize: fontSize.Nano, // 0.625
+    fontSize: fontSize.Tiny, // 0.625
     fontStyle: "normal",
     fontWeight: fontWeight.regular, // 400
-    lineHeight: lineHeight.ExtraCompact, // 1
   },
 
   ContentLarge: {
     fontFamily: "HyundaiSansRegular",
-    fontSize: fontSize.Small, // 1
+    fontSize: fontSize.Large, // 1
     fontStyle: "normal",
     fontWeight: fontWeight.regular, // 400
-    lineHeight: lineHeight.Normal, // 1.25
   },
 
   ContentMedium1: {
     fontFamily: "HyundaiSansRegular",
-    fontSize: fontSize.ExtraSmall, // 0.875
+    fontSize: fontSize.Normal, // 0.875
     fontStyle: "normal",
     fontWeight: fontWeight.regular,
-    lineHeight: lineHeight.Compact, // 1
   },
 
   ContentMedium2: {
     fontFamily: "HyundaiSansRegular",
-    fontSize: fontSize.Tiny, // 0.8125
+    fontSize: fontSize.Small, // 0.8125
     fontStyle: "normal",
     fontWeight: fontWeight.regular,
-    lineHeight: lineHeight.Compact, // 1
   },
 
   ContentSmall: {
     fontFamily: "HyundaiSansRegular",
-    fontSize: fontSize.Microscopic, // 0.75
+    fontSize: fontSize.ExtraSmall, // 0.75
     fontStyle: "normal",
     fontWeight: fontWeight.medium,
-    lineHeight: lineHeight.Compact, // 1
   },
 
   ContentSmall2: {
     fontFamily: "HyundaiSansRegular",
-    fontSize: fontSize.Nano,
+    fontSize: fontSize.Tiny,
     fontStyle: "normal",
     fontWeight: fontWeight.medium,
-    lineHeight: lineHeight.ExtraCompact, // 1
   },
 
   display: {
@@ -111,39 +93,34 @@ const fonts = {
     fontSize: fontSize.Enormous,
     fontStyle: "normal",
     fontWeight: fontWeight.medium,
-    lineHeight: lineHeight.ExtraExpanded,
   },
 
   titleLarge: {
     fontFamily: "HyundaiSansRegular",
-    fontSize: fontSize.Large,
+    fontSize: fontSize.Huge,
     fontStyle: "normal",
     fontWeight: fontWeight.bold,
-    lineHeight: lineHeight.Compact,
   },
 
   titleSmall: {
     fontFamily: "HyundaiSansRegular",
-    fontSize: fontSize.Small,
+    fontSize: fontSize.Large,
     fontStyle: "normal",
     fontWeight: fontWeight.bold,
-    lineHeight: lineHeight.Compact,
   },
 
   contentLarge: {
     fontFamily: "HyundaiSansRegular",
-    fontSize: fontSize.Small,
+    fontSize: fontSize.Large,
     fontStyle: "normal",
     fontWeight: fontWeight.medium,
-    lineHeight: lineHeight.Normal,
   },
 
   contentMedium: {
     fontFamily: "HyundaiSansRegular",
-    fontSize: fontSize.Tiny,
+    fontSize: fontSize.Small,
     fontStyle: "normal",
     fontWeight: fontWeight.regular,
-    lineHeight: lineHeight.Compact,
   },
 };
 

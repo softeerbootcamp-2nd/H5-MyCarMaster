@@ -13,6 +13,7 @@ export const Name = styled.p<CSSProps>`
 export const Description = styled.p<CSSProps>`
   ${(props) => props.theme.fonts.contentMedium};
   ${(props) => props.$style}
+  line-height: 1.4rem;
   margin: auto 0;
 `;
 
@@ -33,7 +34,7 @@ export const Detail = styled.p<CSSProps>`
 
 export const TopContainer = styled.div`
   width: 100%;
-  height: 5.75rem;
+  height: 100%;
   display: flex;
   flex-direction: column;
 `;
@@ -66,9 +67,9 @@ export const Container = styled.div<{ $style?: RuleSet }>`
   ${(props) => props.$style}
 
   border: 1px solid ${(props) => props.theme.colors.GREY2};
-  width: 12.5rem;
-  height: 10.25rem;
-  padding: 0.75rem 1rem;
+  width: 14.5rem;
+  height: 12.25rem;
+  padding: 1rem 1.25rem;
 
   cursor: pointer;
 `;

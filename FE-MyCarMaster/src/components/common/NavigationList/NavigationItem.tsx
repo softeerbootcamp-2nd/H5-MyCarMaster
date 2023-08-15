@@ -100,7 +100,7 @@ function NavigationItem({ name, quotation }: NavigationItemProp) {
 }
 
 const Container = styled.li<activeProp>`
-  width: 9.625rem;
+  width: 12rem;
   padding: 0.5rem 0.75rem;
 
   display: flex;
@@ -132,7 +132,7 @@ const ShowRightOption = styled.div`
 `;
 
 const Price = styled.p`
-  font-size: 0.5rem;
+  font-size: 0.875rem;
   // text vertical center
   display: flex;
   align-items: center;
@@ -144,7 +144,7 @@ const BottomContainer = styled.div`
 
   gap: 0.45rem;
   font-family: "Hyundai Sans Text KR";
-  font-size: 0.5rem;
+  font-size: 0.875rem;
   font-style: normal;
   font-weight: 400;
   letter-spacing: -0.015rem;
@@ -155,7 +155,7 @@ const Text = styled.p``;
 
 const Category = styled.p`
   font-family: "Hyundai Sans Text KR";
-  font-size: 0.75rem;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 700;
   line-height: 165%; /* 1.2375rem */

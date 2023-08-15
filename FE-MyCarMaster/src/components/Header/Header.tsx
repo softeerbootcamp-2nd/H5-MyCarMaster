@@ -28,11 +28,15 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 4rem;
+  height: 30%;
+  margin: 0 3%;
+  gap: 60rem;
 `;
 
 const Img = styled.img`
-  width: 25%;
+  width: 20%;
+  min-width: 12rem;
+  max-width: 16rem;
 `;
 
 const ModelSelector = styled.div`
@@ -41,7 +45,11 @@ const ModelSelector = styled.div`
   gap: 0.5rem;
 `;
 
-const ModelName = styled.div``;
+const ModelName = styled.div`
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: ${({ theme }) => theme.colors.NAVYBLUE5};
+`;
 
 const ModelButton = styled.img`
   cursor: pointer;
