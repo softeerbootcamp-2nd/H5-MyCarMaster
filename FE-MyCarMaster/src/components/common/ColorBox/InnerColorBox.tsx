@@ -18,12 +18,12 @@ export default function InnerColorBox(props: innerColorProps) {
     <Container onClick={props.handleClick}>
       <InnerColorImage src={props.$colorImgUrl} />
       <InnerColorText>
-        <div>
+        <TopTextBox>
           <Text $style={DefaultColor.Head}>{props.$name}</Text>
           <Text $style={DefaultColor.Content}>
             {props.trim} 구매자의 {props.ratio}%가 선택
           </Text>
-        </div>
+        </TopTextBox>
         <Text $style={DefaultColor.Price}>+ {props.price}원</Text>
       </InnerColorText>
       {props.$active && <SelectedFrame />}
@@ -32,12 +32,18 @@ export default function InnerColorBox(props: innerColorProps) {
 }
 
 const Container = styled.div`
-  width: 12.5rem;
+  width: 14.5rem;
   height: 10.25rem;
   display: flex;
   flex-direction: column;
   position: relative;
   cursor: pointer;
+`;
+
+const TopTextBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
 `;
 
 const InnerColorImage = styled.img`
@@ -58,7 +64,7 @@ const SelectedFrame = styled.div`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 12.6rem;
+  width: 14.6rem;
   height: 10.35rem;
   border: 2px solid ${(props) => props.theme.colors.NAVYBLUE5};
   z-index: 1;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Text, DarkColor, LightColor } from "./style";
+import { Text, Price, DarkColor, LightColor } from "./style";
 
 type ContainerProp = {
   $id: number;
@@ -14,40 +14,55 @@ type ContainerProp = {
 };
 
 export default function OuterColorBox(props: ContainerProp) {
-  const isColorBright = 2 as number; // 임시로 2로 설정
+  const isColorBright = 1 as number;
   return (
-    <Container
-      onClick={props.handleClick}
-      $colorImgUrl={props.$colorImgUrl as string}
-    >
-      <Text $style={isColorBright === 1 ? LightColor.Head : DarkColor.Head}>
-        {props.$name}
-      </Text>
-      <Text
-        $style={isColorBright === 1 ? LightColor.Content : DarkColor.Content}
-      >
-        {props.trim} 구매자의 {props.ratio}%가 선택
-      </Text>
-      <Text $style={isColorBright === 1 ? LightColor.Price : DarkColor.Price}>
-        +{props.price.toLocaleString("ko-KR")}원
-      </Text>
+    <Container onClick={props.handleClick}>
+      <OuterColor $colorImgUrl={props.$colorImgUrl as string} />
+      <OuterDiscription>
+        <Text $style={isColorBright === 1 ? LightColor.Head : DarkColor.Head}>
+          {props.$name}
+        </Text>
+        <Text
+          $style={isColorBright === 1 ? LightColor.Content : DarkColor.Content}
+        >
+          {props.trim} 구매자의 {props.ratio}%가 선택
+        </Text>
+        <Price
+          $style={isColorBright === 1 ? LightColor.Content : DarkColor.Content}
+        >
+          +{props.price.toLocaleString("ko-KR")}원
+        </Price>
+      </OuterDiscription>
       {props.$active && <SelectedFrame />}
     </Container>
   );
 }
 
-const Container = styled.div<{ $colorImgUrl: string }>`
+const OuterColor = styled.div<{ $colorImgUrl: string }>`
+  background-image: url(${(props) => props.$colorImgUrl});
+  background-size: cover;
+  background-position: center;
+  height: 3rem;
+  border-bottom: 1px solid ${(props) => props.theme.colors.GREY2};
+`;
+
+const OuterDiscription = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  width: 12.5rem;
-  height: 5rem;
-  padding: 0.75rem;
+  padding: 0.5rem 1rem;
+  gap: 0.5rem;
+`;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  width: 14.5rem;
   flex-shrink: 0;
-  border: 1px solid ${(props) => props.theme.colors.BLACK}; // 수정 필요1
-  background-image: url(${(props) => props.$colorImgUrl});
-  background-repeat: round;
+  border: 1px solid ${(props) => props.theme.colors.GREY2};
   cursor: pointer;
 `;
 
@@ -56,8 +71,8 @@ const SelectedFrame = styled.div`
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 12.1rem;
-  height: 4.6rem;
-  border: 3px solid ${(props) => props.theme.colors.WHITE}; // 수정 필요2
+  width: 14.6rem;
+  height: 7rem;
+  border: 3px solid ${(props) => props.theme.colors.NAVYBLUE5};
   z-index: 1;
 `;

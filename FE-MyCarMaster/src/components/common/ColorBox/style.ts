@@ -8,6 +8,15 @@ export const Text = styled.p<CSSProps>`
   ${(props) => props.$style}
 `;
 
+export const Price = styled.p<CSSProps>`
+  ${(props) => props.$style}
+  position: absolute;
+  right: 0%;
+  top: 50%;
+  margin: 0 1rem;
+  transform: translate(0%, -50%);
+`;
+
 export const DarkColor = {
   Head: css`
     color: ${(props) => props.theme.colors.WHITE};
@@ -15,7 +24,7 @@ export const DarkColor = {
   `,
   Content: css`
     color: ${(props) => props.theme.colors.GREY3};
-    ${(props) => props.theme.fonts.BodySmall};
+    ${(props) => props.theme.fonts.BodySmall2};
   `,
   Price: css`
     color: ${(props) => props.theme.colors.COOLGREY1};
@@ -30,7 +39,7 @@ export const DefaultColor = {
   `,
   Content: css`
     color: ${(props) => props.theme.colors.GREY3};
-    ${(props) => props.theme.fonts.BodySmall};
+    ${(props) => props.theme.fonts.BodySmall2};
   `,
   Price: css`
     color: ${(props) => props.theme.colors.COOLGREY2};
@@ -45,7 +54,7 @@ export const LightColor = {
   `,
   Content: css`
     color: ${(props) => props.theme.colors.GREY3};
-    ${(props) => props.theme.fonts.BodySmall};
+    ${(props) => props.theme.fonts.BodySmall2};
   `,
   Price: css`
     color: ${(props) => props.theme.colors.COOLGREY2};
