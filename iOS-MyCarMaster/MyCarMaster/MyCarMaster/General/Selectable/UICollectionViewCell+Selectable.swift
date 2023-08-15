@@ -13,7 +13,7 @@ extension Selectable where Self: UICollectionViewCell {
         layer.borderWidth = 1.0
         layer.borderColor = selectedBorderColor
     }
-    
+
     func unselectedStyle() {
         backgroundColor = unselectedBackgroundColor
         layer.borderWidth = 1.0
