@@ -47,7 +47,9 @@ function BodyTypeView() {
 const BodyTypeImg = styled.img`
   width: 100%;
   max-width: 40rem;
+  margin: 0 auto;
   height: 100%;
+
   object-fit: scale-down;
   object-position: center;
 `;

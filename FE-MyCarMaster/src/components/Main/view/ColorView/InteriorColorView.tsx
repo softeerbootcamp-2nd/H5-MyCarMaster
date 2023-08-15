@@ -43,8 +43,11 @@ function InteriorColorView() {
 
 const InteriorColorImg = styled.img`
   width: 100%;
+  max-width: 50rem;
+  margin: 0 auto;
   height: 100%;
-  object-fit: contain;
+
+  object-fit: scale-down;
   object-position: center;
 `;
 
