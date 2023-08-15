@@ -3,11 +3,13 @@ import styled, { css, RuleSet } from "styled-components";
 export const Decoration = styled.p<CSSProps>`
   ${(props) => props.theme.fonts.BodySmall};
   ${(props) => props.$style}
+  line-height: 1rem;
 `;
 
 export const Name = styled.p<CSSProps>`
   ${(props) => props.$size}
   ${(props) => props.$style}
+  line-height: 1.4rem;
 `;
 
 export const Description = styled.p<CSSProps>`
@@ -43,6 +45,7 @@ export const BottomContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  gap: 0.5rem;
 `;
 
 export const ButtonContainer = styled.div`
@@ -56,6 +59,7 @@ export const DecorationContainer = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  margin-bottom: 0.5rem;
 `;
 
 export const Container = styled.div<{ $style?: RuleSet }>`
@@ -72,6 +76,15 @@ export const Container = styled.div<{ $style?: RuleSet }>`
   padding: 1rem 1.25rem;
 
   cursor: pointer;
+
+  &:hover {
+    transition: transform 0.5s ease-in-out;
+    transform: scale(1.05);
+  }
+  &:not(:hover) {
+    transition: transform 0.5s ease-in-out;
+    transform: scale(1);
+  }
 `;
 
 type CSSProps = {
