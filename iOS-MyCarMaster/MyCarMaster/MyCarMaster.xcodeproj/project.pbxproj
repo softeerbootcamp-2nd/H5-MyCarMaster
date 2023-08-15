@@ -54,6 +54,7 @@
 		B5BBB3A02A8A447900AAFC84 /* MCMResource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BBB39C2A8A447900AAFC84 /* MCMResource.framework */; };
 		B5BBB3A12A8A447900AAFC84 /* MCMResource.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5BBB39C2A8A447900AAFC84 /* MCMResource.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5BBB3A22A8A447900AAFC84 /* MVIFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BBB39D2A8A447900AAFC84 /* MVIFoundation.framework */; };
+		B5C079092A8BD52D00747B11 /* Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C079082A8BD52D00747B11 /* Selectable.swift */; };
 		B5C3EAC12A84B1AA00D9577C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */; };
 		B5DD64D02A876ABD00B44F61 /* WheelDriveDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64CF2A876ABD00B44F61 /* WheelDriveDTO.swift */; };
 		B5DD64D22A876B5000B44F61 /* WheelDrive.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64D12A876B5000B44F61 /* WheelDrive.swift */; };
@@ -158,6 +159,7 @@
 		B5BBB39B2A8A447900AAFC84 /* MCMNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5BBB39C2A8A447900AAFC84 /* MCMResource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMResource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5BBB39D2A8A447900AAFC84 /* MVIFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MVIFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5C079082A8BD52D00747B11 /* Selectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selectable.swift; sourceTree = "<group>"; };
 		B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B5DD64CF2A876ABD00B44F61 /* WheelDriveDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelDriveDTO.swift; sourceTree = "<group>"; };
 		B5DD64D12A876B5000B44F61 /* WheelDrive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelDrive.swift; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 		B56A765D2A83EF9100F7E3EF /* General */ = {
 			isa = PBXGroup;
 			children = (
+				B5C079072A8BD4FD00747B11 /* Selectable */,
 				B5DD65132A88F5C500B44F61 /* Cell */,
 				B53E028D2A84BE5100F464FC /* StepNavigatorView.swift */,
 				B510BBDE2A84895D009E5752 /* EstimationView.swift */,
@@ -439,6 +442,14 @@
 				B58A323A2A7C0B35005FC831 /* OnboardingViewController.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		B5C079072A8BD4FD00747B11 /* Selectable */ = {
+			isa = PBXGroup;
+			children = (
+				B5C079082A8BD52D00747B11 /* Selectable.swift */,
+			);
+			path = Selectable;
 			sourceTree = "<group>";
 		};
 		B5DD64ED2A877DC700B44F61 /* Exterior */ = {
@@ -675,6 +686,7 @@
 				B53C3C522A8566270019ECA1 /* WheelDriveViewController.swift in Sources */,
 				B5F1AE062A838B8E00E7E392 /* TrimViewController.swift in Sources */,
 				B5DD65192A88FB6F00B44F61 /* Selectable.swift in Sources */,
+				B5C079092A8BD52D00747B11 /* Selectable.swift in Sources */,
 				B5DD651B2A8905B400B44F61 /* ColorListCellState.swift in Sources */,
 				B5DD64F12A87833200B44F61 /* ExteriorViewController.swift in Sources */,
 				B53C3C492A854AF50019ECA1 /* BasicStepView.swift in Sources */,
