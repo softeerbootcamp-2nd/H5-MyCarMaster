@@ -33,7 +33,6 @@ export default function SearchTrimBox({
   const descriptionStyle = calculateDescription(status);
   const priceStyle = calculatePrice(status);
 
-  console.log(nameStyle);
   return (
     <Container $background={backgroundStyle}>
       <Name $text={nameStyle}>{name}</Name>

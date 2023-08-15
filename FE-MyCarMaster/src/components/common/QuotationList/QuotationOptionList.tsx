@@ -6,7 +6,6 @@ import theme from "../../../styles/Theme";
 
 function QuotationOptionList() {
   const { optionQuotation } = useQuotationState();
-  console.log(optionQuotation);
 
   const calculateOptionTotalPrice = () => {
     const totalPrice = optionQuotation.selectedQuotation.reduce(
