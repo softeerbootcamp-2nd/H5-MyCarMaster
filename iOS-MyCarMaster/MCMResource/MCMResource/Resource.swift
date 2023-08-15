@@ -51,6 +51,8 @@ public enum Resource {
         case bodySmall2
         /// Hyundai Sans Text KR / 400(Regular) / Size: 9 / LineHeight 16.0 / Kern: -3%
         case caption
+        /// Hyundai Sans Text KR / 500(Medium) / Size: 10 / LineHeight 16.0 / Kern: -3%
+        case buttonTitleSmall
 
         var textStyle: TextStyle {
             let defaultStyle = TextStyle(kern: -0.03)
@@ -72,6 +74,7 @@ public enum Resource {
             case .bodyMedium2: return defaultStyle.with(font: Text.regular.font(size: 14), lineHeight: 20)
             case .bodySmall2: return defaultStyle.with(font: Text.regular.font(size: 13), lineHeight: 16)
             case .caption: return defaultStyle.with(font: Text.regular.font(size: 9), lineHeight: 16)
+            case .buttonTitleSmall: return defaultStyle.with(font: Text.medium.font(size: 10), lineHeight: 16)
             }
         }
     }
