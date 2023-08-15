@@ -16,5 +16,5 @@ extension CellStyleSelectable {
     
     var selectedBackgroundColor: UIColor { .MCM.navyBlue1 }
     var selectedTextColor: UIColor { .MCM.black }
-    var selectedBorderColor: CGColor { UIColor.MCM.navyBlue1.cgColor }
+    var selectedBorderColor: CGColor { UIColor.MCM.navyBlue4.cgColor }
 }
