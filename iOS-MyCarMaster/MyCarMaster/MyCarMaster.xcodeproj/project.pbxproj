@@ -17,6 +17,11 @@
 		B510BBDB2A840BD4009E5752 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510BBDA2A840BD4009E5752 /* Formatter.swift */; };
 		B510BBDD2A841A25009E5752 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510BBDC2A841A25009E5752 /* Reusable.swift */; };
 		B510BBDF2A84895D009E5752 /* EstimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510BBDE2A84895D009E5752 /* EstimationView.swift */; };
+		B53BA1082A8BE6B9009F94BE /* OptionListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BA1072A8BE6B9009F94BE /* OptionListCell.swift */; };
+		B53BA10A2A8BF426009F94BE /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BA1092A8BF426009F94BE /* Option.swift */; };
+		B53BA10C2A8BF42F009F94BE /* OptionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BA10B2A8BF42F009F94BE /* OptionDTO.swift */; };
+		B53BA10E2A8BF4C2009F94BE /* Option+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BA10D2A8BF4C2009F94BE /* Option+.swift */; };
+		B53BA1102A8BF4E2009F94BE /* OptionListCellMainState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BA10F2A8BF4E2009F94BE /* OptionListCellMainState.swift */; };
 		B53BA1122A8C0A8F009F94BE /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BA1112A8C0A8F009F94BE /* PaddingLabel.swift */; };
 		B53C3C442A85483F0019ECA1 /* EngineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53C3C432A85483F0019ECA1 /* EngineView.swift */; };
 		B53C3C462A8548450019ECA1 /* EngineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53C3C452A8548450019ECA1 /* EngineViewController.swift */; };
@@ -133,6 +138,11 @@
 		B510BBDA2A840BD4009E5752 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		B510BBDC2A841A25009E5752 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		B510BBDE2A84895D009E5752 /* EstimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimationView.swift; sourceTree = "<group>"; };
+		B53BA1072A8BE6B9009F94BE /* OptionListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionListCell.swift; sourceTree = "<group>"; };
+		B53BA1092A8BF426009F94BE /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
+		B53BA10B2A8BF42F009F94BE /* OptionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionDTO.swift; sourceTree = "<group>"; };
+		B53BA10D2A8BF4C2009F94BE /* Option+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Option+.swift"; sourceTree = "<group>"; };
+		B53BA10F2A8BF4E2009F94BE /* OptionListCellMainState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionListCellMainState.swift; sourceTree = "<group>"; };
 		B53BA1112A8C0A8F009F94BE /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		B53C3C432A85483F0019ECA1 /* EngineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineView.swift; sourceTree = "<group>"; };
 		B53C3C452A8548450019ECA1 /* EngineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineViewController.swift; sourceTree = "<group>"; };
@@ -419,6 +429,7 @@
 				B5DD64DE2A876EED00B44F61 /* BodyTypeDTO.swift */,
 				B5DD64F42A87844A00B44F61 /* ExteriorDTO.swift */,
 				B5BBB3542A89C95200AAFC84 /* InteriorDTO.swift */,
+				B53BA10B2A8BF42F009F94BE /* OptionDTO.swift */,
 			);
 			path = DataTransferObject;
 			sourceTree = "<group>";
@@ -432,6 +443,7 @@
 				B5DD64DC2A876ED800B44F61 /* BodyType.swift */,
 				B5DD64F22A8783D800B44F61 /* Exterior.swift */,
 				B5BBB3502A89C7BF00AAFC84 /* Interior.swift */,
+				B53BA1092A8BF426009F94BE /* Option.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -471,6 +483,8 @@
 			isa = PBXGroup;
 			children = (
 				B5C079032A8BD33700747B11 /* ButtonStyleCell.swift */,
+				B53BA1072A8BE6B9009F94BE /* OptionListCell.swift */,
+				B53BA10F2A8BF4E2009F94BE /* OptionListCellMainState.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -516,6 +530,7 @@
 				B5DD652A2A893B1E00B44F61 /* BodyType+.swift */,
 				B5DD651D2A89066400B44F61 /* Exterior+.swift */,
 				B5BBB3522A89C7ED00AAFC84 /* Interior+.swift */,
+				B53BA10D2A8BF4C2009F94BE /* Option+.swift */,
 			);
 			path = "Entity+";
 			sourceTree = "<group>";
@@ -705,12 +720,15 @@
 			files = (
 				B5C0790B2A8BD69100747B11 /* UICollectionViewCell+Selectable.swift in Sources */,
 				B5DD65292A893AC600B44F61 /* WheelDrive+.swift in Sources */,
+				B53BA10C2A8BF42F009F94BE /* OptionDTO.swift in Sources */,
+				B53BA10A2A8BF426009F94BE /* Option.swift in Sources */,
 				B5C079062A8BD40000747B11 /* ButtonStyleSeletable.swift in Sources */,
 				B58A32342A7BA452005FC831 /* OnboardingView.swift in Sources */,
 				B56F55E52A8761F90055E382 /* Engine.swift in Sources */,
 				B5DD65152A88F5CF00B44F61 /* ColorListCell.swift in Sources */,
 				B5DD64EF2A877DDD00B44F61 /* ExteriorView.swift in Sources */,
 				B5DD64DD2A876ED800B44F61 /* BodyType.swift in Sources */,
+				B53BA1102A8BF4E2009F94BE /* OptionListCellMainState.swift in Sources */,
 				B5BBB34F2A89C74C00AAFC84 /* InteriorViewController.swift in Sources */,
 				B5DD65122A880B3100B44F61 /* CGSize+Operator.swift in Sources */,
 				B5DD65202A8926E700B44F61 /* ContentSizeEstimatable.swift in Sources */,
@@ -727,6 +745,7 @@
 				B5DD64D02A876ABD00B44F61 /* WheelDriveDTO.swift in Sources */,
 				B53C3C502A85661D0019ECA1 /* WheelDriveView.swift in Sources */,
 				B5DD651E2A89066400B44F61 /* Exterior+.swift in Sources */,
+				B53BA1082A8BE6B9009F94BE /* OptionListCell.swift in Sources */,
 				B5C3EAC12A84B1AA00D9577C /* MainViewController.swift in Sources */,
 				B56F55D72A86BC7D0055E382 /* Trim.swift in Sources */,
 				B53C3C522A8566270019ECA1 /* WheelDriveViewController.swift in Sources */,
@@ -757,6 +776,7 @@
 				B56F55E72A87621A0055E382 /* EngineDTO.swift in Sources */,
 				B5DD65222A8935F200B44F61 /* BasicListCellState.swift in Sources */,
 				B56F55D42A86BC3B0055E382 /* TrimDTO.swift in Sources */,
+				B53BA10E2A8BF4C2009F94BE /* Option+.swift in Sources */,
 				B560B2182A83827600A4B9A9 /* TrimView.swift in Sources */,
 				B5DD652B2A893B1E00B44F61 /* BodyType+.swift in Sources */,
 				B50C7E4E2A790279005AFE0B /* SceneDelegate.swift in Sources */,
