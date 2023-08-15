@@ -2,8 +2,8 @@ package softeer.be_my_car_master.api.estimate.dto.request;
 
 import java.util.List;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Range;
@@ -85,15 +85,14 @@ public class CreateEstimateRequest {
 	@Range(min = 0, max = 2000000000, message = "interiorColorPrice는 0 이상 ~ 2,000,000,000 이하의 값입니다.")
 	private Integer interiorColorPrice;
 
-	@Schema(description = "선택 옵션 식별자 목록", example = "[1, 2, 3]")
-	@NotEmpty(message = "selectOptions는 비어있을 수 없습니다.")
+	@Valid
 	private List<EstimateOptionDto> selectOptions;
 
 	@Schema(description = "선택 옵션 가격", example = "100000")
 	@Range(min = 0, max = 2000000000, message = "additionalOptionPrice는 0 이상 ~ 2,000,000,000 이하의 값입니다.")
 	private Integer selectOptionPrice;
 
-	@Schema(description = "고민 옵션 식별자 목록", example = "[1, 2, 3]")
+	@Valid
 	private List<EstimateOptionDto> considerOptions;
 
 	@Schema(description = "전체 가격", example = "100000")
