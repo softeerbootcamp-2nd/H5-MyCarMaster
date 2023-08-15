@@ -5,6 +5,7 @@ import java.util.UUID;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
@@ -21,6 +22,9 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 @RequiredArgsConstructor
 public class MailSendHandler {
+
+	@Value(value = "${spring.mail.link}")
+	private String estimateLink;
 
 	private final JavaMailSender mailSender;
 	private final SpringTemplateEngine templateEngine;
@@ -43,9 +47,9 @@ public class MailSendHandler {
 	}
 
 	private String makeText(UUID estimateId) {
-		String estimateLink = "http://my-car-master.shop/" + estimateId.toString();
+		String clientEstimateLink = estimateLink + estimateId.toString();
 		Context context = new Context();
-		context.setVariable("estimateLink", estimateLink);
+		context.setVariable("clientEstimateLink", clientEstimateLink);
 		return templateEngine.process("mail", context);
 	}
 }

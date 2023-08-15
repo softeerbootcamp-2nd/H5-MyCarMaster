@@ -20,6 +20,7 @@ spring:
     port: 587
     username: ${MAIL_USERNAME}
     password: ${MAIL_PASSWORD}
+    link: ${ESTIMATE_LINK}
     properties:
       mail:
         smtp:
@@ -27,6 +28,8 @@ spring:
           timeout: 5000
           starttls:
             enable: true
+
+
 
 ---
 spring:
