@@ -54,6 +54,7 @@
 		B5BBB3A02A8A447900AAFC84 /* MCMResource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BBB39C2A8A447900AAFC84 /* MCMResource.framework */; };
 		B5BBB3A12A8A447900AAFC84 /* MCMResource.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5BBB39C2A8A447900AAFC84 /* MCMResource.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5BBB3A22A8A447900AAFC84 /* MVIFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BBB39D2A8A447900AAFC84 /* MVIFoundation.framework */; };
+		B5C079042A8BD33700747B11 /* ButtonStyleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C079032A8BD33700747B11 /* ButtonStyleCell.swift */; };
 		B5C079062A8BD40000747B11 /* ButtonStyleSeletable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C079052A8BD40000747B11 /* ButtonStyleSeletable.swift */; };
 		B5C079092A8BD52D00747B11 /* Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C079082A8BD52D00747B11 /* Selectable.swift */; };
 		B5C0790B2A8BD69100747B11 /* UICollectionViewCell+Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0790A2A8BD69100747B11 /* UICollectionViewCell+Selectable.swift */; };
@@ -162,6 +163,7 @@
 		B5BBB39B2A8A447900AAFC84 /* MCMNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5BBB39C2A8A447900AAFC84 /* MCMResource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMResource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5BBB39D2A8A447900AAFC84 /* MVIFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MVIFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5C079032A8BD33700747B11 /* ButtonStyleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyleCell.swift; sourceTree = "<group>"; };
 		B5C079052A8BD40000747B11 /* ButtonStyleSeletable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyleSeletable.swift; sourceTree = "<group>"; };
 		B5C079082A8BD52D00747B11 /* Selectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selectable.swift; sourceTree = "<group>"; };
 		B5C0790A2A8BD69100747B11 /* UICollectionViewCell+Selectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Selectable.swift"; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 				B53C3C552A85776B0019ECA1 /* BodyType */,
 				B5DD64ED2A877DC700B44F61 /* Exterior */,
 				B570C0F82A89AD93000E9B75 /* Interior */,
+				B5E233FB2A8B4AE80013BEB1 /* Option */,
 			);
 			path = Sceen;
 			sourceTree = "<group>";
@@ -458,6 +461,14 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		B5C079022A8BD32B00747B11 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B5C079032A8BD33700747B11 /* ButtonStyleCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		B5C079072A8BD4FD00747B11 /* Selectable */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,6 +521,14 @@
 				B5DD651F2A8926E700B44F61 /* ContentSizeEstimatable.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		B5E233FB2A8B4AE80013BEB1 /* Option */ = {
+			isa = PBXGroup;
+			children = (
+				B5C079022A8BD32B00747B11 /* Cell */,
+			);
+			path = Option;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -711,6 +730,7 @@
 				B5DD651B2A8905B400B44F61 /* ColorListCellState.swift in Sources */,
 				B5DD64F12A87833200B44F61 /* ExteriorViewController.swift in Sources */,
 				B53C3C492A854AF50019ECA1 /* BasicStepView.swift in Sources */,
+				B5C079042A8BD33700747B11 /* ButtonStyleCell.swift in Sources */,
 				B5BBB3552A89C95200AAFC84 /* InteriorDTO.swift in Sources */,
 				B5DD65252A89363C00B44F61 /* Trim+.swift in Sources */,
 				B5DD650E2A880A4100B44F61 /* UIImage+Merge.swift in Sources */,
