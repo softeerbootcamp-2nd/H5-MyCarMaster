@@ -77,7 +77,12 @@ function Footer() {
           </ButtonContainer>
         </HeightFittingContainer>
       </RightContainer>
-      <FoldScreen text={"내게 맞는 트림 찾기"} $switch={"searchTrim"} />
+      {navigationId === 0 && (
+        <FoldScreen text={"내게 맞는 트림 찾기"} $switch={"searchTrim"} />
+      )}
+      {navigationId === 6 && (
+        <FoldScreen text={"추가 옵션 선택하기"} $switch={"option"} />
+      )}
     </Container>
   );
 }
@@ -85,16 +90,17 @@ function Footer() {
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
   position: relative;
   width: 100%;
-  height: 16rem;
+  gap: 10rem;
+  height: 30rem;
+  padding: 2rem 0rem;
+  background-color: ${({ theme }) => theme.colors.GREY1};
 `;
 
 const RightContainer = styled.div`
-  width: 9.625rem;
-
+  width: 12rem;
   display: flex;
   flex-direction: column;
 `;
@@ -106,14 +112,14 @@ const TextContainer = styled.div`
 `;
 
 const HeadText = styled.p`
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-style: normal;
   font-weight: 700;
   line-height: 1.5rem;
 `;
 
 const DescriptionText = styled.p`
-  font-size: 0.8125rem;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 400;
   line-height: 165%;

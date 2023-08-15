@@ -31,13 +31,6 @@ const AppProvider = ({
   );
 
 function App() {
-  const location = useLocation();
-  const [isEstimation, setIsEstimation] = useState<boolean>(true);
-
-  useEffect(() => {
-    setIsEstimation(location.pathname === "/estimation");
-  }, [location.pathname]);
-
   return (
     <ThemeProvider theme={theme}>
       <AppProvider
@@ -57,7 +50,6 @@ function App() {
             <Route path="/quotation" element={<Quotation />} />
           </Routes>
         </Container>
-        {isEstimation && <Filler />}
       </AppProvider>
     </ThemeProvider>
   );
@@ -65,24 +57,10 @@ function App() {
 
 const Container = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
 
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  width: 80rem;
-`;
-
-const Filler = styled.div`
-  position: absolute;
-  top: 64%;
   width: 100%;
-  height: 36%;
-  background-color: ${({ theme }) => theme.colors.GREY1};
-  z-index: -1;
+  height: 100%;
 `;
 
 export default App;
