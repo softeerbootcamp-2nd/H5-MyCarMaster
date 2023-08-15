@@ -93,7 +93,7 @@ final class OptionListCell: UICollectionViewCell, CellStyleSelectable {
     }
 
     private func configureUI() {
-
+        unselectedStyle()
     }
 
     private func configureLayout() {
@@ -107,7 +107,6 @@ final class OptionListCell: UICollectionViewCell, CellStyleSelectable {
             mainContentView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             mainContentView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             mainContentView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -14),
-            //            mainContentView.heightAnchor.constraint(equalToConstant: 109),
         ])
 
         configureMainContentViewLayout()
@@ -195,5 +194,71 @@ extension OptionListCell {
         titleLabel.setText(state.name)
         additoryLabel.setText("\(state.model) 구매자의 \(state.ratio.formatted(style: .percent))가 선택")
         priceLabel.setText("+\(state.price.formatted(style: .currency))")
+    }
+    
+    func selectedStyle() {
+        backgroundColor = selectedBackgroundColor
+        layer.borderWidth = 1.0
+        layer.borderColor = selectedBorderColor
+        
+        wishListButton.isHidden = false
+        removeButton.isHidden = false
+        appendButton.isHidden = true
+        
+        removeButton.tintColor = .MCM.white
+        removeButton.backgroundColor = .MCM.navyBlue5
+        removeButton.layer.borderWidth = 0
+        
+        categoryLabel.backgroundColor = .MCM.navyBlue4
+        categoryLabel.textColor = .MCM.navyBlue5
+    }
+    
+    func wishListedStyle() {
+        backgroundColor = .MCM.gold1
+        layer.borderWidth = 1.0
+        layer.borderColor = UIColor.MCM.gold3.cgColor
+        
+        wishListButton.isHidden = true
+        removeButton.isHidden = false
+        appendButton.isHidden = false
+        
+        removeButton.tintColor = .MCM.gold3
+        removeButton.backgroundColor = .MCM.white
+        removeButton.layer.borderColor = UIColor.MCM.grey2.cgColor
+        removeButton.layer.borderWidth = 1.0
+        
+        appendButton.tintColor = .MCM.white
+        appendButton.backgroundColor = .MCM.gold3
+        appendButton.layer.borderColor = UIColor.MCM.gold3.cgColor
+        appendButton.layer.borderWidth = 1.0
+        
+        categoryLabel.backgroundColor = .MCM.gold2
+        categoryLabel.textColor = .MCM.gold3
+    }
+    
+    func unselectedStyle() {
+        backgroundColor = .MCM.grey1
+        layer.borderWidth = 1.0
+        layer.borderColor = UIColor.MCM.grey1.cgColor
+        
+        wishListButton.isHidden = false
+        removeButton.isHidden = true
+        appendButton.isHidden = false
+        
+        appendButton.tintColor = .MCM.white
+        appendButton.backgroundColor = .MCM.navyBlue5
+        appendButton.layer.borderColor = UIColor.MCM.navyBlue5.cgColor
+        appendButton.layer.borderWidth = 1.0
+        
+        categoryLabel.backgroundColor = .MCM.navyBlue4
+        categoryLabel.textColor = .MCM.navyBlue5
+    }
+    
+    func fold() {
+        foldStateIndicatorView.image = foldStateImage
+    }
+    
+    func unfold() {
+        foldStateIndicatorView.image = unfoldStateImage
     }
 }
