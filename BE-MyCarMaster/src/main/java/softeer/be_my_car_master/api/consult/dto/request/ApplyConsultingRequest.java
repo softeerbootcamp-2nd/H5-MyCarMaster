@@ -1,7 +1,6 @@
 package softeer.be_my_car_master.api.consult.dto.request;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -33,10 +32,10 @@ public class ApplyConsultingRequest {
 	}
 
 	public String getClientEmail() {
-        return client.getEmail();
-    }
+		return client.getEmail();
+	}
 
-	public String getClientPhone () {
-        return client.getPhone();
-    }
+	public String getClientPhone() {
+		return client.getPhone();
+	}
 }
