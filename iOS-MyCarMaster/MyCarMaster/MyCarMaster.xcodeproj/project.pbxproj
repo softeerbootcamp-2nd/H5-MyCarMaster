@@ -44,6 +44,7 @@
 		B58A32342A7BA452005FC831 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A32332A7BA452005FC831 /* OnboardingView.swift */; };
 		B58A32382A7BA47D005FC831 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B58A32372A7BA47D005FC831 /* Lottie */; };
 		B58A323B2A7C0B35005FC831 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A323A2A7C0B35005FC831 /* OnboardingViewController.swift */; };
+		B59B201D2A8B666A009E7868 /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59B201C2A8B666A009E7868 /* OptionViewController.swift */; };
 		B5A600FE2A81E1FC00CF2983 /* MCMCombineExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */; };
 		B5A600FF2A81E1FC00CF2983 /* MCMCombineExtension.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5BBB34F2A89C74C00AAFC84 /* InteriorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBB34E2A89C74C00AAFC84 /* InteriorViewController.swift */; };
@@ -166,6 +167,7 @@
 		B570C0F92A89ADA7000E9B75 /* InteriorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteriorView.swift; sourceTree = "<group>"; };
 		B58A32332A7BA452005FC831 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		B58A323A2A7C0B35005FC831 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		B59B201C2A8B666A009E7868 /* OptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
 		B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMCombineExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5BBB34E2A89C74C00AAFC84 /* InteriorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteriorViewController.swift; sourceTree = "<group>"; };
 		B5BBB3502A89C7BF00AAFC84 /* Interior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interior.swift; sourceTree = "<group>"; };
@@ -548,6 +550,7 @@
 			children = (
 				B5C079022A8BD32B00747B11 /* Cell */,
 				B5E233FC2A8B4B0F0013BEB1 /* OptionView.swift */,
+				B59B201C2A8B666A009E7868 /* OptionViewController.swift */,
 			);
 			path = Option;
 			sourceTree = "<group>";
@@ -709,7 +712,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint >/dev/null; then\n    if [ \"${CONFIGURATION}\" = \"Preview\" ]; then\n        echo \"not auto_correct\"\n        swiftlint\n    else\n        echo \"auto_correct\"\n        swiftlint --fix --config \".swiftlint.auto.yml\" && swiftlint\n    fi\nelse\n    echo \"warning: SwiftLint not installed\"\nfi\n";
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint >/dev/null; then\n    if [ \"${CONFIGURATION}\" = \"Offline\" ]; then\n        echo \"not auto_correct\"\n        swiftlint\n    else\n        echo \"auto_correct\"\n        swiftlint --fix --config \".swiftlint.auto.yml\" && swiftlint\n    fi\nelse\n    echo \"warning: SwiftLint not installed\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
