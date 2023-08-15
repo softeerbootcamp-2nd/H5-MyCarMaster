@@ -115,9 +115,4 @@ class ExteriorColorControllerTest {
 		String responseBody = objectMapper.writeValueAsString(errorResponse);
 		return responseBody;
 	}
-
-	private String getRequestBody(GetExteriorColorsRequest getExteriorColorsRequest) throws JsonProcessingException {
-		String requestBody = objectMapper.writeValueAsString(getExteriorColorsRequest);
-		return requestBody;
-	}
 }
