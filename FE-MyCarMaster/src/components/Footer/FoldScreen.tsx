@@ -41,7 +41,7 @@ export default function FoldScreen({ text, $switch }: FoldScreenProps) {
             : "추가 옵션 선택하기"}
         </Text>
 
-        {!isFold && <Bar $show={loading} />}
+        {!isFold && $switch === "searchTrim" && <Bar $show={loading} />}
         <ScreenContainer
           $loading={loading}
           $show={isFold}
@@ -61,8 +61,10 @@ const Conatiner = styled.div`
   position: absolute;
   width: 100%;
   bottom: 0%;
+  padding: 1rem 0;
   align-items: center;
   z-index: 1;
+  overflow: hidden;
 `;
 
 const AngleUpIcon = styled.img.attrs({
@@ -76,6 +78,9 @@ const AngleDownIcon = styled.img.attrs({
 `;
 
 const Bar = styled.div<{ $show: boolean }>`
+  position: absolute;
+  bottom: -10%;
+
   width: 6rem;
   height: 0.0625rem;
   background-color: ${({ theme }) => theme.colors.ACTIVE_BLUE};
@@ -131,7 +136,8 @@ const ButtonContainer = styled.div<{ $style: boolean }>`
   align-items: center;
   cursor: pointer;
   width: ${({ $style }) => ($style ? "100vw" : "auto")};
-  height: ${({ $style }) => ($style ? "70vh" : "auto")};
+  height: ${({ $style }) => ($style ? "80vh" : "auto")};
+  position: relative;
 
   background-color: ${({ theme }) => theme.colors.GREY1};
   box-shadow: ${({ $style }) =>
@@ -180,14 +186,14 @@ const ButtonContainer = styled.div<{ $style: boolean }>`
 
   @keyframes moveUp {
     from {
-      transform: translateY(calc(100% - 2.5rem));
+      transform: translateY(calc(100% - 2.25rem));
       width: 100vw;
-      height: 70vh;
+      height: 80vh;
     }
     to {
       transform: translateY(0%);
       width: 100vw;
-      height: 70vh;
+      height: 80vh;
     }
   }
 
@@ -197,7 +203,7 @@ const ButtonContainer = styled.div<{ $style: boolean }>`
       width: 100vw;
     }
     to {
-      transform: translateY(calc(100% - 2.5rem));
+      transform: translateY(calc(100% - 2.25rem));
     }
   }
 `;

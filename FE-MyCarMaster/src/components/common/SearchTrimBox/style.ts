@@ -1,8 +1,8 @@
 import styled, { css, RuleSet } from "styled-components";
 
 export const Container = styled.div<CSSProps>`
-  width: 12.5rem;
-  height: 10.25rem;
+  width: 16.5rem;
+  height: 12.25rem;
   padding: 1rem;
 
   display: flex;

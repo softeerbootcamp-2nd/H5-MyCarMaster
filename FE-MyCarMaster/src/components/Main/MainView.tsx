@@ -16,12 +16,14 @@ function MainView() {
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  height: 400px;
+  justify-content: center;
+  gap: 10rem;
+  height: 100%;
+  width: 100%;
 `;
 
 const MainContent = styled.div`
-  width: 51.5rem;
+  width: 59.5rem;
 `;
 
 export default MainView;

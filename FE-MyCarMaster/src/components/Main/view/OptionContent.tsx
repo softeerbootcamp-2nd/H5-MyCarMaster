@@ -63,8 +63,8 @@ const OptionContainer = styled.div`
 `;
 
 const OptionImg = styled.img`
-  width: 29.875rem;
-  height: 20.875rem;
+  max-width: 37rem;
+  width: 100%;
   flex-shrink: 0;
 `;
 
