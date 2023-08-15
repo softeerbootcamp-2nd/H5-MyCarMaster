@@ -10,7 +10,7 @@ import CarRotation from "../../../common/CarRotation/CarRotation";
 
 interface FetchExteriorProps extends ExteriorColors {
   result: {
-    colors: ExteriorColors[];
+    exteriorColors: ExteriorColors[];
   };
 }
 
@@ -32,7 +32,7 @@ function ExteriorColorView() {
     if (data) {
       exteriorDispatch({
         type: "SET_EXTERIOR_LIST",
-        payload: { exteriorList: data.result.colors },
+        payload: { exteriorList: data.result.exteriorColors },
       });
     }
   }, [data, exteriorDispatch]);

@@ -6,7 +6,19 @@ type TextProp = {
   size?: string;
   gap?: string;
   text?: string;
+  handleClick?: () => void;
 };
+
+function TextButton({ text, size, handleClick }: TextProp) {
+  return (
+    <Container size={size} onClick={handleClick}>
+      <Text $style={DefaultStyle.Text}>{text}</Text>
+      <img src={ArrowRight} alt="arrow-right" />
+    </Container>
+  );
+}
+
+export default TextButton;
 
 const Container = styled.div<TextProp>`
   display: inline-flex;
@@ -20,14 +32,5 @@ const Container = styled.div<TextProp>`
     width: 0.75rem;
     height: 0.75rem;
   }
+  cursor: pointer;
 `;
-function TextButton(props: TextProp) {
-  return (
-    <Container size={props.size}>
-      <Text $style={DefaultStyle.Text}>{props.text}</Text>
-      <img src={ArrowRight} alt="arrow-right" />
-    </Container>
-  );
-}
-
-export default TextButton;

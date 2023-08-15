@@ -14,33 +14,39 @@ function QuotationList() {
         category={"트림"}
         name={trimQuotation.trimQuotation.name}
         price={trimQuotation.trimQuotation?.price}
+        id={0}
       />
       <QuotationItem
         category={"엔진"}
         name={detailQuotation.engineQuotation.name}
         price={detailQuotation.engineQuotation.price}
+        id={1}
       />
       <QuotationItem
         category={"구동 방식"}
         name={detailQuotation.wheelDriveQuotation.name}
         price={detailQuotation.wheelDriveQuotation.price}
+        id={2}
       />
       <QuotationItem
         category={"바디 타입"}
         name={detailQuotation.bodyTypeQuotation.name}
         price={detailQuotation.bodyTypeQuotation.price}
+        id={3}
       />
       <QuotationItem
         category={"외장 색상"}
         name={carPaintQuotation.exteriorColorQuotation.name}
         price={carPaintQuotation.exteriorColorQuotation.price}
         imgUrl={carPaintQuotation.exteriorColorQuotation.imgUrl}
+        id={4}
       />
       <QuotationItem
         category={"내장 색상"}
         name={carPaintQuotation.interiorColorQuotation.name}
         price={carPaintQuotation.interiorColorQuotation.price}
         imgUrl={carPaintQuotation.interiorColorQuotation.imgUrl}
+        id={5}
       />
       <QuotationOptionList />
     </QuotationSummary>
