@@ -123,7 +123,7 @@ const HeadText = styled.p`
 `;
 
 const DescriptionText = styled.p`
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-style: normal;
   font-weight: 400;
   line-height: 165%;
