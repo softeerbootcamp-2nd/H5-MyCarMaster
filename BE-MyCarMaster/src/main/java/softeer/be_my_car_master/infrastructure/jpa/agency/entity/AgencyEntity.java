@@ -1,4 +1,4 @@
-package softeer.be_my_car_master.infrastructure.jpa.store.entity;
+package softeer.be_my_car_master.infrastructure.jpa.agency.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,9 +11,9 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "store")
+@Table(name = "agency")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class StoreEntity {
+public class AgencyEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import softeer.be_my_car_master.infrastructure.jpa.store.entity.StoreEntity;
+import softeer.be_my_car_master.infrastructure.jpa.agency.entity.AgencyEntity;
 
 @Entity
 @Table(name = "car_master")
@@ -42,6 +42,6 @@ public class CarMasterEntity {
 	private String email;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "store_id")
-	private StoreEntity store;
+	@JoinColumn(name = "agency_id")
+	private AgencyEntity agency;
 }
