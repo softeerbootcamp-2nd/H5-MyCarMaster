@@ -53,6 +53,13 @@ const fonts = {
     fontWeight: fontWeight.regular, // 400
   },
 
+  BodySmall2: {
+    fontFamily: "HyundaiSansRegular",
+    fontSize: fontSize.Nano, // 0.625
+    fontStyle: "normal",
+    fontWeight: fontWeight.regular, // 400
+  },
+
   ContentLarge: {
     fontFamily: "HyundaiSansRegular",
     fontSize: fontSize.Large, // 1
