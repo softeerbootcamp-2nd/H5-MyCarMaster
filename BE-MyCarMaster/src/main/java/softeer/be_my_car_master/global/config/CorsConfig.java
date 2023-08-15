@@ -1,4 +1,4 @@
-package softeer.be_my_car_master.global.config.cors;
+package softeer.be_my_car_master.global.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
