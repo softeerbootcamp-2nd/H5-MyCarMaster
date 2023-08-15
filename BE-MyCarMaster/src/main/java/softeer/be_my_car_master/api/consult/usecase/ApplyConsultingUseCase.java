@@ -2,9 +2,13 @@ package softeer.be_my_car_master.api.consult.usecase;
 
 import java.util.UUID;
 
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.transaction.annotation.Transactional;
+
 import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.api.consult.exception.InvalidCarMasterIdException;
 import softeer.be_my_car_master.api.consult.exception.InvalidEstimateIdException;
+import softeer.be_my_car_master.api.consult.handler.MailSendEvent;
 import softeer.be_my_car_master.api.consult.usecase.port.CarMasterPort;
 import softeer.be_my_car_master.api.consult.usecase.port.ConsultingPort;
 import softeer.be_my_car_master.api.estimate.usecase.port.EstimatePort;
@@ -21,6 +25,9 @@ public class ApplyConsultingUseCase {
 	private final CarMasterPort carMasterPort;
 	private final EstimatePort estimatePort;
 
+	private final ApplicationEventPublisher eventPublisher;
+
+	@Transactional
 	public void execute(
 		UUID estimateId,
 		Long carMasterId,
@@ -28,8 +35,9 @@ public class ApplyConsultingUseCase {
 		String clientEmail,
 		String clientPhone
 	) {
-		// 카마스터 - 유저 상담 신청 정보
-		Estimate estimate = estimatePort.findById(estimateId).orElseThrow(() -> InvalidEstimateIdException.EXCEPTION);
+		// 카마스터 구매 상담 신청
+		Estimate estimate = estimatePort
+		.findById(estimateId).orElseThrow(() -> InvalidEstimateIdException.EXCEPTION);
 		CarMaster carMaster = carMasterPort.findById(carMasterId)
 			.orElseThrow(() -> InvalidCarMasterIdException.EXCEPTION);
 
@@ -37,5 +45,6 @@ public class ApplyConsultingUseCase {
 		consultingPort.createConsulting(consulting);
 
 		// 이메일 전송
+		eventPublisher.publishEvent(new MailSendEvent(estimateId, clientEmail));
 	}
 }
