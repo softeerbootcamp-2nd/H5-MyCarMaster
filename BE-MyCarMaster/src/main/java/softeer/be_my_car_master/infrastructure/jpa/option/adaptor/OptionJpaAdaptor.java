@@ -43,8 +43,8 @@ public class OptionJpaAdaptor implements OptionPort {
 			.collect(Collectors.toList());
 	}
 
-	private void loadTag(List<TrimAdditionalOptionEntity> additionalTrimOptionEntities) {
-		additionalTrimOptionEntities.stream()
+	private void loadTag(List<TrimAdditionalOptionEntity> trimAdditionalOptionEntities) {
+		trimAdditionalOptionEntities.stream()
 			.map(TrimAdditionalOptionEntity::getOption)
 			.forEach(OptionEntity::getTag);
 	}
