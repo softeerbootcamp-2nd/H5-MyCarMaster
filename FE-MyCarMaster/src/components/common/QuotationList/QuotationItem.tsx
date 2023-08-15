@@ -1,20 +1,43 @@
 import { styled } from "styled-components";
 import TextButton from "../Button/TextButton";
 import theme from "../../../styles/Theme";
+import { useNavigate } from "react-router-dom";
+import { useQuotationDispatch } from "../../../contexts/QuotationContext";
 
 interface QuotationItemProps {
   name: string;
   price: number;
   category: string;
   imgUrl?: string;
+  id: number;
 }
 
-function QuotationItem({ name, price, category, imgUrl }: QuotationItemProps) {
+function QuotationItem({
+  id,
+  name,
+  price,
+  category,
+  imgUrl,
+}: QuotationItemProps) {
+  const navigate = useNavigate();
+  const quotationDispatch = useQuotationDispatch();
+
+  const handleClick = (navigationId: number) => {
+    quotationDispatch({
+      type: "NAVIGATE",
+      payload: { navigationId },
+    });
+    navigate("/estimation");
+  };
   return (
     <Container>
       <CategoryContainer>
         <Category>{category}</Category>
-        <TextButton size={"1"} text={"변경하기"} />
+        <TextButton
+          size={"1"}
+          text={"변경하기"}
+          handleClick={() => handleClick(id)}
+        />
       </CategoryContainer>
       <ItemContainer>
         {imgUrl ? (

@@ -7,8 +7,26 @@ import Button from "../components/common/Button/Button";
 import theme from "../styles/Theme";
 import QuotationList from "../components/common/QuotationList/QuotationList";
 import findCarmasterTooltip from "../assets/images/FindCarmasterTooltip.png";
+import { useQuotationState } from "../contexts/QuotationContext";
 
 function Quotation() {
+  const { trimQuotation, detailQuotation, carPaintQuotation, optionQuotation } =
+    useQuotationState();
+  const getTotalPrice = () => {
+    let totalPrice = 0;
+    totalPrice =
+      trimQuotation.trimQuotation.price +
+      detailQuotation.bodyTypeQuotation.price +
+      detailQuotation.wheelDriveQuotation.price +
+      detailQuotation.engineQuotation.price +
+      carPaintQuotation.exteriorColorQuotation.price +
+      carPaintQuotation.interiorColorQuotation.price;
+    totalPrice += optionQuotation.selectedQuotation.reduce(
+      (acc, item) => acc + item.price,
+      0
+    );
+    return totalPrice;
+  };
   return (
     <Container>
       {/* <BlueBackground /> */}
@@ -30,7 +48,7 @@ function Quotation() {
       <QuotationFooter>
         <PriceContainer>
           <Price>예상 가격</Price>
-          <SumPrice>38,960,000 원</SumPrice>
+          <SumPrice>{getTotalPrice().toLocaleString("ko-KR")}원</SumPrice>
         </PriceContainer>
         <ButtonContainer>
           <Button

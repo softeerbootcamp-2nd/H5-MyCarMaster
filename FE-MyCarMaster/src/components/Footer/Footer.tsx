@@ -16,6 +16,8 @@ function Footer() {
   const name = indexNameSwitching(navigationId) as string;
   const navigate = useNavigate();
 
+  const navigate = useNavigate();
+
   const buttonHandler = (cal: number) => {
     const navigationIndex = navigationId + cal;
     quotationDispatch({
@@ -32,6 +34,10 @@ function Footer() {
 
   const navigateQuotationHandler = () => {
     // validation api code
+    quotationDispatch({
+      type: "NAVIGATE",
+      payload: { navigationId: navigationId + 1 },
+    });
     navigate("/quotation");
   };
 

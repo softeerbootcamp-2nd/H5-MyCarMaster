@@ -13,6 +13,7 @@ import {
   CarPaintQuotationType,
   OptionQuotationType,
 } from "../../../types/quotation.types";
+import { useNavigate } from "react-router-dom";
 
 type activeProp = {
   $active?: boolean | undefined | 0;
@@ -33,6 +34,7 @@ type NavigationItemProp = {
 function NavigationItem({ name, quotation }: NavigationItemProp) {
   const { navigationId, isFirst } = useQuotationState();
   const quotationDispatch = useQuotationDispatch();
+  const navigate = useNavigate();
   const [start, end] = indexNameSwitching(name) as number[];
 
   const handleNavigate = () => {
@@ -40,6 +42,7 @@ function NavigationItem({ name, quotation }: NavigationItemProp) {
       type: "NAVIGATE",
       payload: { navigationId: start },
     });
+    navigate("/estimation");
   };
 
   return (
