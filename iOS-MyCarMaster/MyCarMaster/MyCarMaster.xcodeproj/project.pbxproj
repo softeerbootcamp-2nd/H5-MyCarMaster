@@ -55,6 +55,7 @@
 		B5BBB3A12A8A447900AAFC84 /* MCMResource.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5BBB39C2A8A447900AAFC84 /* MCMResource.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5BBB3A22A8A447900AAFC84 /* MVIFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BBB39D2A8A447900AAFC84 /* MVIFoundation.framework */; };
 		B5C079092A8BD52D00747B11 /* Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C079082A8BD52D00747B11 /* Selectable.swift */; };
+		B5C0790B2A8BD69100747B11 /* UICollectionViewCell+Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0790A2A8BD69100747B11 /* UICollectionViewCell+Selectable.swift */; };
 		B5C3EAC12A84B1AA00D9577C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */; };
 		B5DD64D02A876ABD00B44F61 /* WheelDriveDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64CF2A876ABD00B44F61 /* WheelDriveDTO.swift */; };
 		B5DD64D22A876B5000B44F61 /* WheelDrive.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64D12A876B5000B44F61 /* WheelDrive.swift */; };
@@ -68,7 +69,7 @@
 		B5DD65122A880B3100B44F61 /* CGSize+Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD65112A880B3100B44F61 /* CGSize+Operator.swift */; };
 		B5DD65152A88F5CF00B44F61 /* ColorListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD65142A88F5CF00B44F61 /* ColorListCell.swift */; };
 		B5DD65172A88F8D100B44F61 /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD65162A88F8D100B44F61 /* Then.swift */; };
-		B5DD65192A88FB6F00B44F61 /* Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD65182A88FB6F00B44F61 /* Selectable.swift */; };
+		B5DD65192A88FB6F00B44F61 /* CellStyleSelectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD65182A88FB6F00B44F61 /* CellStyleSelectable.swift */; };
 		B5DD651B2A8905B400B44F61 /* ColorListCellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD651A2A8905B400B44F61 /* ColorListCellState.swift */; };
 		B5DD651E2A89066400B44F61 /* Exterior+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD651D2A89066400B44F61 /* Exterior+.swift */; };
 		B5DD65202A8926E700B44F61 /* ContentSizeEstimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD651F2A8926E700B44F61 /* ContentSizeEstimatable.swift */; };
@@ -160,6 +161,7 @@
 		B5BBB39C2A8A447900AAFC84 /* MCMResource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMResource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5BBB39D2A8A447900AAFC84 /* MVIFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MVIFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C079082A8BD52D00747B11 /* Selectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selectable.swift; sourceTree = "<group>"; };
+		B5C0790A2A8BD69100747B11 /* UICollectionViewCell+Selectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Selectable.swift"; sourceTree = "<group>"; };
 		B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B5DD64CF2A876ABD00B44F61 /* WheelDriveDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelDriveDTO.swift; sourceTree = "<group>"; };
 		B5DD64D12A876B5000B44F61 /* WheelDrive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelDrive.swift; sourceTree = "<group>"; };
@@ -175,7 +177,7 @@
 		B5DD65112A880B3100B44F61 /* CGSize+Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Operator.swift"; sourceTree = "<group>"; };
 		B5DD65142A88F5CF00B44F61 /* ColorListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorListCell.swift; sourceTree = "<group>"; };
 		B5DD65162A88F8D100B44F61 /* Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
-		B5DD65182A88FB6F00B44F61 /* Selectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selectable.swift; sourceTree = "<group>"; };
+		B5DD65182A88FB6F00B44F61 /* CellStyleSelectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellStyleSelectable.swift; sourceTree = "<group>"; };
 		B5DD651A2A8905B400B44F61 /* ColorListCellState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorListCellState.swift; sourceTree = "<group>"; };
 		B5DD651D2A89066400B44F61 /* Exterior+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Exterior+.swift"; sourceTree = "<group>"; };
 		B5DD651F2A8926E700B44F61 /* ContentSizeEstimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizeEstimatable.swift; sourceTree = "<group>"; };
@@ -448,6 +450,8 @@
 			isa = PBXGroup;
 			children = (
 				B5C079082A8BD52D00747B11 /* Selectable.swift */,
+				B5DD65182A88FB6F00B44F61 /* CellStyleSelectable.swift */,
+				B5C0790A2A8BD69100747B11 /* UICollectionViewCell+Selectable.swift */,
 			);
 			path = Selectable;
 			sourceTree = "<group>";
@@ -489,7 +493,6 @@
 		B5DD65232A8935FB00B44F61 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				B5DD65182A88FB6F00B44F61 /* Selectable.swift */,
 				B5DD651F2A8926E700B44F61 /* ContentSizeEstimatable.swift */,
 			);
 			path = Protocol;
@@ -661,6 +664,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5C0790B2A8BD69100747B11 /* UICollectionViewCell+Selectable.swift in Sources */,
 				B5DD65292A893AC600B44F61 /* WheelDrive+.swift in Sources */,
 				B58A32342A7BA452005FC831 /* OnboardingView.swift in Sources */,
 				B56F55E52A8761F90055E382 /* Engine.swift in Sources */,
@@ -672,6 +676,7 @@
 				B5DD65202A8926E700B44F61 /* ContentSizeEstimatable.swift in Sources */,
 				B5DD64DF2A876EED00B44F61 /* BodyTypeDTO.swift in Sources */,
 				B56F55D22A86BBE50055E382 /* RootDTO.swift in Sources */,
+				B59B201D2A8B666A009E7868 /* OptionViewController.swift in Sources */,
 				B53C3C582A8578310019ECA1 /* BodyTypeView.swift in Sources */,
 				B53E028E2A84BE5100F464FC /* StepNavigatorView.swift in Sources */,
 				B56A765C2A83EC5200F7E3EF /* Preview.swift in Sources */,
@@ -685,7 +690,7 @@
 				B56F55D72A86BC7D0055E382 /* Trim.swift in Sources */,
 				B53C3C522A8566270019ECA1 /* WheelDriveViewController.swift in Sources */,
 				B5F1AE062A838B8E00E7E392 /* TrimViewController.swift in Sources */,
-				B5DD65192A88FB6F00B44F61 /* Selectable.swift in Sources */,
+				B5DD65192A88FB6F00B44F61 /* CellStyleSelectable.swift in Sources */,
 				B5C079092A8BD52D00747B11 /* Selectable.swift in Sources */,
 				B5DD651B2A8905B400B44F61 /* ColorListCellState.swift in Sources */,
 				B5DD64F12A87833200B44F61 /* ExteriorViewController.swift in Sources */,
