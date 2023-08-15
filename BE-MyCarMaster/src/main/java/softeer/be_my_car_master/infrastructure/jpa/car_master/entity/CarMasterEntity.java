@@ -11,11 +11,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
+import softeer.be_my_car_master.domain.car_master.CarMaster;
 import softeer.be_my_car_master.infrastructure.jpa.agency.entity.AgencyEntity;
 
 @Entity
 @Table(name = "car_master")
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class CarMasterEntity {
 
@@ -44,4 +49,14 @@ public class CarMasterEntity {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "agency_id")
 	private AgencyEntity agency;
+
+	public CarMaster toCarMaster() {
+		return new CarMaster(id);
+	}
+
+	public static CarMasterEntity from(CarMaster carMaster) {
+		return CarMasterEntity.builder()
+			.id(carMaster.getId())
+			.build();
+	}
 }
