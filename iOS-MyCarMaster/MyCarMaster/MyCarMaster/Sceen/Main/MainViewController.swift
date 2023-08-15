@@ -14,6 +14,7 @@ enum Step: Int, CaseIterable {
     case bodyType
     case exterior
     case interior
+    case option
 
     var title: String {
         switch self {
@@ -29,6 +30,8 @@ enum Step: Int, CaseIterable {
             return "외장 색상"
         case .interior:
             return "내장 색상"
+        case .option:
+            return "추가 옵션"
         }
     }
 
@@ -45,6 +48,8 @@ enum Step: Int, CaseIterable {
         case .exterior:
             return .interior
         case .interior:
+            return .option
+        case .option:
             return .trim
         }
     }
@@ -52,7 +57,7 @@ enum Step: Int, CaseIterable {
     var back: Step {
         switch self {
         case .trim:
-            return .interior
+            return .option
         case .engine:
             return .trim
         case .wheelDrive:
@@ -63,6 +68,8 @@ enum Step: Int, CaseIterable {
             return .bodyType
         case .interior:
             return .exterior
+        case .option:
+            return .interior
         }
     }
 
@@ -154,6 +161,8 @@ final class MainViewController: UIViewController {
             moveTo(ExteriorViewController())
         case .interior:
             moveTo(InteriorViewController())
+        case .option:
+            moveTo(OptionViewController())
         }
     }
 
