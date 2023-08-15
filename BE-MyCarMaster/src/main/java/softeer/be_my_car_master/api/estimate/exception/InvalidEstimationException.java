@@ -8,6 +8,6 @@ public class InvalidEstimationException extends MyCarMasterException {
 	public static final MyCarMasterException EXCEPTION = new InvalidEstimationException();
 
 	private InvalidEstimationException() {
-		super(ResponseStatus.INVALID_ESTIMATION);
+		super(ResponseStatus.INVALID_ESTIMATE);
 	}
 }

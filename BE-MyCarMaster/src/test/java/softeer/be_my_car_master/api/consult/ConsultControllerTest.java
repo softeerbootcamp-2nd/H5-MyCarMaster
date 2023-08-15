@@ -46,11 +46,11 @@ class ConsultControllerTest {
 			"62dd98f0-bd8e-11ed-93ab-325096b39f47", 1L, clientDto);
 
 		String requestBody = objectMapper.writeValueAsString(applyConsultingRequest);
-		willDoNothing().given(applyConsultingUseCase).execute(any(), any(), any(), any());
+		willDoNothing().given(applyConsultingUseCase).execute(any(), any(), any(), any(), any());
 
 		//when
 		ResultActions perform = mockMvc.perform(
-			post("/consult")
+			post("/consulting")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(requestBody)
 		);
@@ -70,13 +70,13 @@ class ConsultControllerTest {
 			"abcd-efgh-1234", 1L, clientDto);
 
 		String requestBody = objectMapper.writeValueAsString(applyConsultingRequest);
-		willDoNothing().given(applyConsultingUseCase).execute(any(), any(), any(), any());
+		willDoNothing().given(applyConsultingUseCase).execute(any(), any(), any(), any(), any());
 
 		String responseBody = getClientErrorResponseBody();
 
 		//when
 		ResultActions perform = mockMvc.perform(
-			post("/consult")
+			post("/consulting")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(requestBody)
 		);
@@ -97,13 +97,13 @@ class ConsultControllerTest {
 			"62dd98f0-bd8e-11ed-93ab-325096b39f47", 1L, clientDto);
 
 		String requestBody = objectMapper.writeValueAsString(applyConsultingRequest);
-		willDoNothing().given(applyConsultingUseCase).execute(any(), any(), any(), any());
+		willDoNothing().given(applyConsultingUseCase).execute(any(), any(), any(), any(), any());
 
 		String responseBody = getClientErrorResponseBody();
 
 		//when
 		ResultActions perform = mockMvc.perform(
-			post("/consult")
+			post("/consulting")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(requestBody)
 		);
@@ -124,13 +124,13 @@ class ConsultControllerTest {
 			"62dd98f0-bd8e-11ed-93ab-325096b39f47", 1L, clientDto);
 
 		String requestBody = objectMapper.writeValueAsString(applyConsultingRequest);
-		willDoNothing().given(applyConsultingUseCase).execute(any(), any(), any(), any());
+		willDoNothing().given(applyConsultingUseCase).execute(any(), any(), any(), any(), any());
 
 		String responseBody = getClientErrorResponseBody();
 
 		//when
 		ResultActions perform = mockMvc.perform(
-			post("/consult")
+			post("/consulting")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(requestBody)
 		);
@@ -151,13 +151,13 @@ class ConsultControllerTest {
 			"62dd98f0-bd8e-11ed-93ab-325096b39f47", 1L, clientDto);
 
 		String requestBody = objectMapper.writeValueAsString(applyConsultingRequest);
-		willDoNothing().given(applyConsultingUseCase).execute(any(), any(), any(), any());
+		willDoNothing().given(applyConsultingUseCase).execute(any(), any(), any(), any(), any());
 
 		String responseBody = getClientErrorResponseBody();
 
 		//when
 		ResultActions perform = mockMvc.perform(
-			post("/consult")
+			post("/consulting")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(requestBody)
 		);
