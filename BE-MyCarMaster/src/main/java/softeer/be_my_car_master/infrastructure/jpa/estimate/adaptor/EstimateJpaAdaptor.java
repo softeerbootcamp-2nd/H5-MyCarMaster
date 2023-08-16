@@ -82,8 +82,8 @@ public class EstimateJpaAdaptor implements EstimatePort {
 	}
 
 	@Override
-	public Optional<Estimate> findById(UUID estimateId) {
-		return estimateRepository.findById(estimateId)
+	public Optional<Estimate> findByUuid(UUID estimateUuid) {
+		return estimateRepository.findByUuid(estimateUuid)
 			.map(EstimateEntity::toEstimate);
 	}
 }
