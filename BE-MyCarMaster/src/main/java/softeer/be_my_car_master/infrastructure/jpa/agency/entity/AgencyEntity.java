@@ -27,4 +27,7 @@ public class AgencyEntity {
 
 	@Column(name = "longitude", nullable = false)
 	private Double longitude;
+
+	@Column(name = "gu", nullable = false)
+	private String gu;
 }
