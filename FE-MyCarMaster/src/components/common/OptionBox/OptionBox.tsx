@@ -21,6 +21,7 @@ type OptionBoxProp = {
   $considered?: boolean;
   $none?: boolean; // 추후, 선택할 수 없는 옵션에 대한 처리를 위해 추가
   handleClick?: () => void;
+  handleClickDetail?: () => void;
 };
 
 function OptionBox({
@@ -33,6 +34,7 @@ function OptionBox({
   $switch,
   $considered,
   handleClick,
+  handleClickDetail,
 }: OptionBoxProp) {
   return (
     <Container
@@ -87,7 +89,10 @@ function OptionBox({
                 <Price $style={$choice ? ActiveCSS.Price : DefaultCSS.Price}>
                   {$price?.toLocaleString("ko-KR")} 원
                 </Price>
-                <Detail $style={$choice ? ActiveCSS.Detail : DefaultCSS.Detail}>
+                <Detail
+                  $style={$choice ? ActiveCSS.Detail : DefaultCSS.Detail}
+                  onClick={handleClickDetail}
+                >
                   자세히보기 &gt;
                 </Detail>
               </>
