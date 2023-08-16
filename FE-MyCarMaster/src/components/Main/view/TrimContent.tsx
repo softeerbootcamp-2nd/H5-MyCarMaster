@@ -39,6 +39,7 @@ function TrimContent() {
 
 const TrimImage = styled.img`
   width: 100%;
+  min-width: 40rem;
   height: 100%;
   object-fit: contain;
   object-position: center;

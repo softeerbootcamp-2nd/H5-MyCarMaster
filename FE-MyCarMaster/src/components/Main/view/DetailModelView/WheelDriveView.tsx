@@ -47,7 +47,9 @@ function WheelDriveView() {
 
 const WheelDriveImg = styled.img`
   width: 100%;
+  max-width: 40rem;
   height: 100%;
+  margin: 0 auto;
   object-fit: contain;
   object-position: center;
 `;

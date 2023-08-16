@@ -79,7 +79,7 @@ const quotationReducer = (
         },
       };
     case "SET_SELECT_QUOTATION": {
-      const { id, name, price, imgUrl, category, description } = action.payload;
+      const { id, name, price, imgUrl, category } = action.payload;
       const isOptionSelected = state.optionQuotation.selectedQuotation.some(
         (option) => option.id === (id as number)
       );
@@ -88,6 +88,9 @@ const quotationReducer = (
         ...state,
         optionQuotation: {
           ...state.optionQuotation,
+          consideredQuotation: state.optionQuotation.consideredQuotation.filter(
+            (option) => option.id !== (id as number)
+          ),
           selectedQuotation: isOptionSelected
             ? state.optionQuotation.selectedQuotation.filter(
                 (option) => option.id !== (id as number)
@@ -100,14 +103,13 @@ const quotationReducer = (
                   price: price as number,
                   imgUrl: imgUrl as string,
                   category: category as string,
-                  description: description as string,
                 },
               ],
         },
       };
     }
     case "SET_CONSIDER_QUOTATION": {
-      const { id, name, price, imgUrl, category, description } = action.payload;
+      const { id, name, price, imgUrl, category } = action.payload;
       const isOptionConsidered = state.optionQuotation.consideredQuotation.some(
         (option) => option.id === (id as number)
       );
@@ -130,7 +132,6 @@ const quotationReducer = (
                   price: price as number,
                   imgUrl: imgUrl as string,
                   category: category as string,
-                  description: description as string,
                 },
               ],
         },

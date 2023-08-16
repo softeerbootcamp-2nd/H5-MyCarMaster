@@ -64,8 +64,8 @@ export default function OptionBoxButtonContainer({
   return (
     <ButtonContainer>
       <Button
-        $x={4.875}
-        $y={1.5}
+        $x={5.675}
+        $y={2}
         $backgroundcolor={`${theme.colors.WHITE}`}
         $textcolor={`${theme.colors.NAVYBLUE5}`}
         $bordercolor={`${theme.colors.NAVYBLUE5}`}
@@ -80,8 +80,8 @@ export default function OptionBoxButtonContainer({
         handleClick={() => buttonHandler(id, "SET_CONSIDER_QUOTATION")}
       />
       <Button
-        $x={4.875}
-        $y={1.5}
+        $x={5.675}
+        $y={2}
         $backgroundcolor={`${theme.colors.WHITE}`}
         $textcolor={`${theme.colors.NAVYBLUE5}`}
         $bordercolor={`${theme.colors.NAVYBLUE5}`}

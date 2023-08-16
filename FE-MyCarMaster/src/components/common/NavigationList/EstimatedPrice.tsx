@@ -31,7 +31,7 @@ function EstimatedPrice() {
 }
 
 const Container = styled.li`
-  width: 9.625rem;
+  width: 12rem;
   height: 4.5rem;
   padding: 0.75rem;
 
@@ -45,7 +45,7 @@ const Container = styled.li`
 `;
 
 const Text = styled.p`
-  font-size: 0.75rem;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 500;
 `;
