@@ -102,16 +102,6 @@ public class OptionJpaAdaptor implements OptionPort {
 	}
 
 	@Override
-	public List<Long> findAppliedOptionIdsByModelIdAndOptionIds(Long modelId, List<Long> optionIds) {
-		return representativeOptionJpaRepository.findAppliedOptionIdsByModelIdAndOptionIds(modelId, optionIds);
-	}
-
-	@Override
-	public Option findById(Long id) {
-		return optionJpaRepository.findById(id).get().toOption();
-	}
-
-	@Override
 	public List<Long> findAdditionalTrimIdsByOptionId(Long optionId) {
 		return trimAdditionalOptionJpaRepository.findTrimIdsByOptionId(optionId);
 	}
@@ -119,5 +109,12 @@ public class OptionJpaAdaptor implements OptionPort {
 	@Override
 	public List<Long> findDefaultTrimIdsByOptionId(Long optionId) {
 		return trimDefaultOptionJpaRepository.findTrimIdsByOptionId(optionId);
+	}
+
+	@Override
+	public List<Option> findAppliedOptionsByModelIdAndOptionIds(Long modelId, List<Long> optionIds) {
+		return representativeOptionJpaRepository.findAppliedOptionsByModelIdAndOptionIds(modelId, optionIds).stream()
+			.map(RepresentativeOptionEntity::toSimpleOption)
+			.collect(Collectors.toList());
 	}
 }

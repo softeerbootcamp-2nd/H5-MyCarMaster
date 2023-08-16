@@ -56,4 +56,8 @@ public class RepresentativeOptionEntity {
 			.subOptions(subOptions)
 			.build();
 	}
+
+	public Option toSimpleOption() {
+		return appliedOption.toSimpleOption();
+	}
 }

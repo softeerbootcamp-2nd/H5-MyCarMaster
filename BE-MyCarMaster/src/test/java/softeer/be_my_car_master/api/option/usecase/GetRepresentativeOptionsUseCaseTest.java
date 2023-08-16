@@ -54,8 +54,7 @@ public class GetRepresentativeOptionsUseCaseTest {
 			.build();
 
 		given(optionPort.findRepresentativeOptionsByModelId(any())).willReturn(Arrays.asList(option));
-		given(optionPort.findAppliedOptionIdsByModelIdAndOptionIds(any(), anyList())).willReturn(Arrays.asList(1L));
-		given(optionPort.findById(any())).willReturn(option);
+		given(optionPort.findAppliedOptionsByModelIdAndOptionIds(any(), anyList())).willReturn(Arrays.asList(option));
 		given(optionPort.findAdditionalTrimIdsByOptionId(any())).willReturn(Arrays.asList(2L, 3L));
 		given(optionPort.findDefaultTrimIdsByOptionId(any())).willReturn(Arrays.asList(4L));
 

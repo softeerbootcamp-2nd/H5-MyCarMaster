@@ -23,19 +23,18 @@ public class GetRepresentativeOptionsUseCase {
 		List<Long> representativeOptionIds = representativeOptions.stream()
 			.map(Option::getId)
 			.collect(Collectors.toList());
-		List<Long> appliedOptionIds =
-			optionPort.findAppliedOptionIdsByModelIdAndOptionIds(modelId, representativeOptionIds);
-		List<Option> appliedOptions = appliedOptionIds.stream()
-			.map(optionPort::findById)
-			.collect(Collectors.toList());
+		List<Option> appliedOptions =
+			optionPort.findAppliedOptionsByModelIdAndOptionIds(modelId, representativeOptionIds);
 
 		List<Long> trimIdsByModelId = trimPort.findTrimIdsByModelId(modelId);
 
-		List<List<Long>> trimIdsByAdditionalOptionId = appliedOptionIds.stream()
+		List<List<Long>> trimIdsByAdditionalOptionId = appliedOptions.stream()
+			.map(Option::getId)
 			.map(optionPort::findAdditionalTrimIdsByOptionId)
 			.collect(Collectors.toList());
 
-		List<List<Long>> trimIdsByDefaultOptionId = representativeOptionIds.stream()
+		List<List<Long>> trimIdsByDefaultOptionId = representativeOptions.stream()
+			.map(Option::getId)
 			.map(optionPort::findDefaultTrimIdsByOptionId)
 			.collect(Collectors.toList());
 

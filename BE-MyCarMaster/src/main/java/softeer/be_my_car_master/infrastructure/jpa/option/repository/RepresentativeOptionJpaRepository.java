@@ -15,8 +15,9 @@ public interface RepresentativeOptionJpaRepository extends JpaRepository<Represe
 		+ "WHERE ro.model.id = :modelId")
 	List<RepresentativeOptionEntity> findAllByModelId(Long modelId);
 
-	@Query(value = "SELECT ro.appliedOption.id "
+	@Query(value = "SELECT ro "
 		+ "FROM RepresentativeOptionEntity ro "
+		+ "JOIN FETCH ro.appliedOption "
 		+ "WHERE ro.model.id = :modelId AND ro.option.id IN :optionIds")
-	List<Long> findAppliedOptionIdsByModelIdAndOptionIds(Long modelId, List<Long> optionIds);
+	List<RepresentativeOptionEntity> findAppliedOptionsByModelIdAndOptionIds(Long modelId, List<Long> optionIds);
 }

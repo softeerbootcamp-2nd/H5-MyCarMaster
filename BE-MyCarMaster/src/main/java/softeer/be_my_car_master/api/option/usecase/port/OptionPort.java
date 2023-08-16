@@ -26,11 +26,9 @@ public interface OptionPort {
 
 	List<Option> findRepresentativeOptionsByModelId(Long modelId);
 
-	List<Long> findAppliedOptionIdsByModelIdAndOptionIds(Long modelId, List<Long> optionIds);
-
-	Option findById(Long id);
-
 	List<Long> findAdditionalTrimIdsByOptionId(Long optionId);
 
 	List<Long> findDefaultTrimIdsByOptionId(Long optionId);
+
+	List<Option> findAppliedOptionsByModelIdAndOptionIds(Long modelId, List<Long> optionIds);
 }
