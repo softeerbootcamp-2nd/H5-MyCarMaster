@@ -19,6 +19,8 @@ final class ButtonCell: UICollectionViewCell {
         }
     }
 
+    private let inset: UIEdgeInsets = .init(top: 6, left: 12, bottom: 6, right: 12)
+
     private let titleLabel = UILabel().then { label in
         label.style = .bodyMedium1
     }
@@ -44,10 +46,10 @@ final class ButtonCell: UICollectionViewCell {
         }
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 6),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -6),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: inset.top),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset.left),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -inset.right),
+            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -inset.bottom),
         ])
     }
 
