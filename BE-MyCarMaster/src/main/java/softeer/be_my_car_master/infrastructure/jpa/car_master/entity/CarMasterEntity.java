@@ -51,7 +51,16 @@ public class CarMasterEntity {
 	private AgencyEntity agency;
 
 	public CarMaster toCarMaster() {
-		return new CarMaster(id);
+		return CarMaster.builder()
+			.id(id)
+			.name(name)
+			.imgUrl(imgUrl)
+			.phone(phone)
+			.email(email)
+			.intro(intro)
+			.sales(sales)
+			.agency(agency.toAgency())
+			.build();
 	}
 
 	public static CarMasterEntity from(CarMaster carMaster) {

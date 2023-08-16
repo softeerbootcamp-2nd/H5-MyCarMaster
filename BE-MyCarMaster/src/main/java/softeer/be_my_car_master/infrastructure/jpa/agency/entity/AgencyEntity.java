@@ -9,6 +9,7 @@ import javax.persistence.Table;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
+import softeer.be_my_car_master.domain.agency.Agency;
 
 @Entity
 @Table(name = "agency")
@@ -30,4 +31,12 @@ public class AgencyEntity {
 
 	@Column(name = "gu", nullable = false)
 	private String gu;
+
+	public Agency toAgency() {
+		return Agency.builder()
+			.id(id)
+			.name(name)
+			.gu(gu)
+			.build();
+	}
 }
