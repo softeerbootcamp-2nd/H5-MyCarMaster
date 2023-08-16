@@ -78,7 +78,7 @@ public class EstimateJpaAdaptor implements EstimatePort {
 			considerOptions
 		);
 		EstimateEntity savedEstimate = estimateRepository.save(estimateEntity);
-		return savedEstimate.getId();
+		return savedEstimate.getUuid();
 	}
 
 	@Override

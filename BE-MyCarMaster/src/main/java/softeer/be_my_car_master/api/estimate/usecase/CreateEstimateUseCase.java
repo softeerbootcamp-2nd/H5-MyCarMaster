@@ -108,8 +108,8 @@ public class CreateEstimateUseCase {
 		);
 		validateOptions(createEstimateRequest, filteredSelectableOptions);
 
-		UUID estimateId = estimatePort.createEstimate(createEstimateRequest);
-		return CreateEstimateResponse.from(estimateId);
+		UUID estimateUuid = estimatePort.createEstimate(createEstimateRequest);
+		return CreateEstimateResponse.from(estimateUuid);
 	}
 
 	private void validateModel(Long modelId, List<Model> models) {
