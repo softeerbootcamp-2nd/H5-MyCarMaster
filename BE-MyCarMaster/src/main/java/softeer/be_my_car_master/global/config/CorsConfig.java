@@ -15,8 +15,9 @@ public class CorsConfig implements WebMvcConfigurer {
 				"http://*.my-car-master.shop",
 				"https://my-car-master.shop",
 				"https://*.my-car-master.shop",
-				"http://localhost:5173")
-			.allowedMethods("GET", "POST")
+				"http://localhost:5173"
+			)
+			.allowedMethods("GET", "POST", "OPTIONS")
 			.maxAge(3000);
 	}
 }
