@@ -35,7 +35,7 @@ public class GetRepresentativeOptionsUseCase {
 			.map(optionId -> optionPort.findAdditionalTrimIdsByOptionId(optionId))
 			.collect(Collectors.toList());
 
-		List<List<Long>> trimIdsByDefaultOptionId = appliedOptionIds.stream()
+		List<List<Long>> trimIdsByDefaultOptionId = representativeOptionIds.stream()
 			.map(optionId -> optionPort.findDefaultTrimIdsByOptionId(optionId))
 			.collect(Collectors.toList());
 
