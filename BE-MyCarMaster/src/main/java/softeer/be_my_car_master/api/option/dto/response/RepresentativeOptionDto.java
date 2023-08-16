@@ -41,7 +41,7 @@ public class RepresentativeOptionDto {
 	public static RepresentativeOptionDto from(
 		Option option,
 		Option appliedOption,
-		List<Long> unavailableTrimIds,
+		List<Long> trimIds,
 		List<Long> additionalTrims,
 		List<Long> defaultTrims
 	) {
@@ -59,7 +59,7 @@ public class RepresentativeOptionDto {
 			.summary(option.getSummary())
 			.description(option.getDescription())
 			.subOptions(subOptionDtos)
-			.filter(FilterDto.from(unavailableTrimIds, additionalTrims, defaultTrims))
+			.filter(FilterDto.from(trimIds, additionalTrims, defaultTrims))
 			.appliedOption(AppliedOptionDto.from(appliedOption))
 			.build();
 	}
