@@ -41,14 +41,14 @@ public class OptionEntity {
 	@Column(name = "summary")
 	private String summary;
 
-	@Column(name = "description")
+	@Column(name = "description", length = 1000)
 	private String description;
 
 	@Column(name = "category", nullable = false)
 	@Enumerated(EnumType.STRING)
 	private Category category;
 
-	@Column(name = "img_url", nullable = false)
+	@Column(name = "img_url")
 	private String imgUrl;
 
 	@Column(name = "price", nullable = false)
