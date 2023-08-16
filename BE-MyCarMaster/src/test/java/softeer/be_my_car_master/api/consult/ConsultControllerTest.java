@@ -50,7 +50,7 @@ class ConsultControllerTest {
 
 		//when
 		ResultActions perform = mockMvc.perform(
-			post("/consulting")
+			post("/consultings")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(requestBody)
 		);
@@ -76,7 +76,7 @@ class ConsultControllerTest {
 
 		//when
 		ResultActions perform = mockMvc.perform(
-			post("/consulting")
+			post("/consultings")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(requestBody)
 		);
@@ -103,7 +103,7 @@ class ConsultControllerTest {
 
 		//when
 		ResultActions perform = mockMvc.perform(
-			post("/consulting")
+			post("/consultings")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(requestBody)
 		);
@@ -130,7 +130,7 @@ class ConsultControllerTest {
 
 		//when
 		ResultActions perform = mockMvc.perform(
-			post("/consulting")
+			post("/consultings")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(requestBody)
 		);
@@ -157,7 +157,7 @@ class ConsultControllerTest {
 
 		//when
 		ResultActions perform = mockMvc.perform(
-			post("/consulting")
+			post("/consultings")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(requestBody)
 		);
