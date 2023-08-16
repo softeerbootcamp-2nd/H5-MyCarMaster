@@ -3,6 +3,7 @@ import ArrowBottom from "../../assets/icons/ArrowBottom.svg";
 import white_logo from "../../assets/images/white_logo.svg";
 import dark_logo from "../../assets/images/dark_logo.svg";
 import { useModelState } from "../../contexts/ModelContext";
+import { useNavigate } from "react-router-dom";
 
 type HeaderProps = {
   isHome: boolean;
@@ -11,6 +12,11 @@ type HeaderProps = {
 };
 
 function Header({ isHome, logo, status }: HeaderProps) {
+  const navigate = useNavigate();
+
+  const headerClickHandler = () => {
+    navigate("/");
+  };
   const { modelName } = useModelState();
   return (
     <Container>
@@ -22,6 +28,7 @@ function Header({ isHome, logo, status }: HeaderProps) {
             ? dark_logo
             : logo
         }
+        onClick={headerClickHandler}
       />
       {!isHome && (
         <>
@@ -40,7 +47,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 25%;
-  max-height: 7.5rem;
+  min-height: 7.5rem;
   margin: 0 3%;
   gap: 60rem;
 `;
@@ -49,8 +56,8 @@ const Img = styled.img`
   width: 20%;
   min-width: 12rem;
   max-width: 16rem;
-  min-height: 7.5rem;
   z-index: 100;
+  cursor: pointer;
 `;
 
 const ModelSelector = styled.div`
