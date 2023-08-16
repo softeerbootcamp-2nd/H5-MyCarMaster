@@ -9,6 +9,19 @@ import UIKit
 
 final class OptionListCell: UICollectionViewCell, CellStyleSelectable {
 
+    // MARK: Property
+    var isExpanded: Bool = false {
+        didSet {
+            updateUI()
+        }
+    }
+
+    // MARK: View
+    private let contentStackView = UIStackView().then { stackView in
+        stackView.axis = .vertical
+        stackView.spacing = 12
+    }
+
     private let mainContentView = UIView()
 
     private let leftContainer = UIView()
@@ -26,7 +39,7 @@ final class OptionListCell: UICollectionViewCell, CellStyleSelectable {
     }
 
     private let additoryLabel = UILabel().then { label in
-        label.style = .bodySmall2
+        label.style = .caption
         label.textColor = .MCM.grey3
     }
 
@@ -42,7 +55,7 @@ final class OptionListCell: UICollectionViewCell, CellStyleSelectable {
         stackView.spacing = 12
     }
 
-    private let wishListButton = UIButton().then { button in
+    private let considerButton = UIButton().then { button in
         if #available(iOS 15.0, *) {
             var config = UIButton.Configuration.plain()
             config.contentInsets = .init(top: 6, leading: 12, bottom: 6, trailing: 12)
@@ -74,18 +87,22 @@ final class OptionListCell: UICollectionViewCell, CellStyleSelectable {
         button.layer.cornerRadius = 14
     }
 
-    private let foldStateImage = UIImage(systemName: "chevron.down")
-    private let unfoldStateImage = UIImage(systemName: "chevron.up")
-    private let foldStateIndicatorView = UIImageView().then { imageView in
+    private let disclosureButton = UIImageView().then { imageView in
         imageView.tintColor = .MCM.black
+        imageView.contentMode = .center
+        imageView.preferredSymbolConfiguration = .init(pointSize: 18)
+        imageView.image = UIImage(systemName: "chevron.down")
+        imageView.isUserInteractionEnabled = true
     }
 
     private let additionalContentView = UIView()
 
+    // MARK: Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
         configureLayout()
+        addSelectionAction()
     }
 
     required init?(coder: NSCoder) {
@@ -94,21 +111,39 @@ final class OptionListCell: UICollectionViewCell, CellStyleSelectable {
 
     private func configureUI() {
         unselectedStyle()
-    }
 
+        let view = UIView()
+        view.backgroundColor = .systemYellow
+        additionalContentView.addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            view.topAnchor.constraint(equalTo: additionalContentView.topAnchor),
+            view.leadingAnchor.constraint(equalTo: additionalContentView.leadingAnchor),
+            view.trailingAnchor.constraint(equalTo: additionalContentView.trailingAnchor),
+            view.bottomAnchor.constraint(equalTo: additionalContentView.bottomAnchor),
+            view.heightAnchor.constraint(equalToConstant: 100),
+        ])
+        updateUI()
+    }
+}
+
+// MARK: - Layout
+extension OptionListCell {
     private func configureLayout() {
+        contentView.addSubview(contentStackView)
+        contentStackView.translatesAutoresizingMaskIntoConstraints = false
+
         [mainContentView, additionalContentView].forEach { subview in
-            contentView.addSubview(subview)
+            contentStackView.addArrangedSubview(subview)
             subview.translatesAutoresizingMaskIntoConstraints = false
         }
 
         NSLayoutConstraint.activate([
-            mainContentView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 14),
-            mainContentView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            mainContentView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            mainContentView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -14),
+            contentStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 14),
+            contentStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            contentStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            contentStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -14),
         ])
-
         configureMainContentViewLayout()
     }
 
@@ -127,6 +162,7 @@ final class OptionListCell: UICollectionViewCell, CellStyleSelectable {
             rightContainer.topAnchor.constraint(equalTo: mainContentView.topAnchor),
             rightContainer.trailingAnchor.constraint(equalTo: mainContentView.trailingAnchor),
             rightContainer.bottomAnchor.constraint(equalTo: mainContentView.bottomAnchor),
+            rightContainer.widthAnchor.constraint(greaterThanOrEqualToConstant: 115),
         ])
 
         configureLeftContainerLayout()
@@ -134,36 +170,45 @@ final class OptionListCell: UICollectionViewCell, CellStyleSelectable {
     }
 
     private func configureLeftContainerLayout() {
-        [categoryLabel, titleLabel, additoryLabel, priceLabel].forEach { subview in
+        let topStackView = UIStackView().then { stackView in
+            stackView.axis = .horizontal
+            stackView.distribution = .fillProportionally
+            stackView.spacing = 8
+        }
+
+        let contentStackView = UIStackView().then { stackView in
+            stackView.axis = .vertical
+            stackView.spacing = 8
+        }
+
+        [contentStackView].forEach { subview in
             leftContainer.addSubview(subview)
             subview.translatesAutoresizingMaskIntoConstraints = false
         }
 
+        [categoryLabel, additoryLabel].forEach { subview in
+            topStackView.addArrangedSubview(subview)
+        }
+
+        [topStackView, titleLabel, priceLabel].forEach { subview in
+            contentStackView.addArrangedSubview(subview)
+        }
+
         NSLayoutConstraint.activate([
-            categoryLabel.topAnchor.constraint(equalTo: leftContainer.topAnchor),
-            categoryLabel.leadingAnchor.constraint(equalTo: leftContainer.leadingAnchor),
-
-            titleLabel.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 8),
-            titleLabel.leadingAnchor.constraint(equalTo: leftContainer.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: leftContainer.trailingAnchor),
-
-            additoryLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
-            additoryLabel.leadingAnchor.constraint(equalTo: leftContainer.leadingAnchor),
-            additoryLabel.trailingAnchor.constraint(equalTo: leftContainer.trailingAnchor),
-
-            priceLabel.topAnchor.constraint(equalTo: additoryLabel.bottomAnchor, constant: 8),
-            priceLabel.leadingAnchor.constraint(equalTo: leftContainer.leadingAnchor),
-            priceLabel.bottomAnchor.constraint(equalTo: leftContainer.bottomAnchor),
+            contentStackView.topAnchor.constraint(equalTo: leftContainer.topAnchor),
+            contentStackView.leadingAnchor.constraint(equalTo: leftContainer.leadingAnchor),
+            contentStackView.trailingAnchor.constraint(equalTo: leftContainer.trailingAnchor),
+            contentStackView.bottomAnchor.constraint(equalTo: leftContainer.bottomAnchor),
         ])
     }
 
     private func configureRightContainerLayout() {
-        [buttonStackView, foldStateIndicatorView].forEach { subview in
+        [buttonStackView, disclosureButton].forEach { subview in
             rightContainer.addSubview(subview)
             subview.translatesAutoresizingMaskIntoConstraints = false
         }
 
-        [wishListButton, removeButton, appendButton].forEach { subview in
+        [considerButton, removeButton, appendButton].forEach { subview in
             buttonStackView.addArrangedSubview(subview)
             subview.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -171,17 +216,105 @@ final class OptionListCell: UICollectionViewCell, CellStyleSelectable {
         NSLayoutConstraint.activate([
             buttonStackView.topAnchor.constraint(equalTo: rightContainer.topAnchor),
             buttonStackView.trailingAnchor.constraint(equalTo: rightContainer.trailingAnchor),
-            buttonStackView.leadingAnchor.constraint(equalTo: rightContainer.leadingAnchor),
             buttonStackView.heightAnchor.constraint(equalToConstant: 28),
 
             removeButton.widthAnchor.constraint(equalTo: removeButton.heightAnchor, multiplier: 1.0),
             appendButton.widthAnchor.constraint(equalTo: appendButton.heightAnchor, multiplier: 1.0),
 
-            foldStateIndicatorView.trailingAnchor.constraint(equalTo: rightContainer.trailingAnchor),
-            foldStateIndicatorView.bottomAnchor.constraint(equalTo: rightContainer.bottomAnchor),
-            foldStateIndicatorView.heightAnchor.constraint(equalToConstant: 18),
-            foldStateIndicatorView.widthAnchor.constraint(equalToConstant: 18),
+            disclosureButton.trailingAnchor.constraint(equalTo: rightContainer.trailingAnchor),
+            disclosureButton.bottomAnchor.constraint(equalTo: rightContainer.bottomAnchor),
+            disclosureButton.heightAnchor.constraint(equalToConstant: 36),
+            disclosureButton.widthAnchor.constraint(equalToConstant: 36),
         ])
+    }
+}
+
+// MARK: - Style
+extension OptionListCell {
+    private func addSelectionAction() {
+        considerButton.addTarget(self, action: #selector(consideredStyle), for: .touchUpInside)
+        removeButton.addTarget(self, action: #selector(unselectedStyle), for: .touchUpInside)
+        appendButton.addTarget(self, action: #selector(selectedStyle), for: .touchUpInside)
+        disclosureButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(disclosureButtonDidTap)))
+    }
+
+    @objc
+    func disclosureButtonDidTap() {
+        self.isExpanded.toggle()
+    }
+
+    @objc
+    func selectedStyle() {
+        backgroundColor = selectedBackgroundColor
+        layer.borderWidth = 1.0
+        layer.borderColor = selectedBorderColor
+
+        considerButton.isHidden = false
+        removeButton.isHidden = false
+        appendButton.isHidden = true
+
+        removeButton.tintColor = .MCM.white
+        removeButton.backgroundColor = .MCM.navyBlue5
+        removeButton.layer.borderWidth = 0
+
+        categoryLabel.backgroundColor = .MCM.navyBlue4
+        categoryLabel.textColor = .MCM.navyBlue5
+    }
+
+    @objc
+    func consideredStyle() {
+        backgroundColor = .MCM.gold1
+        layer.borderWidth = 1.0
+        layer.borderColor = UIColor.MCM.gold3.cgColor
+
+        considerButton.isHidden = true
+        removeButton.isHidden = false
+        appendButton.isHidden = false
+
+        removeButton.tintColor = .MCM.gold3
+        removeButton.backgroundColor = .MCM.white
+        removeButton.layer.borderColor = UIColor.MCM.grey2.cgColor
+        removeButton.layer.borderWidth = 1.0
+
+        appendButton.tintColor = .MCM.white
+        appendButton.backgroundColor = .MCM.gold3
+        appendButton.layer.borderColor = UIColor.MCM.gold3.cgColor
+        appendButton.layer.borderWidth = 1.0
+
+        categoryLabel.backgroundColor = .MCM.gold2
+        categoryLabel.textColor = .MCM.gold3
+    }
+
+    @objc
+    func unselectedStyle() {
+        backgroundColor = .MCM.grey1
+        layer.borderWidth = 1.0
+        layer.borderColor = UIColor.MCM.grey2.cgColor
+
+        considerButton.isHidden = false
+        removeButton.isHidden = true
+        appendButton.isHidden = false
+
+        appendButton.tintColor = .MCM.white
+        appendButton.backgroundColor = .MCM.navyBlue5
+        appendButton.layer.borderColor = UIColor.MCM.navyBlue5.cgColor
+        appendButton.layer.borderWidth = 1.0
+
+        categoryLabel.backgroundColor = .MCM.navyBlue4
+        categoryLabel.textColor = .MCM.navyBlue5
+    }
+
+    private func updateUI() {
+        UIView.performWithoutAnimation {
+            let upsideDown = CGAffineTransform(rotationAngle: .pi)
+            self.disclosureButton.transform = self.isExpanded ? upsideDown : .identity
+            self.additionalContentView.isHidden = !self.isExpanded
+            self.invalidateIntrinsicContentSize()
+            if let superview = self.superview as? UICollectionView,
+               let indexPath = superview.indexPath(for: self) {
+                superview.scrollToItem(at: indexPath, at: .top, animated: false)
+            }
+        }
     }
 }
 
@@ -194,71 +327,5 @@ extension OptionListCell {
         titleLabel.setText(state.name)
         additoryLabel.setText("\(state.model) 구매자의 \(state.ratio.formatted(style: .percent))가 선택")
         priceLabel.setText("+\(state.price.formatted(style: .currency))")
-    }
-    
-    func selectedStyle() {
-        backgroundColor = selectedBackgroundColor
-        layer.borderWidth = 1.0
-        layer.borderColor = selectedBorderColor
-        
-        wishListButton.isHidden = false
-        removeButton.isHidden = false
-        appendButton.isHidden = true
-        
-        removeButton.tintColor = .MCM.white
-        removeButton.backgroundColor = .MCM.navyBlue5
-        removeButton.layer.borderWidth = 0
-        
-        categoryLabel.backgroundColor = .MCM.navyBlue4
-        categoryLabel.textColor = .MCM.navyBlue5
-    }
-    
-    func wishListedStyle() {
-        backgroundColor = .MCM.gold1
-        layer.borderWidth = 1.0
-        layer.borderColor = UIColor.MCM.gold3.cgColor
-        
-        wishListButton.isHidden = true
-        removeButton.isHidden = false
-        appendButton.isHidden = false
-        
-        removeButton.tintColor = .MCM.gold3
-        removeButton.backgroundColor = .MCM.white
-        removeButton.layer.borderColor = UIColor.MCM.grey2.cgColor
-        removeButton.layer.borderWidth = 1.0
-        
-        appendButton.tintColor = .MCM.white
-        appendButton.backgroundColor = .MCM.gold3
-        appendButton.layer.borderColor = UIColor.MCM.gold3.cgColor
-        appendButton.layer.borderWidth = 1.0
-        
-        categoryLabel.backgroundColor = .MCM.gold2
-        categoryLabel.textColor = .MCM.gold3
-    }
-    
-    func unselectedStyle() {
-        backgroundColor = .MCM.grey1
-        layer.borderWidth = 1.0
-        layer.borderColor = UIColor.MCM.grey1.cgColor
-        
-        wishListButton.isHidden = false
-        removeButton.isHidden = true
-        appendButton.isHidden = false
-        
-        appendButton.tintColor = .MCM.white
-        appendButton.backgroundColor = .MCM.navyBlue5
-        appendButton.layer.borderColor = UIColor.MCM.navyBlue5.cgColor
-        appendButton.layer.borderWidth = 1.0
-        
-        categoryLabel.backgroundColor = .MCM.navyBlue4
-        categoryLabel.textColor = .MCM.navyBlue5
-    }
-    
-    func fold() {
-        foldStateIndicatorView.image = foldStateImage
-    }
-    
-    func unfold() {
-        foldStateIndicatorView.image = unfoldStateImage
     }
 }
