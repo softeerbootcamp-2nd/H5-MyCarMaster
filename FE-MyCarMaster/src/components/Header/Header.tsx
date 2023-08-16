@@ -49,6 +49,7 @@ const Img = styled.img`
   width: 20%;
   min-width: 12rem;
   max-width: 16rem;
+  min-height: 7.5rem;
   z-index: 100;
 `;
 
