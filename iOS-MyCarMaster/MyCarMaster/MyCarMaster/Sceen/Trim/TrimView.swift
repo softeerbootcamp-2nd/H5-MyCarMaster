@@ -60,7 +60,7 @@ where ListCellClass: UICollectionViewCell & CellStyleSelectable & ContentSizeEst
         NSLayoutConstraint.activate([
             recommendStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: inset),
             recommendStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -inset),
-            recommendStackView.bottomAnchor.constraint(equalTo: previewView.bottomAnchor),
+            recommendStackView.bottomAnchor.constraint(equalTo: previewImageView.bottomAnchor),
         ])
     }
 }
