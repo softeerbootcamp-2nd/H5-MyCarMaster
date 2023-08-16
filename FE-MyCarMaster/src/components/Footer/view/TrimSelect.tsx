@@ -1,10 +1,13 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { useTrimState, useTrimDispatch } from "../../../contexts/TrimContext";
 import { useQuotationDispatch } from "../../../contexts/QuotationContext";
 import OptionBox from "../../common/OptionBox/OptionBox";
+import OptionList from "../../common/OptionList/OptionList";
 
 export default function TrimSelect() {
   const { trimList, trimId } = useTrimState();
+  const [showDetail, setShowDetail] = useState(false);
   const trimDispatch = useTrimDispatch();
   const quotationDispatch = useQuotationDispatch();
 
@@ -38,9 +41,23 @@ export default function TrimSelect() {
               $switch="trim"
               $choice={trimId === trim.id}
               handleClick={() => selectTrim(trim.id)}
+              handleClickDetail={() => setShowDetail(!showDetail)}
             />
           );
         })}
+      <Exam>
+        {showDetail && (
+          <>
+            <OptionList $name="파워트레인/성능" />
+            <OptionList $name="지능형 안전 기술" />
+            <OptionList $name="안전" />
+            <OptionList $name="외관" />
+            <OptionList $name="내장" />
+            <OptionList $name="시트" />
+            <OptionList $name="편의" />
+          </>
+        )}
+      </Exam>
     </Container>
   );
 }
@@ -50,4 +67,13 @@ const Container = styled.div`
   flex-direction: row;
   width: 59.5rem;
   gap: 0.5rem;
+`;
+
+const Exam = styled.div`
+  width: 100%;
+  align-self: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
