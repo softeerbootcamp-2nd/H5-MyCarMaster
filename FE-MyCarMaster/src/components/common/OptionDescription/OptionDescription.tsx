@@ -86,6 +86,7 @@ function OptionDescription({ option }: { option: OptionType }) {
 
 const Container = styled.div`
   min-width: 30rem;
+  width: 30rem;
   height: 100%;
   padding: 0 1.5rem;
 
