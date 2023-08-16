@@ -29,8 +29,6 @@ spring:
           starttls:
             enable: true
 
-
-
 ---
 spring:
   config:
