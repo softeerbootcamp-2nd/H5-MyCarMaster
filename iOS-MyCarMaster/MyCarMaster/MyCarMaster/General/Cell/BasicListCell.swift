@@ -37,7 +37,7 @@ final class BasicListCell: UICollectionViewCell, CellStyleSelectable, ContentSiz
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.style = .titleMedium1
+        label.style = .titleLarge2
         label.textColor = .MCM.black
         return label
     }()
