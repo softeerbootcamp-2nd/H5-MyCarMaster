@@ -10,9 +10,17 @@ import UIKit
 final class OptionListCell: UICollectionViewCell, CellStyleSelectable {
 
     // MARK: Property
+    private var optionState: OptionListCellMainState?
+    
+    var canExpand: Bool = false {
+        didSet {
+            shouldExpand()
+        }
+    }
+    
     var isExpanded: Bool = false {
         didSet {
-            updateUI()
+            updateUIForExpand()
         }
     }
 
@@ -115,7 +123,8 @@ final class OptionListCell: UICollectionViewCell, CellStyleSelectable {
 
     private func configureUI() {
         unselectedStyle()
-        updateUI()
+        updateUIForExpand()
+        shouldExpand()
     }
 }
 
@@ -232,7 +241,11 @@ extension OptionListCell {
 
     @objc
     func disclosureButtonDidTap() {
-        self.isExpanded.toggle()
+        if canExpand {
+            self.isExpanded.toggle()
+        } else {
+            self.presentOptionDetail()
+        }
     }
 
     @objc
@@ -296,7 +309,7 @@ extension OptionListCell {
         categoryLabel.textColor = .MCM.navyBlue5
     }
 
-    private func updateUI() {
+    private func updateUIForExpand() {
         UIView.performWithoutAnimation {
             let upsideDown = CGAffineTransform(rotationAngle: .pi)
             self.disclosureButton.transform = self.isExpanded ? upsideDown : .identity
@@ -307,6 +320,21 @@ extension OptionListCell {
                 superview.scrollToItem(at: indexPath, at: .top, animated: false)
             }
         }
+    }
+    
+    private func shouldExpand() {
+        if !canExpand {
+            disclosureButton.image = UIImage(systemName: "chevron.right")
+        } else {
+            disclosureButton.image = UIImage(systemName: "chevron.down")
+        }
+    }
+}
+
+extension OptionListCell {
+    private func presentOptionDetail() {
+        // present
+        print(#function, optionState)
     }
 }
 
@@ -320,12 +348,15 @@ extension OptionListCell {
         additoryLabel.setText("\(state.model) 구매자의 \(state.ratio.formatted(style: .percent))가 선택")
         priceLabel.setText("+\(state.price.formatted(style: .currency))")
         
+        canExpand = !state.subOptions.isEmpty
         additionalContentView.removeAllArrangedSubviews()
         state.subOptions.forEach { subOption in
             let subOptionButton = SubOptionButton()
             subOptionButton.configure(with: subOption)
             additionalContentView.addArrangedSubview(subOptionButton)
         }
+        
+        optionState = state
     }
 }
 
