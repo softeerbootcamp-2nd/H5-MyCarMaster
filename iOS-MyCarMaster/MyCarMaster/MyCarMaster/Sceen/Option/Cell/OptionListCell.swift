@@ -90,12 +90,16 @@ final class OptionListCell: UICollectionViewCell, CellStyleSelectable {
     private let disclosureButton = UIImageView().then { imageView in
         imageView.tintColor = .MCM.black
         imageView.contentMode = .center
-        imageView.preferredSymbolConfiguration = .init(pointSize: 18)
+        imageView.preferredSymbolConfiguration = .init(pointSize: 12)
         imageView.image = UIImage(systemName: "chevron.down")
         imageView.isUserInteractionEnabled = true
     }
 
-    private let additionalContentView = UIView()
+    private let additionalContentView = UIStackView().then { stackView in
+        stackView.axis = .vertical
+        stackView.spacing = 6
+        stackView.alignment = .fill
+    }
 
     // MARK: Init
     override init(frame: CGRect) {
@@ -111,18 +115,6 @@ final class OptionListCell: UICollectionViewCell, CellStyleSelectable {
 
     private func configureUI() {
         unselectedStyle()
-
-        let view = UIView()
-        view.backgroundColor = .systemYellow
-        additionalContentView.addSubview(view)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.topAnchor.constraint(equalTo: additionalContentView.topAnchor),
-            view.leadingAnchor.constraint(equalTo: additionalContentView.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: additionalContentView.trailingAnchor),
-            view.bottomAnchor.constraint(equalTo: additionalContentView.bottomAnchor),
-            view.heightAnchor.constraint(equalToConstant: 100),
-        ])
         updateUI()
     }
 }
@@ -223,8 +215,8 @@ extension OptionListCell {
 
             disclosureButton.trailingAnchor.constraint(equalTo: rightContainer.trailingAnchor),
             disclosureButton.bottomAnchor.constraint(equalTo: rightContainer.bottomAnchor),
-            disclosureButton.heightAnchor.constraint(equalToConstant: 36),
-            disclosureButton.widthAnchor.constraint(equalToConstant: 36),
+            disclosureButton.heightAnchor.constraint(equalToConstant: 18),
+            disclosureButton.widthAnchor.constraint(equalToConstant: 18),
         ])
     }
 }
@@ -327,5 +319,22 @@ extension OptionListCell {
         titleLabel.setText(state.name)
         additoryLabel.setText("\(state.model) 구매자의 \(state.ratio.formatted(style: .percent))가 선택")
         priceLabel.setText("+\(state.price.formatted(style: .currency))")
+        
+        additionalContentView.removeAllArrangedSubviews()
+        state.subOptions.forEach { subOption in
+            let subOptionButton = SubOptionButton()
+            subOptionButton.configure(with: subOption)
+            additionalContentView.addArrangedSubview(subOptionButton)
+        }
+    }
+}
+
+extension UIStackView {
+    func removeAllArrangedSubviews() {
+        arrangedSubviews.forEach {
+            self.removeArrangedSubview($0)
+            NSLayoutConstraint.deactivate($0.constraints)
+            $0.removeFromSuperview()
+        }
     }
 }

@@ -73,7 +73,11 @@ final class OptionViewController: UIViewController {
 extension OptionViewController {
     private func fetchFromDisk() {
         optionList = [
-            Option(model: "펠리세이드", category: "편의", name: "알콘 단조 브레이크 & 20인치 휠 패키지", price: 0, ratio: 54, imgURL: nil, summary: "", description: "", tag: "", subOptions: []),
+            Option(model: "펠리세이드", category: "편의", name: "알콘 단조 브레이크 & 20인치 휠 패키지", price: 0, ratio: 54, imgURL: nil, summary: "", description: "", tag: "", subOptions: [
+                SubOption(name: "전방 충돌방지 보조", imgURL: nil, description: ""),
+                SubOption(name: "내비게이션 기반 스마트 크루즈 컨트롤", imgURL: nil, description: ""),
+                SubOption(name: "고속도로 주행 보조 2", imgURL: nil, description: ""),
+            ]),
             Option(model: "펠리세이드", category: "편의", name: "2열 통풍 시트", price: 0, ratio: 54, imgURL: nil, summary: "", description: "", tag: "", subOptions: []),
             Option(model: "펠리세이드", category: "편의", name: "듀얼 머플러 패키지", price: 0, ratio: 54, imgURL: nil, summary: "", description: "", tag: "", subOptions: []),
         ]

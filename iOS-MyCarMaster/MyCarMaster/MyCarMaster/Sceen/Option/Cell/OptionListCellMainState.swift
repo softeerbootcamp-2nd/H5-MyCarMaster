@@ -13,6 +13,7 @@ struct OptionListCellMainState {
     let name: String
     let price: Int
     let ratio: Int
+    let subOptions: [SubOption]
 }
 
 protocol OptionListCellMainStateConvertible {

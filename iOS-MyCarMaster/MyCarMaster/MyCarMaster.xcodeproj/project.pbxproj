@@ -68,6 +68,7 @@
 		B5C0790D2A8BD6EA00747B11 /* UIButton+Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0790C2A8BD6EA00747B11 /* UIButton+Selectable.swift */; };
 		B5C3EAC12A84B1AA00D9577C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */; };
 		B5D5D4132A8D52AB00A4DA3C /* Dependency.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5D5D4122A8D526200A4DA3C /* Dependency.plist */; };
+		B5D5D4152A8D559600A4DA3C /* SubOptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D5D4142A8D559600A4DA3C /* SubOptionButton.swift */; };
 		B5DD64D02A876ABD00B44F61 /* WheelDriveDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64CF2A876ABD00B44F61 /* WheelDriveDTO.swift */; };
 		B5DD64D22A876B5000B44F61 /* WheelDrive.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64D12A876B5000B44F61 /* WheelDrive.swift */; };
 		B5DD64DD2A876ED800B44F61 /* BodyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64DC2A876ED800B44F61 /* BodyType.swift */; };
@@ -186,6 +187,7 @@
 		B5C0790C2A8BD6EA00747B11 /* UIButton+Selectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Selectable.swift"; sourceTree = "<group>"; };
 		B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B5D5D4122A8D526200A4DA3C /* Dependency.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Dependency.plist; sourceTree = "<group>"; };
+		B5D5D4142A8D559600A4DA3C /* SubOptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubOptionButton.swift; sourceTree = "<group>"; };
 		B5DD64CF2A876ABD00B44F61 /* WheelDriveDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelDriveDTO.swift; sourceTree = "<group>"; };
 		B5DD64D12A876B5000B44F61 /* WheelDrive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelDrive.swift; sourceTree = "<group>"; };
 		B5DD64DC2A876ED800B44F61 /* BodyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyType.swift; sourceTree = "<group>"; };
@@ -554,6 +556,7 @@
 				B5C079022A8BD32B00747B11 /* Cell */,
 				B5E233FC2A8B4B0F0013BEB1 /* OptionView.swift */,
 				B59B201C2A8B666A009E7868 /* OptionViewController.swift */,
+				B5D5D4142A8D559600A4DA3C /* SubOptionButton.swift */,
 			);
 			path = Option;
 			sourceTree = "<group>";
@@ -728,6 +731,7 @@
 				B5C0790B2A8BD69100747B11 /* UICollectionViewCell+Selectable.swift in Sources */,
 				B5DD65292A893AC600B44F61 /* WheelDrive+.swift in Sources */,
 				B53BA10C2A8BF42F009F94BE /* OptionDTO.swift in Sources */,
+				B5D5D4152A8D559600A4DA3C /* SubOptionButton.swift in Sources */,
 				B53BA10A2A8BF426009F94BE /* Option.swift in Sources */,
 				B5C079062A8BD40000747B11 /* ButtonStyleSeletable.swift in Sources */,
 				B58A32342A7BA452005FC831 /* OnboardingView.swift in Sources */,
