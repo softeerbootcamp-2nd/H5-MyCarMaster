@@ -22,4 +22,9 @@ public class TrimJpaAdaptor implements TrimPort {
 			.map(TrimEntity::toTrim)
 			.collect(Collectors.toList());
 	}
+
+	@Override
+	public List<Long> findTrimIdsByModelId(Long modelId) {
+		return trimJpaRepository.findTrimIdsByModelId(modelId);
+	}
 }

@@ -52,6 +52,7 @@ public class RepresentativeOptionEntity {
 			.imgUrl(option.getImgUrl())
 			.summary(option.getSummary())
 			.description(option.getDescription())
+			.isSuper(option.getIsSuper())
 			.subOptions(subOptions)
 			.build();
 	}
