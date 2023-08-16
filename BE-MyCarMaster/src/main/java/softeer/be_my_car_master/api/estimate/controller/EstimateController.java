@@ -20,7 +20,7 @@ public class EstimateController {
 
 	private final CreateEstimateUseCase createEstimateUseCase;
 
-	@PostMapping("/estimate")
+	@PostMapping("/estimates")
 	public Response createEstimate(@RequestBody @Valid CreateEstimateRequest createEstimateRequest) {
 		CreateEstimateResponse createEstimateResponse = createEstimateUseCase.execute(createEstimateRequest);
 		return Response.createSuccessResponse(createEstimateResponse);

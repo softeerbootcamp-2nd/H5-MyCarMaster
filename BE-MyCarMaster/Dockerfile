@@ -2,6 +2,7 @@ FROM openjdk:11-jre-slim
 
 ARG JAR_FILE=./build/libs/*.jar
 ARG PROFILE
+ARG DDL_AUTO
 ARG DB_URL
 ARG DB_USERNAME
 ARG DB_PASSWORD
@@ -14,6 +15,7 @@ COPY config/pinpoint-agent pinpoint-agent
 COPY start-app.sh /start-app.sh
 
 ENV PROFILE=${PROFILE}
+ENV DDL_AUTO=${DDL_AUTO}
 ENV DB_URL=${DB_URL}
 ENV DB_USERNAME=${DB_USERNAME}
 ENV DB_PASSWORD=${DB_PASSWORD}

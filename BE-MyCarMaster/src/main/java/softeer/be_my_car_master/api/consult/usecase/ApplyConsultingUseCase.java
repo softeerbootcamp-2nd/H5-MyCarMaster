@@ -36,7 +36,7 @@ public class ApplyConsultingUseCase {
 	) {
 		// 카마스터 구매 상담 신청
 		Estimate estimate =
-			estimatePort.findById(estimateId).orElseThrow(() -> InvalidEstimateIdException.EXCEPTION);
+			estimatePort.findByUuid(estimateId).orElseThrow(() -> InvalidEstimateIdException.EXCEPTION);
 		CarMaster carMaster
 			= carMasterPort.findById(carMasterId).orElseThrow(() -> InvalidCarMasterIdException.EXCEPTION);
 
