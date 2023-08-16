@@ -16,7 +16,7 @@ import softeer.be_my_car_master.api.consult.usecase.ApplyConsultingUseCase;
 import softeer.be_my_car_master.global.response.Response;
 
 @RestController
-@RequestMapping("/consulting")
+@RequestMapping("/consultings")
 @RequiredArgsConstructor
 @Tag(name = "Consulting", description = "consulting API Document")
 public class ConsultController {
