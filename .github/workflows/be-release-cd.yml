@@ -54,6 +54,9 @@ jobs:
             DB_URL=${{ secrets.DB_URL }} 
             DB_USERNAME=${{ secrets.DB_USERNAME }} 
             DB_PASSWORD=${{ secrets.DB_PASSWORD }}
+            EMAIL_USERNAME=${{ secrets.EMAIL_USERNAME }}
+            EMAIL_PASSWORD=${{ secrets.EMAIL_PASSWORD }}
+            ESTIMATE_LINK=${{ secrets.ESTIMATE_LINK }}
             PINPOINT_AGENT_ID=${{ steps.generate-pinpoint.outputs.pinpoint }}
           tags: |
             softeerh5/my-car-master:latest

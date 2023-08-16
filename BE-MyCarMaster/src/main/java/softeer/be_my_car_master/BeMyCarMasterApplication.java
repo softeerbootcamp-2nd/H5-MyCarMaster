@@ -2,7 +2,9 @@ package softeer.be_my_car_master;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableAsync;
 
+@EnableAsync
 @SpringBootApplication
 public class BeMyCarMasterApplication {
 
