@@ -1,6 +1,6 @@
-import React, { createElement, useEffect, useState } from "react";
+import React, { createElement } from "react";
 import { styled } from "styled-components";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { ModelProvider } from "./contexts/ModelContext";
 import { TrimProvider } from "./contexts/TrimContext";
@@ -58,7 +58,6 @@ function App() {
 const Container = styled.div`
   display: flex;
   align-items: center;
-
   width: 100%;
   height: 100%;
 `;

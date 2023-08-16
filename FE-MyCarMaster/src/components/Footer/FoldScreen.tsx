@@ -81,27 +81,31 @@ const Bar = styled.div<{ $show: boolean }>`
   position: absolute;
   bottom: -10%;
 
-  width: 6rem;
+  width: 8rem;
   height: 0.0625rem;
   background-color: ${({ theme }) => theme.colors.ACTIVE_BLUE};
   animation: ${({ $show }) =>
-    $show ? "disappear 0.5s ease-in-out" : "appear 0.5s ease-in-out"};
+    $show ? "barDisappear 0.5s ease-in-out" : "barAppear 0.5s ease-in-out"};
 
-  @keyframes disappear {
+  @keyframes barDisappear {
     0% {
       opacity: 1;
+      width: 8rem;
     }
     100% {
       opacity: 0;
+      width: 0;
     }
   }
 
-  @keyframes appear {
+  @keyframes barAppear {
     0% {
       opacity: 0;
+      width: 0;
     }
     100% {
       opacity: 1;
+      width: 8rem;
     }
   }
 `;
@@ -109,9 +113,9 @@ const Bar = styled.div<{ $show: boolean }>`
 const Text = styled.p<{ $show: boolean }>`
   ${({ theme }) => theme.fonts.ContentMedium1};
   animation: ${({ $show }) =>
-    $show ? "disappear 0.5s ease-in-out" : "appear 0.5s ease-in-out"};
+    $show ? "textDisappear 0.5s ease-in-out" : "textAppear 0.5s ease-in-out"};
 
-  @keyframes disappear {
+  @keyframes textDisappear {
     0% {
       opacity: 1;
     }
@@ -120,7 +124,7 @@ const Text = styled.p<{ $show: boolean }>`
     }
   }
 
-  @keyframes appear {
+  @keyframes textAppear {
     0% {
       opacity: 0;
     }
@@ -135,8 +139,8 @@ const ButtonContainer = styled.div<{ $style: boolean }>`
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  width: ${({ $style }) => ($style ? "100vw" : "auto")};
-  height: ${({ $style }) => ($style ? "80vh" : "auto")};
+  width: ${({ $style }) => ($style ? "100vw" : "10rem")};
+  height: ${({ $style }) => ($style ? "80vh" : "100%")};
   position: relative;
 
   background-color: ${({ theme }) => theme.colors.GREY1};
