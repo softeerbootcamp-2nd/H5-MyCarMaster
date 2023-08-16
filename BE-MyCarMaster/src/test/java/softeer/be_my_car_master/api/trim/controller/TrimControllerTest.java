@@ -117,10 +117,4 @@ class TrimControllerTest {
 		String responseBody = objectMapper.writeValueAsString(errorResponse);
 		return responseBody;
 	}
-
-	private String getRequestBody(GetTrimsRequest getTrimsRequest) throws
-		JsonProcessingException {
-		String requestBody = objectMapper.writeValueAsString(getTrimsRequest);
-		return requestBody;
-	}
 }

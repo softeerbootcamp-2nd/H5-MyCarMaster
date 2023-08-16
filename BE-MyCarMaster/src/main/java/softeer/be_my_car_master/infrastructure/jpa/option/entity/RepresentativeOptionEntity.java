@@ -3,7 +3,6 @@ package softeer.be_my_car_master.infrastructure.jpa.option.entity;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -17,30 +16,31 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import softeer.be_my_car_master.domain.option.Option;
-import softeer.be_my_car_master.infrastructure.jpa.trim.entity.TrimEntity;
+import softeer.be_my_car_master.infrastructure.jpa.model.entity.ModelEntity;
 
 @Entity
-@Table(name = "trim_additional_option")
+@Table(name = "representative_option")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class TrimAdditionalOptionEntity {
+public class RepresentativeOptionEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "ratio")
-	private Integer ratio;
-
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "trim_id")
-	private TrimEntity trim;
+	@JoinColumn(name = "model_id")
+	private ModelEntity model;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "option_id")
 	private OptionEntity option;
 
-	public Option toOption() {
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "applied_option_id")
+	private OptionEntity appliedOption;
+
+	public Option toRepresentativeOption() {
 		List<Option> subOptions = option.getSubOptions().stream()
 			.map(SuperSubEntity::getSubOption)
 			.map(OptionEntity::toOption)
@@ -49,19 +49,10 @@ public class TrimAdditionalOptionEntity {
 		return Option.builder()
 			.id(option.getId())
 			.name(option.getName())
-			.category(option.getCategory())
+			.imgUrl(option.getImgUrl())
 			.summary(option.getSummary())
 			.description(option.getDescription())
-			.imgUrl(option.getImgUrl())
-			.price(option.getPrice())
-			.ratio(ratio)
-			.isSuper(option.getIsSuper())
 			.subOptions(subOptions)
-			.tag(option.getTag())
 			.build();
-	}
-
-	public Option toSimpleOption() {
-		return option.toSimpleOption();
 	}
 }

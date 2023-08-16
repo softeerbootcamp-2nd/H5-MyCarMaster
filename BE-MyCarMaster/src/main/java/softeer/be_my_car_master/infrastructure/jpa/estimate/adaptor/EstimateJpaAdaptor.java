@@ -1,12 +1,15 @@
 package softeer.be_my_car_master.infrastructure.jpa.estimate.adaptor;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.api.estimate.dto.request.CreateEstimateRequest;
 import softeer.be_my_car_master.api.estimate.dto.request.EstimateOptionDto;
 import softeer.be_my_car_master.api.estimate.usecase.port.EstimatePort;
+import softeer.be_my_car_master.domain.estimate.Estimate;
 import softeer.be_my_car_master.global.annotation.Adaptor;
 import softeer.be_my_car_master.infrastructure.jpa.body_type.entity.BodyTypeEntity;
 import softeer.be_my_car_master.infrastructure.jpa.body_type.repository.BodyTypeJpaRepository;
@@ -42,7 +45,7 @@ public class EstimateJpaAdaptor implements EstimatePort {
 	private final OptionJpaRepository optionJpaRepository;
 
 	@Override
-	public Long createEstimate(CreateEstimateRequest createEstimateRequest) {
+	public UUID createEstimate(CreateEstimateRequest createEstimateRequest) {
 		ModelEntity model = modelJpaRepository.findById(createEstimateRequest.getModelId()).get();
 		TrimEntity trim = trimJpaRepository.findById(createEstimateRequest.getTrimId()).get();
 		EngineEntity engine = engineJpaRepository.findById(createEstimateRequest.getEngineId()).get();
@@ -75,6 +78,12 @@ public class EstimateJpaAdaptor implements EstimatePort {
 			considerOptions
 		);
 		EstimateEntity savedEstimate = estimateRepository.save(estimateEntity);
-		return savedEstimate.getId();
+		return savedEstimate.getUuid();
+	}
+
+	@Override
+	public Optional<Estimate> findById(UUID estimateId) {
+		return estimateRepository.findById(estimateId)
+			.map(EstimateEntity::toEstimate);
 	}
 }

@@ -1,5 +1,7 @@
 package softeer.be_my_car_master.api.estimate.dto.response;
 
+import java.util.UUID;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,9 +13,9 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CreateEstimateResponse {
 
-	private Long estimateId;
+	private UUID estimateUuid;
 
-	public static CreateEstimateResponse from(Long id) {
-		return new CreateEstimateResponse(id);
+	public static CreateEstimateResponse from(UUID uuid) {
+		return new CreateEstimateResponse(uuid);
 	}
 }

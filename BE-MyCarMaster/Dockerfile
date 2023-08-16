@@ -5,23 +5,26 @@ ARG PROFILE
 ARG DB_URL
 ARG DB_USERNAME
 ARG DB_PASSWORD
+ARG EMAIL_USERNAME
+ARG EMAIL_PASSWORD
+ARG ESTIMATE_LINK
 
 COPY ${JAR_FILE} app.jar
 COPY config/pinpoint-agent pinpoint-agent
+COPY start-app.sh /start-app.sh
 
 ENV PROFILE=${PROFILE}
 ENV DB_URL=${DB_URL}
 ENV DB_USERNAME=${DB_USERNAME}
 ENV DB_PASSWORD=${DB_PASSWORD}
 ENV PINPOINT_AGENT_ID=${PINPOINT_AGENT_ID}
+ENV EMAIL_USERNAME=${EMAIL_USERNAME}
+ENV EMAIL_PASSWORD=${EMAIL_PASSWORD}
+ENV ESTIMATE_LINK=${ESTIMATE_LINK}
 ENV TZ=Asia/Seoul
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN chmod +x /start-app.sh
 
 EXPOSE 8080
-ENTRYPOINT ["java", "-jar", \
-    "-Dspring.profiles.active=${PROFILE}", \
-    "-javaagent:/pinpoint-agent/pinpoint-bootstrap-2.5.0.jar", \
-    "-Dpinpoint.agentId=${PINPOINT_AGENT_ID}","-Dpinpoint.applicationName=h5", \
-    "-Dpinpoint.config=/pinpoint-agent/pinpoint-root.config", \
-    "/app.jar"]
+ENTRYPOINT ["/start-app.sh"]

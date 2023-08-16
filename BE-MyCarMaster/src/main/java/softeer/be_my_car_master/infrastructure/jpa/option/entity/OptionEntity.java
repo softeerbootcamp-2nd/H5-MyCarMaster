@@ -51,6 +51,9 @@ public class OptionEntity {
 	@Column(name = "img_url", nullable = false)
 	private String imgUrl;
 
+	@Column(name = "price", nullable = false)
+	private Integer price;
+
 	@Column(name = "is_super", nullable = false)
 	private Boolean isSuper;
 
@@ -80,8 +83,17 @@ public class OptionEntity {
 			.description(description)
 			.category(category)
 			.imgUrl(imgUrl)
+			.price(price)
 			.isSuper(isSuper)
 			.tag(getTag())
+			.build();
+	}
+
+	public Option toSimpleOption() {
+		return Option.builder()
+			.id(id)
+			.name(name)
+			.price(price)
 			.build();
 	}
 }

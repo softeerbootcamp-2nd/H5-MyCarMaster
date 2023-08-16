@@ -1,4 +1,4 @@
-package softeer.be_my_car_master.global.config.swagger;
+package softeer.be_my_car_master.global.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

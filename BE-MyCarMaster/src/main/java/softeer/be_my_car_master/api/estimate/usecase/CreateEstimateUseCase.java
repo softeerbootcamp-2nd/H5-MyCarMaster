@@ -3,6 +3,7 @@ package softeer.be_my_car_master.api.estimate.usecase;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -107,8 +108,8 @@ public class CreateEstimateUseCase {
 		);
 		validateOptions(createEstimateRequest, filteredSelectableOptions);
 
-		Long estimateId = estimatePort.createEstimate(createEstimateRequest);
-		return CreateEstimateResponse.from(estimateId);
+		UUID estimateUuid = estimatePort.createEstimate(createEstimateRequest);
+		return CreateEstimateResponse.from(estimateUuid);
 	}
 
 	private void validateModel(Long modelId, List<Model> models) {
