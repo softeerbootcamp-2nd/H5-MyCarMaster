@@ -3,7 +3,7 @@ import ArrowBottom from "../../assets/icons/ArrowBottom.svg";
 import white_logo from "../../assets/images/white_logo.svg";
 import dark_logo from "../../assets/images/dark_logo.svg";
 import { useModelState } from "../../contexts/ModelContext";
-import { useNavigate } from "react-router-dom";
+import { useModal } from "../../hooks/useModal";
 
 type HeaderProps = {
   isHome: boolean;
@@ -12,10 +12,10 @@ type HeaderProps = {
 };
 
 function Header({ isHome, logo, status }: HeaderProps) {
-  const navigate = useNavigate();
+  const { showModal } = useModal();
 
   const headerClickHandler = () => {
-    navigate("/");
+    showModal();
   };
   const { modelName } = useModelState();
   return (

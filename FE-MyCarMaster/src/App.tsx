@@ -8,10 +8,13 @@ import { DetailProvider } from "./contexts/DetailContext";
 import { CarPaintProvider } from "./contexts/CarPaintContext";
 import { OptionProvider } from "./contexts/OptionContext";
 import { QuotationProvider } from "./contexts/QuotationContext";
+import { ModalProvider } from "./contexts/ModalContext";
 import theme from "./styles/Theme";
 import Home from "./pages/Home";
 import Estimation from "./pages/Estimation";
 import Quotation from "./pages/Quotation";
+import { ModalPortal } from "./components/common/ModalPortal/ModalPortal";
+import { Modals } from "./components/common/Modals/Modals";
 
 type ContextProvider = React.ComponentType<{ children: React.ReactNode }>;
 
@@ -43,13 +46,18 @@ function App() {
           QuotationProvider,
         ]}
       >
-        <Container>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/estimation" element={<Estimation />} />
-            <Route path="/quotation" element={<Quotation />} />
-          </Routes>
-        </Container>
+        <ModalProvider>
+          <ModalPortal>
+            <Modals />
+          </ModalPortal>
+          <Container>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/estimation" element={<Estimation />} />
+              <Route path="/quotation" element={<Quotation />} />
+            </Routes>
+          </Container>
+        </ModalProvider>
       </AppProvider>
     </ThemeProvider>
   );
