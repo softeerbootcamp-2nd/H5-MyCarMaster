@@ -13,10 +13,13 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.api.option.dto.request.GetDefaultOptionsRequest;
 import softeer.be_my_car_master.api.option.dto.request.GetOptionsRequest;
+import softeer.be_my_car_master.api.option.dto.request.GetRepresentativeOptionsRequest;
 import softeer.be_my_car_master.api.option.dto.response.GetDefaultOptionsResponse;
 import softeer.be_my_car_master.api.option.dto.response.GetOptionsResponse;
+import softeer.be_my_car_master.api.option.dto.response.GetRepresentativeOptionsResponse;
 import softeer.be_my_car_master.api.option.usecase.GetDefaultOptionsUseCase;
 import softeer.be_my_car_master.api.option.usecase.GetOptionsUseCase;
+import softeer.be_my_car_master.api.option.usecase.GetRepresentativeOptionsUseCase;
 import softeer.be_my_car_master.global.exception.BindingParamException;
 import softeer.be_my_car_master.global.response.Response;
 
@@ -28,6 +31,7 @@ public class OptionController {
 
 	private final GetOptionsUseCase getOptionsUseCase;
 	private final GetDefaultOptionsUseCase getDefaultOptionsUseCase;
+	private final GetRepresentativeOptionsUseCase getRepresentativeOptionsUseCase;
 
 	@GetMapping
 	@Operation(summary = "트림, 엔진, 구동 방식, 바디 타입, 내장 색상에서 선택 가능한 옵션 목록을 반환합니다")
@@ -77,5 +81,21 @@ public class OptionController {
 			bodyTypeId
 		);
 		return Response.createSuccessResponse(getDefaultOptionsResponse);
+	}
+
+	@GetMapping("/representative")
+	@Operation(summary = "모델의 대표 옵션 9가지를 리턴합니다.")
+	public Response<GetRepresentativeOptionsResponse> getRepresentativeOptions(
+		@Valid @ParameterObject GetRepresentativeOptionsRequest getRepresentativeOptionsRequest,
+		BindingResult bindingResult
+	) {
+		if (bindingResult.hasErrors()) {
+			throw new BindingParamException(bindingResult.getFieldErrors());
+		}
+
+		Long modelId = getRepresentativeOptionsRequest.getModelId();
+		GetRepresentativeOptionsResponse getRepresentativeOptionsResponse =
+			getRepresentativeOptionsUseCase.execute(modelId);
+		return Response.createSuccessResponse(getRepresentativeOptionsResponse);
 	}
 }
