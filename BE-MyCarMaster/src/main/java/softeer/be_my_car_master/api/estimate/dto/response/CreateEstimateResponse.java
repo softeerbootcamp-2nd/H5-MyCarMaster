@@ -13,9 +13,9 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CreateEstimateResponse {
 
-	private UUID estimateId;
+	private UUID estimateUuid;
 
-	public static CreateEstimateResponse from(UUID id) {
-		return new CreateEstimateResponse(id);
+	public static CreateEstimateResponse from(UUID uuid) {
+		return new CreateEstimateResponse(uuid);
 	}
 }

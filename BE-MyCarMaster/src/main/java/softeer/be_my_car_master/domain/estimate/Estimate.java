@@ -11,5 +11,6 @@ import softeer.be_my_car_master.global.annotation.Domain;
 @AllArgsConstructor
 public class Estimate {
 
-	private UUID id;
+	private Long id;
+	private UUID uuid;
 }

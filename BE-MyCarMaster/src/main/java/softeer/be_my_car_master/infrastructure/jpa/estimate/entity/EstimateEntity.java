@@ -10,13 +10,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.GenericGenerator;
+import javax.persistence.UniqueConstraint;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -34,18 +34,25 @@ import softeer.be_my_car_master.infrastructure.jpa.trim.entity.TrimEntity;
 import softeer.be_my_car_master.infrastructure.jpa.wheel_drive.entity.WheelDriveEntity;
 
 @Entity
-@Table(name = "estimate")
 @Getter
 @Builder
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(
+	name = "estimate",
+	uniqueConstraints = {
+		@UniqueConstraint(
+			name = "UniqueIdentifier",
+			columnNames = {"uuid"})
+	})
 public class EstimateEntity {
 
 	@Id
-	@GeneratedValue(generator = "uuid2")
-	@GenericGenerator(name = "uuid2", strategy = "uuid2")
-	@Column(columnDefinition = "BINARY(16)")
-	private UUID id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
+	@Column(name = "uuid", nullable = false, columnDefinition = "BINARY(16)")
+	private UUID uuid;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "model_id")
@@ -93,6 +100,7 @@ public class EstimateEntity {
 		List<OptionEntity> trimConsiderOptionEntities
 	) {
 		EstimateEntity estimateEntity = EstimateEntity.builder()
+			.uuid(UUID.randomUUID())
 			.model(model)
 			.trim(trim)
 			.engine(engine)
@@ -119,6 +127,7 @@ public class EstimateEntity {
 	public static EstimateEntity from(Estimate estimate) {
 		return EstimateEntity.builder()
 			.id(estimate.getId())
+			.uuid(estimate.getUuid())
 			.build();
 	}
 
@@ -131,6 +140,6 @@ public class EstimateEntity {
 	}
 
 	public Estimate toEstimate() {
-		return new Estimate(id);
+		return new Estimate(id, uuid);
 	}
 }
