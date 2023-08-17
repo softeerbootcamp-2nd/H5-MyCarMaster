@@ -28,8 +28,4 @@ public class GetCarMasterRequest {
 	@DecimalMin(value = "-180.000000", message = "경도는 -180.0 이상의 값입니다.")
 	@DecimalMax(value = "180.000000", message = "경도는 180.0 이하의 값입니다.")
 	private Double longitude;
-
-	@Schema(description = "정렬 기준", example = "SALES")
-	@ValidEnum(enumClass = FilterEnum.class, message = "잘못된 정렬 기준입니다.")
-	private FilterEnum filter;
 }

@@ -2,6 +2,7 @@ package softeer.be_my_car_master.api.car_master.controller;
 
 import javax.validation.Valid;
 
+import org.springdoc.api.annotations.ParameterObject;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,18 +18,19 @@ import softeer.be_my_car_master.global.response.Response;
 @RestController
 @RequestMapping("/car-masters")
 @RequiredArgsConstructor
-@Tag(name = "Exterior Color", description = "Exterior Color API Document")
+@Tag(name = "CarMaster", description = "CarMaster API Document")
 public class CarMasterController {
 
 	private final GetCarMasterUseCase getCarMasterUseCase;
 
 	@GetMapping
-	public Response<GetCarMasterResponse> getCarMaster(@Valid GetCarMasterRequest getCarMasterRequest) {
+	public Response<GetCarMasterResponse> getCarMaster(
+		@Valid @ParameterObject GetCarMasterRequest getCarMasterRequest
+	) {
 		Double latitude = getCarMasterRequest.getLatitude();
 		Double longitude = getCarMasterRequest.getLongitude();
-		FilterEnum filter = getCarMasterRequest.getFilter();
 
-		GetCarMasterResponse getCarMasterResponse = getCarMasterUseCase.execute(latitude, longitude, filter.name());
+		GetCarMasterResponse getCarMasterResponse = getCarMasterUseCase.execute(latitude, longitude);
 		return Response.createSuccessResponse(getCarMasterResponse);
 	}
 }

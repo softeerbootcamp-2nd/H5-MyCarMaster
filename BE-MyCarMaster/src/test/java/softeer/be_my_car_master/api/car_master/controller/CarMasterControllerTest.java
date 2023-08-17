@@ -18,6 +18,8 @@ import org.springframework.test.web.servlet.ResultActions;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import softeer.be_my_car_master.api.car_master.dto.response.AgencyDto;
+import softeer.be_my_car_master.api.car_master.dto.response.CarMasterAgencyDto;
 import softeer.be_my_car_master.api.car_master.dto.response.CarMasterDto;
 import softeer.be_my_car_master.api.car_master.dto.response.GetCarMasterResponse;
 import softeer.be_my_car_master.api.car_master.usecase.GetCarMasterUseCase;
@@ -36,21 +38,31 @@ class CarMasterControllerTest {
 	@MockBean
 	private GetCarMasterUseCase getCarMasterUseCase;
 
-
 	@Test
 	@DisplayName("카마스터 목록 조회")
 	void getInteriorColors() throws Exception {
 		//given
 		GetCarMasterResponse getCarMasterResponse = new GetCarMasterResponse();
+		AgencyDto agencyDto = AgencyDto.builder()
+			.id(1L)
+			.name("한양대리점")
+			.gu("성동구")
+			.latitude(32.1212)
+			.longitude(127.2133)
+			.build();
+
+		CarMasterAgencyDto carMasterAgencyDto = new CarMasterAgencyDto(agencyDto.getId(), agencyDto.getName());
 		CarMasterDto carMasterDto = CarMasterDto.builder()
 			.id(1L)
 			.name("이몽룡")
 			.intro("자기소개")
 			.phone("010-0000-0000")
-			.agency("한양대리점")
+			.agency(carMasterAgencyDto)
 			.build();
+
+		getCarMasterResponse.setAgencies(Arrays.asList(agencyDto));
 		getCarMasterResponse.setCarMasters(Arrays.asList(carMasterDto));
-		given(getCarMasterUseCase.execute(any(), any(), any())).willReturn(getCarMasterResponse);
+		given(getCarMasterUseCase.execute(any(), any())).willReturn(getCarMasterResponse);
 
 		Response successResponse = Response.createSuccessResponse(getCarMasterResponse);
 		String responseBody = objectMapper.writeValueAsString(successResponse);
@@ -61,7 +73,6 @@ class CarMasterControllerTest {
 				.contentType(MediaType.APPLICATION_FORM_URLENCODED)
 				.param("latitude", "32.1231")
 				.param("longitude", "127.32333")
-				.param("filter", "SALES")
 		);
 
 		//then
