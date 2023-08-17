@@ -1,5 +1,6 @@
 package softeer.be_my_car_master.infrastructure.jpa.agency.repository;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -21,4 +22,6 @@ public interface AgencyJpaRepository extends JpaRepository<AgencyEntity, Long> {
 	List<AgencyEntity> findAllByLocation(
 		@Param("latitude") Double latitude,
 		@Param("longitude") Double longitude);
+
+	List<AgencyEntity> findAllByGu(String gu);
 }
