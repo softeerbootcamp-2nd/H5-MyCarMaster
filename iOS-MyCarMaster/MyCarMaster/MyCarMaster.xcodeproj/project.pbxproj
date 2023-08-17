@@ -66,9 +66,9 @@
 		B5C0790B2A8BD69100747B11 /* UICollectionViewCell+Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0790A2A8BD69100747B11 /* UICollectionViewCell+Selectable.swift */; };
 		B5C0790D2A8BD6EA00747B11 /* UIButton+Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0790C2A8BD6EA00747B11 /* UIButton+Selectable.swift */; };
 		B5C3EAC12A84B1AA00D9577C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */; };
+		B5D1E1F52A8DFBCE00DAE384 /* Dependency.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5D1E1F42A8DFBBA00DAE384 /* Dependency.plist */; };
 		B5D5D4152A8D559600A4DA3C /* SubOptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D5D4142A8D559600A4DA3C /* SubOptionButton.swift */; };
 		B5D5D4182A8DDBB100A4DA3C /* MCMNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BBB39B2A8A447900AAFC84 /* MCMNetwork.framework */; };
-		B5D5D4192A8DDBB100A4DA3C /* MCMNetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5BBB39B2A8A447900AAFC84 /* MCMNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5DD64D02A876ABD00B44F61 /* WheelDriveDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64CF2A876ABD00B44F61 /* WheelDriveDTO.swift */; };
 		B5DD64D22A876B5000B44F61 /* WheelDrive.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64D12A876B5000B44F61 /* WheelDrive.swift */; };
 		B5DD64DD2A876ED800B44F61 /* BodyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64DC2A876ED800B44F61 /* BodyType.swift */; };
@@ -119,7 +119,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				B5BBB3A12A8A447900AAFC84 /* MCMResource.framework in Embed Frameworks */,
-				B5D5D4192A8DDBB100A4DA3C /* MCMNetwork.framework in Embed Frameworks */,
 				B5A600FF2A81E1FC00CF2983 /* MCMCombineExtension.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -187,6 +186,7 @@
 		B5C0790A2A8BD69100747B11 /* UICollectionViewCell+Selectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Selectable.swift"; sourceTree = "<group>"; };
 		B5C0790C2A8BD6EA00747B11 /* UIButton+Selectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Selectable.swift"; sourceTree = "<group>"; };
 		B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		B5D1E1F42A8DFBBA00DAE384 /* Dependency.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Dependency.plist; sourceTree = "<group>"; };
 		B5D5D4142A8D559600A4DA3C /* SubOptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubOptionButton.swift; sourceTree = "<group>"; };
 		B5DD64CF2A876ABD00B44F61 /* WheelDriveDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelDriveDTO.swift; sourceTree = "<group>"; };
 		B5DD64D12A876B5000B44F61 /* WheelDrive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelDrive.swift; sourceTree = "<group>"; };
@@ -311,6 +311,7 @@
 				B50C7E542A79027A005AFE0B /* Assets.xcassets */,
 				B50C7E562A79027A005AFE0B /* LaunchScreen.storyboard */,
 				B50C7E592A79027A005AFE0B /* Info.plist */,
+				B5D1E1F42A8DFBBA00DAE384 /* Dependency.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -680,6 +681,7 @@
 				B5BBB35F2A8A1D6400AAFC84 /* InteriorDTO.json in Resources */,
 				B50C7E582A79027A005AFE0B /* LaunchScreen.storyboard in Resources */,
 				B50C7E552A79027A005AFE0B /* Assets.xcassets in Resources */,
+				B5D1E1F52A8DFBCE00DAE384 /* Dependency.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
