@@ -1,6 +1,5 @@
 package softeer.be_my_car_master.api.agency;
 
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -37,25 +36,30 @@ class AgencyControllerTest {
 	private GetAgenciesUseCase getAgenciesUseCase;
 
 	@Test
-	@DisplayName("대행사 목록을 조회합니다")
+	@DisplayName("대리점 목록을 조회합니다")
 	void getBodyTypes() throws Exception {
 		//given
 		GetAgenciesResponse getAgenciesResponse = new GetAgenciesResponse();
 		AgencyDto agencyDto1 = AgencyDto.builder()
-			.name("성동구")
+			.id(1L)
+			.name("한양대리점")
 			.build();
 		AgencyDto agencyDto2 = AgencyDto.builder()
-			.name("마포구")
+			.id(2L)
+			.name("성동대리점")
 			.build();
 		getAgenciesResponse.setAgencies(Arrays.asList(agencyDto1, agencyDto2));
 
-		given(getAgenciesUseCase.execute()).willReturn(getAgenciesResponse);
+		given(getAgenciesUseCase.execute(any())).willReturn(getAgenciesResponse);
 
 		Response successResponse = Response.createSuccessResponse(getAgenciesResponse);
 		String responseBody = objectMapper.writeValueAsString(successResponse);
 
 		//when
-		ResultActions perform = mockMvc.perform(get("/agencies"));
+		ResultActions perform = mockMvc.perform(
+			get("/agencies")
+				.param("gu", "성동구")
+		);
 
 		//then
 		perform
