@@ -35,8 +35,17 @@ spring:
     activate:
       on-profile: local
 
+api:
+  server:
+    url: http://localhost:8080
+
 ---
 spring:
   config:
     activate:
       on-profile: prod
+
+api:
+  server:
+    url: ${SERVER_URL}
+

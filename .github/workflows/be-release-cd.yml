@@ -58,6 +58,7 @@ jobs:
             EMAIL_USERNAME=${{ secrets.EMAIL_USERNAME }}
             EMAIL_PASSWORD=${{ secrets.EMAIL_PASSWORD }}
             ESTIMATE_LINK=${{ secrets.ESTIMATE_LINK }}
+            SERVER_URL=${{ secrets.SERVER_URL }}
             PINPOINT_AGENT_ID=${{ steps.generate-pinpoint.outputs.pinpoint }}
           tags: |
             softeerh5/my-car-master:latest
