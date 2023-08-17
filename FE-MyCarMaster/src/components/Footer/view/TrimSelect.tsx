@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import React, { Fragment, useState } from "react";
 import styled from "styled-components";
 import { useTrimState, useTrimDispatch } from "../../../contexts/TrimContext";
 import {
@@ -6,14 +6,16 @@ import {
   useQuotationState,
 } from "../../../contexts/QuotationContext";
 import OptionBox from "../../common/OptionBox/OptionBox";
-import OptionList from "../../common/OptionList/OptionList";
 import { Modals } from "../../common/Modals/Modals";
 import { ModalType } from "../../../constants/Modal.constants";
+import BasicOptionModal from "../../common/BasicOptionModal/BasicOptionModal";
+import { Trims } from "../../../types/trim.types";
 
 export default function TrimSelect() {
   const { trimList, trimId } = useTrimState();
   const { trimQuotation } = useQuotationState();
-  const [showDetail, setShowDetail] = useState(false);
+  const [isBasicOptionModalOpen, setIsBasicOptionModalOpen] = useState(false);
+  const [detailTrim, setDetailTrim] = useState<Trims>();
   const [isOpen, setIsOpen] = useState(false);
 
   const [reselectId, setReselectId] = useState<number>(1);
@@ -58,34 +60,37 @@ export default function TrimSelect() {
                 $price={trim.price}
                 $switch="trim"
                 $choice={trimId === trim.id}
-                handleClick={() => {
+                handleClick={(e: React.MouseEvent) => {
+                  const clickedTarget = e.target as HTMLElement;
+                  const isTrimModalButtonClicked =
+                    clickedTarget.classList.contains("basic-option");
                   if (
                     trimQuotation.trimQuotation.name !== "" &&
-                    trimQuotation.trimQuotation.name !== trim.name
+                    trimQuotation.trimQuotation.name !== trim.name &&
+                    !isTrimModalButtonClicked
                   ) {
                     setIsOpen(true);
                     setReselectId(trim.id);
                   } else {
-                    selectTrim(trim.id);
+                    if (!isTrimModalButtonClicked) selectTrim(trim.id);
                   }
+                  e.stopPropagation();
                 }}
-                handleClickDetail={() => setShowDetail(!showDetail)}
+                handleClickDetail={() => {
+                  setDetailTrim(trim);
+                  setIsBasicOptionModalOpen(true);
+                }}
               />
             );
           })}
-        <Exam>
-          {showDetail && (
-            <>
-              <OptionList $name="파워트레인/성능" />
-              <OptionList $name="지능형 안전 기술" />
-              <OptionList $name="안전" />
-              <OptionList $name="외관" />
-              <OptionList $name="내장" />
-              <OptionList $name="시트" />
-              <OptionList $name="편의" />
-            </>
-          )}
-        </Exam>
+        {isBasicOptionModalOpen && (
+          <BasicOptionModal
+            trimId={detailTrim!.id}
+            trimName={detailTrim!.name}
+            trimDescription={detailTrim!.description}
+            setIsBasicOptionModalOpen={setIsBasicOptionModalOpen}
+          />
+        )}
       </Container>
       {isOpen && (
         <Modals
@@ -103,13 +108,4 @@ const Container = styled.div`
   flex-direction: row;
   width: 59.5rem;
   gap: 0.5rem;
-`;
-
-const Exam = styled.div`
-  width: 100%;
-  align-self: center;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 `;

@@ -41,7 +41,7 @@ export const Container = styled.div<{ $isOpen: boolean }>`
   display: flex;
   flex-direction: column;
   padding: 1rem 1.5rem;
-  width: 80%;
+  width: 95%;
   border: 1px solid ${(props) => props.theme.colors.GREY2};
   background-color: ${(props) => props.theme.colors.WHITE};
 
@@ -50,10 +50,6 @@ export const Container = styled.div<{ $isOpen: boolean }>`
     css`
       animation: ${expandAnimation} 1s ease-in-out forwards;
     `}
-
-  & + & {
-    margin: 0.875rem 0;
-  }
 `;
 export const ListContainer = styled.div<{ $isOpen?: boolean }>`
   display: flex;

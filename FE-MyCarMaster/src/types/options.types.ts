@@ -52,3 +52,11 @@ export type UnselectableOptionProps = {
   name: string;
   price: number;
 };
+
+export type BasicOptionProps = {
+  id: number;
+  category: string;
+  name: string;
+  imgUrl: string;
+  description: string;
+};
