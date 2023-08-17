@@ -26,6 +26,9 @@ export default function TrimSelect() {
       },
     });
   };
+
+  if (!trimList.length) return <Container>데이터가 없습니다.</Container>;
+
   return (
     <Container>
       {trimList?.length &&

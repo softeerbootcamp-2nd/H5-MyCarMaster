@@ -24,7 +24,7 @@ export default function OptionSelect() {
     );
 
     setFilteredOptionList(filteredList);
-  }, [optionCategoryId]);
+  }, [optionList, optionCategoryId]);
 
   const changeOptionId = (index: number) => {
     optionDispatch({
@@ -37,22 +37,23 @@ export default function OptionSelect() {
 
   return (
     <Container>
-      {filteredOptionList.map((option, index) => {
-        return (
-          <OptionBox
-            key={index}
-            $id={option.id}
-            $name={option.name}
-            $description={option.description}
-            $ratio={option.ratio}
-            $price={option.price}
-            $switch="option"
-            $choice={selectedOption.includes(option.id)}
-            $considered={consideredOption.includes(option.id)}
-            handleClick={() => changeOptionId(option.id)}
-          />
-        );
-      })}
+      {filteredOptionList?.length &&
+        filteredOptionList.map((option, index) => {
+          return (
+            <OptionBox
+              key={index}
+              $id={option.id}
+              $name={option.name}
+              $description={option.description}
+              $ratio={option.ratio}
+              $price={option.price}
+              $switch="option"
+              $choice={selectedOption.includes(option.id)}
+              $considered={consideredOption.includes(option.id)}
+              handleClick={() => changeOptionId(option.id)}
+            />
+          );
+        })}
     </Container>
   );
 }

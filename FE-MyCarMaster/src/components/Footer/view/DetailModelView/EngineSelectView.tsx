@@ -30,6 +30,8 @@ export default function BodyTypeSelectView() {
     });
   };
 
+  if (!engineList?.length) return null;
+
   return (
     <>
       {engineList?.length &&

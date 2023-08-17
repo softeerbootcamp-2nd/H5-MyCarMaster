@@ -6,6 +6,7 @@ import {
 } from "../../../../contexts/DetailContext";
 import { Engines } from "../../../../types/detail.types";
 import { useTrimState } from "../../../../contexts/TrimContext";
+import { useQuotationDispatch } from "../../../../contexts/QuotationContext";
 import useFetch from "../../../../hooks/useFetch";
 import { useEffect } from "react";
 
@@ -21,6 +22,7 @@ function EngineView() {
   const { trimId } = useTrimState();
   const { engineId, engineList } = useDetailState();
   const engineDispatch = useDetailDispatch();
+  const quotationDispatch = useQuotationDispatch();
 
   const { data } = useFetch<FetchEngineProps>(
     `${SERVER_URL}/engines/?trimId=${trimId}`,
@@ -33,8 +35,19 @@ function EngineView() {
         type: "SET_DETAIL_LIST",
         payload: { engineList: data.result.engines },
       });
+
+      quotationDispatch({
+        type: "SET_DETAIL_QUOTATION",
+        payload: {
+          type: "engineQuotation",
+          name: data.result.engines[engineId - 1].name,
+          price: data.result.engines[engineId - 1].price,
+        },
+      });
     }
   }, [data, engineDispatch]);
+
+  if (!engineList?.length) return <Container></Container>;
 
   return (
     <Container>
