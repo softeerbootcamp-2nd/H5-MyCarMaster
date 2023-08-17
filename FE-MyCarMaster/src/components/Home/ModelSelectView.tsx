@@ -9,48 +9,56 @@ import ModelBox from "./ModelBox";
 const data = {
   model: [
     {
+      id: 0,
       name: "팰리세이드",
       price: 3000000,
       type: ["SUV", "승용", "수소 / 전기차"],
       image: "/images/car_model/palisade-24my-45side.png",
     },
     {
+      id: 1,
       name: "싼타페",
       price: 3000000,
       type: ["SUV", "승용"],
       image: "/images/car_model/santafe-23my-45side.png",
     },
     {
+      id: 2,
       name: "싼타페 Hybrid",
       price: 3000000,
       type: ["SUV", "승용", "수소 / 전기차"],
       image: "/images/car_model/santafe-hybrid-45side.png",
     },
     {
+      id: 3,
       name: "베뉴",
       price: 3000000,
       type: ["SUV", "승용"],
       image: "/images/car_model/venue-23my-45side.png",
     },
     {
+      id: 4,
       name: "투싼",
       price: 3000000,
       type: ["SUV", "승용", "N"],
       image: "/images/car_model/tucson-23my-45side.png",
     },
     {
+      id: 5,
       name: "투싼 Hybrid",
       price: 3000000,
       type: ["SUV", "승용", "수소 / 전기차", "N"],
       image: "/images/car_model/tucson-hybrid-23my-45side.png",
     },
     {
+      id: 6,
       name: "디 올 뉴 코나",
       price: 3000000,
       type: ["SUV", "승용"],
       image: "/images/car_model/the-all-new-kona-45side.png",
     },
     {
+      id: 7,
       name: "디 올 뉴 코나 Hybrid",
       price: 3000000,
       type: ["SUV", "승용", "수소 / 전기차"],
@@ -112,8 +120,6 @@ export default function Home({ isFold }: HomeProp) {
     else return model.type.includes(typeData[categorySelect]);
   });
 
-  console.log(filteredModelData);
-
   return (
     <Container $animation={isFold}>
       <TopContainer>
@@ -147,12 +153,12 @@ export default function Home({ isFold }: HomeProp) {
         {filteredModelData.map((model, index) => (
           <ModelBox
             key={index}
-            id={index}
+            id={model.id}
             name={model.name}
             price={model.price}
             imgUrl={model.image}
-            active={index === modelSelect.selected}
-            onClick={(e, index) => handleModelSelect(e, index)}
+            active={model.id === modelSelect.selected}
+            onClick={(e, id) => handleModelSelect(e, id)}
           />
         ))}
       </ModelContainer>

@@ -8,7 +8,7 @@ type ModelBoxProp = {
   active?: boolean;
   onClick?: (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    index: number
+    id: number
   ) => void;
 };
 export default function ModelBox({
