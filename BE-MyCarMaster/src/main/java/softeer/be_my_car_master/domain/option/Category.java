@@ -16,9 +16,9 @@ public enum Category {
 	SEAT("시트"),
 	MULTIMEDIA("멀티미디어");
 
-	private String name;
+	private String value;
 
-	Category(String name) {
-		this.name = name;
+	Category(String value) {
+		this.value = value;
 	}
 }

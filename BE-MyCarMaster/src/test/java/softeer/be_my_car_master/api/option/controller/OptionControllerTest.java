@@ -344,7 +344,7 @@ class OptionControllerTest {
 			DefaultOptionDto defaultOptionDto = DefaultOptionDto.builder()
 				.id(1L)
 				.name("어떤 옵션")
-				.category(Category.SAFE.getName())
+				.category(Category.SAFE.getValue())
 				.description("옵션 상세설명")
 				.imgUrl("imgUrl")
 				.build();

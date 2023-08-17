@@ -35,6 +35,6 @@ public class Option {
 	}
 
 	public String getCategoryName() {
-		return category.getName();
+		return category.getValue();
 	}
 }
