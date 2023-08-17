@@ -57,7 +57,13 @@ public class RepresentativeOptionEntity {
 			.build();
 	}
 
-	public Option toSimpleOption() {
-		return appliedOption.toSimpleOption();
+	public Option toAppliedOption() {
+		return Option.builder()
+			.id(appliedOption.getId())
+			.category(appliedOption.getCategory())
+			.name(appliedOption.getName())
+			.price(appliedOption.getPrice())
+			.imgUrl(appliedOption.getImgUrl())
+			.build();
 	}
 }

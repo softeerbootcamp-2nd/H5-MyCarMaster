@@ -114,7 +114,7 @@ public class OptionJpaAdaptor implements OptionPort {
 	@Override
 	public List<Option> findAppliedOptionsByModelIdAndOptionIds(Long modelId, List<Long> optionIds) {
 		return representativeOptionJpaRepository.findAppliedOptionsByModelIdAndOptionIds(modelId, optionIds).stream()
-			.map(RepresentativeOptionEntity::toSimpleOption)
+			.map(RepresentativeOptionEntity::toAppliedOption)
 			.collect(Collectors.toList());
 	}
 }
