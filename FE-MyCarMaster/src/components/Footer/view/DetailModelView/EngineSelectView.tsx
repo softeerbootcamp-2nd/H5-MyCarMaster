@@ -1,12 +1,54 @@
+import { Fragment, useState } from "react";
 import {
   useDetailState,
   useDetailDispatch,
 } from "../../../../contexts/DetailContext";
-import { useQuotationDispatch } from "../../../../contexts/QuotationContext";
+import {
+  useQuotationDispatch,
+  useQuotationState,
+} from "../../../../contexts/QuotationContext";
 import OptionBox from "../../../common/OptionBox/OptionBox";
+import { Modals } from "../../../common/Modals/Modals";
+import { ModalType } from "../../../../constants/Modal.constants";
+import useFetch from "../../../../hooks/useFetch";
+// import { useTrimState } from "../../../../contexts/TrimContext";
+// import { useOptionState } from "../../../../contexts/OptionContext";
+import { UnselectableOptionProps } from "../../../../types/options.types";
+
+interface FetchUnselectableOptionProps extends UnselectableOptionProps {
+  result: {
+    unselectableOptions: UnselectableOptionProps[];
+  };
+}
 
 export default function BodyTypeSelectView() {
+  const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
+
   const { engineList, wheelDriveId, bodyTypeId, engineId } = useDetailState();
+  const { detailQuotation } = useQuotationState();
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [reselectId, setReselectId] = useState(1);
+  const [unselectableOption, setUnselectableOption] =
+    useState<UnselectableOptionProps[]>();
+
+  const { data } = useFetch<FetchUnselectableOptionProps>(
+    `${SERVER_URL}/engines/1/unselectable-options?trimId=1&optionIds=96`
+  );
+
+  const validateOptionHandler = (id: number) => {
+    const unselectableLength = Array.isArray(data?.result.unselectableOptions)
+      ? data?.result.unselectableOptions.length
+      : 0;
+    if (unselectableLength) {
+      checkUnselectableOption(
+        data?.result.unselectableOptions as UnselectableOptionProps[]
+      );
+      setReselectId(id);
+    } else {
+      selectEngine(id);
+    }
+  };
 
   const detailDispatch = useDetailDispatch();
   const quotationDispatch = useQuotationDispatch();
@@ -32,8 +74,19 @@ export default function BodyTypeSelectView() {
 
   if (!engineList?.length) return null;
 
+  const checkUnselectableOption = (unselectableOption: object) => {
+    setIsOpen(true);
+    setUnselectableOption(unselectableOption as UnselectableOptionProps[]);
+  };
+
+  const reselectEngine = (id: number) => {
+    // 해당 옵션 취소 로직 추가 필요
+    selectEngine(id);
+    setIsOpen(false);
+  };
+
   return (
-    <>
+    <Fragment>
       {engineList?.length &&
         engineList.map((engine) => {
           return (
@@ -46,10 +99,25 @@ export default function BodyTypeSelectView() {
               $price={engine.price}
               $switch="detail"
               $choice={engine.id === engineId}
-              handleClick={() => selectEngine(engine.id)}
+              handleClick={() => {
+                if (
+                  detailQuotation.engineQuotation.name === "" ||
+                  detailQuotation.engineQuotation.name === engine.name
+                ) {
+                  selectEngine(engine.id);
+                } else validateOptionHandler(engine.id);
+              }}
             />
           );
         })}
-    </>
+      {isOpen && (
+        <Modals
+          type={ModalType.CHANGE_ENGINE}
+          onClick={() => reselectEngine(reselectId)}
+          setIsOpen={setIsOpen}
+          unselectableOption={unselectableOption}
+        />
+      )}
+    </Fragment>
   );
 }

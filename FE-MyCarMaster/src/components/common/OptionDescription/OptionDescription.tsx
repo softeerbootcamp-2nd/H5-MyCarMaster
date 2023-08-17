@@ -29,7 +29,7 @@ function OptionDescription({ option }: { option: OptionType }) {
   if (!option) return null;
 
   const maxPage = (option.subOptions && option.subOptions?.length) || 0;
-  const $transformX = -page * 279;
+  const $transformX = -page * 432;
 
   const prevButtonHandler = () => {
     if (page === 0) setPage(maxPage - 1);
@@ -56,7 +56,7 @@ function OptionDescription({ option }: { option: OptionType }) {
 
       <SubOptionContainer>
         <SubOptionList
-          style={{ width: `${maxPage * 279}px` }}
+          style={{ width: `${maxPage * 432}px` }}
           $transformX={$transformX}
         >
           {option.subOptions &&
@@ -88,8 +88,9 @@ function OptionDescription({ option }: { option: OptionType }) {
 }
 
 const Container = styled.div`
-  width: 327px;
-  height: 334px;
+  min-width: 30rem;
+  width: 30rem;
+  height: 100%;
   padding: 0 1.5rem;
 
   display: flex;
@@ -102,18 +103,18 @@ const MainOptionContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 0.5rem;
+  gap: 1rem;
 `;
 
 const MainOptionName = styled.p`
-  font-size: 1.75rem;
+  font-size: 2rem;
   font-style: normal;
   font-weight: 500;
   line-height: 2.25rem; /* 128.571% */
 `;
 
 const Summary = styled.p`
-  font-size: 0.8125rem;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 500;
   line-height: 165%; /* 1.34063rem */
@@ -172,7 +173,7 @@ const PrevButton = styled.button`
 `;
 
 const SubOptionName = styled.p`
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 500;
   line-height: 1.25rem; /* 142.857% */
@@ -188,7 +189,7 @@ const NextButton = styled.button`
 `;
 
 const Description = styled.p`
-  font-size: 0.8125rem;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 400;
   line-height: 165%; /* 1.34063rem */

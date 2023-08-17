@@ -83,7 +83,7 @@ function QuotationOptionList() {
 export default QuotationOptionList;
 
 const Container = styled.div`
-  width: 51.5rem;
+  width: 59.5rem;
 
   display: flex;
   justify-content: space-between;
@@ -109,7 +109,7 @@ const Category = styled.p`
 `;
 
 const ItemContainer = styled.div`
-  width: 42.25rem;
+  width: 48rem;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -138,7 +138,7 @@ const Option = styled.div`
 `;
 
 const TotalPriceContainer = styled.div`
-  width: 42.25rem;
+  width: 48rem;
   display: flex;
   justify-content: space-between;
 `;

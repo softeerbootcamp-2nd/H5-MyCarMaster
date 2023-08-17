@@ -46,3 +46,9 @@ export type OptionAction = {
     optionCategoryId?: number;
   };
 };
+
+export type UnselectableOptionProps = {
+  id: number;
+  name: string;
+  price: number;
+};
