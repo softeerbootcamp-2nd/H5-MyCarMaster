@@ -1,4 +1,4 @@
-package softeer.be_my_car_master.api.car_master.dto.response;
+package softeer.be_my_car_master.api.agency.dto.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -13,7 +13,7 @@ import softeer.be_my_car_master.domain.car_master.CarMaster;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CarMasterDto {
+public class CarMasterInAgencyDto {
 
 	@Schema(description = "카마스터 식별자", example = "1")
 	private Long id;
@@ -30,19 +30,13 @@ public class CarMasterDto {
 	@Schema(description = "전화번호", example = "010-0000-0000")
 	private String phone;
 
-	private CarMasterAgencyDto agency;
-
-	public static CarMasterDto from(CarMaster carMaster) {
-		CarMasterAgencyDto carMasterAgencyDto =
-			new CarMasterAgencyDto(carMaster.getAgencyId(), carMaster.getAgencyName());
-
-		return CarMasterDto.builder()
+	public static CarMasterInAgencyDto from(CarMaster carMaster) {
+		return CarMasterInAgencyDto.builder()
 			.id(carMaster.getId())
 			.name(carMaster.getName())
 			.imgUrl(carMaster.getImgUrl())
 			.intro(carMaster.getIntro())
 			.phone(carMaster.getPhone())
-			.agency(carMasterAgencyDto)
 			.build();
 	}
 }
