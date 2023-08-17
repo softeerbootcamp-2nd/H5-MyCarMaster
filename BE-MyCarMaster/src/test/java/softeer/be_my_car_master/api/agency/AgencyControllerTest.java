@@ -17,7 +17,7 @@ import org.springframework.test.web.servlet.ResultActions;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import softeer.be_my_car_master.api.agency.controller.AgencyController;
-import softeer.be_my_car_master.api.agency.dto.response.AgencyDto;
+import softeer.be_my_car_master.api.agency.dto.response.AgencyInGuDto;
 import softeer.be_my_car_master.api.agency.dto.response.GetAgenciesResponse;
 import softeer.be_my_car_master.api.agency.usecase.GetAgenciesUseCase;
 import softeer.be_my_car_master.global.response.Response;
@@ -40,13 +40,17 @@ class AgencyControllerTest {
 	void getBodyTypes() throws Exception {
 		//given
 		GetAgenciesResponse getAgenciesResponse = new GetAgenciesResponse();
-		AgencyDto agencyDto1 = AgencyDto.builder()
+		AgencyInGuDto agencyDto1 = AgencyInGuDto.builder()
 			.id(1L)
 			.name("한양대리점")
+			.latitude(32.1212)
+			.longitude(127.2323)
 			.build();
-		AgencyDto agencyDto2 = AgencyDto.builder()
+		AgencyInGuDto agencyDto2 = AgencyInGuDto.builder()
 			.id(2L)
 			.name("성동대리점")
+			.latitude(32.1212)
+			.longitude(127.2323)
 			.build();
 		getAgenciesResponse.setAgencies(Arrays.asList(agencyDto1, agencyDto2));
 

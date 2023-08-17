@@ -25,4 +25,11 @@ public class AgencyJpaAdaptor implements AgencyPort {
 			.map(AgencyEntity::toAgency)
 			.collect(Collectors.toList());
 	}
+
+	@Override
+	public List<Agency> findAgenciesInGu(String gu) {
+		return agencyJpaRepository.findAllByGu(gu).stream()
+			.map(AgencyEntity::toAgencyInGu)
+			.collect(Collectors.toList());
+	}
 }

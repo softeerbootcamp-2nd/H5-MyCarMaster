@@ -9,4 +9,6 @@ import softeer.be_my_car_master.global.annotation.Port;
 public interface AgencyPort {
 
 	List<Agency> findAgenciesAndCarMasters(Double latitude, Double longitude);
+
+	List<Agency> findAgenciesInGu(String gu);
 }

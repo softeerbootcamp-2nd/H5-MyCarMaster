@@ -57,4 +57,14 @@ public class AgencyEntity {
 			.carMasters(carMasters)
 			.build();
 	}
+
+	public Agency toAgencyInGu() {
+		return Agency.builder()
+			.id(id)
+			.name(name)
+			.latitude(latitude)
+			.longitude(longitude)
+			.gu(gu)
+			.build();
+	}
 }
