@@ -2,8 +2,8 @@ import styled from "styled-components";
 import Button from "../components/common/Button/Button.tsx";
 import homeVideo from "../assets/video/homeVideo.mp4";
 import white_logo from "../assets/images/white_logo.svg";
+import ModelSelectView from "../components/Home/ModelSelectView.tsx";
 import { Header } from "../components/index.tsx";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 type TextProp = {
@@ -16,14 +16,10 @@ type TextProp = {
 };
 
 function Home() {
-  const navigate = useNavigate();
   const [isFold, setIsFold] = useState(false);
 
   const modelSelectHandler = () => {
     setIsFold(true);
-  };
-  const homeButtonHandler = () => {
-    navigate("/estimation");
   };
 
   return (
@@ -56,46 +52,7 @@ function Home() {
           />
         </IntroduceBox>
         <Point $start={isFold}>
-          <Text
-            $size={2.4}
-            $weight={500}
-            $lineHeight={2.5}
-            $color={"#222222"}
-            $animation={isFold}
-            $delay={0.5}
-          >
-            모델을 선택해주세요.
-          </Text>
-          <Text
-            $size={1.2}
-            $weight={400}
-            $lineHeight={1.5}
-            $color={"#222222"}
-            $animation={isFold}
-            $delay={2.5}
-          >
-            내게 맞는 견적부터 카마스터 연결까지
-          </Text>
-          <Text
-            $size={1.2}
-            $weight={400}
-            $lineHeight={1.5}
-            $color={"#222222"}
-            $animation={isFold}
-            $delay={4.5}
-          >
-            마이 카마스터와 함께해요
-          </Text>
-
-          <Button
-            $x={15}
-            $y={2.75}
-            $backgroundcolor="#FFFFFF"
-            $textcolor="#222222"
-            $bordercolor="#FFFFFF"
-            text="여기 클릭하면 시작함"
-            handleClick={homeButtonHandler}
-          />
+          <ModelSelectView isFold={isFold} />
         </Point>
       </Container>
     </>
