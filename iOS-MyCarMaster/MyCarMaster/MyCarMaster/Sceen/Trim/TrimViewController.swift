@@ -90,7 +90,7 @@ extension TrimViewController {
 
     private func applyData(_ data: Data?) {
         if let data,
-           case let .trims(trimDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
+           let trimDTOList = try? JSONDecoder().decode(RootDTO.self, from: data).result.trims {
             self.dataList = trimDTOList.map { Trim($0) }
             DispatchQueue.main.async {
                 self.contentView.listView.reloadData()

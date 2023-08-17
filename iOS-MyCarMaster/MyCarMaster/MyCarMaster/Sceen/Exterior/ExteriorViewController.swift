@@ -90,7 +90,7 @@ extension ExteriorViewController {
 
     private func applyData(_ data: Data?) {
         if let data,
-           case let .exteriors(exteriorDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
+           let exteriorDTOList = try? JSONDecoder().decode(RootDTO.self, from: data).result.exteriors {
             DispatchQueue.main.async {
                 self.dataList = exteriorDTOList.map { Exterior($0) }
                 self.contentView.listView.reloadData()

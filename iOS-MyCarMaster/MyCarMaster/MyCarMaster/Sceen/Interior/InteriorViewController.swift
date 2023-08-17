@@ -90,7 +90,7 @@ extension InteriorViewController {
 
     private func applyData(_ data: Data?) {
         if let data,
-           case let .interiors(interiorDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
+           let interiorDTOList = try? JSONDecoder().decode(RootDTO.self, from: data).result.interiors {
             self.dataList = interiorDTOList.map { Interior($0) }
             DispatchQueue.main.async {
                 self.contentView.listView.reloadData()
