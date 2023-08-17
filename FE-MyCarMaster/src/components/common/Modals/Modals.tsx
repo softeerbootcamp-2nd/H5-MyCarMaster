@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 
 interface ModalProps {
   type: ModalType;
-  onClick: () => void;
+  onClick: (id?: number) => void;
   setIsOpen: (isOpen: boolean) => void;
 }
 

@@ -42,11 +42,12 @@ export type QuotationActionType =
   | "SET_DETAIL_QUOTATION"
   | "SET_SELECT_QUOTATION"
   | "SET_CONSIDER_QUOTATION"
-  | "SET_CAR_PAINT_QUOTATION";
+  | "SET_CAR_PAINT_QUOTATION"
+  | "RESET_QUOTATION";
 
 export type QuotationAction = {
   type: QuotationActionType;
-  payload: {
+  payload?: {
     id?: number;
     navigationId?: number;
     isFirst?: boolean[];
