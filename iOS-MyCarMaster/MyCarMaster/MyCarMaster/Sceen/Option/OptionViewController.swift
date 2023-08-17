@@ -21,7 +21,7 @@ final class OptionViewController: UIViewController {
     private func configureDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Option>(
             collectionView: contentView.optionListView
-        ) { [weak self] collectionView, indexPath, option in
+        ) { collectionView, indexPath, option in
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: OptionListCell.reuseIdentifier,
                 for: indexPath
@@ -127,25 +127,27 @@ extension OptionViewController: UICollectionViewDataSource {
         return 0
     }
 
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-        contentView.optionListView.bounds = cell.frame
+// MARK: CollectionViewDataSource
+extension OptionViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard collectionView == contentView.categoryListView else { return 0 }
+        
+        return categoryList.count
     }
 
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        if collectionView == contentView.categoryListView {
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: ButtonCell.reuseIdentifier,
-                for: indexPath
-            ) as? ButtonCell else {
-                fatalError("등록되지 않은 cell입니다.")
-            }
-            cell.setStyledTitle(categoryList[indexPath.item])
-            return cell
+        guard collectionView == contentView.categoryListView else { return UICollectionViewCell() }
+        
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: ButtonCell.reuseIdentifier,
+            for: indexPath
+        ) as? ButtonCell else {
+            fatalError("등록되지 않은 cell입니다.")
         }
-        return UICollectionViewCell()
+        cell.setStyledTitle(categoryList[indexPath.item])
+        return cell
     }
 }

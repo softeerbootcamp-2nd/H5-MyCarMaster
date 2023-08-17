@@ -315,10 +315,6 @@ extension OptionListCell {
             self.disclosureButton.transform = self.isExpanded ? upsideDown : .identity
             self.additionalContentView.isHidden = !self.isExpanded
             self.invalidateIntrinsicContentSize()
-            if let superview = self.superview as? UICollectionView,
-               let indexPath = superview.indexPath(for: self) {
-                superview.scrollToItem(at: indexPath, at: .top, animated: false)
-            }
         }
     }
 
