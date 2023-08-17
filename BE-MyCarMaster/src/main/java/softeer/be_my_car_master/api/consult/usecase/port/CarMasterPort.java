@@ -11,5 +11,5 @@ public interface CarMasterPort {
 
 	Optional<CarMaster> findById(Long estimateId);
 
-	// List<CarMaster> findCarMasters(Double latitude, Double longitude, String filter);
+	List<CarMaster> findCarMastersByAgency(Long agencyId);
 }
