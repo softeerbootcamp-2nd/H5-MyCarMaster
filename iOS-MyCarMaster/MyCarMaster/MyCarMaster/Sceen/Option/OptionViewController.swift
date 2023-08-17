@@ -61,6 +61,7 @@ final class OptionViewController: UIViewController {
     private func configureUI() {
 //        contentView.categoryListView.delegate = self
         contentView.categoryListView.dataSource = self
+        contentView.optionListView.delegate = self
     }
 
     override func didMove(toParent parent: UIViewController?) {
@@ -119,19 +120,37 @@ extension OptionViewController {
     }
 }
 
-extension OptionViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+// MARK: CollectionViewDelegate
+extension OptionViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+
         if collectionView == contentView.categoryListView {
-            return categoryList.count
+        } else { // OptionListView 일 때
+
+            // 선택된 셀이 가장 위에 보여지도록 한다.
+            if cell.frame.origin.y + contentView.optionListView.bounds.height < contentView.optionListView.contentSize.height {
+                contentView.optionListView.bounds.origin = cell.frame.origin
+            } else {
+                // 마지막 셀 일 때
+                contentView.optionListView.bounds.origin.y = cell.frame.maxY - contentView.optionListView.bounds.height
+            }
+
+            // preview Image를 띄운다.
+            // FIXME: 내부 파일 URL로 바꾸기
+            if let imageURL = dataSource?.itemIdentifier(for: indexPath)?.imgURL,
+               let data = try? Data(contentsOf: imageURL) {
+                contentView.configurePreviewImage(with: UIImage(data: data))
+            }
         }
-        return 0
     }
+}
 
 // MARK: CollectionViewDataSource
 extension OptionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard collectionView == contentView.categoryListView else { return 0 }
-        
+
         return categoryList.count
     }
 
@@ -140,7 +159,7 @@ extension OptionViewController: UICollectionViewDataSource {
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
         guard collectionView == contentView.categoryListView else { return UICollectionViewCell() }
-        
+
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: ButtonCell.reuseIdentifier,
             for: indexPath

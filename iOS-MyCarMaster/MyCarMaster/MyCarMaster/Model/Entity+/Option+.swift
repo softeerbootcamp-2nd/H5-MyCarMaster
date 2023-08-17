@@ -15,6 +15,7 @@ extension Option: OptionListCellMainStateConvertible {
             name: self.name,
             price: self.price,
             ratio: self.ratio,
+            previewImageURL: self.subOptions.first?.imgURL,
             subOptions: self.subOptions
         )
     }

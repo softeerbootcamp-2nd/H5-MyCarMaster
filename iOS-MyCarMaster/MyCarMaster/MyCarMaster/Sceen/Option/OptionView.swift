@@ -110,6 +110,10 @@ extension OptionView {
     func updateLayout() {
         configureLayout()
     }
+
+    func configurePreviewImage(with image: UIImage?) {
+        previewImageView.image = image
+    }
 }
 
 #if canImport(SwiftUI) && DEBUG
