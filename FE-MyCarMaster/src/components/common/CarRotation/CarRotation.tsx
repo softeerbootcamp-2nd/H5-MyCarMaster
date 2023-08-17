@@ -76,7 +76,7 @@ const ImgContainer = styled.div``;
 
 const Image = styled.img<{ $display: boolean }>`
   width: 100%;
-  height: 25rem;
+  height: 100%;
   flex-shrink: 0;
   display: ${({ $display }) => ($display ? "" : "none")};
   -webkit-user-drag: none;
@@ -84,7 +84,7 @@ const Image = styled.img<{ $display: boolean }>`
 
 const Circle = styled.div`
   position: absolute;
-  width: 38.4375rem;
+  width: 45rem;
   height: 4.4375rem;
   border: 1px solid transparent;
   border-radius: 50%;
@@ -94,7 +94,7 @@ const Circle = styled.div`
   background-clip: content-box, border-box;
   z-index: -1;
 
-  margin-top: 13rem;
+  margin-top: 18rem;
 `;
 
 const Text = styled.div<{ $isQuotation: boolean }>`
