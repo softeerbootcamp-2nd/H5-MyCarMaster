@@ -319,8 +319,7 @@ export default function MyTrimSearchScreen({
       (option) => option !== null
     );
 
-    onSearch &&
-      onSearch(appliedOptionsFilter as QuotationType[], selected);
+    onSearch && onSearch(appliedOptionsFilter as QuotationType[], selected);
   };
 
   return (
