@@ -70,7 +70,11 @@ final class OptionViewController: UIViewController {
 
 extension OptionViewController {
     private func fetchFromDisk() {
-        guard let fileURL = Bundle.main.url(forResource: "OptionDTO.json", withExtension: nil) else { return }
+        guard let fileURL = Bundle.main.url(forResource: "OptionDTO.json", withExtension: nil) else {
+            print("Invalid Data")
+            return
+        }
+
         applyData(try? Data(contentsOf: fileURL))
     }
 
