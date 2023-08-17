@@ -24,7 +24,7 @@ public class AgencyInGuDto {
 	@Schema(description = "위도", example = "32.1232")
 	private Double latitude;
 
-	@Schema(description = "경", example = "127.2332")
+	@Schema(description = "경도", example = "127.2332")
 	private Double longitude;
 
 	public static AgencyInGuDto from(Agency agency) {
