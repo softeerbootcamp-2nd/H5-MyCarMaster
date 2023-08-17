@@ -8,7 +8,7 @@
 import UIKit
 
 final class BodyTypeView<ListCellClass>: BasicStepView<ListCellClass>
-where ListCellClass: UICollectionViewCell & ContentSizeEstimatable & Selectable {
+where ListCellClass: UICollectionViewCell & ContentSizeEstimatable & CellStyleSelectable {
 
     override func configureUI() {
         super.configureUI()

@@ -8,17 +8,11 @@
 import UIKit
 
 class BasicStepView<ListCellClass>: UIView
-where ListCellClass: UICollectionViewCell & ContentSizeEstimatable & Selectable {
+where ListCellClass: UICollectionViewCell & ContentSizeEstimatable & CellStyleSelectable {
 
     let inset: CGFloat = 16
     let firstSpacing: CGFloat = 16
     let listSpacing: CGFloat = 12
-
-    let previewView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .MCM.white
-        return view
-    }()
 
     let previewImageView: UIImageView = {
         let imageView = UIImageView()
@@ -51,30 +45,21 @@ where ListCellClass: UICollectionViewCell & ContentSizeEstimatable & Selectable 
     }
 
     func configureLayout() {
-        [previewView, listView].forEach { subview in
+        [previewImageView, listView].forEach { subview in
             addSubview(subview)
             subview.translatesAutoresizingMaskIntoConstraints = false
         }
 
         NSLayoutConstraint.activate([
-            previewView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            previewView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: inset),
-            previewView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -inset),
-            previewView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 216/375),
+            previewImageView.topAnchor.constraint(equalTo: topAnchor),
+            previewImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset),
+            previewImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset),
+            previewImageView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 216/375),
 
-            listView.topAnchor.constraint(equalTo: previewView.bottomAnchor, constant: firstSpacing),
-            listView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: inset),
-            listView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -inset),
-            listView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
-        ])
-
-        previewView.addSubview(previewImageView)
-        previewImageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            previewImageView.centerXAnchor.constraint(equalTo: previewView.centerXAnchor),
-            previewImageView.centerYAnchor.constraint(equalTo: previewView.centerYAnchor),
-            previewImageView.widthAnchor.constraint(lessThanOrEqualTo: previewView.widthAnchor, multiplier: 1.0),
-            previewImageView.heightAnchor.constraint(lessThanOrEqualTo: previewView.heightAnchor, multiplier: 1.0),
+            listView.topAnchor.constraint(equalTo: previewImageView.bottomAnchor, constant: firstSpacing),
+            listView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset),
+            listView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset),
+            listView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }

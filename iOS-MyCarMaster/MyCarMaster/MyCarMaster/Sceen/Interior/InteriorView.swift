@@ -8,7 +8,7 @@
 import UIKit
 
 final class InteriorView<ListCellClass>: BasicStepView<ListCellClass>
-where ListCellClass: UICollectionViewCell & ContentSizeEstimatable & Selectable {
+where ListCellClass: UICollectionViewCell & ContentSizeEstimatable & CellStyleSelectable {
 
     override func configureUI() {
         super.configureUI()

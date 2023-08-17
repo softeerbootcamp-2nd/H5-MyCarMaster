@@ -10,7 +10,7 @@ import UIKit
 import MCMResource
 
 final class TrimView<ListCellClass>: BasicStepView<ListCellClass>
-where ListCellClass: UICollectionViewCell & Selectable & ContentSizeEstimatable {
+where ListCellClass: UICollectionViewCell & CellStyleSelectable & ContentSizeEstimatable {
 
     private let recommendLabel: UILabel = {
         let label = UILabel()
@@ -60,7 +60,7 @@ where ListCellClass: UICollectionViewCell & Selectable & ContentSizeEstimatable 
         NSLayoutConstraint.activate([
             recommendStackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: inset),
             recommendStackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -inset),
-            recommendStackView.bottomAnchor.constraint(equalTo: previewView.bottomAnchor),
+            recommendStackView.bottomAnchor.constraint(equalTo: previewImageView.bottomAnchor),
         ])
     }
 }

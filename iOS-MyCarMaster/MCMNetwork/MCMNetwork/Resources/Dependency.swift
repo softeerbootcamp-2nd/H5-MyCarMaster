@@ -14,7 +14,7 @@ public enum Dependency {
 
 extension Dependency {
 
-    private static let bundle = Bundle(identifier: "com.minios.MCMNetwork")!
+    private static let bundle = Bundle.main
 
     private static func valueFrom(plist: String, forKey key: String) -> Any? {
         guard let plistPath = bundle.path(forResource: plist, ofType: "plist") else { fatalError("\(plist).plist가 존재하지 않습니다.") }

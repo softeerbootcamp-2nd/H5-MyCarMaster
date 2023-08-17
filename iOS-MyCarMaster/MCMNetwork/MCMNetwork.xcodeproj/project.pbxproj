@@ -16,12 +16,12 @@
 		B524A5702A82B9E10095F0E2 /* DownloadTaskPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B524A56F2A82B9E10095F0E2 /* DownloadTaskPublisher.swift */; };
 		B5A6013F2A81EADC00CF2983 /* MCMNetwork.h in Headers */ = {isa = PBXBuildFile; fileRef = B5A6013E2A81EADC00CF2983 /* MCMNetwork.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5A601502A81EB6200CF2983 /* MCMCombineExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A6014F2A81EB6200CF2983 /* MCMCombineExtension.framework */; };
-		B5A601912A8205B500CF2983 /* Dependency.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5A601902A8205B500CF2983 /* Dependency.plist */; };
 		B5A601932A82061400CF2983 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A601922A82061400CF2983 /* Dependency.swift */; };
 		B5A601BC2A82265400CF2983 /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A601BB2A82265400CF2983 /* TargetType.swift */; };
 		B5A601BE2A8228BE00CF2983 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A601BD2A8228BE00CF2983 /* HTTPMethod.swift */; };
 		B5A601D92A822E3D00CF2983 /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A601D82A822E3D00CF2983 /* NetworkProvider.swift */; };
 		B5A601DD2A82334900CF2983 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A601DC2A82334900CF2983 /* NetworkError.swift */; };
+		B5D5D4172A8DDBA000A4DA3C /* Dependency.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5D5D4162A8DDB9800A4DA3C /* Dependency.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,12 +36,12 @@
 		B5A6013B2A81EADC00CF2983 /* MCMNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MCMNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5A6013E2A81EADC00CF2983 /* MCMNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MCMNetwork.h; sourceTree = "<group>"; };
 		B5A6014F2A81EB6200CF2983 /* MCMCombineExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMCombineExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B5A601902A8205B500CF2983 /* Dependency.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Dependency.plist; sourceTree = "<group>"; };
 		B5A601922A82061400CF2983 /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
 		B5A601BB2A82265400CF2983 /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
 		B5A601BD2A8228BE00CF2983 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		B5A601D82A822E3D00CF2983 /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
 		B5A601DC2A82334900CF2983 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		B5D5D4162A8DDB9800A4DA3C /* Dependency.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Dependency.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,7 +129,7 @@
 		B5A601962A820BD900CF2983 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B5A601902A8205B500CF2983 /* Dependency.plist */,
+				B5D5D4162A8DDB9800A4DA3C /* Dependency.plist */,
 				B5A601922A82061400CF2983 /* Dependency.swift */,
 			);
 			path = Resources;
@@ -205,7 +205,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5A601912A8205B500CF2983 /* Dependency.plist in Resources */,
+				B5D5D4172A8DDBA000A4DA3C /* Dependency.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

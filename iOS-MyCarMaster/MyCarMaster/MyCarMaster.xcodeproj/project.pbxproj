@@ -17,6 +17,12 @@
 		B510BBDB2A840BD4009E5752 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510BBDA2A840BD4009E5752 /* Formatter.swift */; };
 		B510BBDD2A841A25009E5752 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510BBDC2A841A25009E5752 /* Reusable.swift */; };
 		B510BBDF2A84895D009E5752 /* EstimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510BBDE2A84895D009E5752 /* EstimationView.swift */; };
+		B53BA1082A8BE6B9009F94BE /* OptionListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BA1072A8BE6B9009F94BE /* OptionListCell.swift */; };
+		B53BA10A2A8BF426009F94BE /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BA1092A8BF426009F94BE /* Option.swift */; };
+		B53BA10C2A8BF42F009F94BE /* OptionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BA10B2A8BF42F009F94BE /* OptionDTO.swift */; };
+		B53BA10E2A8BF4C2009F94BE /* Option+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BA10D2A8BF4C2009F94BE /* Option+.swift */; };
+		B53BA1102A8BF4E2009F94BE /* OptionListCellMainState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BA10F2A8BF4E2009F94BE /* OptionListCellMainState.swift */; };
+		B53BA1122A8C0A8F009F94BE /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BA1112A8C0A8F009F94BE /* PaddingLabel.swift */; };
 		B53C3C442A85483F0019ECA1 /* EngineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53C3C432A85483F0019ECA1 /* EngineView.swift */; };
 		B53C3C462A8548450019ECA1 /* EngineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53C3C452A8548450019ECA1 /* EngineViewController.swift */; };
 		B53C3C492A854AF50019ECA1 /* BasicStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53C3C482A854AF50019ECA1 /* BasicStepView.swift */; };
@@ -38,6 +44,7 @@
 		B58A32342A7BA452005FC831 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A32332A7BA452005FC831 /* OnboardingView.swift */; };
 		B58A32382A7BA47D005FC831 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B58A32372A7BA47D005FC831 /* Lottie */; };
 		B58A323B2A7C0B35005FC831 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A323A2A7C0B35005FC831 /* OnboardingViewController.swift */; };
+		B59B201D2A8B666A009E7868 /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59B201C2A8B666A009E7868 /* OptionViewController.swift */; };
 		B5A600FE2A81E1FC00CF2983 /* MCMCombineExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */; };
 		B5A600FF2A81E1FC00CF2983 /* MCMCombineExtension.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5BBB34F2A89C74C00AAFC84 /* InteriorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBB34E2A89C74C00AAFC84 /* InteriorViewController.swift */; };
@@ -50,11 +57,18 @@
 		B5BBB35D2A8A1D6400AAFC84 /* BodyTypeDTO.json in Resources */ = {isa = PBXBuildFile; fileRef = B5DD64E22A87714000B44F61 /* BodyTypeDTO.json */; };
 		B5BBB35E2A8A1D6400AAFC84 /* ExteriorDTO.json in Resources */ = {isa = PBXBuildFile; fileRef = B5BBB3582A89CA5200AAFC84 /* ExteriorDTO.json */; };
 		B5BBB35F2A8A1D6400AAFC84 /* InteriorDTO.json in Resources */ = {isa = PBXBuildFile; fileRef = B5BBB3562A89C9AC00AAFC84 /* InteriorDTO.json */; };
-		B5BBB39E2A8A447900AAFC84 /* MCMNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BBB39B2A8A447900AAFC84 /* MCMNetwork.framework */; };
 		B5BBB3A02A8A447900AAFC84 /* MCMResource.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BBB39C2A8A447900AAFC84 /* MCMResource.framework */; };
 		B5BBB3A12A8A447900AAFC84 /* MCMResource.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5BBB39C2A8A447900AAFC84 /* MCMResource.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5BBB3A22A8A447900AAFC84 /* MVIFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BBB39D2A8A447900AAFC84 /* MVIFoundation.framework */; };
+		B5C079042A8BD33700747B11 /* ButtonStyleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C079032A8BD33700747B11 /* ButtonStyleCell.swift */; };
+		B5C079062A8BD40000747B11 /* ButtonStyleSeletable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C079052A8BD40000747B11 /* ButtonStyleSeletable.swift */; };
+		B5C079092A8BD52D00747B11 /* Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C079082A8BD52D00747B11 /* Selectable.swift */; };
+		B5C0790B2A8BD69100747B11 /* UICollectionViewCell+Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0790A2A8BD69100747B11 /* UICollectionViewCell+Selectable.swift */; };
+		B5C0790D2A8BD6EA00747B11 /* UIButton+Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0790C2A8BD6EA00747B11 /* UIButton+Selectable.swift */; };
 		B5C3EAC12A84B1AA00D9577C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */; };
+		B5D5D4152A8D559600A4DA3C /* SubOptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D5D4142A8D559600A4DA3C /* SubOptionButton.swift */; };
+		B5D5D4182A8DDBB100A4DA3C /* MCMNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BBB39B2A8A447900AAFC84 /* MCMNetwork.framework */; };
+		B5D5D4192A8DDBB100A4DA3C /* MCMNetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5BBB39B2A8A447900AAFC84 /* MCMNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5DD64D02A876ABD00B44F61 /* WheelDriveDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64CF2A876ABD00B44F61 /* WheelDriveDTO.swift */; };
 		B5DD64D22A876B5000B44F61 /* WheelDrive.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64D12A876B5000B44F61 /* WheelDrive.swift */; };
 		B5DD64DD2A876ED800B44F61 /* BodyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64DC2A876ED800B44F61 /* BodyType.swift */; };
@@ -67,7 +81,7 @@
 		B5DD65122A880B3100B44F61 /* CGSize+Operator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD65112A880B3100B44F61 /* CGSize+Operator.swift */; };
 		B5DD65152A88F5CF00B44F61 /* ColorListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD65142A88F5CF00B44F61 /* ColorListCell.swift */; };
 		B5DD65172A88F8D100B44F61 /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD65162A88F8D100B44F61 /* Then.swift */; };
-		B5DD65192A88FB6F00B44F61 /* Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD65182A88FB6F00B44F61 /* Selectable.swift */; };
+		B5DD65192A88FB6F00B44F61 /* CellStyleSelectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD65182A88FB6F00B44F61 /* CellStyleSelectable.swift */; };
 		B5DD651B2A8905B400B44F61 /* ColorListCellState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD651A2A8905B400B44F61 /* ColorListCellState.swift */; };
 		B5DD651E2A89066400B44F61 /* Exterior+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD651D2A89066400B44F61 /* Exterior+.swift */; };
 		B5DD65202A8926E700B44F61 /* ContentSizeEstimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD651F2A8926E700B44F61 /* ContentSizeEstimatable.swift */; };
@@ -76,6 +90,7 @@
 		B5DD65272A8937A500B44F61 /* Engine+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD65262A8937A500B44F61 /* Engine+.swift */; };
 		B5DD65292A893AC600B44F61 /* WheelDrive+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD65282A893AC600B44F61 /* WheelDrive+.swift */; };
 		B5DD652B2A893B1E00B44F61 /* BodyType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD652A2A893B1E00B44F61 /* BodyType+.swift */; };
+		B5E233FD2A8B4B0F0013BEB1 /* OptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5E233FC2A8B4B0F0013BEB1 /* OptionView.swift */; };
 		B5F1AE062A838B8E00E7E392 /* TrimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F1AE052A838B8E00E7E392 /* TrimViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +119,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				B5BBB3A12A8A447900AAFC84 /* MCMResource.framework in Embed Frameworks */,
+				B5D5D4192A8DDBB100A4DA3C /* MCMNetwork.framework in Embed Frameworks */,
 				B5A600FF2A81E1FC00CF2983 /* MCMCombineExtension.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -126,6 +142,12 @@
 		B510BBDA2A840BD4009E5752 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		B510BBDC2A841A25009E5752 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		B510BBDE2A84895D009E5752 /* EstimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimationView.swift; sourceTree = "<group>"; };
+		B53BA1072A8BE6B9009F94BE /* OptionListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionListCell.swift; sourceTree = "<group>"; };
+		B53BA1092A8BF426009F94BE /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
+		B53BA10B2A8BF42F009F94BE /* OptionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionDTO.swift; sourceTree = "<group>"; };
+		B53BA10D2A8BF4C2009F94BE /* Option+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Option+.swift"; sourceTree = "<group>"; };
+		B53BA10F2A8BF4E2009F94BE /* OptionListCellMainState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionListCellMainState.swift; sourceTree = "<group>"; };
+		B53BA1112A8C0A8F009F94BE /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		B53C3C432A85483F0019ECA1 /* EngineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineView.swift; sourceTree = "<group>"; };
 		B53C3C452A8548450019ECA1 /* EngineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineViewController.swift; sourceTree = "<group>"; };
 		B53C3C482A854AF50019ECA1 /* BasicStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicStepView.swift; sourceTree = "<group>"; };
@@ -148,6 +170,7 @@
 		B570C0F92A89ADA7000E9B75 /* InteriorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteriorView.swift; sourceTree = "<group>"; };
 		B58A32332A7BA452005FC831 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		B58A323A2A7C0B35005FC831 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		B59B201C2A8B666A009E7868 /* OptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
 		B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMCombineExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5BBB34E2A89C74C00AAFC84 /* InteriorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteriorViewController.swift; sourceTree = "<group>"; };
 		B5BBB3502A89C7BF00AAFC84 /* Interior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interior.swift; sourceTree = "<group>"; };
@@ -158,7 +181,13 @@
 		B5BBB39B2A8A447900AAFC84 /* MCMNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5BBB39C2A8A447900AAFC84 /* MCMResource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMResource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5BBB39D2A8A447900AAFC84 /* MVIFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MVIFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5C079032A8BD33700747B11 /* ButtonStyleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyleCell.swift; sourceTree = "<group>"; };
+		B5C079052A8BD40000747B11 /* ButtonStyleSeletable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyleSeletable.swift; sourceTree = "<group>"; };
+		B5C079082A8BD52D00747B11 /* Selectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selectable.swift; sourceTree = "<group>"; };
+		B5C0790A2A8BD69100747B11 /* UICollectionViewCell+Selectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Selectable.swift"; sourceTree = "<group>"; };
+		B5C0790C2A8BD6EA00747B11 /* UIButton+Selectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Selectable.swift"; sourceTree = "<group>"; };
 		B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		B5D5D4142A8D559600A4DA3C /* SubOptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubOptionButton.swift; sourceTree = "<group>"; };
 		B5DD64CF2A876ABD00B44F61 /* WheelDriveDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelDriveDTO.swift; sourceTree = "<group>"; };
 		B5DD64D12A876B5000B44F61 /* WheelDrive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelDrive.swift; sourceTree = "<group>"; };
 		B5DD64DC2A876ED800B44F61 /* BodyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyType.swift; sourceTree = "<group>"; };
@@ -173,7 +202,7 @@
 		B5DD65112A880B3100B44F61 /* CGSize+Operator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Operator.swift"; sourceTree = "<group>"; };
 		B5DD65142A88F5CF00B44F61 /* ColorListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorListCell.swift; sourceTree = "<group>"; };
 		B5DD65162A88F8D100B44F61 /* Then.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Then.swift; sourceTree = "<group>"; };
-		B5DD65182A88FB6F00B44F61 /* Selectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selectable.swift; sourceTree = "<group>"; };
+		B5DD65182A88FB6F00B44F61 /* CellStyleSelectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellStyleSelectable.swift; sourceTree = "<group>"; };
 		B5DD651A2A8905B400B44F61 /* ColorListCellState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorListCellState.swift; sourceTree = "<group>"; };
 		B5DD651D2A89066400B44F61 /* Exterior+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Exterior+.swift"; sourceTree = "<group>"; };
 		B5DD651F2A8926E700B44F61 /* ContentSizeEstimatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizeEstimatable.swift; sourceTree = "<group>"; };
@@ -182,6 +211,7 @@
 		B5DD65262A8937A500B44F61 /* Engine+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Engine+.swift"; sourceTree = "<group>"; };
 		B5DD65282A893AC600B44F61 /* WheelDrive+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WheelDrive+.swift"; sourceTree = "<group>"; };
 		B5DD652A2A893B1E00B44F61 /* BodyType+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BodyType+.swift"; sourceTree = "<group>"; };
+		B5E233FC2A8B4B0F0013BEB1 /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
 		B5F1AE052A838B8E00E7E392 /* TrimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrimViewController.swift; path = MyCarMaster/Sceen/Trim/TrimViewController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -192,8 +222,8 @@
 			files = (
 				B5BBB3A22A8A447900AAFC84 /* MVIFoundation.framework in Frameworks */,
 				B5A600FE2A81E1FC00CF2983 /* MCMCombineExtension.framework in Frameworks */,
-				B5BBB39E2A8A447900AAFC84 /* MCMNetwork.framework in Frameworks */,
 				B5BBB3A02A8A447900AAFC84 /* MCMResource.framework in Frameworks */,
+				B5D5D4182A8DDBB100A4DA3C /* MCMNetwork.framework in Frameworks */,
 				B58A32382A7BA47D005FC831 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,7 +275,6 @@
 				B56F55CF2A86BBB10055E382 /* Model */,
 				B56A765D2A83EF9100F7E3EF /* General */,
 				B56A765A2A83EC4000F7E3EF /* Util */,
-				B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */,
 			);
 			path = MyCarMaster;
 			sourceTree = "<group>";
@@ -297,6 +326,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B53BA1062A8BDFC0009F94BE /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */,
+				B510BBDE2A84895D009E5752 /* EstimationView.swift */,
+				B53E028D2A84BE5100F464FC /* StepNavigatorView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		B53C3C422A8548330019ECA1 /* Engine */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,6 +366,7 @@
 		B53C3C562A8577760019ECA1 /* Sceen */ = {
 			isa = PBXGroup;
 			children = (
+				B53BA1062A8BDFC0009F94BE /* Main */,
 				B58A323C2A7C0B3B005FC831 /* Onboarding */,
 				B560B2162A83826C00A4B9A9 /* Trim */,
 				B53C3C422A8548330019ECA1 /* Engine */,
@@ -334,6 +374,7 @@
 				B53C3C552A85776B0019ECA1 /* BodyType */,
 				B5DD64ED2A877DC700B44F61 /* Exterior */,
 				B570C0F82A89AD93000E9B75 /* Interior */,
+				B5E233FB2A8B4AE80013BEB1 /* Option */,
 			);
 			path = Sceen;
 			sourceTree = "<group>";
@@ -364,10 +405,11 @@
 		B56A765D2A83EF9100F7E3EF /* General */ = {
 			isa = PBXGroup;
 			children = (
+				B5DD65232A8935FB00B44F61 /* Protocol */,
+				B5C079072A8BD4FD00747B11 /* Selectable */,
 				B5DD65132A88F5C500B44F61 /* Cell */,
-				B53E028D2A84BE5100F464FC /* StepNavigatorView.swift */,
-				B510BBDE2A84895D009E5752 /* EstimationView.swift */,
 				B53C3C482A854AF50019ECA1 /* BasicStepView.swift */,
+				B53BA1112A8C0A8F009F94BE /* PaddingLabel.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -393,6 +435,7 @@
 				B5DD64DE2A876EED00B44F61 /* BodyTypeDTO.swift */,
 				B5DD64F42A87844A00B44F61 /* ExteriorDTO.swift */,
 				B5BBB3542A89C95200AAFC84 /* InteriorDTO.swift */,
+				B53BA10B2A8BF42F009F94BE /* OptionDTO.swift */,
 			);
 			path = DataTransferObject;
 			sourceTree = "<group>";
@@ -406,6 +449,7 @@
 				B5DD64DC2A876ED800B44F61 /* BodyType.swift */,
 				B5DD64F22A8783D800B44F61 /* Exterior.swift */,
 				B5BBB3502A89C7BF00AAFC84 /* Interior.swift */,
+				B53BA1092A8BF426009F94BE /* Option.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -441,6 +485,28 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		B5C079022A8BD32B00747B11 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B5C079032A8BD33700747B11 /* ButtonStyleCell.swift */,
+				B53BA1072A8BE6B9009F94BE /* OptionListCell.swift */,
+				B53BA10F2A8BF4E2009F94BE /* OptionListCellMainState.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		B5C079072A8BD4FD00747B11 /* Selectable */ = {
+			isa = PBXGroup;
+			children = (
+				B5C079082A8BD52D00747B11 /* Selectable.swift */,
+				B5DD65182A88FB6F00B44F61 /* CellStyleSelectable.swift */,
+				B5C079052A8BD40000747B11 /* ButtonStyleSeletable.swift */,
+				B5C0790A2A8BD69100747B11 /* UICollectionViewCell+Selectable.swift */,
+				B5C0790C2A8BD6EA00747B11 /* UIButton+Selectable.swift */,
+			);
+			path = Selectable;
+			sourceTree = "<group>";
+		};
 		B5DD64ED2A877DC700B44F61 /* Exterior */ = {
 			isa = PBXGroup;
 			children = (
@@ -453,7 +519,6 @@
 		B5DD65132A88F5C500B44F61 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				B5DD65232A8935FB00B44F61 /* Protocol */,
 				B5DD65142A88F5CF00B44F61 /* ColorListCell.swift */,
 				B5DD651A2A8905B400B44F61 /* ColorListCellState.swift */,
 				B56A765E2A83EFB000F7E3EF /* BasicListCell.swift */,
@@ -471,6 +536,7 @@
 				B5DD652A2A893B1E00B44F61 /* BodyType+.swift */,
 				B5DD651D2A89066400B44F61 /* Exterior+.swift */,
 				B5BBB3522A89C7ED00AAFC84 /* Interior+.swift */,
+				B53BA10D2A8BF4C2009F94BE /* Option+.swift */,
 			);
 			path = "Entity+";
 			sourceTree = "<group>";
@@ -478,10 +544,20 @@
 		B5DD65232A8935FB00B44F61 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				B5DD65182A88FB6F00B44F61 /* Selectable.swift */,
 				B5DD651F2A8926E700B44F61 /* ContentSizeEstimatable.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		B5E233FB2A8B4AE80013BEB1 /* Option */ = {
+			isa = PBXGroup;
+			children = (
+				B5C079022A8BD32B00747B11 /* Cell */,
+				B5E233FC2A8B4B0F0013BEB1 /* OptionView.swift */,
+				B59B201C2A8B666A009E7868 /* OptionViewController.swift */,
+				B5D5D4142A8D559600A4DA3C /* SubOptionButton.swift */,
+			);
+			path = Option;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -641,7 +717,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint >/dev/null; then\n    if [ \"${CONFIGURATION}\" = \"Preview\" ]; then\n        echo \"not auto_correct\"\n        swiftlint\n    else\n        echo \"auto_correct\"\n        swiftlint --fix --config \".swiftlint.auto.yml\" && swiftlint\n    fi\nelse\n    echo \"warning: SwiftLint not installed\"\nfi\n";
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint >/dev/null; then\n    if [ \"${CONFIGURATION}\" = \"Offline\" ]; then\n        echo \"not auto_correct\"\n        swiftlint\n    else\n        echo \"auto_correct\"\n        swiftlint --fix --config \".swiftlint.auto.yml\" && swiftlint\n    fi\nelse\n    echo \"warning: SwiftLint not installed\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -650,17 +726,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5C0790B2A8BD69100747B11 /* UICollectionViewCell+Selectable.swift in Sources */,
 				B5DD65292A893AC600B44F61 /* WheelDrive+.swift in Sources */,
+				B53BA10C2A8BF42F009F94BE /* OptionDTO.swift in Sources */,
+				B5D5D4152A8D559600A4DA3C /* SubOptionButton.swift in Sources */,
+				B53BA10A2A8BF426009F94BE /* Option.swift in Sources */,
+				B5C079062A8BD40000747B11 /* ButtonStyleSeletable.swift in Sources */,
 				B58A32342A7BA452005FC831 /* OnboardingView.swift in Sources */,
 				B56F55E52A8761F90055E382 /* Engine.swift in Sources */,
 				B5DD65152A88F5CF00B44F61 /* ColorListCell.swift in Sources */,
 				B5DD64EF2A877DDD00B44F61 /* ExteriorView.swift in Sources */,
 				B5DD64DD2A876ED800B44F61 /* BodyType.swift in Sources */,
+				B53BA1102A8BF4E2009F94BE /* OptionListCellMainState.swift in Sources */,
 				B5BBB34F2A89C74C00AAFC84 /* InteriorViewController.swift in Sources */,
 				B5DD65122A880B3100B44F61 /* CGSize+Operator.swift in Sources */,
 				B5DD65202A8926E700B44F61 /* ContentSizeEstimatable.swift in Sources */,
+				B5C0790D2A8BD6EA00747B11 /* UIButton+Selectable.swift in Sources */,
 				B5DD64DF2A876EED00B44F61 /* BodyTypeDTO.swift in Sources */,
 				B56F55D22A86BBE50055E382 /* RootDTO.swift in Sources */,
+				B59B201D2A8B666A009E7868 /* OptionViewController.swift in Sources */,
 				B53C3C582A8578310019ECA1 /* BodyTypeView.swift in Sources */,
 				B53E028E2A84BE5100F464FC /* StepNavigatorView.swift in Sources */,
 				B56A765C2A83EC5200F7E3EF /* Preview.swift in Sources */,
@@ -670,14 +754,18 @@
 				B5DD64D02A876ABD00B44F61 /* WheelDriveDTO.swift in Sources */,
 				B53C3C502A85661D0019ECA1 /* WheelDriveView.swift in Sources */,
 				B5DD651E2A89066400B44F61 /* Exterior+.swift in Sources */,
+				B53BA1082A8BE6B9009F94BE /* OptionListCell.swift in Sources */,
 				B5C3EAC12A84B1AA00D9577C /* MainViewController.swift in Sources */,
 				B56F55D72A86BC7D0055E382 /* Trim.swift in Sources */,
 				B53C3C522A8566270019ECA1 /* WheelDriveViewController.swift in Sources */,
 				B5F1AE062A838B8E00E7E392 /* TrimViewController.swift in Sources */,
-				B5DD65192A88FB6F00B44F61 /* Selectable.swift in Sources */,
+				B5DD65192A88FB6F00B44F61 /* CellStyleSelectable.swift in Sources */,
+				B5C079092A8BD52D00747B11 /* Selectable.swift in Sources */,
 				B5DD651B2A8905B400B44F61 /* ColorListCellState.swift in Sources */,
 				B5DD64F12A87833200B44F61 /* ExteriorViewController.swift in Sources */,
+				B53BA1122A8C0A8F009F94BE /* PaddingLabel.swift in Sources */,
 				B53C3C492A854AF50019ECA1 /* BasicStepView.swift in Sources */,
+				B5C079042A8BD33700747B11 /* ButtonStyleCell.swift in Sources */,
 				B5BBB3552A89C95200AAFC84 /* InteriorDTO.swift in Sources */,
 				B5DD65252A89363C00B44F61 /* Trim+.swift in Sources */,
 				B5DD650E2A880A4100B44F61 /* UIImage+Merge.swift in Sources */,
@@ -686,6 +774,7 @@
 				B510BBDB2A840BD4009E5752 /* Formatter.swift in Sources */,
 				B5DD65272A8937A500B44F61 /* Engine+.swift in Sources */,
 				B510BBDD2A841A25009E5752 /* Reusable.swift in Sources */,
+				B5E233FD2A8B4B0F0013BEB1 /* OptionView.swift in Sources */,
 				B53C3C542A856DF00019ECA1 /* UIView+Extension.swift in Sources */,
 				B5DD64F32A8783D800B44F61 /* Exterior.swift in Sources */,
 				B58A323B2A7C0B35005FC831 /* OnboardingViewController.swift in Sources */,
@@ -696,6 +785,7 @@
 				B56F55E72A87621A0055E382 /* EngineDTO.swift in Sources */,
 				B5DD65222A8935F200B44F61 /* BasicListCellState.swift in Sources */,
 				B56F55D42A86BC3B0055E382 /* TrimDTO.swift in Sources */,
+				B53BA10E2A8BF4C2009F94BE /* Option+.swift in Sources */,
 				B560B2182A83827600A4B9A9 /* TrimView.swift in Sources */,
 				B5DD652B2A893B1E00B44F61 /* BodyType+.swift in Sources */,
 				B50C7E4E2A790279005AFE0B /* SceneDelegate.swift in Sources */,

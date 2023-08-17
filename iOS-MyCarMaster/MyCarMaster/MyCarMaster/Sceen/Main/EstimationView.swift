@@ -7,16 +7,13 @@
 
 import UIKit
 
-final class GeneralButton: UIButton {
+final class GeneralButton: UIButton, ButtonStyleSeletable {
 
     override var intrinsicContentSize: CGSize {
         return CGSize(width: 0, height: 44)
     }
 
-    let isHighlight: Bool
-
-    init(isHighlight: Bool) {
-        self.isHighlight = isHighlight
+    override init(frame: CGRect) {
         super.init(frame: .zero)
         configureUI()
     }
@@ -27,24 +24,6 @@ final class GeneralButton: UIButton {
 
     private func configureUI() {
         style = .titleMedium2
-        layer.borderWidth = 1.0
-        layer.borderColor = UIColor.MCM.navyBlue5.cgColor
-
-        if isHighlight { highlightStyled() }
-        else { normalStyled() }
-    }
-}
-
-// MARK: - API
-extension GeneralButton {
-    func highlightStyled() {
-        backgroundColor = .MCM.navyBlue5
-        setTitleColor(.MCM.white, for: .normal)
-    }
-
-    func normalStyled() {
-        backgroundColor = .MCM.white
-        setTitleColor(.MCM.navyBlue5, for: .normal)
     }
 }
 
@@ -87,15 +66,16 @@ final class EstimationView: UIView {
     }()
 
     let backButton: GeneralButton = {
-        let button = GeneralButton(isHighlight: false)
+        let button = GeneralButton()
         button.setStyledTitle("이전", for: .normal)
+        button.unselectedStyle()
         return button
     }()
 
     let nextButton: GeneralButton = {
-        let button = GeneralButton(isHighlight: true)
+        let button = GeneralButton()
         button.setStyledTitle("다음", for: .normal)
-        button.highlightStyled()
+        button.selectedStyle()
         return button
     }()
 
