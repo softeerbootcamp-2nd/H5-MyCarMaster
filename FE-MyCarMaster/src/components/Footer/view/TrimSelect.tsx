@@ -36,7 +36,6 @@ export default function TrimSelect() {
       },
     });
   };
-  console.log(trimQuotation);
 
   const reselectTrim = (id: number) => {
     quotationDispatch({ type: "RESET_QUOTATION" });
@@ -60,7 +59,10 @@ export default function TrimSelect() {
                 $switch="trim"
                 $choice={trimId === trim.id}
                 handleClick={() => {
-                  if (trimQuotation.trimQuotation.name !== "") {
+                  if (
+                    trimQuotation.trimQuotation.name !== "" &&
+                    trimQuotation.trimQuotation.name !== trim.name
+                  ) {
                     setIsOpen(true);
                     setReselectId(trim.id);
                   } else {

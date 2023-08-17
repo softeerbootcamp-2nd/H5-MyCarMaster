@@ -6,14 +6,21 @@ import Button from "../Button/Button";
 import ChangeTrimModal from "./ModalContents/ChangeTrimModal";
 import ChangeEngineModal from "./ModalContents/ChangeEngineModal";
 import { useEffect, useState } from "react";
+import { UnselectableOptionProps } from "../../../types/options.types";
 
 interface ModalProps {
   type: ModalType;
   onClick: (id?: number) => void;
   setIsOpen: (isOpen: boolean) => void;
+  unselectableOption?: UnselectableOptionProps[];
 }
 
-export function Modals({ type, onClick, setIsOpen }: ModalProps) {
+export function Modals({
+  type,
+  onClick,
+  setIsOpen,
+  unselectableOption,
+}: ModalProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
@@ -32,7 +39,15 @@ export function Modals({ type, onClick, setIsOpen }: ModalProps) {
       case "CHANGE_TRIM":
         return <ChangeTrimModal />;
       case "CHANGE_ENGINE":
-        return <ChangeEngineModal />;
+        if (unselectableOption && unselectableOption.length > 0) {
+          return (
+            <ChangeEngineModal
+              id={unselectableOption[0].id}
+              name={unselectableOption[0].name}
+              price={unselectableOption[0].price}
+            />
+          );
+        } else return <></>;
       default:
         return <></>;
     }
