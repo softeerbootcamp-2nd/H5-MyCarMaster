@@ -1,14 +1,14 @@
 //
-//  MyCarMasterTests.swift
+//  DecodeTrimDTOTests.swift
 //  MyCarMasterTests
 //
-//  Created by SEUNGMIN OH on 2023/08/01.
+//  Created by SEUNGMIN OH on 2023/08/17.
 //
 
-import XCTest
 @testable import MyCarMaster
+import XCTest
 
-final class MyCarMasterTests: XCTestCase {
+final class DecodeTrimDTOTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -19,11 +19,18 @@ final class MyCarMasterTests: XCTestCase {
     }
 
     func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+        guard let data = fetchData(from: "TrimDTO") else {
+            XCTFail("Invalid Data")
+            return
+        }
+
+        guard let trimDTOList = try? JSONDecoder().decode(RootDTO.self, from: data).result.trims else {
+            XCTFail("Decoding Error")
+            return
+        }
+
+        let dataList = trimDTOList.map { Trim($0) }
+        print(dataList)
     }
 
     func testPerformanceExample() throws {
