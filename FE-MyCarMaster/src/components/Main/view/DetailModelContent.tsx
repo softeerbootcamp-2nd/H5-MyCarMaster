@@ -19,8 +19,9 @@ function DetailModelContent() {
     <Container>
       <CategoryList
         categories={["엔진", "구동방식", "바디타입"]}
-        onClickHandler={onClickHandler}
+        onClickHandler={(index) => onClickHandler(index as number)}
         indexSetter={1}
+        $switch={"detail"}
       />
       <DetailModelWrapper />
     </Container>

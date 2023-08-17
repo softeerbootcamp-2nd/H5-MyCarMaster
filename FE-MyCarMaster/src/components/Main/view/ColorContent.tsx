@@ -20,8 +20,9 @@ function ColorContent() {
     <Container>
       <CategoryList
         categories={["외장색상", "내장색상"]}
-        onClickHandler={onClickHandler}
+        onClickHandler={(index) => onClickHandler(index as number)}
         indexSetter={4}
+        $switch={"colors"}
       />
       <ColorWrapper />
     </Container>

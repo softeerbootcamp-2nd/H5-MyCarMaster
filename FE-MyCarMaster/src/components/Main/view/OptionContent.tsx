@@ -40,7 +40,11 @@ function OptionContent() {
         {/* API 완성 시, optionList[optionId].imgUrl 로 교체*/}
         <OptionDescription option={optionList[optionId - 1]} />
       </OptionContainer>
-      <CategoryList categories={categories} onClickHandler={onClickHandler} />
+      <CategoryList
+        categories={categories}
+        onClickHandler={(index) => onClickHandler(index as number)}
+        $switch={"option"}
+      />
     </Container>
   );
 }

@@ -4,6 +4,8 @@ import OptionCheckBox from "../../common/CheckBox/OptionCheckBox";
 import Button from "../../common/Button/Button";
 import { useState } from "react";
 import theme from "../../../styles/Theme";
+import { useTrimState } from "../../../contexts/TrimContext";
+import { QuotationType } from "../../../types/quotation.types";
 
 //dummy data
 const data = [
@@ -19,13 +21,16 @@ const data = [
     subOptions: null,
     filter: {
       unavailableTrimIds: [],
-      additionalTrimIds: [1, 2],
+      additionalTrimIds: [2, 1],
       defaultTrimIds: [3, 4],
     },
     appliedOption: {
       id: 100,
+      category: "CONVENIENCE",
       name: "2열 통풍시트",
       price: 400000,
+      imgUrl:
+        "https://h5-image.s3.ap-northeast-2.amazonaws.com/palisade/option/second-row-ventilation-seat.png",
     },
   },
   {
@@ -39,13 +44,15 @@ const data = [
     subOptions: null,
     filter: {
       unavailableTrimIds: [],
-      additionalTrimIds: [2],
-      defaultTrimIds: [1, 3, 4],
+      additionalTrimIds: [1],
+      defaultTrimIds: [2, 3, 4],
     },
     appliedOption: {
       id: 125,
+      category: "SAFE",
       name: "주차보조 시스템 1",
       price: 1090000,
+      imgUrl: "https://h5-test-bucket.s3.ap-northeast-2.amazonaws.com/1.png",
     },
   },
   {
@@ -58,14 +65,16 @@ const data = [
       "컬러 LCD 클러스터(1,920x720)는 시인성이 높고 정보 파악이 용이하며, 주행모드별 차별화된 그래픽으로 즐거운 드라이빙 환경을 제공합니다.",
     subOptions: null,
     filter: {
-      unavailableTrimIds: [2],
+      unavailableTrimIds: [1],
       additionalTrimIds: [],
-      defaultTrimIds: [1, 3, 4],
+      defaultTrimIds: [2, 3, 4],
     },
     appliedOption: {
       id: 49,
+      category: "INTERNAL",
       name: "계기판 클러스터(12.3인치 컬러 LCD)",
       price: 0,
+      imgUrl: "https://h5-test-bucket.s3.ap-northeast-2.amazonaws.com/1.png",
     },
   },
   {
@@ -79,14 +88,16 @@ const data = [
       "스마트 크루즈 작동 중 고속도로/도시고속도로/자동차전용 도로 내 고속도로 진출입로 주행 시 차로를 판단하여 사전감속 또는 최적 속도에 맞추어 감속을 진행합니다.",
     subOptions: null,
     filter: {
-      unavailableTrimIds: [2],
-      additionalTrimIds: [1, 3],
+      unavailableTrimIds: [1],
+      additionalTrimIds: [2, 3],
       defaultTrimIds: [4],
     },
     appliedOption: {
       id: 93,
+      category: "SAFE",
       name: "현대스마트센스 1",
       price: 790000,
+      imgUrl: "https://h5-test-bucket.s3.ap-northeast-2.amazonaws.com/1.png",
     },
   },
   {
@@ -99,14 +110,16 @@ const data = [
       "주요 주행 정보를 전면 윈드실드에 표시하며, 밝기가 최적화되어 주간에도 시인성이 뛰어납니다.",
     subOptions: null,
     filter: {
-      unavailableTrimIds: [2],
-      additionalTrimIds: [1, 3],
+      unavailableTrimIds: [1],
+      additionalTrimIds: [2, 3],
       defaultTrimIds: [4],
     },
     appliedOption: {
       id: 92,
+      category: "SAFE",
       name: "컴포트 2",
       price: 1090000,
+      imgUrl: "https://h5-test-bucket.s3.ap-northeast-2.amazonaws.com/1.png",
     },
   },
   {
@@ -126,8 +139,11 @@ const data = [
     },
     appliedOption: {
       id: 129,
+      category: "CONVENIENCE",
       name: "전후석 통합 터치 공조 컨트롤",
       price: 0,
+      imgUrl:
+        "https://h5-image.s3.ap-northeast-2.amazonaws.com/palisade/option/front-and-rear-integrated-touch-control.png",
     },
   },
   {
@@ -147,8 +163,10 @@ const data = [
     },
     appliedOption: {
       id: 132,
+      category: "MULTIMEDIA",
       name: "KRELL 사운드 패키지",
       price: 690000,
+      imgUrl: "https://h5-test-bucket.s3.ap-northeast-2.amazonaws.com/1.png",
     },
   },
   {
@@ -167,8 +185,11 @@ const data = [
     },
     appliedOption: {
       id: 133,
+      category: "EXTERNAL",
       name: "캘리그래피 전용 디자인",
       price: 0,
+      imgUrl:
+        "https://h5-image.s3.ap-northeast-2.amazonaws.com/palisade/option/calligraphy-only-design.png",
     },
   },
   {
@@ -221,8 +242,10 @@ const data = [
     },
     appliedOption: {
       id: 134,
+      category: "CONVENIENCE",
       name: "VIP 패키지",
       price: 5740000,
+      imgUrl: "https://h5-test-bucket.s3.ap-northeast-2.amazonaws.com/1.png",
     },
   },
 ];
@@ -231,13 +254,7 @@ type MyTrimSearchScreenProps = {
   $loading: boolean;
   $show: boolean;
   onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
-  onSearch?: (appiedOption: AppliedOptionProps[], selected: number) => void;
-};
-
-type AppliedOptionProps = {
-  id: number;
-  name: string;
-  price: number;
+  onSearch?: (appiedOption: QuotationType[], selected: number) => void;
 };
 
 type IDDataProps = {
@@ -258,6 +275,7 @@ export default function MyTrimSearchScreen({
 }: MyTrimSearchScreenProps) {
   const [idData, setIdData] = useState<IDDataProps[]>([]);
   const [selected, setSelected] = useState<number | null>(null);
+  const { trimList } = useTrimState();
 
   const dataChange = (id: number, filter: IDDataProps) => {
     setSelected(null);
@@ -282,67 +300,51 @@ export default function MyTrimSearchScreen({
     if (isUnavailable) return { status: "none", isOption: "none" };
 
     for (const data of idData)
-      if (!data.additionalTrimIds.includes(trimId))
-        return { status: "default", isOption: "default" };
+      if (!data.defaultTrimIds.includes(trimId))
+        return { status: "default", isOption: "add" };
 
-    return { status: "default", isOption: "add" };
+    return { status: "default", isOption: "default" };
   };
 
   const onSearchHandler = (idData: IDDataProps[], selected: number) => {
     const appliedOptions = idData.map((optionData) => {
+      if (optionData.defaultTrimIds.includes(selected)) return null;
       const appliedOption = data.find(
         (option) => option.id === optionData.optionId
       )?.appliedOption;
       return appliedOption;
     });
 
-    onSearch && onSearch(appliedOptions as AppliedOptionProps[], selected);
+    const appliedOptionsFilter = appliedOptions.filter(
+      (option) => option !== null
+    );
+
+    onSearch &&
+      onSearch(appliedOptionsFilter as QuotationType[], selected);
   };
 
   return (
     <Container $loading={$loading} $show={$show} onClick={onClick}>
       <TrimSelectContainer>
-        <SearchTrimBox
-          name={"Exclusive"}
-          description={"실용적이고 기본적인 기능을 갖춘 베이직 트림"}
-          price={2000}
-          status={selected === 1 ? "choice" : CheckfilterOption(1).status}
-          isOption={CheckfilterOption(1).isOption}
-          onClick={
-            selected === 1 ? () => setSelected(null) : () => setSelected(1)
-          }
-        />
-        <SearchTrimBox
-          name={"Le Blanc"}
-          description={"실용적이고 기본적인 기능을 갖춘 베이직 트림"}
-          price={38960000}
-          status={selected === 2 ? "choice" : CheckfilterOption(2).status}
-          isOption={CheckfilterOption(2).isOption}
-          onClick={
-            selected === 2 ? () => setSelected(null) : () => setSelected(2)
-          }
-        />
-        <SearchTrimBox
-          name={"Prestige"}
-          description={"실용적이고 기본적인 기능을 갖춘 베이직 트림"}
-          price={38960000}
-          status={selected === 3 ? "choice" : CheckfilterOption(3).status}
-          isOption={CheckfilterOption(3).isOption}
-          onClick={
-            selected === 3 ? () => setSelected(null) : () => setSelected(3)
-          }
-        />
-
-        <SearchTrimBox
-          name={"Caligraphy"}
-          description={"실용적이고 기본적인 기능을 갖춘 베이직 트림"}
-          price={2000}
-          status={selected === 4 ? "choice" : CheckfilterOption(4).status}
-          isOption={CheckfilterOption(4).isOption}
-          onClick={
-            selected === 4 ? () => setSelected(null) : () => setSelected(4)
-          }
-        />
+        {trimList.map((trim) => (
+          <SearchTrimBox
+            key={trim.id}
+            name={trim.name}
+            description={trim.description}
+            price={trim.price}
+            status={
+              selected === trim.id
+                ? "choice"
+                : CheckfilterOption(trim.id).status
+            }
+            isOption={CheckfilterOption(trim.id).isOption}
+            onClick={
+              selected === trim.id
+                ? () => setSelected(null)
+                : () => setSelected(trim.id)
+            }
+          />
+        ))}
       </TrimSelectContainer>
       <CheckOptionContainer>
         {data.map((option) => (
