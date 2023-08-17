@@ -3,7 +3,7 @@ import styled from "styled-components";
 import AngleUp from "../../assets/icons/AngleUp.svg";
 import AngleDown from "../../assets/icons/AngleDown.svg";
 import MyTrimSearchScreen from "./screen_view/MyTrimSearchScreen";
-
+import DefaultOptionScreen from "./screen_view/DefaultOptionScreen";
 import { QuotationType } from "../../types/quotation.types";
 import { useTrimState, useTrimDispatch } from "../../contexts/TrimContext";
 import { useQuotationDispatch } from "../../contexts/QuotationContext";
@@ -36,17 +36,20 @@ export default function FoldScreen({ text, $switch }: FoldScreenProps) {
   };
 
   const searchHandler = (optionList: QuotationType[], selected: number) => {
+    const target = document.querySelector(".fold-screen") as HTMLDivElement;
+    target.style.animation = "moveDown 0.5s ease-in-out forwards";
+
+    setLoading(true);
+
+    setTimeout(() => {
+      setIsFold(false);
+      setLoading(false);
+    }, 500);
+
     trimDispatch({
       type: "SELECT_TRIM",
       payload: {
         trimId: selected,
-      },
-    });
-
-    quotationDispatch({
-      type: "SET_MY_TRIM_OPTIONS",
-      payload: {
-        optionList: optionList,
       },
     });
 
@@ -60,15 +63,12 @@ export default function FoldScreen({ text, $switch }: FoldScreenProps) {
       },
     });
 
-    const target = document.querySelector(".fold-screen") as HTMLDivElement;
-    target.style.animation = "moveDown 0.5s ease-in-out forwards";
-
-    setLoading(true);
-
-    setTimeout(() => {
-      setIsFold(false);
-      setLoading(false);
-    }, 500);
+    quotationDispatch({
+      type: "SET_MY_TRIM_OPTIONS",
+      payload: {
+        optionList: optionList,
+      },
+    });
   };
 
   return (
@@ -85,19 +85,28 @@ export default function FoldScreen({ text, $switch }: FoldScreenProps) {
             ? text
             : $switch === "searchTrim"
             ? "원하는 기능을 선택하시면 해당 기능이 포함된 트림을 추천해드려요!"
-            : "추가 옵션 선택하기"}
+            : "추가 옵션 선택하러 가기"}
         </Text>
 
         {!isFold && $switch === "searchTrim" && <Bar $show={loading} />}
-        <MyTrimSearchScreen
-          $loading={loading}
-          $show={isFold}
-          onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
-            e.stopPropagation()
-          }
-          //onSearch: (idData: IDDataProps[], selected: number) => void;
-          onSearch={searchHandler}
-        />
+        {$switch === "searchTrim" ? (
+          <MyTrimSearchScreen
+            $loading={loading}
+            $show={isFold}
+            onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
+              e.stopPropagation()
+            }
+            onSearch={searchHandler}
+          />
+        ) : (
+          <DefaultOptionScreen
+            $loading={loading}
+            $show={isFold}
+            onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
+              e.stopPropagation()
+            }
+          />
+        )}
       </ButtonContainer>
     </Conatiner>
   );
