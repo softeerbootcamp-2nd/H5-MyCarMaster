@@ -1,4 +1,4 @@
-package softeer.be_my_car_master.api.option.dto.response;
+package softeer.be_my_car_master.api.trim.dto.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AccessLevel;
@@ -12,7 +12,7 @@ import softeer.be_my_car_master.domain.option.Option;
 @Setter
 @Builder
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class DefaultOptionDto {
+public class TrimDefaultOptionDto {
 
 	@Schema(description = "옵션 식별자", example = "1")
 	private Long id;
@@ -23,19 +23,23 @@ public class DefaultOptionDto {
 	@Schema(description = "옵션명", example = "주차보조 시스템||")
 	private String name;
 
-	@Schema(description = "옵션 이미지", example = "null")
+	@Schema(description = "옵션 이미지", example = "s3 url")
 	private String imgUrl;
 
 	@Schema(description = "옵션 설명", example = "null")
 	private String description;
 
-	public static DefaultOptionDto from(Option option) {
-		return DefaultOptionDto.builder()
+	@Schema(description = "해당 옵션 제공에 필요한 세부모델명", example = "null")
+	private String need;
+
+	public static TrimDefaultOptionDto from(Option option, String need) {
+		return TrimDefaultOptionDto.builder()
 			.id(option.getId())
 			.category(option.getCategoryValue())
 			.name(option.getName())
 			.imgUrl(option.getImgUrl())
 			.description(option.getDescription())
+			.need(need)
 			.build();
 	}
 }

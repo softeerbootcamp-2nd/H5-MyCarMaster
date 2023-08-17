@@ -34,7 +34,7 @@ public class Option {
 		return isSuper;
 	}
 
-	public String getCategoryName() {
+	public String getCategoryValue() {
 		return category.getValue();
 	}
 }

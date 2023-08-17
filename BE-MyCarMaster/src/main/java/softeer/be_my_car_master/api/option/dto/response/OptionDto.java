@@ -56,7 +56,7 @@ public class OptionDto {
 
 		return OptionDto.builder()
 			.id(option.getId())
-			.category(option.getCategoryName())
+			.category(option.getCategoryValue())
 			.name(option.getName())
 			.price(option.getPrice())
 			.ratio(option.getRatio())
