@@ -10,11 +10,14 @@ import softeer.be_my_car_master.api.option.usecase.port.OptionPort;
 import softeer.be_my_car_master.domain.option.Option;
 import softeer.be_my_car_master.global.annotation.Adaptor;
 import softeer.be_my_car_master.infrastructure.jpa.option.entity.OptionEntity;
+import softeer.be_my_car_master.infrastructure.jpa.option.entity.RepresentativeOptionEntity;
 import softeer.be_my_car_master.infrastructure.jpa.option.entity.TrimAdditionalOptionEntity;
 import softeer.be_my_car_master.infrastructure.jpa.option.entity.TrimDefaultOptionEntity;
 import softeer.be_my_car_master.infrastructure.jpa.option.repository.BodyTypeUnselectableOptionJpaRepository;
 import softeer.be_my_car_master.infrastructure.jpa.option.repository.EngineUnselectableOptionJpaRepository;
 import softeer.be_my_car_master.infrastructure.jpa.option.repository.InteriorColorUnselectableOptionJpaRepository;
+import softeer.be_my_car_master.infrastructure.jpa.option.repository.OptionJpaRepository;
+import softeer.be_my_car_master.infrastructure.jpa.option.repository.RepresentativeOptionJpaRepository;
 import softeer.be_my_car_master.infrastructure.jpa.option.repository.TrimAdditionalOptionJpaRepository;
 import softeer.be_my_car_master.infrastructure.jpa.option.repository.TrimDefaultOptionJpaRepository;
 import softeer.be_my_car_master.infrastructure.jpa.option.repository.WheelDriveUnselectableOptionJpaRepository;
@@ -29,6 +32,8 @@ public class OptionJpaAdaptor implements OptionPort {
 	private final BodyTypeUnselectableOptionJpaRepository bodyTypeUnselectableOptionJpaRepository;
 	private final InteriorColorUnselectableOptionJpaRepository interiorColorUnselectableOptionJpaRepository;
 	private final TrimDefaultOptionJpaRepository trimDefaultOptionJpaRepository;
+	private final RepresentativeOptionJpaRepository representativeOptionJpaRepository;
+	private final OptionJpaRepository optionJpaRepository;
 
 	@Override
 	@Transactional(readOnly = true)
@@ -85,6 +90,31 @@ public class OptionJpaAdaptor implements OptionPort {
 	public List<Option> findDefaultOptionsByTrimId(Long trimId) {
 		return trimDefaultOptionJpaRepository.findAllByTrimId(trimId).stream()
 			.map(TrimDefaultOptionEntity::toDefaultOption)
+			.collect(Collectors.toList());
+	}
+
+	@Override
+	@Transactional
+	public List<Option> findRepresentativeOptionsByModelId(Long modelId) {
+		return representativeOptionJpaRepository.findAllByModelId(modelId).stream()
+			.map(RepresentativeOptionEntity::toRepresentativeOption)
+			.collect(Collectors.toList());
+	}
+
+	@Override
+	public List<Long> findAdditionalTrimIdsByOptionId(Long optionId) {
+		return trimAdditionalOptionJpaRepository.findTrimIdsByOptionId(optionId);
+	}
+
+	@Override
+	public List<Long> findDefaultTrimIdsByOptionId(Long optionId) {
+		return trimDefaultOptionJpaRepository.findTrimIdsByOptionId(optionId);
+	}
+
+	@Override
+	public List<Option> findAppliedOptionsByModelIdAndOptionIds(Long modelId, List<Long> optionIds) {
+		return representativeOptionJpaRepository.findAppliedOptionsByModelIdAndOptionIds(modelId, optionIds).stream()
+			.map(RepresentativeOptionEntity::toAppliedOption)
 			.collect(Collectors.toList());
 	}
 }
