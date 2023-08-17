@@ -25,10 +25,11 @@ public class CarMasterJpaAdaptor implements CarMasterPort {
 			.map(CarMasterEntity::toCarMaster);
 	}
 
-	@Transactional(readOnly = true)
-	public List<CarMaster> findCarMasters(Double latitude, Double longitude) {
-		return carMasterJpaRepository.findAllByAgencyLocationOrderBySales(latitude, longitude).stream()
+	@Override
+	public List<CarMaster> findCarMastersByAgency(Long agencyId) {
+		return carMasterJpaRepository.findAllByAgency(agencyId).stream()
 			.map(CarMasterEntity::toCarMaster)
 			.collect(Collectors.toList());
 	}
+
 }
