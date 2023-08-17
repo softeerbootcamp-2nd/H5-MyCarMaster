@@ -15,9 +15,12 @@ final class SubOptionButton: UIView {
         stackView.axis = .horizontal
         stackView.distribution = .equalSpacing
         stackView.alignment = .center
+        stackView.spacing = 8
     }
 
     private let titleLabel = UILabel().then { label in
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        label.showsExpansionTextWhenTruncated = true
         label.style = .bodyLarge1
         label.textColor = .MCM.black
     }
