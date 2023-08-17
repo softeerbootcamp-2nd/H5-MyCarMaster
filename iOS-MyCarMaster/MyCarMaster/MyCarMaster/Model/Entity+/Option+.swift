@@ -14,7 +14,7 @@ extension Option: OptionListCellMainStateConvertible {
             category: self.category,
             name: self.name,
             price: self.price,
-            ratio: self.price,
+            ratio: self.ratio,
             subOptions: self.subOptions
         )
     }
