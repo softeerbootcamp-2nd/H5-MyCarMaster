@@ -11,6 +11,23 @@ import { useOptionState } from "../../../contexts/OptionContext";
 function OptionDescription({ option }: { option: OptionType }) {
   const [page, setPage] = useState<number>(0);
   const { optionId } = useOptionState();
+
+  useEffect(() => {
+    setPage(0);
+  }, [optionId]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (page === maxPage - 1) setPage(0);
+      else setPage(page + 1);
+    }, 5000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [page]);
+
+  if (!option) return null;
+
   const maxPage = (option.subOptions && option.subOptions?.length) || 0;
   const $transformX = -page * 432;
 
@@ -27,20 +44,6 @@ function OptionDescription({ option }: { option: OptionType }) {
   const paginationButtonHandler = (index: number) => {
     setPage(index);
   };
-
-  useEffect(() => {
-    setPage(0);
-  }, [optionId]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (page === maxPage - 1) setPage(0);
-      else setPage(page + 1);
-    }, 5000);
-    return () => {
-      clearInterval(interval);
-    };
-  }, [page]);
 
   return (
     <Container>

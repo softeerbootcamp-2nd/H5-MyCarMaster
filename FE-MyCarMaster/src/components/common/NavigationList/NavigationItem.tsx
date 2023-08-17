@@ -93,7 +93,8 @@ function NavigationItem({ name, quotation }: NavigationItemProp) {
             ? value.map((item: QuotationType) => (
                 <BottomContainer key={item.id}>{item.name}</BottomContainer>
               ))
-            : key !== "consideredQuotation" && (
+            : key !== "consideredQuotation" &&
+              value.name && (
                 <BottomContainer key={key}>{value.name}</BottomContainer>
               )
         )

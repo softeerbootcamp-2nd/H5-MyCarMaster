@@ -2,6 +2,7 @@ import {
   useCarPaintDispatch,
   useCarPaintState,
 } from "../../../../contexts/CarPaintContext";
+import { useQuotationDispatch } from "../../../../contexts/QuotationContext";
 import { ExteriorColors } from "../../../../types/carpaint.types";
 import { useTrimState } from "../../../../contexts/TrimContext";
 import useFetch from "../../../../hooks/useFetch";
@@ -20,12 +21,11 @@ function ExteriorColorView() {
   const { trimId } = useTrimState();
   const { exteriorList } = useCarPaintState();
   const exteriorDispatch = useCarPaintDispatch();
+  const quotationDispatch = useQuotationDispatch();
 
   const { data } = useFetch<FetchExteriorProps>(
     `${SERVER_URL}/exterior-colors/?trimId=${trimId}`,
-    {
-      method: "GET",
-    }
+    { method: "GET" }
   );
 
   useEffect(() => {
@@ -34,8 +34,20 @@ function ExteriorColorView() {
         type: "SET_EXTERIOR_LIST",
         payload: { exteriorList: data.result.exteriorColors },
       });
+
+      quotationDispatch({
+        type: "SET_CAR_PAINT_QUOTATION",
+        payload: {
+          type: "exteriorColorQuotation",
+          name: data.result.exteriorColors[0].name,
+          price: data.result.exteriorColors[0].price,
+          imgUrl: data.result.exteriorColors[0].colorImgUrl,
+        },
+      });
     }
   }, [data, exteriorDispatch]);
+
+  if (!exteriorList?.length) return null;
 
   // 360도 회전에 사용될 이미지 배열을 <CarRotation />로 넘겨줘서 구현
 

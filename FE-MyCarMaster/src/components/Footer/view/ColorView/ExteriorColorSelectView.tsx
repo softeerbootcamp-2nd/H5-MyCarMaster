@@ -36,6 +36,8 @@ export default function InteriorColorSelectView() {
     });
   };
 
+  if (!exteriorList?.length) return null;
+  
   return (
     <>
       {exteriorList?.length &&

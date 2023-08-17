@@ -24,20 +24,13 @@ interface FetchUnselectableOptionProps extends UnselectableOptionProps {
 export default function BodyTypeSelectView() {
   const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 
-  // 주석 친 부분은 option 파트도 api 연결되면 변경
-  // const { trimId } = useTrimState();
   const { engineList, wheelDriveId, bodyTypeId, engineId } = useDetailState();
   const { detailQuotation } = useQuotationState();
-  // const { selectedOption } = useOptionState();
 
   const [isOpen, setIsOpen] = useState(false);
   const [reselectId, setReselectId] = useState(1);
   const [unselectableOption, setUnselectableOption] =
     useState<UnselectableOptionProps[]>();
-
-  // const optionIds = selectedOption.join(",");
-
-  // const {data} = useFetch<FetchUnselectableOptionProps>(`${SERVER_URL}/engines/${engineId}/unselectable-options?trimId=${trimId}?optionIds=${optionIds}`);
 
   const { data } = useFetch<FetchUnselectableOptionProps>(
     `${SERVER_URL}/engines/1/unselectable-options?trimId=1&optionIds=96`
@@ -78,6 +71,8 @@ export default function BodyTypeSelectView() {
       },
     });
   };
+
+  if (!engineList?.length) return null;
 
   const checkUnselectableOption = (unselectableOption: object) => {
     setIsOpen(true);

@@ -37,6 +37,7 @@ export default function TrimSelect() {
     });
   };
 
+  if (!trimList.length) return <Container>데이터가 없습니다.</Container>;
   const reselectTrim = (id: number) => {
     quotationDispatch({ type: "RESET_QUOTATION" });
     selectTrim(id);
