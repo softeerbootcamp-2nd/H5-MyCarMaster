@@ -26,9 +26,8 @@ public class CarMasterController {
 	public Response<GetCarMasterResponse> getCarMaster(@Valid GetCarMasterRequest getCarMasterRequest) {
 		Double latitude = getCarMasterRequest.getLatitude();
 		Double longitude = getCarMasterRequest.getLongitude();
-		FilterEnum filter = getCarMasterRequest.getFilter();
 
-		GetCarMasterResponse getCarMasterResponse = getCarMasterUseCase.execute(latitude, longitude, filter.getValue());
+		GetCarMasterResponse getCarMasterResponse = getCarMasterUseCase.execute(latitude, longitude);
 		return Response.createSuccessResponse(getCarMasterResponse);
 	}
 }
