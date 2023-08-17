@@ -3,7 +3,10 @@ import ArrowBottom from "../../assets/icons/ArrowBottom.svg";
 import white_logo from "../../assets/images/white_logo.svg";
 import dark_logo from "../../assets/images/dark_logo.svg";
 import { useModelState } from "../../contexts/ModelContext";
-import { useModal } from "../../hooks/useModal";
+import { useNavigate } from "react-router-dom";
+import { Fragment, useState } from "react";
+import { Modals } from "../common/Modals/Modals";
+import { ModalType } from "../../constants/Modal.constants";
 
 type HeaderProps = {
   isHome: boolean;
@@ -12,33 +15,49 @@ type HeaderProps = {
 };
 
 function Header({ isHome, logo, status }: HeaderProps) {
-  const { showModal } = useModal();
+  const navigate = useNavigate();
 
-  const headerClickHandler = () => {
-    showModal();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleNavigate = () => {
+    setIsOpen(false);
+    setTimeout(() => {
+      navigate("/");
+      window.location.reload();
+    }, 0);
   };
+
   const { modelName } = useModelState();
   return (
-    <Container>
-      <Img
-        src={
-          status && status === "white"
-            ? white_logo
-            : status === "dark"
-            ? dark_logo
-            : logo
-        }
-        onClick={headerClickHandler}
-      />
-      {!isHome && (
-        <>
-          <ModelSelector>
-            <ModelName>{modelName}</ModelName>
-            <ModelButton src={ArrowBottom} />
-          </ModelSelector>
-        </>
+    <Fragment>
+      <Container>
+        <Img
+          src={
+            status && status === "white"
+              ? white_logo
+              : status === "dark"
+              ? dark_logo
+              : logo
+          }
+          onClick={() => setIsOpen(true)}
+        />
+        {!isHome && (
+          <>
+            <ModelSelector>
+              <ModelName>{modelName}</ModelName>
+              <ModelButton src={ArrowBottom} />
+            </ModelSelector>
+          </>
+        )}
+      </Container>
+      {isOpen && (
+        <Modals
+          type={ModalType.CLOSE}
+          onClick={handleNavigate}
+          setIsOpen={setIsOpen}
+        />
       )}
-    </Container>
+    </Fragment>
   );
 }
 
