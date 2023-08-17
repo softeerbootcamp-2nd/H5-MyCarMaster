@@ -192,7 +192,7 @@
 		B5D1E1F82A8E094200DAE384 /* DecodeOptionDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeOptionDTOTests.swift; sourceTree = "<group>"; };
 		B5D1E1FB2A8E14AE00DAE384 /* DecodeTrimDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeTrimDTOTests.swift; sourceTree = "<group>"; };
 		B5D1E1FD2A8E14C400DAE384 /* FetchFromBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchFromBundle.swift; sourceTree = "<group>"; };
-		B5D1E1FF2A8E20AC00DAE384 /* OptionDTO.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = OptionDTO.json; path = ../../../../../../../../../../../Downloads/OptionDTO.json; sourceTree = "<group>"; };
+		B5D1E1FF2A8E20AC00DAE384 /* OptionDTO.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = OptionDTO.json; sourceTree = "<group>"; };
 		B5D5D4142A8D559600A4DA3C /* SubOptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubOptionButton.swift; sourceTree = "<group>"; };
 		B5DD64CF2A876ABD00B44F61 /* WheelDriveDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelDriveDTO.swift; sourceTree = "<group>"; };
 		B5DD64D12A876B5000B44F61 /* WheelDrive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelDrive.swift; sourceTree = "<group>"; };
