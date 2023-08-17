@@ -66,10 +66,10 @@
 		B5C0790D2A8BD6EA00747B11 /* UIButton+Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0790C2A8BD6EA00747B11 /* UIButton+Selectable.swift */; };
 		B5C3EAC12A84B1AA00D9577C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */; };
 		B5D1E1F52A8DFBCE00DAE384 /* Dependency.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5D1E1F42A8DFBBA00DAE384 /* Dependency.plist */; };
-		B5D1E1F62A8E08F100DAE384 /* OptionDTO.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D5D41A2A8DDDC500A4DA3C /* OptionDTO.json */; };
 		B5D1E1F92A8E094200DAE384 /* DecodeOptionDTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D1E1F82A8E094200DAE384 /* DecodeOptionDTOTests.swift */; };
 		B5D1E1FC2A8E14AE00DAE384 /* DecodeTrimDTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D1E1FB2A8E14AE00DAE384 /* DecodeTrimDTOTests.swift */; };
 		B5D1E1FE2A8E14C400DAE384 /* FetchFromBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D1E1FD2A8E14C400DAE384 /* FetchFromBundle.swift */; };
+		B5D1E2002A8E20AC00DAE384 /* OptionDTO.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D1E1FF2A8E20AC00DAE384 /* OptionDTO.json */; };
 		B5D5D4152A8D559600A4DA3C /* SubOptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D5D4142A8D559600A4DA3C /* SubOptionButton.swift */; };
 		B5D5D4182A8DDBB100A4DA3C /* MCMNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BBB39B2A8A447900AAFC84 /* MCMNetwork.framework */; };
 		B5DD64D02A876ABD00B44F61 /* WheelDriveDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64CF2A876ABD00B44F61 /* WheelDriveDTO.swift */; };
@@ -192,8 +192,8 @@
 		B5D1E1F82A8E094200DAE384 /* DecodeOptionDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeOptionDTOTests.swift; sourceTree = "<group>"; };
 		B5D1E1FB2A8E14AE00DAE384 /* DecodeTrimDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeTrimDTOTests.swift; sourceTree = "<group>"; };
 		B5D1E1FD2A8E14C400DAE384 /* FetchFromBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchFromBundle.swift; sourceTree = "<group>"; };
+		B5D1E1FF2A8E20AC00DAE384 /* OptionDTO.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = OptionDTO.json; path = ../../../../../../../../../../../Downloads/OptionDTO.json; sourceTree = "<group>"; };
 		B5D5D4142A8D559600A4DA3C /* SubOptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubOptionButton.swift; sourceTree = "<group>"; };
-		B5D5D41A2A8DDDC500A4DA3C /* OptionDTO.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = OptionDTO.json; sourceTree = "<group>"; };
 		B5DD64CF2A876ABD00B44F61 /* WheelDriveDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelDriveDTO.swift; sourceTree = "<group>"; };
 		B5DD64D12A876B5000B44F61 /* WheelDrive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelDrive.swift; sourceTree = "<group>"; };
 		B5DD64DC2A876ED800B44F61 /* BodyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyType.swift; sourceTree = "<group>"; };
@@ -470,7 +470,7 @@
 				B5DD64E22A87714000B44F61 /* BodyTypeDTO.json */,
 				B5BBB3582A89CA5200AAFC84 /* ExteriorDTO.json */,
 				B5BBB3562A89C9AC00AAFC84 /* InteriorDTO.json */,
-				B5D5D41A2A8DDDC500A4DA3C /* OptionDTO.json */,
+				B5D1E1FF2A8E20AC00DAE384 /* OptionDTO.json */,
 			);
 			path = Dummy;
 			sourceTree = "<group>";
@@ -695,8 +695,8 @@
 				B5BBB35C2A8A1D6400AAFC84 /* WheelDriveDTO.json in Resources */,
 				B5BBB35D2A8A1D6400AAFC84 /* BodyTypeDTO.json in Resources */,
 				B5BBB35E2A8A1D6400AAFC84 /* ExteriorDTO.json in Resources */,
+				B5D1E2002A8E20AC00DAE384 /* OptionDTO.json in Resources */,
 				B5BBB35F2A8A1D6400AAFC84 /* InteriorDTO.json in Resources */,
-				B5D1E1F62A8E08F100DAE384 /* OptionDTO.json in Resources */,
 				B50C7E582A79027A005AFE0B /* LaunchScreen.storyboard in Resources */,
 				B50C7E552A79027A005AFE0B /* Assets.xcassets in Resources */,
 				B5D1E1F52A8DFBCE00DAE384 /* Dependency.plist in Resources */,
