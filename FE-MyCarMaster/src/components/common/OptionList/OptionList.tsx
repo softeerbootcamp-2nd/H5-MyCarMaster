@@ -32,7 +32,6 @@ export default function OptionList({ $name }: OptionListProps) {
     }
   }, [isOpen]);
 
-  console.log(isFirst.current);
   return (
     <Container $isOpen={isOpen}>
       <ListContainer $isOpen={isOpen}>
