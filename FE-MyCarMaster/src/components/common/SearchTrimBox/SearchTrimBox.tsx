@@ -19,6 +19,7 @@ type SearchTrimBoxProps = {
   price: number;
   status: StatusType;
   isOption?: OptionType;
+  onClick?: undefined | (() => void);
 };
 
 export default function SearchTrimBox({
@@ -27,14 +28,22 @@ export default function SearchTrimBox({
   price,
   status,
   isOption,
+  onClick,
 }: SearchTrimBoxProps) {
   const backgroundStyle = calculateBackground(status);
   const nameStyle = calculateName(status);
   const descriptionStyle = calculateDescription(status);
   const priceStyle = calculatePrice(status);
 
+  const onClickHandler = () => {
+    if (status !== "none") {
+      onClick && onClick();
+    }
+    return;
+  };
+
   return (
-    <Container $background={backgroundStyle}>
+    <Container $background={backgroundStyle} onClick={onClickHandler}>
       <Name $text={nameStyle}>{name}</Name>
       <Description $text={descriptionStyle}>{description}</Description>
       <BottomContainer>

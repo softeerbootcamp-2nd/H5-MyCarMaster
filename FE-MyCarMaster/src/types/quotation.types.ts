@@ -42,7 +42,8 @@ export type QuotationActionType =
   | "SET_DETAIL_QUOTATION"
   | "SET_SELECT_QUOTATION"
   | "SET_CONSIDER_QUOTATION"
-  | "SET_CAR_PAINT_QUOTATION";
+  | "SET_CAR_PAINT_QUOTATION"
+  | "SET_MY_TRIM_OPTIONS";
 
 export type QuotationAction = {
   type: QuotationActionType;
@@ -56,5 +57,6 @@ export type QuotationAction = {
     imgUrl?: string;
     category?: string;
     description?: string;
+    optionList?: QuotationType[];
   };
 };

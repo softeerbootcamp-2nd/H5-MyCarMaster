@@ -2,7 +2,11 @@ import { useState } from "react";
 import styled from "styled-components";
 import AngleUp from "../../assets/icons/AngleUp.svg";
 import AngleDown from "../../assets/icons/AngleDown.svg";
-import ScreenContainer from "./screen_view/ScreenContainer";
+import MyTrimSearchScreen from "./screen_view/MyTrimSearchScreen";
+
+import { QuotationType } from "../../types/quotation.types";
+import { useTrimState, useTrimDispatch } from "../../contexts/TrimContext";
+import { useQuotationDispatch } from "../../contexts/QuotationContext";
 
 type FoldScreenProps = {
   text: string;
@@ -12,6 +16,9 @@ type FoldScreenProps = {
 export default function FoldScreen({ text, $switch }: FoldScreenProps) {
   const [isFold, setIsFold] = useState(false);
   const [loading, setLoading] = useState(false);
+  const { trimList } = useTrimState();
+  const trimDispatch = useTrimDispatch();
+  const quotationDispatch = useQuotationDispatch();
 
   const showFold = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const target = e.currentTarget;
@@ -28,9 +35,49 @@ export default function FoldScreen({ text, $switch }: FoldScreenProps) {
     }, 500);
   };
 
+  const searchHandler = (optionList: QuotationType[], selected: number) => {
+    trimDispatch({
+      type: "SELECT_TRIM",
+      payload: {
+        trimId: selected,
+      },
+    });
+
+    quotationDispatch({
+      type: "SET_MY_TRIM_OPTIONS",
+      payload: {
+        optionList: optionList,
+      },
+    });
+
+    const selectTrim = trimList.find((trim) => trim.id === selected);
+
+    quotationDispatch({
+      type: "SET_TRIM_QUOTATION",
+      payload: {
+        name: selectTrim?.name,
+        price: selectTrim?.price,
+      },
+    });
+
+    const target = document.querySelector(".fold-screen") as HTMLDivElement;
+    target.style.animation = "moveDown 0.5s ease-in-out forwards";
+
+    setLoading(true);
+
+    setTimeout(() => {
+      setIsFold(false);
+      setLoading(false);
+    }, 500);
+  };
+
   return (
     <Conatiner>
-      <ButtonContainer onClick={showFold} $style={isFold}>
+      <ButtonContainer
+        onClick={showFold}
+        $style={isFold}
+        className="fold-screen"
+      >
         {isFold ? <AngleDownIcon /> : <AngleUpIcon />}
 
         <Text $show={loading}>
@@ -42,12 +89,14 @@ export default function FoldScreen({ text, $switch }: FoldScreenProps) {
         </Text>
 
         {!isFold && $switch === "searchTrim" && <Bar $show={loading} />}
-        <ScreenContainer
+        <MyTrimSearchScreen
           $loading={loading}
           $show={isFold}
           onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) =>
             e.stopPropagation()
           }
+          //onSearch: (idData: IDDataProps[], selected: number) => void;
+          onSearch={searchHandler}
         />
       </ButtonContainer>
     </Conatiner>

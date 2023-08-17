@@ -1,5 +1,9 @@
 import { useReducer, createContext, useContext } from "react";
-import { QuotationAction, QuotationState } from "../types/quotation.types";
+import {
+  QuotationAction,
+  QuotationState,
+  QuotationType,
+} from "../types/quotation.types";
 
 const initialQuotationState: QuotationState = {
   navigationId: 0,
@@ -137,6 +141,16 @@ const quotationReducer = (
         },
       };
     }
+    // 임시?
+    case "SET_MY_TRIM_OPTIONS":
+      return {
+        ...state,
+        optionQuotation: {
+          ...state.optionQuotation,
+          // selectedQuotation is optionList
+          selectedQuotation: action.payload.optionList as QuotationType[],
+        },
+      };
     default:
       return state;
   }
