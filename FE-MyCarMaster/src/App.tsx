@@ -15,6 +15,7 @@ import Estimation from "./pages/Estimation";
 import Quotation from "./pages/Quotation";
 import { ModalPortal } from "./components/common/ModalPortal/ModalPortal";
 import { Modals } from "./components/common/Modals/Modals";
+import { ModalType } from "./constants/Modal.constants";
 
 type ContextProvider = React.ComponentType<{ children: React.ReactNode }>;
 
@@ -46,18 +47,13 @@ function App() {
           QuotationProvider,
         ]}
       >
-        <ModalProvider>
-          <ModalPortal>
-            <Modals />
-          </ModalPortal>
-          <Container>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/estimation" element={<Estimation />} />
-              <Route path="/quotation" element={<Quotation />} />
-            </Routes>
-          </Container>
-        </ModalProvider>
+        <Container>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/estimation" element={<Estimation />} />
+            <Route path="/quotation" element={<Quotation />} />
+          </Routes>
+        </Container>
       </AppProvider>
     </ThemeProvider>
   );
