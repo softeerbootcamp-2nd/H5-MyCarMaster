@@ -29,17 +29,13 @@ public class TrimDefaultOptionDto {
 	@Schema(description = "옵션 설명", example = "null")
 	private String description;
 
-	@Schema(description = "해당 옵션 제공에 필요한 세부모델명", example = "null")
-	private String need;
-
-	public static TrimDefaultOptionDto from(Option option, String need) {
+	public static TrimDefaultOptionDto from(Option option) {
 		return TrimDefaultOptionDto.builder()
 			.id(option.getId())
 			.category(option.getCategoryValue())
 			.name(option.getName())
 			.imgUrl(option.getImgUrl())
 			.description(option.getDescription())
-			.need(need)
 			.build();
 	}
 }
