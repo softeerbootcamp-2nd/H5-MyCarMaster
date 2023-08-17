@@ -52,8 +52,6 @@ public class CarMasterEntity {
 	private AgencyEntity agency;
 
 	public CarMaster toCarMaster() {
-
-
 		return CarMaster.builder()
 			.id(id)
 			.name(name)

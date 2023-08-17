@@ -46,7 +46,6 @@ public class AgencyController {
 
 	@GetMapping("/{agencyId}/car-masters")
 	public Response<GetCarMastersInAgencyResponse> getCarMastersInAgency(
-		@NotNull(message = "agencyId는 Null 일 수 없습니다.")
 		@Min(value = 1, message = "agencyId는 1 이상의 값입니다.")
 		@PathVariable Long agencyId
 	) {
