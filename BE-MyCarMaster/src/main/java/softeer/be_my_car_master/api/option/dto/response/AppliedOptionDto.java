@@ -32,7 +32,7 @@ public class AppliedOptionDto {
 	public static AppliedOptionDto from(Option option) {
 		return AppliedOptionDto.builder()
 			.id(option.getId())
-			.category(option.getCategoryName())
+			.category(option.getCategoryValue())
 			.name(option.getName())
 			.price(option.getPrice())
 			.imgUrl(option.getImgUrl())

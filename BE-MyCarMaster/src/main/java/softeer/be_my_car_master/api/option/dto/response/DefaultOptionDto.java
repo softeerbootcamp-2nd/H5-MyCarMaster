@@ -32,7 +32,7 @@ public class DefaultOptionDto {
 	public static DefaultOptionDto from(Option option) {
 		return DefaultOptionDto.builder()
 			.id(option.getId())
-			.category(option.getCategoryName())
+			.category(option.getCategoryValue())
 			.name(option.getName())
 			.imgUrl(option.getImgUrl())
 			.description(option.getDescription())
