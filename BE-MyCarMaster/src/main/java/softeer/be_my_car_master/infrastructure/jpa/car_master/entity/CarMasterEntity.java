@@ -14,6 +14,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import softeer.be_my_car_master.domain.agency.Agency;
 import softeer.be_my_car_master.domain.car_master.CarMaster;
 import softeer.be_my_car_master.infrastructure.jpa.agency.entity.AgencyEntity;
 
@@ -51,7 +52,33 @@ public class CarMasterEntity {
 	private AgencyEntity agency;
 
 	public CarMaster toCarMaster() {
-		return new CarMaster(id);
+		return CarMaster.builder()
+			.id(id)
+			.name(name)
+			.imgUrl(imgUrl)
+			.phone(phone)
+			.email(email)
+			.intro(intro)
+			.sales(sales)
+			.build();
+	}
+
+	public CarMaster toCarMaster(AgencyEntity agencyEntity) {
+		Agency agency = Agency.builder()
+			.id(agencyEntity.getId())
+			.name(agencyEntity.getName())
+			.build();
+
+		return CarMaster.builder()
+			.id(id)
+			.name(name)
+			.imgUrl(imgUrl)
+			.phone(phone)
+			.email(email)
+			.intro(intro)
+			.sales(sales)
+			.agency(agency)
+			.build();
 	}
 
 	public static CarMasterEntity from(CarMaster carMaster) {

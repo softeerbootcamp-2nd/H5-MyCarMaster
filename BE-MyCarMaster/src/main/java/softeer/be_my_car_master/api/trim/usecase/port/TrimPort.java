@@ -9,4 +9,6 @@ import softeer.be_my_car_master.global.annotation.Port;
 public interface TrimPort {
 
 	List<Trim> findTrims(Long modelId);
+
+	List<Long> findTrimIdsByModelId(Long modelId);
 }

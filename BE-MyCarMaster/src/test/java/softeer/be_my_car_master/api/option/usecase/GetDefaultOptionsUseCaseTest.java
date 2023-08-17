@@ -65,7 +65,7 @@ class GetDefaultOptionsUseCaseTest {
 			softAssertions.assertThat(options).hasSize(1);
 			softAssertions.assertThat(optionExpected.getId()).isEqualTo(option.getId());
 			softAssertions.assertThat(optionExpected.getName()).isEqualTo(option.getName());
-			softAssertions.assertThat(optionExpected.getCategory()).isEqualTo(option.getCategory());
+			softAssertions.assertThat(optionExpected.getCategory()).isEqualTo(option.getCategoryValue());
 			softAssertions.assertThat(optionExpected.getDescription()).isEqualTo(option.getDescription());
 			softAssertions.assertThat(optionExpected.getImgUrl()).isEqualTo(option.getImgUrl());
 		});

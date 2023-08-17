@@ -1,6 +1,10 @@
 package softeer.be_my_car_master.infrastructure.jpa.car_master.adaptor;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
+import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.api.consult.usecase.port.CarMasterPort;
@@ -20,4 +24,12 @@ public class CarMasterJpaAdaptor implements CarMasterPort {
 		return carMasterJpaRepository.findById(estimateId)
 			.map(CarMasterEntity::toCarMaster);
 	}
+
+	@Override
+	public List<CarMaster> findCarMastersByAgency(Long agencyId) {
+		return carMasterJpaRepository.findAllByAgency(agencyId).stream()
+			.map(CarMasterEntity::toCarMaster)
+			.collect(Collectors.toList());
+	}
+
 }

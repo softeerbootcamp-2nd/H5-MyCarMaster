@@ -52,7 +52,18 @@ public class RepresentativeOptionEntity {
 			.imgUrl(option.getImgUrl())
 			.summary(option.getSummary())
 			.description(option.getDescription())
+			.isSuper(option.getIsSuper())
 			.subOptions(subOptions)
+			.build();
+	}
+
+	public Option toAppliedOption() {
+		return Option.builder()
+			.id(appliedOption.getId())
+			.category(appliedOption.getCategory())
+			.name(appliedOption.getName())
+			.price(appliedOption.getPrice())
+			.imgUrl(appliedOption.getImgUrl())
 			.build();
 	}
 }

@@ -33,4 +33,8 @@ public class Option {
 	public Boolean hasSubOption() {
 		return isSuper;
 	}
+
+	public String getCategoryValue() {
+		return category.getValue();
+	}
 }
