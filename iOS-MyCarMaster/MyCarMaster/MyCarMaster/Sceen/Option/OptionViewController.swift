@@ -7,6 +7,8 @@
 
 import UIKit
 
+import MCMNetwork
+
 final class OptionViewController: UIViewController {
 
     enum Section {
@@ -14,21 +16,17 @@ final class OptionViewController: UIViewController {
     }
 
     private let categoryList = ["전체", "안전", "스타일&퍼포먼스", "차량 보호", "편의"]
-    private var optionList: [Option] = []
 
     private var dataSource: UICollectionViewDiffableDataSource<Section, Option>?
     private func configureDataSource() {
         dataSource = UICollectionViewDiffableDataSource<Section, Option>(
             collectionView: contentView.optionListView
-        ) { [weak self] collectionView, indexPath, itemIdentifier in
+        ) { [weak self] collectionView, indexPath, option in
             guard let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: OptionListCell.reuseIdentifier,
                 for: indexPath
             ) as? OptionListCell else {
                 fatalError("등록되지 않은 cell 입니다.")
-            }
-            guard let option = self?.optionList[indexPath.item] else {
-                fatalError("존재하지 않는 데이터입니다.")
             }
             cell.configure(with: option)
             return cell
@@ -37,7 +35,7 @@ final class OptionViewController: UIViewController {
 
         var snapshot = NSDiffableDataSourceSnapshot<Section, Option>()
         snapshot.appendSections([.option])
-        snapshot.appendItems(optionList)
+        snapshot.appendItems([])
         dataSource?.apply(snapshot)
     }
 
@@ -53,7 +51,7 @@ final class OptionViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
 #if ONLINE
-//        fetchData()
+        fetchData()
 #elseif OFFLINE
         fetchFromDisk()
 #endif
@@ -72,23 +70,54 @@ final class OptionViewController: UIViewController {
 
 extension OptionViewController {
     private func fetchFromDisk() {
-        optionList = [
-            Option(model: "펠리세이드", category: "편의", name: "알콘 단조 브레이크 & 20인치 휠 패키지", price: 0, ratio: 54, imgURL: nil, summary: "", description: "", tag: "", subOptions: [
-                SubOption(name: "전방 충돌방지 보조", imgURL: nil, description: ""),
-                SubOption(name: "내비게이션 기반 스마트 크루즈 컨트롤", imgURL: nil, description: ""),
-                SubOption(name: "고속도로 주행 보조 2", imgURL: nil, description: ""),
-            ]),
-            Option(model: "펠리세이드", category: "편의", name: "2열 통풍 시트", price: 0, ratio: 54, imgURL: nil, summary: "", description: "", tag: "", subOptions: []),
-            Option(model: "펠리세이드", category: "편의", name: "듀얼 머플러 패키지", price: 0, ratio: 54, imgURL: nil, summary: "", description: "", tag: "", subOptions: []),
-        ]
+        guard let fileURL = Bundle.main.url(forResource: "OptionDTO.json", withExtension: nil) else { return }
+        applyData(try? Data(contentsOf: fileURL))
+    }
+
+    private func fetchData() {
+        let request = URLRequest(url: URL(string: Dependency.serverURL + "options?trimId=1&engineId=1&wheelDriveId=1&bodyTypeId=1&interiorColorId=1")!)
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard error == nil else {
+                print(error?.localizedDescription)
+                return
+            }
+
+            guard let response = response as? HTTPURLResponse else {
+                print("Sever Error")
+                return
+            }
+
+            print("Option:", response.statusCode)
+            guard 200..<300 ~= response.statusCode else {
+                return
+            }
+
+            self.applyData(data)
+        }.resume()
+    }
+
+    private func applyData(_ data: Data?) {
+        if let data,
+           let optionDTOList = try? JSONDecoder().decode(RootDTO.self, from: data).result.options {
+            let dataList = optionDTOList.map { Option($0) }
+
+            var snapshot = NSDiffableDataSourceSnapshot<Section, Option>()
+            snapshot.appendSections([.option])
+            snapshot.appendItems(dataList)
+            DispatchQueue.main.async { [weak self] in
+                self?.dataSource?.apply(snapshot)
+            }
+        } else {
+            print("Decoding Error")
+            return
+        }
     }
 }
 
 extension OptionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == contentView.optionListView {
-            return optionList.count
-        } else if collectionView == contentView.categoryListView {
+        if collectionView == contentView.categoryListView {
             return categoryList.count
         }
         return 0
