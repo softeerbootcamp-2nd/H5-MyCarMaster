@@ -21,7 +21,15 @@ public class CarMaster {
 	private String email;
 	private Agency agency;
 
+	public void setAgency(Agency agency) {
+		this.agency = agency;
+	}
+
 	public String getAgencyName() {
 		return agency.getName();
+	}
+
+	public Long getAgencyId() {
+		return agency.getId();
 	}
 }
