@@ -128,13 +128,13 @@ extension OptionViewController: UICollectionViewDelegate {
         if collectionView == contentView.categoryListView {
         } else { // OptionListView 일 때
 
-            // 선택된 셀이 가장 위에 보여지도록 한다.
-            if cell.frame.origin.y + contentView.optionListView.bounds.height < contentView.optionListView.contentSize.height {
-                contentView.optionListView.bounds.origin = cell.frame.origin
-            } else {
-                // 마지막 셀 일 때
-                contentView.optionListView.bounds.origin.y = cell.frame.maxY - contentView.optionListView.bounds.height
-            }
+//            // 선택된 셀이 가장 위에 보여지도록 한다.
+//            if cell.frame.origin.y + contentView.optionListView.bounds.height < contentView.optionListView.contentSize.height {
+//                contentView.optionListView.bounds.origin = cell.frame.origin
+//            } else {
+//                // 마지막 셀 일 때
+//                contentView.optionListView.bounds.origin.y = cell.frame.maxY - contentView.optionListView.bounds.height
+//            }
 
             // preview Image를 띄운다.
             // FIXME: 내부 파일 URL로 바꾸기
