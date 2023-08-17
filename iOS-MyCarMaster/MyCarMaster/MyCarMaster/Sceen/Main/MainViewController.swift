@@ -189,19 +189,3 @@ extension MainViewController {
         changeStepViewControllerTo(stepViewController)
     }
 }
-
-#if canImport(SwiftUI)
-import SwiftUI
-
-struct MainViewController_Previews: PreviewProvider {
-    static let vc = MainViewController(entryStep: .trim)
-
-    static var previews: some View {
-
-        UIViewControllerPreview {
-            vc.estimationView.configure(with: 93896000)
-            return vc
-        }
-    }
-}
-#endif

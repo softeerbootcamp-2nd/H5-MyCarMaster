@@ -11,13 +11,13 @@ final class OptionListCell: UICollectionViewCell, CellStyleSelectable {
 
     // MARK: Property
     private var optionState: OptionListCellMainState?
-    
+
     var canExpand: Bool = false {
         didSet {
             shouldExpand()
         }
     }
-    
+
     var isExpanded: Bool = false {
         didSet {
             updateUIForExpand()
@@ -321,7 +321,7 @@ extension OptionListCell {
             }
         }
     }
-    
+
     private func shouldExpand() {
         if !canExpand {
             disclosureButton.image = UIImage(systemName: "chevron.right")
@@ -347,7 +347,7 @@ extension OptionListCell {
         titleLabel.setText(state.name)
         additoryLabel.setText("\(state.model) 구매자의 \(state.ratio.formatted(style: .percent))가 선택")
         priceLabel.setText("+\(state.price.formatted(style: .currency))")
-        
+
         canExpand = !state.subOptions.isEmpty
         additionalContentView.removeAllArrangedSubviews()
         state.subOptions.forEach { subOption in
@@ -355,7 +355,7 @@ extension OptionListCell {
             subOptionButton.configure(with: subOption)
             additionalContentView.addArrangedSubview(subOptionButton)
         }
-        
+
         optionState = state
     }
 }
