@@ -85,7 +85,7 @@ function Footer() {
         <FoldScreen text={"내게 맞는 트림 찾기"} $switch={"searchTrim"} />
       )}
       {navigationId === 6 && (
-        <FoldScreen text={"추가 옵션 선택하기"} $switch={"option"} />
+        <FoldScreen text={"기본 옵션 보기"} $switch={"option"} />
       )}
     </Container>
   );

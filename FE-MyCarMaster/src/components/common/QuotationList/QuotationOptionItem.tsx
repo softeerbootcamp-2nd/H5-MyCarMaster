@@ -30,7 +30,6 @@ function QuotationOptionItem({
   }, [initialIsSelected]);
 
   const toggleSelect = (id: number) => {
-    console.log(isSelected);
     const updatedIsSelected = !isSelected;
     const actionType = updatedIsSelected
       ? "SET_SELECT_QUOTATION"

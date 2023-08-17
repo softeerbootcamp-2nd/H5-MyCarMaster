@@ -35,7 +35,7 @@ export default function OptionList({ $name }: OptionListProps) {
   return (
     <Container $isOpen={isOpen}>
       <ListContainer $isOpen={isOpen}>
-        <Text>{$name}</Text>
+        <Text $size={1.25}>{$name}</Text>
         <Icon $isOpen={true} onClick={() => setIsOpen(!isOpen)} />
       </ListContainer>
       <Line $isOpen={isOpen} $isFirst={isFirst.current} />
