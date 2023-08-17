@@ -57,7 +57,7 @@ function QuotationItem({
 export default QuotationItem;
 
 const Container = styled.div`
-  width: 51.5rem;
+  width: 59.5rem;
   height: 6.5rem;
 
   display: flex;

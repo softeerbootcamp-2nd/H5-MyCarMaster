@@ -40,13 +40,13 @@ const quotationReducer = (
       return {
         ...state,
         navigationId:
-          action.payload.navigationId === -1
+          action.payload!.navigationId === -1
             ? (0 as number)
-            : action.payload.navigationId === 8
+            : action.payload!.navigationId === 8
             ? (7 as number)
-            : (action.payload.navigationId as number),
-        isFirst: action.payload.isFirst
-          ? (action.payload.isFirst as boolean[])
+            : (action.payload!.navigationId as number),
+        isFirst: action.payload!.isFirst
+          ? (action.payload!.isFirst as boolean[])
           : (state.isFirst as boolean[]),
       };
     case "SET_TRIM_QUOTATION":
@@ -54,8 +54,8 @@ const quotationReducer = (
         ...state,
         trimQuotation: {
           trimQuotation: {
-            name: action.payload.name as string,
-            price: action.payload.price as number,
+            name: action.payload!.name as string,
+            price: action.payload!.price as number,
           },
         },
       };
@@ -64,9 +64,9 @@ const quotationReducer = (
         ...state,
         detailQuotation: {
           ...state.detailQuotation,
-          [action.payload.type as string]: {
-            name: action.payload.name as string,
-            price: action.payload.price as number,
+          [action.payload!.type as string]: {
+            name: action.payload!.name as string,
+            price: action.payload!.price as number,
           },
         },
       };
@@ -75,15 +75,15 @@ const quotationReducer = (
         ...state,
         carPaintQuotation: {
           ...state.carPaintQuotation,
-          [action.payload.type as string]: {
-            name: action.payload.name as string,
-            price: action.payload.price as number,
-            imgUrl: action.payload.imgUrl as string,
+          [action.payload!.type as string]: {
+            name: action.payload!.name as string,
+            price: action.payload!.price as number,
+            imgUrl: action.payload!.imgUrl as string,
           },
         },
       };
     case "SET_SELECT_QUOTATION": {
-      const { id, name, price, imgUrl, category } = action.payload;
+      const { id, name, price, imgUrl, category } = action.payload!;
       const isOptionSelected = state.optionQuotation.selectedQuotation.some(
         (option) => option.id === (id as number)
       );
@@ -113,7 +113,7 @@ const quotationReducer = (
       };
     }
     case "SET_CONSIDER_QUOTATION": {
-      const { id, name, price, imgUrl, category } = action.payload;
+      const { id, name, price, imgUrl, category } = action.payload!;
       const isOptionConsidered = state.optionQuotation.consideredQuotation.some(
         (option) => option.id === (id as number)
       );
@@ -151,6 +151,9 @@ const quotationReducer = (
           selectedQuotation: action.payload.optionList as QuotationType[],
         },
       };
+    case "RESET_QUOTATION":
+      return initialQuotationState;
+
     default:
       return state;
   }

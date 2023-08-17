@@ -55,7 +55,7 @@ function Footer() {
           <ButtonContainer>
             {navigationId !== 0 && (
               <Button
-                $x={9.625}
+                $x={12}
                 $y={2.25}
                 $backgroundcolor={`${theme.colors.WHITE}`}
                 $textcolor={`${theme.colors.NAVYBLUE5}`}
@@ -66,7 +66,7 @@ function Footer() {
             )}
 
             <Button
-              $x={9.625}
+              $x={12}
               $y={2.25}
               $backgroundcolor={`${theme.colors.NAVYBLUE5}`}
               $textcolor={`${theme.colors.WHITE}`}
