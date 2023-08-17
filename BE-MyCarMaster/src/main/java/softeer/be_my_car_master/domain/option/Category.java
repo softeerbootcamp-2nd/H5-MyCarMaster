@@ -1,5 +1,8 @@
 package softeer.be_my_car_master.domain.option;
 
+import lombok.Getter;
+
+@Getter
 public enum Category {
 
 	SAFE("안전"),
@@ -13,9 +16,9 @@ public enum Category {
 	SEAT("시트"),
 	MULTIMEDIA("멀티미디어");
 
-	private String name;
+	private String value;
 
-	Category(String name) {
-		this.name = name;
+	Category(String value) {
+		this.value = value;
 	}
 }

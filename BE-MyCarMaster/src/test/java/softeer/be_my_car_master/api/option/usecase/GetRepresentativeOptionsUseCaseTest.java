@@ -85,6 +85,8 @@ public class GetRepresentativeOptionsUseCaseTest {
 			softAssertions.assertThat(appliedOptionExpected.getId()).isEqualTo(option.getId());
 			softAssertions.assertThat(appliedOptionExpected.getName()).isEqualTo(option.getName());
 			softAssertions.assertThat(appliedOptionExpected.getPrice()).isEqualTo(option.getPrice());
+			softAssertions.assertThat(appliedOptionExpected.getCategory()).isEqualTo(option.getCategoryName());
+			softAssertions.assertThat(appliedOptionExpected.getImgUrl()).isEqualTo(option.getImgUrl());
 		});
 	}
 }

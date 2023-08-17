@@ -344,7 +344,7 @@ class OptionControllerTest {
 			DefaultOptionDto defaultOptionDto = DefaultOptionDto.builder()
 				.id(1L)
 				.name("어떤 옵션")
-				.category(Category.SAFE)
+				.category(Category.SAFE.getValue())
 				.description("옵션 상세설명")
 				.imgUrl("imgUrl")
 				.build();
@@ -566,6 +566,8 @@ class OptionControllerTest {
 				.id(1L)
 				.name("어떤 옵션")
 				.price(10000)
+				.category(Category.SAFE)
+				.imgUrl("imgUrl")
 				.build();
 			AppliedOptionDto appliedOptionDto = AppliedOptionDto.from(appliedOption);
 			RepresentativeOptionDto representativeOptionDto = RepresentativeOptionDto.builder()
