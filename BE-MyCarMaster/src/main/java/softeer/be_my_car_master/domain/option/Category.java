@@ -1,5 +1,8 @@
 package softeer.be_my_car_master.domain.option;
 
+import lombok.Getter;
+
+@Getter
 public enum Category {
 
 	SAFE("안전"),
