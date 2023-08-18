@@ -10,11 +10,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Getter;
 import softeer.be_my_car_master.domain.color_exterior.ExteriorColor;
 import softeer.be_my_car_master.infrastructure.jpa.trim.entity.TrimEntity;
 
 @Entity
 @Table(name = "trim_exterior_color")
+@Getter
 public class TrimExteriorColorEntity {
 
 	@Id
@@ -47,5 +49,9 @@ public class TrimExteriorColorEntity {
 			.colorImgUrl(exteriorColor.getColorImgUrl())
 			.coloredImgUrl(coloredCarImgUrl)
 			.build();
+	}
+
+	public boolean checkTrimId(Long trimId) {
+		return trim.checkId(trimId);
 	}
 }
