@@ -11,4 +11,6 @@ public interface EstimatePort {
 	UUID createEstimate(CreateEstimateRequest createEstimateRequest);
 
 	Optional<Estimate> findByUuid(UUID estimateUuid);
+
+	Optional<Estimate> findFullEstimateByUuid(UUID estimateId);
 }
