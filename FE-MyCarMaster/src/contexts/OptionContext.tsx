@@ -46,6 +46,11 @@ const optionReducer = (
         };
       }
     }
+    case "SET_SELECTED_OPTIONS":
+      return {
+        ...state,
+        selectedOption: action.payload.ids as number[],
+      };
     case "SET_OPTION_LIST":
       return {
         ...state,

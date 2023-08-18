@@ -32,7 +32,8 @@ type OptionActionType =
   | "SET_CHOICE_OPTION"
   | "SET_OPTION_LIST"
   | "SET_OPTION_CATEGORY_INDEX"
-  | "SET_OPTION_ID";
+  | "SET_OPTION_ID"
+  | "SET_SELECTED_OPTIONS";
 
 export type OptionAction = {
   type: OptionActionType;
@@ -44,6 +45,7 @@ export type OptionAction = {
     optionList?: OptionType[];
     optionId?: number;
     optionCategoryId?: number;
+    ids?: (number | undefined)[];
   };
 };
 

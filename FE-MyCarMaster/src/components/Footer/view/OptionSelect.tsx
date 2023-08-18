@@ -3,6 +3,7 @@ import {
   useOptionDispatch,
   useOptionState,
 } from "../../../contexts/OptionContext";
+import { useQuotationState } from "../../../contexts/QuotationContext";
 import OptionBox from "../../common/OptionBox/OptionBox";
 import { useEffect, useState } from "react";
 import { OptionType } from "../../../types/options.types";
@@ -12,7 +13,10 @@ import { categories } from "../../../constants/Option.constants";
 export default function OptionSelect() {
   const { optionList, selectedOption, consideredOption, optionCategoryId } =
     useOptionState();
+  const [isTrimCheckOption, setIsTrimCheckOption] = useState<boolean>(false);
+  const { optionQuotation } = useQuotationState();
   const optionDispatch = useOptionDispatch();
+
   const [filteredOptionList, setFilteredOptionList] =
     useState<OptionType[]>(optionList);
 
@@ -26,6 +30,23 @@ export default function OptionSelect() {
     setFilteredOptionList(filteredList);
   }, [optionList, optionCategoryId]);
 
+  useEffect(() => {
+    if (optionQuotation.selectedQuotation) {
+      const selectedOptionIdList = optionQuotation.selectedQuotation.map(
+        (option) => option.id
+      );
+      optionDispatch({
+        type: "SET_SELECTED_OPTIONS",
+        payload: {
+          where: "selectedOption",
+          ids: selectedOptionIdList,
+        },
+      });
+      setIsTrimCheckOption(true);
+      console.log("optionQuotation.selectedQuotation", selectedOption);
+    }
+  }, [optionQuotation.selectedQuotation, optionDispatch]);
+
   const changeOptionId = (index: number) => {
     optionDispatch({
       type: "SET_OPTION_ID",
@@ -37,7 +58,8 @@ export default function OptionSelect() {
 
   return (
     <Container>
-      {filteredOptionList?.length &&
+      {isTrimCheckOption &&
+        filteredOptionList?.length &&
         filteredOptionList.map((option, index) => {
           return (
             <OptionBox

@@ -65,7 +65,6 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 25%;
   min-height: 7.5rem;
   margin: 0 3%;
   gap: 60rem;
