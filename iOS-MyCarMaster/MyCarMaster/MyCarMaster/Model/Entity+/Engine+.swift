@@ -19,3 +19,15 @@ extension Engine: BasicListCellStateConvertible {
         )
     }
 }
+
+extension Engine: QuotationContentItemStateConvertible {
+    var quotationContentItemState: QuotationContentItemState {
+        return .init(
+            titleDescription: "엔진",
+            title: self.name,
+            imageURL: nil,
+            price: self.price,
+            isAdditionalPrice: false
+        )
+    }
+}

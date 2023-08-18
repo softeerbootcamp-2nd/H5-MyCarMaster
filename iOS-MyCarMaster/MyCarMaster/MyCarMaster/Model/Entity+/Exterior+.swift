@@ -18,3 +18,15 @@ extension Exterior: ColorListCellStateConvertible {
         )
     }
 }
+
+extension Exterior: QuotationContentItemStateConvertible {
+    var quotationContentItemState: QuotationContentItemState {
+        return .init(
+            titleDescription: "외장 색상",
+            title: self.name,
+            imageURL: colorImgURL,
+            price: self.price,
+            isAdditionalPrice: false
+        )
+    }
+}
