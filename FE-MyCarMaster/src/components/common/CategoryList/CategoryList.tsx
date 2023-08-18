@@ -3,7 +3,7 @@ import CategoryItem from "./CategoryItem";
 import { useQuotationState } from "../../../contexts/QuotationContext";
 import { useOptionState } from "../../../contexts/OptionContext";
 
-type SwitchType = "detail" | "option" | "default" | "colors";
+type SwitchType = "detail" | "option" | "default" | "colors" | "model";
 type CategoryType =
   | "파워트레인/성능"
   | "지능형 안전기술"
@@ -18,6 +18,7 @@ type CagetoryListProps = {
   onClickHandler: (index?: number, category?: CategoryType | undefined) => void;
   indexSetter?: number | CategoryType;
   $switch?: SwitchType;
+  $gap?: number;
 };
 
 function CategoryList({
@@ -25,6 +26,7 @@ function CategoryList({
   onClickHandler,
   indexSetter,
   $switch,
+  $gap,
 }: CagetoryListProps) {
   const { navigationId } = useQuotationState();
   const { optionCategoryId } = useOptionState();
@@ -40,13 +42,15 @@ function CategoryList({
         return index === navigationId - (indexSetter as number);
       case "option":
         return index === optionCategoryId;
-      default: // default
+      case "default":
         return category === indexSetter;
+      case "model":
+        return index === indexSetter;
     }
   };
 
   return (
-    <Container>
+    <Container $gap={$gap}>
       {categories.map((category, index) => (
         <CategoryItem
           name={category}
@@ -63,10 +67,10 @@ function CategoryList({
   );
 }
 
-const Container = styled.ul`
+const Container = styled.ul<{ $gap?: number }>`
   display: inline-flex;
   align-items: flex-start;
-  gap: 1.5rem;
+  gap: ${({ $gap }) => ($gap ? `${$gap}rem` : "1.5rem")};
 `;
 
 export default CategoryList;

@@ -95,9 +95,9 @@ const fonts = {
     fontWeight: fontWeight.medium,
   },
 
-  display: {
+  Display: {
     fontFamily: "HyundaiSansBold",
-    fontSize: fontSize.Enormous,
+    fontSize: fontSize.Gigantic,
     fontStyle: "normal",
     fontWeight: fontWeight.medium,
   },
