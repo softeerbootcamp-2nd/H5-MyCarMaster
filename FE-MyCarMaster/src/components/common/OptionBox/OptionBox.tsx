@@ -1,3 +1,4 @@
+import React from "react";
 import OptionBoxName from "./OptionBoxName";
 import OptionBoxButtonContainer from "./OptionBoxButtonContainer";
 import {
@@ -20,7 +21,7 @@ type OptionBoxProp = {
   $switch: string;
   $considered?: boolean;
   $none?: boolean; // 추후, 선택할 수 없는 옵션에 대한 처리를 위해 추가
-  handleClick?: () => void;
+  handleClick?: (e: React.MouseEvent) => void;
   handleClickDetail?: () => void;
 };
 
@@ -92,6 +93,7 @@ function OptionBox({
                 <Detail
                   $style={$choice ? ActiveCSS.Detail : DefaultCSS.Detail}
                   onClick={handleClickDetail}
+                  className="basic-option"
                 >
                   자세히보기 &gt;
                 </Detail>

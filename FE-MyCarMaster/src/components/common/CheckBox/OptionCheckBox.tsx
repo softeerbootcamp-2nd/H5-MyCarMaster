@@ -9,10 +9,12 @@ type OptionCheckBoxProps = {
     defaultTrimIds: number[];
   };
   onChange: () => void;
+  onClick: () => void;
 };
 export default function OptionCheckBox({
   $name,
   onChange,
+  onClick,
 }: OptionCheckBoxProps) {
   const [check, setCheck] = useState(false);
 
@@ -28,7 +30,9 @@ export default function OptionCheckBox({
         <CheckStyle $checked={check} />
       </CheckBox>
       <Name $checked={check}>{$name}</Name>
-      <Detail $checked={check}>상세 보기</Detail>
+      <Detail $checked={check} onClick={onClick}>
+        상세 보기
+      </Detail>
     </Container>
   );
 }

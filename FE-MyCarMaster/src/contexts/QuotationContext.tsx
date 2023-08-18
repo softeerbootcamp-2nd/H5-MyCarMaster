@@ -148,7 +148,7 @@ const quotationReducer = (
         optionQuotation: {
           ...state.optionQuotation,
           // selectedQuotation is optionList
-          selectedQuotation: action.payload.optionList as QuotationType[],
+          selectedQuotation: action.payload!.optionList as QuotationType[],
         },
       };
     case "RESET_QUOTATION":
