@@ -30,21 +30,24 @@ const GlobalStyle = createGlobalStyle`
         cursor: pointer;
     }
 
+
     @font-face {
         font-family: HyundaiSansBold;
         font-display: swap;
-        src: url('src/assets/fonts/HyundaiSansHeadKRBold.ttf') format('truetype');
+        src: url('../../public/fonts/HyundaiSansHeadKRBold.ttf') format('truetype');
     }
     @font-face {
         font-family: HyundaiSansMedium;
         font-display: swap;
-        src: url('src/assets/fonts/HyundaiSansHeadKRMedium.ttf') format('truetype');
+        src: url('../../public/fonts/HyundaiSansHeadKRMedium.ttf') format('truetype');
     }
     @font-face {
         font-family: HyundaiSansRegular;
         font-display: swap;
-        src: url('src/assets/fonts/HyundaiSansHeadKRRegular.ttf') format('truetype');
+        src: url('../../public/fonts/HyundaiSansHeadKRRegular.ttf') format('truetype');
     }
+
+    // public font setting
 `;
 
 export default GlobalStyle;
