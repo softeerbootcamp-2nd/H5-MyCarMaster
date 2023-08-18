@@ -20,9 +20,9 @@ spring:
     show-sql: true
     open-in-view : false
 
-redis:
-  url: redis
-  port: 6379
+  redis:
+    url: redis
+    port: 6379
 
 ---
 spring:
@@ -46,6 +46,6 @@ spring:
     show-sql: true
     open-in-view : false
 
-redis:
-  url: ${REDIS_URL}
-  port: ${REDIS_PORT}
+  redis:
+    url: ${REDIS_URL}
+    port: ${REDIS_PORT}
