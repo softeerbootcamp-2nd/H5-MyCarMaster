@@ -36,6 +36,7 @@
 		B53C3C582A8578310019ECA1 /* BodyTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53C3C572A8578310019ECA1 /* BodyTypeView.swift */; };
 		B53C3C5A2A8578650019ECA1 /* BodyTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53C3C592A8578650019ECA1 /* BodyTypeViewController.swift */; };
 		B53E028E2A84BE5100F464FC /* StepNavigatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53E028D2A84BE5100F464FC /* StepNavigatorView.swift */; };
+		B550C0D52A8FF4440068670D /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550C0D42A8FF4440068670D /* SeparatorView.swift */; };
 		B560B2182A83827600A4B9A9 /* TrimView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B560B2172A83827600A4B9A9 /* TrimView.swift */; };
 		B56A765C2A83EC5200F7E3EF /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56A765B2A83EC5200F7E3EF /* Preview.swift */; };
 		B56A765F2A83EFB000F7E3EF /* BasicListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56A765E2A83EFB000F7E3EF /* BasicListCell.swift */; };
@@ -168,6 +169,7 @@
 		B53C3C572A8578310019ECA1 /* BodyTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyTypeView.swift; sourceTree = "<group>"; };
 		B53C3C592A8578650019ECA1 /* BodyTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyTypeViewController.swift; sourceTree = "<group>"; };
 		B53E028D2A84BE5100F464FC /* StepNavigatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepNavigatorView.swift; sourceTree = "<group>"; };
+		B550C0D42A8FF4440068670D /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
 		B560B2172A83827600A4B9A9 /* TrimView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrimView.swift; path = MyCarMaster/Sceen/Trim/TrimView.swift; sourceTree = SOURCE_ROOT; };
 		B56A765B2A83EC5200F7E3EF /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
 		B56A765E2A83EFB000F7E3EF /* BasicListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicListCell.swift; sourceTree = "<group>"; };
@@ -427,6 +429,7 @@
 				B5DD65132A88F5C500B44F61 /* Cell */,
 				B53C3C482A854AF50019ECA1 /* BasicStepView.swift */,
 				B53BA1112A8C0A8F009F94BE /* PaddingLabel.swift */,
+				B550C0D42A8FF4440068670D /* SeparatorView.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -812,6 +815,7 @@
 				B5E233FD2A8B4B0F0013BEB1 /* OptionView.swift in Sources */,
 				B53C3C542A856DF00019ECA1 /* UIView+Extension.swift in Sources */,
 				B5DD64F32A8783D800B44F61 /* Exterior.swift in Sources */,
+				B550C0D52A8FF4440068670D /* SeparatorView.swift in Sources */,
 				B58A323B2A7C0B35005FC831 /* OnboardingViewController.swift in Sources */,
 				B56A765F2A83EFB000F7E3EF /* BasicListCell.swift in Sources */,
 				B570C0FA2A89ADA7000E9B75 /* InteriorView.swift in Sources */,
