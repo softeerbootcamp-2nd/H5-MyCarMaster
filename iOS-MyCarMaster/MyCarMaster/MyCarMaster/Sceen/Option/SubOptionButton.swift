@@ -21,7 +21,7 @@ final class SubOptionButton: UIView {
     private let titleLabel = UILabel().then { label in
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         label.showsExpansionTextWhenTruncated = true
-        label.style = .bodyLarge1
+        label.style = .bodyLarge1(nil)
         label.textColor = .MCM.black
     }
 

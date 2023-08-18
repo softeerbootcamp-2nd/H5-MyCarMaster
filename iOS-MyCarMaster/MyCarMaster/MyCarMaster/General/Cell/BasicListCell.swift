@@ -37,7 +37,7 @@ final class BasicListCell: UICollectionViewCell, CellStyleSelectable, ContentSiz
 
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.style = .titleLarge2
+        label.style = .titleLarge2(nil)
         label.textColor = .MCM.black
         return label
     }()
@@ -46,7 +46,7 @@ final class BasicListCell: UICollectionViewCell, CellStyleSelectable, ContentSiz
 
     private let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.style = .bodyMedium2
+        label.style = .bodyMedium2(nil)
         label.textColor = .MCM.grey3
         label.numberOfLines = 0
         label.lineBreakStrategy = .hangulWordPriority
@@ -58,7 +58,7 @@ final class BasicListCell: UICollectionViewCell, CellStyleSelectable, ContentSiz
 
     private lazy var detailButton: UIButton = {
         let button = UIButton()
-        button.style = .bodySmall2
+        button.style = .bodySmall2(nil)
         button.setStyledTitle("자세히 보기 >", for: .normal)
         button.setTitleColor(.MCM.black, for: .normal)
         return button
@@ -66,14 +66,14 @@ final class BasicListCell: UICollectionViewCell, CellStyleSelectable, ContentSiz
 
     private let additoryLabel: UILabel = {
         let label = UILabel()
-        label.style = .caption
+        label.style = .caption(nil)
         label.textColor = .MCM.navyBlue4
         return label
     }()
 
     private let priceLabel: UILabel = {
         let label = UILabel()
-        label.style = .titleMedium2
+        label.style = .titleMedium2(nil)
         label.textColor = .MCM.black
         return label
     }()

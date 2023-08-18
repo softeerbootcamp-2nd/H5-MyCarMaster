@@ -22,7 +22,7 @@ final class ButtonCell: UICollectionViewCell {
     private let inset: UIEdgeInsets = .init(top: 6, left: 12, bottom: 6, right: 12)
 
     private let titleLabel = UILabel().then { label in
-        label.style = .bodyMedium1
+        label.style = .bodyMedium1(nil)
     }
 
     override init(frame: CGRect) {

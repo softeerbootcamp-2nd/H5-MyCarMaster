@@ -28,21 +28,21 @@ final class OnboardingView: UIView {
     }()
 
     private let titleLabel = UILabel().then { label in
-        label.style = .headlineLarge
+        label.style = .headlineLarge(nil)
         label.setText("내게 맞는 견적부터\n카마스터 연결까지")
         label.textColor = .MCM.white
         label.numberOfLines = 0
     }
 
     private let subTitleLabel = UILabel().then { label in
-        label.style = .bodyLarge2
+        label.style = .bodyLarge2(nil)
         label.setText("마이 카마스터와 함께해요")
         label.textColor = .MCM.white
     }
 
     private(set) var startButton = UIButton().then { button in
         button.backgroundColor = .MCM.white
-        button.style = .bodyMedium1
+        button.style = .bodyMedium1(nil)
         button.setStyledTitle("마이 카마스터 시작하기", for: .normal)
         button.setTitleColor(.MCM.black, for: .normal)
     }
