@@ -60,3 +60,24 @@ export type BasicOptionProps = {
   imgUrl: string;
   description: string;
 };
+
+export type DescriptionOptionModalProps = {
+  id: number;
+  name: string;
+  imgUrl: string;
+  summary: string;
+  description: string;
+  subOptions: SuboptionsType | null;
+  filter: {
+    unavailableTrimIds: number[];
+    additionalTrimIds: number[];
+    defaultTrimIds: number[];
+  };
+  appliedOption: {
+    id: number;
+    category: string;
+    name: string;
+    price: number;
+    imgUrl: string;
+  };
+};

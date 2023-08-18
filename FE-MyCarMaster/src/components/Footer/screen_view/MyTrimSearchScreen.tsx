@@ -2,10 +2,12 @@ import styled from "styled-components";
 import SearchTrimBox from "../../common/SearchTrimBox/SearchTrimBox";
 import OptionCheckBox from "../../common/CheckBox/OptionCheckBox";
 import Button from "../../common/Button/Button";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import theme from "../../../styles/Theme";
 import { useTrimState } from "../../../contexts/TrimContext";
 import { QuotationType } from "../../../types/quotation.types";
+import { DescriptionOptionModalProps } from "../../../types/options.types";
+import OptionDescriptionModal from "../../common/OptionDescriptionModal/OptionDescriptionModal";
 
 //dummy data
 const data = [
@@ -277,6 +279,10 @@ export default function MyTrimSearchScreen({
   const [selected, setSelected] = useState<number | null>(null);
   const { trimList } = useTrimState();
 
+  const [isDescriptionModalOpen, setIsDescriptionModalOpen] = useState(false);
+  const [detailOption, setDetailOption] =
+    useState<DescriptionOptionModalProps>();
+
   const dataChange = (id: number, filter: IDDataProps) => {
     setSelected(null);
     const index = idData.findIndex((data) => data.optionId === id);
@@ -319,62 +325,75 @@ export default function MyTrimSearchScreen({
       (option) => option !== null
     );
 
-    onSearch &&
-      onSearch(appliedOptionsFilter as QuotationType[], selected);
+    onSearch && onSearch(appliedOptionsFilter as QuotationType[], selected);
   };
 
   return (
-    <Container $loading={$loading} $show={$show} onClick={onClick}>
-      <TrimSelectContainer>
-        {trimList.map((trim) => (
-          <SearchTrimBox
-            key={trim.id}
-            name={trim.name}
-            description={trim.description}
-            price={trim.price}
-            status={
-              selected === trim.id
-                ? "choice"
-                : CheckfilterOption(trim.id).status
-            }
-            isOption={CheckfilterOption(trim.id).isOption}
-            onClick={
-              selected === trim.id
-                ? () => setSelected(null)
-                : () => setSelected(trim.id)
+    <Fragment>
+      <Container $loading={$loading} $show={$show} onClick={onClick}>
+        <TrimSelectContainer>
+          {trimList.map((trim) => (
+            <SearchTrimBox
+              key={trim.id}
+              name={trim.name}
+              description={trim.description}
+              price={trim.price}
+              status={
+                selected === trim.id
+                  ? "choice"
+                  : CheckfilterOption(trim.id).status
+              }
+              isOption={CheckfilterOption(trim.id).isOption}
+              onClick={
+                selected === trim.id
+                  ? () => setSelected(null)
+                  : () => setSelected(trim.id)
+              }
+            />
+          ))}
+        </TrimSelectContainer>
+        <CheckOptionContainer>
+          {data.map((option) => (
+            <OptionCheckBox
+              key={option.id}
+              $filter={option.filter}
+              $name={option.name}
+              onChange={() => dataChange(option.id, option.filter)}
+              onClick={() => {
+                setDetailOption(option as DescriptionOptionModalProps);
+                setIsDescriptionModalOpen(true);
+              }}
+            />
+          ))}
+        </CheckOptionContainer>
+        <ButtonContainer>
+          <Button
+            $x={9.5625}
+            $y={2.25}
+            text={"결정하기"}
+            $backgroundcolor={theme.colors.NAVYBLUE5}
+            $bordercolor={theme.colors.NAVYBLUE5}
+            $textcolor={theme.colors.WHITE}
+            $opacity={selected ? 1 : 0.3}
+            handleClick={
+              selected !== null
+                ? () => {
+                    onSearch && onSearchHandler(idData, selected);
+                  }
+                : undefined
             }
           />
-        ))}
-      </TrimSelectContainer>
-      <CheckOptionContainer>
-        {data.map((option) => (
-          <OptionCheckBox
-            key={option.id}
-            $filter={option.filter}
-            $name={option.name}
-            onChange={() => dataChange(option.id, option.filter)}
-          />
-        ))}
-      </CheckOptionContainer>
-      <ButtonContainer>
-        <Button
-          $x={9.5625}
-          $y={2.25}
-          text={"결정하기"}
-          $backgroundcolor={theme.colors.NAVYBLUE5}
-          $bordercolor={theme.colors.NAVYBLUE5}
-          $textcolor={theme.colors.WHITE}
-          $opacity={selected ? 1 : 0.3}
-          handleClick={
-            selected !== null
-              ? () => {
-                  onSearch && onSearchHandler(idData, selected);
-                }
-              : undefined
-          }
+        </ButtonContainer>
+      </Container>
+      {isDescriptionModalOpen && (
+        <OptionDescriptionModal
+          setIsDescriptionModalOpen={setIsDescriptionModalOpen}
+          option={detailOption as DescriptionOptionModalProps}
+          // onClick 부분에 체크가 변하는 것도 있어야해서 모달 자체를 OptionCheckBox 내로 넣어야하나 고민
+          onClick={() => dataChange(detailOption!.id, detailOption!.filter)}
         />
-      </ButtonContainer>
-    </Container>
+      )}
+    </Fragment>
   );
 }
 
