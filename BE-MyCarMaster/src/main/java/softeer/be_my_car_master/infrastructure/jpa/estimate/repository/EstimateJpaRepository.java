@@ -12,4 +12,15 @@ public interface EstimateJpaRepository extends JpaRepository<EstimateEntity, UUI
 
 	@Query("SELECT e FROM EstimateEntity e WHERE e.uuid = :estimateUuid")
 	Optional<EstimateEntity> findByUuid(UUID estimateUuid);
+
+	@Query("SELECT e "
+		+ "FROM EstimateEntity e "
+		+ "JOIN FETCH e.trim "
+		+ "JOIN FETCH e.engine "
+		+ "JOIN FETCH e.wheelDrive "
+		+ "JOIN FETCH e.bodyType "
+		+ "JOIN FETCH e.exteriorColor "
+		+ "JOIN FETCH e.interiorColor "
+		+ "WHERE e.uuid = :estimateUuid")
+	Optional<EstimateEntity> findFullEstimateByUuid(UUID estimateUuid);
 }
