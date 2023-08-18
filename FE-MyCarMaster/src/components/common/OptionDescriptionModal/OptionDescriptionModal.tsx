@@ -61,7 +61,7 @@ function OptionDescriptionModal({
                 $bordercolor={theme.colors.NAVYBLUE5}
                 $textcolor={theme.colors.WHITE}
                 text="선택하기"
-                handleClick={selectHandler}
+                handleClick={(e) => selectHandler(e as React.MouseEvent)}
               />
             </ButtonContainer>
           </Container>

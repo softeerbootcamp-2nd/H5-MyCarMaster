@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { styled } from "styled-components";
 // import useFetch from "../../../hooks/useFetch";
 // import { BasicOptionProps } from "../../../types/options.types";

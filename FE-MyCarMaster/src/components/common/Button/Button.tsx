@@ -11,7 +11,7 @@ type ContainerProp = {
   text?: string | undefined;
   $tool?: string;
   $style?: RuleSet | string;
-  handleClick?: () => void;
+  handleClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 function Button({
