@@ -96,4 +96,12 @@ public class OptionEntity {
 			.price(price)
 			.build();
 	}
+
+	public Option toEstimateOption() {
+		return Option.builder()
+			.name(name)
+			.price(price)
+			.imgUrl(imgUrl)
+			.build();
+	}
 }

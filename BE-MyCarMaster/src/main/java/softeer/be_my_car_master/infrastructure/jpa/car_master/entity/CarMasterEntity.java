@@ -52,6 +52,11 @@ public class CarMasterEntity {
 	private AgencyEntity agency;
 
 	public CarMaster toCarMaster() {
+		Agency agency = Agency.builder()
+			.id(this.agency.getId())
+			.name(this.agency.getName())
+			.build();
+
 		return CarMaster.builder()
 			.id(id)
 			.name(name)
@@ -60,6 +65,7 @@ public class CarMasterEntity {
 			.email(email)
 			.intro(intro)
 			.sales(sales)
+			.agency(agency)
 			.build();
 	}
 

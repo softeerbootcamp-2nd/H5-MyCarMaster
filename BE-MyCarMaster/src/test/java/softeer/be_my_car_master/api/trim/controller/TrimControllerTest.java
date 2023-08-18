@@ -136,7 +136,6 @@ class TrimControllerTest {
 				.name("HTRAC")
 				.imgUrl("imgUrl")
 				.description("옵션 상세설명")
-				.need("4WD")
 				.build();
 			getTrimDefaultOptionsResponse.setDefaultOptions(Arrays.asList(trimDefaultOptionDto));
 

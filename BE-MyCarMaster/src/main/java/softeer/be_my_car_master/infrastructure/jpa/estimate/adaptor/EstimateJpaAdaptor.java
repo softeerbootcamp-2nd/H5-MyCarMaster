@@ -5,6 +5,8 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.api.estimate.dto.request.CreateEstimateRequest;
 import softeer.be_my_car_master.api.estimate.dto.request.EstimateOptionDto;
@@ -84,6 +86,13 @@ public class EstimateJpaAdaptor implements EstimatePort {
 	@Override
 	public Optional<Estimate> findByUuid(UUID estimateUuid) {
 		return estimateRepository.findByUuid(estimateUuid)
+			.map(EstimateEntity::toSimpleEstimate);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Optional<Estimate> findFullEstimateByUuid(UUID estimateUuid) {
+		return estimateRepository.findFullEstimateByUuid(estimateUuid)
 			.map(EstimateEntity::toEstimate);
 	}
 }

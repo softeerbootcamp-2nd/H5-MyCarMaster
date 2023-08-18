@@ -11,6 +11,7 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import softeer.be_my_car_master.domain.option.Option;
 import softeer.be_my_car_master.infrastructure.jpa.option.entity.OptionEntity;
 
 @Entity
@@ -37,5 +38,9 @@ public class EstimateAdditionalOptionEntity {
 			.estimate(estimateEntity)
 			.estimateAdditionalOption(optionEntity)
 			.build();
+	}
+
+	public Option toOption() {
+		return estimateAdditionalOption.toEstimateOption();
 	}
 }

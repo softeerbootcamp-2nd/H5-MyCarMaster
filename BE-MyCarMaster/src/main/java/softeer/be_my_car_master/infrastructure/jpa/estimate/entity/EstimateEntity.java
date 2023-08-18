@@ -24,6 +24,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import softeer.be_my_car_master.domain.estimate.Estimate;
+import softeer.be_my_car_master.domain.option.Option;
 import softeer.be_my_car_master.infrastructure.jpa.body_type.entity.BodyTypeEntity;
 import softeer.be_my_car_master.infrastructure.jpa.color_exterior.entity.ExteriorColorEntity;
 import softeer.be_my_car_master.infrastructure.jpa.color_interior.entity.InteriorColorEntity;
@@ -80,7 +81,7 @@ public class EstimateEntity {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "interior_color_id")
-	private InteriorColorEntity interiorColorEntity;
+	private InteriorColorEntity interiorColor;
 
 	@OneToMany(mappedBy = "estimate", cascade = CascadeType.PERSIST)
 	private List<EstimateAdditionalOptionEntity> additionalOptions = new ArrayList<>();
@@ -95,7 +96,7 @@ public class EstimateEntity {
 		WheelDriveEntity wheelDrive,
 		BodyTypeEntity bodyType,
 		ExteriorColorEntity exteriorColor,
-		InteriorColorEntity interiorColorEntity,
+		InteriorColorEntity interiorColor,
 		List<OptionEntity> trimAdditionalOptionEntities,
 		List<OptionEntity> trimConsiderOptionEntities
 	) {
@@ -107,7 +108,7 @@ public class EstimateEntity {
 			.wheelDrive(wheelDrive)
 			.bodyType(bodyType)
 			.exteriorColor(exteriorColor)
-			.interiorColorEntity(interiorColorEntity)
+			.interiorColor(interiorColor)
 			.build();
 
 		List<EstimateAdditionalOptionEntity> estimateAdditionalOptions = trimAdditionalOptionEntities.stream()
@@ -139,7 +140,31 @@ public class EstimateEntity {
 		this.considerOptions = estimateConsiderOptions;
 	}
 
+	public Estimate toSimpleEstimate() {
+		return Estimate.builder()
+			.id(id)
+			.uuid(uuid)
+			.build();
+	}
+
 	public Estimate toEstimate() {
-		return new Estimate(id, uuid);
+		List<Option> additionalOptions = this.additionalOptions.stream()
+			.map(EstimateAdditionalOptionEntity::toOption)
+			.collect(Collectors.toList());
+		List<Option> considerOptions = this.considerOptions.stream()
+			.map(EstimateConsiderOptionEntity::toOption)
+			.collect(Collectors.toList());
+		return Estimate.builder()
+			.id(id)
+			.uuid(uuid)
+			.trim(trim.toTrim())
+			.engine(engine.toEngine())
+			.wheelDrive(wheelDrive.toWheelDrive())
+			.bodyType(bodyType.toBodyType())
+			.exteriorColor(exteriorColor.toExteriorColor(trim.getId()))
+			.interiorColor(interiorColor.toInteriorColor(trim.getId()))
+			.additionalOptions(additionalOptions)
+			.considerOptions(considerOptions)
+			.build();
 	}
 }

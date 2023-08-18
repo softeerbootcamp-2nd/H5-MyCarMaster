@@ -11,12 +11,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import softeer.be_my_car_master.domain.trim.Trim;
 import softeer.be_my_car_master.infrastructure.jpa.model.entity.ModelEntity;
 
 @Entity
 @Table(name = "trim")
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class TrimEntity {
 
@@ -52,5 +54,9 @@ public class TrimEntity {
 			.price(price)
 			.imgUrl(imgUrl)
 			.build();
+	}
+
+	public boolean checkId(Long trimId) {
+		return id.equals(trimId);
 	}
 }
