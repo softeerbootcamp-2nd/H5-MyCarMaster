@@ -34,20 +34,20 @@ const GlobalStyle = createGlobalStyle`
     @font-face {
         font-family: HyundaiSansBold;
         font-display: swap;
-        src: local('HyundaiSansBold'), url('/src/assets/fonts/HyundaiSansHeadKRBold.woff2') format('woff2'),
-      url('/src/assets/fonts/HyundaiSansHeadKRBold.woff') format('woff');
+        src: local('HyundaiSansBold'), url('./fonts/HyundaiSansHeadKRBold.woff2') format('woff2'),
+      url('./fonts/fonts/HyundaiSansHeadKRBold.woff') format('woff');
     }
     @font-face {
         font-family: HyundaiSansMedium;
         font-display: swap;
-        src: local('HyundaiSansMedium'), url('/src/assets/fonts/HyundaiSansHeadKRMedium.woff2') format('woff2'),
-      url('/src/assets/fonts/HyundaiSansHeadKRMedium.woff') format('woff');
+        src: local('HyundaiSansMedium'), url('./fonts/HyundaiSansHeadKRMedium.woff2') format('woff2'),
+      url('./fonts/HyundaiSansHeadKRMedium.woff') format('woff');
     }
     @font-face {
         font-family: HyundaiSansRegular;
         font-display: swap;
-        src: local('HyundaiSansRegular'), url('/src/assets/fonts/HyundaiSansHeadKRRegular.woff2') format('woff2'),
-      url('/src/assets/fonts/HyundaiSansHeadKRRegular.woff') format('woff');
+        src: local('HyundaiSansRegular'), url('./fonts/HyundaiSansHeadKRRegular.woff2') format('woff2'),
+      url('./fonts/HyundaiSansHeadKRRegular.woff') format('woff');
     }
 
     // public font setting
