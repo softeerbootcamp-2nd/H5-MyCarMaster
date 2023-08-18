@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B500C77F2A8FCA5F007724F3 /* QuotationContentItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500C77E2A8FCA5F007724F3 /* QuotationContentItemView.swift */; };
+		B500C7832A8FE0AD007724F3 /* Quotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500C7822A8FE0AD007724F3 /* Quotation.swift */; };
 		B500C7872A8FE175007724F3 /* DecodeWheelDriveDTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500C7862A8FE175007724F3 /* DecodeWheelDriveDTOTests.swift */; };
 		B500C7892A8FE188007724F3 /* DecodeEngineDTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500C7882A8FE188007724F3 /* DecodeEngineDTOTests.swift */; };
 		B500C78B2A8FE192007724F3 /* DecodeExteriorDTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500C78A2A8FE192007724F3 /* DecodeExteriorDTOTests.swift */; };
@@ -138,6 +139,7 @@
 
 /* Begin PBXFileReference section */
 		B500C77E2A8FCA5F007724F3 /* QuotationContentItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationContentItemView.swift; sourceTree = "<group>"; };
+		B500C7822A8FE0AD007724F3 /* Quotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quotation.swift; sourceTree = "<group>"; };
 		B500C7862A8FE175007724F3 /* DecodeWheelDriveDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeWheelDriveDTOTests.swift; sourceTree = "<group>"; };
 		B500C7882A8FE188007724F3 /* DecodeEngineDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeEngineDTOTests.swift; sourceTree = "<group>"; };
 		B500C78A2A8FE192007724F3 /* DecodeExteriorDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeExteriorDTOTests.swift; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 				B5DD64F22A8783D800B44F61 /* Exterior.swift */,
 				B5BBB3502A89C7BF00AAFC84 /* Interior.swift */,
 				B53BA1092A8BF426009F94BE /* Option.swift */,
+				B500C7822A8FE0AD007724F3 /* Quotation.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -789,6 +792,7 @@
 				B53BA1102A8BF4E2009F94BE /* OptionListCellMainState.swift in Sources */,
 				B5BBB34F2A89C74C00AAFC84 /* InteriorViewController.swift in Sources */,
 				B5DD65122A880B3100B44F61 /* CGSize+Operator.swift in Sources */,
+				B500C7832A8FE0AD007724F3 /* Quotation.swift in Sources */,
 				B5DD65202A8926E700B44F61 /* ContentSizeEstimatable.swift in Sources */,
 				B5C0790D2A8BD6EA00747B11 /* UIButton+Selectable.swift in Sources */,
 				B5DD64DF2A876EED00B44F61 /* BodyTypeDTO.swift in Sources */,
