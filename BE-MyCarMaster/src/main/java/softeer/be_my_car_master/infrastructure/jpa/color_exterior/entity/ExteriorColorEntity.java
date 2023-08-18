@@ -1,5 +1,8 @@
 package softeer.be_my_car_master.infrastructure.jpa.color_exterior.entity;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AccessLevel;
@@ -36,11 +40,20 @@ public class ExteriorColorEntity {
 	@JoinColumn(name = "model_id")
 	private ModelEntity model;
 
-	public ExteriorColor toExteriorColor() {
+	@OneToMany(mappedBy = "exteriorColor")
+	private List<TrimExteriorColorEntity> trimExteriorColors;
+
+	public ExteriorColor toExteriorColor(Long trimId) {
+		TrimExteriorColorEntity trimExteriorColorEntity = trimExteriorColors.stream()
+			.filter(trimExteriorColor -> trimExteriorColor.checkTrimId(trimId))
+			.collect(Collectors.toList())
+			.get(0);
 		return ExteriorColor.builder()
 			.id(id)
 			.name(name)
 			.colorImgUrl(colorImgUrl)
+			.coloredImgUrl(trimExteriorColorEntity.getColoredCarImgUrl())
+			.price(trimExteriorColorEntity.getPrice())
 			.build();
 	}
 }
