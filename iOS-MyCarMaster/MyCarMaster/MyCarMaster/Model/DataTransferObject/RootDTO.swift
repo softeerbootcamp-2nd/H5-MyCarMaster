@@ -13,58 +13,26 @@ struct RootDTO: Codable {
     let result: Result
 }
 
-enum Result: Codable {
-    case unknown
-    case trims([TrimDTO])
-    case engines([EngineDTO])
-    case wheelDrives([WheelDriveDTO])
-    case bodyTypes([BodyTypeDTO])
-    case exteriors([ExteriorDTO])
-    case interiors([InteriorDTO])
+struct Result: Codable {
+    let exclusiveTags: [String]?
+
+    let trims: [TrimDTO]?
+    let engines: [EngineDTO]?
+    let wheelDrives: [WheelDriveDTO]?
+    let bodyTypes: [BodyTypeDTO]?
+    let exteriors: [ExteriorDTO]?
+    let interiors: [InteriorDTO]?
+    let options: [OptionDTO]?
 
     enum CodingKeys: String, CodingKey {
-        case unknown
+        case exclusiveTags
+
         case trims
         case engines
         case wheelDrives
         case bodyTypes
         case exteriors = "exteriorColors"
         case interiors = "interiorColors"
-    }
-
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-
-        if let trimDTOList = try? container.decode([TrimDTO].self, forKey: .trims) {
-            self = .trims(trimDTOList)
-            return
-        }
-
-        if let engineDTOList = try? container.decode([EngineDTO].self, forKey: .engines) {
-            self = .engines(engineDTOList)
-            return
-        }
-
-        if let wheelDriveDTOList = try? container.decode([WheelDriveDTO].self, forKey: .wheelDrives) {
-            self = .wheelDrives(wheelDriveDTOList)
-            return
-        }
-
-        if let bodyTypeDTOList = try? container.decode([BodyTypeDTO].self, forKey: .bodyTypes) {
-            self = .bodyTypes(bodyTypeDTOList)
-            return
-        }
-
-        if let exteriorDTOList = try? container.decode([ExteriorDTO].self, forKey: .exteriors) {
-            self = .exteriors(exteriorDTOList)
-            return
-        }
-
-        if let interiorDTOList = try? container.decode([InteriorDTO].self, forKey: .interiors) {
-            self = .interiors(interiorDTOList)
-            return
-        }
-
-        self = .unknown
+        case options
     }
 }

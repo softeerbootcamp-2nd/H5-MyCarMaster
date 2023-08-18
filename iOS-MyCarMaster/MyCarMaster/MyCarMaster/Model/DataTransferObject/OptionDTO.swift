@@ -14,10 +14,10 @@ struct OptionDTO: Codable {
     let price: Int
     let ratio: Int
     let imgURL: String
-    let summary: String
-    let description: String
-    let tag: String
-    let subOptions: [SubOptionDTO]
+    let summary: String?
+    let description: String?
+    let tag: String?
+    let subOptions: [SubOptionDTO]?
 
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -36,7 +36,7 @@ struct OptionDTO: Codable {
 struct SubOptionDTO: Codable {
     let name: String
     let imgURL: String
-    let description: String
+    let description: String?
 
     enum CodingKeys: String, CodingKey {
         case name = "name"
@@ -57,7 +57,7 @@ extension Option {
         self.summary = optionDTO.summary
         self.description = optionDTO.description
         self.tag = optionDTO.tag
-        self.subOptions = optionDTO.subOptions.map { SubOption($0) }
+        self.subOptions = optionDTO.subOptions?.map { SubOption($0) } ?? []
     }
 }
 

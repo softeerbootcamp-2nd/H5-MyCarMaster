@@ -90,7 +90,7 @@ extension EngineViewController {
 
     private func applyData(_ data: Data?) {
         if let data,
-           case let .engines(engineDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
+           let engineDTOList = try? JSONDecoder().decode(RootDTO.self, from: data).result.engines {
             self.dataList = engineDTOList.map { Engine($0) }
             DispatchQueue.main.async {
                 self.contentView.listView.reloadData()

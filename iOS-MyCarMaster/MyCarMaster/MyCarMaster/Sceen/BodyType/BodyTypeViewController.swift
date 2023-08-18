@@ -90,7 +90,7 @@ extension BodyTypeViewController {
 
     private func applyData(_ data: Data?) {
         if let data,
-           case let .bodyTypes(bodyTypeDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
+           let bodyTypeDTOList = try? JSONDecoder().decode(RootDTO.self, from: data).result.bodyTypes {
             self.dataList = bodyTypeDTOList.map { BodyType($0) }
             DispatchQueue.main.async {
                 self.contentView.listView.reloadData()

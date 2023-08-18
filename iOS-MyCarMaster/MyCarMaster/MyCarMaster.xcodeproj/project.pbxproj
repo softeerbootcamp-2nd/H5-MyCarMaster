@@ -11,7 +11,6 @@
 		B50C7E4E2A790279005AFE0B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C7E4D2A790279005AFE0B /* SceneDelegate.swift */; };
 		B50C7E552A79027A005AFE0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B50C7E542A79027A005AFE0B /* Assets.xcassets */; };
 		B50C7E582A79027A005AFE0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B50C7E562A79027A005AFE0B /* LaunchScreen.storyboard */; };
-		B50C7E632A79027A005AFE0B /* MyCarMasterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C7E622A79027A005AFE0B /* MyCarMasterTests.swift */; };
 		B50C7E6D2A79027A005AFE0B /* MyCarMasterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C7E6C2A79027A005AFE0B /* MyCarMasterUITests.swift */; };
 		B50C7E6F2A79027A005AFE0B /* MyCarMasterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C7E6E2A79027A005AFE0B /* MyCarMasterUITestsLaunchTests.swift */; };
 		B510BBDB2A840BD4009E5752 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510BBDA2A840BD4009E5752 /* Formatter.swift */; };
@@ -66,9 +65,13 @@
 		B5C0790B2A8BD69100747B11 /* UICollectionViewCell+Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0790A2A8BD69100747B11 /* UICollectionViewCell+Selectable.swift */; };
 		B5C0790D2A8BD6EA00747B11 /* UIButton+Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0790C2A8BD6EA00747B11 /* UIButton+Selectable.swift */; };
 		B5C3EAC12A84B1AA00D9577C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */; };
+		B5D1E1F52A8DFBCE00DAE384 /* Dependency.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5D1E1F42A8DFBBA00DAE384 /* Dependency.plist */; };
+		B5D1E1F92A8E094200DAE384 /* DecodeOptionDTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D1E1F82A8E094200DAE384 /* DecodeOptionDTOTests.swift */; };
+		B5D1E1FC2A8E14AE00DAE384 /* DecodeTrimDTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D1E1FB2A8E14AE00DAE384 /* DecodeTrimDTOTests.swift */; };
+		B5D1E1FE2A8E14C400DAE384 /* FetchFromBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D1E1FD2A8E14C400DAE384 /* FetchFromBundle.swift */; };
+		B5D1E2002A8E20AC00DAE384 /* OptionDTO.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D1E1FF2A8E20AC00DAE384 /* OptionDTO.json */; };
 		B5D5D4152A8D559600A4DA3C /* SubOptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D5D4142A8D559600A4DA3C /* SubOptionButton.swift */; };
 		B5D5D4182A8DDBB100A4DA3C /* MCMNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BBB39B2A8A447900AAFC84 /* MCMNetwork.framework */; };
-		B5D5D4192A8DDBB100A4DA3C /* MCMNetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5BBB39B2A8A447900AAFC84 /* MCMNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5DD64D02A876ABD00B44F61 /* WheelDriveDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64CF2A876ABD00B44F61 /* WheelDriveDTO.swift */; };
 		B5DD64D22A876B5000B44F61 /* WheelDrive.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64D12A876B5000B44F61 /* WheelDrive.swift */; };
 		B5DD64DD2A876ED800B44F61 /* BodyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64DC2A876ED800B44F61 /* BodyType.swift */; };
@@ -119,7 +122,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				B5BBB3A12A8A447900AAFC84 /* MCMResource.framework in Embed Frameworks */,
-				B5D5D4192A8DDBB100A4DA3C /* MCMNetwork.framework in Embed Frameworks */,
 				B5A600FF2A81E1FC00CF2983 /* MCMCombineExtension.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -135,7 +137,6 @@
 		B50C7E572A79027A005AFE0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B50C7E592A79027A005AFE0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B50C7E5E2A79027A005AFE0B /* MyCarMasterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyCarMasterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B50C7E622A79027A005AFE0B /* MyCarMasterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCarMasterTests.swift; sourceTree = "<group>"; };
 		B50C7E682A79027A005AFE0B /* MyCarMasterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyCarMasterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B50C7E6C2A79027A005AFE0B /* MyCarMasterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCarMasterUITests.swift; sourceTree = "<group>"; };
 		B50C7E6E2A79027A005AFE0B /* MyCarMasterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCarMasterUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -187,6 +188,11 @@
 		B5C0790A2A8BD69100747B11 /* UICollectionViewCell+Selectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Selectable.swift"; sourceTree = "<group>"; };
 		B5C0790C2A8BD6EA00747B11 /* UIButton+Selectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Selectable.swift"; sourceTree = "<group>"; };
 		B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		B5D1E1F42A8DFBBA00DAE384 /* Dependency.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Dependency.plist; sourceTree = "<group>"; };
+		B5D1E1F82A8E094200DAE384 /* DecodeOptionDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeOptionDTOTests.swift; sourceTree = "<group>"; };
+		B5D1E1FB2A8E14AE00DAE384 /* DecodeTrimDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeTrimDTOTests.swift; sourceTree = "<group>"; };
+		B5D1E1FD2A8E14C400DAE384 /* FetchFromBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchFromBundle.swift; sourceTree = "<group>"; };
+		B5D1E1FF2A8E20AC00DAE384 /* OptionDTO.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = OptionDTO.json; sourceTree = "<group>"; };
 		B5D5D4142A8D559600A4DA3C /* SubOptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubOptionButton.swift; sourceTree = "<group>"; };
 		B5DD64CF2A876ABD00B44F61 /* WheelDriveDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelDriveDTO.swift; sourceTree = "<group>"; };
 		B5DD64D12A876B5000B44F61 /* WheelDrive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelDrive.swift; sourceTree = "<group>"; };
@@ -282,7 +288,7 @@
 		B50C7E612A79027A005AFE0B /* MyCarMasterTests */ = {
 			isa = PBXGroup;
 			children = (
-				B50C7E622A79027A005AFE0B /* MyCarMasterTests.swift */,
+				B5D1E1FA2A8E0DA900DAE384 /* DecodeDTO */,
 			);
 			path = MyCarMasterTests;
 			sourceTree = "<group>";
@@ -311,6 +317,7 @@
 				B50C7E542A79027A005AFE0B /* Assets.xcassets */,
 				B50C7E562A79027A005AFE0B /* LaunchScreen.storyboard */,
 				B50C7E592A79027A005AFE0B /* Info.plist */,
+				B5D1E1F42A8DFBBA00DAE384 /* Dependency.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -463,6 +470,7 @@
 				B5DD64E22A87714000B44F61 /* BodyTypeDTO.json */,
 				B5BBB3582A89CA5200AAFC84 /* ExteriorDTO.json */,
 				B5BBB3562A89C9AC00AAFC84 /* InteriorDTO.json */,
+				B5D1E1FF2A8E20AC00DAE384 /* OptionDTO.json */,
 			);
 			path = Dummy;
 			sourceTree = "<group>";
@@ -505,6 +513,16 @@
 				B5C0790C2A8BD6EA00747B11 /* UIButton+Selectable.swift */,
 			);
 			path = Selectable;
+			sourceTree = "<group>";
+		};
+		B5D1E1FA2A8E0DA900DAE384 /* DecodeDTO */ = {
+			isa = PBXGroup;
+			children = (
+				B5D1E1FB2A8E14AE00DAE384 /* DecodeTrimDTOTests.swift */,
+				B5D1E1F82A8E094200DAE384 /* DecodeOptionDTOTests.swift */,
+				B5D1E1FD2A8E14C400DAE384 /* FetchFromBundle.swift */,
+			);
+			path = DecodeDTO;
 			sourceTree = "<group>";
 		};
 		B5DD64ED2A877DC700B44F61 /* Exterior */ = {
@@ -677,9 +695,11 @@
 				B5BBB35C2A8A1D6400AAFC84 /* WheelDriveDTO.json in Resources */,
 				B5BBB35D2A8A1D6400AAFC84 /* BodyTypeDTO.json in Resources */,
 				B5BBB35E2A8A1D6400AAFC84 /* ExteriorDTO.json in Resources */,
+				B5D1E2002A8E20AC00DAE384 /* OptionDTO.json in Resources */,
 				B5BBB35F2A8A1D6400AAFC84 /* InteriorDTO.json in Resources */,
 				B50C7E582A79027A005AFE0B /* LaunchScreen.storyboard in Resources */,
 				B50C7E552A79027A005AFE0B /* Assets.xcassets in Resources */,
+				B5D1E1F52A8DFBCE00DAE384 /* Dependency.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -799,7 +819,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B50C7E632A79027A005AFE0B /* MyCarMasterTests.swift in Sources */,
+				B5D1E1F92A8E094200DAE384 /* DecodeOptionDTOTests.swift in Sources */,
+				B5D1E1FE2A8E14C400DAE384 /* FetchFromBundle.swift in Sources */,
+				B5D1E1FC2A8E14AE00DAE384 /* DecodeTrimDTOTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

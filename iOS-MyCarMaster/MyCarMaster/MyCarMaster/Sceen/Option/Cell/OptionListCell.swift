@@ -14,7 +14,7 @@ final class OptionListCell: UICollectionViewCell, CellStyleSelectable {
 
     var canExpand: Bool = false {
         didSet {
-            shouldExpand()
+            updateUIIfExpandable()
         }
     }
 
@@ -109,7 +109,7 @@ final class OptionListCell: UICollectionViewCell, CellStyleSelectable {
         stackView.alignment = .fill
     }
 
-    // MARK: Init
+    // MARK: LifeCycle
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
@@ -121,10 +121,14 @@ final class OptionListCell: UICollectionViewCell, CellStyleSelectable {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func prepareForReuse() {
+        updateUIIfExpandable()
+    }
+
     private func configureUI() {
         unselectedStyle()
         updateUIForExpand()
-        shouldExpand()
+        updateUIIfExpandable()
     }
 }
 
@@ -315,14 +319,10 @@ extension OptionListCell {
             self.disclosureButton.transform = self.isExpanded ? upsideDown : .identity
             self.additionalContentView.isHidden = !self.isExpanded
             self.invalidateIntrinsicContentSize()
-            if let superview = self.superview as? UICollectionView,
-               let indexPath = superview.indexPath(for: self) {
-                superview.scrollToItem(at: indexPath, at: .top, animated: false)
-            }
         }
     }
 
-    private func shouldExpand() {
+    private func updateUIIfExpandable() {
         if !canExpand {
             disclosureButton.image = UIImage(systemName: "chevron.right")
         } else {

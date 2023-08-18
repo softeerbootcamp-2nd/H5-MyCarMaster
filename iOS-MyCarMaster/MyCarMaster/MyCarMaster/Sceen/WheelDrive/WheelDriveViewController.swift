@@ -90,7 +90,7 @@ extension WheelDriveViewController {
 
     private func applyData(_ data: Data?) {
         if let data,
-           case let .wheelDrives(wheelDriveDTOList) = try? JSONDecoder().decode(RootDTO.self, from: data).result {
+           let wheelDriveDTOList = try? JSONDecoder().decode(RootDTO.self, from: data).result.wheelDrives {
             self.dataList = wheelDriveDTOList.map { WheelDrive($0) }
             DispatchQueue.main.async {
                 self.contentView.listView.reloadData()

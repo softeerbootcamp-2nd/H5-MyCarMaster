@@ -14,16 +14,16 @@ struct Option: Codable, Hashable {
     let price: Int
     let ratio: Int
     let imgURL: URL?
-    let summary: String
-    let description: String
-    let tag: String
+    let summary: String?
+    let description: String?
+    let tag: String?
     let subOptions: [SubOption]
 }
 
 struct SubOption: Codable, Hashable {
     let name: String
     let imgURL: URL?
-    let description: String
+    let description: String?
 
     enum CodingKeys: String, CodingKey {
         case name = "name"

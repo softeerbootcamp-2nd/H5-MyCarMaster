@@ -16,41 +16,6 @@ final class OptionView: UIView {
         imageView.backgroundColor = .MCM.grey2
     }
 
-//    private let basicOptionView = UIView().then { view in
-//        let label = UILabel().then { label in
-//            label.style = .bodyMedium1
-//            label.textColor = .MCM.navyBlue5
-//            label.setText("원래 가지고 있는 옵션이 궁금하신가요?")
-//        }
-//
-//        let button = UIButton().then { button in
-//            button.style = .buttonTitleSmall
-//            button.setStyledTitle("기본 포함 옵션", for: .normal)
-//            button.setTitleColor(UIColor.MCM.navyBlue5, for: .normal)
-//            button.backgroundColor = .MCM.white
-//            button.layer.borderColor = UIColor.MCM.navyBlue3.cgColor
-//            button.layer.borderWidth = 1
-//        }
-//
-//        view.backgroundColor = .MCM.navyBlue1
-//        view.layer.borderWidth = 1.0
-//        view.layer.borderColor = UIColor.MCM.navyBlue2.cgColor
-//
-//        view.addSubview(label)
-//        view.addSubview(button)
-//
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        label.topAnchor.constraint(equalTo: view.topAnchor, constant: 8).isActive = true
-//        label.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
-//        label.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -8).isActive = true
-//
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.topAnchor.constraint(equalTo: view.topAnchor, constant: 8).isActive = true
-//        button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
-//        button.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -8).isActive = true
-//        button.widthAnchor.constraint(equalToConstant: 78).isActive = true
-//    }
-
     lazy var categoryListView = UICollectionView(
         frame: .zero,
         collectionViewLayout: createCatgoryListViewLayout()
@@ -85,7 +50,6 @@ final class OptionView: UIView {
         collectionViewLayout: createOptionListViewLayout()
     ).then { collectionView in
         collectionView.backgroundColor = .MCM.white
-//        collectionView.bounces = false
         collectionView.register(OptionListCell.self, forCellWithReuseIdentifier: OptionListCell.reuseIdentifier)
     }
 
@@ -145,6 +109,10 @@ final class OptionView: UIView {
 extension OptionView {
     func updateLayout() {
         configureLayout()
+    }
+
+    func configurePreviewImage(with image: UIImage?) {
+        previewImageView.image = image
     }
 }
 
