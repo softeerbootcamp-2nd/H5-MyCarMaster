@@ -60,6 +60,8 @@ jobs:
             ESTIMATE_LINK=${{ secrets.ESTIMATE_LINK }}
             SERVER_URL=${{ secrets.SERVER_URL }}
             PINPOINT_AGENT_ID=${{ steps.generate-pinpoint.outputs.pinpoint }}
+            REDIS_URL=${{ secrets.REDIS_URL }}
+            REDIS_PORT=${{ secrets.REDIS_PORT }}
           tags: |
             softeerh5/my-car-master:latest
 

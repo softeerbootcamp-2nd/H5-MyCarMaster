@@ -20,6 +20,10 @@ spring:
     show-sql: true
     open-in-view : false
 
+redis:
+  url: redis
+  port: 6379
+
 ---
 spring:
   config:
@@ -41,3 +45,7 @@ spring:
         default_batch_fetch_size: 100
     show-sql: true
     open-in-view : false
+
+redis:
+  url: ${REDIS_URL}
+  port: ${REDIS_PORT}
