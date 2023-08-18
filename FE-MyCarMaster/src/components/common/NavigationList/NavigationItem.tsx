@@ -90,9 +90,17 @@ function NavigationItem({ name, quotation }: NavigationItemProp) {
         quotation &&
         Object.entries(quotation).map(([key, value]) =>
           key === "selectedQuotation"
-            ? value.map((item: QuotationType) => (
-                <BottomContainer key={item.id}>{item.name}</BottomContainer>
-              ))
+            ? value.map((item: QuotationType, index: number) =>
+                value.length > 3 && item.id === value[2].id ? (
+                  <BottomContainer key={item.id}>
+                    {item.name} 외 {value.length - 3}개
+                  </BottomContainer>
+                ) : (
+                  index < 3 && (
+                    <BottomContainer key={item.id}>{item.name}</BottomContainer>
+                  )
+                )
+              )
             : key !== "consideredQuotation" &&
               value.name && (
                 <BottomContainer key={key}>{value.name}</BottomContainer>
