@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B500C7872A8FE175007724F3 /* DecodeWheelDriveDTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500C7862A8FE175007724F3 /* DecodeWheelDriveDTOTests.swift */; };
+		B500C7892A8FE188007724F3 /* DecodeEngineDTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500C7882A8FE188007724F3 /* DecodeEngineDTOTests.swift */; };
+		B500C78B2A8FE192007724F3 /* DecodeExteriorDTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500C78A2A8FE192007724F3 /* DecodeExteriorDTOTests.swift */; };
+		B500C78D2A8FE19B007724F3 /* DecodeInteriorDTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500C78C2A8FE19B007724F3 /* DecodeInteriorDTOTests.swift */; };
+		B500C78F2A8FE1AE007724F3 /* DecodeBodyTypeDTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500C78E2A8FE1AE007724F3 /* DecodeBodyTypeDTOTests.swift */; };
 		B50C7E4C2A790279005AFE0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C7E4B2A790279005AFE0B /* AppDelegate.swift */; };
 		B50C7E4E2A790279005AFE0B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C7E4D2A790279005AFE0B /* SceneDelegate.swift */; };
 		B50C7E552A79027A005AFE0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B50C7E542A79027A005AFE0B /* Assets.xcassets */; };
@@ -130,6 +135,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B500C7862A8FE175007724F3 /* DecodeWheelDriveDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeWheelDriveDTOTests.swift; sourceTree = "<group>"; };
+		B500C7882A8FE188007724F3 /* DecodeEngineDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeEngineDTOTests.swift; sourceTree = "<group>"; };
+		B500C78A2A8FE192007724F3 /* DecodeExteriorDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeExteriorDTOTests.swift; sourceTree = "<group>"; };
+		B500C78C2A8FE19B007724F3 /* DecodeInteriorDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeInteriorDTOTests.swift; sourceTree = "<group>"; };
+		B500C78E2A8FE1AE007724F3 /* DecodeBodyTypeDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeBodyTypeDTOTests.swift; sourceTree = "<group>"; };
 		B50C7E482A790279005AFE0B /* MyCarMaster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyCarMaster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B50C7E4B2A790279005AFE0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B50C7E4D2A790279005AFE0B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -518,9 +528,14 @@
 		B5D1E1FA2A8E0DA900DAE384 /* DecodeDTO */ = {
 			isa = PBXGroup;
 			children = (
-				B5D1E1FB2A8E14AE00DAE384 /* DecodeTrimDTOTests.swift */,
-				B5D1E1F82A8E094200DAE384 /* DecodeOptionDTOTests.swift */,
 				B5D1E1FD2A8E14C400DAE384 /* FetchFromBundle.swift */,
+				B5D1E1FB2A8E14AE00DAE384 /* DecodeTrimDTOTests.swift */,
+				B500C7882A8FE188007724F3 /* DecodeEngineDTOTests.swift */,
+				B500C7862A8FE175007724F3 /* DecodeWheelDriveDTOTests.swift */,
+				B500C78E2A8FE1AE007724F3 /* DecodeBodyTypeDTOTests.swift */,
+				B500C78A2A8FE192007724F3 /* DecodeExteriorDTOTests.swift */,
+				B500C78C2A8FE19B007724F3 /* DecodeInteriorDTOTests.swift */,
+				B5D1E1F82A8E094200DAE384 /* DecodeOptionDTOTests.swift */,
 			);
 			path = DecodeDTO;
 			sourceTree = "<group>";
@@ -819,9 +834,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B500C7872A8FE175007724F3 /* DecodeWheelDriveDTOTests.swift in Sources */,
+				B500C78D2A8FE19B007724F3 /* DecodeInteriorDTOTests.swift in Sources */,
 				B5D1E1F92A8E094200DAE384 /* DecodeOptionDTOTests.swift in Sources */,
 				B5D1E1FE2A8E14C400DAE384 /* FetchFromBundle.swift in Sources */,
+				B500C7892A8FE188007724F3 /* DecodeEngineDTOTests.swift in Sources */,
+				B500C78F2A8FE1AE007724F3 /* DecodeBodyTypeDTOTests.swift in Sources */,
 				B5D1E1FC2A8E14AE00DAE384 /* DecodeTrimDTOTests.swift in Sources */,
+				B500C78B2A8FE192007724F3 /* DecodeExteriorDTOTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
