@@ -29,7 +29,7 @@ function Quotation() {
   };
   return (
     <Container>
-      {/* <BlueBackground /> */}
+      <BlueBackground />
       <Header logo={dark_logo} isHome={false} />
       <QuotationMain>
         <QuotationContent>
@@ -51,6 +51,7 @@ function Quotation() {
           <SumPrice>{getTotalPrice().toLocaleString("ko-KR")}원</SumPrice>
         </PriceContainer>
         <ButtonContainer>
+          <ToolTip src={findCarmasterTooltip} />
           <Button
             $x={12}
             $y={2.25}
@@ -72,7 +73,6 @@ function Quotation() {
         </ButtonContainer>
       </QuotationFooter>
       <QuotationList />
-      <ToolTip src={findCarmasterTooltip} />
     </Container>
   );
 }
@@ -113,16 +113,16 @@ const Container = styled.div`
   height: 100%;
 `;
 
-// const BlueBackground = styled.div`
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 600px;
-//   margin: 0;
-//   background: linear-gradient(180deg, #dde4f8 0%, rgba(231, 235, 246, 0) 100%);
-//   z-index: -1;
-// `;
+const BlueBackground = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 37.5rem;
+  margin: 0;
+  background: linear-gradient(180deg, #dde4f8 0%, rgba(231, 235, 246, 0) 100%);
+  z-index: -1;
+`;
 
 const QuotationMain = styled.div`
   width: 100%;
@@ -200,13 +200,14 @@ const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 `;
 
 const ToolTip = styled.img`
   width: 12.4375rem;
   position: absolute;
-  top: 510px;
-  left: 955px;
+  top: -80%;
+  left: 0;
 
   animation: ${boundAnimation} 1s ease-in-out 5 forwards,
     ${fadeoutAnimation} 1.5s ease-in-out 5s forwards;
