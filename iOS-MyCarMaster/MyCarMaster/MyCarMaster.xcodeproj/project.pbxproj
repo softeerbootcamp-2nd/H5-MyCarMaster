@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B500C77D2A8FC066007724F3 /* QuotationContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500C77C2A8FC066007724F3 /* QuotationContentView.swift */; };
 		B500C77F2A8FCA5F007724F3 /* QuotationContentItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500C77E2A8FCA5F007724F3 /* QuotationContentItemView.swift */; };
+		B500C7812A8FCD5A007724F3 /* QuotationContentItemState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500C7802A8FCD5A007724F3 /* QuotationContentItemState.swift */; };
 		B500C7832A8FE0AD007724F3 /* Quotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500C7822A8FE0AD007724F3 /* Quotation.swift */; };
 		B500C7872A8FE175007724F3 /* DecodeWheelDriveDTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500C7862A8FE175007724F3 /* DecodeWheelDriveDTOTests.swift */; };
 		B500C7892A8FE188007724F3 /* DecodeEngineDTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500C7882A8FE188007724F3 /* DecodeEngineDTOTests.swift */; };
@@ -51,6 +53,7 @@
 		B58A32342A7BA452005FC831 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A32332A7BA452005FC831 /* OnboardingView.swift */; };
 		B58A32382A7BA47D005FC831 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B58A32372A7BA47D005FC831 /* Lottie */; };
 		B58A323B2A7C0B35005FC831 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A323A2A7C0B35005FC831 /* OnboardingViewController.swift */; };
+		B598A0852A8F297A00C4A591 /* QuotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B598A0842A8F297A00C4A591 /* QuotationViewController.swift */; };
 		B59B201D2A8B666A009E7868 /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59B201C2A8B666A009E7868 /* OptionViewController.swift */; };
 		B5A600FE2A81E1FC00CF2983 /* MCMCombineExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */; };
 		B5A600FF2A81E1FC00CF2983 /* MCMCombineExtension.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -78,6 +81,7 @@
 		B5D1E1FC2A8E14AE00DAE384 /* DecodeTrimDTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D1E1FB2A8E14AE00DAE384 /* DecodeTrimDTOTests.swift */; };
 		B5D1E1FE2A8E14C400DAE384 /* FetchFromBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D1E1FD2A8E14C400DAE384 /* FetchFromBundle.swift */; };
 		B5D1E2002A8E20AC00DAE384 /* OptionDTO.json in Resources */ = {isa = PBXBuildFile; fileRef = B5D1E1FF2A8E20AC00DAE384 /* OptionDTO.json */; };
+		B5D1E2052A8EDF7600DAE384 /* QuotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D1E2042A8EDF7600DAE384 /* QuotationView.swift */; };
 		B5D5D4152A8D559600A4DA3C /* SubOptionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D5D4142A8D559600A4DA3C /* SubOptionButton.swift */; };
 		B5D5D4182A8DDBB100A4DA3C /* MCMNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BBB39B2A8A447900AAFC84 /* MCMNetwork.framework */; };
 		B5DD64D02A876ABD00B44F61 /* WheelDriveDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD64CF2A876ABD00B44F61 /* WheelDriveDTO.swift */; };
@@ -138,7 +142,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B500C77C2A8FC066007724F3 /* QuotationContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationContentView.swift; sourceTree = "<group>"; };
 		B500C77E2A8FCA5F007724F3 /* QuotationContentItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationContentItemView.swift; sourceTree = "<group>"; };
+		B500C7802A8FCD5A007724F3 /* QuotationContentItemState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationContentItemState.swift; sourceTree = "<group>"; };
 		B500C7822A8FE0AD007724F3 /* Quotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quotation.swift; sourceTree = "<group>"; };
 		B500C7862A8FE175007724F3 /* DecodeWheelDriveDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeWheelDriveDTOTests.swift; sourceTree = "<group>"; };
 		B500C7882A8FE188007724F3 /* DecodeEngineDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeEngineDTOTests.swift; sourceTree = "<group>"; };
@@ -187,6 +193,7 @@
 		B570C0F92A89ADA7000E9B75 /* InteriorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteriorView.swift; sourceTree = "<group>"; };
 		B58A32332A7BA452005FC831 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		B58A323A2A7C0B35005FC831 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		B598A0842A8F297A00C4A591 /* QuotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationViewController.swift; sourceTree = "<group>"; };
 		B59B201C2A8B666A009E7868 /* OptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
 		B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMCombineExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5BBB34E2A89C74C00AAFC84 /* InteriorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteriorViewController.swift; sourceTree = "<group>"; };
@@ -209,6 +216,7 @@
 		B5D1E1FB2A8E14AE00DAE384 /* DecodeTrimDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeTrimDTOTests.swift; sourceTree = "<group>"; };
 		B5D1E1FD2A8E14C400DAE384 /* FetchFromBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchFromBundle.swift; sourceTree = "<group>"; };
 		B5D1E1FF2A8E20AC00DAE384 /* OptionDTO.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = OptionDTO.json; sourceTree = "<group>"; };
+		B5D1E2042A8EDF7600DAE384 /* QuotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationView.swift; sourceTree = "<group>"; };
 		B5D5D4142A8D559600A4DA3C /* SubOptionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubOptionButton.swift; sourceTree = "<group>"; };
 		B5DD64CF2A876ABD00B44F61 /* WheelDriveDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelDriveDTO.swift; sourceTree = "<group>"; };
 		B5DD64D12A876B5000B44F61 /* WheelDrive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelDrive.swift; sourceTree = "<group>"; };
@@ -552,7 +560,11 @@
 		B5D1E2032A8EDF6900DAE384 /* Quotation */ = {
 			isa = PBXGroup;
 			children = (
+				B5D1E2042A8EDF7600DAE384 /* QuotationView.swift */,
+				B500C77C2A8FC066007724F3 /* QuotationContentView.swift */,
 				B500C77E2A8FCA5F007724F3 /* QuotationContentItemView.swift */,
+				B500C7802A8FCD5A007724F3 /* QuotationContentItemState.swift */,
+				B598A0842A8F297A00C4A591 /* QuotationViewController.swift */,
 			);
 			path = Quotation;
 			sourceTree = "<group>";
@@ -804,12 +816,15 @@
 				B510BBDF2A84895D009E5752 /* EstimationView.swift in Sources */,
 				B53C3C442A85483F0019ECA1 /* EngineView.swift in Sources */,
 				B5BBB3512A89C7BF00AAFC84 /* Interior.swift in Sources */,
+				B500C77D2A8FC066007724F3 /* QuotationContentView.swift in Sources */,
 				B5DD64D02A876ABD00B44F61 /* WheelDriveDTO.swift in Sources */,
 				B53C3C502A85661D0019ECA1 /* WheelDriveView.swift in Sources */,
 				B5DD651E2A89066400B44F61 /* Exterior+.swift in Sources */,
 				B53BA1082A8BE6B9009F94BE /* OptionListCell.swift in Sources */,
 				B5C3EAC12A84B1AA00D9577C /* MainViewController.swift in Sources */,
 				B56F55D72A86BC7D0055E382 /* Trim.swift in Sources */,
+				B500C7812A8FCD5A007724F3 /* QuotationContentItemState.swift in Sources */,
+				B598A0852A8F297A00C4A591 /* QuotationViewController.swift in Sources */,
 				B53C3C522A8566270019ECA1 /* WheelDriveViewController.swift in Sources */,
 				B5F1AE062A838B8E00E7E392 /* TrimViewController.swift in Sources */,
 				B5DD65192A88FB6F00B44F61 /* CellStyleSelectable.swift in Sources */,
@@ -836,6 +851,7 @@
 				B570C0FA2A89ADA7000E9B75 /* InteriorView.swift in Sources */,
 				B500C77F2A8FCA5F007724F3 /* QuotationContentItemView.swift in Sources */,
 				B50C7E4C2A790279005AFE0B /* AppDelegate.swift in Sources */,
+				B5D1E2052A8EDF7600DAE384 /* QuotationView.swift in Sources */,
 				B5DD65172A88F8D100B44F61 /* Then.swift in Sources */,
 				B56F55E72A87621A0055E382 /* EngineDTO.swift in Sources */,
 				B5DD65222A8935F200B44F61 /* BasicListCellState.swift in Sources */,
