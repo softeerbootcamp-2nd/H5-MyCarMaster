@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import softeer.be_my_car_master.api.car_master.dto.response.CarMasterAgencyDto;
 import softeer.be_my_car_master.domain.car_master.CarMaster;
 
 @Getter
@@ -30,13 +31,19 @@ public class CarMasterInAgencyDto {
 	@Schema(description = "전화번호", example = "010-0000-0000")
 	private String phone;
 
+	private CarMasterAgencyDto agency;
+
 	public static CarMasterInAgencyDto from(CarMaster carMaster) {
+		CarMasterAgencyDto carMasterAgencyDto =
+			new CarMasterAgencyDto(carMaster.getAgencyId(), carMaster.getAgencyName());
+
 		return CarMasterInAgencyDto.builder()
 			.id(carMaster.getId())
 			.name(carMaster.getName())
 			.imgUrl(carMaster.getImgUrl())
 			.intro(carMaster.getIntro())
 			.phone(carMaster.getPhone())
+			.agency(carMasterAgencyDto)
 			.build();
 	}
 }

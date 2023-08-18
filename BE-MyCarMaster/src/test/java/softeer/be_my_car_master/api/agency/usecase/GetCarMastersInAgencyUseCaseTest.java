@@ -18,6 +18,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import softeer.be_my_car_master.api.agency.dto.response.CarMasterInAgencyDto;
 import softeer.be_my_car_master.api.agency.dto.response.GetCarMastersInAgencyResponse;
 import softeer.be_my_car_master.api.consult.usecase.port.CarMasterPort;
+import softeer.be_my_car_master.domain.agency.Agency;
 import softeer.be_my_car_master.domain.car_master.CarMaster;
 
 @ExtendWith(MockitoExtension.class)
@@ -34,6 +35,10 @@ class GetCarMastersInAgencyUseCaseTest {
 	@DisplayName("카마스터 목록을 조회합니다")
 	void execute() {
 		// given
+		Agency agency = Agency.builder()
+			.id(1L)
+			.name("한양대리점")
+			.build();
 		CarMaster carMaster = CarMaster.builder()
 			.id(1L)
 			.name("이몽룡")
@@ -42,6 +47,7 @@ class GetCarMastersInAgencyUseCaseTest {
 			.sales(60)
 			.intro("안녕하세요")
 			.email("test@test.com")
+			.agency(agency)
 			.build();
 
 		given(carMasterPort.findCarMastersByAgency(any())).willReturn(Arrays.asList(carMaster));
