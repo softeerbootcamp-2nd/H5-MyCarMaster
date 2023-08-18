@@ -73,5 +73,20 @@ extension TextStyle {
             lineBreakMode: lineBreakMode ?? self.lineBreakMode
         )
     }
+    
+    /// 지정한 서체에 추가적인 style을 지정해 주고 싶을 때 이 메서드를 사용합니다.
+    /// 서체를 구별하는데 꼭 필요한 `font`, `lineHeight`은 변경할 수 없습니다.
+    public func with(_ additionalStyle: TextStyle?) -> TextStyle {
+        guard let additionalStyle else { return self }
+        
+        return TextStyle(
+            font: self.font,
+            lineSpacing: additionalStyle.lineSpacing ?? self.lineSpacing,
+            lineHeight: self.lineHeight,
+            kern: additionalStyle.kern ?? self.kern,
+            alignment: additionalStyle.alignment ?? self.alignment,
+            lineBreakMode: additionalStyle.lineBreakMode ?? self.lineBreakMode
+        )
+    }
 }
 
