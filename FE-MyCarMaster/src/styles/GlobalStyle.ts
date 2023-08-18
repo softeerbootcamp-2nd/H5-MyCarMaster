@@ -34,17 +34,20 @@ const GlobalStyle = createGlobalStyle`
     @font-face {
         font-family: HyundaiSansBold;
         font-display: swap;
-        src: url('../../public/fonts/HyundaiSansHeadKRBold.ttf') format('truetype');
+        src: local('HyundaiSansBold'), url('/src/assets/fonts/HyundaiSansHeadKRBold.woff2') format('woff2'),
+      url('/src/assets/fonts/HyundaiSansHeadKRBold.woff') format('woff');
     }
     @font-face {
         font-family: HyundaiSansMedium;
         font-display: swap;
-        src: url('../../public/fonts/HyundaiSansHeadKRMedium.ttf') format('truetype');
+        src: local('HyundaiSansMedium'), url('/src/assets/fonts/HyundaiSansHeadKRMedium.woff2') format('woff2'),
+      url('/src/assets/fonts/HyundaiSansHeadKRMedium.woff') format('woff');
     }
     @font-face {
         font-family: HyundaiSansRegular;
         font-display: swap;
-        src: url('../../public/fonts/HyundaiSansHeadKRRegular.ttf') format('truetype');
+        src: local('HyundaiSansRegular'), url('/src/assets/fonts/HyundaiSansHeadKRRegular.woff2') format('woff2'),
+      url('/src/assets/fonts/HyundaiSansHeadKRRegular.woff') format('woff');
     }
 
     // public font setting

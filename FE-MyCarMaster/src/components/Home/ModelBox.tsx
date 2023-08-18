@@ -24,7 +24,7 @@ export default function ModelBox({
       <ModelContainer>
         <ModelImage src={imgUrl} />
         <ModelName>{name}</ModelName>
-        <ModelPrice>{price.toLocaleString("ko-KR")}만원~</ModelPrice>
+        <ModelPrice>{price.toLocaleString("ko-KR")}원~</ModelPrice>
       </ModelContainer>
     </Container>
   );
