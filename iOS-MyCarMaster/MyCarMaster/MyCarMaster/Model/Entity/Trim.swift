@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Trim {
+struct Trim: Hashable {
     let model: String
     let name: String
     let ratio: Int
