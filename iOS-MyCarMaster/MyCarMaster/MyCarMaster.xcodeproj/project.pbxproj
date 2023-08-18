@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B500C77F2A8FCA5F007724F3 /* QuotationContentItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500C77E2A8FCA5F007724F3 /* QuotationContentItemView.swift */; };
 		B500C7872A8FE175007724F3 /* DecodeWheelDriveDTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500C7862A8FE175007724F3 /* DecodeWheelDriveDTOTests.swift */; };
 		B500C7892A8FE188007724F3 /* DecodeEngineDTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500C7882A8FE188007724F3 /* DecodeEngineDTOTests.swift */; };
 		B500C78B2A8FE192007724F3 /* DecodeExteriorDTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B500C78A2A8FE192007724F3 /* DecodeExteriorDTOTests.swift */; };
@@ -136,6 +137,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B500C77E2A8FCA5F007724F3 /* QuotationContentItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationContentItemView.swift; sourceTree = "<group>"; };
 		B500C7862A8FE175007724F3 /* DecodeWheelDriveDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeWheelDriveDTOTests.swift; sourceTree = "<group>"; };
 		B500C7882A8FE188007724F3 /* DecodeEngineDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeEngineDTOTests.swift; sourceTree = "<group>"; };
 		B500C78A2A8FE192007724F3 /* DecodeExteriorDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeExteriorDTOTests.swift; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 				B5DD64ED2A877DC700B44F61 /* Exterior */,
 				B570C0F82A89AD93000E9B75 /* Interior */,
 				B5E233FB2A8B4AE80013BEB1 /* Option */,
+				B5D1E2032A8EDF6900DAE384 /* Quotation */,
 			);
 			path = Sceen;
 			sourceTree = "<group>";
@@ -541,6 +544,14 @@
 				B5D1E1F82A8E094200DAE384 /* DecodeOptionDTOTests.swift */,
 			);
 			path = DecodeDTO;
+			sourceTree = "<group>";
+		};
+		B5D1E2032A8EDF6900DAE384 /* Quotation */ = {
+			isa = PBXGroup;
+			children = (
+				B500C77E2A8FCA5F007724F3 /* QuotationContentItemView.swift */,
+			);
+			path = Quotation;
 			sourceTree = "<group>";
 		};
 		B5DD64ED2A877DC700B44F61 /* Exterior */ = {
@@ -819,6 +830,7 @@
 				B58A323B2A7C0B35005FC831 /* OnboardingViewController.swift in Sources */,
 				B56A765F2A83EFB000F7E3EF /* BasicListCell.swift in Sources */,
 				B570C0FA2A89ADA7000E9B75 /* InteriorView.swift in Sources */,
+				B500C77F2A8FCA5F007724F3 /* QuotationContentItemView.swift in Sources */,
 				B50C7E4C2A790279005AFE0B /* AppDelegate.swift in Sources */,
 				B5DD65172A88F8D100B44F61 /* Then.swift in Sources */,
 				B56F55E72A87621A0055E382 /* EngineDTO.swift in Sources */,
