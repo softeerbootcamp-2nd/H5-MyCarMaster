@@ -7,10 +7,11 @@ type ContainerProp = {
   $backgroundcolor?: string;
   $textcolor?: string;
   $bordercolor?: string;
+  $opacity?: number;
   text?: string | undefined;
   $tool?: string;
   $style?: RuleSet | string;
-  handleClick?: () => void;
+  handleClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 function Button({
@@ -21,6 +22,7 @@ function Button({
   $bordercolor,
   text,
   $tool,
+  $opacity,
   handleClick,
 }: ContainerProp) {
   return (
@@ -28,6 +30,7 @@ function Button({
       $x={$x}
       $y={$y}
       $backgroundcolor={$backgroundcolor}
+      $opacity={$opacity}
       $textcolor={$textcolor}
       $bordercolor={$bordercolor}
       onClick={handleClick}
@@ -58,6 +61,7 @@ const Container = styled.button<ContainerProp>`
   gap: 0.5rem;
   border: 1px solid ${(props) => props.$bordercolor};
   background: ${(props) => props.$backgroundcolor};
+  opacity: ${(props) => props.$opacity};
   color: ${(props) => props.$textcolor};
   ${(props) => props.$style}
 `;

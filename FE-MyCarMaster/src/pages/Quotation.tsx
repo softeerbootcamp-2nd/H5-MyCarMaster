@@ -52,7 +52,7 @@ function Quotation() {
         </PriceContainer>
         <ButtonContainer>
           <Button
-            $x={9.625}
+            $x={12}
             $y={2.25}
             $backgroundcolor={`${theme.colors.WHITE}`}
             $textcolor={`${theme.colors.NAVYBLUE5}`}
@@ -61,7 +61,7 @@ function Quotation() {
             handleClick={() => console.log("공유!")}
           />
           <Button
-            $x={9.625}
+            $x={12}
             $y={2.25}
             $backgroundcolor={`${theme.colors.NAVYBLUE5}`}
             $textcolor={`${theme.colors.WHITE}`}
@@ -109,9 +109,8 @@ const fadeoutAnimation = keyframes`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 80rem;
-  height: 45rem;
-  margin: 0 8rem;
+  width: 100%;
+  height: 100%;
 `;
 
 // const BlueBackground = styled.div`
@@ -126,15 +125,17 @@ const Container = styled.div`
 // `;
 
 const QuotationMain = styled.div`
+  width: 100%;
+  height: 100%;
+
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  height: 32rem;
+  justify-content: center;
+  gap: 10rem;
 `;
 
 const QuotationContent = styled.div`
-  width: 51.5rem;
+  width: 59.5rem;
 
   display: flex;
   flex-direction: column;
@@ -166,11 +167,12 @@ const AnimationContainer = styled.div`
 const QuotationFooter = styled.div`
   min-height: 4.75rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 10rem;
 `;
 
 const PriceContainer = styled.div`
-  width: 51.5rem;
+  width: 59.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -194,6 +196,7 @@ const SumPrice = styled.p`
 `;
 
 const ButtonContainer = styled.div`
+  width: 12rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

@@ -30,7 +30,6 @@ function QuotationOptionItem({
   }, [initialIsSelected]);
 
   const toggleSelect = (id: number) => {
-    console.log(isSelected);
     const updatedIsSelected = !isSelected;
     const actionType = updatedIsSelected
       ? "SET_SELECT_QUOTATION"
@@ -57,7 +56,7 @@ function QuotationOptionItem({
         <OptionName>{name}</OptionName>
       </OptionDetail>
       <Button
-        $x={6}
+        $x={8}
         $y={2}
         text={isSelected ? "고민해보기" : "확정하기"}
         $backgroundcolor={
@@ -77,7 +76,7 @@ function QuotationOptionItem({
 export default QuotationOptionItem;
 
 const Container = styled.div`
-  width: 42.25rem;
+  width: 48rem;
   height: 7.5rem;
 
   display: flex;

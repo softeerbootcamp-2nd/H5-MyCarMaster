@@ -56,15 +56,18 @@ function QuotationList() {
 export default QuotationList;
 
 const QuotationSummary = styled.div`
-  width: 51.5rem;
+  width: 80%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 3rem;
 
   margin-top: 2rem;
 `;
 
 const QuotationText = styled.p`
+  width: 59.5rem;
   font-family: "HyundaiSansRegular";
   font-size: 2.25rem;
   font-style: normal;

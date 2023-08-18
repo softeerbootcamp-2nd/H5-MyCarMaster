@@ -29,6 +29,8 @@ export default function BodyTypeSelectView() {
     });
   };
 
+  if (!bodyTypeList?.length) return null;
+
   return (
     <>
       {bodyTypeList?.length &&

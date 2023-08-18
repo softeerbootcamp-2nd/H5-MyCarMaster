@@ -32,11 +32,10 @@ export default function OptionList({ $name }: OptionListProps) {
     }
   }, [isOpen]);
 
-  console.log(isFirst.current);
   return (
     <Container $isOpen={isOpen}>
       <ListContainer $isOpen={isOpen}>
-        <Text>{$name}</Text>
+        <Text $size={1.25}>{$name}</Text>
         <Icon $isOpen={true} onClick={() => setIsOpen(!isOpen)} />
       </ListContainer>
       <Line $isOpen={isOpen} $isFirst={isFirst.current} />

@@ -41,7 +41,7 @@ export const Container = styled.div<{ $isOpen: boolean }>`
   display: flex;
   flex-direction: column;
   padding: 1rem 1.5rem;
-  width: 80%;
+  width: 95%;
   border: 1px solid ${(props) => props.theme.colors.GREY2};
   background-color: ${(props) => props.theme.colors.WHITE};
 
@@ -50,19 +50,22 @@ export const Container = styled.div<{ $isOpen: boolean }>`
     css`
       animation: ${expandAnimation} 1s ease-in-out forwards;
     `}
-
-  & + & {
-    margin: 0.875rem 0;
-  }
 `;
-export const ListContainer = styled.div<{ $isOpen: boolean }>`
+export const ListContainer = styled.div<{ $isOpen?: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
-export const Text = styled.div`
-  font-size: 1.25rem;
+export const GridContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+`;
+
+export const Text = styled.div<{ $size?: number }>`
+  font-size: ${(props) => props.$size}rem;
 `;
 
 export const Icon = styled.div<{ $isOpen: boolean }>`
@@ -84,6 +87,34 @@ export const OptionItem = styled.div<{ $isOpen: boolean }>`
     css`
       animation: ${ListTextAppearAnimation} 1s ease-in-out forwards;
     `}
+`;
+
+export const GridOptionItem = styled.div`
+  width: 18%;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid ${(props) => props.theme.colors.GREY2};
+`;
+
+export const GridOptionTextContainer = styled.div`
+  width: 100%;
+  height: 5.5rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  justify-content: space-between;
+`;
+
+export const GridOptionImage = styled.img`
+  width: 100%;
+  height: 8rem;
+  object-fit: cover;
+`;
+
+export const Detail = styled.p`
+  display: flex;
+  font-size: 0.75rem;
 `;
 
 export const Line = styled.div<{ $isOpen: boolean; $isFirst: boolean }>`

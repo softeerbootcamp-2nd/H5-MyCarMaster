@@ -31,6 +31,8 @@ export default function BodyTypeSelectView() {
     });
   };
 
+  if (!wheelDriveList?.length) return null;
+
   return (
     <>
       {wheelDriveList?.length &&

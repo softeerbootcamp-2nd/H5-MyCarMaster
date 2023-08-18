@@ -55,7 +55,7 @@ function Footer() {
           <ButtonContainer>
             {navigationId !== 0 && (
               <Button
-                $x={9.625}
+                $x={12}
                 $y={2.25}
                 $backgroundcolor={`${theme.colors.WHITE}`}
                 $textcolor={`${theme.colors.NAVYBLUE5}`}
@@ -66,7 +66,7 @@ function Footer() {
             )}
 
             <Button
-              $x={9.625}
+              $x={12}
               $y={2.25}
               $backgroundcolor={`${theme.colors.NAVYBLUE5}`}
               $textcolor={`${theme.colors.WHITE}`}
@@ -85,7 +85,7 @@ function Footer() {
         <FoldScreen text={"내게 맞는 트림 찾기"} $switch={"searchTrim"} />
       )}
       {navigationId === 6 && (
-        <FoldScreen text={"추가 옵션 선택하기"} $switch={"option"} />
+        <FoldScreen text={"기본 옵션 보기"} $switch={"option"} />
       )}
     </Container>
   );

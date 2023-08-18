@@ -18,14 +18,14 @@ export default function InteriorColorSelectView() {
   const quotationDispatch = useQuotationDispatch();
   const carPaintDispatch = useCarPaintDispatch();
 
-  const selectInterior = (id: number) => {
+  const selectInterior = (id: number, index: number) => {
     quotationDispatch({
       type: "SET_CAR_PAINT_QUOTATION",
       payload: {
         type: "interiorColorQuotation",
-        name: interiorList[id].name,
-        price: interiorList[id].price,
-        imgUrl: interiorList[id].colorImgUrl,
+        name: interiorList[index].name,
+        price: interiorList[index].price,
+        imgUrl: interiorList[index].colorImgUrl,
       },
     });
     carPaintDispatch({
@@ -35,6 +35,8 @@ export default function InteriorColorSelectView() {
       },
     });
   };
+
+  if (!interiorList?.length) return null;
 
   return (
     <>
@@ -48,10 +50,10 @@ export default function InteriorColorSelectView() {
               ratio={interior.ratio}
               price={interior.price}
               trim={trimQuotation?.trimQuotation?.name}
-              $active={index === interiorId}
+              $active={interior.id === interiorId}
               $colorImgUrl={interior.colorImgUrl}
               $coloredImgUrl={interior.coloredImgUrl}
-              handleClick={() => selectInterior(index)}
+              handleClick={() => selectInterior(interior.id, index)}
             />
           );
         })}
