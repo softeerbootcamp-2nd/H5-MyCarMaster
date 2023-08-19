@@ -192,18 +192,48 @@ extension QuotationView {
                 colorImgURL: URL(string: "https://h5-image.s3.ap-northeast-2.amazonaws.com/palisade/interior-color/quilting-natural-black.png"),
                 coloredImgURL: URL(string: "https://h5-image.s3.ap-northeast-2.amazonaws.com/palisade/interior-color/car/quilting-natural-black.png")
             ),
-            option: Option(
-                model: "펠리세이드",
-                category: "안전",
-                name: "빌트인 캠(보조배터리 포함)",
-                price: 690000,
-                ratio: 60,
-                imgURL: URL(string: "https://h5-image.s3.ap-northeast-2.amazonaws.com/palisade/option/built-in-cam.png"),
-                summary: "빌트인 캠\'을 통해 방금 촬영된 운전 영상을 어플로 바로 확인할 수 있어요.",
-                description: "빌트인 적용된 영상기록장치로, 내비게이션 화면을 통해 영상 확인 및 앱 연동을 통해 영상 확인 및 SNS 공유가 가능합니다.",
-                tag: nil,
-                subOptions: []
-            )
+            selectedOptions: [
+                Option(
+                    model: "펠리세이드",
+                    category: "안전",
+                    name: "빌트인 캠(보조배터리 포함)",
+                    price: 690000,
+                    ratio: 60,
+                    imgURL: URL(string: "https://h5-image.s3.ap-northeast-2.amazonaws.com/palisade/option/built-in-cam.png"),
+                    summary: "빌트인 캠\'을 통해 방금 촬영된 운전 영상을 어플로 바로 확인할 수 있어요.",
+                    description: "빌트인 적용된 영상기록장치로, 내비게이션 화면을 통해 영상 확인 및 앱 연동을 통해 영상 확인 및 SNS 공유가 가능합니다.",
+                    tag: nil,
+                    subOptions: []
+                ),
+                Option(
+                    model: "펠리세이드",
+                    category: "안전",
+                    name: "빌트인 캠(보조배터리 포함)",
+                    price: 690000,
+                    ratio: 60,
+                    imgURL: URL(string: "https://h5-image.s3.ap-northeast-2.amazonaws.com/palisade/option/built-in-cam.png"),
+                    summary: "빌트인 캠\'을 통해 방금 촬영된 운전 영상을 어플로 바로 확인할 수 있어요.",
+                    description: "빌트인 적용된 영상기록장치로, 내비게이션 화면을 통해 영상 확인 및 앱 연동을 통해 영상 확인 및 SNS 공유가 가능합니다.",
+                    tag: nil,
+                    subOptions: []
+                )
+            ],
+            consideredOptions: [
+                Option(
+                    model: "펠리세이드",
+                    category: "안전",
+                    name: "빌트인 캠(보조배터리 포함)",
+                    price: 690000,
+                    ratio: 60,
+                    imgURL: URL(string: "https://h5-image.s3.ap-northeast-2.amazonaws.com/palisade/option/built-in-cam.png"),
+                    summary: "빌트인 캠\'을 통해 방금 촬영된 운전 영상을 어플로 바로 확인할 수 있어요.",
+                    description: "빌트인 적용된 영상기록장치로, 내비게이션 화면을 통해 영상 확인 및 앱 연동을 통해 영상 확인 및 SNS 공유가 가능합니다.",
+                    tag: nil,
+                    subOptions: []
+                )
+            ],
+            selectedOptionsTotalPrice: 600000,
+            totalPrice: 99999999
         )
         quotationContentView.configure(with: quotation)
     }
