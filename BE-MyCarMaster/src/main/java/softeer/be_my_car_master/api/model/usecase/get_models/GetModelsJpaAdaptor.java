@@ -1,11 +1,9 @@
-package softeer.be_my_car_master.infrastructure.jpa.model.adaptor;
+package softeer.be_my_car_master.api.model.usecase.get_models;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import lombok.RequiredArgsConstructor;
-import softeer.be_my_car_master.api.model.usecase.port.ModelPort;
 import softeer.be_my_car_master.domain.model.Model;
 import softeer.be_my_car_master.global.annotation.Adaptor;
 import softeer.be_my_car_master.infrastructure.jpa.model.entity.ModelEntity;
@@ -13,7 +11,7 @@ import softeer.be_my_car_master.infrastructure.jpa.model.repository.ModelJpaRepo
 
 @Adaptor
 @RequiredArgsConstructor
-public class ModelJpaAdaptor implements ModelPort {
+public class GetModelsJpaAdaptor implements GetModelsPort {
 
 	private final ModelJpaRepository modelJpaRepository;
 
