@@ -117,14 +117,14 @@ final class QuotationView: UIView {
             subtitleLabel.centerXAnchor.constraint(equalTo: mainContentView.centerXAnchor),
 
             previewImageView.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 12),
-            previewImageView.leadingAnchor.constraint(equalTo: mainContentView.leadingAnchor),// constant: 36),
-            previewImageView.trailingAnchor.constraint(equalTo: mainContentView.trailingAnchor),// constant: -36),
+            previewImageView.leadingAnchor.constraint(equalTo: mainContentView.leadingAnchor),
+            previewImageView.trailingAnchor.constraint(equalTo: mainContentView.trailingAnchor),
             previewImageView.heightAnchor.constraint(equalTo: previewImageView.widthAnchor, multiplier: 170/292),
 
             priceDescriptionLabel.topAnchor.constraint(equalTo: previewImageView.bottomAnchor),
-            priceDescriptionLabel.trailingAnchor.constraint(equalTo: mainContentView.trailingAnchor, constant: -inset),
+            priceDescriptionLabel.trailingAnchor.constraint(equalTo: mainContentView.trailingAnchor),
             priceLabel.topAnchor.constraint(equalTo: priceDescriptionLabel.bottomAnchor, constant: 4),
-            priceLabel.trailingAnchor.constraint(equalTo: mainContentView.trailingAnchor, constant: -inset),
+            priceLabel.trailingAnchor.constraint(equalTo: mainContentView.trailingAnchor),
             mainContentView.bottomAnchor.constraint(equalTo: priceLabel.bottomAnchor),
         ])
     }
