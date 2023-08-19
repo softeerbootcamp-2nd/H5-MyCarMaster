@@ -30,7 +30,7 @@ final class QuotationContentView: UIView {
     private let bodyTypeContentItemView = QuotationContentItemView()
     private let exteriorContentItemView = QuotationContentItemView()
     private let interiorContentItemView = QuotationContentItemView()
-//    private let optionContentItemView = QuotationContentItemView()
+    private let optionContentItemView = QuotationContentOptionView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -68,7 +68,7 @@ final class QuotationContentView: UIView {
             bodyTypeContentItemView,
             exteriorContentItemView,
             interiorContentItemView,
-//            optionContentItemView
+            optionContentItemView
         ].forEach { subview in
             contentItemStackView.addArrangedSubview(subview)
             contentItemStackView.addArrangedSubview(SeparatorView())
@@ -85,5 +85,6 @@ extension QuotationContentView {
         bodyTypeContentItemView.configure(with: quotation.bodyType)
         exteriorContentItemView.configure(with: quotation.exterior)
         interiorContentItemView.configure(with: quotation.interior)
+        optionContentItemView.configure(with: quotation)
     }
 }
