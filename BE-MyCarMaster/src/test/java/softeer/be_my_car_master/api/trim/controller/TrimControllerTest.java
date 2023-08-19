@@ -20,12 +20,12 @@ import org.springframework.test.web.servlet.ResultActions;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import softeer.be_my_car_master.api.option.usecase.GetTrimDefaultOptionsUseCase;
 import softeer.be_my_car_master.api.trim.dto.response.GetTrimDefaultOptionsResponse;
 import softeer.be_my_car_master.api.trim.dto.response.GetTrimsResponse;
 import softeer.be_my_car_master.api.trim.dto.response.TrimDefaultOptionDto;
 import softeer.be_my_car_master.api.trim.dto.response.TrimDto;
-import softeer.be_my_car_master.api.trim.usecase.GetTrimDefaultOptionsUseCase;
-import softeer.be_my_car_master.api.trim.usecase.GetTrimsUseCase;
+import softeer.be_my_car_master.api.trim.usecase.get_trims.GetTrimsUseCase;
 import softeer.be_my_car_master.domain.option.Category;
 import softeer.be_my_car_master.global.response.Response;
 import softeer.be_my_car_master.global.response.ResponseStatus;
@@ -36,15 +36,19 @@ class TrimControllerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
-
 	@Autowired
 	private ObjectMapper objectMapper;
 
 	@MockBean
 	private GetTrimsUseCase getTrimsUseCase;
-
 	@MockBean
-	GetTrimDefaultOptionsUseCase getTrimDefaultOptionsUseCase;
+	private GetTrimDefaultOptionsUseCase getTrimDefaultOptionsUseCase;
+
+	private String getClientErrorResponseBody() throws JsonProcessingException {
+		Response errorResponse = Response.createErrorResponse(ResponseStatus.BAD_REQUEST);
+		String responseBody = objectMapper.writeValueAsString(errorResponse);
+		return responseBody;
+	}
 
 	@Nested
 	@DisplayName("getTrims Test")
@@ -157,11 +161,5 @@ class TrimControllerTest {
 				.andExpect(content().contentType("application/json"))
 				.andExpect(content().json(responseBody, true));
 		}
-	}
-
-	private String getClientErrorResponseBody() throws JsonProcessingException {
-		Response errorResponse = Response.createErrorResponse(ResponseStatus.BAD_REQUEST);
-		String responseBody = objectMapper.writeValueAsString(errorResponse);
-		return responseBody;
 	}
 }
