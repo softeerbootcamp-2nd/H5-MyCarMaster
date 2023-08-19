@@ -15,7 +15,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import softeer.be_my_car_master.api.model.dto.response.GetModelsResponse;
 import softeer.be_my_car_master.api.model.dto.response.ModelDto;
-import softeer.be_my_car_master.api.model.usecase.port.ModelPort;
+import softeer.be_my_car_master.api.model.usecase.get_models.GetModelsPort;
+import softeer.be_my_car_master.api.model.usecase.get_models.GetModelsUseCase;
 import softeer.be_my_car_master.domain.model.Model;
 
 @ExtendWith(MockitoExtension.class)
@@ -26,7 +27,7 @@ class GetModelsUseCaseTest {
 	private GetModelsUseCase getModelsUseCase;
 
 	@Mock
-	private ModelPort modelPort;
+	private GetModelsPort getModelsPort;
 
 	@Test
 	@DisplayName("모델 목록을 조회합니다")
@@ -37,7 +38,7 @@ class GetModelsUseCaseTest {
 			.name("name")
 			.imgUrl("image")
 			.build();
-		given(modelPort.findModels()).willReturn(Arrays.asList(model));
+		given(getModelsPort.findModels()).willReturn(Arrays.asList(model));
 
 		// when
 		GetModelsResponse response = getModelsUseCase.execute();

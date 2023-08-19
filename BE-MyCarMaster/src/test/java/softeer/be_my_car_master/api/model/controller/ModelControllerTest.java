@@ -18,7 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import softeer.be_my_car_master.api.model.dto.response.GetModelsResponse;
 import softeer.be_my_car_master.api.model.dto.response.ModelDto;
-import softeer.be_my_car_master.api.model.usecase.GetModelsUseCase;
+import softeer.be_my_car_master.api.model.usecase.get_models.GetModelsUseCase;
 import softeer.be_my_car_master.global.response.Response;
 
 @WebMvcTest(ModelController.class)
