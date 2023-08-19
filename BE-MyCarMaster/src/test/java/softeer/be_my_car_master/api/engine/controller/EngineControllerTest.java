@@ -24,8 +24,8 @@ import softeer.be_my_car_master.api.engine.dto.response.EngineDto;
 import softeer.be_my_car_master.api.engine.dto.response.GetEnginesResponse;
 import softeer.be_my_car_master.api.engine.dto.response.GetUnselectableOptionsByEngineResponse;
 import softeer.be_my_car_master.api.engine.dto.response.UnselectableOptionDto;
-import softeer.be_my_car_master.api.engine.usecase.GetEnginesUseCase;
 import softeer.be_my_car_master.api.engine.usecase.GetUnselectableOptionsByEngineUseCase;
+import softeer.be_my_car_master.api.engine.usecase.get_engines.GetEnginesUseCase;
 import softeer.be_my_car_master.global.response.Response;
 import softeer.be_my_car_master.global.response.ResponseStatus;
 
@@ -42,6 +42,12 @@ class EngineControllerTest {
 	private GetEnginesUseCase getEnginesUseCase;
 	@MockBean
 	private GetUnselectableOptionsByEngineUseCase getUnselectableOptionsByEngineUseCase;
+
+	private String getClientErrorResponseBody() throws JsonProcessingException {
+		Response errorResponse = Response.createErrorResponse(ResponseStatus.BAD_REQUEST);
+		String responseBody = objectMapper.writeValueAsString(errorResponse);
+		return responseBody;
+	}
 
 	@Nested
 	@DisplayName("getEngines Test")
@@ -242,11 +248,5 @@ class EngineControllerTest {
 				.andExpect(content().contentType("application/json"))
 				.andExpect(content().json(responseBody, false));
 		}
-	}
-
-	private String getClientErrorResponseBody() throws JsonProcessingException {
-		Response errorResponse = Response.createErrorResponse(ResponseStatus.BAD_REQUEST);
-		String responseBody = objectMapper.writeValueAsString(errorResponse);
-		return responseBody;
 	}
 }
