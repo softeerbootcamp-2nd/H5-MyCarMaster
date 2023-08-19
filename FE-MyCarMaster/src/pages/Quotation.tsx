@@ -11,12 +11,15 @@ import { useQuotationState } from "../contexts/QuotationContext";
 import { Fragment, useState } from "react";
 import { Modals } from "../components/common/Modals/Modals";
 import { ModalType } from "../constants/Modal.constants";
+import { post } from "../utils/fetch";
+import { QuotationType } from "../types/quotation.types";
 
 function Quotation() {
   const { trimQuotation, detailQuotation, carPaintQuotation, optionQuotation } =
     useQuotationState();
   const [confirm, setConfirm] = useState<boolean>(false);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState<boolean>(false);
+  const [estimateId, setEstimateId] = useState<string>();
 
   const getTotalPrice = () => {
     let totalPrice = 0;
@@ -34,7 +37,38 @@ function Quotation() {
     return totalPrice;
   };
 
+  const getOptionPrice = (option: Array<QuotationType>) => {
+    option.reduce((acc, cur) => {
+      return acc + cur.price;
+    }, 0);
+  };
+
   const confirmHandler = () => {
+    const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
+
+    const dataToSubmit = {
+      modelId: 1,
+      trimId: trimQuotation.trimQuotation.id,
+      trimPrice: trimQuotation.trimQuotation.price,
+      engineId: detailQuotation.engineQuotation.id,
+      enginePrice: detailQuotation.engineQuotation.price,
+      wheelDriveId: detailQuotation.wheelDriveQuotation.id,
+      wheelDrivePrice: detailQuotation.wheelDriveQuotation.price,
+      bodyTypeId: detailQuotation.bodyTypeQuotation.id,
+      bodyTypePrice: detailQuotation.bodyTypeQuotation.price,
+      exteriorColorId: carPaintQuotation.exteriorColorQuotation.id,
+      exteriorColorPrice: carPaintQuotation.exteriorColorQuotation.price,
+      interiorColorId: carPaintQuotation.interiorColorQuotation.id,
+      interiorColorPrice: carPaintQuotation.interiorColorQuotation.price,
+      selectOptions: optionQuotation.selectedQuotation,
+      selectOptionPrice: getOptionPrice(optionQuotation.selectedQuotation),
+      considerOptions: optionQuotation.consideredQuotation,
+      totalPrice: getTotalPrice(),
+    };
+
+    post(`${SERVER_URL}/estimates`, dataToSubmit).then((response) => {
+      setEstimateId(response.result.estimateId);
+    });
     setConfirm(true);
   };
 
