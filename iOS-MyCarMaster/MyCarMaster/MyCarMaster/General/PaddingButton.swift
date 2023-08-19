@@ -8,12 +8,6 @@
 import UIKit
 
 final class PaddingButton: UIButton {
-    
-    override var backgroundColor: UIColor? {
-        didSet {
-            print(backgroundColor)
-        }
-    }
 
     private let vInsets: CGFloat
     private let hInsets: CGFloat
