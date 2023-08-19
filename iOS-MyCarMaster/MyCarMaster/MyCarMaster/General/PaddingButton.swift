@@ -25,8 +25,9 @@ final class PaddingButton: UIButton {
 
     private func configureUI() {
         if #available(iOS 15.0, *) {
-            var config = UIButton.Configuration.borderedTinted()
+            var config = UIButton.Configuration.filled()
             config.contentInsets = NSDirectionalEdgeInsets(top: vInsets, leading: hInsets, bottom: vInsets, trailing: hInsets)
+            config.background.cornerRadius = 0
             configuration = config
         } else {
             contentEdgeInsets = UIEdgeInsets(top: vInsets, left: hInsets, bottom: vInsets, right: hInsets)
