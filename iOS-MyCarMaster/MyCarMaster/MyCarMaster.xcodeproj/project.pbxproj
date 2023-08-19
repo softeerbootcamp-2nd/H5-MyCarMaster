@@ -37,6 +37,7 @@
 		B52FC1CC2A90DAE00075D288 /* QuotationContentOptionItemState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1CB2A90DAE00075D288 /* QuotationContentOptionItemState.swift */; };
 		B52FC1CE2A90E0D20075D288 /* QuotationContentOptionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1CD2A90E0D20075D288 /* QuotationContentOptionItemView.swift */; };
 		B52FC1D02A90E2FA0075D288 /* QuotationContentOptionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1CF2A90E2FA0075D288 /* QuotationContentOptionState.swift */; };
+		B52FC1D22A90E3850075D288 /* Quotation+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1D12A90E3850075D288 /* Quotation+.swift */; };
 		B53BA1082A8BE6B9009F94BE /* OptionListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BA1072A8BE6B9009F94BE /* OptionListCell.swift */; };
 		B53BA10A2A8BF426009F94BE /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BA1092A8BF426009F94BE /* Option.swift */; };
 		B53BA10C2A8BF42F009F94BE /* OptionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BA10B2A8BF42F009F94BE /* OptionDTO.swift */; };
@@ -200,6 +201,7 @@
 		B52FC1CB2A90DAE00075D288 /* QuotationContentOptionItemState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationContentOptionItemState.swift; sourceTree = "<group>"; };
 		B52FC1CD2A90E0D20075D288 /* QuotationContentOptionItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationContentOptionItemView.swift; sourceTree = "<group>"; };
 		B52FC1CF2A90E2FA0075D288 /* QuotationContentOptionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationContentOptionState.swift; sourceTree = "<group>"; };
+		B52FC1D12A90E3850075D288 /* Quotation+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Quotation+.swift"; sourceTree = "<group>"; };
 		B53BA1072A8BE6B9009F94BE /* OptionListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionListCell.swift; sourceTree = "<group>"; };
 		B53BA1092A8BF426009F94BE /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
 		B53BA10B2A8BF42F009F94BE /* OptionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionDTO.swift; sourceTree = "<group>"; };
@@ -663,6 +665,7 @@
 				B5DD651D2A89066400B44F61 /* Exterior+.swift */,
 				B5BBB3522A89C7ED00AAFC84 /* Interior+.swift */,
 				B53BA10D2A8BF4C2009F94BE /* Option+.swift */,
+				B52FC1D12A90E3850075D288 /* Quotation+.swift */,
 			);
 			path = "Entity+";
 			sourceTree = "<group>";
@@ -929,6 +932,7 @@
 				B5DD651B2A8905B400B44F61 /* ColorListCellState.swift in Sources */,
 				B5DD64F12A87833200B44F61 /* ExteriorViewController.swift in Sources */,
 				B53BA1122A8C0A8F009F94BE /* PaddingLabel.swift in Sources */,
+				B52FC1D22A90E3850075D288 /* Quotation+.swift in Sources */,
 				B53C3C492A854AF50019ECA1 /* BasicStepView.swift in Sources */,
 				B5C079042A8BD33700747B11 /* ButtonStyleCell.swift in Sources */,
 				B5BBB3552A89C95200AAFC84 /* InteriorDTO.swift in Sources */,

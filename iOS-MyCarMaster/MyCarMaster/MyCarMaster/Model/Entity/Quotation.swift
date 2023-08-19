@@ -14,5 +14,8 @@ struct Quotation: Hashable {
     let bodyType: BodyType
     let exterior: Exterior
     let interior: Interior
-    let option: Option
+    let selectedOptions: [Option]
+    let consideredOptions: [Option]
+    let selectedOptionsTotalPrice: Int
+    let totalPrice: Int
 }
