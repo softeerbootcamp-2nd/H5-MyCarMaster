@@ -33,8 +33,10 @@
 		B52FC1C22A90AE6A0075D288 /* MCMResource.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B52FC1C02A90AE6A0075D288 /* MCMResource.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B52FC1C62A90B7210075D288 /* PaddingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1C52A90B7210075D288 /* PaddingButton.swift */; };
 		B52FC1C82A90B7A20075D288 /* PaddingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1C52A90B7210075D288 /* PaddingButton.swift */; };
+		B52FC1CA2A90D90A0075D288 /* QuotationContentOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1C92A90D90A0075D288 /* QuotationContentOptionView.swift */; };
 		B52FC1CC2A90DAE00075D288 /* QuotationContentOptionItemState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1CB2A90DAE00075D288 /* QuotationContentOptionItemState.swift */; };
 		B52FC1CE2A90E0D20075D288 /* QuotationContentOptionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1CD2A90E0D20075D288 /* QuotationContentOptionItemView.swift */; };
+		B52FC1D02A90E2FA0075D288 /* QuotationContentOptionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1CF2A90E2FA0075D288 /* QuotationContentOptionState.swift */; };
 		B53BA1082A8BE6B9009F94BE /* OptionListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BA1072A8BE6B9009F94BE /* OptionListCell.swift */; };
 		B53BA10A2A8BF426009F94BE /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BA1092A8BF426009F94BE /* Option.swift */; };
 		B53BA10C2A8BF42F009F94BE /* OptionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BA10B2A8BF42F009F94BE /* OptionDTO.swift */; };
@@ -194,8 +196,10 @@
 		B52FC1B52A90920D0075D288 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B52FC1C02A90AE6A0075D288 /* MCMResource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMResource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B52FC1C52A90B7210075D288 /* PaddingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingButton.swift; sourceTree = "<group>"; };
+		B52FC1C92A90D90A0075D288 /* QuotationContentOptionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuotationContentOptionView.swift; sourceTree = "<group>"; };
 		B52FC1CB2A90DAE00075D288 /* QuotationContentOptionItemState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationContentOptionItemState.swift; sourceTree = "<group>"; };
 		B52FC1CD2A90E0D20075D288 /* QuotationContentOptionItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationContentOptionItemView.swift; sourceTree = "<group>"; };
+		B52FC1CF2A90E2FA0075D288 /* QuotationContentOptionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationContentOptionState.swift; sourceTree = "<group>"; };
 		B53BA1072A8BE6B9009F94BE /* OptionListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionListCell.swift; sourceTree = "<group>"; };
 		B53BA1092A8BF426009F94BE /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
 		B53BA10B2A8BF42F009F94BE /* OptionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionDTO.swift; sourceTree = "<group>"; };
@@ -620,8 +624,10 @@
 				B500C77C2A8FC066007724F3 /* QuotationContentView.swift */,
 				B500C77E2A8FCA5F007724F3 /* QuotationContentItemView.swift */,
 				B500C7802A8FCD5A007724F3 /* QuotationContentItemState.swift */,
+				B52FC1C92A90D90A0075D288 /* QuotationContentOptionView.swift */,
 				B52FC1CF2A90E2FA0075D288 /* QuotationContentOptionState.swift */,
 				B52FC1CD2A90E0D20075D288 /* QuotationContentOptionItemView.swift */,
+				B52FC1CB2A90DAE00075D288 /* QuotationContentOptionItemState.swift */,
 				B598A0842A8F297A00C4A591 /* QuotationViewController.swift */,
 			);
 			path = Quotation;
@@ -946,6 +952,7 @@
 				B5DD65172A88F8D100B44F61 /* Then.swift in Sources */,
 				B56F55E72A87621A0055E382 /* EngineDTO.swift in Sources */,
 				B5DD65222A8935F200B44F61 /* BasicListCellState.swift in Sources */,
+				B52FC1D02A90E2FA0075D288 /* QuotationContentOptionState.swift in Sources */,
 				B56F55D42A86BC3B0055E382 /* TrimDTO.swift in Sources */,
 				B53BA10E2A8BF4C2009F94BE /* Option+.swift in Sources */,
 				B560B2182A83827600A4B9A9 /* TrimView.swift in Sources */,
@@ -955,6 +962,7 @@
 				B53C3C5A2A8578650019ECA1 /* BodyTypeViewController.swift in Sources */,
 				B5DD64D22A876B5000B44F61 /* WheelDrive.swift in Sources */,
 				B53C3C462A8548450019ECA1 /* EngineViewController.swift in Sources */,
+				B52FC1CA2A90D90A0075D288 /* QuotationContentOptionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
