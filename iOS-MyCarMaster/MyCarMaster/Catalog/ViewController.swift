@@ -7,10 +7,21 @@
 
 import UIKit
 
+import MCMResource
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        view.backgroundColor = .MCM.white
+        
+        let paddingButton = PaddingButton(vertical: 8, horizontal: 16)
+        paddingButton.style = .buttonTitleSmall(nil)
+        paddingButton.configureUI(titleColor: .MCM.white, backgroundColor: .MCM.gold3)
+        paddingButton.setStyledTitle("Padding Button", for: .normal)
+        paddingButton.frame.origin = CGPoint(x: 100, y: 100)
+        paddingButton.sizeToFit()
+        view.addSubview(paddingButton)
     }
 }
