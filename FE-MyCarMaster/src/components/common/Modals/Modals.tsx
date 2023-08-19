@@ -7,6 +7,7 @@ import ChangeTrimModal from "./ModalContents/ChangeTrimModal";
 import ChangeEngineModal from "./ModalContents/ChangeEngineModal";
 import { useEffect, useState } from "react";
 import { UnselectableOptionProps } from "../../../types/options.types";
+import ConfirmModal from "./ModalContents/ConfirmModal";
 
 interface ModalProps {
   type: ModalType;
@@ -48,6 +49,8 @@ export function Modals({
             />
           );
         } else return <></>;
+      case "CONFIRM":
+        return <ConfirmModal />;
       default:
         return <></>;
     }

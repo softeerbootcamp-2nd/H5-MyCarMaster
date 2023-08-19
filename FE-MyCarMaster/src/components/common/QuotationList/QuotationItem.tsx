@@ -10,6 +10,7 @@ interface QuotationItemProps {
   category: string;
   imgUrl?: string;
   id: number;
+  confirm: boolean;
 }
 
 function QuotationItem({
@@ -18,6 +19,7 @@ function QuotationItem({
   price,
   category,
   imgUrl,
+  confirm,
 }: QuotationItemProps) {
   const navigate = useNavigate();
   const quotationDispatch = useQuotationDispatch();
@@ -33,11 +35,13 @@ function QuotationItem({
     <Container>
       <CategoryContainer>
         <Category>{category}</Category>
-        <TextButton
-          size={"1"}
-          text={"변경하기"}
-          handleClick={() => handleClick(id)}
-        />
+        {!confirm && (
+          <TextButton
+            size={"1"}
+            text={"변경하기"}
+            handleClick={() => handleClick(id)}
+          />
+        )}
       </CategoryContainer>
       <ItemContainer>
         {imgUrl ? (
