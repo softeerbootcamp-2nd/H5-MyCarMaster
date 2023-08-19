@@ -37,11 +37,17 @@ class WheelDriveControllerTest {
 	@MockBean
 	private GetWheelDrivesUseCase getWheelDrivesUseCase;
 
+	private String getClientErrorResponseBody() throws JsonProcessingException {
+		Response errorResponse = Response.createErrorResponse(ResponseStatus.BAD_REQUEST);
+		String responseBody = objectMapper.writeValueAsString(errorResponse);
+		return responseBody;
+	}
+
 	@Test
 	@DisplayName("구동방식 목록을 조회합니다")
 	void getWheelDrives() throws Exception {
 		//given
-		GetWheelDrivesResponse getWheelDrivesResponse = new GetWheelDrivesResponse();
+		GetWheelDrivesResponse response = new GetWheelDrivesResponse();
 		WheelDriveDto wheelDriveDto = WheelDriveDto.builder()
 			.id(1L)
 			.name("2WD")
@@ -50,11 +56,11 @@ class WheelDriveControllerTest {
 			.ratio(22)
 			.imgUrl("imgUrl")
 			.build();
-		getWheelDrivesResponse.setWheelDrives(Arrays.asList(wheelDriveDto));
+		response.setWheelDrives(Arrays.asList(wheelDriveDto));
 
-		given(getWheelDrivesUseCase.execute(any(), any())).willReturn(getWheelDrivesResponse);
+		given(getWheelDrivesUseCase.execute(any(), any())).willReturn(response);
 
-		Response successResponse = Response.createSuccessResponse(getWheelDrivesResponse);
+		Response successResponse = Response.createSuccessResponse(response);
 		String responseBody = objectMapper.writeValueAsString(successResponse);
 
 		//when
@@ -152,11 +158,5 @@ class WheelDriveControllerTest {
 			.andExpect(status().is4xxClientError())
 			.andExpect(content().contentType("application/json"))
 			.andExpect(content().json(responseBody, false));
-	}
-
-	private String getClientErrorResponseBody() throws JsonProcessingException {
-		Response errorResponse = Response.createErrorResponse(ResponseStatus.BAD_REQUEST);
-		String responseBody = objectMapper.writeValueAsString(errorResponse);
-		return responseBody;
 	}
 }

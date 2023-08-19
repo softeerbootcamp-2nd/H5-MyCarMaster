@@ -48,10 +48,10 @@ class GetWheelDrivesUseCaseTest {
 			Arrays.asList(2L, 3L));
 
 		// when
-		GetWheelDrivesResponse getWheelDrivesResponse = getWheelDrivesUseCase.execute(1L, 1L);
+		GetWheelDrivesResponse response = getWheelDrivesUseCase.execute(1L, 1L);
 
 		// then
-		List<WheelDriveDto> wheelDrives = getWheelDrivesResponse.getWheelDrives();
+		List<WheelDriveDto> wheelDrives = response.getWheelDrives();
 		WheelDriveDto expected = wheelDrives.get(0);
 
 		SoftAssertions.assertSoftly(softAssertions -> {
@@ -84,10 +84,10 @@ class GetWheelDrivesUseCaseTest {
 			Arrays.asList(1L, 3L));
 
 		// when
-		GetWheelDrivesResponse getWheelDrivesResponse = getWheelDrivesUseCase.execute(1L, 1L);
+		GetWheelDrivesResponse response = getWheelDrivesUseCase.execute(1L, 1L);
 
 		// then
-		List<WheelDriveDto> wheelDrives = getWheelDrivesResponse.getWheelDrives();
+		List<WheelDriveDto> wheelDrives = response.getWheelDrives();
 
 		SoftAssertions.assertSoftly(softAssertions -> {
 			softAssertions.assertThat(wheelDrives).isNotNull();

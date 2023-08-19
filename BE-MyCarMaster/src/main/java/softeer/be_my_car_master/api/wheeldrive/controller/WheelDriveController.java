@@ -35,7 +35,7 @@ public class WheelDriveController {
 
 		Long trimId = getWheelDrivesRequest.getTrimId();
 		Long engineId = getWheelDrivesRequest.getEngineId();
-		GetWheelDrivesResponse getWheelDrivesResponse = getWheelDrivesUseCase.execute(trimId, engineId);
-		return Response.createSuccessResponse(getWheelDrivesResponse);
+		GetWheelDrivesResponse response = getWheelDrivesUseCase.execute(trimId, engineId);
+		return Response.createSuccessResponse(response);
 	}
 }
