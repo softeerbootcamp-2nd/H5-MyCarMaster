@@ -65,6 +65,7 @@ function QuotationOptionList({ confirm }: ConfirmType) {
                   name={option.name}
                   price={option.price}
                   isSelected={true}
+                  confirm={confirm}
                 />
               ))}
             </OptionContainer>
@@ -79,6 +80,7 @@ function QuotationOptionList({ confirm }: ConfirmType) {
                   name={option.name}
                   price={option.price}
                   isSelected={false}
+                  confirm={confirm}
                 />
               ))}
             </OptionContainer>
