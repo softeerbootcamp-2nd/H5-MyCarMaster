@@ -53,7 +53,7 @@ public class CreateEstimateUseCase {
 		List<Model> models = modelPort.findModels();
 		validateModel(modelId, models);
 
-		List<Trim> trims = trimPort.findTrims(modelId);
+		List<Trim> trims = trimPort.findTrimsByModel(modelId);
 		validateTrim(createEstimateRequest, trims);
 
 		List<Engine> engines = enginePort.findSelectableEnginesByTrimId(createEstimateRequest.getTrimId());

@@ -48,7 +48,7 @@ class GetDefaultOptionsUseCaseTest {
 			.tag(null)
 			.build();
 
-		given(optionPort.findDefaultOptionsByTrimId(any())).willReturn(Arrays.asList(option));
+		given(optionPort.findDefaultOptionsByTrim(any())).willReturn(Arrays.asList(option));
 		given(optionPort.findUnselectableOptionIdsByEngineId(any())).willReturn(Arrays.asList(2L, 3L));
 		given(optionPort.findUnselectableOptionIdsByWheelDriveId(any())).willReturn(Arrays.asList(2L, 3L));
 		given(optionPort.findUnselectableOptionIdsByBodyTypeId(any())).willReturn(Arrays.asList(2L, 3L));

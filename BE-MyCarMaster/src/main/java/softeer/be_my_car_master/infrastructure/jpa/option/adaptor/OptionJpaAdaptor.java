@@ -87,7 +87,7 @@ public class OptionJpaAdaptor implements OptionPort {
 	}
 
 	@Override
-	public List<Option> findDefaultOptionsByTrimId(Long trimId) {
+	public List<Option> findDefaultOptionsByTrim(Long trimId) {
 		return trimDefaultOptionJpaRepository.findAllByTrimId(trimId).stream()
 			.map(TrimDefaultOptionEntity::toDefaultOption)
 			.collect(Collectors.toList());

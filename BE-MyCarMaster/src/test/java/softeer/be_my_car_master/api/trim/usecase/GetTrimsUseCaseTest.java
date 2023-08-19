@@ -40,7 +40,7 @@ class GetTrimsUseCaseTest {
 			.price(10000)
 			.imgUrl("image")
 			.build();
-		given(trimPort.findTrims(any())).willReturn(Arrays.asList(trim));
+		given(trimPort.findTrimsByModel(any())).willReturn(Arrays.asList(trim));
 
 		// when
 		GetTrimsResponse getTrimsResponse = getTrimsUseCase.execute(1L);

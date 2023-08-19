@@ -18,7 +18,7 @@ public class GetDefaultOptionsUseCase {
 	private final OptionPort optionPort;
 
 	public GetDefaultOptionsResponse execute(Long trimId, Long engineId, Long wheelDriveId, Long bodyTypeId) {
-		List<Option> defaultOptions = optionPort.findDefaultOptionsByTrimId(trimId);
+		List<Option> defaultOptions = optionPort.findDefaultOptionsByTrim(trimId);
 		List<Long> unselectableOptionIdsByEngine = optionPort.findUnselectableOptionIdsByEngineId(engineId);
 		List<Long> unselectableOptionIdsByWheelDrive = optionPort.findUnselectableOptionIdsByWheelDriveId(wheelDriveId);
 		List<Long> unselectableOptionIdsByBodyType = optionPort.findUnselectableOptionIdsByBodyTypeId(bodyTypeId);

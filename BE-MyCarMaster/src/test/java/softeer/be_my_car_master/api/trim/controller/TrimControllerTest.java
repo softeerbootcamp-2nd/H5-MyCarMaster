@@ -42,6 +42,7 @@ class TrimControllerTest {
 
 	@MockBean
 	private GetTrimsUseCase getTrimsUseCase;
+
 	@MockBean
 	GetTrimDefaultOptionsUseCase getTrimDefaultOptionsUseCase;
 
@@ -52,7 +53,7 @@ class TrimControllerTest {
 		@DisplayName("트림 목록을 조회합니다")
 		void getTrims() throws Exception {
 			//given
-			GetTrimsResponse getTrimsResponse = new GetTrimsResponse();
+			GetTrimsResponse response = new GetTrimsResponse();
 			TrimDto trimDto = TrimDto.builder()
 				.id(1L)
 				.name("Le Blanc")
@@ -61,11 +62,11 @@ class TrimControllerTest {
 				.ratio(22)
 				.imgUrl("imgUrl")
 				.build();
-			getTrimsResponse.setTrims(Arrays.asList(trimDto));
+			response.setTrims(Arrays.asList(trimDto));
 
-			given(getTrimsUseCase.execute(any())).willReturn(getTrimsResponse);
+			given(getTrimsUseCase.execute(any())).willReturn(response);
 
-			Response successResponse = Response.createSuccessResponse(getTrimsResponse);
+			Response successResponse = Response.createSuccessResponse(response);
 			String responseBody = objectMapper.writeValueAsString(successResponse);
 
 			//when
@@ -129,7 +130,7 @@ class TrimControllerTest {
 		@DisplayName("트림의 기본옵션 목록을 조회합니다")
 		void getTrimDefaultOptions() throws Exception {
 			//given
-			GetTrimDefaultOptionsResponse getTrimDefaultOptionsResponse = new GetTrimDefaultOptionsResponse();
+			GetTrimDefaultOptionsResponse response = new GetTrimDefaultOptionsResponse();
 			TrimDefaultOptionDto trimDefaultOptionDto = TrimDefaultOptionDto.builder()
 				.id(1L)
 				.category(Category.SAFE.getValue())
@@ -137,11 +138,11 @@ class TrimControllerTest {
 				.imgUrl("imgUrl")
 				.description("옵션 상세설명")
 				.build();
-			getTrimDefaultOptionsResponse.setDefaultOptions(Arrays.asList(trimDefaultOptionDto));
+			response.setDefaultOptions(Arrays.asList(trimDefaultOptionDto));
 
-			given(getTrimDefaultOptionsUseCase.execute(anyLong())).willReturn(getTrimDefaultOptionsResponse);
+			given(getTrimDefaultOptionsUseCase.execute(anyLong())).willReturn(response);
 
-			Response successResponse = Response.createSuccessResponse(getTrimDefaultOptionsResponse);
+			Response successResponse = Response.createSuccessResponse(response);
 			String responseBody = objectMapper.writeValueAsString(successResponse);
 
 			//when

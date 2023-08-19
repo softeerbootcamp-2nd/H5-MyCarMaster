@@ -32,14 +32,14 @@ public class TrimController {
 	@GetMapping
 	@Operation(summary = "모델에 따른 트림 목록을 반환합니다")
 	public Response<GetTrimsResponse> getTrims(
-		@Valid @ParameterObject GetTrimsRequest getTrimsRequest,
+		@Valid @ParameterObject GetTrimsRequest request,
 		BindingResult bindingResult
 	) {
 		if (bindingResult.hasErrors()) {
 			throw new BindingParamException(bindingResult.getFieldErrors());
 		}
 
-		Long modelId = getTrimsRequest.getModelId();
+		Long modelId = request.getModelId();
 		GetTrimsResponse getTrimsResponse = getTrimsUseCase.execute(modelId);
 		return Response.createSuccessResponse(getTrimsResponse);
 	}
@@ -47,8 +47,7 @@ public class TrimController {
 	@GetMapping("/{trimId}/default-options")
 	@Operation(summary = "트림 상세 정보 조회 - 해당 트림의 기본옵션 목록을 반환합니다.")
 	public Response<GetTrimDefaultOptionsResponse> getTrimDefaultOptions(@PathVariable Long trimId) {
-
-		GetTrimDefaultOptionsResponse getTrimDefaultOptionsResponse = getTrimDefaultOptionsUseCase.execute(trimId);
-		return Response.createSuccessResponse(getTrimDefaultOptionsResponse);
+		GetTrimDefaultOptionsResponse response = getTrimDefaultOptionsUseCase.execute(trimId);
+		return Response.createSuccessResponse(response);
 	}
 }
