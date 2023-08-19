@@ -11,7 +11,7 @@ import softeer.be_my_car_master.infrastructure.jpa.trim.repository.TrimJpaReposi
 
 @Adaptor
 @RequiredArgsConstructor
-public class GetTrimsAdaptor implements GetTrimsPort {
+public class GetTrimsJpaAdaptor implements GetTrimsPort {
 
 	private final TrimJpaRepository trimJpaRepository;
 
