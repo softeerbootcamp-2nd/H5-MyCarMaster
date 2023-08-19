@@ -20,11 +20,11 @@ import org.springframework.test.web.servlet.ResultActions;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import softeer.be_my_car_master.api.trim.usecase.GetTrimDefaultOptionsUseCase;
 import softeer.be_my_car_master.api.trim.dto.response.GetTrimDefaultOptionsResponse;
 import softeer.be_my_car_master.api.trim.dto.response.GetTrimsResponse;
 import softeer.be_my_car_master.api.trim.dto.response.TrimDefaultOptionDto;
 import softeer.be_my_car_master.api.trim.dto.response.TrimDto;
+import softeer.be_my_car_master.api.trim.usecase.GetTrimDefaultOptionsUseCase;
 import softeer.be_my_car_master.api.trim.usecase.get_trims.GetTrimsUseCase;
 import softeer.be_my_car_master.domain.option.Category;
 import softeer.be_my_car_master.global.response.Response;
