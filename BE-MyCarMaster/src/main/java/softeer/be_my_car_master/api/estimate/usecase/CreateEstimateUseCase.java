@@ -19,7 +19,7 @@ import softeer.be_my_car_master.api.estimate.dto.request.EstimateOptionDto;
 import softeer.be_my_car_master.api.estimate.dto.response.CreateEstimateResponse;
 import softeer.be_my_car_master.api.estimate.exception.InvalidEstimationException;
 import softeer.be_my_car_master.api.estimate.usecase.port.EstimatePort;
-import softeer.be_my_car_master.api.model.usecase.port.ModelPort;
+import softeer.be_my_car_master.api.model.usecase.get_models.GetModelsPort;
 import softeer.be_my_car_master.api.option.usecase.port.OptionPort;
 import softeer.be_my_car_master.api.trim.usecase.port.TrimPort;
 import softeer.be_my_car_master.api.wheeldrive.usecase.port.WheelDrivePort;
@@ -37,7 +37,7 @@ import softeer.be_my_car_master.global.annotation.UseCase;
 @RequiredArgsConstructor
 public class CreateEstimateUseCase {
 
-	private final ModelPort modelPort;
+	private final GetModelsPort modelPort;
 	private final TrimPort trimPort;
 	private final EnginePort enginePort;
 	private final BodyTypePort bodyTypePort;

@@ -8,18 +8,18 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.api.model.dto.response.GetModelsResponse;
-import softeer.be_my_car_master.api.model.usecase.GetModelsUseCase;
+import softeer.be_my_car_master.api.model.usecase.get_models.GetModelsUseCase;
 import softeer.be_my_car_master.global.response.Response;
 
 @RestController
-@RequestMapping("/models")
+@RequestMapping
 @RequiredArgsConstructor
 @Tag(name = "Model", description = "Model API Document")
 public class ModelController {
 
 	private final GetModelsUseCase getModelsUseCase;
 
-	@GetMapping
+	@GetMapping("/models")
 	@Operation(summary = "모델 전체 목록을 반환합니다")
 	public Response<GetModelsResponse> getModels() {
 		GetModelsResponse response = getModelsUseCase.execute();
