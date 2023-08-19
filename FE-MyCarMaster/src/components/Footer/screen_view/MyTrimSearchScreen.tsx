@@ -389,8 +389,13 @@ export default function MyTrimSearchScreen({
         <OptionDescriptionModal
           setIsDescriptionModalOpen={setIsDescriptionModalOpen}
           option={detailOption as DescriptionOptionModalProps}
+          isTrimSelect={true}
           // onClick 부분에 체크가 변하는 것도 있어야해서 모달 자체를 OptionCheckBox 내로 넣어야하나 고민
-          onClick={() => dataChange(detailOption!.id, detailOption!.filter)}
+          onClick={() => {
+            if (detailOption?.filter) {
+              dataChange(detailOption!.id, detailOption.filter);
+            }
+          }}
         />
       )}
     </Fragment>

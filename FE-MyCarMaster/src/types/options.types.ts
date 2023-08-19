@@ -67,15 +67,15 @@ export type DescriptionOptionModalProps = {
   id: number;
   name: string;
   imgUrl: string;
-  summary: string;
+  summary?: string;
   description: string;
-  subOptions: SuboptionsType | null;
-  filter: {
+  subOptions?: SuboptionsType | null;
+  filter?: {
     unavailableTrimIds: number[];
     additionalTrimIds: number[];
     defaultTrimIds: number[];
   };
-  appliedOption: {
+  appliedOption?: {
     id: number;
     category: string;
     name: string;
