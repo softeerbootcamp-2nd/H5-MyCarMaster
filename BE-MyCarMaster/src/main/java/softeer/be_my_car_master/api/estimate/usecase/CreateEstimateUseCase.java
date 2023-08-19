@@ -59,7 +59,7 @@ public class CreateEstimateUseCase {
 		List<Engine> engines = enginePort.findSelectableEnginesByTrimId(createEstimateRequest.getTrimId());
 		validateEngine(createEstimateRequest, engines);
 
-		List<BodyType> bodyTypes = bodyTypePort.findSelectableBodyTypesByModelId(modelId);
+		List<BodyType> bodyTypes = bodyTypePort.findBodyTypesByModel(modelId);
 		validateBodyType(createEstimateRequest, bodyTypes);
 
 		List<WheelDrive> wheelDrives =
