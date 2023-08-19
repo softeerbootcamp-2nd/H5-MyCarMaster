@@ -40,10 +40,10 @@ class GetModelsUseCaseTest {
 		given(modelPort.findModels()).willReturn(Arrays.asList(model));
 
 		// when
-		GetModelsResponse getModelsResponse = getModelsUseCase.execute();
+		GetModelsResponse response = getModelsUseCase.execute();
 
 		// then
-		List<ModelDto> models = getModelsResponse.getModels();
+		List<ModelDto> models = response.getModels();
 		ModelDto expected = models.get(0);
 
 		SoftAssertions.assertSoftly(softAssertions -> {
