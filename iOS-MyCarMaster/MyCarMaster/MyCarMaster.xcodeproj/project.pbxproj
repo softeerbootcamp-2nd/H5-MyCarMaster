@@ -30,6 +30,7 @@
 		B52FC1AC2A90920C0075D288 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1AB2A90920C0075D288 /* ViewController.swift */; };
 		B52FC1B12A90920D0075D288 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B52FC1B02A90920D0075D288 /* Assets.xcassets */; };
 		B52FC1B42A90920D0075D288 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52FC1B22A90920D0075D288 /* LaunchScreen.storyboard */; };
+		B52FC1C22A90AE6A0075D288 /* MCMResource.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B52FC1C02A90AE6A0075D288 /* MCMResource.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B52FC1C62A90B7210075D288 /* PaddingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1C52A90B7210075D288 /* PaddingButton.swift */; };
 		B52FC1C82A90B7A20075D288 /* PaddingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1C52A90B7210075D288 /* PaddingButton.swift */; };
 		B53BA1082A8BE6B9009F94BE /* OptionListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BA1072A8BE6B9009F94BE /* OptionListCell.swift */; };
@@ -134,6 +135,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		B52FC1C32A90AE6A0075D288 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B52FC1C22A90AE6A0075D288 /* MCMResource.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B58799702A8177E80051E6E7 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -178,6 +190,7 @@
 		B52FC1B02A90920D0075D288 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B52FC1B32A90920D0075D288 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B52FC1B52A90920D0075D288 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B52FC1C02A90AE6A0075D288 /* MCMResource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMResource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B52FC1C52A90B7210075D288 /* PaddingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingButton.swift; sourceTree = "<group>"; };
 		B53BA1072A8BE6B9009F94BE /* OptionListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionListCell.swift; sourceTree = "<group>"; };
 		B53BA1092A8BF426009F94BE /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
@@ -373,6 +386,7 @@
 		B52955572A7B879100BEDDE7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B52FC1C02A90AE6A0075D288 /* MCMResource.framework */,
 				B5BBB39B2A8A447900AAFC84 /* MCMNetwork.framework */,
 				B5BBB39C2A8A447900AAFC84 /* MCMResource.framework */,
 				B5BBB39D2A8A447900AAFC84 /* MVIFoundation.framework */,
@@ -728,6 +742,7 @@
 				B52FC1A12A90920C0075D288 /* Sources */,
 				B52FC1A22A90920C0075D288 /* Frameworks */,
 				B52FC1A32A90920C0075D288 /* Resources */,
+				B52FC1C32A90AE6A0075D288 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
