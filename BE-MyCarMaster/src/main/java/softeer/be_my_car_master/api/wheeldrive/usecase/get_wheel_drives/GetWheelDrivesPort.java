@@ -8,7 +8,7 @@ import softeer.be_my_car_master.global.annotation.Port;
 @Port
 public interface GetWheelDrivesPort {
 
-	List<WheelDrive> findSelectableWheelDrivesByTrimId(Long trimId);
+	List<WheelDrive> findWheelDrivesByTrim(Long trimId);
 
-	List<Long> findUnselectableWheelDriveIdsByEngineId(Long engineId);
+	List<Long> findUnselectableWheelDriveIdsByEngine(Long engineId);
 }

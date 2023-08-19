@@ -18,14 +18,14 @@ public class GetWheelDrivesJpaAdaptor implements GetWheelDrivesPort {
 	private final EngineUnselectableWheelDriveJpaRepository engineUnselectableWheelDriveJpaRepository;
 
 	@Override
-	public List<WheelDrive> findSelectableWheelDrivesByTrimId(Long trimId) {
+	public List<WheelDrive> findWheelDrivesByTrim(Long trimId) {
 		return trimWheelDriveJpaRepository.findAllByTrimId(trimId).stream()
 			.map(TrimWheelDriveEntity::toWheelDrive)
 			.collect(Collectors.toList());
 	}
 
 	@Override
-	public List<Long> findUnselectableWheelDriveIdsByEngineId(Long engineId) {
+	public List<Long> findUnselectableWheelDriveIdsByEngine(Long engineId) {
 		return engineUnselectableWheelDriveJpaRepository
 			.findUnselectableWheelDriveIdsByEngineId(engineId);
 	}

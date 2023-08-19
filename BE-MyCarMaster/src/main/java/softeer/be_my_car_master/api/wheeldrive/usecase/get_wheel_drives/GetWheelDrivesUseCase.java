@@ -15,8 +15,8 @@ public class GetWheelDrivesUseCase {
 	private final GetWheelDrivesPort getWheelDrivePort;
 
 	public GetWheelDrivesResponse execute(Long trimId, Long engineId) {
-		List<WheelDrive> wheelDrives = getWheelDrivePort.findSelectableWheelDrivesByTrimId(trimId);
-		List<Long> unselectableWheelDriveIds = getWheelDrivePort.findUnselectableWheelDriveIdsByEngineId(engineId);
+		List<WheelDrive> wheelDrives = getWheelDrivePort.findWheelDrivesByTrim(trimId);
+		List<Long> unselectableWheelDriveIds = getWheelDrivePort.findUnselectableWheelDriveIdsByEngine(engineId);
 
 		List<WheelDrive> selectableWheelDrives = wheelDrives.stream()
 			.filter(wheelDrive -> wheelDrive.isSelectable(unselectableWheelDriveIds))

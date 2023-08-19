@@ -42,9 +42,9 @@ class GetWheelDrivesUseCaseTest {
 			.ratio(22)
 			.imgUrl("imgUrl")
 			.build();
-		given(getWheelDrivePort.findSelectableWheelDrivesByTrimId(any())).willReturn(Arrays.asList(wheelDrive));
+		given(getWheelDrivePort.findWheelDrivesByTrim(any())).willReturn(Arrays.asList(wheelDrive));
 
-		given(getWheelDrivePort.findUnselectableWheelDriveIdsByEngineId(any())).willReturn(
+		given(getWheelDrivePort.findUnselectableWheelDriveIdsByEngine(any())).willReturn(
 			Arrays.asList(2L, 3L));
 
 		// when
@@ -78,9 +78,9 @@ class GetWheelDrivesUseCaseTest {
 			.ratio(22)
 			.imgUrl("imgUrl")
 			.build();
-		given(getWheelDrivePort.findSelectableWheelDrivesByTrimId(any())).willReturn(Arrays.asList(wheelDrive));
+		given(getWheelDrivePort.findWheelDrivesByTrim(any())).willReturn(Arrays.asList(wheelDrive));
 
-		given(getWheelDrivePort.findUnselectableWheelDriveIdsByEngineId(any())).willReturn(
+		given(getWheelDrivePort.findUnselectableWheelDriveIdsByEngine(any())).willReturn(
 			Arrays.asList(1L, 3L));
 
 		// when

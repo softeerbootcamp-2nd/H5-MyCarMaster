@@ -63,9 +63,9 @@ public class CreateEstimateUseCase {
 		validateBodyType(createEstimateRequest, bodyTypes);
 
 		List<WheelDrive> wheelDrives =
-			wheelDrivePort.findSelectableWheelDrivesByTrimId(createEstimateRequest.getTrimId());
+			wheelDrivePort.findWheelDrivesByTrim(createEstimateRequest.getTrimId());
 		List<Long> unselectableWheelDriveIds =
-			wheelDrivePort.findUnselectableWheelDriveIdsByEngineId(createEstimateRequest.getEngineId());
+			wheelDrivePort.findUnselectableWheelDriveIdsByEngine(createEstimateRequest.getEngineId());
 		List<WheelDrive> selectableWheelDrives = wheelDrives.stream()
 			.filter(wheelDrive -> wheelDrive.isSelectable(unselectableWheelDriveIds))
 			.collect(Collectors.toList());
