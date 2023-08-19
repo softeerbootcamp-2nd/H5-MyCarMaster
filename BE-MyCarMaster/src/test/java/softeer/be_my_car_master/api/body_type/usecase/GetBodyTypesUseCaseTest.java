@@ -44,10 +44,10 @@ class GetBodyTypesUseCaseTest {
 		given(getBodyTypePort.findBodyTypesByModel(any())).willReturn(Arrays.asList(bodyType));
 
 		// when
-		GetBodyTypesResponse getBodyTypesResponse = getBodyTypesUseCase.execute(1L);
+		GetBodyTypesResponse response = getBodyTypesUseCase.execute(1L);
 
 		// then
-		List<BodyTypeDto> bodyTypes = getBodyTypesResponse.getBodyTypes();
+		List<BodyTypeDto> bodyTypes = response.getBodyTypes();
 		BodyTypeDto expected = bodyTypes.get(0);
 
 		SoftAssertions.assertSoftly(softAssertions -> {
