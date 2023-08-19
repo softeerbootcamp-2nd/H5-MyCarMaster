@@ -30,6 +30,8 @@
 		B52FC1AC2A90920C0075D288 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1AB2A90920C0075D288 /* ViewController.swift */; };
 		B52FC1B12A90920D0075D288 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B52FC1B02A90920D0075D288 /* Assets.xcassets */; };
 		B52FC1B42A90920D0075D288 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52FC1B22A90920D0075D288 /* LaunchScreen.storyboard */; };
+		B52FC1C62A90B7210075D288 /* PaddingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1C52A90B7210075D288 /* PaddingButton.swift */; };
+		B52FC1C82A90B7A20075D288 /* PaddingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1C52A90B7210075D288 /* PaddingButton.swift */; };
 		B53BA1082A8BE6B9009F94BE /* OptionListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BA1072A8BE6B9009F94BE /* OptionListCell.swift */; };
 		B53BA10A2A8BF426009F94BE /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BA1092A8BF426009F94BE /* Option.swift */; };
 		B53BA10C2A8BF42F009F94BE /* OptionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BA10B2A8BF42F009F94BE /* OptionDTO.swift */; };
@@ -176,6 +178,7 @@
 		B52FC1B02A90920D0075D288 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B52FC1B32A90920D0075D288 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B52FC1B52A90920D0075D288 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B52FC1C52A90B7210075D288 /* PaddingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingButton.swift; sourceTree = "<group>"; };
 		B53BA1072A8BE6B9009F94BE /* OptionListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionListCell.swift; sourceTree = "<group>"; };
 		B53BA1092A8BF426009F94BE /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
 		B53BA10B2A8BF42F009F94BE /* OptionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionDTO.swift; sourceTree = "<group>"; };
@@ -476,6 +479,7 @@
 				B5DD65132A88F5C500B44F61 /* Cell */,
 				B53C3C482A854AF50019ECA1 /* BasicStepView.swift */,
 				B53BA1112A8C0A8F009F94BE /* PaddingLabel.swift */,
+				B52FC1C52A90B7210075D288 /* PaddingButton.swift */,
 				B550C0D42A8FF4440068670D /* SeparatorView.swift */,
 			);
 			path = General;
@@ -889,6 +893,7 @@
 				B56F55D72A86BC7D0055E382 /* Trim.swift in Sources */,
 				B500C7812A8FCD5A007724F3 /* QuotationContentItemState.swift in Sources */,
 				B598A0852A8F297A00C4A591 /* QuotationViewController.swift in Sources */,
+				B52FC1C62A90B7210075D288 /* PaddingButton.swift in Sources */,
 				B53C3C522A8566270019ECA1 /* WheelDriveViewController.swift in Sources */,
 				B5F1AE062A838B8E00E7E392 /* TrimViewController.swift in Sources */,
 				B5DD65192A88FB6F00B44F61 /* CellStyleSelectable.swift in Sources */,
@@ -959,7 +964,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B52FC1AC2A90920C0075D288 /* ViewController.swift in Sources */,
-				B52FC1BA2A9092270075D288 /* PaddingButton.swift in Sources */,
+				B52FC1C82A90B7A20075D288 /* PaddingButton.swift in Sources */,
 				B52FC1A82A90920C0075D288 /* AppDelegate.swift in Sources */,
 				B52FC1AA2A90920C0075D288 /* SceneDelegate.swift in Sources */,
 			);
