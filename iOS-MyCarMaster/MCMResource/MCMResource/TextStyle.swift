@@ -38,13 +38,17 @@ public struct TextStyle {
         if let kern { attributes[NSAttributedString.Key.kern] = kern }
 
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.setParagraphStyle(.default)
+//        paragraphStyle.setParagraphStyle(.default)
         if let lineSpacing  { paragraphStyle.lineSpacing = lineSpacing }
         if let lineHeight {
             paragraphStyle.minimumLineHeight = lineHeight
             paragraphStyle.maximumLineHeight = lineHeight
             // 지정한 lineHeight내에서 글자를 중앙으로
-            attributes[NSAttributedString.Key.baselineOffset] = (lineHeight - (font?.lineHeight ?? 0)) / 4
+            if #available(iOS 16.4, *) {
+                attributes[NSAttributedString.Key.baselineOffset] = (lineHeight - (font?.lineHeight ?? 0)) / 2
+            } else {
+                attributes[NSAttributedString.Key.baselineOffset] = (lineHeight - (font?.lineHeight ?? 0)) / 4
+            }
         }
         if let alignment { paragraphStyle.alignment = alignment }
         if let lineBreakMode { paragraphStyle.lineBreakMode = lineBreakMode }
