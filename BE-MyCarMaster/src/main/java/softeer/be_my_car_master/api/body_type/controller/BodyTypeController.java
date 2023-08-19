@@ -12,7 +12,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.api.body_type.dto.request.GetBodyTypesRequest;
 import softeer.be_my_car_master.api.body_type.dto.response.GetBodyTypesResponse;
-import softeer.be_my_car_master.api.body_type.usecase.GetBodyTypesUseCase;
+import softeer.be_my_car_master.api.body_type.usecase.get_body_types.GetBodyTypesUseCase;
 import softeer.be_my_car_master.global.exception.BindingParamException;
 import softeer.be_my_car_master.global.response.Response;
 

@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
-import softeer.be_my_car_master.api.body_type.usecase.port.BodyTypePort;
+import softeer.be_my_car_master.api.body_type.usecase.get_body_types.GetBodyTypesPort;
 import softeer.be_my_car_master.api.color_exterior.usecase.port.ExteriorColorPort;
 import softeer.be_my_car_master.api.color_interior.usecase.port.InteriorColorPort;
 import softeer.be_my_car_master.api.engine.usecase.port.EnginePort;
@@ -40,7 +40,7 @@ public class CreateEstimateUseCase {
 	private final GetModelsPort modelPort;
 	private final TrimPort trimPort;
 	private final EnginePort enginePort;
-	private final BodyTypePort bodyTypePort;
+	private final GetBodyTypesPort bodyTypePort;
 	private final WheelDrivePort wheelDrivePort;
 	private final ExteriorColorPort exteriorColorPort;
 	private final InteriorColorPort interiorColorPort;

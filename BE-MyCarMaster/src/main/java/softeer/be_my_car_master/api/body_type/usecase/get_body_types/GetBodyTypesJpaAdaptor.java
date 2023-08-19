@@ -1,10 +1,9 @@
-package softeer.be_my_car_master.infrastructure.jpa.body_type.adaptor;
+package softeer.be_my_car_master.api.body_type.usecase.get_body_types;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 import lombok.RequiredArgsConstructor;
-import softeer.be_my_car_master.api.body_type.usecase.port.BodyTypePort;
 import softeer.be_my_car_master.domain.body_type.BodyType;
 import softeer.be_my_car_master.global.annotation.Adaptor;
 import softeer.be_my_car_master.infrastructure.jpa.body_type.entity.BodyTypeEntity;
@@ -12,7 +11,7 @@ import softeer.be_my_car_master.infrastructure.jpa.body_type.repository.BodyType
 
 @Adaptor
 @RequiredArgsConstructor
-public class BodyTypeJpaAdaptor implements BodyTypePort {
+public class GetBodyTypesJpaAdaptor implements GetBodyTypesPort {
 
 	private final BodyTypeJpaRepository bodyTypeJpaRepository;
 
