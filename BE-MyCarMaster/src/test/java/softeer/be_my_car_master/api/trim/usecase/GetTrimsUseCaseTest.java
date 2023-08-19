@@ -15,7 +15,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import softeer.be_my_car_master.api.trim.dto.response.GetTrimsResponse;
 import softeer.be_my_car_master.api.trim.dto.response.TrimDto;
-import softeer.be_my_car_master.api.trim.usecase.port.TrimPort;
+import softeer.be_my_car_master.api.trim.usecase.get_trims.GetTrimsPort;
+import softeer.be_my_car_master.api.trim.usecase.get_trims.GetTrimsUseCase;
 import softeer.be_my_car_master.domain.trim.Trim;
 
 @ExtendWith(MockitoExtension.class)
@@ -26,7 +27,7 @@ class GetTrimsUseCaseTest {
 	private GetTrimsUseCase getTrimsUseCase;
 
 	@Mock
-	private TrimPort trimPort;
+	private GetTrimsPort getTrimsPort;
 
 	@Test
 	@DisplayName("모델 목록을 조회합니다")
@@ -40,7 +41,7 @@ class GetTrimsUseCaseTest {
 			.price(10000)
 			.imgUrl("image")
 			.build();
-		given(trimPort.findTrimsByModel(any())).willReturn(Arrays.asList(trim));
+		given(getTrimsPort.findTrimsByModel(any())).willReturn(Arrays.asList(trim));
 
 		// when
 		GetTrimsResponse getTrimsResponse = getTrimsUseCase.execute(1L);

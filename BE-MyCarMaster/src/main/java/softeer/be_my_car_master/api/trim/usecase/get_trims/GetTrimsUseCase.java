@@ -1,10 +1,9 @@
-package softeer.be_my_car_master.api.trim.usecase;
+package softeer.be_my_car_master.api.trim.usecase.get_trims;
 
 import java.util.List;
 
 import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.api.trim.dto.response.GetTrimsResponse;
-import softeer.be_my_car_master.api.trim.usecase.port.TrimPort;
 import softeer.be_my_car_master.domain.trim.Trim;
 import softeer.be_my_car_master.global.annotation.UseCase;
 
@@ -12,10 +11,10 @@ import softeer.be_my_car_master.global.annotation.UseCase;
 @RequiredArgsConstructor
 public class GetTrimsUseCase {
 
-	private final TrimPort trimPort;
+	private final GetTrimsPort getTrimsPort;
 
 	public GetTrimsResponse execute(Long modelId) {
-		List<Trim> trims = trimPort.findTrimsByModel(modelId);
+		List<Trim> trims = getTrimsPort.findTrimsByModel(modelId);
 		return GetTrimsResponse.from(trims);
 	}
 }
