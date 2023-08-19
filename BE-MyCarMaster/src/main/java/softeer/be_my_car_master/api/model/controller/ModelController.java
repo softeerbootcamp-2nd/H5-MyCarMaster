@@ -1,7 +1,6 @@
 package softeer.be_my_car_master.api.model.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -12,7 +11,6 @@ import softeer.be_my_car_master.api.model.usecase.get_models.GetModelsUseCase;
 import softeer.be_my_car_master.global.response.Response;
 
 @RestController
-@RequestMapping
 @RequiredArgsConstructor
 @Tag(name = "Model", description = "Model API Document")
 public class ModelController {
