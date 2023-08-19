@@ -23,7 +23,7 @@ final class GeneralButton: UIButton, ButtonStyleSeletable {
     }
 
     private func configureUI() {
-        style = .titleMedium2
+        style = .titleMedium2(nil)
     }
 }
 
@@ -51,7 +51,7 @@ final class EstimationView: UIView {
 
     private let priceTitleLabel: UILabel = {
         let label = UILabel()
-        label.style = .bodyMedium2
+        label.style = .bodyMedium2(nil)
         label.textColor = .MCM.black
         label.setText("예상 가격")
         return label
@@ -59,7 +59,7 @@ final class EstimationView: UIView {
 
     private let priceLabel: UILabel = {
         let label = UILabel()
-        label.style = .titleLarge1
+        label.style = .titleLarge1(nil)
         label.textColor = .MCM.black
         label.setText("93,896,000원")
         return label
@@ -81,7 +81,7 @@ final class EstimationView: UIView {
 
     private let summaryButton: UIButton = {
         let button = UIButton()
-        button.style = .bodyMedium1
+        button.style = .bodyMedium1(nil)
         button.layer.borderWidth = 1.0
         button.layer.borderColor = UIColor.MCM.black.cgColor
         button.setTitleColor(.MCM.black, for: .normal)

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Interior {
+struct Interior: Hashable {
     let model: String
     let name: String
     let price: Int

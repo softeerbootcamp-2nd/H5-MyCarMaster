@@ -20,3 +20,12 @@ extension Option: OptionListCellMainStateConvertible {
         )
     }
 }
+
+extension Option: QuotationContentOptionItemStateConvertible {
+    var quotationContentOptionItemState: QuotationContentOptionItemState {
+        return .init(
+            title: self.name,
+            price: self.price
+        )
+    }
+}

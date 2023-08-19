@@ -15,7 +15,7 @@ extension UIButton {
     public var style: Resource.Typeface {
         get {
             guard let style = objc_getAssociatedObject(self, &AssociatedKeys.typeface) as? Resource.Typeface else {
-                return .default
+                return .default(nil)
             }
             return style
         }

@@ -19,7 +19,7 @@ final class ProgressView: UIView {
 
     let progressIndicatorLabel: UILabel = {
         let label = UILabel()
-        label.style = .titleSmall
+        label.style = .titleSmall(nil)
         label.textColor = .MCM.navyBlue5
         label.setText("트림선택")
         return label
@@ -73,7 +73,7 @@ final class StepNavigatorView: UIView {
 
     let modelSelectionButton: UIButton = {
         let button = UIButton()
-        button.style = .titleLarge2
+        button.style = .titleLarge2(nil)
         button.setStyledTitle("Palisade", for: .normal)
         button.setTitleColor(.MCM.black, for: .normal)
         return button

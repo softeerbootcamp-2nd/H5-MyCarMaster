@@ -27,35 +27,25 @@ final class OnboardingView: UIView {
         return layer
     }()
 
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "내게 맞는 견적부터\n카마스터 연결까지"
-        label.font = .systemFont(ofSize: 32, weight: .bold)
-        label.textColor = .white
+    private let titleLabel = UILabel().then { label in
+        label.style = .headlineLarge(nil)
+        label.setText("내게 맞는 견적부터\n카마스터 연결까지")
+        label.textColor = .MCM.white
         label.numberOfLines = 0
+    }
 
-        label.sizeToFit()
-        return label
-    }()
+    private let subTitleLabel = UILabel().then { label in
+        label.style = .bodyLarge2(nil)
+        label.setText("마이 카마스터와 함께해요")
+        label.textColor = .MCM.white
+    }
 
-    private let subTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "마이 카마스터와 함께해요"
-        label.textAlignment = .center
-        label.font = .systemFont(ofSize: 16, weight: .medium)
-        label.textColor = .white
-
-        label.sizeToFit()
-        return label
-    }()
-
-    private(set) var startButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .white
-        button.setTitle("마이 카마스터 시작하기", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        return button
-    }()
+    private(set) var startButton = UIButton().then { button in
+        button.backgroundColor = .MCM.white
+        button.style = .bodyMedium1(nil)
+        button.setStyledTitle("마이 카마스터 시작하기", for: .normal)
+        button.setTitleColor(.MCM.black, for: .normal)
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)

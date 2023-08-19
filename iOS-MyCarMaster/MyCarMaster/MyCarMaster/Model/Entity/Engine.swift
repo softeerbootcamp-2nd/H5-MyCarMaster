@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Engine {
+struct Engine: Hashable {
     let model: String
     let name: String
     let ratio: Int

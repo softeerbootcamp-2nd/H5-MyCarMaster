@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Option: Codable, Hashable {
+struct Option: Hashable {
     let model: String
     let category: String
     let name: String
@@ -20,7 +20,7 @@ struct Option: Codable, Hashable {
     let subOptions: [SubOption]
 }
 
-struct SubOption: Codable, Hashable {
+struct SubOption: Hashable {
     let name: String
     let imgURL: URL?
     let description: String?

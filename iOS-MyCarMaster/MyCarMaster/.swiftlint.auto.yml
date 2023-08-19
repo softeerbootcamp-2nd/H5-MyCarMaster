@@ -4,3 +4,6 @@ whitelist_rules:
   - vertical_whitespace
   - vertical_whitespace_closing_braces
   - trailing_newline
+
+included:
+  - ${TARGETNAME}

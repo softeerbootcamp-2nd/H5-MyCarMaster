@@ -19,3 +19,15 @@ extension Trim: BasicListCellStateConvertible {
         )
     }
 }
+
+extension Trim: QuotationContentItemStateConvertible {
+    var quotationContentItemState: QuotationContentItemState {
+        return .init(
+            titleDescription: "트림",
+            title: self.name,
+            imageURL: nil,
+            price: self.price,
+            isAdditionalPrice: false
+        )
+    }
+}

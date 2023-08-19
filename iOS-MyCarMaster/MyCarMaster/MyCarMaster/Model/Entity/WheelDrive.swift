@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WheelDrive {
+struct WheelDrive: Hashable {
     let model: String
     let name: String
     let description: String

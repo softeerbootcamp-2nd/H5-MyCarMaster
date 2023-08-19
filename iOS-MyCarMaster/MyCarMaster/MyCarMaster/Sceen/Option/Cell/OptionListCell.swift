@@ -35,24 +35,24 @@ final class OptionListCell: UICollectionViewCell, CellStyleSelectable {
     private let leftContainer = UIView()
 
     private let categoryLabel = PaddingLabel().then { label in
-        label.style = .buttonTitleSmall
+        label.style = .buttonTitleSmall(nil)
         label.configure(left: 8, right: 8)
     }
 
     private let titleLabel = UILabel().then { label in
-        label.style = .titleLarge2
+        label.style = .titleLarge2(nil)
         label.numberOfLines = 0
         label.lineBreakStrategy = .hangulWordPriority
         label.textColor = .MCM.black
     }
 
     private let additoryLabel = UILabel().then { label in
-        label.style = .caption
+        label.style = .caption(nil)
         label.textColor = .MCM.grey3
     }
 
     private let priceLabel = UILabel().then { label in
-        label.style = .titleMedium2
+        label.style = .titleMedium2(nil)
         label.textColor = .MCM.black
     }
 
@@ -73,7 +73,7 @@ final class OptionListCell: UICollectionViewCell, CellStyleSelectable {
             button.contentEdgeInsets = UIEdgeInsets(top: 6, left: 12, bottom: 6, right: 12)
             button.setTitleColor(.MCM.black, for: .normal)
         }
-        button.style = .bodySmall1
+        button.style = .bodySmall1(nil)
         button.backgroundColor = .MCM.white
         button.layer.cornerRadius = 14
         button.layer.borderWidth = 1.0

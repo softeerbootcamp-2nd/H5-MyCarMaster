@@ -14,7 +14,7 @@ where ListCellClass: UICollectionViewCell & CellStyleSelectable & ContentSizeEst
 
     private let recommendLabel: UILabel = {
         let label = UILabel()
-        label.style = .bodyMedium1
+        label.style = .bodyMedium1(nil)
         label.setText("어떤 트림을 고를지 고민되나요?")
         label.textColor = .MCM.black
         return label
@@ -31,7 +31,7 @@ where ListCellClass: UICollectionViewCell & CellStyleSelectable & ContentSizeEst
             button.contentEdgeInsets = UIEdgeInsets(top: 4, left: 12, bottom: 4, right: 12)
             button.setTitleColor(.MCM.black, for: .normal)
         }
-        button.style = .bodySmall1
+        button.style = .bodySmall1(nil)
         button.layer.borderColor = UIColor.MCM.coolGrey1.cgColor
         button.layer.borderWidth = 1.0
         button.setStyledTitle("내게 맞는 트림 찾기", for: .normal)

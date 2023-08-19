@@ -20,61 +20,61 @@ public enum Resource {
         static let `default` = Self.bodyMedium1
 
         /// Hyundai Sans Head KR / 500(Medium) / Size: 36 / LineHeight 44.0 / Kern: -3%
-        case displaySmall
+        case displaySmall(TextStyle?)
         /// Hyundai Sans Head KR / 500(Medium) / Size: 32 / LineHeight 40.0 / Kern: -3%
-        case headlineLarge
+        case headlineLarge(TextStyle?)
         /// Hyundai Sans Head KR / 500(Medium) / Size: 28 / LineHeight 36.0 / Kern: -3%
-        case headlineMedium
+        case headlineMedium(TextStyle?)
         /// Hyundai Sans Head KR / 500(Medium) / Size: 24 / LineHeight 32.0 / Kern: -3%
-        case headlineSmall
+        case headlineSmall(TextStyle?)
         /// Hyundai Sans Text KR / 700(Bold) / Size: 22 / LineHeight 28.0 / Kern: -3%
-        case titleLarge1
+        case titleLarge1(TextStyle?)
         /// Hyundai Sans Text KR / 700(Bold) / Size: 20 / LineHeight 28.0 / Kern: -3%
-        case titleLarge2
+        case titleLarge2(TextStyle?)
         /// Hyundai Sans Text KR / 500(Medium) / Size: 22 / LineHeight 32.0 / Kern: -3%
-        case titleMedium1
+        case titleMedium1(TextStyle?)
         /// Hyundai Sans Text KR / 700(Bold) / Size: 16 / LineHeight 24.0 / Kern: -3%
-        case titleMedium2
+        case titleMedium2(TextStyle?)
         /// Hyundai Sans Text KR / 700(Bold) / Size: 14 / LineHeight 20.0 / Kern: -3%
-        case titleSmall
+        case titleSmall(TextStyle?)
         /// Hyundai Sans Text KR / 500(Medium) / Size: 16 / LineHeight 24.0 / Kern: -3%
-        case bodyLarge1
+        case bodyLarge1(TextStyle?)
         /// Hyundai Sans Text KR / 500(Medium) / Size: 14 / LineHeight 20.0 / Kern: -3%
-        case bodyMedium1
+        case bodyMedium1(TextStyle?)
         /// Hyundai Sans Text KR / 500(Medium) / Size: 12 / LineHeight 16.0 / Kern: -3%
-        case bodySmall1
+        case bodySmall1(TextStyle?)
         /// Hyundai Sans Text KR / 400(Regular) / Size: 16 / LineHeight 24.0 / Kern: -3%
-        case bodyLarge2
+        case bodyLarge2(TextStyle?)
         /// Hyundai Sans Text KR / 400(Regular) / Size: 14 / LineHeight 20.0 / Kern: -3%
-        case bodyMedium2
+        case bodyMedium2(TextStyle?)
         /// Hyundai Sans Text KR / 400(Regular) / Size: 13 / LineHeight 16.0 / Kern: -3%
-        case bodySmall2
+        case bodySmall2(TextStyle?)
         /// Hyundai Sans Text KR / 400(Regular) / Size: 9 / LineHeight 16.0 / Kern: -3%
-        case caption
+        case caption(TextStyle?)
         /// Hyundai Sans Text KR / 500(Medium) / Size: 10 / LineHeight 16.0 / Kern: -3%
-        case buttonTitleSmall
+        case buttonTitleSmall(TextStyle?)
 
         var textStyle: TextStyle {
             let defaultStyle = TextStyle(kern: -0.03)
 
             switch self {
-            case .displaySmall: return defaultStyle.with(font: Head.medium.font(size: 36), lineHeight: 44)
-            case .headlineLarge: return defaultStyle.with(font: Head.medium.font(size: 32), lineHeight: 40)
-            case .headlineMedium: return defaultStyle.with(font: Head.medium.font(size: 28), lineHeight: 36)
-            case .headlineSmall: return defaultStyle.with(font: Head.medium.font(size: 24), lineHeight: 32)
-            case .titleLarge1: return defaultStyle.with(font: Text.bold.font(size: 22), lineHeight: 28)
-            case .titleLarge2: return defaultStyle.with(font: Text.bold.font(size: 20), lineHeight: 28)
-            case .titleMedium1: return defaultStyle.with(font: Text.medium.font(size: 22), lineHeight: 32)
-            case .titleMedium2: return defaultStyle.with(font: Text.bold.font(size: 16), lineHeight: 24)
-            case .titleSmall: return defaultStyle.with(font: Text.bold.font(size: 14), lineHeight: 20)
-            case .bodyLarge1: return defaultStyle.with(font: Text.medium.font(size: 16), lineHeight: 24)
-            case .bodyMedium1: return defaultStyle.with(font: Text.medium.font(size: 14), lineHeight: 20)
-            case .bodySmall1: return defaultStyle.with(font: Text.medium.font(size: 12), lineHeight: 16)
-            case .bodyLarge2: return defaultStyle.with(font: Text.regular.font(size: 16), lineHeight: 24)
-            case .bodyMedium2: return defaultStyle.with(font: Text.regular.font(size: 14), lineHeight: 20)
-            case .bodySmall2: return defaultStyle.with(font: Text.regular.font(size: 13), lineHeight: 16)
-            case .caption: return defaultStyle.with(font: Text.regular.font(size: 9), lineHeight: 16)
-            case .buttonTitleSmall: return defaultStyle.with(font: Text.medium.font(size: 10), lineHeight: 16)
+            case let .displaySmall(additionalStyle): return defaultStyle.with(font: Head.medium.font(size: 36), lineHeight: 44).with(additionalStyle)
+            case let .headlineLarge(additionalStyle): return defaultStyle.with(font: Head.medium.font(size: 32), lineHeight: 40).with(additionalStyle)
+            case let .headlineMedium(additionalStyle): return defaultStyle.with(font: Head.medium.font(size: 28), lineHeight: 36).with(additionalStyle)
+            case let .headlineSmall(additionalStyle): return defaultStyle.with(font: Head.medium.font(size: 24), lineHeight: 32).with(additionalStyle)
+            case let .titleLarge1(additionalStyle): return defaultStyle.with(font: Text.bold.font(size: 22), lineHeight: 28).with(additionalStyle)
+            case let .titleLarge2(additionalStyle): return defaultStyle.with(font: Text.bold.font(size: 20), lineHeight: 28).with(additionalStyle)
+            case let .titleMedium1(additionalStyle): return defaultStyle.with(font: Text.medium.font(size: 22), lineHeight: 32).with(additionalStyle)
+            case let .titleMedium2(additionalStyle): return defaultStyle.with(font: Text.bold.font(size: 16), lineHeight: 24).with(additionalStyle)
+            case let .titleSmall(additionalStyle): return defaultStyle.with(font: Text.bold.font(size: 14), lineHeight: 20).with(additionalStyle)
+            case let .bodyLarge1(additionalStyle): return defaultStyle.with(font: Text.medium.font(size: 16), lineHeight: 24).with(additionalStyle)
+            case let .bodyMedium1(additionalStyle): return defaultStyle.with(font: Text.medium.font(size: 14), lineHeight: 20).with(additionalStyle)
+            case let .bodySmall1(additionalStyle): return defaultStyle.with(font: Text.medium.font(size: 12), lineHeight: 16).with(additionalStyle)
+            case let .bodyLarge2(additionalStyle): return defaultStyle.with(font: Text.regular.font(size: 16), lineHeight: 24).with(additionalStyle)
+            case let .bodyMedium2(additionalStyle): return defaultStyle.with(font: Text.regular.font(size: 14), lineHeight: 20).with(additionalStyle)
+            case let .bodySmall2(additionalStyle): return defaultStyle.with(font: Text.regular.font(size: 13), lineHeight: 16).with(additionalStyle)
+            case let .caption(additionalStyle): return defaultStyle.with(font: Text.regular.font(size: 9), lineHeight: 16).with(additionalStyle)
+            case let .buttonTitleSmall(additionalStyle): return defaultStyle.with(font: Text.medium.font(size: 10), lineHeight: 16).with(additionalStyle)
             }
         }
     }

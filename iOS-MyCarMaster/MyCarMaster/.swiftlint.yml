@@ -23,6 +23,7 @@ excluded:
   - ${TARGETNAME}/Resource
   - ${TARGETNAME}Tests/
   - ${TARGETNAME}UITests/
+  - Catalog/
 
 line_length: 120
 

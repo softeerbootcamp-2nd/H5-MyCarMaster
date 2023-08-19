@@ -31,17 +31,17 @@ final class ColorListCell: UICollectionViewCell, CellStyleSelectable, ContentSiz
     private let rightContainer = UIView()
 
     private let titleLabel = UILabel().then { label in
-        label.style = .bodyMedium1
+        label.style = .bodyMedium1(nil)
         label.textColor = .MCM.black
     }
 
     private let additoryLabel = UILabel().then { label in
-        label.style = .caption
+        label.style = .caption(nil)
         label.textColor = .MCM.navyBlue4
     }
 
     private let priceLabel = UILabel().then { label in
-        label.style = .bodySmall1
+        label.style = .bodySmall1(nil)
         label.textColor = .MCM.black
     }
 

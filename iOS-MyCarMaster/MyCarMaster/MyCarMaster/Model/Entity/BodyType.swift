@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BodyType {
+struct BodyType: Hashable {
     var model: String
     var name: String
     var description: String

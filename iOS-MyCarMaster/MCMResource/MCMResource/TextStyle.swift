@@ -38,13 +38,17 @@ public struct TextStyle {
         if let kern { attributes[NSAttributedString.Key.kern] = kern }
 
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.setParagraphStyle(.default)
+//        paragraphStyle.setParagraphStyle(.default)
         if let lineSpacing  { paragraphStyle.lineSpacing = lineSpacing }
         if let lineHeight {
             paragraphStyle.minimumLineHeight = lineHeight
             paragraphStyle.maximumLineHeight = lineHeight
             // 지정한 lineHeight내에서 글자를 중앙으로
-            attributes[NSAttributedString.Key.baselineOffset] = (lineHeight - (font?.lineHeight ?? 0)) / 4
+            if #available(iOS 16.4, *) {
+                attributes[NSAttributedString.Key.baselineOffset] = (lineHeight - (font?.lineHeight ?? 0)) / 2
+            } else {
+                attributes[NSAttributedString.Key.baselineOffset] = (lineHeight - (font?.lineHeight ?? 0)) / 4
+            }
         }
         if let alignment { paragraphStyle.alignment = alignment }
         if let lineBreakMode { paragraphStyle.lineBreakMode = lineBreakMode }
@@ -71,6 +75,21 @@ extension TextStyle {
             kern: kern ?? self.kern,
             alignment: alignment ?? self.alignment,
             lineBreakMode: lineBreakMode ?? self.lineBreakMode
+        )
+    }
+    
+    /// 지정한 서체에 추가적인 style을 지정해 주고 싶을 때 이 메서드를 사용합니다.
+    /// 서체를 구별하는데 꼭 필요한 `font`, `lineHeight`은 변경할 수 없습니다.
+    public func with(_ additionalStyle: TextStyle?) -> TextStyle {
+        guard let additionalStyle else { return self }
+        
+        return TextStyle(
+            font: self.font,
+            lineSpacing: additionalStyle.lineSpacing ?? self.lineSpacing,
+            lineHeight: self.lineHeight,
+            kern: additionalStyle.kern ?? self.kern,
+            alignment: additionalStyle.alignment ?? self.alignment,
+            lineBreakMode: additionalStyle.lineBreakMode ?? self.lineBreakMode
         )
     }
 }
