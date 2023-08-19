@@ -84,9 +84,9 @@ final class QuotationView: UIView {
 
         NSLayoutConstraint.activate([
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -2 * inset),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: inset),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -inset),
 
             scrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
         ])
@@ -98,11 +98,6 @@ final class QuotationView: UIView {
         [mainContentView, quotationContentView].forEach { subview in
             contentView.addArrangedSubview(subview)
         }
-
-        NSLayoutConstraint.activate([
-            quotationContentView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: inset),
-            quotationContentView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -inset),
-        ])
 
         configureMainContentViewLayout()
     }
