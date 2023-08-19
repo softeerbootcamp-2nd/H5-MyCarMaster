@@ -15,7 +15,7 @@ public class GetTrimsUseCase {
 	private final TrimPort trimPort;
 
 	public GetTrimsResponse execute(Long modelId) {
-		List<Trim> trims = trimPort.findTrims(modelId);
+		List<Trim> trims = trimPort.findTrimsByModel(modelId);
 		return GetTrimsResponse.from(trims);
 	}
 }

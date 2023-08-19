@@ -17,7 +17,7 @@ public class TrimJpaAdaptor implements TrimPort {
 	private final TrimJpaRepository trimJpaRepository;
 
 	@Override
-	public List<Trim> findTrims(Long modelId) {
+	public List<Trim> findTrimsByModel(Long modelId) {
 		return trimJpaRepository.findAllByModelId(modelId).stream()
 			.map(TrimEntity::toTrim)
 			.collect(Collectors.toList());
