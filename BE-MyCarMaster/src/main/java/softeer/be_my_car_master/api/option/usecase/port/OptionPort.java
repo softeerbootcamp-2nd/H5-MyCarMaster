@@ -22,7 +22,7 @@ public interface OptionPort {
 
 	List<Long> findUnselectableOptionIdsByInteriorColorId(Long interiorColorId);
 
-	List<Option> findDefaultOptionsByTrimId(Long trimId);
+	List<Option> findDefaultOptionsByTrim(Long trimId);
 
 	List<Option> findRepresentativeOptionsByModelId(Long modelId);
 

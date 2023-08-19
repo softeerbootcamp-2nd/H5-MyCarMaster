@@ -40,7 +40,7 @@ public class GetTrimDefaultOptionsUseCaseTest {
 			.imgUrl("imgUrl")
 			.build();
 
-		given(optionPort.findDefaultOptionsByTrimId(any())).willReturn(List.of(option));
+		given(optionPort.findDefaultOptionsByTrim(any())).willReturn(List.of(option));
 
 		// when
 		GetTrimDefaultOptionsResponse getTrimDefaultOptionsResponse = getTrimDefaultOptionsUseCase.execute(1L);

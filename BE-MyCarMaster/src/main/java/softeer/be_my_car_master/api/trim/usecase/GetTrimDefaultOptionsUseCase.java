@@ -15,7 +15,7 @@ public class GetTrimDefaultOptionsUseCase {
 	private final OptionPort optionPort;
 
 	public GetTrimDefaultOptionsResponse execute(Long trimId) {
-		List<Option> defaultOptions = optionPort.findDefaultOptionsByTrimId(trimId);
+		List<Option> defaultOptions = optionPort.findDefaultOptionsByTrim(trimId);
 		return GetTrimDefaultOptionsResponse.from(defaultOptions);
 	}
 }
