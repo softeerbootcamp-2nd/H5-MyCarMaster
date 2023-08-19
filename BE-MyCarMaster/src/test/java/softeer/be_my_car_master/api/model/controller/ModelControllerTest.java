@@ -27,7 +27,6 @@ class ModelControllerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
-
 	@Autowired
 	private ObjectMapper objectMapper;
 
@@ -38,16 +37,16 @@ class ModelControllerTest {
 	@DisplayName("모델 목록을 조회합니다")
 	void getModels() throws Exception {
 		//given
-		GetModelsResponse getModelsResponse = new GetModelsResponse();
+		GetModelsResponse response = new GetModelsResponse();
 		ModelDto modelDto = ModelDto.builder()
 			.id(1L)
 			.name("model name")
 			.imgUrl("imgUrl")
 			.build();
-		getModelsResponse.setModels(Arrays.asList(modelDto));
-		given(getModelsUseCase.execute()).willReturn(getModelsResponse);
+		response.setModels(Arrays.asList(modelDto));
+		given(getModelsUseCase.execute()).willReturn(response);
 
-		Response successResponse = Response.createSuccessResponse(getModelsResponse);
+		Response successResponse = Response.createSuccessResponse(response);
 		String responseBody = objectMapper.writeValueAsString(successResponse);
 
 		//when
