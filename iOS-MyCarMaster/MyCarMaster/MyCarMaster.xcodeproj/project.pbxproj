@@ -33,6 +33,7 @@
 		B52FC1C22A90AE6A0075D288 /* MCMResource.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B52FC1C02A90AE6A0075D288 /* MCMResource.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B52FC1C62A90B7210075D288 /* PaddingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1C52A90B7210075D288 /* PaddingButton.swift */; };
 		B52FC1C82A90B7A20075D288 /* PaddingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1C52A90B7210075D288 /* PaddingButton.swift */; };
+		B52FC1CC2A90DAE00075D288 /* QuotationContentOptionItemState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1CB2A90DAE00075D288 /* QuotationContentOptionItemState.swift */; };
 		B52FC1CE2A90E0D20075D288 /* QuotationContentOptionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1CD2A90E0D20075D288 /* QuotationContentOptionItemView.swift */; };
 		B53BA1082A8BE6B9009F94BE /* OptionListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BA1072A8BE6B9009F94BE /* OptionListCell.swift */; };
 		B53BA10A2A8BF426009F94BE /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53BA1092A8BF426009F94BE /* Option.swift */; };
@@ -193,6 +194,7 @@
 		B52FC1B52A90920D0075D288 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B52FC1C02A90AE6A0075D288 /* MCMResource.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMResource.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B52FC1C52A90B7210075D288 /* PaddingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingButton.swift; sourceTree = "<group>"; };
+		B52FC1CB2A90DAE00075D288 /* QuotationContentOptionItemState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationContentOptionItemState.swift; sourceTree = "<group>"; };
 		B52FC1CD2A90E0D20075D288 /* QuotationContentOptionItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationContentOptionItemView.swift; sourceTree = "<group>"; };
 		B53BA1072A8BE6B9009F94BE /* OptionListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionListCell.swift; sourceTree = "<group>"; };
 		B53BA1092A8BF426009F94BE /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
@@ -618,6 +620,7 @@
 				B500C77C2A8FC066007724F3 /* QuotationContentView.swift */,
 				B500C77E2A8FCA5F007724F3 /* QuotationContentItemView.swift */,
 				B500C7802A8FCD5A007724F3 /* QuotationContentItemState.swift */,
+				B52FC1CF2A90E2FA0075D288 /* QuotationContentOptionState.swift */,
 				B52FC1CD2A90E0D20075D288 /* QuotationContentOptionItemView.swift */,
 				B598A0842A8F297A00C4A591 /* QuotationViewController.swift */,
 			);
@@ -911,6 +914,7 @@
 				B56F55D72A86BC7D0055E382 /* Trim.swift in Sources */,
 				B500C7812A8FCD5A007724F3 /* QuotationContentItemState.swift in Sources */,
 				B598A0852A8F297A00C4A591 /* QuotationViewController.swift in Sources */,
+				B52FC1CC2A90DAE00075D288 /* QuotationContentOptionItemState.swift in Sources */,
 				B52FC1C62A90B7210075D288 /* PaddingButton.swift in Sources */,
 				B53C3C522A8566270019ECA1 /* WheelDriveViewController.swift in Sources */,
 				B5F1AE062A838B8E00E7E392 /* TrimViewController.swift in Sources */,
