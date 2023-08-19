@@ -12,7 +12,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.api.wheeldrive.dto.request.GetWheelDrivesRequest;
 import softeer.be_my_car_master.api.wheeldrive.dto.response.GetWheelDrivesResponse;
-import softeer.be_my_car_master.api.wheeldrive.usecase.GetWheelDrivesUseCase;
+import softeer.be_my_car_master.api.wheeldrive.usecase.get_wheel_drives.GetWheelDrivesUseCase;
 import softeer.be_my_car_master.global.exception.BindingParamException;
 import softeer.be_my_car_master.global.response.Response;
 

@@ -22,7 +22,7 @@ import softeer.be_my_car_master.api.estimate.usecase.port.EstimatePort;
 import softeer.be_my_car_master.api.model.usecase.get_models.GetModelsPort;
 import softeer.be_my_car_master.api.option.usecase.port.OptionPort;
 import softeer.be_my_car_master.api.trim.usecase.port.TrimPort;
-import softeer.be_my_car_master.api.wheeldrive.usecase.port.WheelDrivePort;
+import softeer.be_my_car_master.api.wheeldrive.usecase.get_wheel_drives.GetWheelDrivesPort;
 import softeer.be_my_car_master.domain.body_type.BodyType;
 import softeer.be_my_car_master.domain.color_exterior.ExteriorColor;
 import softeer.be_my_car_master.domain.color_interior.InteriorColor;
@@ -41,7 +41,7 @@ public class CreateEstimateUseCase {
 	private final TrimPort trimPort;
 	private final EnginePort enginePort;
 	private final BodyTypePort bodyTypePort;
-	private final WheelDrivePort wheelDrivePort;
+	private final GetWheelDrivesPort wheelDrivePort;
 	private final ExteriorColorPort exteriorColorPort;
 	private final InteriorColorPort interiorColorPort;
 	private final OptionPort optionPort;

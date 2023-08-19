@@ -16,7 +16,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import softeer.be_my_car_master.api.wheeldrive.dto.response.GetWheelDrivesResponse;
 import softeer.be_my_car_master.api.wheeldrive.dto.response.WheelDriveDto;
-import softeer.be_my_car_master.api.wheeldrive.usecase.port.WheelDrivePort;
+import softeer.be_my_car_master.api.wheeldrive.usecase.get_wheel_drives.GetWheelDrivesPort;
+import softeer.be_my_car_master.api.wheeldrive.usecase.get_wheel_drives.GetWheelDrivesUseCase;
 import softeer.be_my_car_master.domain.wheel_dirve.WheelDrive;
 
 @ExtendWith(MockitoExtension.class)
@@ -27,7 +28,7 @@ class GetWheelDrivesUseCaseTest {
 	private GetWheelDrivesUseCase getWheelDrivesUseCase;
 
 	@Mock
-	private WheelDrivePort wheelDrivePort;
+	private GetWheelDrivesPort getWheelDrivePort;
 
 	@Test
 	@DisplayName("구동방식 목록을 조회합니다")
@@ -41,9 +42,9 @@ class GetWheelDrivesUseCaseTest {
 			.ratio(22)
 			.imgUrl("imgUrl")
 			.build();
-		given(wheelDrivePort.findSelectableWheelDrivesByTrimId(any())).willReturn(Arrays.asList(wheelDrive));
+		given(getWheelDrivePort.findSelectableWheelDrivesByTrimId(any())).willReturn(Arrays.asList(wheelDrive));
 
-		given(wheelDrivePort.findUnselectableWheelDriveIdsByEngineId(any())).willReturn(
+		given(getWheelDrivePort.findUnselectableWheelDriveIdsByEngineId(any())).willReturn(
 			Arrays.asList(2L, 3L));
 
 		// when
@@ -77,9 +78,9 @@ class GetWheelDrivesUseCaseTest {
 			.ratio(22)
 			.imgUrl("imgUrl")
 			.build();
-		given(wheelDrivePort.findSelectableWheelDrivesByTrimId(any())).willReturn(Arrays.asList(wheelDrive));
+		given(getWheelDrivePort.findSelectableWheelDrivesByTrimId(any())).willReturn(Arrays.asList(wheelDrive));
 
-		given(wheelDrivePort.findUnselectableWheelDriveIdsByEngineId(any())).willReturn(
+		given(getWheelDrivePort.findUnselectableWheelDriveIdsByEngineId(any())).willReturn(
 			Arrays.asList(1L, 3L));
 
 		// when

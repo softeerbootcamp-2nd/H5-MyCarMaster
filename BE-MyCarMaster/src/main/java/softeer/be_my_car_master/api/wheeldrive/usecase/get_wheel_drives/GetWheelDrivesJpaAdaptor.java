@@ -1,10 +1,9 @@
-package softeer.be_my_car_master.infrastructure.jpa.wheel_drive.adaptor;
+package softeer.be_my_car_master.api.wheeldrive.usecase.get_wheel_drives;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 import lombok.RequiredArgsConstructor;
-import softeer.be_my_car_master.api.wheeldrive.usecase.port.WheelDrivePort;
 import softeer.be_my_car_master.domain.wheel_dirve.WheelDrive;
 import softeer.be_my_car_master.global.annotation.Adaptor;
 import softeer.be_my_car_master.infrastructure.jpa.wheel_drive.entity.TrimWheelDriveEntity;
@@ -13,7 +12,7 @@ import softeer.be_my_car_master.infrastructure.jpa.wheel_drive.repository.TrimWh
 
 @Adaptor
 @RequiredArgsConstructor
-public class WheelDriveJpaAdaptor implements WheelDrivePort {
+public class GetWheelDrivesJpaAdaptor implements GetWheelDrivesPort {
 
 	private final TrimWheelDriveJpaRepository trimWheelDriveJpaRepository;
 	private final EngineUnselectableWheelDriveJpaRepository engineUnselectableWheelDriveJpaRepository;
