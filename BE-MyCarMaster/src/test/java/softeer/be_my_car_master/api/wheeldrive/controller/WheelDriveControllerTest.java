@@ -37,12 +37,6 @@ class WheelDriveControllerTest {
 	@MockBean
 	private GetWheelDrivesUseCase getWheelDrivesUseCase;
 
-	private String getClientErrorResponseBody() throws JsonProcessingException {
-		Response errorResponse = Response.createErrorResponse(ResponseStatus.BAD_REQUEST);
-		String responseBody = objectMapper.writeValueAsString(errorResponse);
-		return responseBody;
-	}
-
 	@Test
 	@DisplayName("구동방식 목록을 조회합니다")
 	void getWheelDrives() throws Exception {
@@ -158,5 +152,11 @@ class WheelDriveControllerTest {
 			.andExpect(status().is4xxClientError())
 			.andExpect(content().contentType("application/json"))
 			.andExpect(content().json(responseBody, false));
+	}
+
+	private String getClientErrorResponseBody() throws JsonProcessingException {
+		Response errorResponse = Response.createErrorResponse(ResponseStatus.BAD_REQUEST);
+		String responseBody = objectMapper.writeValueAsString(errorResponse);
+		return responseBody;
 	}
 }
