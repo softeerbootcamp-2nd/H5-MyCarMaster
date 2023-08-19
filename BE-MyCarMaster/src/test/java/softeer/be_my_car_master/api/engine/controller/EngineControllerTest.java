@@ -43,12 +43,6 @@ class EngineControllerTest {
 	@MockBean
 	private GetUnselectableOptionsByEngineUseCase getUnselectableOptionsByEngineUseCase;
 
-	private String getClientErrorResponseBody() throws JsonProcessingException {
-		Response errorResponse = Response.createErrorResponse(ResponseStatus.BAD_REQUEST);
-		String responseBody = objectMapper.writeValueAsString(errorResponse);
-		return responseBody;
-	}
-
 	@Nested
 	@DisplayName("getEngines Test")
 	class GetEnginesTest {
@@ -249,4 +243,11 @@ class EngineControllerTest {
 				.andExpect(content().json(responseBody, false));
 		}
 	}
+
+	private String getClientErrorResponseBody() throws JsonProcessingException {
+		Response errorResponse = Response.createErrorResponse(ResponseStatus.BAD_REQUEST);
+		String responseBody = objectMapper.writeValueAsString(errorResponse);
+		return responseBody;
+	}
+
 }
