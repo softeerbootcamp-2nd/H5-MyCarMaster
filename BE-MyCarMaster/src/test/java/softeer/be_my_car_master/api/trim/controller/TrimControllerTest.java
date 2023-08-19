@@ -42,6 +42,7 @@ class TrimControllerTest {
 
 	@MockBean
 	private GetTrimsUseCase getTrimsUseCase;
+
 	@MockBean
 	GetTrimDefaultOptionsUseCase getTrimDefaultOptionsUseCase;
 
@@ -52,7 +53,7 @@ class TrimControllerTest {
 		@DisplayName("트림 목록을 조회합니다")
 		void getTrims() throws Exception {
 			//given
-			GetTrimsResponse getTrimsResponse = new GetTrimsResponse();
+			GetTrimsResponse response = new GetTrimsResponse();
 			TrimDto trimDto = TrimDto.builder()
 				.id(1L)
 				.name("Le Blanc")
@@ -61,11 +62,11 @@ class TrimControllerTest {
 				.ratio(22)
 				.imgUrl("imgUrl")
 				.build();
-			getTrimsResponse.setTrims(Arrays.asList(trimDto));
+			response.setTrims(Arrays.asList(trimDto));
 
-			given(getTrimsUseCase.execute(any())).willReturn(getTrimsResponse);
+			given(getTrimsUseCase.execute(any())).willReturn(response);
 
-			Response successResponse = Response.createSuccessResponse(getTrimsResponse);
+			Response successResponse = Response.createSuccessResponse(response);
 			String responseBody = objectMapper.writeValueAsString(successResponse);
 
 			//when
