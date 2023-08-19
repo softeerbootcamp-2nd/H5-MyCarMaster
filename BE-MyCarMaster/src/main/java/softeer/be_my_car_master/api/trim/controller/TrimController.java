@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import softeer.be_my_car_master.api.option.usecase.GetTrimDefaultOptionsUseCase;
+import softeer.be_my_car_master.api.trim.usecase.GetTrimDefaultOptionsUseCase;
 import softeer.be_my_car_master.api.trim.dto.request.GetTrimsRequest;
 import softeer.be_my_car_master.api.trim.dto.response.GetTrimDefaultOptionsResponse;
 import softeer.be_my_car_master.api.trim.dto.response.GetTrimsResponse;
