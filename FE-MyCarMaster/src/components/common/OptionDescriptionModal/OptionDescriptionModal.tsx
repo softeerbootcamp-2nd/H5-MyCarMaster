@@ -41,7 +41,7 @@ function OptionDescriptionModal({
   return (
     <Fragment>
       {isModalOpen && (
-        <ModalOverlay>
+        <ModalOverlay onClick={closeDescriptionModal}>
           <Container>
             <OptionNameContainer>
               <OptionName>{option.name}</OptionName>
