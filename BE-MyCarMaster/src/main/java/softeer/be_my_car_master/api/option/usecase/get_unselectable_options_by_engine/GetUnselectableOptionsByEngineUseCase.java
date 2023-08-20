@@ -1,4 +1,4 @@
-package softeer.be_my_car_master.api.engine.usecase;
+package softeer.be_my_car_master.api.option.usecase.get_unselectable_options_by_engine;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.api.engine.dto.response.GetUnselectableOptionsByEngineResponse;
 import softeer.be_my_car_master.api.engine.exception.InvalidOptionException;
-import softeer.be_my_car_master.api.option.usecase.port.OptionPort;
 import softeer.be_my_car_master.domain.option.Option;
 import softeer.be_my_car_master.global.annotation.UseCase;
 
@@ -14,18 +13,21 @@ import softeer.be_my_car_master.global.annotation.UseCase;
 @RequiredArgsConstructor
 public class GetUnselectableOptionsByEngineUseCase {
 
-	private final OptionPort optionPort;
+	private final GetUnselectableOptionsByEnginePort port;
 
-	public GetUnselectableOptionsByEngineResponse execute(Long selectedEngineId, Long trimId,
-		List<Long> selectedOptionIds) {
-		List<Long> selectableOptionIdsInTrim = optionPort.findSelectableOptionIdsByTrimId(trimId);
-		validateTrimOptions(selectedOptionIds, selectableOptionIdsInTrim);
+	public GetUnselectableOptionsByEngineResponse execute(
+		Long selectedEngineId,
+		Long trimId,
+		List<Long> selectedOptionIds
+	) {
+		List<Long> optionIdsByTrim = port.findOptionIdsByTrim(trimId);
+		validateTrimOptions(selectedOptionIds, optionIdsByTrim);
 
-		List<Long> unselectableOptionIdsByEngine = optionPort.findUnselectableOptionIdsByEngineId(selectedEngineId);
-		List<Long> unselectableOptionIds =
-			getUnselectableOptionIdsByEngine(selectedOptionIds, unselectableOptionIdsByEngine);
+		List<Long> unselectableOptionIdsByEngine = port.findUnselectableOptionIdsByEngine(selectedEngineId);
+		List<Long> unselectableOptionIds
+			= getUnselectableOptionIdsByEngine(selectedOptionIds, unselectableOptionIdsByEngine);
 
-		List<Option> unselectableOptions = optionPort.findUnselectableOptions(trimId, unselectableOptionIds);
+		List<Option> unselectableOptions = port.findUnselectableOptions(trimId, unselectableOptionIds);
 
 		return GetUnselectableOptionsByEngineResponse.from(unselectableOptions);
 	}

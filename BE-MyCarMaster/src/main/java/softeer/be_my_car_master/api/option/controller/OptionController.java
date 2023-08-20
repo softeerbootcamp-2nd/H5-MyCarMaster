@@ -15,7 +15,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.api.engine.dto.request.GetUnselectableOptionsByEngineRequest;
 import softeer.be_my_car_master.api.engine.dto.response.GetUnselectableOptionsByEngineResponse;
-import softeer.be_my_car_master.api.engine.usecase.GetUnselectableOptionsByEngineUseCase;
+import softeer.be_my_car_master.api.option.usecase.get_unselectable_options_by_engine.GetUnselectableOptionsByEngineUseCase;
 import softeer.be_my_car_master.api.option.dto.request.GetOptionsRequest;
 import softeer.be_my_car_master.api.option.dto.response.GetOptionsResponse;
 import softeer.be_my_car_master.api.option.usecase.get_options.GetOptionsUseCase;
@@ -46,13 +46,8 @@ public class OptionController {
 		Long bodyTypeId = request.getBodyTypeId();
 		Long interiorColorId = request.getInteriorColorId();
 
-		GetOptionsResponse response = getOptionsUseCase.execute(
-			trimId,
-			engineId,
-			wheelDriveId,
-			bodyTypeId,
-			interiorColorId
-		);
+		GetOptionsResponse response
+			= getOptionsUseCase.execute(trimId, engineId, wheelDriveId, bodyTypeId, interiorColorId);
 		return Response.createSuccessResponse(response);
 	}
 
@@ -60,17 +55,18 @@ public class OptionController {
 	@Operation(summary = "엔진 변경 시도시 기존에 선택된 옵션들 중 변경하려는 엔진에서 선택 불가능한 옵션 목록을 반환합니다.")
 	public Response<GetUnselectableOptionsByEngineResponse> getUnselectableOptionsByEngine(
 		@PathVariable Long engineId,
-		@Valid @ParameterObject GetUnselectableOptionsByEngineRequest getUnselectableOptionsByEngineRequest,
+		@Valid @ParameterObject GetUnselectableOptionsByEngineRequest request,
 		BindingResult bindingResult
 	) {
 		if (bindingResult.hasErrors()) {
 			throw new BindingParamException(bindingResult.getFieldErrors());
 		}
 
-		Long trimId = getUnselectableOptionsByEngineRequest.getTrimId();
-		List<Long> optionIds = getUnselectableOptionsByEngineRequest.getOptionIds();
-		GetUnselectableOptionsByEngineResponse getUnselectableOptionsByEngineResponse =
-			getUnselectableOptionsByEngineUseCase.execute(engineId, trimId, optionIds);
-		return Response.createSuccessResponse(getUnselectableOptionsByEngineResponse);
+		Long trimId = request.getTrimId();
+		List<Long> optionIds = request.getOptionIds();
+
+		GetUnselectableOptionsByEngineResponse response
+			= getUnselectableOptionsByEngineUseCase.execute(engineId, trimId, optionIds);
+		return Response.createSuccessResponse(response);
 	}
 }

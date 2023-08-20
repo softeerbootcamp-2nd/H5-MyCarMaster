@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import softeer.be_my_car_master.api.engine.dto.response.GetUnselectableOptionsByEngineResponse;
 import softeer.be_my_car_master.api.engine.dto.response.UnselectableOptionDto;
-import softeer.be_my_car_master.api.engine.usecase.GetUnselectableOptionsByEngineUseCase;
+import softeer.be_my_car_master.api.option.usecase.get_unselectable_options_by_engine.GetUnselectableOptionsByEngineUseCase;
 import softeer.be_my_car_master.api.option.dto.response.GetOptionsResponse;
 import softeer.be_my_car_master.api.option.dto.response.OptionDto;
 import softeer.be_my_car_master.api.option.usecase.get_options.GetOptionsUseCase;
