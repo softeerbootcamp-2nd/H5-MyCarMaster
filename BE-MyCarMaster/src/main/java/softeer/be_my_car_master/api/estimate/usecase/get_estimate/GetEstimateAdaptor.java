@@ -13,7 +13,7 @@ import softeer.be_my_car_master.infrastructure.jpa.estimate.repository.EstimateJ
 
 @Adaptor
 @RequiredArgsConstructor
-public class GetEstimateAdaptor implements GetEstimatePort{
+public class GetEstimateAdaptor implements GetEstimatePort {
 
 	private final EstimateJpaRepository estimateJpaRepository;
 

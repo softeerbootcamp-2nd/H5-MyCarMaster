@@ -22,7 +22,8 @@ import softeer.be_my_car_master.api.estimate.dto.response.SimpleInteriorColorDto
 import softeer.be_my_car_master.api.estimate.dto.response.SimpleOptionDto;
 import softeer.be_my_car_master.api.estimate.dto.response.SimpleTrimDto;
 import softeer.be_my_car_master.api.estimate.dto.response.SimpleWheelDriveDto;
-import softeer.be_my_car_master.api.estimate.usecase.port.EstimatePort;
+import softeer.be_my_car_master.api.estimate.usecase.get_estimate.GetEstimatePort;
+import softeer.be_my_car_master.api.estimate.usecase.get_estimate.GetEstimateUseCase;
 import softeer.be_my_car_master.domain.body_type.BodyType;
 import softeer.be_my_car_master.domain.color_exterior.ExteriorColor;
 import softeer.be_my_car_master.domain.color_interior.InteriorColor;
@@ -37,10 +38,10 @@ import softeer.be_my_car_master.domain.wheel_dirve.WheelDrive;
 public class GetEstimateUseCaseTest {
 
 	@InjectMocks
-	private GetEstimateUseCase getEstimateUseCase;
+	private GetEstimateUseCase useCase;
 
 	@Mock
-	private EstimatePort estimatePort;
+	private GetEstimatePort port;
 
 	@Test
 	@DisplayName("견적서를 조회합니다")
@@ -91,21 +92,21 @@ public class GetEstimateUseCaseTest {
 			.considerOptions(List.of(option))
 			.build();
 
-		given(estimatePort.findFullEstimateByUuid(any())).willReturn(Optional.ofNullable(estimate));
+		given(port.findFullEstimateByUuid(any())).willReturn(Optional.ofNullable(estimate));
 
 		// when
-		GetEstimateResponse getEstimateResponse = getEstimateUseCase.execute(UUID.randomUUID());
+		GetEstimateResponse response = useCase.execute(UUID.randomUUID());
 
 		// then
-		SimpleTrimDto trimExpected = getEstimateResponse.getTrim();
-		SimpleEngineDto engineExpected = getEstimateResponse.getEngine();
-		SimpleWheelDriveDto wheelDriveExpected = getEstimateResponse.getWheelDrive();
-		SimpleBodyTypeDto bodyTypeExpected = getEstimateResponse.getBodyType();
-		SimpleExteriorColorDto exteriorColorExpected = getEstimateResponse.getExteriorColor();
-		SimpleInteriorColorDto interiorColorExpected = getEstimateResponse.getInteriorColor();
-		List<SimpleOptionDto> additionOptionDtos = getEstimateResponse.getAdditionalOptions();
+		SimpleTrimDto trimExpected = response.getTrim();
+		SimpleEngineDto engineExpected = response.getEngine();
+		SimpleWheelDriveDto wheelDriveExpected = response.getWheelDrive();
+		SimpleBodyTypeDto bodyTypeExpected = response.getBodyType();
+		SimpleExteriorColorDto exteriorColorExpected = response.getExteriorColor();
+		SimpleInteriorColorDto interiorColorExpected = response.getInteriorColor();
+		List<SimpleOptionDto> additionOptionDtos = response.getAdditionalOptions();
 		SimpleOptionDto additionalOptionExpected = additionOptionDtos.get(0);
-		List<SimpleOptionDto> considerOptionDtos = getEstimateResponse.getConsiderOptions();
+		List<SimpleOptionDto> considerOptionDtos = response.getConsiderOptions();
 		SimpleOptionDto considerOptionExpected = considerOptionDtos.get(0);
 
 		SoftAssertions.assertSoftly(softAssertions -> {

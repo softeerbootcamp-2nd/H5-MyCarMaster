@@ -27,7 +27,7 @@ import softeer.be_my_car_master.api.estimate.dto.response.SimpleOptionDto;
 import softeer.be_my_car_master.api.estimate.dto.response.SimpleTrimDto;
 import softeer.be_my_car_master.api.estimate.dto.response.SimpleWheelDriveDto;
 import softeer.be_my_car_master.api.estimate.usecase.CreateEstimateUseCase;
-import softeer.be_my_car_master.api.estimate.usecase.GetEstimateUseCase;
+import softeer.be_my_car_master.api.estimate.usecase.get_estimate.GetEstimateUseCase;
 import softeer.be_my_car_master.global.response.Response;
 
 @WebMvcTest(EstimateController.class)

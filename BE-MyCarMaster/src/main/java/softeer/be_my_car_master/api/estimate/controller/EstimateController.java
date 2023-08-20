@@ -17,7 +17,7 @@ import softeer.be_my_car_master.api.estimate.dto.request.CreateEstimateRequest;
 import softeer.be_my_car_master.api.estimate.dto.response.CreateEstimateResponse;
 import softeer.be_my_car_master.api.estimate.dto.response.GetEstimateResponse;
 import softeer.be_my_car_master.api.estimate.usecase.CreateEstimateUseCase;
-import softeer.be_my_car_master.api.estimate.usecase.GetEstimateUseCase;
+import softeer.be_my_car_master.api.estimate.usecase.get_estimate.GetEstimateUseCase;
 import softeer.be_my_car_master.global.response.Response;
 
 @RestController
@@ -37,7 +37,7 @@ public class EstimateController {
 	@GetMapping("/estimates/{estimateId}")
 	@Operation(summary = "견적서 조회")
 	public Response<GetEstimateResponse> getEstimate(@PathVariable UUID estimateId) {
-		GetEstimateResponse getEstimateResponse = getEstimateUseCase.execute(estimateId);
-		return Response.createSuccessResponse(getEstimateResponse);
+		GetEstimateResponse response = getEstimateUseCase.execute(estimateId);
+		return Response.createSuccessResponse(response);
 	}
 }
