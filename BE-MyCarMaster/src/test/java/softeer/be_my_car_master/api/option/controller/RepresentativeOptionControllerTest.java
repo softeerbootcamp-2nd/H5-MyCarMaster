@@ -1,4 +1,4 @@
-package softeer.be_my_car_master.api.trim.controller;
+package softeer.be_my_car_master.api.option.controller;
 
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.BDDMockito.*;
@@ -6,6 +6,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import java.util.Arrays;
+import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -20,15 +21,19 @@ import org.springframework.test.web.servlet.ResultActions;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import softeer.be_my_car_master.api.trim.dto.response.GetTrimsResponse;
-import softeer.be_my_car_master.api.trim.dto.response.TrimDto;
-import softeer.be_my_car_master.api.trim.usecase.get_trims.GetTrimsUseCase;
+import softeer.be_my_car_master.api.option.dto.response.AppliedOptionDto;
+import softeer.be_my_car_master.api.option.dto.response.FilterDto;
+import softeer.be_my_car_master.api.option.dto.response.GetRepresentativeOptionsResponse;
+import softeer.be_my_car_master.api.option.dto.response.RepresentativeOptionDto;
+import softeer.be_my_car_master.api.option.usecase.get_representative_options.GetRepresentativeOptionsUseCase;
+import softeer.be_my_car_master.domain.option.Category;
+import softeer.be_my_car_master.domain.option.Option;
 import softeer.be_my_car_master.global.response.Response;
 import softeer.be_my_car_master.global.response.ResponseStatus;
 
-@WebMvcTest(TrimController.class)
-@DisplayName("Trim Controller Test")
-class TrimControllerTest {
+@WebMvcTest(RepresentativeOptionController.class)
+@DisplayName("RepresentativeOptionController Test")
+class RepresentativeOptionControllerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
@@ -36,40 +41,46 @@ class TrimControllerTest {
 	private ObjectMapper objectMapper;
 
 	@MockBean
-	private GetTrimsUseCase getTrimsUseCase;
-
-	private String getClientErrorResponseBody() throws JsonProcessingException {
-		Response errorResponse = Response.createErrorResponse(ResponseStatus.BAD_REQUEST);
-		String responseBody = objectMapper.writeValueAsString(errorResponse);
-		return responseBody;
-	}
+	private GetRepresentativeOptionsUseCase getRepresentativeOptionsUseCase;
 
 	@Nested
-	@DisplayName("getTrims Test")
-	class GetTrimsTest {
+	@DisplayName("getRepresentativeOptions Test")
+	class GetRepresentativeOptionsTest {
+
 		@Test
-		@DisplayName("트림 목록을 조회합니다")
-		void getTrims() throws Exception {
+		@DisplayName("모델의 대표 옵션 9개를 조회합니다")
+		void getOptions() throws Exception {
 			//given
-			GetTrimsResponse response = new GetTrimsResponse();
-			TrimDto trimDto = TrimDto.builder()
+			GetRepresentativeOptionsResponse response = new GetRepresentativeOptionsResponse();
+			FilterDto filterDto = FilterDto.from(List.of(1L, 2L, 3L, 4L), List.of(2L, 3L), List.of(4L));
+			Option appliedOption = Option.builder()
 				.id(1L)
-				.name("Le Blanc")
-				.description("Le Blanc Trim Description")
-				.price(47720000)
-				.ratio(22)
+				.name("어떤 옵션")
+				.price(10000)
+				.category(Category.SAFE)
 				.imgUrl("imgUrl")
 				.build();
-			response.setTrims(Arrays.asList(trimDto));
+			AppliedOptionDto appliedOptionDto = AppliedOptionDto.from(appliedOption);
+			RepresentativeOptionDto representativeOptionDto = RepresentativeOptionDto.builder()
+				.id(1L)
+				.name("어떤 옵션")
+				.summary("옵션 요약")
+				.description("옵션 상세설명")
+				.imgUrl("imgUrl")
+				.subOptions(null)
+				.filter(filterDto)
+				.appliedOption(appliedOptionDto)
+				.build();
+			response.setRepresentativeOptions(Arrays.asList(representativeOptionDto));
 
-			given(getTrimsUseCase.execute(any())).willReturn(response);
+			given(getRepresentativeOptionsUseCase.execute(any())).willReturn(response);
 
 			Response successResponse = Response.createSuccessResponse(response);
 			String responseBody = objectMapper.writeValueAsString(successResponse);
 
 			//when
 			ResultActions perform = mockMvc.perform(
-				get("/trims")
+				get("/options/representative")
 					.contentType(MediaType.APPLICATION_FORM_URLENCODED)
 					.param("modelId", "1")
 			);
@@ -89,7 +100,7 @@ class TrimControllerTest {
 
 			//when
 			ResultActions perform = mockMvc.perform(
-				get("/trims")
+				get("/options/representative")
 					.contentType(MediaType.APPLICATION_FORM_URLENCODED)
 					.param("modelId", "0")
 			);
@@ -109,7 +120,7 @@ class TrimControllerTest {
 
 			//when
 			ResultActions perform = mockMvc.perform(
-				get("/trims")
+				get("/options/representative")
 					.contentType(MediaType.APPLICATION_FORM_URLENCODED)
 			);
 
@@ -119,5 +130,11 @@ class TrimControllerTest {
 				.andExpect(content().contentType("application/json"))
 				.andExpect(content().json(responseBody, false));
 		}
+	}
+
+	private String getClientErrorResponseBody() throws JsonProcessingException {
+		Response errorResponse = Response.createErrorResponse(ResponseStatus.BAD_REQUEST);
+		String responseBody = objectMapper.writeValueAsString(errorResponse);
+		return responseBody;
 	}
 }

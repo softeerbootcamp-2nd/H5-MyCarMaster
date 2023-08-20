@@ -5,16 +5,13 @@ import javax.validation.Valid;
 import org.springdoc.api.annotations.ParameterObject;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.api.trim.dto.request.GetTrimsRequest;
-import softeer.be_my_car_master.api.trim.dto.response.GetTrimDefaultOptionsResponse;
 import softeer.be_my_car_master.api.trim.dto.response.GetTrimsResponse;
-import softeer.be_my_car_master.api.trim.usecase.GetTrimDefaultOptionsUseCase;
 import softeer.be_my_car_master.api.trim.usecase.get_trims.GetTrimsUseCase;
 import softeer.be_my_car_master.global.exception.BindingParamException;
 import softeer.be_my_car_master.global.response.Response;
@@ -25,7 +22,6 @@ import softeer.be_my_car_master.global.response.Response;
 public class TrimController {
 
 	private final GetTrimsUseCase getTrimsUseCase;
-	private final GetTrimDefaultOptionsUseCase getTrimDefaultOptionsUseCase;
 
 	@GetMapping("/trims")
 	@Operation(summary = "모델에 따른 트림 목록을 반환합니다")
@@ -40,12 +36,5 @@ public class TrimController {
 		Long modelId = request.getModelId();
 		GetTrimsResponse getTrimsResponse = getTrimsUseCase.execute(modelId);
 		return Response.createSuccessResponse(getTrimsResponse);
-	}
-
-	@GetMapping("/trims/{trimId}/default-options")
-	@Operation(summary = "트림 상세 정보 조회 - 해당 트림의 기본옵션 목록을 반환합니다.")
-	public Response<GetTrimDefaultOptionsResponse> getTrimDefaultOptions(@PathVariable Long trimId) {
-		GetTrimDefaultOptionsResponse response = getTrimDefaultOptionsUseCase.execute(trimId);
-		return Response.createSuccessResponse(response);
 	}
 }

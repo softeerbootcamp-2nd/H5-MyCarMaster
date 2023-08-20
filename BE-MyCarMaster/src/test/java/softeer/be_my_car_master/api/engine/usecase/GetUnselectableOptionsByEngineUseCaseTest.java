@@ -18,7 +18,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import softeer.be_my_car_master.api.engine.dto.response.GetUnselectableOptionsByEngineResponse;
 import softeer.be_my_car_master.api.engine.dto.response.UnselectableOptionDto;
 import softeer.be_my_car_master.api.engine.exception.InvalidOptionException;
-import softeer.be_my_car_master.api.option.usecase.port.OptionPort;
+import softeer.be_my_car_master.api.option.usecase.get_unselectable_options_by_engine.GetUnselectableOptionsByEnginePort;
+import softeer.be_my_car_master.api.option.usecase.get_unselectable_options_by_engine.GetUnselectableOptionsByEngineUseCase;
 import softeer.be_my_car_master.domain.option.Category;
 import softeer.be_my_car_master.domain.option.Option;
 
@@ -27,10 +28,10 @@ import softeer.be_my_car_master.domain.option.Option;
 class GetUnselectableOptionsByEngineUseCaseTest {
 
 	@InjectMocks
-	private GetUnselectableOptionsByEngineUseCase getUnselectableOptionsByEngineUseCase;
+	private GetUnselectableOptionsByEngineUseCase useCase;
 
 	@Mock
-	private OptionPort optionPort;
+	private GetUnselectableOptionsByEnginePort port;
 
 	@Test
 	@DisplayName("엔진에 따라 선택 불가능한 옵션 목록을 조회합니다")
@@ -50,16 +51,16 @@ class GetUnselectableOptionsByEngineUseCaseTest {
 			.tag(null)
 			.build();
 
-		given(optionPort.findSelectableOptionIdsByTrimId(any())).willReturn(Arrays.asList(1L, 2L, 3L));
-		given(optionPort.findUnselectableOptionIdsByEngineId(any())).willReturn(Arrays.asList(1L, 3L));
-		given(optionPort.findUnselectableOptions(any(), any())).willReturn(Arrays.asList(option1));
+		given(port.findOptionIdsByTrim(any())).willReturn(Arrays.asList(1L, 2L, 3L));
+		given(port.findUnselectableOptionIdsByEngine(any())).willReturn(Arrays.asList(1L, 3L));
+		given(port.findUnselectableOptions(any(), any())).willReturn(Arrays.asList(option1));
 
 		// when
-		GetUnselectableOptionsByEngineResponse getUnselectableOptionsByEngineResponse =
-			getUnselectableOptionsByEngineUseCase.execute(1L, 1L, Arrays.asList(1L, 2L));
+		GetUnselectableOptionsByEngineResponse response
+			= useCase.execute(1L, 1L, Arrays.asList(1L, 2L));
 
 		// then
-		List<UnselectableOptionDto> options = getUnselectableOptionsByEngineResponse.getUnselectableOptions();
+		List<UnselectableOptionDto> options = response.getUnselectableOptions();
 		UnselectableOptionDto optionExpected = options.get(0);
 
 		SoftAssertions.assertSoftly(softAssertions -> {
@@ -75,13 +76,13 @@ class GetUnselectableOptionsByEngineUseCaseTest {
 	@DisplayName("OptionIds가 트림에서 선택 불가능한 옵션을 포함한다면 InvalidOptionException이 발생합니다")
 	void invalidOptionIds() {
 		// given
-		given(optionPort.findSelectableOptionIdsByTrimId(any())).willReturn(Arrays.asList(2L, 3L));
+		given(port.findOptionIdsByTrim(any())).willReturn(Arrays.asList(2L, 3L));
 
 		// when
 		// then
 		assertThrows(
 			InvalidOptionException.class,
-			() -> getUnselectableOptionsByEngineUseCase.execute(1L, 1L, Arrays.asList(1L, 2L))
+			() -> useCase.execute(1L, 1L, Arrays.asList(1L, 2L))
 		);
 	}
 }
