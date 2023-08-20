@@ -17,7 +17,6 @@ import softeer.be_my_car_master.application.car_master.dto.request.GetCarMasterR
 import softeer.be_my_car_master.application.car_master.dto.response.GetCarMasterResponse;
 import softeer.be_my_car_master.application.car_master.usecase.get_car_masters.GetCarMasterUseCase;
 import softeer.be_my_car_master.application.car_master.usecase.get_car_masters_in_agency.GetCarMastersInAgencyUseCase;
-import softeer.be_my_car_master.global.exception.BindingParamException;
 import softeer.be_my_car_master.global.response.Response;
 
 @RestController
@@ -34,10 +33,6 @@ public class CarMasterController {
 		@Valid @ParameterObject GetCarMasterRequest request,
 		BindingResult bindingResult
 	) {
-		if (bindingResult.hasErrors()) {
-			throw new BindingParamException(bindingResult.getFieldErrors());
-		}
-
 		Double latitude = request.getLatitude();
 		Double longitude = request.getLongitude();
 

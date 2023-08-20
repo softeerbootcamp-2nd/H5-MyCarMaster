@@ -13,7 +13,6 @@ import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.application.engine.dto.request.GetEnginesRequest;
 import softeer.be_my_car_master.application.engine.dto.response.GetEnginesResponse;
 import softeer.be_my_car_master.application.engine.usecase.get_engines.GetEnginesUseCase;
-import softeer.be_my_car_master.global.exception.BindingParamException;
 import softeer.be_my_car_master.global.response.Response;
 
 @RestController
@@ -29,12 +28,8 @@ public class EngineController {
 		@Valid @ParameterObject GetEnginesRequest request,
 		BindingResult bindingResult
 	) {
-		if (bindingResult.hasErrors()) {
-			throw new BindingParamException(bindingResult.getFieldErrors());
-		}
-
 		Long trimId = request.getTrimId();
-		GetEnginesResponse getEnginesResponse = getEnginesUseCase.execute(trimId);
-		return Response.createSuccessResponse(getEnginesResponse);
+		GetEnginesResponse response = getEnginesUseCase.execute(trimId);
+		return Response.createSuccessResponse(response);
 	}
 }

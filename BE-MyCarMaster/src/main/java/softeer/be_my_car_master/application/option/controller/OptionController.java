@@ -19,7 +19,6 @@ import softeer.be_my_car_master.application.option.dto.request.GetOptionsRequest
 import softeer.be_my_car_master.application.option.dto.response.GetOptionsResponse;
 import softeer.be_my_car_master.application.option.usecase.get_options.GetOptionsUseCase;
 import softeer.be_my_car_master.application.option.usecase.get_unselectable_options_by_engine.GetUnselectableOptionsByEngineUseCase;
-import softeer.be_my_car_master.global.exception.BindingParamException;
 import softeer.be_my_car_master.global.response.Response;
 
 @RestController
@@ -36,10 +35,6 @@ public class OptionController {
 		@Valid @ParameterObject GetOptionsRequest request,
 		BindingResult bindingResult
 	) {
-		if (bindingResult.hasErrors()) {
-			throw new BindingParamException(bindingResult.getFieldErrors());
-		}
-
 		Long trimId = request.getTrimId();
 		Long engineId = request.getEngineId();
 		Long wheelDriveId = request.getWheelDriveId();
@@ -58,10 +53,6 @@ public class OptionController {
 		@Valid @ParameterObject GetUnselectableOptionsByEngineRequest request,
 		BindingResult bindingResult
 	) {
-		if (bindingResult.hasErrors()) {
-			throw new BindingParamException(bindingResult.getFieldErrors());
-		}
-
 		Long trimId = request.getTrimId();
 		List<Long> optionIds = request.getOptionIds();
 

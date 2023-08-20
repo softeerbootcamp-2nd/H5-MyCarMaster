@@ -13,7 +13,6 @@ import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.application.wheeldrive.dto.request.GetWheelDrivesRequest;
 import softeer.be_my_car_master.application.wheeldrive.dto.response.GetWheelDrivesResponse;
 import softeer.be_my_car_master.application.wheeldrive.usecase.get_wheel_drives.GetWheelDrivesUseCase;
-import softeer.be_my_car_master.global.exception.BindingParamException;
 import softeer.be_my_car_master.global.response.Response;
 
 @RestController
@@ -29,10 +28,6 @@ public class WheelDriveController {
 		@Valid @ParameterObject GetWheelDrivesRequest request,
 		BindingResult bindingResult
 	) {
-		if (bindingResult.hasErrors()) {
-			throw new BindingParamException(bindingResult.getFieldErrors());
-		}
-
 		Long trimId = request.getTrimId();
 		Long engineId = request.getEngineId();
 		GetWheelDrivesResponse response = getWheelDrivesUseCase.execute(trimId, engineId);
