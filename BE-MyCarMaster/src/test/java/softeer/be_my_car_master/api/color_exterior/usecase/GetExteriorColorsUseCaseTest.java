@@ -16,7 +16,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import softeer.be_my_car_master.api.color_exterior.dto.response.ExteriorColorDto;
 import softeer.be_my_car_master.api.color_exterior.dto.response.GetExteriorColorsResponse;
-import softeer.be_my_car_master.api.color_exterior.usecase.port.ExteriorColorPort;
+import softeer.be_my_car_master.api.color_exterior.usecase.get_exterior_colors.GetExteriorColorsPort;
+import softeer.be_my_car_master.api.color_exterior.usecase.get_exterior_colors.GetExteriorColorsUseCase;
 import softeer.be_my_car_master.domain.color_exterior.ExteriorColor;
 
 @ExtendWith(MockitoExtension.class)
@@ -27,7 +28,7 @@ class GetExteriorColorsUseCaseTest {
 	private GetExteriorColorsUseCase getExteriorColorsUseCase;
 
 	@Mock
-	private ExteriorColorPort exteriorColorPort;
+	private GetExteriorColorsPort exteriorColorPort;
 
 	@Test
 	@DisplayName("외장 색상 목록을 조회합니다")
