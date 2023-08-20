@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import softeer.be_my_car_master.api.body_type.dto.response.BodyTypeDto;
 import softeer.be_my_car_master.api.body_type.dto.response.GetBodyTypesResponse;
-import softeer.be_my_car_master.api.body_type.usecase.GetBodyTypesUseCase;
+import softeer.be_my_car_master.api.body_type.usecase.get_body_types.GetBodyTypesUseCase;
 import softeer.be_my_car_master.global.response.Response;
 import softeer.be_my_car_master.global.response.ResponseStatus;
 
@@ -31,7 +31,6 @@ class BodyTypeControllerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
-
 	@Autowired
 	private ObjectMapper objectMapper;
 
@@ -42,7 +41,7 @@ class BodyTypeControllerTest {
 	@DisplayName("바디 타입 목록을 조회합니다")
 	void getBodyTypes() throws Exception {
 		//given
-		GetBodyTypesResponse getBodyTypesResponse = new GetBodyTypesResponse();
+		GetBodyTypesResponse response = new GetBodyTypesResponse();
 		BodyTypeDto bodyTypeDto = BodyTypeDto.builder()
 			.id(1L)
 			.name("7인승")
@@ -51,11 +50,11 @@ class BodyTypeControllerTest {
 			.ratio(22)
 			.imgUrl("imgUrl")
 			.build();
-		getBodyTypesResponse.setBodyTypes(Arrays.asList(bodyTypeDto));
+		response.setBodyTypes(Arrays.asList(bodyTypeDto));
 
-		given(getBodyTypesUseCase.execute(any())).willReturn(getBodyTypesResponse);
+		given(getBodyTypesUseCase.execute(any())).willReturn(response);
 
-		Response successResponse = Response.createSuccessResponse(getBodyTypesResponse);
+		Response successResponse = Response.createSuccessResponse(response);
 		String responseBody = objectMapper.writeValueAsString(successResponse);
 
 		//when

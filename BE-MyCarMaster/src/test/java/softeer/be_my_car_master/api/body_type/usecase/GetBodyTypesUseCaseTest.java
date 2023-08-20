@@ -15,7 +15,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import softeer.be_my_car_master.api.body_type.dto.response.BodyTypeDto;
 import softeer.be_my_car_master.api.body_type.dto.response.GetBodyTypesResponse;
-import softeer.be_my_car_master.api.body_type.usecase.port.BodyTypePort;
+import softeer.be_my_car_master.api.body_type.usecase.get_body_types.GetBodyTypesPort;
+import softeer.be_my_car_master.api.body_type.usecase.get_body_types.GetBodyTypesUseCase;
 import softeer.be_my_car_master.domain.body_type.BodyType;
 
 @ExtendWith(MockitoExtension.class)
@@ -23,10 +24,10 @@ import softeer.be_my_car_master.domain.body_type.BodyType;
 class GetBodyTypesUseCaseTest {
 
 	@InjectMocks
-	private GetBodyTypesUseCase getBodyTypesUseCase;
+	private GetBodyTypesUseCase useCase;
 
 	@Mock
-	private BodyTypePort bodyTypePort;
+	private GetBodyTypesPort port;
 
 	@Test
 	@DisplayName("바디타입 목록을 조회합니다")
@@ -40,13 +41,13 @@ class GetBodyTypesUseCaseTest {
 			.ratio(22)
 			.imgUrl("imgUrl")
 			.build();
-		given(bodyTypePort.findSelectableBodyTypesByModelId(any())).willReturn(Arrays.asList(bodyType));
+		given(port.findBodyTypesByModel(any())).willReturn(Arrays.asList(bodyType));
 
 		// when
-		GetBodyTypesResponse getBodyTypesResponse = getBodyTypesUseCase.execute(1L);
+		GetBodyTypesResponse response = useCase.execute(1L);
 
 		// then
-		List<BodyTypeDto> bodyTypes = getBodyTypesResponse.getBodyTypes();
+		List<BodyTypeDto> bodyTypes = response.getBodyTypes();
 		BodyTypeDto expected = bodyTypes.get(0);
 
 		SoftAssertions.assertSoftly(softAssertions -> {

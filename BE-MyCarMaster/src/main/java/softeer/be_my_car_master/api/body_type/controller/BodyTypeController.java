@@ -12,7 +12,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.api.body_type.dto.request.GetBodyTypesRequest;
 import softeer.be_my_car_master.api.body_type.dto.response.GetBodyTypesResponse;
-import softeer.be_my_car_master.api.body_type.usecase.GetBodyTypesUseCase;
+import softeer.be_my_car_master.api.body_type.usecase.get_body_types.GetBodyTypesUseCase;
 import softeer.be_my_car_master.global.exception.BindingParamException;
 import softeer.be_my_car_master.global.response.Response;
 
@@ -26,14 +26,14 @@ public class BodyTypeController {
 	@GetMapping("/body-types")
 	@Operation(summary = "모델에 따른 바디타입 목록을 반환합니다")
 	public Response<GetBodyTypesResponse> getBodyTypes(
-		@Valid @ParameterObject GetBodyTypesRequest getBodytypesRequest,
+		@Valid @ParameterObject GetBodyTypesRequest request,
 		BindingResult bindingResult
 	) {
 		if (bindingResult.hasErrors()) {
 			throw new BindingParamException(bindingResult.getFieldErrors());
 		}
 
-		Long modelId = getBodytypesRequest.getModelId();
+		Long modelId = request.getModelId();
 		GetBodyTypesResponse getBodyTypesResponse = getBodyTypesUseCase.execute(modelId);
 		return Response.createSuccessResponse(getBodyTypesResponse);
 	}
