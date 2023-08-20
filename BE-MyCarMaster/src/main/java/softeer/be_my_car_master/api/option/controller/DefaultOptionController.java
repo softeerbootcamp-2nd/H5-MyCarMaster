@@ -14,8 +14,8 @@ import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.api.option.dto.request.GetDefaultOptionsRequest;
 import softeer.be_my_car_master.api.option.dto.response.GetDefaultOptionsResponse;
 import softeer.be_my_car_master.api.option.usecase.GetDefaultOptionsUseCase;
+import softeer.be_my_car_master.api.option.usecase.get_trim_default_options.GetTrimDefaultOptionsUseCase;
 import softeer.be_my_car_master.api.trim.dto.response.GetTrimDefaultOptionsResponse;
-import softeer.be_my_car_master.api.trim.usecase.GetTrimDefaultOptionsUseCase;
 import softeer.be_my_car_master.global.exception.BindingParamException;
 import softeer.be_my_car_master.global.response.Response;
 
@@ -27,6 +27,30 @@ public class DefaultOptionController {
 	private final GetTrimDefaultOptionsUseCase getTrimDefaultOptionsUseCase;
 	private final GetDefaultOptionsUseCase getDefaultOptionsUseCase;
 
+	@GetMapping("/options/default")
+	@Operation(summary = "트림, 엔진, 구동 방식, 바디 타입에 해당하는 기본 옵션 목록을 반환합니다")
+	public Response<GetDefaultOptionsResponse> getDefaultOptions(
+		@Valid @ParameterObject GetDefaultOptionsRequest request,
+		BindingResult bindingResult
+	) {
+		if (bindingResult.hasErrors()) {
+			throw new BindingParamException(bindingResult.getFieldErrors());
+		}
+
+		Long trimId = request.getTrimId();
+		Long engineId = request.getEngineId();
+		Long wheelDriveId = request.getWheelDriveId();
+		Long bodyTypeId = request.getBodyTypeId();
+
+		GetDefaultOptionsResponse response = getDefaultOptionsUseCase.execute(
+			trimId,
+			engineId,
+			wheelDriveId,
+			bodyTypeId
+		);
+		return Response.createSuccessResponse(response);
+	}
+
 	@GetMapping("/trims/{trimId}/default-options")
 	@Operation(summary = "트림 상세 정보 조회 - 해당 트림의 기본옵션 목록을 반환합니다.")
 	public Response<GetTrimDefaultOptionsResponse> getTrimDefaultOptions(@PathVariable Long trimId) {
@@ -34,27 +58,4 @@ public class DefaultOptionController {
 		return Response.createSuccessResponse(response);
 	}
 
-	@GetMapping("/options/default")
-	@Operation(summary = "트림, 엔진, 구동 방식, 바디 타입에 해당하는 기본 옵션 목록을 반환합니다")
-	public Response<GetDefaultOptionsResponse> getDefaultOptions(
-		@Valid @ParameterObject GetDefaultOptionsRequest getDefaultOptionsRequest,
-		BindingResult bindingResult
-	) {
-		if (bindingResult.hasErrors()) {
-			throw new BindingParamException(bindingResult.getFieldErrors());
-		}
-
-		Long trimId = getDefaultOptionsRequest.getTrimId();
-		Long engineId = getDefaultOptionsRequest.getEngineId();
-		Long wheelDriveId = getDefaultOptionsRequest.getWheelDriveId();
-		Long bodyTypeId = getDefaultOptionsRequest.getBodyTypeId();
-
-		GetDefaultOptionsResponse getDefaultOptionsResponse = getDefaultOptionsUseCase.execute(
-			trimId,
-			engineId,
-			wheelDriveId,
-			bodyTypeId
-		);
-		return Response.createSuccessResponse(getDefaultOptionsResponse);
-	}
 }

@@ -1,4 +1,4 @@
-package softeer.be_my_car_master.api.trim.usecase;
+package softeer.be_my_car_master.api.option.usecase.get_trim_default_options;
 
 import java.util.List;
 
@@ -12,10 +12,10 @@ import softeer.be_my_car_master.global.annotation.UseCase;
 @RequiredArgsConstructor
 public class GetTrimDefaultOptionsUseCase {
 
-	private final OptionPort optionPort;
+	private final GetTrimDefaultOptionsPort port;
 
 	public GetTrimDefaultOptionsResponse execute(Long trimId) {
-		List<Option> defaultOptions = optionPort.findDefaultOptionsByTrim(trimId);
+		List<Option> defaultOptions = port.findDefaultOptionsByTrim(trimId);
 		return GetTrimDefaultOptionsResponse.from(defaultOptions);
 	}
 }

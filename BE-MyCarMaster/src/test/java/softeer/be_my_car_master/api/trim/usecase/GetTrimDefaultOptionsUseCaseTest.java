@@ -12,6 +12,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import softeer.be_my_car_master.api.option.usecase.get_trim_default_options.GetTrimDefaultOptionsPort;
+import softeer.be_my_car_master.api.option.usecase.get_trim_default_options.GetTrimDefaultOptionsUseCase;
 import softeer.be_my_car_master.api.option.usecase.port.OptionPort;
 import softeer.be_my_car_master.api.trim.dto.response.GetTrimDefaultOptionsResponse;
 import softeer.be_my_car_master.api.trim.dto.response.TrimDefaultOptionDto;
@@ -23,10 +25,10 @@ import softeer.be_my_car_master.domain.option.Option;
 public class GetTrimDefaultOptionsUseCaseTest {
 
 	@InjectMocks
-	private GetTrimDefaultOptionsUseCase getTrimDefaultOptionsUseCase;
+	private GetTrimDefaultOptionsUseCase useCase;
 
 	@Mock
-	private OptionPort optionPort;
+	private GetTrimDefaultOptionsPort port;
 
 	@Test
 	@DisplayName("트림의 기본 옵션 목록을 조회합니다")
@@ -40,10 +42,10 @@ public class GetTrimDefaultOptionsUseCaseTest {
 			.imgUrl("imgUrl")
 			.build();
 
-		given(optionPort.findDefaultOptionsByTrim(any())).willReturn(List.of(option));
+		given(port.findDefaultOptionsByTrim(any())).willReturn(List.of(option));
 
 		// when
-		GetTrimDefaultOptionsResponse getTrimDefaultOptionsResponse = getTrimDefaultOptionsUseCase.execute(1L);
+		GetTrimDefaultOptionsResponse getTrimDefaultOptionsResponse = useCase.execute(1L);
 
 		// then
 		List<TrimDefaultOptionDto> trimDefaultOptions = getTrimDefaultOptionsResponse.getDefaultOptions();

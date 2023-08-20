@@ -1,7 +1,8 @@
 package softeer.be_my_car_master.api.option.controller;
 
-import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.BDDMockito.*;
+import static org.mockito.BDDMockito.anyLong;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -23,9 +24,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import softeer.be_my_car_master.api.option.dto.response.DefaultOptionDto;
 import softeer.be_my_car_master.api.option.dto.response.GetDefaultOptionsResponse;
 import softeer.be_my_car_master.api.option.usecase.GetDefaultOptionsUseCase;
+import softeer.be_my_car_master.api.option.usecase.get_trim_default_options.GetTrimDefaultOptionsUseCase;
 import softeer.be_my_car_master.api.trim.dto.response.GetTrimDefaultOptionsResponse;
 import softeer.be_my_car_master.api.trim.dto.response.TrimDefaultOptionDto;
-import softeer.be_my_car_master.api.trim.usecase.GetTrimDefaultOptionsUseCase;
 import softeer.be_my_car_master.domain.option.Category;
 import softeer.be_my_car_master.global.response.Response;
 import softeer.be_my_car_master.global.response.ResponseStatus;
@@ -88,7 +89,7 @@ class DefaultOptionControllerTest {
 		@DisplayName("기본 옵션 목록을 조회합니다")
 		void getOptions() throws Exception {
 			//given
-			GetDefaultOptionsResponse getDefaultOptionsResponse = new GetDefaultOptionsResponse();
+			GetDefaultOptionsResponse response = new GetDefaultOptionsResponse();
 			DefaultOptionDto defaultOptionDto = DefaultOptionDto.builder()
 				.id(1L)
 				.name("어떤 옵션")
@@ -96,11 +97,11 @@ class DefaultOptionControllerTest {
 				.description("옵션 상세설명")
 				.imgUrl("imgUrl")
 				.build();
-			getDefaultOptionsResponse.setDefaultOptions(Arrays.asList(defaultOptionDto));
+			response.setDefaultOptions(Arrays.asList(defaultOptionDto));
 
-			given(getDefaultOptionsUseCase.execute(any(), any(), any(), any())).willReturn(getDefaultOptionsResponse);
+			given(getDefaultOptionsUseCase.execute(any(), any(), any(), any())).willReturn(response);
 
-			Response successResponse = Response.createSuccessResponse(getDefaultOptionsResponse);
+			Response successResponse = Response.createSuccessResponse(response);
 			String responseBody = objectMapper.writeValueAsString(successResponse);
 
 			//when
