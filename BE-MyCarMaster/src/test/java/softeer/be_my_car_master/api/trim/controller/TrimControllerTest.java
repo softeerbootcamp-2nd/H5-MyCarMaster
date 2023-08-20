@@ -20,13 +20,9 @@ import org.springframework.test.web.servlet.ResultActions;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import softeer.be_my_car_master.api.trim.dto.response.GetTrimDefaultOptionsResponse;
 import softeer.be_my_car_master.api.trim.dto.response.GetTrimsResponse;
-import softeer.be_my_car_master.api.trim.dto.response.TrimDefaultOptionDto;
 import softeer.be_my_car_master.api.trim.dto.response.TrimDto;
-import softeer.be_my_car_master.api.trim.usecase.GetTrimDefaultOptionsUseCase;
 import softeer.be_my_car_master.api.trim.usecase.get_trims.GetTrimsUseCase;
-import softeer.be_my_car_master.domain.option.Category;
 import softeer.be_my_car_master.global.response.Response;
 import softeer.be_my_car_master.global.response.ResponseStatus;
 
@@ -41,8 +37,6 @@ class TrimControllerTest {
 
 	@MockBean
 	private GetTrimsUseCase getTrimsUseCase;
-	@MockBean
-	private GetTrimDefaultOptionsUseCase getTrimDefaultOptionsUseCase;
 
 	private String getClientErrorResponseBody() throws JsonProcessingException {
 		Response errorResponse = Response.createErrorResponse(ResponseStatus.BAD_REQUEST);
@@ -124,42 +118,6 @@ class TrimControllerTest {
 				.andExpect(status().is4xxClientError())
 				.andExpect(content().contentType("application/json"))
 				.andExpect(content().json(responseBody, false));
-		}
-	}
-
-	@Nested
-	@DisplayName("getTrimDefaultOptions Test")
-	class GetTrimDefaultOptionsTest {
-		@Test
-		@DisplayName("트림의 기본옵션 목록을 조회합니다")
-		void getTrimDefaultOptions() throws Exception {
-			//given
-			GetTrimDefaultOptionsResponse response = new GetTrimDefaultOptionsResponse();
-			TrimDefaultOptionDto trimDefaultOptionDto = TrimDefaultOptionDto.builder()
-				.id(1L)
-				.category(Category.SAFE.getValue())
-				.name("HTRAC")
-				.imgUrl("imgUrl")
-				.description("옵션 상세설명")
-				.build();
-			response.setDefaultOptions(Arrays.asList(trimDefaultOptionDto));
-
-			given(getTrimDefaultOptionsUseCase.execute(anyLong())).willReturn(response);
-
-			Response successResponse = Response.createSuccessResponse(response);
-			String responseBody = objectMapper.writeValueAsString(successResponse);
-
-			//when
-			ResultActions perform = mockMvc.perform(
-				get("/trims/{trimId}/default-options", 1L)
-					.contentType(MediaType.APPLICATION_FORM_URLENCODED)
-			);
-
-			//then
-			perform
-				.andExpect(status().isOk())
-				.andExpect(content().contentType("application/json"))
-				.andExpect(content().json(responseBody, true));
 		}
 	}
 }

@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springdoc.api.annotations.ParameterObject;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -13,6 +14,8 @@ import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.api.option.dto.request.GetDefaultOptionsRequest;
 import softeer.be_my_car_master.api.option.dto.response.GetDefaultOptionsResponse;
 import softeer.be_my_car_master.api.option.usecase.GetDefaultOptionsUseCase;
+import softeer.be_my_car_master.api.trim.dto.response.GetTrimDefaultOptionsResponse;
+import softeer.be_my_car_master.api.trim.usecase.GetTrimDefaultOptionsUseCase;
 import softeer.be_my_car_master.global.exception.BindingParamException;
 import softeer.be_my_car_master.global.response.Response;
 
@@ -21,7 +24,15 @@ import softeer.be_my_car_master.global.response.Response;
 @Tag(name = "Default Option", description = "Default Option API Document")
 public class DefaultOptionController {
 
+	private final GetTrimDefaultOptionsUseCase getTrimDefaultOptionsUseCase;
 	private final GetDefaultOptionsUseCase getDefaultOptionsUseCase;
+
+	@GetMapping("/trims/{trimId}/default-options")
+	@Operation(summary = "트림 상세 정보 조회 - 해당 트림의 기본옵션 목록을 반환합니다.")
+	public Response<GetTrimDefaultOptionsResponse> getTrimDefaultOptions(@PathVariable Long trimId) {
+		GetTrimDefaultOptionsResponse response = getTrimDefaultOptionsUseCase.execute(trimId);
+		return Response.createSuccessResponse(response);
+	}
 
 	@GetMapping("/options/default")
 	@Operation(summary = "트림, 엔진, 구동 방식, 바디 타입에 해당하는 기본 옵션 목록을 반환합니다")
