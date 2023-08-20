@@ -6,7 +6,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import java.util.Arrays;
-import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -24,19 +23,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import softeer.be_my_car_master.api.engine.dto.response.GetUnselectableOptionsByEngineResponse;
 import softeer.be_my_car_master.api.engine.dto.response.UnselectableOptionDto;
 import softeer.be_my_car_master.api.engine.usecase.GetUnselectableOptionsByEngineUseCase;
-import softeer.be_my_car_master.api.option.dto.response.AppliedOptionDto;
-import softeer.be_my_car_master.api.option.dto.response.DefaultOptionDto;
-import softeer.be_my_car_master.api.option.dto.response.FilterDto;
-import softeer.be_my_car_master.api.option.dto.response.GetDefaultOptionsResponse;
 import softeer.be_my_car_master.api.option.dto.response.GetOptionsResponse;
-import softeer.be_my_car_master.api.option.dto.response.GetRepresentativeOptionsResponse;
 import softeer.be_my_car_master.api.option.dto.response.OptionDto;
-import softeer.be_my_car_master.api.option.dto.response.RepresentativeOptionDto;
-import softeer.be_my_car_master.api.option.usecase.GetDefaultOptionsUseCase;
-import softeer.be_my_car_master.api.option.usecase.GetOptionsUseCase;
-import softeer.be_my_car_master.api.option.usecase.GetRepresentativeOptionsUseCase;
-import softeer.be_my_car_master.domain.option.Category;
-import softeer.be_my_car_master.domain.option.Option;
+import softeer.be_my_car_master.api.option.usecase.get_options.GetOptionsUseCase;
 import softeer.be_my_car_master.global.response.Response;
 import softeer.be_my_car_master.global.response.ResponseStatus;
 

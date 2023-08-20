@@ -24,9 +24,12 @@ public class GetOptionsUseCase {
 		Long interiorColorId
 	) {
 		List<Option> options = getOptionsPort.findOptionsByTrim(trimId);
-		List<Long> unselectableOptionIdsByEngine = getOptionsPort.findUnselectableOptionIdsByEngine(engineId);
-		List<Long> unselectableOptionIdsByWheelDrive = getOptionsPort.findUnselectableOptionIdsByWheelDrive(wheelDriveId);
-		List<Long> unselectableOptionIdsByBodyType = getOptionsPort.findUnselectableOptionIdsByBodyType(bodyTypeId);
+		List<Long> unselectableOptionIdsByEngine
+			= getOptionsPort.findUnselectableOptionIdsByEngine(engineId);
+		List<Long> unselectableOptionIdsByWheelDrive
+			= getOptionsPort.findUnselectableOptionIdsByWheelDrive(wheelDriveId);
+		List<Long> unselectableOptionIdsByBodyType
+			= getOptionsPort.findUnselectableOptionIdsByBodyType(bodyTypeId);
 		List<Long> unselectableOptionIdsByInteriorColor =
 			getOptionsPort.findUnselectableOptionIdsByInteriorColor(interiorColorId);
 
