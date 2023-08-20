@@ -1,4 +1,4 @@
-package softeer.be_my_car_master.api.option.usecase;
+package softeer.be_my_car_master.api.option.usecase.get_options;
 
 import java.util.HashSet;
 import java.util.List;
@@ -7,8 +7,6 @@ import java.util.stream.Collectors;
 
 import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.api.option.dto.response.GetOptionsResponse;
-import softeer.be_my_car_master.api.option.usecase.port.OptionPort;
-import softeer.be_my_car_master.api.option.usecase.port.TagPort;
 import softeer.be_my_car_master.domain.option.Option;
 import softeer.be_my_car_master.global.annotation.UseCase;
 
@@ -16,8 +14,7 @@ import softeer.be_my_car_master.global.annotation.UseCase;
 @RequiredArgsConstructor
 public class GetOptionsUseCase {
 
-	private final OptionPort optionPort;
-	private final TagPort tagPort;
+	private final GetOptionsPort getOptionsPort;
 
 	public GetOptionsResponse execute(
 		Long trimId,
@@ -26,12 +23,12 @@ public class GetOptionsUseCase {
 		Long bodyTypeId,
 		Long interiorColorId
 	) {
-		List<Option> selectableOptions = optionPort.findSelectableOptionsByTrimId(trimId);
-		List<Long> unselectableOptionIdsByEngine = optionPort.findUnselectableOptionIdsByEngineId(engineId);
-		List<Long> unselectableOptionIdsByWheelDrive = optionPort.findUnselectableOptionIdsByWheelDriveId(wheelDriveId);
-		List<Long> unselectableOptionIdsByBodyType = optionPort.findUnselectableOptionIdsByBodyTypeId(bodyTypeId);
+		List<Option> options = getOptionsPort.findOptionsByTrim(trimId);
+		List<Long> unselectableOptionIdsByEngine = getOptionsPort.findUnselectableOptionIdsByEngine(engineId);
+		List<Long> unselectableOptionIdsByWheelDrive = getOptionsPort.findUnselectableOptionIdsByWheelDrive(wheelDriveId);
+		List<Long> unselectableOptionIdsByBodyType = getOptionsPort.findUnselectableOptionIdsByBodyType(bodyTypeId);
 		List<Long> unselectableOptionIdsByInteriorColor =
-			optionPort.findUnselectableOptionIdsByInteriorColorId(interiorColorId);
+			getOptionsPort.findUnselectableOptionIdsByInteriorColor(interiorColorId);
 
 		Set<Long> unselectableOptionIdsSet = combineUnselectableOptionIds(
 			unselectableOptionIdsByEngine,
@@ -41,11 +38,11 @@ public class GetOptionsUseCase {
 		);
 
 		List<Option> filteredSelectableOptions = filterOptionsByUnselectableIds(
-			selectableOptions,
+			options,
 			unselectableOptionIdsSet
 		);
 
-		List<String> singleSelectableTags = tagPort.findSingleSelectableTags();
+		List<String> singleSelectableTags = getOptionsPort.findSingleSelectableTags();
 
 		return GetOptionsResponse.from(filteredSelectableOptions, singleSelectableTags);
 	}
@@ -59,10 +56,10 @@ public class GetOptionsUseCase {
 	}
 
 	private List<Option> filterOptionsByUnselectableIds(
-		List<Option> selectableOptions,
+		List<Option> options,
 		Set<Long> unselectableOptionIdsSet
 	) {
-		return selectableOptions.stream()
+		return options.stream()
 			.filter(option -> !unselectableOptionIdsSet.contains(option.getId()))
 			.collect(Collectors.toList());
 	}

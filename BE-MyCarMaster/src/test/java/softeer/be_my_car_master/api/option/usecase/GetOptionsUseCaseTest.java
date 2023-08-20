@@ -16,8 +16,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import softeer.be_my_car_master.api.option.dto.response.GetOptionsResponse;
 import softeer.be_my_car_master.api.option.dto.response.OptionDto;
-import softeer.be_my_car_master.api.option.usecase.port.OptionPort;
-import softeer.be_my_car_master.api.option.usecase.port.TagPort;
+import softeer.be_my_car_master.api.option.usecase.get_options.GetOptionsPort;
+import softeer.be_my_car_master.api.option.usecase.get_options.GetOptionsUseCase;
 import softeer.be_my_car_master.domain.option.Category;
 import softeer.be_my_car_master.domain.option.Option;
 
@@ -29,10 +29,7 @@ class GetOptionsUseCaseTest {
 	private GetOptionsUseCase getOptionsUseCase;
 
 	@Mock
-	private OptionPort optionPort;
-
-	@Mock
-	private TagPort tagPort;
+	private GetOptionsPort getOptionsPort;
 
 	@Test
 	@DisplayName("선택 가능한 옵션 목록을 조회합니다")
@@ -52,13 +49,13 @@ class GetOptionsUseCaseTest {
 			.tag(null)
 			.build();
 
-		given(optionPort.findSelectableOptionsByTrimId(any())).willReturn(Arrays.asList(option));
-		given(optionPort.findUnselectableOptionIdsByEngineId(any())).willReturn(Arrays.asList(2L, 3L));
-		given(optionPort.findUnselectableOptionIdsByWheelDriveId(any())).willReturn(Arrays.asList(2L, 3L));
-		given(optionPort.findUnselectableOptionIdsByBodyTypeId(any())).willReturn(Arrays.asList(2L, 3L));
-		given(optionPort.findUnselectableOptionIdsByInteriorColorId(any())).willReturn(Arrays.asList(2L, 3L));
+		given(getOptionsPort.findOptionsByTrim(any())).willReturn(Arrays.asList(option));
+		given(getOptionsPort.findUnselectableOptionIdsByEngine(any())).willReturn(Arrays.asList(2L, 3L));
+		given(getOptionsPort.findUnselectableOptionIdsByWheelDrive(any())).willReturn(Arrays.asList(2L, 3L));
+		given(getOptionsPort.findUnselectableOptionIdsByBodyType(any())).willReturn(Arrays.asList(2L, 3L));
+		given(getOptionsPort.findUnselectableOptionIdsByInteriorColor(any())).willReturn(Arrays.asList(2L, 3L));
 
-		given(tagPort.findSingleSelectableTags()).willReturn(Arrays.asList("N Performance"));
+		given(getOptionsPort.findSingleSelectableTags()).willReturn(Arrays.asList("N Performance"));
 
 		// when
 		GetOptionsResponse getOptionsResponse = getOptionsUseCase.execute(1L, 1L, 1L, 1L, 1L);
