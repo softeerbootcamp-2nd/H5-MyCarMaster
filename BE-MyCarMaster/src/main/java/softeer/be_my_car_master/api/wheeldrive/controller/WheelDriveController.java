@@ -26,15 +26,15 @@ public class WheelDriveController {
 	@GetMapping("/wheel-drives")
 	@Operation(summary = "트림, 엔진에 따른 구동 방식 목록을 반환합니다")
 	public Response<GetWheelDrivesResponse> getWheelDrives(
-		@Valid @ParameterObject GetWheelDrivesRequest getWheelDrivesRequest,
+		@Valid @ParameterObject GetWheelDrivesRequest request,
 		BindingResult bindingResult
 	) {
 		if (bindingResult.hasErrors()) {
 			throw new BindingParamException(bindingResult.getFieldErrors());
 		}
 
-		Long trimId = getWheelDrivesRequest.getTrimId();
-		Long engineId = getWheelDrivesRequest.getEngineId();
+		Long trimId = request.getTrimId();
+		Long engineId = request.getEngineId();
 		GetWheelDrivesResponse response = getWheelDrivesUseCase.execute(trimId, engineId);
 		return Response.createSuccessResponse(response);
 	}
