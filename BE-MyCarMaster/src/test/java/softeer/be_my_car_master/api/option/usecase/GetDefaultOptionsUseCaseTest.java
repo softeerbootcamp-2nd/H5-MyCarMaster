@@ -16,7 +16,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import softeer.be_my_car_master.api.option.dto.response.DefaultOptionDto;
 import softeer.be_my_car_master.api.option.dto.response.GetDefaultOptionsResponse;
-import softeer.be_my_car_master.api.option.usecase.port.OptionPort;
+import softeer.be_my_car_master.api.option.usecase.get_default_options.GetDefaultOptionsPort;
+import softeer.be_my_car_master.api.option.usecase.get_default_options.GetDefaultOptionsUseCase;
 import softeer.be_my_car_master.domain.option.Category;
 import softeer.be_my_car_master.domain.option.Option;
 
@@ -25,10 +26,10 @@ import softeer.be_my_car_master.domain.option.Option;
 class GetDefaultOptionsUseCaseTest {
 
 	@InjectMocks
-	private GetDefaultOptionsUseCase getDefaultOptionsUseCase;
+	private GetDefaultOptionsUseCase useCase;
 
 	@Mock
-	private OptionPort optionPort;
+	private GetDefaultOptionsPort port;
 
 	@Test
 	@DisplayName("기본 옵션 목록을 조회합니다")
@@ -48,16 +49,16 @@ class GetDefaultOptionsUseCaseTest {
 			.tag(null)
 			.build();
 
-		given(optionPort.findDefaultOptionsByTrim(any())).willReturn(Arrays.asList(option));
-		given(optionPort.findUnselectableOptionIdsByEngineId(any())).willReturn(Arrays.asList(2L, 3L));
-		given(optionPort.findUnselectableOptionIdsByWheelDriveId(any())).willReturn(Arrays.asList(2L, 3L));
-		given(optionPort.findUnselectableOptionIdsByBodyTypeId(any())).willReturn(Arrays.asList(2L, 3L));
+		given(port.findDefaultOptionsByTrim(any())).willReturn(Arrays.asList(option));
+		given(port.findUnselectableOptionIdsByEngine(any())).willReturn(Arrays.asList(2L, 3L));
+		given(port.findUnselectableOptionIdsByWheelDrive(any())).willReturn(Arrays.asList(2L, 3L));
+		given(port.findUnselectableOptionIdsByBodyType(any())).willReturn(Arrays.asList(2L, 3L));
 
 		// when
-		GetDefaultOptionsResponse getDefaultOptionsResponse = getDefaultOptionsUseCase.execute(1L, 1L, 1L, 1L);
+		GetDefaultOptionsResponse response = useCase.execute(1L, 1L, 1L, 1L);
 
 		// then
-		List<DefaultOptionDto> options = getDefaultOptionsResponse.getDefaultOptions();
+		List<DefaultOptionDto> options = response.getDefaultOptions();
 		DefaultOptionDto optionExpected = options.get(0);
 
 		SoftAssertions.assertSoftly(softAssertions -> {

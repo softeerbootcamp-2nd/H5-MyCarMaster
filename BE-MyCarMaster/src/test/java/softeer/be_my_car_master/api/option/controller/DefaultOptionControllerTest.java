@@ -23,7 +23,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import softeer.be_my_car_master.api.option.dto.response.DefaultOptionDto;
 import softeer.be_my_car_master.api.option.dto.response.GetDefaultOptionsResponse;
-import softeer.be_my_car_master.api.option.usecase.GetDefaultOptionsUseCase;
+import softeer.be_my_car_master.api.option.usecase.get_default_options.GetDefaultOptionsUseCase;
 import softeer.be_my_car_master.api.option.usecase.get_trim_default_options.GetTrimDefaultOptionsUseCase;
 import softeer.be_my_car_master.api.trim.dto.response.GetTrimDefaultOptionsResponse;
 import softeer.be_my_car_master.api.trim.dto.response.TrimDefaultOptionDto;

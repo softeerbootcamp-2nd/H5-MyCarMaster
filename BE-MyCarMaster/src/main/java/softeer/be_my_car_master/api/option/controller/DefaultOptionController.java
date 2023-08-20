@@ -13,7 +13,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.api.option.dto.request.GetDefaultOptionsRequest;
 import softeer.be_my_car_master.api.option.dto.response.GetDefaultOptionsResponse;
-import softeer.be_my_car_master.api.option.usecase.GetDefaultOptionsUseCase;
+import softeer.be_my_car_master.api.option.usecase.get_default_options.GetDefaultOptionsUseCase;
 import softeer.be_my_car_master.api.option.usecase.get_trim_default_options.GetTrimDefaultOptionsUseCase;
 import softeer.be_my_car_master.api.trim.dto.response.GetTrimDefaultOptionsResponse;
 import softeer.be_my_car_master.global.exception.BindingParamException;

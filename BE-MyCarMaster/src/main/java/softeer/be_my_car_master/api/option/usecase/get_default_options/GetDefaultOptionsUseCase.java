@@ -1,4 +1,4 @@
-package softeer.be_my_car_master.api.option.usecase;
+package softeer.be_my_car_master.api.option.usecase.get_default_options;
 
 import java.util.HashSet;
 import java.util.List;
@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 
 import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.api.option.dto.response.GetDefaultOptionsResponse;
-import softeer.be_my_car_master.api.option.usecase.port.OptionPort;
 import softeer.be_my_car_master.domain.option.Option;
 import softeer.be_my_car_master.global.annotation.UseCase;
 
@@ -15,13 +14,13 @@ import softeer.be_my_car_master.global.annotation.UseCase;
 @RequiredArgsConstructor
 public class GetDefaultOptionsUseCase {
 
-	private final OptionPort optionPort;
+	private final GetDefaultOptionsPort port;
 
 	public GetDefaultOptionsResponse execute(Long trimId, Long engineId, Long wheelDriveId, Long bodyTypeId) {
-		List<Option> defaultOptions = optionPort.findDefaultOptionsByTrim(trimId);
-		List<Long> unselectableOptionIdsByEngine = optionPort.findUnselectableOptionIdsByEngineId(engineId);
-		List<Long> unselectableOptionIdsByWheelDrive = optionPort.findUnselectableOptionIdsByWheelDriveId(wheelDriveId);
-		List<Long> unselectableOptionIdsByBodyType = optionPort.findUnselectableOptionIdsByBodyTypeId(bodyTypeId);
+		List<Option> defaultOptions = port.findDefaultOptionsByTrim(trimId);
+		List<Long> unselectableOptionIdsByEngine = port.findUnselectableOptionIdsByEngine(engineId);
+		List<Long> unselectableOptionIdsByWheelDrive = port.findUnselectableOptionIdsByWheelDrive(wheelDriveId);
+		List<Long> unselectableOptionIdsByBodyType = port.findUnselectableOptionIdsByBodyType(bodyTypeId);
 
 		Set<Long> unselectableOptionIdsSet = combineUnselectableOptionIds(
 			unselectableOptionIdsByEngine,
