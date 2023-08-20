@@ -26,10 +26,10 @@ import softeer.be_my_car_master.domain.option.Option;
 class GetOptionsUseCaseTest {
 
 	@InjectMocks
-	private GetOptionsUseCase getOptionsUseCase;
+	private GetOptionsUseCase useCase;
 
 	@Mock
-	private GetOptionsPort getOptionsPort;
+	private GetOptionsPort port;
 
 	@Test
 	@DisplayName("선택 가능한 옵션 목록을 조회합니다")
@@ -49,16 +49,16 @@ class GetOptionsUseCaseTest {
 			.tag(null)
 			.build();
 
-		given(getOptionsPort.findOptionsByTrim(any())).willReturn(Arrays.asList(option));
-		given(getOptionsPort.findUnselectableOptionIdsByEngine(any())).willReturn(Arrays.asList(2L, 3L));
-		given(getOptionsPort.findUnselectableOptionIdsByWheelDrive(any())).willReturn(Arrays.asList(2L, 3L));
-		given(getOptionsPort.findUnselectableOptionIdsByBodyType(any())).willReturn(Arrays.asList(2L, 3L));
-		given(getOptionsPort.findUnselectableOptionIdsByInteriorColor(any())).willReturn(Arrays.asList(2L, 3L));
+		given(port.findOptionsByTrim(any())).willReturn(Arrays.asList(option));
+		given(port.findUnselectableOptionIdsByEngine(any())).willReturn(Arrays.asList(2L, 3L));
+		given(port.findUnselectableOptionIdsByWheelDrive(any())).willReturn(Arrays.asList(2L, 3L));
+		given(port.findUnselectableOptionIdsByBodyType(any())).willReturn(Arrays.asList(2L, 3L));
+		given(port.findUnselectableOptionIdsByInteriorColor(any())).willReturn(Arrays.asList(2L, 3L));
 
-		given(getOptionsPort.findSingleSelectableTags()).willReturn(Arrays.asList("N Performance"));
+		given(port.findSingleSelectableTags()).willReturn(Arrays.asList("N Performance"));
 
 		// when
-		GetOptionsResponse getOptionsResponse = getOptionsUseCase.execute(1L, 1L, 1L, 1L, 1L);
+		GetOptionsResponse getOptionsResponse = useCase.execute(1L, 1L, 1L, 1L, 1L);
 
 		// then
 		List<OptionDto> options = getOptionsResponse.getOptions();
