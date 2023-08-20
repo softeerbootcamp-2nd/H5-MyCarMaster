@@ -17,7 +17,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import softeer.be_my_car_master.api.car_master.dto.response.AgencyDto;
 import softeer.be_my_car_master.api.car_master.dto.response.CarMasterDto;
 import softeer.be_my_car_master.api.car_master.dto.response.GetCarMasterResponse;
-import softeer.be_my_car_master.api.car_master.usecase.port.AgencyPort;
+import softeer.be_my_car_master.api.car_master.usecase.get_car_masters.GetCarMasterUseCase;
+import softeer.be_my_car_master.api.car_master.usecase.get_car_masters.GetCarMastersPort;
 import softeer.be_my_car_master.domain.agency.Agency;
 import softeer.be_my_car_master.domain.car_master.CarMaster;
 
@@ -26,10 +27,10 @@ import softeer.be_my_car_master.domain.car_master.CarMaster;
 class GetCarMasterUseCaseTest {
 
 	@InjectMocks
-	private GetCarMasterUseCase getCarMasterUseCase;
+	private GetCarMasterUseCase useCase;
 
 	@Mock
-	private AgencyPort agencyPort;
+	private GetCarMastersPort port;
 
 	@Test
 	@DisplayName("카마스터 목록을 조회합니다")
@@ -55,15 +56,15 @@ class GetCarMasterUseCaseTest {
 			.build();
 		carMaster.setAgency(agency);
 
-		given(agencyPort.findAgenciesAndCarMasters(any(), any())).willReturn(Arrays.asList(agency));
+		given(port.findAgenciesAndCarMasters(any(), any())).willReturn(Arrays.asList(agency));
 
 		// when
-		GetCarMasterResponse getCarMasterResponse = getCarMasterUseCase.execute(32.1212, 127.1545);
+		GetCarMasterResponse response = useCase.execute(32.1212, 127.1545);
 
 		// then
-		List<AgencyDto> agencyDtos = getCarMasterResponse.getAgencies();
+		List<AgencyDto> agencyDtos = response.getAgencies();
 		AgencyDto expectedAgency = agencyDtos.get(0);
-		List<CarMasterDto> carMasterDtos = getCarMasterResponse.getCarMasters();
+		List<CarMasterDto> carMasterDtos = response.getCarMasters();
 		CarMasterDto expectedCarMaster = carMasterDtos.get(0);
 
 		SoftAssertions.assertSoftly(softAssertions -> {
