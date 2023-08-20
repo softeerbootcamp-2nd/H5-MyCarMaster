@@ -18,7 +18,6 @@ import org.springframework.test.web.servlet.ResultActions;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import softeer.be_my_car_master.api.estimate.dto.response.GetEstimateResponse;
 import softeer.be_my_car_master.api.estimate.dto.response.EstimateBodyTypeDto;
 import softeer.be_my_car_master.api.estimate.dto.response.EstimateEngineDto;
 import softeer.be_my_car_master.api.estimate.dto.response.EstimateExteriorColorDto;
@@ -26,6 +25,7 @@ import softeer.be_my_car_master.api.estimate.dto.response.EstimateInteriorColorD
 import softeer.be_my_car_master.api.estimate.dto.response.EstimateOptionDto;
 import softeer.be_my_car_master.api.estimate.dto.response.EstimateTrimDto;
 import softeer.be_my_car_master.api.estimate.dto.response.EstimateWheelDriveDto;
+import softeer.be_my_car_master.api.estimate.dto.response.GetEstimateResponse;
 import softeer.be_my_car_master.api.estimate.usecase.create_estimate.CreateEstimateUseCase;
 import softeer.be_my_car_master.api.estimate.usecase.get_estimate.GetEstimateUseCase;
 import softeer.be_my_car_master.global.response.Response;

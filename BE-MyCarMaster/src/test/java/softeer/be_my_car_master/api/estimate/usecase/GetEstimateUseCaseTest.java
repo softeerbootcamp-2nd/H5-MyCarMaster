@@ -14,7 +14,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import softeer.be_my_car_master.api.estimate.dto.response.GetEstimateResponse;
 import softeer.be_my_car_master.api.estimate.dto.response.EstimateBodyTypeDto;
 import softeer.be_my_car_master.api.estimate.dto.response.EstimateEngineDto;
 import softeer.be_my_car_master.api.estimate.dto.response.EstimateExteriorColorDto;
@@ -22,6 +21,7 @@ import softeer.be_my_car_master.api.estimate.dto.response.EstimateInteriorColorD
 import softeer.be_my_car_master.api.estimate.dto.response.EstimateOptionDto;
 import softeer.be_my_car_master.api.estimate.dto.response.EstimateTrimDto;
 import softeer.be_my_car_master.api.estimate.dto.response.EstimateWheelDriveDto;
+import softeer.be_my_car_master.api.estimate.dto.response.GetEstimateResponse;
 import softeer.be_my_car_master.api.estimate.usecase.get_estimate.GetEstimatePort;
 import softeer.be_my_car_master.api.estimate.usecase.get_estimate.GetEstimateUseCase;
 import softeer.be_my_car_master.domain.body_type.BodyType;
@@ -132,7 +132,6 @@ public class GetEstimateUseCaseTest {
 			softAssertions.assertThat(considerOptionExpected.getName()).isEqualTo(option.getName());
 			softAssertions.assertThat(considerOptionExpected.getPrice()).isEqualTo(option.getPrice());
 		});
-
 
 	}
 }
