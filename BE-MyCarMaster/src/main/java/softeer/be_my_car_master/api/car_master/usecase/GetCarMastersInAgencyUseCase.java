@@ -1,4 +1,4 @@
-package softeer.be_my_car_master.api.agency.usecase;
+package softeer.be_my_car_master.api.car_master.usecase;
 
 import java.util.List;
 

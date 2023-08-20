@@ -1,6 +1,5 @@
 package softeer.be_my_car_master.api.agency.usecase;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.*;
 
@@ -17,6 +16,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import softeer.be_my_car_master.api.agency.dto.response.CarMasterInAgencyDto;
 import softeer.be_my_car_master.api.agency.dto.response.GetCarMastersInAgencyResponse;
+import softeer.be_my_car_master.api.car_master.usecase.GetCarMastersInAgencyUseCase;
 import softeer.be_my_car_master.api.consult.usecase.port.CarMasterPort;
 import softeer.be_my_car_master.domain.agency.Agency;
 import softeer.be_my_car_master.domain.car_master.CarMaster;
