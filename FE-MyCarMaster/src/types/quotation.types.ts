@@ -61,3 +61,7 @@ export type QuotationAction = {
     optionList?: QuotationType[];
   };
 };
+
+export type ConfirmType = {
+  confirm: boolean;
+};

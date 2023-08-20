@@ -23,6 +23,7 @@ export default function InteriorColorSelectView() {
       type: "SET_CAR_PAINT_QUOTATION",
       payload: {
         type: "interiorColorQuotation",
+        id: id,
         name: interiorList[index].name,
         price: interiorList[index].price,
         imgUrl: interiorList[index].colorImgUrl,

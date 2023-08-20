@@ -11,6 +11,7 @@ interface QuotationOptionProps {
   name: string;
   price: number;
   isSelected: boolean;
+  confirm: boolean;
 }
 
 function QuotationOptionItem({
@@ -55,19 +56,22 @@ function QuotationOptionItem({
         <OptionCategory>{category}</OptionCategory>
         <OptionName>{name}</OptionName>
       </OptionDetail>
-      <Button
-        $x={8}
-        $y={2}
-        text={isSelected ? "고민해보기" : "확정하기"}
-        $backgroundcolor={
-          isSelected ? `${theme.colors.GOLD5}` : `${theme.colors.NAVYBLUE5}`
-        }
-        $bordercolor={
-          isSelected ? `${theme.colors.GOLD5}` : `${theme.colors.NAVYBLUE5}`
-        }
-        $textcolor={`${theme.colors.WHITE}`}
-        handleClick={() => toggleSelect(id)}
-      />
+      {!confirm && (
+        <Button
+          $x={8}
+          $y={2}
+          text={isSelected ? "고민해보기" : "확정하기"}
+          $backgroundcolor={
+            isSelected ? `${theme.colors.GOLD5}` : `${theme.colors.NAVYBLUE5}`
+          }
+          $bordercolor={
+            isSelected ? `${theme.colors.GOLD5}` : `${theme.colors.NAVYBLUE5}`
+          }
+          $textcolor={`${theme.colors.WHITE}`}
+          handleClick={() => toggleSelect(id)}
+        />
+      )}
+
       <OptionPrice>+{price.toLocaleString("ko-KR")}원</OptionPrice>
     </Container>
   );
@@ -111,7 +115,6 @@ const OptionName = styled.p`
 `;
 
 const OptionPrice = styled.p`
-  width: 7.6875rem;
   font-family: "HyundaiSansMedium";
   font-size: 1.375rem;
   font-style: normal;

@@ -23,6 +23,7 @@ export default function InteriorColorSelectView() {
       type: "SET_CAR_PAINT_QUOTATION",
       payload: {
         type: "exteriorColorQuotation",
+        id: id,
         name: exteriorList[id - 1].name,
         price: exteriorList[id - 1].price,
         imgUrl: exteriorList[id - 1].colorImgUrl,
@@ -37,7 +38,7 @@ export default function InteriorColorSelectView() {
   };
 
   if (!exteriorList?.length) return null;
-  
+
   return (
     <>
       {exteriorList?.length &&
