@@ -19,18 +19,21 @@ type ListType = {
 
 type GridOptionListProps = {
   list: ListType[];
+  page: number;
 };
 
-export default function GridOptionList({ list }: GridOptionListProps) {
+export default function GridOptionList({ list, page }: GridOptionListProps) {
   const [isDescriptionModalOpen, setIsDescriptionModalOpen] =
     useState<boolean>(false);
   const [detailOption, setDetailOption] =
     useState<DescriptionOptionModalProps>();
 
+  const currentData = list.slice((page - 1) * 10, page * 10);
+
   return (
     <Fragment>
       <GridContainer>
-        {list.map((item) => (
+        {currentData.map((item) => (
           <GridOptionItem key={item.id}>
             <GridOptionImage src={item.imgUrl} />
             <GridOptionTextContainer>

@@ -2,14 +2,27 @@ import { styled } from "styled-components";
 import NavigationItem from "./NavigationItem";
 import EstimatedPrice from "./EstimatedPrice";
 import { useQuotationState } from "../../../contexts/QuotationContext";
+import useFadeAnimation, {
+  FadeAnimationType,
+} from "../../../hooks/useFadeAnimation";
+import { useEffect, useState } from "react";
 import { ConfirmType } from "../../../types/quotation.types";
 
 function NavigationList({ confirm }: ConfirmType) {
   const quotationState = useQuotationState();
   const { pathname } = window.location;
+  const [isAnimation, setIsAnimation] = useState(false);
+  const appearAnimation = useFadeAnimation(1, 1000);
+
+  useEffect(() => {
+    setIsAnimation(true);
+    return () => {
+      setIsAnimation(false);
+    };
+  }, [pathname]);
 
   return (
-    <Container>
+    <Container $style={appearAnimation} $isStart={isAnimation}>
       <NavigationItem
         name={"트림"}
         quotation={quotationState.trimQuotation}
@@ -36,10 +49,16 @@ function NavigationList({ confirm }: ConfirmType) {
   );
 }
 
-const Container = styled.ul`
+const Container = styled.ul<{ $style: FadeAnimationType; $isStart: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+
+  ${(props) =>
+    props.$isStart
+      ? props.$style
+      : "opacity: 0; transition: opacity 1s ease-in-out;"}
+  will-change: opacity;
 `;
 
 export default NavigationList;
