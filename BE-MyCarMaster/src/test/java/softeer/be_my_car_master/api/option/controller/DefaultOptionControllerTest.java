@@ -85,6 +85,7 @@ class DefaultOptionControllerTest {
 	@Nested
 	@DisplayName("getDefaultOptions Test")
 	class GetDefaultOptionsTest {
+
 		@Test
 		@DisplayName("기본 옵션 목록을 조회합니다")
 		void getOptions() throws Exception {

@@ -18,8 +18,8 @@ import softeer.be_my_car_master.api.option.dto.response.AppliedOptionDto;
 import softeer.be_my_car_master.api.option.dto.response.FilterDto;
 import softeer.be_my_car_master.api.option.dto.response.GetRepresentativeOptionsResponse;
 import softeer.be_my_car_master.api.option.dto.response.RepresentativeOptionDto;
-import softeer.be_my_car_master.api.option.usecase.port.OptionPort;
-import softeer.be_my_car_master.api.trim.usecase.port.TrimPort;
+import softeer.be_my_car_master.api.option.usecase.get_representative_options.GetRepresentativeOptionsPort;
+import softeer.be_my_car_master.api.option.usecase.get_representative_options.GetRepresentativeOptionsUseCase;
 import softeer.be_my_car_master.domain.option.Category;
 import softeer.be_my_car_master.domain.option.Option;
 
@@ -31,9 +31,7 @@ public class GetRepresentativeOptionsUseCaseTest {
 	private GetRepresentativeOptionsUseCase getRepresentativeOptionsUseCase;
 
 	@Mock
-	private OptionPort optionPort;
-	@Mock
-	private TrimPort trimPort;
+	private GetRepresentativeOptionsPort port;
 
 	@Test
 	@DisplayName("모델의 대표 옵션 목록을 조회합니다")
@@ -53,20 +51,19 @@ public class GetRepresentativeOptionsUseCaseTest {
 			.tag(null)
 			.build();
 
-		given(optionPort.findRepresentativeOptionsByModelId(any())).willReturn(Arrays.asList(option));
-		given(optionPort.findAppliedOptionsByModelIdAndOptionIds(any(), anyList())).willReturn(Arrays.asList(option));
-		given(optionPort.findAdditionalTrimIdsByOptionId(any())).willReturn(Arrays.asList(2L, 3L));
-		given(optionPort.findDefaultTrimIdsByOptionId(any())).willReturn(Arrays.asList(4L));
+		given(port.findRepresentativeOptionsByModel(any())).willReturn(Arrays.asList(option));
+		given(port.findAppliedOptionsByModelAndOptions(any(), anyList())).willReturn(Arrays.asList(option));
+		given(port.findAdditionalTrimIdsByOption(any())).willReturn(Arrays.asList(2L, 3L));
+		given(port.findDefaultTrimIdsByOption(any())).willReturn(Arrays.asList(4L));
 
-		given(trimPort.findTrimIdsByModelId(any())).willReturn(Arrays.asList(1L, 2L, 3L, 4L));
+		given(port.findTrimIdsByModel(any())).willReturn(Arrays.asList(1L, 2L, 3L, 4L));
 
 		// when
-		GetRepresentativeOptionsResponse getRepresentativeOptionsResponse =
-			getRepresentativeOptionsUseCase.execute(1L);
+		GetRepresentativeOptionsResponse response = getRepresentativeOptionsUseCase.execute(1L);
 
 		// then
 		List<RepresentativeOptionDto> representativeOptions =
-			getRepresentativeOptionsResponse.getRepresentativeOptions();
+			response.getRepresentativeOptions();
 		RepresentativeOptionDto representativeOptionExpected = representativeOptions.get(0);
 		FilterDto filterExpected = representativeOptionExpected.getFilter();
 		AppliedOptionDto appliedOptionExpected = representativeOptionExpected.getAppliedOption();

@@ -12,7 +12,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.api.option.dto.request.GetRepresentativeOptionsRequest;
 import softeer.be_my_car_master.api.option.dto.response.GetRepresentativeOptionsResponse;
-import softeer.be_my_car_master.api.option.usecase.GetRepresentativeOptionsUseCase;
+import softeer.be_my_car_master.api.option.usecase.get_representative_options.GetRepresentativeOptionsUseCase;
 import softeer.be_my_car_master.global.exception.BindingParamException;
 import softeer.be_my_car_master.global.response.Response;
 
@@ -26,16 +26,16 @@ public class RepresentativeOptionController {
 	@GetMapping("/options/representative")
 	@Operation(summary = "모델의 대표 옵션 9가지를 리턴합니다.")
 	public Response<GetRepresentativeOptionsResponse> getRepresentativeOptions(
-		@Valid @ParameterObject GetRepresentativeOptionsRequest getRepresentativeOptionsRequest,
+		@Valid @ParameterObject GetRepresentativeOptionsRequest request,
 		BindingResult bindingResult
 	) {
 		if (bindingResult.hasErrors()) {
 			throw new BindingParamException(bindingResult.getFieldErrors());
 		}
 
-		Long modelId = getRepresentativeOptionsRequest.getModelId();
-		GetRepresentativeOptionsResponse getRepresentativeOptionsResponse =
-			getRepresentativeOptionsUseCase.execute(modelId);
-		return Response.createSuccessResponse(getRepresentativeOptionsResponse);
+		Long modelId = request.getModelId();
+
+		GetRepresentativeOptionsResponse response = getRepresentativeOptionsUseCase.execute(modelId);
+		return Response.createSuccessResponse(response);
 	}
 }

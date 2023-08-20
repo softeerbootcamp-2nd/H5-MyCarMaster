@@ -25,7 +25,7 @@ import softeer.be_my_car_master.api.option.dto.response.AppliedOptionDto;
 import softeer.be_my_car_master.api.option.dto.response.FilterDto;
 import softeer.be_my_car_master.api.option.dto.response.GetRepresentativeOptionsResponse;
 import softeer.be_my_car_master.api.option.dto.response.RepresentativeOptionDto;
-import softeer.be_my_car_master.api.option.usecase.GetRepresentativeOptionsUseCase;
+import softeer.be_my_car_master.api.option.usecase.get_representative_options.GetRepresentativeOptionsUseCase;
 import softeer.be_my_car_master.domain.option.Category;
 import softeer.be_my_car_master.domain.option.Option;
 import softeer.be_my_car_master.global.response.Response;
@@ -46,11 +46,12 @@ class RepresentativeOptionControllerTest {
 	@Nested
 	@DisplayName("getRepresentativeOptions Test")
 	class GetRepresentativeOptionsTest {
+
 		@Test
 		@DisplayName("모델의 대표 옵션 9개를 조회합니다")
 		void getOptions() throws Exception {
 			//given
-			GetRepresentativeOptionsResponse getRepresentativeOptionsResponse = new GetRepresentativeOptionsResponse();
+			GetRepresentativeOptionsResponse response = new GetRepresentativeOptionsResponse();
 			FilterDto filterDto = FilterDto.from(List.of(1L, 2L, 3L, 4L), List.of(2L, 3L), List.of(4L));
 			Option appliedOption = Option.builder()
 				.id(1L)
@@ -70,11 +71,11 @@ class RepresentativeOptionControllerTest {
 				.filter(filterDto)
 				.appliedOption(appliedOptionDto)
 				.build();
-			getRepresentativeOptionsResponse.setRepresentativeOptions(Arrays.asList(representativeOptionDto));
+			response.setRepresentativeOptions(Arrays.asList(representativeOptionDto));
 
-			given(getRepresentativeOptionsUseCase.execute(any())).willReturn(getRepresentativeOptionsResponse);
+			given(getRepresentativeOptionsUseCase.execute(any())).willReturn(response);
 
-			Response successResponse = Response.createSuccessResponse(getRepresentativeOptionsResponse);
+			Response successResponse = Response.createSuccessResponse(response);
 			String responseBody = objectMapper.writeValueAsString(successResponse);
 
 			//when
