@@ -52,9 +52,9 @@ function CarRotation({ $isQuotation }: CarRotationProps) {
         {coloredImgUrl.map((img, index) => (
           <Image key={index} src={img} $display={currentImg === index} />
         ))}
+        <Text $isQuotation={$isQuotation}>360도 돌려보세요!</Text>
       </ImgContainer>
       <Circle />
-      <Text $isQuotation={$isQuotation}>360도 돌려보세요!</Text>
     </Container>
   );
 }
@@ -72,7 +72,10 @@ const Container = styled.div`
   align-items: center;
 `;
 
-const ImgContainer = styled.div``;
+const ImgContainer = styled.div`
+  width: 80%;
+  height: auto;
+`;
 
 const Image = styled.img<{ $display: boolean }>`
   width: 100%;
@@ -99,7 +102,10 @@ const Circle = styled.div`
 
 const Text = styled.div<{ $isQuotation: boolean }>`
   position: absolute;
-  margin-top: 22rem;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
   color: ${theme.colors.NAVYBLUE5};
+
   display: ${({ $isQuotation }) => ($isQuotation ? "none" : "")};
 `;

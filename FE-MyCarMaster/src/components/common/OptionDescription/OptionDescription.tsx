@@ -177,6 +177,7 @@ const SubOptionName = styled.p`
   font-style: normal;
   font-weight: 500;
   line-height: 1.25rem; /* 142.857% */
+  padding: 0 1rem;
 
   color: ${theme.colors.NAVYBLUE5};
 `;
