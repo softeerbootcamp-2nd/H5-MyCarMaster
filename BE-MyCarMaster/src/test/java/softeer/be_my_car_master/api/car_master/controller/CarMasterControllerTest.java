@@ -25,8 +25,8 @@ import softeer.be_my_car_master.api.car_master.dto.response.AgencyDto;
 import softeer.be_my_car_master.api.car_master.dto.response.CarMasterAgencyDto;
 import softeer.be_my_car_master.api.car_master.dto.response.CarMasterDto;
 import softeer.be_my_car_master.api.car_master.dto.response.GetCarMasterResponse;
-import softeer.be_my_car_master.api.car_master.usecase.get_car_masters_in_agency.GetCarMastersInAgencyUseCase;
 import softeer.be_my_car_master.api.car_master.usecase.get_car_masters.GetCarMasterUseCase;
+import softeer.be_my_car_master.api.car_master.usecase.get_car_masters_in_agency.GetCarMastersInAgencyUseCase;
 import softeer.be_my_car_master.global.response.Response;
 
 @WebMvcTest(CarMasterController.class)

@@ -11,7 +11,7 @@ import softeer.be_my_car_master.infrastructure.jpa.car_master.repository.CarMast
 
 @Adaptor
 @RequiredArgsConstructor
-public class GetCarMastersInAgencyAdaptor implements GetCarMastersInAgencyPort{
+public class GetCarMastersInAgencyAdaptor implements GetCarMastersInAgencyPort {
 
 	private final CarMasterJpaRepository carMasterJpaRepository;
 
