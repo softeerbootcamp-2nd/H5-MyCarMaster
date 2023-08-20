@@ -115,7 +115,6 @@ const OptionName = styled.p`
 `;
 
 const OptionPrice = styled.p`
-  width: 7.6875rem;
   font-family: "HyundaiSansMedium";
   font-size: 1.375rem;
   font-style: normal;
