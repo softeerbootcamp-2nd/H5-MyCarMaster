@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.api.agency.dto.response.GetCarMastersInAgencyResponse;
 import softeer.be_my_car_master.api.car_master.dto.request.GetCarMasterRequest;
 import softeer.be_my_car_master.api.car_master.dto.response.GetCarMasterResponse;
-import softeer.be_my_car_master.api.car_master.usecase.GetCarMastersInAgencyUseCase;
+import softeer.be_my_car_master.api.car_master.usecase.get_car_masters_in_agency.GetCarMastersInAgencyUseCase;
 import softeer.be_my_car_master.api.car_master.usecase.get_car_masters.GetCarMasterUseCase;
 import softeer.be_my_car_master.global.exception.BindingParamException;
 import softeer.be_my_car_master.global.response.Response;
