@@ -43,6 +43,7 @@ export default function OptionSelect() {
         },
       });
       setIsTrimCheckOption(true);
+      console.log("optionQuotation.selectedQuotation", selectedOption);
     }
   }, [optionQuotation.selectedQuotation, optionDispatch]);
 
