@@ -16,8 +16,8 @@ import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.api.estimate.dto.request.CreateEstimateRequest;
 import softeer.be_my_car_master.api.estimate.dto.response.CreateEstimateResponse;
 import softeer.be_my_car_master.api.estimate.dto.response.GetEstimateResponse;
-import softeer.be_my_car_master.api.estimate.usecase.CreateEstimateUseCase;
-import softeer.be_my_car_master.api.estimate.usecase.GetEstimateUseCase;
+import softeer.be_my_car_master.api.estimate.usecase.create_estimate.CreateEstimateUseCase;
+import softeer.be_my_car_master.api.estimate.usecase.get_estimate.GetEstimateUseCase;
 import softeer.be_my_car_master.global.response.Response;
 
 @RestController
@@ -29,15 +29,16 @@ public class EstimateController {
 	private final GetEstimateUseCase getEstimateUseCase;
 
 	@PostMapping("/estimates")
-	public Response createEstimate(@RequestBody @Valid CreateEstimateRequest createEstimateRequest) {
-		CreateEstimateResponse createEstimateResponse = createEstimateUseCase.execute(createEstimateRequest);
-		return Response.createSuccessResponse(createEstimateResponse);
+	@Operation(summary = "선택한 내용들로 견적서를 생성합니다.")
+	public Response createEstimate(@RequestBody @Valid CreateEstimateRequest request) {
+		CreateEstimateResponse response = createEstimateUseCase.execute(request);
+		return Response.createSuccessResponse(response);
 	}
 
 	@GetMapping("/estimates/{estimateId}")
-	@Operation(summary = "견적서 조회")
+	@Operation(summary = "견적서 ID로 견적서를 조회합니다.")
 	public Response<GetEstimateResponse> getEstimate(@PathVariable UUID estimateId) {
-		GetEstimateResponse getEstimateResponse = getEstimateUseCase.execute(estimateId);
-		return Response.createSuccessResponse(getEstimateResponse);
+		GetEstimateResponse response = getEstimateUseCase.execute(estimateId);
+		return Response.createSuccessResponse(response);
 	}
 }

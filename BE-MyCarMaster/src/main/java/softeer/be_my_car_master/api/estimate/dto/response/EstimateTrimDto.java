@@ -12,7 +12,7 @@ import softeer.be_my_car_master.domain.trim.Trim;
 @Setter
 @Builder
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class SimpleTrimDto {
+public class EstimateTrimDto {
 
 	@Schema(description = "트림 이름", example = "트림 이름")
 	private String name;
@@ -20,8 +20,8 @@ public class SimpleTrimDto {
 	@Schema(description = "트림 기본 비용", example = "40000000")
 	private Integer price;
 
-	public static SimpleTrimDto from(Trim trim) {
-		return SimpleTrimDto.builder()
+	public static EstimateTrimDto from(Trim trim) {
+		return EstimateTrimDto.builder()
 			.name(trim.getName())
 			.price(trim.getPrice())
 			.build();

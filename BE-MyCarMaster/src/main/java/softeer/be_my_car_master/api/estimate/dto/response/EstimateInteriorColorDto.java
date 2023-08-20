@@ -12,7 +12,7 @@ import softeer.be_my_car_master.domain.color_interior.InteriorColor;
 @Setter
 @Builder
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class SimpleInteriorColorDto {
+public class EstimateInteriorColorDto {
 
 	@Schema(description = "내장색상명", example = "그라파이트 그레이 메탈릭")
 	private String name;
@@ -23,8 +23,8 @@ public class SimpleInteriorColorDto {
 	@Schema(description = "내장색상 이미지", example = "colorImgUrl")
 	private String colorImgUrl;
 
-	public static SimpleInteriorColorDto from(InteriorColor interiorColor) {
-		return SimpleInteriorColorDto.builder()
+	public static EstimateInteriorColorDto from(InteriorColor interiorColor) {
+		return EstimateInteriorColorDto.builder()
 			.name(interiorColor.getName())
 			.price(interiorColor.getPrice())
 			.colorImgUrl(interiorColor.getColorImgUrl())

@@ -12,7 +12,7 @@ import softeer.be_my_car_master.domain.engine.Engine;
 @Setter
 @Builder
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class SimpleEngineDto {
+public class EstimateEngineDto {
 
 	@Schema(description = "엔진 이름", example = "엔진 이름")
 	private String name;
@@ -20,8 +20,8 @@ public class SimpleEngineDto {
 	@Schema(description = "추가 비용", example = "10000")
 	private Integer price;
 
-	public static SimpleEngineDto from(Engine engine) {
-		return SimpleEngineDto.builder()
+	public static EstimateEngineDto from(Engine engine) {
+		return EstimateEngineDto.builder()
 			.name(engine.getName())
 			.price(engine.getPrice())
 			.build();

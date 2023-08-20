@@ -18,16 +18,16 @@ import org.springframework.test.web.servlet.ResultActions;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import softeer.be_my_car_master.api.estimate.dto.response.EstimateBodyTypeDto;
+import softeer.be_my_car_master.api.estimate.dto.response.EstimateEngineDto;
+import softeer.be_my_car_master.api.estimate.dto.response.EstimateExteriorColorDto;
+import softeer.be_my_car_master.api.estimate.dto.response.EstimateInteriorColorDto;
+import softeer.be_my_car_master.api.estimate.dto.response.EstimateOptionDto;
+import softeer.be_my_car_master.api.estimate.dto.response.EstimateTrimDto;
+import softeer.be_my_car_master.api.estimate.dto.response.EstimateWheelDriveDto;
 import softeer.be_my_car_master.api.estimate.dto.response.GetEstimateResponse;
-import softeer.be_my_car_master.api.estimate.dto.response.SimpleBodyTypeDto;
-import softeer.be_my_car_master.api.estimate.dto.response.SimpleEngineDto;
-import softeer.be_my_car_master.api.estimate.dto.response.SimpleExteriorColorDto;
-import softeer.be_my_car_master.api.estimate.dto.response.SimpleInteriorColorDto;
-import softeer.be_my_car_master.api.estimate.dto.response.SimpleOptionDto;
-import softeer.be_my_car_master.api.estimate.dto.response.SimpleTrimDto;
-import softeer.be_my_car_master.api.estimate.dto.response.SimpleWheelDriveDto;
-import softeer.be_my_car_master.api.estimate.usecase.CreateEstimateUseCase;
-import softeer.be_my_car_master.api.estimate.usecase.GetEstimateUseCase;
+import softeer.be_my_car_master.api.estimate.usecase.create_estimate.CreateEstimateUseCase;
+import softeer.be_my_car_master.api.estimate.usecase.get_estimate.GetEstimateUseCase;
 import softeer.be_my_car_master.global.response.Response;
 
 @WebMvcTest(EstimateController.class)
@@ -49,34 +49,34 @@ public class EstimateControllerTest {
 	void getEstimate() throws Exception {
 		//given
 		GetEstimateResponse getEstimateResponse = new GetEstimateResponse();
-		SimpleTrimDto trim = SimpleTrimDto.builder()
+		EstimateTrimDto trim = EstimateTrimDto.builder()
 			.name("트림")
 			.price(10000)
 			.build();
-		SimpleEngineDto engine = SimpleEngineDto.builder()
+		EstimateEngineDto engine = EstimateEngineDto.builder()
 			.name("엔진")
 			.price(10000)
 			.build();
-		SimpleWheelDriveDto wheelDrive = SimpleWheelDriveDto.builder()
+		EstimateWheelDriveDto wheelDrive = EstimateWheelDriveDto.builder()
 			.name("구동방식")
 			.price(10000)
 			.build();
-		SimpleBodyTypeDto bodyType = SimpleBodyTypeDto.builder()
+		EstimateBodyTypeDto bodyType = EstimateBodyTypeDto.builder()
 			.name("바디타입")
 			.price(10000)
 			.build();
-		SimpleExteriorColorDto exteriorColor = SimpleExteriorColorDto.builder()
+		EstimateExteriorColorDto exteriorColor = EstimateExteriorColorDto.builder()
 			.name("외장색상")
 			.price(10000)
 			.colorImgUrl("img url")
 			.coloredImgUrl("img url")
 			.build();
-		SimpleInteriorColorDto interiorColor = SimpleInteriorColorDto.builder()
+		EstimateInteriorColorDto interiorColor = EstimateInteriorColorDto.builder()
 			.name("내장색상")
 			.price(10000)
 			.colorImgUrl("img url")
 			.build();
-		SimpleOptionDto option = SimpleOptionDto.builder()
+		EstimateOptionDto option = EstimateOptionDto.builder()
 			.name("옵션")
 			.price(10000)
 			.imgUrl("img url")

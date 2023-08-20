@@ -14,15 +14,16 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import softeer.be_my_car_master.api.estimate.dto.response.EstimateBodyTypeDto;
+import softeer.be_my_car_master.api.estimate.dto.response.EstimateEngineDto;
+import softeer.be_my_car_master.api.estimate.dto.response.EstimateExteriorColorDto;
+import softeer.be_my_car_master.api.estimate.dto.response.EstimateInteriorColorDto;
+import softeer.be_my_car_master.api.estimate.dto.response.EstimateOptionDto;
+import softeer.be_my_car_master.api.estimate.dto.response.EstimateTrimDto;
+import softeer.be_my_car_master.api.estimate.dto.response.EstimateWheelDriveDto;
 import softeer.be_my_car_master.api.estimate.dto.response.GetEstimateResponse;
-import softeer.be_my_car_master.api.estimate.dto.response.SimpleBodyTypeDto;
-import softeer.be_my_car_master.api.estimate.dto.response.SimpleEngineDto;
-import softeer.be_my_car_master.api.estimate.dto.response.SimpleExteriorColorDto;
-import softeer.be_my_car_master.api.estimate.dto.response.SimpleInteriorColorDto;
-import softeer.be_my_car_master.api.estimate.dto.response.SimpleOptionDto;
-import softeer.be_my_car_master.api.estimate.dto.response.SimpleTrimDto;
-import softeer.be_my_car_master.api.estimate.dto.response.SimpleWheelDriveDto;
-import softeer.be_my_car_master.api.estimate.usecase.port.EstimatePort;
+import softeer.be_my_car_master.api.estimate.usecase.get_estimate.GetEstimatePort;
+import softeer.be_my_car_master.api.estimate.usecase.get_estimate.GetEstimateUseCase;
 import softeer.be_my_car_master.domain.body_type.BodyType;
 import softeer.be_my_car_master.domain.color_exterior.ExteriorColor;
 import softeer.be_my_car_master.domain.color_interior.InteriorColor;
@@ -37,10 +38,10 @@ import softeer.be_my_car_master.domain.wheel_dirve.WheelDrive;
 public class GetEstimateUseCaseTest {
 
 	@InjectMocks
-	private GetEstimateUseCase getEstimateUseCase;
+	private GetEstimateUseCase useCase;
 
 	@Mock
-	private EstimatePort estimatePort;
+	private GetEstimatePort port;
 
 	@Test
 	@DisplayName("견적서를 조회합니다")
@@ -87,30 +88,30 @@ public class GetEstimateUseCaseTest {
 			.bodyType(bodyType)
 			.exteriorColor(exteriorColor)
 			.interiorColor(interiorColor)
-			.additionalOptions(List.of(option))
+			.selectOptions(List.of(option))
 			.considerOptions(List.of(option))
 			.build();
 
-		given(estimatePort.findFullEstimateByUuid(any())).willReturn(Optional.ofNullable(estimate));
+		given(port.findFullEstimateByUuid(any())).willReturn(Optional.ofNullable(estimate));
 
 		// when
-		GetEstimateResponse getEstimateResponse = getEstimateUseCase.execute(UUID.randomUUID());
+		GetEstimateResponse response = useCase.execute(UUID.randomUUID());
 
 		// then
-		SimpleTrimDto trimExpected = getEstimateResponse.getTrim();
-		SimpleEngineDto engineExpected = getEstimateResponse.getEngine();
-		SimpleWheelDriveDto wheelDriveExpected = getEstimateResponse.getWheelDrive();
-		SimpleBodyTypeDto bodyTypeExpected = getEstimateResponse.getBodyType();
-		SimpleExteriorColorDto exteriorColorExpected = getEstimateResponse.getExteriorColor();
-		SimpleInteriorColorDto interiorColorExpected = getEstimateResponse.getInteriorColor();
-		List<SimpleOptionDto> additionOptionDtos = getEstimateResponse.getAdditionalOptions();
-		SimpleOptionDto additionalOptionExpected = additionOptionDtos.get(0);
-		List<SimpleOptionDto> considerOptionDtos = getEstimateResponse.getConsiderOptions();
-		SimpleOptionDto considerOptionExpected = considerOptionDtos.get(0);
+		EstimateTrimDto trimExpected = response.getTrim();
+		EstimateEngineDto engineExpected = response.getEngine();
+		EstimateWheelDriveDto wheelDriveExpected = response.getWheelDrive();
+		EstimateBodyTypeDto bodyTypeExpected = response.getBodyType();
+		EstimateExteriorColorDto exteriorColorExpected = response.getExteriorColor();
+		EstimateInteriorColorDto interiorColorExpected = response.getInteriorColor();
+		List<EstimateOptionDto> selectedOptionDtos = response.getSelectOptions();
+		EstimateOptionDto additionalOptionExpected = selectedOptionDtos.get(0);
+		List<EstimateOptionDto> considerOptionDtos = response.getConsiderOptions();
+		EstimateOptionDto considerOptionExpected = considerOptionDtos.get(0);
 
 		SoftAssertions.assertSoftly(softAssertions -> {
-			softAssertions.assertThat(additionOptionDtos).isNotNull();
-			softAssertions.assertThat(additionOptionDtos).hasSize(1);
+			softAssertions.assertThat(selectedOptionDtos).isNotNull();
+			softAssertions.assertThat(selectedOptionDtos).hasSize(1);
 			softAssertions.assertThat(considerOptionDtos).isNotNull();
 			softAssertions.assertThat(considerOptionDtos).hasSize(1);
 
@@ -131,7 +132,6 @@ public class GetEstimateUseCaseTest {
 			softAssertions.assertThat(considerOptionExpected.getName()).isEqualTo(option.getName());
 			softAssertions.assertThat(considerOptionExpected.getPrice()).isEqualTo(option.getPrice());
 		});
-
 
 	}
 }
