@@ -12,15 +12,7 @@ final class QuotationViewController: UIViewController {
     private var contentView: QuotationView {
         return view as? QuotationView ?? QuotationView()
     }
-
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
+    
     override func loadView() {
         view = QuotationView()
     }
