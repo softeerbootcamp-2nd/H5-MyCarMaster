@@ -12,11 +12,11 @@ import softeer.be_my_car_master.global.annotation.UseCase;
 @RequiredArgsConstructor
 public class GetWheelDrivesUseCase {
 
-	private final GetWheelDrivesPort getWheelDrivePort;
+	private final GetWheelDrivesPort port;
 
 	public GetWheelDrivesResponse execute(Long trimId, Long engineId) {
-		List<WheelDrive> wheelDrives = getWheelDrivePort.findWheelDrivesByTrim(trimId);
-		List<Long> unselectableWheelDriveIds = getWheelDrivePort.findUnselectableWheelDriveIdsByEngine(engineId);
+		List<WheelDrive> wheelDrives = port.findWheelDrivesByTrim(trimId);
+		List<Long> unselectableWheelDriveIds = port.findUnselectableWheelDriveIdsByEngine(engineId);
 
 		List<WheelDrive> selectableWheelDrives = wheelDrives.stream()
 			.filter(wheelDrive -> wheelDrive.isSelectable(unselectableWheelDriveIds))

@@ -25,10 +25,10 @@ import softeer.be_my_car_master.domain.wheel_dirve.WheelDrive;
 class GetWheelDrivesUseCaseTest {
 
 	@InjectMocks
-	private GetWheelDrivesUseCase getWheelDrivesUseCase;
+	private GetWheelDrivesUseCase useCase;
 
 	@Mock
-	private GetWheelDrivesPort getWheelDrivePort;
+	private GetWheelDrivesPort port;
 
 	@Test
 	@DisplayName("구동방식 목록을 조회합니다")
@@ -42,13 +42,13 @@ class GetWheelDrivesUseCaseTest {
 			.ratio(22)
 			.imgUrl("imgUrl")
 			.build();
-		given(getWheelDrivePort.findWheelDrivesByTrim(any())).willReturn(Arrays.asList(wheelDrive));
+		given(port.findWheelDrivesByTrim(any())).willReturn(Arrays.asList(wheelDrive));
 
-		given(getWheelDrivePort.findUnselectableWheelDriveIdsByEngine(any())).willReturn(
+		given(port.findUnselectableWheelDriveIdsByEngine(any())).willReturn(
 			Arrays.asList(2L, 3L));
 
 		// when
-		GetWheelDrivesResponse response = getWheelDrivesUseCase.execute(1L, 1L);
+		GetWheelDrivesResponse response = useCase.execute(1L, 1L);
 
 		// then
 		List<WheelDriveDto> wheelDrives = response.getWheelDrives();
@@ -78,13 +78,13 @@ class GetWheelDrivesUseCaseTest {
 			.ratio(22)
 			.imgUrl("imgUrl")
 			.build();
-		given(getWheelDrivePort.findWheelDrivesByTrim(any())).willReturn(Arrays.asList(wheelDrive));
+		given(port.findWheelDrivesByTrim(any())).willReturn(Arrays.asList(wheelDrive));
 
-		given(getWheelDrivePort.findUnselectableWheelDriveIdsByEngine(any())).willReturn(
+		given(port.findUnselectableWheelDriveIdsByEngine(any())).willReturn(
 			Arrays.asList(1L, 3L));
 
 		// when
-		GetWheelDrivesResponse response = getWheelDrivesUseCase.execute(1L, 1L);
+		GetWheelDrivesResponse response = useCase.execute(1L, 1L);
 
 		// then
 		List<WheelDriveDto> wheelDrives = response.getWheelDrives();
