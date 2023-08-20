@@ -173,9 +173,12 @@ const PageButtonContainer = styled.div`
   width: 80%;
   text-align: center;
   gap: 1rem;
+  font-size: 1.5rem;
+  color: ${({ theme }) => theme.colors.NAVYBLUE5};
 `;
 
 const PageButton = styled.img<{ $none?: boolean }>`
   filter: ${({ $none }) => ($none ? "grayscale(100%)" : "none")};
-  opacity: ${({ $none }) => ($none ? "0.5" : "1")};
+  opacity: ${({ $none }) => ($none ? "0.3" : "1")};
+  width: 1.5rem;
 `;
