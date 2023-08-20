@@ -52,8 +52,13 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
     implementation 'org.springframework.boot:spring-boot-starter-cache'
 
+
     // aop
     implementation 'org.springframework.boot:spring-boot-starter-aop'
+
+    // monitoring
+    implementation 'io.micrometer:micrometer-registry-prometheus'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
 }
 
 tasks.named('test') {
