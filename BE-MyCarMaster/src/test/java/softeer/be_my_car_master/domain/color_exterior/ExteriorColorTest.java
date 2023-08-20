@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 class ExteriorColorTest {
 
 	@Test
-	@DisplayName("id와 price로 동일한 내장 색상인지 확인")
+	@DisplayName("id와 price로 동일한 외장 색상인지 확인")
 	void isRightExteriorColor() {
 		// given
 		ExteriorColor exteriorColor = ExteriorColor.builder()
@@ -25,7 +25,7 @@ class ExteriorColorTest {
 	}
 
 	@Test
-	@DisplayName("id나 price가 다르면 동일한 내장 색상 아님")
+	@DisplayName("id나 price가 다르면 동일한 외장 색상 아님")
 	void isNotRightExteriorColor() {
 		// given
 		ExteriorColor exteriorColor = ExteriorColor.builder()
