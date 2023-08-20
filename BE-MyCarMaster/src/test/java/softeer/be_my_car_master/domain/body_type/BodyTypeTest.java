@@ -1,7 +1,5 @@
 package softeer.be_my_car_master.domain.body_type;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.assertj.core.api.Assertions;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.DisplayName;
@@ -11,7 +9,7 @@ import org.junit.jupiter.api.Test;
 class BodyTypeTest {
 
 	@Test
-	@DisplayName("id와 price로 동일한 body type인지 확인")
+	@DisplayName("id와 price로 동일한 바디 타입인지 확인")
 	void isRightBodyType() {
 		// given
 		BodyType bodyType = BodyType.builder()
