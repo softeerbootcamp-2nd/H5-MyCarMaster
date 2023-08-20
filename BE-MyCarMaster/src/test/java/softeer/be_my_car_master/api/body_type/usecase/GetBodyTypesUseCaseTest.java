@@ -24,10 +24,10 @@ import softeer.be_my_car_master.domain.body_type.BodyType;
 class GetBodyTypesUseCaseTest {
 
 	@InjectMocks
-	private GetBodyTypesUseCase getBodyTypesUseCase;
+	private GetBodyTypesUseCase useCase;
 
 	@Mock
-	private GetBodyTypesPort getBodyTypePort;
+	private GetBodyTypesPort port;
 
 	@Test
 	@DisplayName("바디타입 목록을 조회합니다")
@@ -41,10 +41,10 @@ class GetBodyTypesUseCaseTest {
 			.ratio(22)
 			.imgUrl("imgUrl")
 			.build();
-		given(getBodyTypePort.findBodyTypesByModel(any())).willReturn(Arrays.asList(bodyType));
+		given(port.findBodyTypesByModel(any())).willReturn(Arrays.asList(bodyType));
 
 		// when
-		GetBodyTypesResponse response = getBodyTypesUseCase.execute(1L);
+		GetBodyTypesResponse response = useCase.execute(1L);
 
 		// then
 		List<BodyTypeDto> bodyTypes = response.getBodyTypes();

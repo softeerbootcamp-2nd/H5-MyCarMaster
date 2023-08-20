@@ -26,14 +26,14 @@ public class BodyTypeController {
 	@GetMapping("/body-types")
 	@Operation(summary = "모델에 따른 바디타입 목록을 반환합니다")
 	public Response<GetBodyTypesResponse> getBodyTypes(
-		@Valid @ParameterObject GetBodyTypesRequest getBodytypesRequest,
+		@Valid @ParameterObject GetBodyTypesRequest request,
 		BindingResult bindingResult
 	) {
 		if (bindingResult.hasErrors()) {
 			throw new BindingParamException(bindingResult.getFieldErrors());
 		}
 
-		Long modelId = getBodytypesRequest.getModelId();
+		Long modelId = request.getModelId();
 		GetBodyTypesResponse getBodyTypesResponse = getBodyTypesUseCase.execute(modelId);
 		return Response.createSuccessResponse(getBodyTypesResponse);
 	}

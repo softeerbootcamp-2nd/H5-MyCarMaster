@@ -11,10 +11,10 @@ import softeer.be_my_car_master.global.annotation.UseCase;
 @RequiredArgsConstructor
 public class GetBodyTypesUseCase {
 
-	private final GetBodyTypesPort getBodyTypePort;
+	private final GetBodyTypesPort port;
 
 	public GetBodyTypesResponse execute(Long modelId) {
-		List<BodyType> bodyTypes = getBodyTypePort.findBodyTypesByModel(modelId);
+		List<BodyType> bodyTypes = port.findBodyTypesByModel(modelId);
 		return GetBodyTypesResponse.from(bodyTypes);
 	}
 }
