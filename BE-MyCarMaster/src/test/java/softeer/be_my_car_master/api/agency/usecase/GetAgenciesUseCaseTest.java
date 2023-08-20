@@ -1,6 +1,5 @@
 package softeer.be_my_car_master.api.agency.usecase;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.*;
 
@@ -17,7 +16,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import softeer.be_my_car_master.api.agency.dto.response.AgencyInGuDto;
 import softeer.be_my_car_master.api.agency.dto.response.GetAgenciesResponse;
-import softeer.be_my_car_master.api.car_master.usecase.port.AgencyPort;
+import softeer.be_my_car_master.api.agency.usecase.get_agencies.GetAgenciesPort;
+import softeer.be_my_car_master.api.agency.usecase.get_agencies.GetAgenciesUseCase;
 import softeer.be_my_car_master.domain.agency.Agency;
 
 @ExtendWith(MockitoExtension.class)
@@ -25,10 +25,10 @@ import softeer.be_my_car_master.domain.agency.Agency;
 class GetAgenciesUseCaseTest {
 
 	@InjectMocks
-	private GetAgenciesUseCase getAgenciesUseCase;
+	private GetAgenciesUseCase useCase;
 
 	@Mock
-	private AgencyPort agencyPort;
+	private GetAgenciesPort port;
 
 	@Test
 	@DisplayName("대리점 목록을 조회합니다")
@@ -42,13 +42,13 @@ class GetAgenciesUseCaseTest {
 			.longitude(127.1212)
 			.build();
 
-		given(agencyPort.findAgenciesInGu(any())).willReturn(Arrays.asList(agency));
+		given(port.findAgenciesInGu(any())).willReturn(Arrays.asList(agency));
 
 		// when
-		GetAgenciesResponse getAgenciesResponse = getAgenciesUseCase.execute("성동구");
+		GetAgenciesResponse response = useCase.execute("성동구");
 
 		// then
-		List<AgencyInGuDto> agencyInGuDtos = getAgenciesResponse.getAgencies();
+		List<AgencyInGuDto> agencyInGuDtos = response.getAgencies();
 		AgencyInGuDto expectedAgency = agencyInGuDtos.get(0);
 
 		SoftAssertions.assertSoftly(softAssertions -> {

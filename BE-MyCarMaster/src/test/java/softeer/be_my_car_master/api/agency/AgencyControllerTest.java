@@ -21,8 +21,8 @@ import softeer.be_my_car_master.api.agency.dto.response.AgencyInGuDto;
 import softeer.be_my_car_master.api.agency.dto.response.CarMasterInAgencyDto;
 import softeer.be_my_car_master.api.agency.dto.response.GetAgenciesResponse;
 import softeer.be_my_car_master.api.agency.dto.response.GetCarMastersInAgencyResponse;
-import softeer.be_my_car_master.api.agency.usecase.GetAgenciesUseCase;
 import softeer.be_my_car_master.api.agency.usecase.GetCarMastersInAgencyUseCase;
+import softeer.be_my_car_master.api.agency.usecase.get_agencies.GetAgenciesUseCase;
 import softeer.be_my_car_master.global.response.Response;
 
 @WebMvcTest(AgencyController.class)
@@ -31,13 +31,11 @@ class AgencyControllerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
-
 	@Autowired
 	private ObjectMapper objectMapper;
 
 	@MockBean
 	private GetAgenciesUseCase getAgenciesUseCase;
-
 	@MockBean
 	private GetCarMastersInAgencyUseCase getCarMastersInAgencyUseCase;
 
@@ -45,7 +43,7 @@ class AgencyControllerTest {
 	@DisplayName("대리점 목록을 조회합니다")
 	void getAgencies() throws Exception {
 		//given
-		GetAgenciesResponse getAgenciesResponse = new GetAgenciesResponse();
+		GetAgenciesResponse response = new GetAgenciesResponse();
 		AgencyInGuDto agencyDto1 = AgencyInGuDto.builder()
 			.id(1L)
 			.name("한양대리점")
@@ -58,11 +56,11 @@ class AgencyControllerTest {
 			.latitude(32.1212)
 			.longitude(127.2323)
 			.build();
-		getAgenciesResponse.setAgencies(Arrays.asList(agencyDto1, agencyDto2));
+		response.setAgencies(Arrays.asList(agencyDto1, agencyDto2));
 
-		given(getAgenciesUseCase.execute(any())).willReturn(getAgenciesResponse);
+		given(getAgenciesUseCase.execute(any())).willReturn(response);
 
-		Response successResponse = Response.createSuccessResponse(getAgenciesResponse);
+		Response successResponse = Response.createSuccessResponse(response);
 		String responseBody = objectMapper.writeValueAsString(successResponse);
 
 		//when

@@ -11,7 +11,7 @@ import softeer.be_my_car_master.infrastructure.jpa.agency.repository.AgencyJpaRe
 
 @Adaptor
 @RequiredArgsConstructor
-public class GetAgenciesAdaptor implements GetAgenciesPort{
+public class GetAgenciesAdaptor implements GetAgenciesPort {
 
 	private final AgencyJpaRepository agencyJpaRepository;
 
