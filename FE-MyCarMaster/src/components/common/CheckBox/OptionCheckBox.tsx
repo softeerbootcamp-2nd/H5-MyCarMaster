@@ -1,5 +1,4 @@
 import { Container, CheckBox, Check, CheckStyle, Name, Detail } from "./style";
-import { useState } from "react";
 
 type OptionCheckBoxProps = {
   $name: string;
@@ -10,27 +9,26 @@ type OptionCheckBoxProps = {
   };
   onChange: () => void;
   onClick: () => void;
+  active: boolean;
 };
 export default function OptionCheckBox({
   $name,
   onChange,
   onClick,
+  active,
 }: OptionCheckBoxProps) {
-  const [check, setCheck] = useState(false);
-
+  const onClickHandler = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onClick();
+  };
   return (
-    <Container $checked={check}>
-      <CheckBox $checked={check}>
-        <Check
-          type="checkbox"
-          checked={check}
-          onClick={onChange}
-          onChange={() => setCheck(!check)}
-        />
-        <CheckStyle $checked={check} />
+    <Container $checked={active} onClick={onChange}>
+      <CheckBox $checked={active}>
+        <Check type="checkbox" checked={active} onChange={onChange} />
+        <CheckStyle $checked={active} />
       </CheckBox>
-      <Name $checked={check}>{$name}</Name>
-      <Detail $checked={check} onClick={onClick}>
+      <Name $checked={active}>{$name}</Name>
+      <Detail $checked={active} onClick={onClickHandler}>
         상세 보기
       </Detail>
     </Container>
