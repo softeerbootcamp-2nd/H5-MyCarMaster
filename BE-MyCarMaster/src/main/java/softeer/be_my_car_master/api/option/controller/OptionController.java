@@ -30,8 +30,6 @@ import softeer.be_my_car_master.global.response.Response;
 public class OptionController {
 
 	private final GetOptionsUseCase getOptionsUseCase;
-	private final GetDefaultOptionsUseCase getDefaultOptionsUseCase;
-	private final GetRepresentativeOptionsUseCase getRepresentativeOptionsUseCase;
 
 	@GetMapping
 	@Operation(summary = "트림, 엔진, 구동 방식, 바디 타입, 내장 색상에서 선택 가능한 옵션 목록을 반환합니다")
@@ -59,43 +57,7 @@ public class OptionController {
 		return Response.createSuccessResponse(getOptionsResponse);
 	}
 
-	@GetMapping("/default")
-	@Operation(summary = "트림, 엔진, 구동 방식, 바디 타입에 해당하는 기본 옵션 목록을 반환합니다")
-	public Response<GetDefaultOptionsResponse> getDefaultOptions(
-		@Valid @ParameterObject GetDefaultOptionsRequest getDefaultOptionsRequest,
-		BindingResult bindingResult
-	) {
-		if (bindingResult.hasErrors()) {
-			throw new BindingParamException(bindingResult.getFieldErrors());
-		}
 
-		Long trimId = getDefaultOptionsRequest.getTrimId();
-		Long engineId = getDefaultOptionsRequest.getEngineId();
-		Long wheelDriveId = getDefaultOptionsRequest.getWheelDriveId();
-		Long bodyTypeId = getDefaultOptionsRequest.getBodyTypeId();
 
-		GetDefaultOptionsResponse getDefaultOptionsResponse = getDefaultOptionsUseCase.execute(
-			trimId,
-			engineId,
-			wheelDriveId,
-			bodyTypeId
-		);
-		return Response.createSuccessResponse(getDefaultOptionsResponse);
-	}
 
-	@GetMapping("/representative")
-	@Operation(summary = "모델의 대표 옵션 9가지를 리턴합니다.")
-	public Response<GetRepresentativeOptionsResponse> getRepresentativeOptions(
-		@Valid @ParameterObject GetRepresentativeOptionsRequest getRepresentativeOptionsRequest,
-		BindingResult bindingResult
-	) {
-		if (bindingResult.hasErrors()) {
-			throw new BindingParamException(bindingResult.getFieldErrors());
-		}
-
-		Long modelId = getRepresentativeOptionsRequest.getModelId();
-		GetRepresentativeOptionsResponse getRepresentativeOptionsResponse =
-			getRepresentativeOptionsUseCase.execute(modelId);
-		return Response.createSuccessResponse(getRepresentativeOptionsResponse);
-	}
 }
