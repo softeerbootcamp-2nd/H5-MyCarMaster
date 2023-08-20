@@ -12,12 +12,12 @@ import softeer.be_my_car_master.global.annotation.UseCase;
 @RequiredArgsConstructor
 public class GetInteriorColorsUseCase {
 
-	private final GetInteriorColorsPort interiorColorPort;
+	private final GetInteriorColorsPort port;
 
 	public GetInteriorColorsResponse execute(Long trimId, Long exteriorColorId) {
-		List<InteriorColor> interiorColors = interiorColorPort.findInteriorColorsByTrim(trimId);
+		List<InteriorColor> interiorColors = port.findInteriorColorsByTrim(trimId);
 		List<Long> unselectableInteriorColorIds =
-			interiorColorPort.findUnselectableInteriorColorIdsByExteriorColor(exteriorColorId);
+			port.findUnselectableInteriorColorIdsByExteriorColor(exteriorColorId);
 
 		List<InteriorColor> selectableInteriorColors = interiorColors.stream()
 			.filter(interiorColor -> interiorColor.isSelectable(unselectableInteriorColorIds))
