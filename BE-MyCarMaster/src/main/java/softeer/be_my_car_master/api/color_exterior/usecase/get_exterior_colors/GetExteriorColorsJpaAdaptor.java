@@ -16,7 +16,7 @@ public class GetExteriorColorsJpaAdaptor implements GetExteriorColorsPort {
 	private final TrimExteriorColorJpaRepository trimExteriorColorJpaRepository;
 
 	@Override
-	public List<ExteriorColor> findSelectableExteriorColorsByTrimId(Long trimId) {
+	public List<ExteriorColor> findExteriorColorsByTrim(Long trimId) {
 		return trimExteriorColorJpaRepository.findAllByTrimId(trimId).stream()
 			.map(TrimExteriorColorEntity::toExteriorColor)
 			.collect(Collectors.toList());
