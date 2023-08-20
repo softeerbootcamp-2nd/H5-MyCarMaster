@@ -56,7 +56,7 @@ const ModelContainer = styled.div`
 `;
 
 const ModelImage = styled.img`
-  width: 100%;
+  width: 80%;
   height: 100%;
   object-fit: contain;
 `;
