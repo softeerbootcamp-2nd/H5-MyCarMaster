@@ -16,7 +16,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import softeer.be_my_car_master.api.wheeldrive.dto.response.GetWheelDrivesResponse;
 import softeer.be_my_car_master.api.wheeldrive.dto.response.WheelDriveDto;
-import softeer.be_my_car_master.api.wheeldrive.usecase.port.WheelDrivePort;
+import softeer.be_my_car_master.api.wheeldrive.usecase.get_wheel_drives.GetWheelDrivesPort;
+import softeer.be_my_car_master.api.wheeldrive.usecase.get_wheel_drives.GetWheelDrivesUseCase;
 import softeer.be_my_car_master.domain.wheel_dirve.WheelDrive;
 
 @ExtendWith(MockitoExtension.class)
@@ -24,10 +25,10 @@ import softeer.be_my_car_master.domain.wheel_dirve.WheelDrive;
 class GetWheelDrivesUseCaseTest {
 
 	@InjectMocks
-	private GetWheelDrivesUseCase getWheelDrivesUseCase;
+	private GetWheelDrivesUseCase useCase;
 
 	@Mock
-	private WheelDrivePort wheelDrivePort;
+	private GetWheelDrivesPort port;
 
 	@Test
 	@DisplayName("구동방식 목록을 조회합니다")
@@ -41,16 +42,16 @@ class GetWheelDrivesUseCaseTest {
 			.ratio(22)
 			.imgUrl("imgUrl")
 			.build();
-		given(wheelDrivePort.findSelectableWheelDrivesByTrimId(any())).willReturn(Arrays.asList(wheelDrive));
+		given(port.findWheelDrivesByTrim(any())).willReturn(Arrays.asList(wheelDrive));
 
-		given(wheelDrivePort.findUnselectableWheelDriveIdsByEngineId(any())).willReturn(
+		given(port.findUnselectableWheelDriveIdsByEngine(any())).willReturn(
 			Arrays.asList(2L, 3L));
 
 		// when
-		GetWheelDrivesResponse getWheelDrivesResponse = getWheelDrivesUseCase.execute(1L, 1L);
+		GetWheelDrivesResponse response = useCase.execute(1L, 1L);
 
 		// then
-		List<WheelDriveDto> wheelDrives = getWheelDrivesResponse.getWheelDrives();
+		List<WheelDriveDto> wheelDrives = response.getWheelDrives();
 		WheelDriveDto expected = wheelDrives.get(0);
 
 		SoftAssertions.assertSoftly(softAssertions -> {
@@ -77,16 +78,16 @@ class GetWheelDrivesUseCaseTest {
 			.ratio(22)
 			.imgUrl("imgUrl")
 			.build();
-		given(wheelDrivePort.findSelectableWheelDrivesByTrimId(any())).willReturn(Arrays.asList(wheelDrive));
+		given(port.findWheelDrivesByTrim(any())).willReturn(Arrays.asList(wheelDrive));
 
-		given(wheelDrivePort.findUnselectableWheelDriveIdsByEngineId(any())).willReturn(
+		given(port.findUnselectableWheelDriveIdsByEngine(any())).willReturn(
 			Arrays.asList(1L, 3L));
 
 		// when
-		GetWheelDrivesResponse getWheelDrivesResponse = getWheelDrivesUseCase.execute(1L, 1L);
+		GetWheelDrivesResponse response = useCase.execute(1L, 1L);
 
 		// then
-		List<WheelDriveDto> wheelDrives = getWheelDrivesResponse.getWheelDrives();
+		List<WheelDriveDto> wheelDrives = response.getWheelDrives();
 
 		SoftAssertions.assertSoftly(softAssertions -> {
 			softAssertions.assertThat(wheelDrives).isNotNull();

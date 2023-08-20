@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import softeer.be_my_car_master.api.wheeldrive.dto.response.GetWheelDrivesResponse;
 import softeer.be_my_car_master.api.wheeldrive.dto.response.WheelDriveDto;
-import softeer.be_my_car_master.api.wheeldrive.usecase.GetWheelDrivesUseCase;
+import softeer.be_my_car_master.api.wheeldrive.usecase.get_wheel_drives.GetWheelDrivesUseCase;
 import softeer.be_my_car_master.global.response.Response;
 import softeer.be_my_car_master.global.response.ResponseStatus;
 
@@ -31,7 +31,6 @@ class WheelDriveControllerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
-
 	@Autowired
 	private ObjectMapper objectMapper;
 
@@ -42,7 +41,7 @@ class WheelDriveControllerTest {
 	@DisplayName("구동방식 목록을 조회합니다")
 	void getWheelDrives() throws Exception {
 		//given
-		GetWheelDrivesResponse getWheelDrivesResponse = new GetWheelDrivesResponse();
+		GetWheelDrivesResponse response = new GetWheelDrivesResponse();
 		WheelDriveDto wheelDriveDto = WheelDriveDto.builder()
 			.id(1L)
 			.name("2WD")
@@ -51,11 +50,11 @@ class WheelDriveControllerTest {
 			.ratio(22)
 			.imgUrl("imgUrl")
 			.build();
-		getWheelDrivesResponse.setWheelDrives(Arrays.asList(wheelDriveDto));
+		response.setWheelDrives(Arrays.asList(wheelDriveDto));
 
-		given(getWheelDrivesUseCase.execute(any(), any())).willReturn(getWheelDrivesResponse);
+		given(getWheelDrivesUseCase.execute(any(), any())).willReturn(response);
 
-		Response successResponse = Response.createSuccessResponse(getWheelDrivesResponse);
+		Response successResponse = Response.createSuccessResponse(response);
 		String responseBody = objectMapper.writeValueAsString(successResponse);
 
 		//when
