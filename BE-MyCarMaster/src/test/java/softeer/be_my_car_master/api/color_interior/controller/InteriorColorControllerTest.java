@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import softeer.be_my_car_master.api.color_interior.dto.response.GetInteriorColorsResponse;
 import softeer.be_my_car_master.api.color_interior.dto.response.InteriorColorDto;
-import softeer.be_my_car_master.api.color_interior.usecase.GetInteriorColorsUseCase;
+import softeer.be_my_car_master.api.color_interior.usecase.get_interior_colors.GetInteriorColorsUseCase;
 import softeer.be_my_car_master.global.response.Response;
 import softeer.be_my_car_master.global.response.ResponseStatus;
 
@@ -31,7 +31,6 @@ class InteriorColorControllerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
-
 	@Autowired
 	private ObjectMapper objectMapper;
 

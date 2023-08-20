@@ -12,7 +12,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.api.color_interior.dto.request.GetInteriorColorsRequest;
 import softeer.be_my_car_master.api.color_interior.dto.response.GetInteriorColorsResponse;
-import softeer.be_my_car_master.api.color_interior.usecase.GetInteriorColorsUseCase;
+import softeer.be_my_car_master.api.color_interior.usecase.get_interior_colors.GetInteriorColorsUseCase;
 import softeer.be_my_car_master.global.exception.BindingParamException;
 import softeer.be_my_car_master.global.response.Response;
 

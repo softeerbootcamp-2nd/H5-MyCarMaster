@@ -16,7 +16,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import softeer.be_my_car_master.api.color_interior.dto.response.GetInteriorColorsResponse;
 import softeer.be_my_car_master.api.color_interior.dto.response.InteriorColorDto;
-import softeer.be_my_car_master.api.color_interior.usecase.port.InteriorColorPort;
+import softeer.be_my_car_master.api.color_interior.usecase.get_interior_colors.GetInteriorColorsPort;
+import softeer.be_my_car_master.api.color_interior.usecase.get_interior_colors.GetInteriorColorsUseCase;
 import softeer.be_my_car_master.domain.color_interior.InteriorColor;
 
 @ExtendWith(MockitoExtension.class)
@@ -27,7 +28,7 @@ class GetInteriorColorsUseCaseTest {
 	private GetInteriorColorsUseCase getInteriorColorsUseCase;
 
 	@Mock
-	private InteriorColorPort interiorColorPort;
+	private GetInteriorColorsPort interiorColorPort;
 
 	@Test
 	@DisplayName("내장 색상 목록을 조회합니다")
@@ -41,10 +42,11 @@ class GetInteriorColorsUseCaseTest {
 			.colorImgUrl("colorImgUrl")
 			.coloredImgUrl("coloredImgUrl")
 			.build();
-		given(interiorColorPort.findSelectableInteriorColorsByTrimId(any())).willReturn(Arrays.asList(interiorColor));
+		given(interiorColorPort.findInteriorColorsByTrim(any())).willReturn(Arrays.asList(interiorColor));
 
-		given(interiorColorPort.findUnselectableInteriorColorIdsByExteriorColorId(any())).willReturn(
-			Arrays.asList(2L, 3L));
+		given(interiorColorPort.findUnselectableInteriorColorIdsByExteriorColor(any())).willReturn(
+			Arrays.asList(2L, 3L)
+		);
 
 		// when
 		GetInteriorColorsResponse getInteriorColorsResponse = getInteriorColorsUseCase.execute(1L, 1L);
@@ -76,10 +78,11 @@ class GetInteriorColorsUseCaseTest {
 			.colorImgUrl("colorImgUrl")
 			.coloredImgUrl("coloredImgUrl")
 			.build();
-		given(interiorColorPort.findSelectableInteriorColorsByTrimId(any())).willReturn(Arrays.asList(interiorColor));
+		given(interiorColorPort.findInteriorColorsByTrim(any())).willReturn(Arrays.asList(interiorColor));
 
-		given(interiorColorPort.findUnselectableInteriorColorIdsByExteriorColorId(any())).willReturn(
-			Arrays.asList(1L, 3L));
+		given(interiorColorPort.findUnselectableInteriorColorIdsByExteriorColor(any())).willReturn(
+			Arrays.asList(1L, 3L)
+		);
 
 		// when
 		GetInteriorColorsResponse getInteriorColorsResponse = getInteriorColorsUseCase.execute(1L, 1L);
