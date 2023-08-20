@@ -18,10 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import softeer.be_my_car_master.api.agency.controller.AgencyController;
 import softeer.be_my_car_master.api.agency.dto.response.AgencyInGuDto;
-import softeer.be_my_car_master.api.agency.dto.response.CarMasterInAgencyDto;
 import softeer.be_my_car_master.api.agency.dto.response.GetAgenciesResponse;
-import softeer.be_my_car_master.api.agency.dto.response.GetCarMastersInAgencyResponse;
-import softeer.be_my_car_master.api.agency.usecase.GetCarMastersInAgencyUseCase;
 import softeer.be_my_car_master.api.agency.usecase.get_agencies.GetAgenciesUseCase;
 import softeer.be_my_car_master.global.response.Response;
 
@@ -36,8 +33,6 @@ class AgencyControllerTest {
 
 	@MockBean
 	private GetAgenciesUseCase getAgenciesUseCase;
-	@MockBean
-	private GetCarMastersInAgencyUseCase getCarMastersInAgencyUseCase;
 
 	@Test
 	@DisplayName("대리점 목록을 조회합니다")
@@ -67,38 +62,6 @@ class AgencyControllerTest {
 		ResultActions perform = mockMvc.perform(
 			get("/agencies")
 				.param("gu", "성동구")
-		);
-
-		//then
-		perform
-			.andExpect(status().isOk())
-			.andExpect(content().contentType("application/json"))
-			.andExpect(content().json(responseBody, true));
-	}
-
-	@Test
-	@DisplayName("대리점에 속한 카마스터 목록을 조회합니다")
-	void getCarMastersInAgency() throws Exception {
-		//given
-		GetCarMastersInAgencyResponse getCarMastersInAgencyResponse = new GetCarMastersInAgencyResponse();
-		CarMasterInAgencyDto carMasterInAgencyDto = CarMasterInAgencyDto.builder()
-			.id(1L)
-			.name("신짜오")
-			.imgUrl("imgUrl")
-			.intro("안녕하세요.")
-			.phone("010-0000-0000")
-			.build();
-
-		getCarMastersInAgencyResponse.setCarMasters(Arrays.asList(carMasterInAgencyDto));
-
-		given(getCarMastersInAgencyUseCase.execute(any())).willReturn(getCarMastersInAgencyResponse);
-
-		Response successResponse = Response.createSuccessResponse(getCarMastersInAgencyResponse);
-		String responseBody = objectMapper.writeValueAsString(successResponse);
-
-		//when
-		ResultActions perform = mockMvc.perform(
-			get("/agencies/1/car-masters")
 		);
 
 		//then

@@ -1,6 +1,5 @@
 package softeer.be_my_car_master.api.agency.usecase;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.*;
 
@@ -17,6 +16,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import softeer.be_my_car_master.api.agency.dto.response.CarMasterInAgencyDto;
 import softeer.be_my_car_master.api.agency.dto.response.GetCarMastersInAgencyResponse;
+import softeer.be_my_car_master.api.car_master.usecase.get_car_masters_in_agency.GetCarMastersInAgencyPort;
+import softeer.be_my_car_master.api.car_master.usecase.get_car_masters_in_agency.GetCarMastersInAgencyUseCase;
 import softeer.be_my_car_master.api.consult.usecase.port.CarMasterPort;
 import softeer.be_my_car_master.domain.agency.Agency;
 import softeer.be_my_car_master.domain.car_master.CarMaster;
@@ -26,13 +27,13 @@ import softeer.be_my_car_master.domain.car_master.CarMaster;
 class GetCarMastersInAgencyUseCaseTest {
 
 	@InjectMocks
-	private GetCarMastersInAgencyUseCase getCarMastersInAgencyUseCase;
+	private GetCarMastersInAgencyUseCase useCase;
 
 	@Mock
-	private CarMasterPort carMasterPort;
+	private GetCarMastersInAgencyPort port;
 
 	@Test
-	@DisplayName("카마스터 목록을 조회합니다")
+	@DisplayName("대리점에 속한 카마스터 목록을 조회합니다")
 	void execute() {
 		// given
 		Agency agency = Agency.builder()
@@ -50,13 +51,13 @@ class GetCarMastersInAgencyUseCaseTest {
 			.agency(agency)
 			.build();
 
-		given(carMasterPort.findCarMastersByAgency(any())).willReturn(Arrays.asList(carMaster));
+		given(port.findCarMastersByAgency(any())).willReturn(Arrays.asList(carMaster));
 
 		// when
-		GetCarMastersInAgencyResponse getCarMastersInAgencyResponse = getCarMastersInAgencyUseCase.execute(1L);
+		GetCarMastersInAgencyResponse response = useCase.execute(1L);
 
 		// then
-		List<CarMasterInAgencyDto> carMasterDtos = getCarMastersInAgencyResponse.getCarMasters();
+		List<CarMasterInAgencyDto> carMasterDtos = response.getCarMasters();
 		CarMasterInAgencyDto expected = carMasterDtos.get(0);
 
 		SoftAssertions.assertSoftly(softAssertions -> {
