@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { createPortal } from "react-dom";
 import styled from "styled-components";
 import AngleUp from "../../assets/icons/AngleUp.svg";
 import AngleDown from "../../assets/icons/AngleDown.svg";
@@ -7,6 +8,7 @@ import DefaultOptionScreen from "./screen_view/DefaultOptionScreen";
 import { QuotationType } from "../../types/quotation.types";
 import { useTrimState, useTrimDispatch } from "../../contexts/TrimContext";
 import { useQuotationDispatch } from "../../contexts/QuotationContext";
+import SnackBar from "../common/SnackBar/SnackBar";
 
 type FoldScreenProps = {
   text: string;
@@ -16,6 +18,7 @@ type FoldScreenProps = {
 export default function FoldScreen({ text, $switch }: FoldScreenProps) {
   const [isFold, setIsFold] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [snackBar, setSnackBar] = useState<string[] | null>(null);
   const { trimList } = useTrimState();
   const trimDispatch = useTrimDispatch();
   const quotationDispatch = useQuotationDispatch();
@@ -38,6 +41,9 @@ export default function FoldScreen({ text, $switch }: FoldScreenProps) {
   const searchHandler = (optionList: QuotationType[], selected: number) => {
     const target = document.querySelector(".fold-screen") as HTMLDivElement;
     target.style.animation = "moveDown 0.5s ease-in-out forwards";
+
+    const messages = optionList.map((option) => option.name);
+    setSnackBarHandler(messages);
 
     setLoading(true);
 
@@ -69,6 +75,10 @@ export default function FoldScreen({ text, $switch }: FoldScreenProps) {
         optionList: optionList,
       },
     });
+  };
+
+  const setSnackBarHandler = (messages: string[] | null) => {
+    setSnackBar(messages);
   };
 
   return (
@@ -108,6 +118,14 @@ export default function FoldScreen({ text, $switch }: FoldScreenProps) {
           />
         )}
       </ButtonContainer>
+      {snackBar !== null &&
+        createPortal(
+          <SnackBar
+            messages={snackBar ? snackBar : []}
+            onClose={() => setSnackBarHandler(null)}
+          />,
+          document.body
+        )}
     </Conatiner>
   );
 }
