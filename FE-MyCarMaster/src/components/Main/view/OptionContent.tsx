@@ -100,21 +100,23 @@ const Container = styled.div`
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: end;
   align-items: flex-start;
+  gap: 5%;
 `;
 
 const OptionContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
 `;
 
 const OptionImg = styled.img`
-  max-width: 37rem;
+  max-width: 33rem;
   width: 100%;
   flex-shrink: 0;
+  padding-bottom: 15%;
 `;
 
 export default OptionContent;
