@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import softeer.be_my_car_master.api.color_interior.dto.response.GetInteriorColorsResponse;
 import softeer.be_my_car_master.api.color_interior.dto.response.InteriorColorDto;
-import softeer.be_my_car_master.api.color_interior.usecase.GetInteriorColorsUseCase;
+import softeer.be_my_car_master.api.color_interior.usecase.get_interior_colors.GetInteriorColorsUseCase;
 import softeer.be_my_car_master.global.response.Response;
 import softeer.be_my_car_master.global.response.ResponseStatus;
 
@@ -31,7 +31,6 @@ class InteriorColorControllerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
-
 	@Autowired
 	private ObjectMapper objectMapper;
 
@@ -42,7 +41,7 @@ class InteriorColorControllerTest {
 	@DisplayName("내장 색상 목록을 조회합니다")
 	void getInteriorColors() throws Exception {
 		//given
-		GetInteriorColorsResponse getInteriorColorsResponse = new GetInteriorColorsResponse();
+		GetInteriorColorsResponse response = new GetInteriorColorsResponse();
 		InteriorColorDto interiorColorDto = InteriorColorDto.builder()
 			.id(1L)
 			.name("Interior Color")
@@ -51,11 +50,11 @@ class InteriorColorControllerTest {
 			.colorImgUrl("colorImgUrl")
 			.coloredImgUrl("coloredImgUrl")
 			.build();
-		getInteriorColorsResponse.setInteriorColors(Arrays.asList(interiorColorDto));
+		response.setInteriorColors(Arrays.asList(interiorColorDto));
 
-		given(getInteriorColorsUseCase.execute(any(), any())).willReturn(getInteriorColorsResponse);
+		given(getInteriorColorsUseCase.execute(any(), any())).willReturn(response);
 
-		Response successResponse = Response.createSuccessResponse(getInteriorColorsResponse);
+		Response successResponse = Response.createSuccessResponse(response);
 		String responseBody = objectMapper.writeValueAsString(successResponse);
 
 		//when

@@ -16,7 +16,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import softeer.be_my_car_master.api.color_interior.dto.response.GetInteriorColorsResponse;
 import softeer.be_my_car_master.api.color_interior.dto.response.InteriorColorDto;
-import softeer.be_my_car_master.api.color_interior.usecase.port.InteriorColorPort;
+import softeer.be_my_car_master.api.color_interior.usecase.get_interior_colors.GetInteriorColorsPort;
+import softeer.be_my_car_master.api.color_interior.usecase.get_interior_colors.GetInteriorColorsUseCase;
 import softeer.be_my_car_master.domain.color_interior.InteriorColor;
 
 @ExtendWith(MockitoExtension.class)
@@ -24,10 +25,10 @@ import softeer.be_my_car_master.domain.color_interior.InteriorColor;
 class GetInteriorColorsUseCaseTest {
 
 	@InjectMocks
-	private GetInteriorColorsUseCase getInteriorColorsUseCase;
+	private GetInteriorColorsUseCase useCase;
 
 	@Mock
-	private InteriorColorPort interiorColorPort;
+	private GetInteriorColorsPort port;
 
 	@Test
 	@DisplayName("내장 색상 목록을 조회합니다")
@@ -41,16 +42,15 @@ class GetInteriorColorsUseCaseTest {
 			.colorImgUrl("colorImgUrl")
 			.coloredImgUrl("coloredImgUrl")
 			.build();
-		given(interiorColorPort.findSelectableInteriorColorsByTrimId(any())).willReturn(Arrays.asList(interiorColor));
+		given(port.findInteriorColorsByTrim(any())).willReturn(Arrays.asList(interiorColor));
 
-		given(interiorColorPort.findUnselectableInteriorColorIdsByExteriorColorId(any())).willReturn(
-			Arrays.asList(2L, 3L));
+		given(port.findUnselectableInteriorColorIdsByExteriorColor(any())).willReturn(Arrays.asList(2L, 3L));
 
 		// when
-		GetInteriorColorsResponse getInteriorColorsResponse = getInteriorColorsUseCase.execute(1L, 1L);
+		GetInteriorColorsResponse response = useCase.execute(1L, 1L);
 
 		// then
-		List<InteriorColorDto> interiorColors = getInteriorColorsResponse.getInteriorColors();
+		List<InteriorColorDto> interiorColors = response.getInteriorColors();
 		InteriorColorDto expected = interiorColors.get(0);
 
 		SoftAssertions.assertSoftly(softAssertions -> {
@@ -76,16 +76,15 @@ class GetInteriorColorsUseCaseTest {
 			.colorImgUrl("colorImgUrl")
 			.coloredImgUrl("coloredImgUrl")
 			.build();
-		given(interiorColorPort.findSelectableInteriorColorsByTrimId(any())).willReturn(Arrays.asList(interiorColor));
+		given(port.findInteriorColorsByTrim(any())).willReturn(Arrays.asList(interiorColor));
 
-		given(interiorColorPort.findUnselectableInteriorColorIdsByExteriorColorId(any())).willReturn(
-			Arrays.asList(1L, 3L));
+		given(port.findUnselectableInteriorColorIdsByExteriorColor(any())).willReturn(Arrays.asList(1L, 3L));
 
 		// when
-		GetInteriorColorsResponse getInteriorColorsResponse = getInteriorColorsUseCase.execute(1L, 1L);
+		GetInteriorColorsResponse response = useCase.execute(1L, 1L);
 
 		// then
-		List<InteriorColorDto> interiorColors = getInteriorColorsResponse.getInteriorColors();
+		List<InteriorColorDto> interiorColors = response.getInteriorColors();
 
 		SoftAssertions.assertSoftly(softAssertions -> {
 			softAssertions.assertThat(interiorColors).isNotNull();
