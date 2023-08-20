@@ -17,6 +17,7 @@ export default function BodyTypeSelectView() {
       type: "SET_DETAIL_QUOTATION",
       payload: {
         type: "wheelDriveQuotation",
+        id: id,
         name: wheelDriveList[id - 1].name,
         price: wheelDriveList[id - 1].price,
       },

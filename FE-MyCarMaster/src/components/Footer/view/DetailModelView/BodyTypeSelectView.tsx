@@ -15,6 +15,7 @@ export default function BodyTypeSelectView() {
       type: "SET_DETAIL_QUOTATION",
       payload: {
         type: "bodyTypeQuotation",
+        id: id,
         name: bodyTypeList[id - 1].name,
         price: bodyTypeList[id - 1].price,
       },
