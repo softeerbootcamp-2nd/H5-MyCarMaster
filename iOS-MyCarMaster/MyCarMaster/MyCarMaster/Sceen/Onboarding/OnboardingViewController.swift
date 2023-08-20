@@ -33,7 +33,7 @@ final class OnboardingViewController: UIViewController {
     @objc
     func startButtonDidTap(_ sender: UIButton) {
         // TODO: Routing 레이어에서 RootViewController 교체
-        let viewController = MainViewController(entryStep: .trim)
+        let viewController = DIContainer.resolveMainViewController()
         viewController.modalPresentationStyle = .fullScreen
         present(viewController, animated: false)
     }
