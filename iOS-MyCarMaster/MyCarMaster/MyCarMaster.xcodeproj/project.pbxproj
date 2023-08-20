@@ -68,6 +68,7 @@
 		B58A323B2A7C0B35005FC831 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A323A2A7C0B35005FC831 /* OnboardingViewController.swift */; };
 		B58FB4182A91FE6E00105DBF /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FB4172A91FE6E00105DBF /* Router.swift */; };
 		B58FB41A2A91FEF200105DBF /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FB4192A91FEF200105DBF /* Step.swift */; };
+		B58FB41C2A92049600105DBF /* MainReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FB41B2A92049600105DBF /* MainReactor.swift */; };
 		B58FB41E2A92071A00105DBF /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FB41D2A92071A00105DBF /* DIContainer.swift */; };
 		B598A0852A8F297A00C4A591 /* QuotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B598A0842A8F297A00C4A591 /* QuotationViewController.swift */; };
 		B59B201D2A8B666A009E7868 /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59B201C2A8B666A009E7868 /* OptionViewController.swift */; };
@@ -236,6 +237,7 @@
 		B58A323A2A7C0B35005FC831 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		B58FB4172A91FE6E00105DBF /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		B58FB4192A91FEF200105DBF /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
+		B58FB41B2A92049600105DBF /* MainReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainReactor.swift; sourceTree = "<group>"; };
 		B58FB41D2A92071A00105DBF /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		B598A0842A8F297A00C4A591 /* QuotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationViewController.swift; sourceTree = "<group>"; };
 		B59B201C2A8B666A009E7868 /* OptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */,
+				B58FB41B2A92049600105DBF /* MainReactor.swift */,
 				B510BBDE2A84895D009E5752 /* EstimationView.swift */,
 				B53E028D2A84BE5100F464FC /* StepNavigatorView.swift */,
 				B58FB4172A91FE6E00105DBF /* Router.swift */,
@@ -921,6 +924,7 @@
 				B58FB41E2A92071A00105DBF /* DIContainer.swift in Sources */,
 				B53E028E2A84BE5100F464FC /* StepNavigatorView.swift in Sources */,
 				B56A765C2A83EC5200F7E3EF /* Preview.swift in Sources */,
+				B58FB41C2A92049600105DBF /* MainReactor.swift in Sources */,
 				B510BBDF2A84895D009E5752 /* EstimationView.swift in Sources */,
 				B53C3C442A85483F0019ECA1 /* EngineView.swift in Sources */,
 				B5BBB3512A89C7BF00AAFC84 /* Interior.swift in Sources */,

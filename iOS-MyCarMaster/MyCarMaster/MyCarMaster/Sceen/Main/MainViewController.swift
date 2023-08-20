@@ -5,6 +5,7 @@
 //  Created by SEUNGMIN OH on 2023/08/10.
 //
 
+import Combine
 import UIKit
 
 import MVIFoundation
@@ -58,12 +59,12 @@ final class MainViewController: UIViewController {
 
     @objc
     private func moveNext() {
-        moveTo(currentStep?.next ?? .trim)
+        reactor?.action.send(.moveNext)
     }
 
     @objc
     private func moveBack() {
-        moveTo(currentStep?.back ?? .trim)
+        reactor?.action.send(.moveBack)
     }
 
     private func changeStepViewControllerTo(_ stepViewController: UIViewController) {
@@ -80,6 +81,21 @@ final class MainViewController: UIViewController {
         configureLayout()
 
         stepViewController.didMove(toParent: self)
+    }
+}
+
+extension MainViewController: Reactable {
+    func bindState(reactor: MainReactor) {
+        reactor.state.map(\.currentStepViewController)
+            .sink { [weak self] currentViewController in
+                self?.changeStepViewControllerTo(currentViewController)
+            }
+            .store(in: &cancellables)
+        reactor.state.map(\.isLoading)
+            .sink { isLoading in
+                print("isLoading: \(isLoading)")
+            }
+            .store(in: &cancellables)
     }
 }
 
