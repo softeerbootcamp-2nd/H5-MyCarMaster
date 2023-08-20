@@ -66,30 +66,6 @@ final class MainViewController: UIViewController {
         moveTo(currentStep?.back ?? .trim)
     }
 
-    private func moveTo(_ step: Step) {
-        currentStep = step
-        stepNavigatorView.progressView.progressLine.progress = step.progress
-        stepNavigatorView.progressView.progressIndicatorLabel.setText(step.title)
-        switch step {
-        case .trim:
-            moveTo(TrimViewController())
-        case .engine:
-            moveTo(EngineViewController())
-        case .wheelDrive:
-            moveTo(WheelDriveViewController())
-        case .bodyType:
-            moveTo(BodyTypeViewController())
-        case .exterior:
-            moveTo(ExteriorViewController())
-        case .interior:
-            moveTo(InteriorViewController())
-        case .option:
-            moveTo(OptionViewController())
-        case .quotation:
-            moveTo(QuotationViewController())
-        }
-    }
-
     private func changeStepViewControllerTo(_ stepViewController: UIViewController) {
         self.stepViewController?.willMove(toParent: nil)
         self.stepViewController?.view.removeFromSuperview()

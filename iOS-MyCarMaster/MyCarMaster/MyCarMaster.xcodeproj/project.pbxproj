@@ -66,6 +66,7 @@
 		B58A32342A7BA452005FC831 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A32332A7BA452005FC831 /* OnboardingView.swift */; };
 		B58A32382A7BA47D005FC831 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B58A32372A7BA47D005FC831 /* Lottie */; };
 		B58A323B2A7C0B35005FC831 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A323A2A7C0B35005FC831 /* OnboardingViewController.swift */; };
+		B58FB4182A91FE6E00105DBF /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FB4172A91FE6E00105DBF /* Router.swift */; };
 		B58FB41A2A91FEF200105DBF /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FB4192A91FEF200105DBF /* Step.swift */; };
 		B58FB41E2A92071A00105DBF /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FB41D2A92071A00105DBF /* DIContainer.swift */; };
 		B598A0852A8F297A00C4A591 /* QuotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B598A0842A8F297A00C4A591 /* QuotationViewController.swift */; };
@@ -233,6 +234,7 @@
 		B570C0F92A89ADA7000E9B75 /* InteriorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteriorView.swift; sourceTree = "<group>"; };
 		B58A32332A7BA452005FC831 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		B58A323A2A7C0B35005FC831 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		B58FB4172A91FE6E00105DBF /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		B58FB4192A91FEF200105DBF /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		B58FB41D2A92071A00105DBF /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		B598A0842A8F297A00C4A591 /* QuotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationViewController.swift; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 				B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */,
 				B510BBDE2A84895D009E5752 /* EstimationView.swift */,
 				B53E028D2A84BE5100F464FC /* StepNavigatorView.swift */,
+				B58FB4172A91FE6E00105DBF /* Router.swift */,
 				B58FB4192A91FEF200105DBF /* Step.swift */,
 				B58FB41D2A92071A00105DBF /* DIContainer.swift */,
 			);
@@ -968,6 +971,7 @@
 				B56F55D42A86BC3B0055E382 /* TrimDTO.swift in Sources */,
 				B53BA10E2A8BF4C2009F94BE /* Option+.swift in Sources */,
 				B560B2182A83827600A4B9A9 /* TrimView.swift in Sources */,
+				B58FB4182A91FE6E00105DBF /* Router.swift in Sources */,
 				B5DD652B2A893B1E00B44F61 /* BodyType+.swift in Sources */,
 				B52FC1CE2A90E0D20075D288 /* QuotationContentOptionItemView.swift in Sources */,
 				B50C7E4E2A790279005AFE0B /* SceneDelegate.swift in Sources */,
