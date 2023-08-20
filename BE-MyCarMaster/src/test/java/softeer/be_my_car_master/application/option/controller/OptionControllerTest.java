@@ -13,6 +13,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -26,10 +28,13 @@ import softeer.be_my_car_master.application.option.dto.response.GetOptionsRespon
 import softeer.be_my_car_master.application.option.dto.response.OptionDto;
 import softeer.be_my_car_master.application.option.usecase.get_options.GetOptionsUseCase;
 import softeer.be_my_car_master.application.option.usecase.get_unselectable_options_by_engine.GetUnselectableOptionsByEngineUseCase;
+import softeer.be_my_car_master.global.aspect.BindingAdvice;
 import softeer.be_my_car_master.global.response.Response;
 import softeer.be_my_car_master.global.response.ResponseStatus;
 
 @WebMvcTest(OptionController.class)
+@EnableAspectJAutoProxy
+@Import(BindingAdvice.class)
 @DisplayName("OptionController Test")
 class OptionControllerTest {
 

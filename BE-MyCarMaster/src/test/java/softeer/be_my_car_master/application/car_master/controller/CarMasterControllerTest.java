@@ -13,6 +13,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -27,9 +29,12 @@ import softeer.be_my_car_master.application.car_master.dto.response.CarMasterDto
 import softeer.be_my_car_master.application.car_master.dto.response.GetCarMasterResponse;
 import softeer.be_my_car_master.application.car_master.usecase.get_car_masters.GetCarMasterUseCase;
 import softeer.be_my_car_master.application.car_master.usecase.get_car_masters_in_agency.GetCarMastersInAgencyUseCase;
+import softeer.be_my_car_master.global.aspect.BindingAdvice;
 import softeer.be_my_car_master.global.response.Response;
 
 @WebMvcTest(CarMasterController.class)
+@EnableAspectJAutoProxy
+@Import(BindingAdvice.class)
 @DisplayName("CarMaster Controller Test")
 class CarMasterControllerTest {
 
