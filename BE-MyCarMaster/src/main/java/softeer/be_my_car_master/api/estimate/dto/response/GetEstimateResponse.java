@@ -17,30 +17,32 @@ import softeer.be_my_car_master.domain.estimate.Estimate;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class GetEstimateResponse {
 
-	private SimpleTrimDto trim;
-	private SimpleEngineDto engine;
-	private SimpleWheelDriveDto wheelDrive;
-	private SimpleBodyTypeDto bodyType;
-	private SimpleExteriorColorDto exteriorColor;
-	private SimpleInteriorColorDto interiorColor;
-	private List<SimpleOptionDto> additionalOptions;
-	private List<SimpleOptionDto> considerOptions;
+	private EstimateTrimDto trim;
+	private EstimateEngineDto engine;
+	private EstimateWheelDriveDto wheelDrive;
+	private EstimateBodyTypeDto bodyType;
+	private EstimateExteriorColorDto exteriorColor;
+	private EstimateInteriorColorDto interiorColor;
+	private List<EstimateOptionDto> selectOptions;
+	private List<EstimateOptionDto> considerOptions;
 
 	public static GetEstimateResponse from(Estimate estimate) {
-		List<SimpleOptionDto> additionalOptionDtos = estimate.getAdditionalOptions().stream()
-			.map(SimpleOptionDto::from)
+		List<EstimateOptionDto> selectOptionDtos = estimate.getSelectOptions().stream()
+			.map(EstimateOptionDto::from)
 			.collect(toList());
-		List<SimpleOptionDto> considerOptionDtos = estimate.getConsiderOptions().stream()
-			.map(SimpleOptionDto::from)
+
+		List<EstimateOptionDto> considerOptionDtos = estimate.getConsiderOptions().stream()
+			.map(EstimateOptionDto::from)
 			.collect(toList());
+
 		return new GetEstimateResponse(
-			SimpleTrimDto.from(estimate.getTrim()),
-			SimpleEngineDto.from(estimate.getEngine()),
-			SimpleWheelDriveDto.from(estimate.getWheelDrive()),
-			SimpleBodyTypeDto.from(estimate.getBodyType()),
-			SimpleExteriorColorDto.from(estimate.getExteriorColor()),
-			SimpleInteriorColorDto.from(estimate.getInteriorColor()),
-			additionalOptionDtos,
+			EstimateTrimDto.from(estimate.getTrim()),
+			EstimateEngineDto.from(estimate.getEngine()),
+			EstimateWheelDriveDto.from(estimate.getWheelDrive()),
+			EstimateBodyTypeDto.from(estimate.getBodyType()),
+			EstimateExteriorColorDto.from(estimate.getExteriorColor()),
+			EstimateInteriorColorDto.from(estimate.getInteriorColor()),
+			selectOptionDtos,
 			considerOptionDtos
 		);
 	}

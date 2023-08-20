@@ -15,13 +15,13 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import softeer.be_my_car_master.api.estimate.dto.response.GetEstimateResponse;
-import softeer.be_my_car_master.api.estimate.dto.response.SimpleBodyTypeDto;
-import softeer.be_my_car_master.api.estimate.dto.response.SimpleEngineDto;
-import softeer.be_my_car_master.api.estimate.dto.response.SimpleExteriorColorDto;
-import softeer.be_my_car_master.api.estimate.dto.response.SimpleInteriorColorDto;
-import softeer.be_my_car_master.api.estimate.dto.response.SimpleOptionDto;
-import softeer.be_my_car_master.api.estimate.dto.response.SimpleTrimDto;
-import softeer.be_my_car_master.api.estimate.dto.response.SimpleWheelDriveDto;
+import softeer.be_my_car_master.api.estimate.dto.response.EstimateBodyTypeDto;
+import softeer.be_my_car_master.api.estimate.dto.response.EstimateEngineDto;
+import softeer.be_my_car_master.api.estimate.dto.response.EstimateExteriorColorDto;
+import softeer.be_my_car_master.api.estimate.dto.response.EstimateInteriorColorDto;
+import softeer.be_my_car_master.api.estimate.dto.response.EstimateOptionDto;
+import softeer.be_my_car_master.api.estimate.dto.response.EstimateTrimDto;
+import softeer.be_my_car_master.api.estimate.dto.response.EstimateWheelDriveDto;
 import softeer.be_my_car_master.api.estimate.usecase.get_estimate.GetEstimatePort;
 import softeer.be_my_car_master.api.estimate.usecase.get_estimate.GetEstimateUseCase;
 import softeer.be_my_car_master.domain.body_type.BodyType;
@@ -88,7 +88,7 @@ public class GetEstimateUseCaseTest {
 			.bodyType(bodyType)
 			.exteriorColor(exteriorColor)
 			.interiorColor(interiorColor)
-			.additionalOptions(List.of(option))
+			.selectOptions(List.of(option))
 			.considerOptions(List.of(option))
 			.build();
 
@@ -98,20 +98,20 @@ public class GetEstimateUseCaseTest {
 		GetEstimateResponse response = useCase.execute(UUID.randomUUID());
 
 		// then
-		SimpleTrimDto trimExpected = response.getTrim();
-		SimpleEngineDto engineExpected = response.getEngine();
-		SimpleWheelDriveDto wheelDriveExpected = response.getWheelDrive();
-		SimpleBodyTypeDto bodyTypeExpected = response.getBodyType();
-		SimpleExteriorColorDto exteriorColorExpected = response.getExteriorColor();
-		SimpleInteriorColorDto interiorColorExpected = response.getInteriorColor();
-		List<SimpleOptionDto> additionOptionDtos = response.getAdditionalOptions();
-		SimpleOptionDto additionalOptionExpected = additionOptionDtos.get(0);
-		List<SimpleOptionDto> considerOptionDtos = response.getConsiderOptions();
-		SimpleOptionDto considerOptionExpected = considerOptionDtos.get(0);
+		EstimateTrimDto trimExpected = response.getTrim();
+		EstimateEngineDto engineExpected = response.getEngine();
+		EstimateWheelDriveDto wheelDriveExpected = response.getWheelDrive();
+		EstimateBodyTypeDto bodyTypeExpected = response.getBodyType();
+		EstimateExteriorColorDto exteriorColorExpected = response.getExteriorColor();
+		EstimateInteriorColorDto interiorColorExpected = response.getInteriorColor();
+		List<EstimateOptionDto> selectedOptionDtos = response.getSelectOptions();
+		EstimateOptionDto additionalOptionExpected = selectedOptionDtos.get(0);
+		List<EstimateOptionDto> considerOptionDtos = response.getConsiderOptions();
+		EstimateOptionDto considerOptionExpected = considerOptionDtos.get(0);
 
 		SoftAssertions.assertSoftly(softAssertions -> {
-			softAssertions.assertThat(additionOptionDtos).isNotNull();
-			softAssertions.assertThat(additionOptionDtos).hasSize(1);
+			softAssertions.assertThat(selectedOptionDtos).isNotNull();
+			softAssertions.assertThat(selectedOptionDtos).hasSize(1);
 			softAssertions.assertThat(considerOptionDtos).isNotNull();
 			softAssertions.assertThat(considerOptionDtos).hasSize(1);
 
