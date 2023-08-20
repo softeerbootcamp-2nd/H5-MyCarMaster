@@ -16,7 +16,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import softeer.be_my_car_master.api.color_exterior.dto.response.ExteriorColorDto;
 import softeer.be_my_car_master.api.color_exterior.dto.response.GetExteriorColorsResponse;
-import softeer.be_my_car_master.api.color_exterior.usecase.port.ExteriorColorPort;
+import softeer.be_my_car_master.api.color_exterior.usecase.get_exterior_colors.GetExteriorColorsPort;
+import softeer.be_my_car_master.api.color_exterior.usecase.get_exterior_colors.GetExteriorColorsUseCase;
 import softeer.be_my_car_master.domain.color_exterior.ExteriorColor;
 
 @ExtendWith(MockitoExtension.class)
@@ -24,10 +25,10 @@ import softeer.be_my_car_master.domain.color_exterior.ExteriorColor;
 class GetExteriorColorsUseCaseTest {
 
 	@InjectMocks
-	private GetExteriorColorsUseCase getExteriorColorsUseCase;
+	private GetExteriorColorsUseCase useCase;
 
 	@Mock
-	private ExteriorColorPort exteriorColorPort;
+	private GetExteriorColorsPort port;
 
 	@Test
 	@DisplayName("외장 색상 목록을 조회합니다")
@@ -41,10 +42,10 @@ class GetExteriorColorsUseCaseTest {
 			.colorImgUrl("colorImgUrl")
 			.coloredImgUrl("coloredImgUrl")
 			.build();
-		given(exteriorColorPort.findSelectableExteriorColorsByTrimId(any())).willReturn(Arrays.asList(exteriorColor));
+		given(port.findExteriorColorsByTrim(any())).willReturn(Arrays.asList(exteriorColor));
 
 		// when
-		GetExteriorColorsResponse getExteriorColorsResponse = getExteriorColorsUseCase.execute(1L);
+		GetExteriorColorsResponse getExteriorColorsResponse = useCase.execute(1L);
 
 		// then
 		List<ExteriorColorDto> exteriorColors = getExteriorColorsResponse.getExteriorColors();

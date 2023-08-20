@@ -18,10 +18,9 @@ import org.springframework.test.web.servlet.ResultActions;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import softeer.be_my_car_master.api.color_exterior.dto.request.GetExteriorColorsRequest;
 import softeer.be_my_car_master.api.color_exterior.dto.response.ExteriorColorDto;
 import softeer.be_my_car_master.api.color_exterior.dto.response.GetExteriorColorsResponse;
-import softeer.be_my_car_master.api.color_exterior.usecase.GetExteriorColorsUseCase;
+import softeer.be_my_car_master.api.color_exterior.usecase.get_exterior_colors.GetExteriorColorsUseCase;
 import softeer.be_my_car_master.global.response.Response;
 import softeer.be_my_car_master.global.response.ResponseStatus;
 
