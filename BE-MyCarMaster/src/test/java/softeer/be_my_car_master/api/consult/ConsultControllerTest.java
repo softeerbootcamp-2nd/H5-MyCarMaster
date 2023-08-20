@@ -20,7 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import softeer.be_my_car_master.api.consult.controller.ConsultController;
 import softeer.be_my_car_master.api.consult.dto.request.ApplyConsultingRequest;
 import softeer.be_my_car_master.api.consult.dto.request.ClientDto;
-import softeer.be_my_car_master.api.consult.usecase.ApplyConsultingUseCase;
+import softeer.be_my_car_master.api.consult.usecase.apply_consulting.ApplyConsultingUseCase;
 import softeer.be_my_car_master.global.response.Response;
 import softeer.be_my_car_master.global.response.ResponseStatus;
 
@@ -42,10 +42,10 @@ class ConsultControllerTest {
 	void applyConsulting() throws Exception {
 		//given
 		ClientDto clientDto = new ClientDto("Hyundai", "Hyundai@email.com", "010-0000-0000");
-		ApplyConsultingRequest applyConsultingRequest = new ApplyConsultingRequest(
+		ApplyConsultingRequest request = new ApplyConsultingRequest(
 			"62dd98f0-bd8e-11ed-93ab-325096b39f47", 1L, clientDto);
 
-		String requestBody = objectMapper.writeValueAsString(applyConsultingRequest);
+		String requestBody = objectMapper.writeValueAsString(request);
 		willDoNothing().given(applyConsultingUseCase).execute(any(), any(), any(), any(), any());
 
 		//when
@@ -66,10 +66,10 @@ class ConsultControllerTest {
 	void uuidEstimateId() throws Exception {
 		//given
 		ClientDto clientDto = new ClientDto("Hyundai", "Hyundai@email.com", "010-0000-0000");
-		ApplyConsultingRequest applyConsultingRequest = new ApplyConsultingRequest(
+		ApplyConsultingRequest request = new ApplyConsultingRequest(
 			"abcd-efgh-1234", 1L, clientDto);
 
-		String requestBody = objectMapper.writeValueAsString(applyConsultingRequest);
+		String requestBody = objectMapper.writeValueAsString(request);
 		willDoNothing().given(applyConsultingUseCase).execute(any(), any(), any(), any(), any());
 
 		String responseBody = getClientErrorResponseBody();
@@ -93,10 +93,10 @@ class ConsultControllerTest {
 	void nonNullName() throws Exception {
 		//given
 		ClientDto clientDto = new ClientDto(null, "Hyundai@email.com", "010-0000-0000");
-		ApplyConsultingRequest applyConsultingRequest = new ApplyConsultingRequest(
+		ApplyConsultingRequest request = new ApplyConsultingRequest(
 			"62dd98f0-bd8e-11ed-93ab-325096b39f47", 1L, clientDto);
 
-		String requestBody = objectMapper.writeValueAsString(applyConsultingRequest);
+		String requestBody = objectMapper.writeValueAsString(request);
 		willDoNothing().given(applyConsultingUseCase).execute(any(), any(), any(), any(), any());
 
 		String responseBody = getClientErrorResponseBody();
@@ -120,10 +120,10 @@ class ConsultControllerTest {
 	void invalidEmailFormat() throws Exception {
 		//given
 		ClientDto clientDto = new ClientDto("Hyundai", "Hyundai!!email.com", "010-0000-0000");
-		ApplyConsultingRequest applyConsultingRequest = new ApplyConsultingRequest(
+		ApplyConsultingRequest request = new ApplyConsultingRequest(
 			"62dd98f0-bd8e-11ed-93ab-325096b39f47", 1L, clientDto);
 
-		String requestBody = objectMapper.writeValueAsString(applyConsultingRequest);
+		String requestBody = objectMapper.writeValueAsString(request);
 		willDoNothing().given(applyConsultingUseCase).execute(any(), any(), any(), any(), any());
 
 		String responseBody = getClientErrorResponseBody();
@@ -147,10 +147,10 @@ class ConsultControllerTest {
 	void invalidPhoneFormat() throws Exception {
 		//given
 		ClientDto clientDto = new ClientDto("Hyundai", "Hyundai@email.com", "010-00000000");
-		ApplyConsultingRequest applyConsultingRequest = new ApplyConsultingRequest(
+		ApplyConsultingRequest request = new ApplyConsultingRequest(
 			"62dd98f0-bd8e-11ed-93ab-325096b39f47", 1L, clientDto);
 
-		String requestBody = objectMapper.writeValueAsString(applyConsultingRequest);
+		String requestBody = objectMapper.writeValueAsString(request);
 		willDoNothing().given(applyConsultingUseCase).execute(any(), any(), any(), any(), any());
 
 		String responseBody = getClientErrorResponseBody();

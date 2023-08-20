@@ -17,7 +17,7 @@ import softeer.be_my_car_master.infrastructure.jpa.estimate.repository.EstimateJ
 
 @Adaptor
 @RequiredArgsConstructor
-public class ApplyConsultingAdaptor implements ApplyConsultingPort{
+public class ApplyConsultingAdaptor implements ApplyConsultingPort {
 
 	private final EstimateJpaRepository estimateJpaRepository;
 	private final CarMasterJpaRepository carMasterJpaRepository;
