@@ -1,4 +1,4 @@
-package softeer.be_my_car_master.api.agency.usecase;
+package softeer.be_my_car_master.api.agency.usecase.get_agencies;
 
 import java.util.List;
 
@@ -12,10 +12,10 @@ import softeer.be_my_car_master.global.annotation.UseCase;
 @RequiredArgsConstructor
 public class GetAgenciesUseCase {
 
-	private final AgencyPort agencyPort;
+	private final GetAgenciesPort port;
 
 	public GetAgenciesResponse execute(String gu) {
-		List<Agency> agencies = agencyPort.findAgenciesInGu(gu);
+		List<Agency> agencies = port.findAgenciesInGu(gu);
 		return GetAgenciesResponse.from(agencies);
 	}
 }
