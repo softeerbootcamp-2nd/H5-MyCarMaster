@@ -14,7 +14,7 @@ import softeer.be_my_car_master.global.annotation.UseCase;
 @RequiredArgsConstructor
 public class GetOptionsUseCase {
 
-	private final GetOptionsPort getOptionsPort;
+	private final GetOptionsPort port;
 
 	public GetOptionsResponse execute(
 		Long trimId,
@@ -23,15 +23,12 @@ public class GetOptionsUseCase {
 		Long bodyTypeId,
 		Long interiorColorId
 	) {
-		List<Option> options = getOptionsPort.findOptionsByTrim(trimId);
-		List<Long> unselectableOptionIdsByEngine
-			= getOptionsPort.findUnselectableOptionIdsByEngine(engineId);
-		List<Long> unselectableOptionIdsByWheelDrive
-			= getOptionsPort.findUnselectableOptionIdsByWheelDrive(wheelDriveId);
-		List<Long> unselectableOptionIdsByBodyType
-			= getOptionsPort.findUnselectableOptionIdsByBodyType(bodyTypeId);
-		List<Long> unselectableOptionIdsByInteriorColor =
-			getOptionsPort.findUnselectableOptionIdsByInteriorColor(interiorColorId);
+		List<Option> options = port.findOptionsByTrim(trimId);
+		List<Long> unselectableOptionIdsByEngine = port.findUnselectableOptionIdsByEngine(engineId);
+		List<Long> unselectableOptionIdsByWheelDrive = port.findUnselectableOptionIdsByWheelDrive(wheelDriveId);
+		List<Long> unselectableOptionIdsByBodyType = port.findUnselectableOptionIdsByBodyType(bodyTypeId);
+		List<Long> unselectableOptionIdsByInteriorColor
+			= port.findUnselectableOptionIdsByInteriorColor(interiorColorId);
 
 		Set<Long> unselectableOptionIdsSet = combineUnselectableOptionIds(
 			unselectableOptionIdsByEngine,
@@ -45,7 +42,7 @@ public class GetOptionsUseCase {
 			unselectableOptionIdsSet
 		);
 
-		List<String> singleSelectableTags = getOptionsPort.findSingleSelectableTags();
+		List<String> singleSelectableTags = port.findSingleSelectableTags();
 
 		return GetOptionsResponse.from(filteredSelectableOptions, singleSelectableTags);
 	}
