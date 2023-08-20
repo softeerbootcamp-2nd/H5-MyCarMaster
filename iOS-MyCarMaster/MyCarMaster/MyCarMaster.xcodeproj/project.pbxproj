@@ -67,6 +67,7 @@
 		B58A32382A7BA47D005FC831 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = B58A32372A7BA47D005FC831 /* Lottie */; };
 		B58A323B2A7C0B35005FC831 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58A323A2A7C0B35005FC831 /* OnboardingViewController.swift */; };
 		B58FB41A2A91FEF200105DBF /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FB4192A91FEF200105DBF /* Step.swift */; };
+		B58FB41E2A92071A00105DBF /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FB41D2A92071A00105DBF /* DIContainer.swift */; };
 		B598A0852A8F297A00C4A591 /* QuotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B598A0842A8F297A00C4A591 /* QuotationViewController.swift */; };
 		B59B201D2A8B666A009E7868 /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59B201C2A8B666A009E7868 /* OptionViewController.swift */; };
 		B5A600FE2A81E1FC00CF2983 /* MCMCombineExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */; };
@@ -233,6 +234,7 @@
 		B58A32332A7BA452005FC831 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		B58A323A2A7C0B35005FC831 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		B58FB4192A91FEF200105DBF /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
+		B58FB41D2A92071A00105DBF /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		B598A0842A8F297A00C4A591 /* QuotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationViewController.swift; sourceTree = "<group>"; };
 		B59B201C2A8B666A009E7868 /* OptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
 		B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMCombineExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -427,6 +429,7 @@
 				B510BBDE2A84895D009E5752 /* EstimationView.swift */,
 				B53E028D2A84BE5100F464FC /* StepNavigatorView.swift */,
 				B58FB4192A91FEF200105DBF /* Step.swift */,
+				B58FB41D2A92071A00105DBF /* DIContainer.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -912,6 +915,7 @@
 				B56F55D22A86BBE50055E382 /* RootDTO.swift in Sources */,
 				B59B201D2A8B666A009E7868 /* OptionViewController.swift in Sources */,
 				B53C3C582A8578310019ECA1 /* BodyTypeView.swift in Sources */,
+				B58FB41E2A92071A00105DBF /* DIContainer.swift in Sources */,
 				B53E028E2A84BE5100F464FC /* StepNavigatorView.swift in Sources */,
 				B56A765C2A83EC5200F7E3EF /* Preview.swift in Sources */,
 				B510BBDF2A84895D009E5752 /* EstimationView.swift in Sources */,
