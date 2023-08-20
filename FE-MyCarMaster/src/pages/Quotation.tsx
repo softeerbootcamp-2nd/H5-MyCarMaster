@@ -38,9 +38,10 @@ function Quotation() {
   };
 
   const getOptionPrice = (option: Array<QuotationType>) => {
-    option.reduce((acc, cur) => {
+    const totalPrice = option.reduce((acc, cur) => {
       return acc + cur.price;
     }, 0);
+    return totalPrice;
   };
 
   const confirmHandler = () => {
@@ -60,15 +61,22 @@ function Quotation() {
       exteriorColorPrice: carPaintQuotation.exteriorColorQuotation.price,
       interiorColorId: carPaintQuotation.interiorColorQuotation.id,
       interiorColorPrice: carPaintQuotation.interiorColorQuotation.price,
-      selectOptions: optionQuotation.selectedQuotation,
+      selectOptions: optionQuotation.selectedQuotation.map((option) => {
+        const { id, price } = option;
+        return { id, price };
+      }),
       selectOptionPrice: getOptionPrice(optionQuotation.selectedQuotation),
-      considerOptions: optionQuotation.consideredQuotation,
+      considerOptions: optionQuotation.consideredQuotation.map((option) => {
+        const { id, price } = option;
+        return { id, price };
+      }),
       totalPrice: getTotalPrice(),
     };
 
     post(`${SERVER_URL}/estimates`, dataToSubmit).then((response) => {
-      setEstimateId(response.result.estimateId);
+      setEstimateId(response.result.estimateUuid);
     });
+
     setConfirm(true);
   };
 
