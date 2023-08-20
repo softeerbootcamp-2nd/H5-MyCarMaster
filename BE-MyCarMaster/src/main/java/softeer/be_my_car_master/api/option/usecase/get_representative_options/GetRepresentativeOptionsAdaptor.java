@@ -16,7 +16,7 @@ import softeer.be_my_car_master.infrastructure.jpa.trim.repository.TrimJpaReposi
 
 @Adaptor
 @RequiredArgsConstructor
-public class GetRepresentativeOptionsAdaptor implements GetRepresentativeOptionsPort{
+public class GetRepresentativeOptionsAdaptor implements GetRepresentativeOptionsPort {
 
 	private final RepresentativeOptionJpaRepository representativeOptionJpaRepository;
 	private final TrimJpaRepository trimJpaRepository;
