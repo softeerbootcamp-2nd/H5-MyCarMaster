@@ -22,10 +22,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import softeer.be_my_car_master.api.engine.dto.response.GetUnselectableOptionsByEngineResponse;
 import softeer.be_my_car_master.api.engine.dto.response.UnselectableOptionDto;
-import softeer.be_my_car_master.api.option.usecase.get_unselectable_options_by_engine.GetUnselectableOptionsByEngineUseCase;
 import softeer.be_my_car_master.api.option.dto.response.GetOptionsResponse;
 import softeer.be_my_car_master.api.option.dto.response.OptionDto;
 import softeer.be_my_car_master.api.option.usecase.get_options.GetOptionsUseCase;
+import softeer.be_my_car_master.api.option.usecase.get_unselectable_options_by_engine.GetUnselectableOptionsByEngineUseCase;
 import softeer.be_my_car_master.global.response.Response;
 import softeer.be_my_car_master.global.response.ResponseStatus;
 
@@ -444,9 +444,6 @@ class OptionControllerTest {
 				.andExpect(content().json(responseBody, false));
 		}
 	}
-
-
-
 
 	private String getClientErrorResponseBody() throws JsonProcessingException {
 		Response errorResponse = Response.createErrorResponse(ResponseStatus.BAD_REQUEST);
