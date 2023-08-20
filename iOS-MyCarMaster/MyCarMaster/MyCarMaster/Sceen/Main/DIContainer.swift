@@ -21,7 +21,7 @@ final class DIContainer {
         mainViewController.reactor = reactor
         return mainViewController
     }
-    
+
     static func resolveViewController(for step: Step) -> UIViewController {
         switch step {
         case .trim:

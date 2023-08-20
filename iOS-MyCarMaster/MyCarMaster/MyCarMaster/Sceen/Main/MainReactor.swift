@@ -11,30 +11,30 @@ import UIKit
 import MVIFoundation
 
 final class MainReactor: Reactor {
-    
+
     enum Action {
         case moveNext
         case moveBack
     }
-    
+
     enum Mutation {
         case setLoading(Bool)
         case changeStepViewController(UIViewController)
     }
-    
+
     struct State {
         var isLoading: Bool
         var currentStepViewController: UIViewController
     }
-    
+
     let initialState: State
     let router: Router
-    
+
     init(initialState: State, router: Router) {
         self.initialState = initialState
         self.router = router
     }
-    
+
     func mutate(action: Action) -> AnyPublisher<Mutation, Never> {
         switch action {
         case .moveNext:
@@ -47,7 +47,7 @@ final class MainReactor: Reactor {
                 .eraseToAnyPublisher()
         }
     }
-    
+
     func transform(mutation: AnyPublisher<Mutation, Never>) -> AnyPublisher<Mutation, Never> {
         let routerMuatation = router.currentStepPublisher
             .flatMap { step -> AnyPublisher<Mutation, Never> in
@@ -56,11 +56,11 @@ final class MainReactor: Reactor {
                     Just(Mutation.setLoading(false))
                 ].concatenate()
             }
-        
+
         return Publishers.Merge(mutation, routerMuatation)
             .eraseToAnyPublisher()
     }
-    
+
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
         switch mutation {

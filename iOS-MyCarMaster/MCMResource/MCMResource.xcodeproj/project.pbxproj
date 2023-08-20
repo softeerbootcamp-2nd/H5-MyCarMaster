@@ -219,6 +219,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		B52955332A7B78DF00BEDDE7 /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);

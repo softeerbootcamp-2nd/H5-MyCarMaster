@@ -13,7 +13,7 @@ import MVIFoundation
 final class MainViewController: UIViewController {
 
     var cancellables = Set<AnyCancellable>()
-    
+
     let stepNavigatorView = StepNavigatorView()
     var stepViewController: UIViewController?
     let estimationView = EstimationView()

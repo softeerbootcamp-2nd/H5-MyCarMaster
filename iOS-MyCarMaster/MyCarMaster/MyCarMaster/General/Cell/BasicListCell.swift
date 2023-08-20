@@ -123,7 +123,6 @@ final class BasicListCell: UICollectionViewCell, CellStyleSelectable, ContentSiz
             subview.translatesAutoresizingMaskIntoConstraints = false
         }
 
-        // swiftlint:disable:next line_length
         descriptionLabelBottomToLeftContainer = descriptionLabel.bottomAnchor.constraint(equalTo: leftContainer.bottomAnchor)
 
         NSLayoutConstraint.activate([
