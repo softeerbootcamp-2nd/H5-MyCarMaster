@@ -24,8 +24,8 @@ import softeer.be_my_car_master.api.engine.dto.response.EngineDto;
 import softeer.be_my_car_master.api.engine.dto.response.GetEnginesResponse;
 import softeer.be_my_car_master.api.engine.dto.response.GetUnselectableOptionsByEngineResponse;
 import softeer.be_my_car_master.api.engine.dto.response.UnselectableOptionDto;
-import softeer.be_my_car_master.api.engine.usecase.GetEnginesUseCase;
 import softeer.be_my_car_master.api.engine.usecase.GetUnselectableOptionsByEngineUseCase;
+import softeer.be_my_car_master.api.engine.usecase.get_engines.GetEnginesUseCase;
 import softeer.be_my_car_master.global.response.Response;
 import softeer.be_my_car_master.global.response.ResponseStatus;
 
@@ -249,4 +249,5 @@ class EngineControllerTest {
 		String responseBody = objectMapper.writeValueAsString(errorResponse);
 		return responseBody;
 	}
+
 }

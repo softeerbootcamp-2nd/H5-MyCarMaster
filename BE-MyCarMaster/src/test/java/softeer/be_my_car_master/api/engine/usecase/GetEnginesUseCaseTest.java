@@ -16,7 +16,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import softeer.be_my_car_master.api.engine.dto.response.EngineDto;
 import softeer.be_my_car_master.api.engine.dto.response.GetEnginesResponse;
-import softeer.be_my_car_master.api.engine.usecase.port.EnginePort;
+import softeer.be_my_car_master.api.engine.usecase.get_engines.GetEnginesPort;
+import softeer.be_my_car_master.api.engine.usecase.get_engines.GetEnginesUseCase;
 import softeer.be_my_car_master.domain.engine.Engine;
 
 @ExtendWith(MockitoExtension.class)
@@ -27,7 +28,7 @@ class GetEnginesUseCaseTest {
 	private GetEnginesUseCase getEnginesUseCase;
 
 	@Mock
-	private EnginePort enginePort;
+	private GetEnginesPort getEnginesPort;
 
 	@Test
 	@DisplayName("엔진 목록을 조회합니다")
@@ -45,13 +46,13 @@ class GetEnginesUseCaseTest {
 			.fuelMin(8.0)
 			.fuelMax(9.2)
 			.build();
-		given(enginePort.findSelectableEnginesByTrimId(any())).willReturn(Arrays.asList(engine));
+		given(getEnginesPort.findEnginesByTrim(any())).willReturn(Arrays.asList(engine));
 
 		// when
-		GetEnginesResponse getEnginesResponse = getEnginesUseCase.execute(1L);
+		GetEnginesResponse response = getEnginesUseCase.execute(1L);
 
 		// then
-		List<EngineDto> engines = getEnginesResponse.getEngines();
+		List<EngineDto> engines = response.getEngines();
 		EngineDto expected = engines.get(0);
 
 		SoftAssertions.assertSoftly(softAssertions -> {
