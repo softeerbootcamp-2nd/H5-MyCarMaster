@@ -27,6 +27,7 @@ export default function TrimSelect() {
     quotationDispatch({
       type: "SET_TRIM_QUOTATION",
       payload: {
+        id: id,
         name: trimList[id - 1].name,
         price: trimList[id - 1].price,
       },

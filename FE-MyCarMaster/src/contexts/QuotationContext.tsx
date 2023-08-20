@@ -54,6 +54,7 @@ const quotationReducer = (
         ...state,
         trimQuotation: {
           trimQuotation: {
+            id: action.payload!.id,
             name: action.payload!.name as string,
             price: action.payload!.price as number,
           },
@@ -65,6 +66,7 @@ const quotationReducer = (
         detailQuotation: {
           ...state.detailQuotation,
           [action.payload!.type as string]: {
+            id: action.payload!.id,
             name: action.payload!.name as string,
             price: action.payload!.price as number,
           },
@@ -76,6 +78,7 @@ const quotationReducer = (
         carPaintQuotation: {
           ...state.carPaintQuotation,
           [action.payload!.type as string]: {
+            id: action.payload!.id,
             name: action.payload!.name as string,
             price: action.payload!.price as number,
             imgUrl: action.payload!.imgUrl as string,

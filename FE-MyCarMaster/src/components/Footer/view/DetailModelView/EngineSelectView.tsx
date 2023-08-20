@@ -58,6 +58,7 @@ export default function BodyTypeSelectView() {
       type: "SET_DETAIL_QUOTATION",
       payload: {
         type: "engineQuotation",
+        id: id,
         name: engineList[id - 1].name,
         price: engineList[id - 1].price,
       },

@@ -75,13 +75,6 @@ type CategoryType =
   | "시트"
   | "편의";
 
-type ListType = {
-  id: number;
-  name: string;
-  imgUrl: string;
-  description: string;
-};
-
 export default function DefaultOptionScreen({
   $loading,
   $show,
@@ -91,11 +84,6 @@ export default function DefaultOptionScreen({
 
   const onClickHandler = (category: CategoryType) => {
     setSelected(category as CategoryType);
-  };
-
-  const handleClick = (item: ListType) => {
-    console.log(item);
-    // 여기에 모달 띄어주면 됩니다.
   };
 
   const filterData = data.filter((item) => item.category === selected);
@@ -121,7 +109,7 @@ export default function DefaultOptionScreen({
         />
       </CategoryListContainer>
       <GridOptionListContainer>
-        <GridOptionList list={filterData} handleClick={handleClick} />
+        <GridOptionList list={filterData} />
       </GridOptionListContainer>
     </Container>
   );
