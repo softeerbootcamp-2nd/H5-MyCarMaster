@@ -163,7 +163,7 @@ public class EstimateEntity {
 			.bodyType(bodyType.toBodyType())
 			.exteriorColor(exteriorColor.toExteriorColor(trim.getId()))
 			.interiorColor(interiorColor.toInteriorColor(trim.getId()))
-			.selectedOptions(additionalOptions)
+			.selectOptions(additionalOptions)
 			.considerOptions(considerOptions)
 			.build();
 	}
