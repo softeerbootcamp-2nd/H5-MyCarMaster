@@ -29,6 +29,14 @@ spring:
           starttls:
             enable: true
 
+management:
+  server:
+    port: 9292
+  endpoints:
+    web:
+      exposure:
+        include: ["prometheus"]
+
 ---
 spring:
   config:
