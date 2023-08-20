@@ -20,6 +20,6 @@ public class ExteriorColor {
 	private String coloredImgUrl;
 
 	public boolean isRightExteriorColor(Long exteriorColorId, Integer exteriorColorPrice) {
-		return exteriorColorId.equals(exteriorColorId) && exteriorColorPrice.equals(exteriorColorPrice);
+		return id.equals(exteriorColorId) && price.equals(exteriorColorPrice);
 	}
 }
