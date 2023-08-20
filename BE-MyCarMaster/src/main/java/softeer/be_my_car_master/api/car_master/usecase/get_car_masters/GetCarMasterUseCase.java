@@ -7,7 +7,6 @@ import java.util.stream.Stream;
 
 import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.api.car_master.dto.response.GetCarMasterResponse;
-import softeer.be_my_car_master.api.car_master.usecase.port.AgencyPort;
 import softeer.be_my_car_master.domain.agency.Agency;
 import softeer.be_my_car_master.domain.car_master.CarMaster;
 import softeer.be_my_car_master.global.annotation.UseCase;
