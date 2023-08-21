@@ -403,6 +403,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		B51CE22F2A92AC5600C65689 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				B58FB4172A91FE6E00105DBF /* Router.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		B52955572A7B879100BEDDE7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -437,7 +445,7 @@
 				B53E028D2A84BE5100F464FC /* StepNavigatorView.swift */,
 				B58FB4172A91FE6E00105DBF /* Router.swift */,
 				B58FB4192A91FEF200105DBF /* Step.swift */,
-				B58FB41D2A92071A00105DBF /* DIContainer.swift */,
+				B51CE22F2A92AC5600C65689 /* Router */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -469,7 +477,7 @@
 			path = BodyType;
 			sourceTree = "<group>";
 		};
-		B53C3C562A8577760019ECA1 /* Sceen */ = {
+		B53C3C562A8577760019ECA1 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
 				B53BA1062A8BDFC0009F94BE /* Main */,
@@ -483,7 +491,7 @@
 				B5E233FB2A8B4AE80013BEB1 /* Option */,
 				B5D1E2032A8EDF6900DAE384 /* Quotation */,
 			);
-			path = Sceen;
+			path = Scene;
 			sourceTree = "<group>";
 		};
 		B55283EA2A924A7D00E68744 /* ModelSelection */ = {

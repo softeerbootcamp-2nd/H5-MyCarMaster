@@ -10,6 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var router: Router?
 
     func scene(
         _ scene: UIScene,
@@ -18,7 +19,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     ) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = OnboardingViewController()
         window?.makeKeyAndVisible()
+
+        router = Router(window: window, initialEstimation: .init(trim: nil, engine: nil, wheelDrive: nil, bodyType: nil, exterior: nil, interior: nil, selectedOptions: nil, consideredOptions: nil, selectedOptionsTotalPrice: 0, totalPrice: 0))
+        router?.presentOnboarding()
     }
 }
