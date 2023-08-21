@@ -9,11 +9,12 @@ import Combine
 
 import MCMCombineExtension
 
+typealias Estimation = Quotation
+
 final class EstimationManager {
-    typealias Estimation = Quotation
 
     private let estimationSubject: CurrentValueRelay<Estimation>
-    private var estimation: Estimation {
+    var estimation: Estimation {
         return estimationSubject.value
     }
     lazy var estimationPublisher = estimationSubject
