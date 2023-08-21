@@ -25,6 +25,7 @@
 		B50FEC512A93CC7E003566DD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50FEC502A93CC7E003566DD /* Model.swift */; };
 		B50FEC532A93E8E9003566DD /* TrimReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50FEC522A93E8E9003566DD /* TrimReactor.swift */; };
 		B50FEC552A93F756003566DD /* Priceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50FEC542A93F756003566DD /* Priceable.swift */; };
+		B50FEC582A940210003566DD /* EstimationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50FEC572A940210003566DD /* EstimationManagerTests.swift */; };
 		B510BBDB2A840BD4009E5752 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510BBDA2A840BD4009E5752 /* Formatter.swift */; };
 		B510BBDD2A841A25009E5752 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510BBDC2A841A25009E5752 /* Reusable.swift */; };
 		B510BBDF2A84895D009E5752 /* StepBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510BBDE2A84895D009E5752 /* StepBottomView.swift */; };
@@ -199,6 +200,7 @@
 		B50FEC502A93CC7E003566DD /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		B50FEC522A93E8E9003566DD /* TrimReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrimReactor.swift; sourceTree = "<group>"; };
 		B50FEC542A93F756003566DD /* Priceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Priceable.swift; sourceTree = "<group>"; };
+		B50FEC572A940210003566DD /* EstimationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimationManagerTests.swift; sourceTree = "<group>"; };
 		B510BBDA2A840BD4009E5752 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		B510BBDC2A841A25009E5752 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		B510BBDE2A84895D009E5752 /* StepBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepBottomView.swift; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 		B50C7E612A79027A005AFE0B /* MyCarMasterTests */ = {
 			isa = PBXGroup;
 			children = (
+				B50FEC562A9401FD003566DD /* EstimationManager */,
 				B5D1E1FA2A8E0DA900DAE384 /* DecodeDTO */,
 			);
 			path = MyCarMasterTests;
@@ -416,6 +419,14 @@
 				B5D1E1F42A8DFBBA00DAE384 /* Dependency.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		B50FEC562A9401FD003566DD /* EstimationManager */ = {
+			isa = PBXGroup;
+			children = (
+				B50FEC572A940210003566DD /* EstimationManagerTests.swift */,
+			);
+			path = EstimationManager;
 			sourceTree = "<group>";
 		};
 		B51CE22D2A92AC0D00C65689 /* StepContainer */ = {
@@ -1080,6 +1091,7 @@
 				B500C7872A8FE175007724F3 /* DecodeWheelDriveDTOTests.swift in Sources */,
 				B500C78D2A8FE19B007724F3 /* DecodeInteriorDTOTests.swift in Sources */,
 				B5D1E1F92A8E094200DAE384 /* DecodeOptionDTOTests.swift in Sources */,
+				B50FEC582A940210003566DD /* EstimationManagerTests.swift in Sources */,
 				B5D1E1FE2A8E14C400DAE384 /* FetchFromBundle.swift in Sources */,
 				B500C7892A8FE188007724F3 /* DecodeEngineDTOTests.swift in Sources */,
 				B500C78F2A8FE1AE007724F3 /* DecodeBodyTypeDTOTests.swift in Sources */,

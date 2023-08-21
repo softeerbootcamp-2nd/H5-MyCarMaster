@@ -5,31 +5,118 @@
 //  Created by SEUNGMIN OH on 2023/08/22.
 //
 
+@testable import MyCarMaster
 import XCTest
 
 final class EstimationManagerTests: XCTestCase {
 
+    var estimationManager: EstimationManageable!
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        let initialEstimation = Estimation(selectedOptions: [], consideredOptions: [], selectedOptionsTotalPrice: 0, totalPrice: 0)
+        estimationManager = EstimationManager(estimation: initialEstimation)
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        estimationManager = nil
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func testUpdateModel() throws {
+        let model = Model(id: 0, name: "Palisade", imageURL: nil)
+        
+        estimationManager.update(\.model, value: model)
+        
+        let expectedModel = model
+        let expectedTotalPrice = 0
+        
+        XCTAssertEqual(estimationManager.estimation.model, expectedModel)
+        XCTAssertEqual(estimationManager.estimation.totalPrice, 0)
+    }
+    
+    func testUpdateTrim() throws {
+        let trimPrice = 10000
+        let trim = Trim(model: "", name: "", ratio: 0, description: "", price: trimPrice)
+        
+        XCTAssertEqual(estimationManager.estimation.trim, nil)
+        XCTAssertEqual(estimationManager.estimation.totalPrice, 0)
+        
+        estimationManager.update(\.trim, value: trim)
+        
+        let expectedTrim = trim
+        let expectedTotalPrice = trimPrice
+        
+        XCTAssertEqual(estimationManager.estimation.trim, expectedTrim)
+        XCTAssertEqual(estimationManager.estimation.totalPrice, trimPrice)
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testUpdateOptionOnlySelect() throws {
+        let option1 = Option(model: "", category: "", name: "", price: 10000, ratio: 0, imgURL: nil, summary: nil, description: nil, tag: nil, subOptions: [])
+        
+        let option2 = Option(model: "", category: "", name: "", price: 1000, ratio: 0, imgURL: nil, summary: nil, description: nil, tag: nil, subOptions: [])
+        
+        XCTAssertEqual(estimationManager.estimation.selectedOptions, [])
+        XCTAssertEqual(estimationManager.estimation.totalPrice, 0)
+        
+        estimationManager.update(\.selectedOptions, value: option1)
+        
+        XCTAssertEqual(estimationManager.estimation.selectedOptions, Set([option1]))
+        XCTAssertEqual(estimationManager.estimation.selectedOptionsTotalPrice, 10000)
+        XCTAssertEqual(estimationManager.estimation.totalPrice, 10000)
+        
+        estimationManager.update(\.selectedOptions, value: option2)
+        
+        XCTAssertEqual(estimationManager.estimation.selectedOptions, Set([option1, option2]))
+        XCTAssertEqual(estimationManager.estimation.selectedOptionsTotalPrice, 11000)
+        XCTAssertEqual(estimationManager.estimation.totalPrice, 11000)
     }
-
+    
+    func testUpdateOptionSelectAndConsider() throws {
+        let option1 = Option(model: "", category: "", name: "", price: 10000, ratio: 0, imgURL: nil, summary: nil, description: nil, tag: nil, subOptions: [])
+        
+        // 초기 상태
+        XCTAssertEqual(estimationManager.estimation.selectedOptions, [])
+        XCTAssertEqual(estimationManager.estimation.consideredOptions, [])
+        XCTAssertEqual(estimationManager.estimation.totalPrice, 0)
+        
+        // option1 선택
+        estimationManager.update(\.selectedOptions, value: option1)
+        
+        XCTAssertEqual(estimationManager.estimation.selectedOptions, Set([option1]))
+        XCTAssertEqual(estimationManager.estimation.consideredOptions, [])
+        XCTAssertEqual(estimationManager.estimation.selectedOptionsTotalPrice, 10000)
+        XCTAssertEqual(estimationManager.estimation.totalPrice, 10000)
+        
+        // option1 고민해보기
+        estimationManager.update(\.consideredOptions, value: option1)
+        
+        XCTAssertEqual(estimationManager.estimation.selectedOptions, [])
+        XCTAssertEqual(estimationManager.estimation.consideredOptions, Set([option1]))
+        XCTAssertEqual(estimationManager.estimation.selectedOptionsTotalPrice, 0)
+        XCTAssertEqual(estimationManager.estimation.totalPrice, 0)
+    }
+    
+    func testRemoveOption() throws {
+        let option1 = Option(model: "", category: "", name: "", price: 10000, ratio: 0, imgURL: nil, summary: nil, description: nil, tag: nil, subOptions: [])
+        
+        // 초기 상태
+        XCTAssertEqual(estimationManager.estimation.selectedOptions, [])
+        XCTAssertEqual(estimationManager.estimation.consideredOptions, [])
+        XCTAssertEqual(estimationManager.estimation.totalPrice, 0)
+        
+        // option1 선택
+        estimationManager.update(\.selectedOptions, value: option1)
+        
+        XCTAssertEqual(estimationManager.estimation.selectedOptions, Set([option1]))
+        XCTAssertEqual(estimationManager.estimation.consideredOptions, [])
+        XCTAssertEqual(estimationManager.estimation.selectedOptionsTotalPrice, 10000)
+        XCTAssertEqual(estimationManager.estimation.totalPrice, 10000)
+        
+        // option1 제거
+        estimationManager.remove(\.selectedOptions, value: option1)
+        
+        XCTAssertEqual(estimationManager.estimation.selectedOptions, [])
+        XCTAssertEqual(estimationManager.estimation.consideredOptions, [])
+        XCTAssertEqual(estimationManager.estimation.selectedOptionsTotalPrice, 0)
+        XCTAssertEqual(estimationManager.estimation.totalPrice, 0)
+    }
 }
