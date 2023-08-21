@@ -44,12 +44,15 @@ export type QuotationActionType =
   | "SET_CONSIDER_QUOTATION"
   | "SET_CAR_PAINT_QUOTATION"
   | "SET_MY_TRIM_OPTIONS"
-  | "RESET_QUOTATION";
+  | "RESET_QUOTATION"
+  | "REMOVE_EXCEPT_SELECTED"
+  | "RESET_IS_FIRST";
 
 export type QuotationAction = {
   type: QuotationActionType;
   payload?: {
     id?: number;
+    ids?: number[];
     navigationId?: number;
     isFirst?: boolean[];
     type?: string;

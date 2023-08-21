@@ -10,18 +10,19 @@ const initialQuotationState: QuotationState = {
   isFirst: [false, true, true, true, true, true, true],
   trimQuotation: {
     trimQuotation: {
+      id: 0,
       name: "",
       price: 0,
     },
   },
   detailQuotation: {
-    engineQuotation: { name: "", price: 0 },
-    wheelDriveQuotation: { name: "", price: 0 },
-    bodyTypeQuotation: { name: "", price: 0 },
+    engineQuotation: { id: 0, name: "", price: 0 },
+    wheelDriveQuotation: { id: 0, name: "", price: 0 },
+    bodyTypeQuotation: { id: 0, name: "", price: 0 },
   },
   carPaintQuotation: {
-    exteriorColorQuotation: { name: "", price: 0, imgUrl: "" },
-    interiorColorQuotation: { name: "", price: 0, imgUrl: "" },
+    exteriorColorQuotation: { id: 0, name: "", price: 0, imgUrl: "" },
+    interiorColorQuotation: { id: 0, name: "", price: 0, imgUrl: "" },
   },
   optionQuotation: {
     selectedQuotation: [],
@@ -144,7 +145,6 @@ const quotationReducer = (
         },
       };
     }
-    // 임시?
     case "SET_MY_TRIM_OPTIONS":
       return {
         ...state,
@@ -154,8 +154,24 @@ const quotationReducer = (
           selectedQuotation: action.payload!.optionList as QuotationType[],
         },
       };
+    case "REMOVE_EXCEPT_SELECTED":
+      return {
+        ...state,
+        optionQuotation: {
+          ...state.optionQuotation,
+          // 선택된 옵션들만 제거시키기
+          selectedQuotation: state.optionQuotation.selectedQuotation.filter(
+            (option) => !action.payload!.ids!.includes(option.id as number)
+          ),
+        },
+      };
     case "RESET_QUOTATION":
       return initialQuotationState;
+    case "RESET_IS_FIRST":
+      return {
+        ...state,
+        isFirst: [false, true, true, true, true, true, true],
+      };
 
     default:
       return state;
