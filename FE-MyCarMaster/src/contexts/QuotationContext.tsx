@@ -167,11 +167,6 @@ const quotationReducer = (
       };
     case "RESET_QUOTATION":
       return initialQuotationState;
-    case "RESET_IS_FIRST":
-      return {
-        ...state,
-        isFirst: [false, true, true, true, true, true, true],
-      };
 
     default:
       return state;

@@ -45,8 +45,7 @@ export type QuotationActionType =
   | "SET_CAR_PAINT_QUOTATION"
   | "SET_MY_TRIM_OPTIONS"
   | "RESET_QUOTATION"
-  | "REMOVE_EXCEPT_SELECTED"
-  | "RESET_IS_FIRST";
+  | "REMOVE_EXCEPT_SELECTED";
 
 export type QuotationAction = {
   type: QuotationActionType;
