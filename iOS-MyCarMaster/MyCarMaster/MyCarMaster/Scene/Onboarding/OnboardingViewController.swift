@@ -6,13 +6,25 @@
 //
 
 import UIKit
+
 import MCMNetwork
 import MVIFoundation
 
 final class OnboardingViewController: UIViewController {
 
+    private weak var router: Router?
+
     private var onboardingView: OnboardingView {
         return view as? OnboardingView ?? OnboardingView()
+    }
+
+    init(router: Router) {
+        self.router = router
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func loadView() {
@@ -33,8 +45,6 @@ final class OnboardingViewController: UIViewController {
     @objc
     func startButtonDidTap(_ sender: UIButton) {
         // TODO: Routing 레이어에서 RootViewController 교체
-        let viewController = DIContainer.resolveMainViewController()
-        viewController.modalPresentationStyle = .fullScreen
-        present(viewController, animated: false)
+        router?.presentModelSelection()
     }
 }
