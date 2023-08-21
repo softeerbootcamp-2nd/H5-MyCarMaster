@@ -5,7 +5,10 @@ import {
 } from "../../../../contexts/DetailContext";
 import { WheelDrives } from "../../../../types/detail.types";
 import { useTrimState } from "../../../../contexts/TrimContext";
-import { useQuotationDispatch } from "../../../../contexts/QuotationContext";
+import {
+  useQuotationDispatch,
+  useQuotationState,
+} from "../../../../contexts/QuotationContext";
 import useFetch from "../../../../hooks/useFetch";
 import { useEffect } from "react";
 
@@ -20,6 +23,7 @@ function WheelDriveView() {
 
   const { trimId } = useTrimState();
   const { engineId, wheelDriveId, wheelDriveList } = useDetailState();
+  const { detailQuotation } = useQuotationState();
 
   const wheelDriveDispatch = useDetailDispatch();
   const quotationDispatch = useQuotationDispatch();
@@ -31,27 +35,39 @@ function WheelDriveView() {
 
   useEffect(() => {
     if (data) {
+      if (detailQuotation.wheelDriveQuotation.id) return;
       wheelDriveDispatch({
         type: "SET_DETAIL_LIST",
         payload: { wheelDriveList: data.result.wheelDrives },
+      });
+
+      wheelDriveDispatch({
+        type: "SELECT_DETAIL",
+        payload: { wheelDriveId: data.result.wheelDrives[0].id },
       });
 
       quotationDispatch({
         type: "SET_DETAIL_QUOTATION",
         payload: {
           type: "wheelDriveQuotation",
-          name: data.result.wheelDrives[wheelDriveId - 1].name,
-          price: data.result.wheelDrives[wheelDriveId - 1].price,
+          id: data.result.wheelDrives[0].id,
+          name: data.result.wheelDrives[0].name,
+          price: data.result.wheelDrives[0].price,
         },
       });
     }
-  }, [data, wheelDriveDispatch]);
+  }, [data]);
 
   if (!wheelDriveList?.length) return null;
 
   return (
     wheelDriveList?.length && (
-      <WheelDriveImg src={wheelDriveList[wheelDriveId - 1].imgUrl} />
+      <WheelDriveImg
+        src={
+          wheelDriveList.find((wheelDrive) => wheelDrive.id === wheelDriveId)
+            ?.imgUrl
+        }
+      />
     )
   );
 }

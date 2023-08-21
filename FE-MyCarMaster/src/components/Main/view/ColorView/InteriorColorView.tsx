@@ -3,7 +3,10 @@ import {
   useCarPaintDispatch,
   useCarPaintState,
 } from "../../../../contexts/CarPaintContext";
-import { useQuotationDispatch } from "../../../../contexts/QuotationContext";
+import {
+  useQuotationDispatch,
+  useQuotationState,
+} from "../../../../contexts/QuotationContext";
 import { InteriorColors } from "../../../../types/carpaint.types";
 import useFetch from "../../../../hooks/useFetch";
 import { useTrimState } from "../../../../contexts/TrimContext";
@@ -22,6 +25,7 @@ function InteriorColorView() {
   const { exteriorId, interiorId, interiorList } = useCarPaintState();
   const interiorDispatch = useCarPaintDispatch();
   const quotationDispatch = useQuotationDispatch();
+  const { carPaintQuotation } = useQuotationState();
 
   const { data } = useFetch<FetchInteriorProps>(
     `${SERVER_URL}/interior-colors/?trimId=${trimId}&exteriorColorId=${exteriorId}`
@@ -29,6 +33,8 @@ function InteriorColorView() {
 
   useEffect(() => {
     if (data) {
+      if (carPaintQuotation.interiorColorQuotation.id) return;
+
       interiorDispatch({
         type: "SET_INTERIOR_LIST",
         payload: { interiorList: data.result.interiorColors },
@@ -43,13 +49,14 @@ function InteriorColorView() {
         type: "SET_CAR_PAINT_QUOTATION",
         payload: {
           type: "interiorColorQuotation",
+          id: data.result.interiorColors[0].id,
           name: data.result.interiorColors[0].name,
           price: data.result.interiorColors[0].price,
-          imgUrl: data.result.interiorColors[0].coloredImgUrl,
+          imgUrl: data.result.interiorColors[0].colorImgUrl,
         },
       });
     }
-  }, [data, interiorDispatch]);
+  }, [data]);
 
   if (!interiorList?.length) return null;
 
