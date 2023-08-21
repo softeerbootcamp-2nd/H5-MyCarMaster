@@ -55,8 +55,8 @@ jobs:
             DB_URL=${{ secrets.DB_URL }} 
             DB_USERNAME=${{ secrets.DB_USERNAME }} 
             DB_PASSWORD=${{ secrets.DB_PASSWORD }}
-            EMAIL_USERNAME=${{ secrets.EMAIL_USERNAME }}
-            EMAIL_PASSWORD=${{ secrets.EMAIL_PASSWORD }}
+            MAIL_USERNAME=${{ secrets.MAIL_USERNAME }}
+            MAIL_PASSWORD=${{ secrets.MAIL_PASSWORD }}
             ESTIMATE_LINK=${{ secrets.ESTIMATE_LINK }}
             SERVER_URL=${{ secrets.SERVER_URL }}
             PINPOINT_AGENT_ID=${{ steps.generate-pinpoint.outputs.pinpoint }}
