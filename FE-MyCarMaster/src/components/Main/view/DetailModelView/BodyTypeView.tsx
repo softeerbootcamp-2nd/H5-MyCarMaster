@@ -4,7 +4,10 @@ import {
   useDetailState,
 } from "../../../../contexts/DetailContext";
 import { BodyTypes } from "../../../../types/detail.types";
-import { useQuotationDispatch } from "../../../../contexts/QuotationContext";
+import {
+  useQuotationDispatch,
+  useQuotationState,
+} from "../../../../contexts/QuotationContext";
 import { useModelState } from "../../../../contexts/ModelContext";
 import useFetch from "../../../../hooks/useFetch";
 import { useEffect } from "react";
@@ -22,6 +25,7 @@ function BodyTypeView() {
   const { bodyTypeId, bodyTypeList } = useDetailState();
   const bodyTypeDispatch = useDetailDispatch();
   const quotationDispatch = useQuotationDispatch();
+  const { detailQuotation } = useQuotationState();
 
   const { data } = useFetch<FetchBodyTypeProps>(
     `${SERVER_URL}/body-types/?modelId=${modelId}`,
@@ -30,27 +34,37 @@ function BodyTypeView() {
 
   useEffect(() => {
     if (data) {
+      if (detailQuotation.bodyTypeQuotation.id) return;
+
       bodyTypeDispatch({
         type: "SET_DETAIL_LIST",
         payload: { bodyTypeList: data.result.bodyTypes },
+      });
+
+      bodyTypeDispatch({
+        type: "SELECT_DETAIL",
+        payload: { bodyTypeId: data.result.bodyTypes[0].id },
       });
 
       quotationDispatch({
         type: "SET_DETAIL_QUOTATION",
         payload: {
           type: "bodyTypeQuotation",
-          name: data.result.bodyTypes[bodyTypeId - 1].name,
-          price: data.result.bodyTypes[bodyTypeId - 1].price,
+          id: data.result.bodyTypes[0].id,
+          name: data.result.bodyTypes[0].name,
+          price: data.result.bodyTypes[0].price,
         },
       });
     }
-  }, [data, bodyTypeDispatch]);
+  }, [data]);
 
   if (!bodyTypeList?.length) return null;
 
   return (
     bodyTypeList?.length && (
-      <BodyTypeImg src={bodyTypeList[bodyTypeId - 1].imgUrl} />
+      <BodyTypeImg
+        src={bodyTypeList.find((item) => item.id === bodyTypeId)?.imgUrl}
+      />
     )
   );
 }

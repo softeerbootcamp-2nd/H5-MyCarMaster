@@ -26,17 +26,29 @@ const detailReducer = (
     case "SELECT_DETAIL":
       return {
         ...state,
-        engineId: action.payload.engineId as number,
-        wheelDriveId: action.payload.wheelDriveId as number,
-        bodyTypeId: action.payload.bodyTypeId as number,
+        engineId: action.payload!.engineId
+          ? (action.payload!.engineId as number)
+          : (state.engineId as number),
+        wheelDriveId: action.payload!.wheelDriveId
+          ? (action.payload!.wheelDriveId as number)
+          : (state.wheelDriveId as number),
+        bodyTypeId: action.payload!.bodyTypeId
+          ? (action.payload!.bodyTypeId as number)
+          : (state.bodyTypeId as number),
       };
 
     case "SET_DETAIL_LIST":
       return {
         ...state,
-        engineList: action.payload.engineList as Engines[],
-        wheelDriveList: action.payload.wheelDriveList as WheelDrives[],
-        bodyTypeList: action.payload.bodyTypeList as BodyTypes[],
+        engineList: action.payload!.engineList
+          ? (action.payload!.engineList as Engines[])
+          : (state.engineList as Engines[]),
+        wheelDriveList: action.payload!.wheelDriveList
+          ? (action.payload!.wheelDriveList as WheelDrives[])
+          : (state.wheelDriveList as WheelDrives[]),
+        bodyTypeList: action.payload!.bodyTypeList
+          ? (action.payload!.bodyTypeList as BodyTypes[])
+          : (state.bodyTypeList as BodyTypes[]),
       };
     default:
       return state;

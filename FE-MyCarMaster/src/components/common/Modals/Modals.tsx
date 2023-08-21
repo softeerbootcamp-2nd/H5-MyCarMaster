@@ -39,6 +39,8 @@ export function Modals({
         return <ExitModal />;
       case "CHANGE_TRIM":
         return <ChangeTrimModal />;
+      case "CHANGE_SEARCH_TRIM":
+        return <ChangeTrimModal isSearch={true} />;
       case "CHANGE_ENGINE":
         if (unselectableOption && unselectableOption.length > 0) {
           return (

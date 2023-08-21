@@ -13,7 +13,7 @@ import { Trims } from "../../../types/trim.types";
 
 export default function TrimSelect() {
   const { trimList, trimId } = useTrimState();
-  const { trimQuotation } = useQuotationState();
+  const { isFirst, optionQuotation } = useQuotationState();
   const [isBasicOptionModalOpen, setIsBasicOptionModalOpen] = useState(false);
   const [detailTrim, setDetailTrim] = useState<Trims>();
   const [isOpen, setIsOpen] = useState(false);
@@ -40,6 +40,27 @@ export default function TrimSelect() {
     });
   };
 
+  const handleTrimVaildation = (e: React.MouseEvent, id: number) => {
+    e.stopPropagation();
+
+    if (
+      !isFirst[1] ||
+      optionQuotation.selectedQuotation.length ||
+      optionQuotation.consideredQuotation.length
+    ) {
+      setIsOpen(true);
+      setReselectId(id);
+      return;
+    }
+    selectTrim(id);
+  };
+
+  const handleShowDetail = (e: React.MouseEvent, trim: Trims) => {
+    e.stopPropagation();
+    setDetailTrim(trim);
+    setIsBasicOptionModalOpen(true);
+  };
+
   if (!trimList.length) return <Container>데이터가 없습니다.</Container>;
   const reselectTrim = (id: number) => {
     quotationDispatch({ type: "RESET_QUOTATION" });
@@ -62,26 +83,12 @@ export default function TrimSelect() {
                 $price={trim.price}
                 $switch="trim"
                 $choice={trimId === trim.id}
-                handleClick={(e: React.MouseEvent) => {
-                  const clickedTarget = e.target as HTMLElement;
-                  const isTrimModalButtonClicked =
-                    clickedTarget.classList.contains("basic-option");
-                  if (
-                    trimQuotation.trimQuotation.name !== "" &&
-                    trimQuotation.trimQuotation.name !== trim.name &&
-                    !isTrimModalButtonClicked
-                  ) {
-                    setIsOpen(true);
-                    setReselectId(trim.id);
-                  } else {
-                    if (!isTrimModalButtonClicked) selectTrim(trim.id);
-                  }
-                  e.stopPropagation();
-                }}
-                handleClickDetail={() => {
-                  setDetailTrim(trim);
-                  setIsBasicOptionModalOpen(true);
-                }}
+                handleClick={(e: React.MouseEvent) =>
+                  handleTrimVaildation(e as React.MouseEvent, trim.id)
+                }
+                handleClickDetail={(e: React.MouseEvent) =>
+                  handleShowDetail(e as React.MouseEvent, trim)
+                }
               />
             );
           })}

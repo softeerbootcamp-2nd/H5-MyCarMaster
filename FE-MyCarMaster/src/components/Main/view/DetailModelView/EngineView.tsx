@@ -6,7 +6,10 @@ import {
 } from "../../../../contexts/DetailContext";
 import { Engines } from "../../../../types/detail.types";
 import { useTrimState } from "../../../../contexts/TrimContext";
-import { useQuotationDispatch } from "../../../../contexts/QuotationContext";
+import {
+  useQuotationDispatch,
+  useQuotationState,
+} from "../../../../contexts/QuotationContext";
 import useFetch from "../../../../hooks/useFetch";
 import { useEffect } from "react";
 
@@ -21,6 +24,7 @@ function EngineView() {
 
   const { trimId } = useTrimState();
   const { engineId, engineList } = useDetailState();
+  const { detailQuotation } = useQuotationState();
   const engineDispatch = useDetailDispatch();
   const quotationDispatch = useQuotationDispatch();
 
@@ -31,28 +35,39 @@ function EngineView() {
 
   useEffect(() => {
     if (data) {
+      if (detailQuotation.engineQuotation.id) return;
+
       engineDispatch({
         type: "SET_DETAIL_LIST",
         payload: { engineList: data.result.engines },
+      });
+
+      engineDispatch({
+        type: "SELECT_DETAIL",
+        payload: { engineId: data.result.engines[0].id },
       });
 
       quotationDispatch({
         type: "SET_DETAIL_QUOTATION",
         payload: {
           type: "engineQuotation",
-          name: data.result.engines[engineId - 1].name,
-          price: data.result.engines[engineId - 1].price,
+          id: data.result.engines[0].id,
+          name: data.result.engines[0].name,
+          price: data.result.engines[0].price,
         },
       });
     }
-  }, [data, engineDispatch]);
+  }, [data]);
 
   if (!engineList?.length) return <Container></Container>;
 
   return (
     <Container>
       {engineList?.length && (
-        <EngineImg src={engineList[engineId - 1].imgUrl} />
+        <EngineImg
+          src={engineList.find((engine) => engine.id === engineId)?.imgUrl}
+          alt="엔진 이미지"
+        />
       )}
       <EngineGraph>
         <GraphList />

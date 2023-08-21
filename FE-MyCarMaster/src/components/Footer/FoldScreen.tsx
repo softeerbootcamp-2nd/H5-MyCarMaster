@@ -9,6 +9,8 @@ import { QuotationType } from "../../types/quotation.types";
 import { useTrimState, useTrimDispatch } from "../../contexts/TrimContext";
 import { useQuotationDispatch } from "../../contexts/QuotationContext";
 import SnackBar from "../common/SnackBar/SnackBar";
+import { Modals } from "../common/Modals/Modals";
+import { ModalType } from "../../constants/Modal.constants";
 
 type FoldScreenProps = {
   text: string;
@@ -18,8 +20,13 @@ type FoldScreenProps = {
 export default function FoldScreen({ text, $switch }: FoldScreenProps) {
   const [isFold, setIsFold] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [saveData, setSaveData] = useState<{
+    optionList: QuotationType[];
+    selected: number;
+  } | null>(null);
   const [snackBar, setSnackBar] = useState<string[] | null>(null);
-  const { trimList } = useTrimState();
+  const { trimList, trimId } = useTrimState();
   const trimDispatch = useTrimDispatch();
   const quotationDispatch = useQuotationDispatch();
 
@@ -38,7 +45,21 @@ export default function FoldScreen({ text, $switch }: FoldScreenProps) {
     }, 500);
   };
 
-  const searchHandler = (optionList: QuotationType[], selected: number) => {
+  const searchHandler = (
+    optionList: QuotationType[],
+    selected: number,
+    sign?: boolean | undefined
+  ) => {
+    if (trimId !== selected && (sign === undefined || !sign)) {
+      setIsOpen(true);
+      setSaveData({ optionList, selected });
+      return;
+    }
+
+    quotationDispatch({
+      type: "RESET_QUOTATION",
+    });
+
     const target = document.querySelector(".fold-screen") as HTMLDivElement;
     target.style.animation = "moveDown 0.5s ease-in-out forwards";
 
@@ -75,6 +96,7 @@ export default function FoldScreen({ text, $switch }: FoldScreenProps) {
         optionList: optionList,
       },
     });
+    setIsOpen(false);
   };
 
   const setSnackBarHandler = (messages: string[] | null) => {
@@ -126,6 +148,15 @@ export default function FoldScreen({ text, $switch }: FoldScreenProps) {
           />,
           document.body
         )}
+      {isOpen && (
+        <Modals
+          type={ModalType.CHANGE_SEARCH_TRIM}
+          onClick={() =>
+            searchHandler(saveData!.optionList, saveData!.selected, true)
+          }
+          setIsOpen={setIsOpen}
+        />
+      )}
     </Conatiner>
   );
 }

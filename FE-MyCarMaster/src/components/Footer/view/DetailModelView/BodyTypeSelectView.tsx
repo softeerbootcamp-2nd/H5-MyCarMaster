@@ -6,25 +6,23 @@ import { useQuotationDispatch } from "../../../../contexts/QuotationContext";
 import OptionBox from "../../../common/OptionBox/OptionBox";
 
 export default function BodyTypeSelectView() {
-  const { bodyTypeList, engineId, wheelDriveId, bodyTypeId } = useDetailState();
+  const { bodyTypeList,  bodyTypeId } = useDetailState();
   const detailDispatch = useDetailDispatch();
   const quotationDispatch = useQuotationDispatch();
 
-  const selectBodyType = (id: number) => {
+  const selectBodyType = (id: number, index: number) => {
     quotationDispatch({
       type: "SET_DETAIL_QUOTATION",
       payload: {
         type: "bodyTypeQuotation",
         id: id,
-        name: bodyTypeList[id - 1].name,
-        price: bodyTypeList[id - 1].price,
+        name: bodyTypeList[index].name,
+        price: bodyTypeList[index].price,
       },
     });
     detailDispatch({
       type: "SELECT_DETAIL",
       payload: {
-        engineId,
-        wheelDriveId,
         bodyTypeId: id,
       },
     });
@@ -35,7 +33,7 @@ export default function BodyTypeSelectView() {
   return (
     <>
       {bodyTypeList?.length &&
-        bodyTypeList.map((bodyType) => {
+        bodyTypeList.map((bodyType, index) => {
           return (
             <OptionBox
               key={bodyType.id}
@@ -46,7 +44,7 @@ export default function BodyTypeSelectView() {
               $price={bodyType.price}
               $switch="detail"
               $choice={bodyType.id === bodyTypeId}
-              handleClick={() => selectBodyType(bodyType.id)}
+              handleClick={() => selectBodyType(bodyType.id, index)}
             />
           );
         })}
