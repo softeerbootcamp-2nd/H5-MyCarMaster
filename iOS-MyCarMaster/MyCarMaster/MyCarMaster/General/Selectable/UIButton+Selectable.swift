@@ -16,6 +16,13 @@ extension Selectable where Self: UIButton {
         layer.borderColor = selectedBorderColor
     }
 
+    func secondaryStyle() {
+        backgroundColor = .MCM.white
+        setTitleColor(selectedBackgroundColor, for: .normal)
+        layer.borderWidth = 1.0
+        layer.borderColor = selectedBorderColor
+    }
+
     func unselectedStyle() {
         backgroundColor = unselectedBackgroundColor
         setTitleColor(unselectedTextColor, for: .normal)
