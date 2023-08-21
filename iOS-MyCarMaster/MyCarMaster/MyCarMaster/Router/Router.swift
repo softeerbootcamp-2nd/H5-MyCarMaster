@@ -55,7 +55,7 @@ extension Router {
         stepBottomViewController.reactor = stepBottomReactor
 
         let stepContainer = StepContainer(stepBottomViewController: stepBottomViewController)
-        let reactor = MainReactor(
+        let reactor = StepContainerReactor(
             initialState: .init(
                 isLoading: false,
                 currentStep: .trim,

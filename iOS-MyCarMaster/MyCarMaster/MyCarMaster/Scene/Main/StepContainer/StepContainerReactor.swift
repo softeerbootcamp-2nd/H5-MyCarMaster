@@ -1,5 +1,5 @@
 //
-//  MainReactor.swift
+//  StepContainerReactor.swift
 //  MyCarMaster
 //
 //  Created by SEUNGMIN OH on 2023/08/20.
@@ -10,7 +10,7 @@ import UIKit
 
 import MVIFoundation
 
-final class MainReactor: Reactor {
+final class StepContainerReactor: Reactor {
 
     enum Action {
         case moveNext

@@ -109,7 +109,7 @@ final class StepContainer: UIViewController {
 }
 
 extension StepContainer: Reactable {
-    func bindState(reactor: MainReactor) {
+    func bindState(reactor: StepContainerReactor) {
         reactor.state.map(\.currentStepViewController)
             .removeDuplicates()
             .sink { [weak self] currentViewController in
