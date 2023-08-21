@@ -5,6 +5,7 @@
 //  Created by SEUNGMIN OH on 2023/08/09.
 //
 
+import Combine
 import UIKit
 
 import MCMNetwork
@@ -13,6 +14,8 @@ import MVIFoundation
 final class TrimViewController: UIViewController {
 
     typealias ListCellClass = BasicListCell
+
+    var cancellables = Set<AnyCancellable>()
 
     var dataList: [Trim] = []
 
@@ -125,10 +128,19 @@ extension TrimViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? ListCellClass else {
-            fatalError("알 수 없는 오류가 발생했습니다.")
-        }
-        guard selectedCellIndexPath != indexPath else { return }
-        selectedCellIndexPath = indexPath
+        let trim = dataList[indexPath.row]
+        reactor?.action.send(.trimDidSelect(trim))
+    }
+}
+
+extension TrimViewController: Reactable {
+    func bindState(reactor: TrimReactor) {
+        reactor.state.compactMap(\.selectedTrim)
+            .sink { [weak self] trim in
+                if let row = self?.dataList.firstIndex(of: trim) {
+                    self?.selectedCellIndexPath = IndexPath(row: row, section: 0)
+                }
+            }
+            .store(in: &cancellables)
     }
 }
