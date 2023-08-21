@@ -22,10 +22,7 @@ public class AgencyController {
 	private final GetAgenciesUseCase getAgenciesUseCase;
 
 	@GetMapping("/agencies")
-	public Response<GetAgenciesResponse> getAgencies(
-		@Valid @ParameterObject GetAgenciesRequest request,
-		BindingResult bindingResult
-	) {
+	public Response<GetAgenciesResponse> getAgencies(@Valid @ParameterObject GetAgenciesRequest request) {
 		String gu = request.getGu();
 		GetAgenciesResponse response = getAgenciesUseCase.execute(gu);
 		return Response.createSuccessResponse(response);

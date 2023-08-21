@@ -24,10 +24,7 @@ public class TrimController {
 
 	@GetMapping("/trims")
 	@Operation(summary = "모델에 따른 트림 목록을 반환합니다")
-	public Response<GetTrimsResponse> getTrims(
-		@Valid @ParameterObject GetTrimsRequest request,
-		BindingResult bindingResult
-	) {
+	public Response<GetTrimsResponse> getTrims(@Valid @ParameterObject GetTrimsRequest request) {
 		Long modelId = request.getModelId();
 		GetTrimsResponse getTrimsResponse = getTrimsUseCase.execute(modelId);
 		return Response.createSuccessResponse(getTrimsResponse);

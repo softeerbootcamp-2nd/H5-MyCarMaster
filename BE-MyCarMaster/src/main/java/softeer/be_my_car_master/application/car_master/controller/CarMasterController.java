@@ -29,10 +29,7 @@ public class CarMasterController {
 
 	@GetMapping("/car-masters")
 	@Operation(summary = "카마스터 찾기시 대리점과 카마스터 정보를 반환합니다.")
-	public Response<GetCarMasterResponse> getCarMasters(
-		@Valid @ParameterObject GetCarMasterRequest request,
-		BindingResult bindingResult
-	) {
+	public Response<GetCarMasterResponse> getCarMasters(@Valid @ParameterObject GetCarMasterRequest request) {
 		Double latitude = request.getLatitude();
 		Double longitude = request.getLongitude();
 

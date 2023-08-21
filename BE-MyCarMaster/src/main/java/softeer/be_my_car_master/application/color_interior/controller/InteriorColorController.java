@@ -24,10 +24,7 @@ public class InteriorColorController {
 
 	@GetMapping("/interior-colors")
 	@Operation(summary = "트림, 외장 색상에서 선택가능한 내장 색상 목록을 반환합니다")
-	public Response<GetInteriorColorsResponse> getInterior(
-		@Valid @ParameterObject GetInteriorColorsRequest request,
-		BindingResult bindingResult
-	) {
+	public Response<GetInteriorColorsResponse> getInterior(@Valid @ParameterObject GetInteriorColorsRequest request) {
 		Long trimId = request.getTrimId();
 		Long exteriorColorId = request.getExteriorColorId();
 		GetInteriorColorsResponse response = getInteriorColorsUseCase.execute(trimId, exteriorColorId);
