@@ -55,6 +55,7 @@
 		B53C3C582A8578310019ECA1 /* BodyTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53C3C572A8578310019ECA1 /* BodyTypeView.swift */; };
 		B53C3C5A2A8578650019ECA1 /* BodyTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53C3C592A8578650019ECA1 /* BodyTypeViewController.swift */; };
 		B550C0D52A8FF4440068670D /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550C0D42A8FF4440068670D /* SeparatorView.swift */; };
+		B55283E42A9238B400E68744 /* StepProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55283E32A9238B400E68744 /* StepProgressView.swift */; };
 		B55283EC2A924A8A00E68744 /* ModelSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55283EB2A924A8A00E68744 /* ModelSelectionViewController.swift */; };
 		B55283EE2A925EB500E68744 /* StepRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55283ED2A925EB500E68744 /* StepRouter.swift */; };
 		B560B2182A83827600A4B9A9 /* TrimView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B560B2172A83827600A4B9A9 /* TrimView.swift */; };
@@ -94,7 +95,7 @@
 		B5C079092A8BD52D00747B11 /* Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C079082A8BD52D00747B11 /* Selectable.swift */; };
 		B5C0790B2A8BD69100747B11 /* UICollectionViewCell+Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0790A2A8BD69100747B11 /* UICollectionViewCell+Selectable.swift */; };
 		B5C0790D2A8BD6EA00747B11 /* UIButton+Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0790C2A8BD6EA00747B11 /* UIButton+Selectable.swift */; };
-		B5C3EAC12A84B1AA00D9577C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */; };
+		B5C3EAC12A84B1AA00D9577C /* StepContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C3EAC02A84B1AA00D9577C /* StepContainer.swift */; };
 		B5D1E1F52A8DFBCE00DAE384 /* Dependency.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5D1E1F42A8DFBBA00DAE384 /* Dependency.plist */; };
 		B5D1E1F92A8E094200DAE384 /* DecodeOptionDTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D1E1F82A8E094200DAE384 /* DecodeOptionDTOTests.swift */; };
 		B5D1E1FC2A8E14AE00DAE384 /* DecodeTrimDTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D1E1FB2A8E14AE00DAE384 /* DecodeTrimDTOTests.swift */; };
@@ -224,8 +225,8 @@
 		B53C3C532A856DF00019ECA1 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		B53C3C572A8578310019ECA1 /* BodyTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyTypeView.swift; sourceTree = "<group>"; };
 		B53C3C592A8578650019ECA1 /* BodyTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyTypeViewController.swift; sourceTree = "<group>"; };
-		B53E028D2A84BE5100F464FC /* StepNavigatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepNavigatorView.swift; sourceTree = "<group>"; };
 		B550C0D42A8FF4440068670D /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
+		B55283E32A9238B400E68744 /* StepProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepProgressView.swift; sourceTree = "<group>"; };
 		B55283EB2A924A8A00E68744 /* ModelSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSelectionViewController.swift; sourceTree = "<group>"; };
 		B55283ED2A925EB500E68744 /* StepRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepRouter.swift; sourceTree = "<group>"; };
 		B56A765B2A83EC5200F7E3EF /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
@@ -260,7 +261,7 @@
 		B5C079082A8BD52D00747B11 /* Selectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Selectable.swift; sourceTree = "<group>"; };
 		B5C0790A2A8BD69100747B11 /* UICollectionViewCell+Selectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Selectable.swift"; sourceTree = "<group>"; };
 		B5C0790C2A8BD6EA00747B11 /* UIButton+Selectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Selectable.swift"; sourceTree = "<group>"; };
-		B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		B5C3EAC02A84B1AA00D9577C /* StepContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepContainer.swift; sourceTree = "<group>"; };
 		B5D1E1F42A8DFBBA00DAE384 /* Dependency.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Dependency.plist; sourceTree = "<group>"; };
 		B5D1E1F82A8E094200DAE384 /* DecodeOptionDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeOptionDTOTests.swift; sourceTree = "<group>"; };
 		B5D1E1FB2A8E14AE00DAE384 /* DecodeTrimDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodeTrimDTOTests.swift; sourceTree = "<group>"; };
@@ -405,6 +406,16 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		B51CE22D2A92AC0D00C65689 /* StepContainer */ = {
+			isa = PBXGroup;
+			children = (
+				B5C3EAC02A84B1AA00D9577C /* StepContainer.swift */,
+				B55283E32A9238B400E68744 /* StepProgressView.swift */,
+				B58FB41B2A92049600105DBF /* MainReactor.swift */,
+			);
+			path = StepContainer;
+			sourceTree = "<group>";
+		};
 		B51CE22E2A92AC3E00C65689 /* StepBottom */ = {
 			isa = PBXGroup;
 			children = (
@@ -452,11 +463,9 @@
 		B53BA1062A8BDFC0009F94BE /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */,
-				B58FB41B2A92049600105DBF /* MainReactor.swift */,
-				B53E028D2A84BE5100F464FC /* StepNavigatorView.swift */,
 				B58FB4192A91FEF200105DBF /* Step.swift */,
 				B51CE22F2A92AC5600C65689 /* Router */,
+				B51CE22D2A92AC0D00C65689 /* StepContainer */,
 				B51CE22E2A92AC3E00C65689 /* StepBottom */,
 			);
 			path = Main;
@@ -492,7 +501,6 @@
 		B53C3C562A8577760019ECA1 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				B53BA1062A8BDFC0009F94BE /* Main */,
 				B58A323C2A7C0B3B005FC831 /* Onboarding */,
 				B560B2162A83826C00A4B9A9 /* Trim */,
 				B53C3C422A8548330019ECA1 /* Engine */,
@@ -952,7 +960,6 @@
 				B56F55D22A86BBE50055E382 /* RootDTO.swift in Sources */,
 				B59B201D2A8B666A009E7868 /* OptionViewController.swift in Sources */,
 				B53C3C582A8578310019ECA1 /* BodyTypeView.swift in Sources */,
-				B53E028E2A84BE5100F464FC /* StepNavigatorView.swift in Sources */,
 				B56A765C2A83EC5200F7E3EF /* Preview.swift in Sources */,
 				B58FB41C2A92049600105DBF /* MainReactor.swift in Sources */,
 				B510BBDF2A84895D009E5752 /* StepBottomView.swift in Sources */,
@@ -963,7 +970,7 @@
 				B53C3C502A85661D0019ECA1 /* WheelDriveView.swift in Sources */,
 				B5DD651E2A89066400B44F61 /* Exterior+.swift in Sources */,
 				B53BA1082A8BE6B9009F94BE /* OptionListCell.swift in Sources */,
-				B5C3EAC12A84B1AA00D9577C /* MainViewController.swift in Sources */,
+				B5C3EAC12A84B1AA00D9577C /* StepContainer.swift in Sources */,
 				B56F55D72A86BC7D0055E382 /* Trim.swift in Sources */,
 				B51CE2282A929E8A00C65689 /* StepBottomReactor.swift in Sources */,
 				B500C7812A8FCD5A007724F3 /* QuotationContentItemState.swift in Sources */,
@@ -998,6 +1005,7 @@
 				B56A765F2A83EFB000F7E3EF /* BasicListCell.swift in Sources */,
 				B570C0FA2A89ADA7000E9B75 /* InteriorView.swift in Sources */,
 				B500C77F2A8FCA5F007724F3 /* QuotationContentItemView.swift in Sources */,
+				B55283E42A9238B400E68744 /* StepProgressView.swift in Sources */,
 				B50C7E4C2A790279005AFE0B /* AppDelegate.swift in Sources */,
 				B5D1E2052A8EDF7600DAE384 /* QuotationView.swift in Sources */,
 				B58FB41A2A91FEF200105DBF /* Step.swift in Sources */,
