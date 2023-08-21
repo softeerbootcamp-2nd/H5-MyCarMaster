@@ -293,7 +293,7 @@
 		B5DD65282A893AC600B44F61 /* WheelDrive+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WheelDrive+.swift"; sourceTree = "<group>"; };
 		B5DD652A2A893B1E00B44F61 /* BodyType+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BodyType+.swift"; sourceTree = "<group>"; };
 		B5E233FC2A8B4B0F0013BEB1 /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
-		B5F1AE052A838B8E00E7E392 /* TrimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrimViewController.swift; path = MyCarMaster/Sceen/Trim/TrimViewController.swift; sourceTree = SOURCE_ROOT; };
+		B5F1AE052A838B8E00E7E392 /* TrimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrimViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -361,7 +361,7 @@
 			children = (
 				B50C7E7D2A790430005AFE0B /* App */,
 				B50C7E7E2A790434005AFE0B /* Resources */,
-				B53C3C562A8577760019ECA1 /* Sceen */,
+				B53C3C562A8577760019ECA1 /* Scene */,
 				B56F55CF2A86BBB10055E382 /* Model */,
 				B56A765D2A83EF9100F7E3EF /* General */,
 				B56A765A2A83EC4000F7E3EF /* Util */,
@@ -435,6 +435,21 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		B528DEBF2A92F89600B016D8 /* Step */ = {
+			isa = PBXGroup;
+			children = (
+				B560B2162A83826C00A4B9A9 /* Trim */,
+				B53C3C422A8548330019ECA1 /* Engine */,
+				B53C3C4E2A85653A0019ECA1 /* WheelDrive */,
+				B53C3C552A85776B0019ECA1 /* BodyType */,
+				B5DD64ED2A877DC700B44F61 /* Exterior */,
+				B570C0F82A89AD93000E9B75 /* Interior */,
+				B5E233FB2A8B4AE80013BEB1 /* Option */,
+				B5D1E2032A8EDF6900DAE384 /* Quotation */,
+			);
+			path = Step;
+			sourceTree = "<group>";
+		};
 		B52955572A7B879100BEDDE7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -502,14 +517,9 @@
 			isa = PBXGroup;
 			children = (
 				B58A323C2A7C0B3B005FC831 /* Onboarding */,
-				B560B2162A83826C00A4B9A9 /* Trim */,
-				B53C3C422A8548330019ECA1 /* Engine */,
-				B53C3C4E2A85653A0019ECA1 /* WheelDrive */,
-				B53C3C552A85776B0019ECA1 /* BodyType */,
-				B5DD64ED2A877DC700B44F61 /* Exterior */,
-				B570C0F82A89AD93000E9B75 /* Interior */,
-				B5E233FB2A8B4AE80013BEB1 /* Option */,
-				B5D1E2032A8EDF6900DAE384 /* Quotation */,
+				B55283EA2A924A7D00E68744 /* ModelSelection */,
+				B53BA1062A8BDFC0009F94BE /* Main */,
+				B528DEBF2A92F89600B016D8 /* Step */,
 			);
 			path = Scene;
 			sourceTree = "<group>";

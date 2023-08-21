@@ -79,12 +79,12 @@ final class QuotationContentView: UIView {
 // MARK: - API
 extension QuotationContentView {
     func configure(with quotation: Quotation) {
-        trimContentItemView.configure(with: quotation.trim)
-        engineContentItemView.configure(with: quotation.engine)
-        wheelDriveContentItemView.configure(with: quotation.wheelDrive)
-        bodyTypeContentItemView.configure(with: quotation.bodyType)
-        exteriorContentItemView.configure(with: quotation.exterior)
-        interiorContentItemView.configure(with: quotation.interior)
-        optionContentItemView.configure(with: quotation)
+//        trimContentItemView.configure(with: quotation.trim)
+//        engineContentItemView.configure(with: quotation.engine)
+//        wheelDriveContentItemView.configure(with: quotation.wheelDrive)
+//        bodyTypeContentItemView.configure(with: quotation.bodyType)
+//        exteriorContentItemView.configure(with: quotation.exterior)
+//        interiorContentItemView.configure(with: quotation.interior)
+//        optionContentItemView.configure(with: quotation)
     }
 }

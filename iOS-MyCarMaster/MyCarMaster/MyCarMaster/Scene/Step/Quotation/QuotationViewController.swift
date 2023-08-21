@@ -12,7 +12,7 @@ final class QuotationViewController: UIViewController {
     private var contentView: QuotationView {
         return view as? QuotationView ?? QuotationView()
     }
-    
+
     override func loadView() {
         view = QuotationView()
     }
