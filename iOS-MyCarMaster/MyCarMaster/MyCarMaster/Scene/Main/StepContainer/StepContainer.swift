@@ -60,6 +60,7 @@ final class StepContainer: UIViewController {
     private func configureUI() {
         view.backgroundColor = .MCM.white
         navigationItem.titleView = navigationTitleButton
+        stepBottomView.layer.zPosition = 1
     }
 
     private func configureLayout() {

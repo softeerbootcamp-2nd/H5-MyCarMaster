@@ -61,7 +61,7 @@ final class ModelSelectionViewController: UIViewController {
 
     private let palisadeCell = UIView().then { view in
         view.backgroundColor = .MCM.navyBlue1
-        view.layer.borderColor = UIColor.MCM.navyBlue5.cgColor
+        view.layer.borderColor = UIColor.MCM.navyBlue4.cgColor
         view.layer.borderWidth = 1.0
     }
 
@@ -89,7 +89,7 @@ final class ModelSelectionViewController: UIViewController {
 
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.largeTitleDisplayMode = .always
-        navigationController?.setLargeTitleStyle(.headlineSmall(nil))
+        navigationController?.setLargeTitleStyle(.headlineSmall(.init(textColor: .MCM.black)))
         navigationItem.title = "모델을 선택해주세요"
     }
 
