@@ -26,6 +26,7 @@
 		B510BBDD2A841A25009E5752 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510BBDC2A841A25009E5752 /* Reusable.swift */; };
 		B510BBDF2A84895D009E5752 /* StepBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510BBDE2A84895D009E5752 /* StepBottomView.swift */; };
 		B51CE2282A929E8A00C65689 /* StepBottomReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51CE2272A929E8A00C65689 /* StepBottomReactor.swift */; };
+		B51CE22A2A92A50300C65689 /* EstimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51CE2292A92A50300C65689 /* EstimationManager.swift */; };
 		B51CE22C2A92AB7400C65689 /* StepBottomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51CE22B2A92AB7400C65689 /* StepBottomViewController.swift */; };
 		B52FC1A82A90920C0075D288 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1A72A90920C0075D288 /* AppDelegate.swift */; };
 		B52FC1AA2A90920C0075D288 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1A92A90920C0075D288 /* SceneDelegate.swift */; };
@@ -196,6 +197,7 @@
 		B510BBDC2A841A25009E5752 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		B510BBDE2A84895D009E5752 /* StepBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepBottomView.swift; sourceTree = "<group>"; };
 		B51CE2272A929E8A00C65689 /* StepBottomReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepBottomReactor.swift; sourceTree = "<group>"; };
+		B51CE2292A92A50300C65689 /* EstimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimationManager.swift; sourceTree = "<group>"; };
 		B51CE22B2A92AB7400C65689 /* StepBottomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepBottomViewController.swift; sourceTree = "<group>"; };
 		B52FC1A52A90920C0075D288 /* Catalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Catalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B52FC1A72A90920C0075D288 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 		B55283E32A9238B400E68744 /* StepProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepProgressView.swift; sourceTree = "<group>"; };
 		B55283EB2A924A8A00E68744 /* ModelSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelSelectionViewController.swift; sourceTree = "<group>"; };
 		B55283ED2A925EB500E68744 /* StepRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepRouter.swift; sourceTree = "<group>"; };
+		B560B2172A83827600A4B9A9 /* TrimView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrimView.swift; sourceTree = "<group>"; };
 		B56A765B2A83EC5200F7E3EF /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
 		B56A765E2A83EFB000F7E3EF /* BasicListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicListCell.swift; sourceTree = "<group>"; };
 		B56F55D12A86BBE50055E382 /* RootDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootDTO.swift; sourceTree = "<group>"; };
@@ -482,6 +485,7 @@
 				B51CE22F2A92AC5600C65689 /* Router */,
 				B51CE22D2A92AC0D00C65689 /* StepContainer */,
 				B51CE22E2A92AC3E00C65689 /* StepBottom */,
+				B51CE2292A92A50300C65689 /* EstimationManager.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -991,6 +995,7 @@
 				B5F1AE062A838B8E00E7E392 /* TrimViewController.swift in Sources */,
 				B5DD65192A88FB6F00B44F61 /* CellStyleSelectable.swift in Sources */,
 				B5C079092A8BD52D00747B11 /* Selectable.swift in Sources */,
+				B51CE22A2A92A50300C65689 /* EstimationManager.swift in Sources */,
 				B5DD651B2A8905B400B44F61 /* ColorListCellState.swift in Sources */,
 				B5DD64F12A87833200B44F61 /* ExteriorViewController.swift in Sources */,
 				B53BA1122A8C0A8F009F94BE /* PaddingLabel.swift in Sources */,
