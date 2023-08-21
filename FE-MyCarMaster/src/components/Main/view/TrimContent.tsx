@@ -35,14 +35,15 @@ function TrimContent() {
       quotationDispatch({
         type: "SET_TRIM_QUOTATION",
         payload: {
+          id: data.result.trims[trimId - 1].id,
           name: data.result.trims[trimId - 1].name,
           price: data.result.trims[trimId - 1].price,
         },
       });
     }
-  }, [data, trimDispatch]);
+  }, [data]);
 
-  if (!trimList?.length) return <TrimImage></TrimImage>;
+  if (!trimList?.length) return null;
 
   return trimList?.length && <TrimImage src={trimList[trimId - 1].imgUrl} />;
 }
