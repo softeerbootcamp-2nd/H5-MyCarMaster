@@ -17,7 +17,7 @@ protocol EstimationManageable: AnyObject {
 
     func update<T>(_ keyPath: WritableKeyPath<Estimation, T?>, value: T)
     func update<T: Priceable>(_ keyPath: WritableKeyPath<Estimation, T?>, value: T)
-    func update(_ keyPath: WritableKeyPath<Estimation, [Option]>, value: Option)
+    func update(_ keyPath: WritableKeyPath<Estimation, Set<Option>>, value: Option)
 }
 
 final class EstimationManager: EstimationManageable {
@@ -47,14 +47,14 @@ final class EstimationManager: EstimationManageable {
         estimationSubject.accept(estimation)
     }
 
-    func update(_ keyPath: WritableKeyPath<Estimation, [Option]>, value: Option) {
+    func update(_ keyPath: WritableKeyPath<Estimation, Set<Option>>, value: Option) {
         var estimation = self.estimation
         if keyPath == \.selectedOptions {
-            estimation.selectedOptions?.insert(value)
-            estimation.consideredOptions?.remove(value)
+            estimation.selectedOptions.insert(value)
+            estimation.consideredOptions.remove(value)
         } else {
-            estimation.consideredOptions?.insert(value)
-            estimation.selectedOptions?.remove(value)
+            estimation.consideredOptions.insert(value)
+            estimation.selectedOptions.remove(value)
         }
 
         estimation.selectedOptionsTotalPrice = calculateSelectOptionsTotalPrice(estimation)
@@ -63,6 +63,14 @@ final class EstimationManager: EstimationManageable {
         estimationSubject.accept(estimation)
     }
 
+        estimation.selectedOptionsTotalPrice = calculateSelectOptionsTotalPrice(estimation)
+        estimation.totalPrice = calculateTotalPrice(estimation)
+
+        estimationSubject.accept(estimation)
+    }
+}
+
+extension EstimationManager {
     private func calculateTotalPrice(_ estimation: Estimation) -> Int {
         var totalPrice = 0
         totalPrice += estimation.trim?.price ?? 0
@@ -76,6 +84,6 @@ final class EstimationManager: EstimationManageable {
     }
 
     private func calculateSelectOptionsTotalPrice(_ estimation: Estimation) -> Int {
-        return estimation.selectedOptions?.map(\.price).reduce(0, +) ?? 0
+        return estimation.selectedOptions.map(\.price).reduce(0, +) ?? 0
     }
 }
