@@ -10,7 +10,7 @@ public enum Category {
 	CAR_PROTECTION("차량 보호"),
 	CONVENIENCE("편의"),
 	POWER_TRAIN_PERFORMANCE("파워트레인/성능"),
-	INTELLIGENT_SAFETY_TECHNOLOGY("지능형 안전 기술"),
+	INTELLIGENT_SAFETY_TECHNOLOGY("지능형 안전기술"),
 	EXTERNAL("외관"),
 	INTERNAL("내장"),
 	SEAT("시트"),

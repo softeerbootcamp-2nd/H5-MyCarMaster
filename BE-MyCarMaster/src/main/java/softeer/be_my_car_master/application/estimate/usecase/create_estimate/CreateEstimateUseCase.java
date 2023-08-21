@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.application.estimate.dto.request.CreateEstimateRequest;
-import softeer.be_my_car_master.application.estimate.dto.request.EstimateOptionDto;
+import softeer.be_my_car_master.application.estimate.dto.request.EstimateOptionRequestDto;
 import softeer.be_my_car_master.application.estimate.dto.response.CreateEstimateResponse;
 import softeer.be_my_car_master.application.estimate.exception.InvalidEstimationException;
 import softeer.be_my_car_master.domain.body_type.BodyType;
@@ -42,10 +42,10 @@ public class CreateEstimateUseCase {
 		Long exteriorColorId = request.getExteriorColorId();
 		Long interiorColorId = request.getInteriorColorId();
 		List<Long> selectOptionIds = request.getSelectOptions().stream()
-			.map(EstimateOptionDto::getId)
+			.map(EstimateOptionRequestDto::getId)
 			.collect(Collectors.toList());
 		List<Long> considerOptionIds = request.getConsiderOptions().stream()
-			.map(EstimateOptionDto::getId)
+			.map(EstimateOptionRequestDto::getId)
 			.collect(Collectors.toList());
 
 		UUID estimateUuid = port.createEstimate(
@@ -112,8 +112,8 @@ public class CreateEstimateUseCase {
 			unselectableOptionIdsByInteriorColor
 		);
 
-		List<EstimateOptionDto> selectOptions = request.getSelectOptions();
-		List<EstimateOptionDto> considerOptions = request.getConsiderOptions();
+		List<EstimateOptionRequestDto> selectOptions = request.getSelectOptions();
+		List<EstimateOptionRequestDto> considerOptions = request.getConsiderOptions();
 		List<Option> filteredSelectableOptions = filterOptionsByUnselectableIds(
 			selectableOptions,
 			unselectableOptionIdsSet
@@ -179,12 +179,12 @@ public class CreateEstimateUseCase {
 	}
 
 	private void validateOptions(
-		List<EstimateOptionDto> selectOptions,
-		List<EstimateOptionDto> considerOptions,
+		List<EstimateOptionRequestDto> selectOptions,
+		List<EstimateOptionRequestDto> considerOptions,
 		List<Option> filteredSelectableOptions
 	) {
 		List<Long> optionIds = Stream.concat(selectOptions.stream(), considerOptions.stream())
-			.map(EstimateOptionDto::getId)
+			.map(EstimateOptionRequestDto::getId)
 			.collect(Collectors.toList());
 
 		List<Long> selectableOptionIds = filteredSelectableOptions.stream()

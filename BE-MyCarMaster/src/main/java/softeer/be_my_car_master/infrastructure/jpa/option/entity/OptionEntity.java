@@ -102,6 +102,7 @@ public class OptionEntity {
 			.name(name)
 			.price(price)
 			.imgUrl(imgUrl)
+			.category(category)
 			.build();
 	}
 }

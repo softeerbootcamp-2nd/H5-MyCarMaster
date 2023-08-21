@@ -13,7 +13,6 @@ import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.application.color_interior.dto.request.GetInteriorColorsRequest;
 import softeer.be_my_car_master.application.color_interior.dto.response.GetInteriorColorsResponse;
 import softeer.be_my_car_master.application.color_interior.usecase.get_interior_colors.GetInteriorColorsUseCase;
-import softeer.be_my_car_master.global.exception.BindingParamException;
 import softeer.be_my_car_master.global.response.Response;
 
 @RestController
@@ -25,14 +24,7 @@ public class InteriorColorController {
 
 	@GetMapping("/interior-colors")
 	@Operation(summary = "트림, 외장 색상에서 선택가능한 내장 색상 목록을 반환합니다")
-	public Response<GetInteriorColorsResponse> getInterior(
-		@Valid @ParameterObject GetInteriorColorsRequest request,
-		BindingResult bindingResult
-	) {
-		if (bindingResult.hasErrors()) {
-			throw new BindingParamException(bindingResult.getFieldErrors());
-		}
-
+	public Response<GetInteriorColorsResponse> getInterior(@Valid @ParameterObject GetInteriorColorsRequest request) {
 		Long trimId = request.getTrimId();
 		Long exteriorColorId = request.getExteriorColorId();
 		GetInteriorColorsResponse response = getInteriorColorsUseCase.execute(trimId, exteriorColorId);

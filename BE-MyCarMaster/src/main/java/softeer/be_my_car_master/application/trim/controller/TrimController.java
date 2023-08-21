@@ -13,7 +13,6 @@ import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.application.trim.dto.request.GetTrimsRequest;
 import softeer.be_my_car_master.application.trim.dto.response.GetTrimsResponse;
 import softeer.be_my_car_master.application.trim.usecase.get_trims.GetTrimsUseCase;
-import softeer.be_my_car_master.global.exception.BindingParamException;
 import softeer.be_my_car_master.global.response.Response;
 
 @RestController
@@ -25,14 +24,7 @@ public class TrimController {
 
 	@GetMapping("/trims")
 	@Operation(summary = "모델에 따른 트림 목록을 반환합니다")
-	public Response<GetTrimsResponse> getTrims(
-		@Valid @ParameterObject GetTrimsRequest request,
-		BindingResult bindingResult
-	) {
-		if (bindingResult.hasErrors()) {
-			throw new BindingParamException(bindingResult.getFieldErrors());
-		}
-
+	public Response<GetTrimsResponse> getTrims(@Valid @ParameterObject GetTrimsRequest request) {
 		Long modelId = request.getModelId();
 		GetTrimsResponse getTrimsResponse = getTrimsUseCase.execute(modelId);
 		return Response.createSuccessResponse(getTrimsResponse);

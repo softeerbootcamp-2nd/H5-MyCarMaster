@@ -13,7 +13,6 @@ import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.application.option.dto.request.GetRepresentativeOptionsRequest;
 import softeer.be_my_car_master.application.option.dto.response.GetRepresentativeOptionsResponse;
 import softeer.be_my_car_master.application.option.usecase.get_representative_options.GetRepresentativeOptionsUseCase;
-import softeer.be_my_car_master.global.exception.BindingParamException;
 import softeer.be_my_car_master.global.response.Response;
 
 @RestController
@@ -26,13 +25,8 @@ public class RepresentativeOptionController {
 	@GetMapping("/options/representative")
 	@Operation(summary = "모델의 대표 옵션 9가지를 리턴합니다.")
 	public Response<GetRepresentativeOptionsResponse> getRepresentativeOptions(
-		@Valid @ParameterObject GetRepresentativeOptionsRequest request,
-		BindingResult bindingResult
+		@Valid @ParameterObject GetRepresentativeOptionsRequest request
 	) {
-		if (bindingResult.hasErrors()) {
-			throw new BindingParamException(bindingResult.getFieldErrors());
-		}
-
 		Long modelId = request.getModelId();
 
 		GetRepresentativeOptionsResponse response = getRepresentativeOptionsUseCase.execute(modelId);

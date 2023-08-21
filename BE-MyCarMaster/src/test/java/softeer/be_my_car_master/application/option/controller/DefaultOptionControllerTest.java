@@ -2,7 +2,6 @@ package softeer.be_my_car_master.application.option.controller;
 
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.BDDMockito.*;
-import static org.mockito.BDDMockito.anyLong;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -14,6 +13,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -28,10 +29,13 @@ import softeer.be_my_car_master.application.option.usecase.get_trim_default_opti
 import softeer.be_my_car_master.application.trim.dto.response.GetTrimDefaultOptionsResponse;
 import softeer.be_my_car_master.application.trim.dto.response.TrimDefaultOptionDto;
 import softeer.be_my_car_master.domain.option.Category;
+import softeer.be_my_car_master.global.exception.BindingAdvice;
 import softeer.be_my_car_master.global.response.Response;
 import softeer.be_my_car_master.global.response.ResponseStatus;
 
 @WebMvcTest(DefaultOptionController.class)
+@EnableAspectJAutoProxy
+@Import(BindingAdvice.class)
 @DisplayName("DefaultOptionController Test")
 class DefaultOptionControllerTest {
 
@@ -71,12 +75,10 @@ class DefaultOptionControllerTest {
 			//when
 			ResultActions perform = mockMvc.perform(
 				get("/trims/{trimId}/default-options", 1L)
-					.contentType(MediaType.APPLICATION_FORM_URLENCODED)
-			);
+					.contentType(MediaType.APPLICATION_FORM_URLENCODED));
 
 			//then
-			perform
-				.andExpect(status().isOk())
+			perform.andExpect(status().isOk())
 				.andExpect(content().contentType("application/json"))
 				.andExpect(content().json(responseBody, true));
 		}
@@ -107,17 +109,14 @@ class DefaultOptionControllerTest {
 
 			//when
 			ResultActions perform = mockMvc.perform(
-				get("/options/default")
-					.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				get("/options/default").contentType(MediaType.APPLICATION_FORM_URLENCODED)
 					.param("trimId", "1")
 					.param("engineId", "1")
 					.param("wheelDriveId", "1")
-					.param("bodyTypeId", "1")
-			);
+					.param("bodyTypeId", "1"));
 
 			//then
-			perform
-				.andExpect(status().isOk())
+			perform.andExpect(status().isOk())
 				.andExpect(content().contentType("application/json"))
 				.andExpect(content().json(responseBody, true));
 		}
@@ -130,17 +129,14 @@ class DefaultOptionControllerTest {
 
 			//when
 			ResultActions perform = mockMvc.perform(
-				get("/options/default")
-					.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				get("/options/default").contentType(MediaType.APPLICATION_FORM_URLENCODED)
 					.param("trimId", "0")
 					.param("engineId", "1")
 					.param("wheelDriveId", "1")
-					.param("bodyTypeId", "1")
-			);
+					.param("bodyTypeId", "1"));
 
 			//then
-			perform
-				.andExpect(status().is4xxClientError())
+			perform.andExpect(status().is4xxClientError())
 				.andExpect(content().contentType("application/json"))
 				.andExpect(content().json(responseBody, false));
 		}
@@ -153,16 +149,13 @@ class DefaultOptionControllerTest {
 
 			//when
 			ResultActions perform = mockMvc.perform(
-				get("/options/default")
-					.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				get("/options/default").contentType(MediaType.APPLICATION_FORM_URLENCODED)
 					.param("engineId", "1")
 					.param("wheelDriveId", "1")
-					.param("bodyTypeId", "1")
-			);
+					.param("bodyTypeId", "1"));
 
 			//then
-			perform
-				.andExpect(status().is4xxClientError())
+			perform.andExpect(status().is4xxClientError())
 				.andExpect(content().contentType("application/json"))
 				.andExpect(content().json(responseBody, false));
 		}
@@ -175,17 +168,14 @@ class DefaultOptionControllerTest {
 
 			//when
 			ResultActions perform = mockMvc.perform(
-				get("/options/default")
-					.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				get("/options/default").contentType(MediaType.APPLICATION_FORM_URLENCODED)
 					.param("trimId", "1")
 					.param("engineId", "0")
 					.param("wheelDriveId", "1")
-					.param("bodyTypeId", "1")
-			);
+					.param("bodyTypeId", "1"));
 
 			//then
-			perform
-				.andExpect(status().is4xxClientError())
+			perform.andExpect(status().is4xxClientError())
 				.andExpect(content().contentType("application/json"))
 				.andExpect(content().json(responseBody, false));
 		}
@@ -198,16 +188,13 @@ class DefaultOptionControllerTest {
 
 			//when
 			ResultActions perform = mockMvc.perform(
-				get("/options/default")
-					.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				get("/options/default").contentType(MediaType.APPLICATION_FORM_URLENCODED)
 					.param("trimId", "1")
 					.param("wheelDriveId", "1")
-					.param("bodyTypeId", "1")
-			);
+					.param("bodyTypeId", "1"));
 
 			//then
-			perform
-				.andExpect(status().is4xxClientError())
+			perform.andExpect(status().is4xxClientError())
 				.andExpect(content().contentType("application/json"))
 				.andExpect(content().json(responseBody, false));
 		}
@@ -220,17 +207,14 @@ class DefaultOptionControllerTest {
 
 			//when
 			ResultActions perform = mockMvc.perform(
-				get("/options/default")
-					.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				get("/options/default").contentType(MediaType.APPLICATION_FORM_URLENCODED)
 					.param("trimId", "1")
 					.param("engineId", "1")
 					.param("wheelDriveId", "0")
-					.param("bodyTypeId", "1")
-			);
+					.param("bodyTypeId", "1"));
 
 			//then
-			perform
-				.andExpect(status().is4xxClientError())
+			perform.andExpect(status().is4xxClientError())
 				.andExpect(content().contentType("application/json"))
 				.andExpect(content().json(responseBody, false));
 		}
@@ -243,16 +227,13 @@ class DefaultOptionControllerTest {
 
 			//when
 			ResultActions perform = mockMvc.perform(
-				get("/options/default")
-					.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				get("/options/default").contentType(MediaType.APPLICATION_FORM_URLENCODED)
 					.param("trimId", "1")
 					.param("engineId", "1")
-					.param("bodyTypeId", "1")
-			);
+					.param("bodyTypeId", "1"));
 
 			//then
-			perform
-				.andExpect(status().is4xxClientError())
+			perform.andExpect(status().is4xxClientError())
 				.andExpect(content().contentType("application/json"))
 				.andExpect(content().json(responseBody, false));
 		}
@@ -265,17 +246,14 @@ class DefaultOptionControllerTest {
 
 			//when
 			ResultActions perform = mockMvc.perform(
-				get("/options/default")
-					.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				get("/options/default").contentType(MediaType.APPLICATION_FORM_URLENCODED)
 					.param("trimId", "1")
 					.param("engineId", "1")
 					.param("wheelDriveId", "1")
-					.param("bodyTypeId", "0")
-			);
+					.param("bodyTypeId", "0"));
 
 			//then
-			perform
-				.andExpect(status().is4xxClientError())
+			perform.andExpect(status().is4xxClientError())
 				.andExpect(content().contentType("application/json"))
 				.andExpect(content().json(responseBody, false));
 		}
@@ -288,16 +266,13 @@ class DefaultOptionControllerTest {
 
 			//when
 			ResultActions perform = mockMvc.perform(
-				get("/options/default")
-					.contentType(MediaType.APPLICATION_FORM_URLENCODED)
+				get("/options/default").contentType(MediaType.APPLICATION_FORM_URLENCODED)
 					.param("trimId", "1")
 					.param("engineId", "1")
-					.param("wheelDriveId", "1")
-			);
+					.param("wheelDriveId", "1"));
 
 			//then
-			perform
-				.andExpect(status().is4xxClientError())
+			perform.andExpect(status().is4xxClientError())
 				.andExpect(content().contentType("application/json"))
 				.andExpect(content().json(responseBody, false));
 		}

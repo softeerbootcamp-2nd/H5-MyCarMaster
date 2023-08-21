@@ -16,7 +16,6 @@ import softeer.be_my_car_master.application.option.dto.response.GetDefaultOption
 import softeer.be_my_car_master.application.option.usecase.get_default_options.GetDefaultOptionsUseCase;
 import softeer.be_my_car_master.application.option.usecase.get_trim_default_options.GetTrimDefaultOptionsUseCase;
 import softeer.be_my_car_master.application.trim.dto.response.GetTrimDefaultOptionsResponse;
-import softeer.be_my_car_master.global.exception.BindingParamException;
 import softeer.be_my_car_master.global.response.Response;
 
 @RestController
@@ -30,13 +29,8 @@ public class DefaultOptionController {
 	@GetMapping("/options/default")
 	@Operation(summary = "트림, 엔진, 구동 방식, 바디 타입에 해당하는 기본 옵션 목록을 반환합니다")
 	public Response<GetDefaultOptionsResponse> getDefaultOptions(
-		@Valid @ParameterObject GetDefaultOptionsRequest request,
-		BindingResult bindingResult
+		@Valid @ParameterObject GetDefaultOptionsRequest request
 	) {
-		if (bindingResult.hasErrors()) {
-			throw new BindingParamException(bindingResult.getFieldErrors());
-		}
-
 		Long trimId = request.getTrimId();
 		Long engineId = request.getEngineId();
 		Long wheelDriveId = request.getWheelDriveId();
@@ -57,5 +51,4 @@ public class DefaultOptionController {
 		GetTrimDefaultOptionsResponse response = getTrimDefaultOptionsUseCase.execute(trimId);
 		return Response.createSuccessResponse(response);
 	}
-
 }

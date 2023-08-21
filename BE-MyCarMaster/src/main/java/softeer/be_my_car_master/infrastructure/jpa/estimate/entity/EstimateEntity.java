@@ -84,7 +84,7 @@ public class EstimateEntity {
 	private InteriorColorEntity interiorColor;
 
 	@OneToMany(mappedBy = "estimate", cascade = CascadeType.PERSIST)
-	private List<EstimateAdditionalOptionEntity> additionalOptions = new ArrayList<>();
+	private List<EstimateSelectOptionEntity> selectOptions = new ArrayList<>();
 
 	@OneToMany(mappedBy = "estimate", cascade = CascadeType.PERSIST)
 	private List<EstimateConsiderOptionEntity> considerOptions = new ArrayList<>();
@@ -97,7 +97,7 @@ public class EstimateEntity {
 		BodyTypeEntity bodyType,
 		ExteriorColorEntity exteriorColor,
 		InteriorColorEntity interiorColor,
-		List<OptionEntity> trimAdditionalOptionEntities,
+		List<OptionEntity> trimSelectOptionEntities,
 		List<OptionEntity> trimConsiderOptionEntities
 	) {
 		EstimateEntity estimateEntity = EstimateEntity.builder()
@@ -111,15 +111,15 @@ public class EstimateEntity {
 			.interiorColor(interiorColor)
 			.build();
 
-		List<EstimateAdditionalOptionEntity> estimateAdditionalOptions = trimAdditionalOptionEntities.stream()
-			.map(optionEntity -> EstimateAdditionalOptionEntity.create(estimateEntity, optionEntity))
+		List<EstimateSelectOptionEntity> estimateSelectOptions = trimSelectOptionEntities.stream()
+			.map(optionEntity -> EstimateSelectOptionEntity.create(estimateEntity, optionEntity))
 			.collect(Collectors.toList());
 
 		List<EstimateConsiderOptionEntity> estimateConsiderOptions = trimConsiderOptionEntities.stream()
 			.map(optionEntity -> EstimateConsiderOptionEntity.create(estimateEntity, optionEntity))
 			.collect(Collectors.toList());
 
-		estimateEntity.setAdditionalOptions(estimateAdditionalOptions);
+		estimateEntity.setSelectOptions(estimateSelectOptions);
 		estimateEntity.setConsiderOptions(estimateConsiderOptions);
 
 		return estimateEntity;
@@ -132,8 +132,8 @@ public class EstimateEntity {
 			.build();
 	}
 
-	private void setAdditionalOptions(List<EstimateAdditionalOptionEntity> estimateAdditionalOptions) {
-		this.additionalOptions = estimateAdditionalOptions;
+	private void setSelectOptions(List<EstimateSelectOptionEntity> estimateSelectOptions) {
+		this.selectOptions = estimateSelectOptions;
 	}
 
 	private void setConsiderOptions(List<EstimateConsiderOptionEntity> estimateConsiderOptions) {
@@ -148,8 +148,8 @@ public class EstimateEntity {
 	}
 
 	public Estimate toEstimate() {
-		List<Option> additionalOptions = this.additionalOptions.stream()
-			.map(EstimateAdditionalOptionEntity::toOption)
+		List<Option> selectOptions = this.selectOptions.stream()
+			.map(EstimateSelectOptionEntity::toOption)
 			.collect(Collectors.toList());
 		List<Option> considerOptions = this.considerOptions.stream()
 			.map(EstimateConsiderOptionEntity::toOption)
@@ -163,7 +163,7 @@ public class EstimateEntity {
 			.bodyType(bodyType.toBodyType())
 			.exteriorColor(exteriorColor.toExteriorColor(trim.getId()))
 			.interiorColor(interiorColor.toInteriorColor(trim.getId()))
-			.selectOptions(additionalOptions)
+			.selectOptions(selectOptions)
 			.considerOptions(considerOptions)
 			.build();
 	}
