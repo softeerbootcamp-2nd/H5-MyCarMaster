@@ -52,6 +52,13 @@ final class StepContainer: UIViewController {
         configureLayout()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
+        navigationController?.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.navigationBar.tintColor = .MCM.black
+    }
+
     private func configureViewController() {
         addChild(stepBottomViewController)
         stepBottomViewController.didMove(toParent: self)
