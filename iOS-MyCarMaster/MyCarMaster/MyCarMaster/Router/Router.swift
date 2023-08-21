@@ -15,10 +15,12 @@ final class Router {
     private weak var window: UIWindow?
     private weak var navigationController: UINavigationController?
     private let estimationManager: EstimationManager
+    private let stepRouter: StepRouter
 
     init(window: UIWindow?, initialEstimation: Estimation) {
         self.window = window
         self.estimationManager = EstimationManager(estimation: initialEstimation)
+        self.stepRouter = StepRouter(entryStep: .trim)
     }
 
     func presentOnboarding() {
@@ -44,8 +46,6 @@ final class Router {
 
 extension Router {
     func resolveStepContainer() -> StepContainer {
-        let stepRouter = StepRouter(entryStep: .trim)
-
         let stepBottomReactor = StepBottomReactor(
             stepRouter: stepRouter,
             estimationManager: estimationManager,

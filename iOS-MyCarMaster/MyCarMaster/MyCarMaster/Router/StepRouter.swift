@@ -14,8 +14,15 @@ final class StepRouter {
     private var currentStep: Step {
         return currentStepSubject.value
     }
+
     lazy var currentStepPublisher = currentStepSubject
         .share()
+        .eraseToAnyPublisher()
+
+    lazy var currentStepViewController = currentStepPublisher
+        .compactMap { [weak self] in
+            self?.resolveStepViewController(for: $0)
+        }
         .eraseToAnyPublisher()
 
     init(entryStep: Step) {

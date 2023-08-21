@@ -13,8 +13,6 @@ import MVIFoundation
 final class StepContainerReactor: Reactor {
 
     enum Action {
-        case moveNext
-        case moveBack
     }
 
     enum Mutation {
@@ -30,36 +28,34 @@ final class StepContainerReactor: Reactor {
     }
 
     let initialState: State
-    let stepRouter: StepRouter
+    weak var stepRouter: StepRouter?
 
     init(initialState: State, stepRouter: StepRouter) {
         self.initialState = initialState
         self.stepRouter = stepRouter
     }
 
-    func mutate(action: Action) -> AnyPublisher<Mutation, Never> {
-        switch action {
-        case .moveNext:
-            stepRouter.nextStep()
-            return Empty<Mutation, Never>()
-                .eraseToAnyPublisher()
-        case .moveBack:
-            stepRouter.backStep()
+    func transform(mutation: AnyPublisher<Mutation, Never>) -> AnyPublisher<Mutation, Never> {
+        guard let stepRouter else {
             return Empty<Mutation, Never>()
                 .eraseToAnyPublisher()
         }
-    }
 
-    func transform(mutation: AnyPublisher<Mutation, Never>) -> AnyPublisher<Mutation, Never> {
-        let routerMuatation = stepRouter.currentStepPublisher
+        let stepMuatation = stepRouter.currentStepPublisher
             .flatMap { step -> AnyPublisher<Mutation, Never> in
                 return [
-                    Just(Mutation.changeStepViewController(self.stepRouter.resolveStepViewController(for: step))),
+//                    Just(Mutation.changeStepViewController(stepRouter.resolveStepViewController(for: step))),
                     Just(Mutation.changeStepProgress(step)),
                 ].concatenate()
             }
 
-        return Publishers.Merge(mutation, routerMuatation)
+        let stepViewControllerMutation = stepRouter.currentStepViewController
+            .flatMap { stepViewController -> AnyPublisher<Mutation, Never> in
+                return Just(Mutation.changeStepViewController(stepViewController))
+                    .eraseToAnyPublisher()
+            }
+
+        return Publishers.Merge3(mutation, stepMuatation, stepViewControllerMutation)
             .eraseToAnyPublisher()
     }
 
