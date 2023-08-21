@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Engine: Hashable {
+struct Engine: Hashable, Priceable {
     let model: String
     let name: String
     let ratio: Int

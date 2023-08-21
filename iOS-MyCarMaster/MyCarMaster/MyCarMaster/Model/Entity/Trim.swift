@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Trim: Hashable {
+struct Trim: Hashable, Priceable {
     let model: String
     let name: String
     let ratio: Int
