@@ -25,8 +25,11 @@ final class StepRouter {
         }
         .eraseToAnyPublisher()
 
-    init(entryStep: Step) {
+    weak var estimationManager: EstimationManageable?
+
+    init(entryStep: Step, estimationManager: EstimationManageable) {
         self.currentStepSubject = CurrentValueSubject(entryStep)
+        self.estimationManager = estimationManager
     }
 
     func nextStep() {
@@ -51,7 +54,13 @@ extension StepRouter {
     func resolveStepViewController(for step: Step) -> UIViewController {
         switch step {
         case .trim:
-            return TrimViewController()
+            let trimReactor = TrimReactor(
+                initialState: .init(isLoading: false, trimList: []),
+                estimationManager: estimationManager
+            )
+            let trimViewController = TrimViewController()
+            trimViewController.reactor = trimReactor
+            return trimViewController
         case .engine:
             return EngineViewController()
         case .wheelDrive:

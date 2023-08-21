@@ -20,7 +20,7 @@ final class Router {
     init(window: UIWindow?, initialEstimation: Estimation) {
         self.window = window
         self.estimationManager = EstimationManager(estimation: initialEstimation)
-        self.stepRouter = StepRouter(entryStep: .trim)
+        self.stepRouter = StepRouter(entryStep: .trim, estimationManager: estimationManager)
     }
 
     func start() {
