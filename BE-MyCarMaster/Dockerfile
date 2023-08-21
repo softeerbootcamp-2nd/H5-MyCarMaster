@@ -35,4 +35,5 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN chmod +x /start-app.sh
 
 EXPOSE 8080
+EXPOSE 9292
 ENTRYPOINT ["/start-app.sh"]
