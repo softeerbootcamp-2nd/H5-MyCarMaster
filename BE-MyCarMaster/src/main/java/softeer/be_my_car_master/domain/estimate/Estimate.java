@@ -30,6 +30,6 @@ public class Estimate {
 	private BodyType bodyType;
 	private ExteriorColor exteriorColor;
 	private InteriorColor interiorColor;
-	private List<Option> additionalOptions;
+	private List<Option> selectOptions;
 	private List<Option> considerOptions;
 }
