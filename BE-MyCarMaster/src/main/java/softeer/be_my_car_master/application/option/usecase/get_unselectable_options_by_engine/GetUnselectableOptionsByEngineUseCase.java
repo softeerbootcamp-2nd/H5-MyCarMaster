@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.application.engine.dto.response.GetUnselectableOptionsByEngineResponse;
-import softeer.be_my_car_master.application.engine.exception.InvalidOptionException;
+import softeer.be_my_car_master.application.engine.exception.InvalidOptionByTrimException;
 import softeer.be_my_car_master.domain.option.Option;
 import softeer.be_my_car_master.global.annotation.UseCase;
 
@@ -37,7 +37,7 @@ public class GetUnselectableOptionsByEngineUseCase {
 		List<Long> selectableOptionIdsInTrim
 	) {
 		if (!selectableOptionIdsInTrim.containsAll(selectedOptions)) {
-			throw InvalidOptionException.EXCEPTION;
+			throw InvalidOptionByTrimException.EXCEPTION;
 		}
 	}
 

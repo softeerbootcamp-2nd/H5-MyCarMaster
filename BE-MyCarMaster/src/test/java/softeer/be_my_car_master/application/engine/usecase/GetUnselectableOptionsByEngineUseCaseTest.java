@@ -17,7 +17,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import softeer.be_my_car_master.application.engine.dto.response.GetUnselectableOptionsByEngineResponse;
 import softeer.be_my_car_master.application.engine.dto.response.UnselectableOptionDto;
-import softeer.be_my_car_master.application.engine.exception.InvalidOptionException;
+import softeer.be_my_car_master.application.engine.exception.InvalidOptionByTrimException;
 import softeer.be_my_car_master.application.option.usecase.get_unselectable_options_by_engine.GetUnselectableOptionsByEnginePort;
 import softeer.be_my_car_master.application.option.usecase.get_unselectable_options_by_engine.GetUnselectableOptionsByEngineUseCase;
 import softeer.be_my_car_master.domain.option.Category;
@@ -81,7 +81,7 @@ class GetUnselectableOptionsByEngineUseCaseTest {
 		// when
 		// then
 		assertThrows(
-			InvalidOptionException.class,
+			InvalidOptionByTrimException.class,
 			() -> useCase.execute(1L, 1L, Arrays.asList(1L, 2L))
 		);
 	}

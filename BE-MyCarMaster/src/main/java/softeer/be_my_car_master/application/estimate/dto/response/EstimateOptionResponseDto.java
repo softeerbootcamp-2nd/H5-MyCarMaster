@@ -12,7 +12,7 @@ import softeer.be_my_car_master.domain.option.Option;
 @Setter
 @Builder
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
-public class EstimateOptionDto {
+public class EstimateOptionResponseDto {
 
 	@Schema(description = "옵션명", example = "주차보조 시스템||")
 	private String name;
@@ -23,8 +23,8 @@ public class EstimateOptionDto {
 	@Schema(description = "옵션 이미지", example = "null")
 	private String imgUrl;
 
-	public static EstimateOptionDto from(Option option) {
-		return EstimateOptionDto.builder()
+	public static EstimateOptionResponseDto from(Option option) {
+		return EstimateOptionResponseDto.builder()
 			.name(option.getName())
 			.price(option.getPrice())
 			.imgUrl(option.getImgUrl())

@@ -2,7 +2,6 @@ package softeer.be_my_car_master.domain.wheel_dirve;
 
 import java.util.List;
 
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,7 +10,7 @@ import softeer.be_my_car_master.global.annotation.Domain;
 @Domain
 @Getter
 @Builder
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor
 public class WheelDrive {
 	private Long id;
 	private String name;

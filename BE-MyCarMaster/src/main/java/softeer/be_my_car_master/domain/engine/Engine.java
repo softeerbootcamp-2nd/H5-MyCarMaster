@@ -10,7 +10,7 @@ import softeer.be_my_car_master.global.annotation.Domain;
 @Domain
 @Getter
 @Builder
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor
 public class Engine {
 
 	private Long id;

@@ -57,5 +57,4 @@ public class DefaultOptionController {
 		GetTrimDefaultOptionsResponse response = getTrimDefaultOptionsUseCase.execute(trimId);
 		return Response.createSuccessResponse(response);
 	}
-
 }
