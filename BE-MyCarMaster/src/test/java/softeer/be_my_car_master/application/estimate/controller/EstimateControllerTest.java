@@ -28,6 +28,7 @@ import softeer.be_my_car_master.application.estimate.dto.response.EstimateWheelD
 import softeer.be_my_car_master.application.estimate.dto.response.GetEstimateResponse;
 import softeer.be_my_car_master.application.estimate.usecase.create_estimate.CreateEstimateUseCase;
 import softeer.be_my_car_master.application.estimate.usecase.get_estimate.GetEstimateUseCase;
+import softeer.be_my_car_master.domain.option.Category;
 import softeer.be_my_car_master.global.response.Response;
 
 @WebMvcTest(EstimateController.class)
@@ -80,6 +81,7 @@ public class EstimateControllerTest {
 			.name("옵션")
 			.price(10000)
 			.imgUrl("img url")
+			.category(Category.SAFE.getValue())
 			.build();
 
 		given(getEstimateUseCase.execute(any())).willReturn(getEstimateResponse);
