@@ -10,8 +10,8 @@ import Foundation
 extension Quotation: QuotationContentOptionStateConvertible {
     var quotationContentOptionState: QuotationContentOptionState {
         .init(
-            selectedOptions: self.selectedOptions,
-            consideredOptions: self.consideredOptions,
+            selectedOptions: self.selectedOptions ?? [],
+            consideredOptions: self.consideredOptions ?? [],
             selectedOptionsTotalPrice: self.selectedOptionsTotalPrice
         )
     }

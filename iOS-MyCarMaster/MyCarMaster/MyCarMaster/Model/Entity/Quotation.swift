@@ -8,14 +8,14 @@
 import Foundation
 
 struct Quotation: Hashable {
-    let trim: Trim
-    let engine: Engine
-    let wheelDrive: WheelDrive
-    let bodyType: BodyType
-    let exterior: Exterior
-    let interior: Interior
-    let selectedOptions: [Option]
-    let consideredOptions: [Option]
+    let trim: Trim?
+    let engine: Engine?
+    let wheelDrive: WheelDrive?
+    let bodyType: BodyType?
+    let exterior: Exterior?
+    let interior: Interior?
+    let selectedOptions: [Option]?
+    let consideredOptions: [Option]?
     let selectedOptionsTotalPrice: Int
     let totalPrice: Int
 }
