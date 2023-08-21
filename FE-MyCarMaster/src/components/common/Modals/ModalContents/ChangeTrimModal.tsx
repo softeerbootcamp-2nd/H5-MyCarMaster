@@ -1,10 +1,16 @@
 import { styled } from "styled-components";
 
-function ChangeTrimModal() {
+function ChangeTrimModal({ isSearch }: { isSearch?: boolean }) {
   return (
     <Container>
-      <MainText>트림을 변경하시겠습니까?</MainText>
-      <SubText>현재까지의 변경사항은 저장되지 않습니다.</SubText>
+      <MainText>
+        {isSearch ? "이전 선택한 트림과 다릅니다." : "트림을 변경하시겠습니까?"}
+      </MainText>
+      <SubText>
+        {isSearch
+          ? "선택했던 옵션을 초기화하고 새롭게 저장됩니다."
+          : "현재까지의 변경사항은 저장되지 않습니다."}
+      </SubText>
     </Container>
   );
 }
