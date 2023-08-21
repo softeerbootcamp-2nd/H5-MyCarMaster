@@ -13,7 +13,6 @@ import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.application.option.dto.request.GetRepresentativeOptionsRequest;
 import softeer.be_my_car_master.application.option.dto.response.GetRepresentativeOptionsResponse;
 import softeer.be_my_car_master.application.option.usecase.get_representative_options.GetRepresentativeOptionsUseCase;
-import softeer.be_my_car_master.global.exception.BindingParamException;
 import softeer.be_my_car_master.global.response.Response;
 
 @RestController
@@ -29,10 +28,6 @@ public class RepresentativeOptionController {
 		@Valid @ParameterObject GetRepresentativeOptionsRequest request,
 		BindingResult bindingResult
 	) {
-		if (bindingResult.hasErrors()) {
-			throw new BindingParamException(bindingResult.getFieldErrors());
-		}
-
 		Long modelId = request.getModelId();
 
 		GetRepresentativeOptionsResponse response = getRepresentativeOptionsUseCase.execute(modelId);

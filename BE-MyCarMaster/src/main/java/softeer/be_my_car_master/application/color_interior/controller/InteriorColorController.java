@@ -13,7 +13,6 @@ import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.application.color_interior.dto.request.GetInteriorColorsRequest;
 import softeer.be_my_car_master.application.color_interior.dto.response.GetInteriorColorsResponse;
 import softeer.be_my_car_master.application.color_interior.usecase.get_interior_colors.GetInteriorColorsUseCase;
-import softeer.be_my_car_master.global.exception.BindingParamException;
 import softeer.be_my_car_master.global.response.Response;
 
 @RestController
@@ -29,10 +28,6 @@ public class InteriorColorController {
 		@Valid @ParameterObject GetInteriorColorsRequest request,
 		BindingResult bindingResult
 	) {
-		if (bindingResult.hasErrors()) {
-			throw new BindingParamException(bindingResult.getFieldErrors());
-		}
-
 		Long trimId = request.getTrimId();
 		Long exteriorColorId = request.getExteriorColorId();
 		GetInteriorColorsResponse response = getInteriorColorsUseCase.execute(trimId, exteriorColorId);
