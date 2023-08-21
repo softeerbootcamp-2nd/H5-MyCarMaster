@@ -18,6 +18,7 @@ protocol EstimationManageable: AnyObject {
     func update<T>(_ keyPath: WritableKeyPath<Estimation, T?>, value: T)
     func update<T: Priceable>(_ keyPath: WritableKeyPath<Estimation, T?>, value: T)
     func update(_ keyPath: WritableKeyPath<Estimation, Set<Option>>, value: Option)
+    func remove(_ keyPath: WritableKeyPath<Estimation, Set<Option>>, value: Option)
 }
 
 final class EstimationManager: EstimationManageable {
@@ -62,6 +63,10 @@ final class EstimationManager: EstimationManageable {
 
         estimationSubject.accept(estimation)
     }
+
+    func remove(_ keyPath: WritableKeyPath<Estimation, Set<Option>>, value: Option) {
+        var estimation = self.estimation
+        estimation[keyPath: keyPath].remove(value)
 
         estimation.selectedOptionsTotalPrice = calculateSelectOptionsTotalPrice(estimation)
         estimation.totalPrice = calculateTotalPrice(estimation)
