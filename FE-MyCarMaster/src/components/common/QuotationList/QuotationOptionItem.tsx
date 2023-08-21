@@ -21,6 +21,7 @@ function QuotationOptionItem({
   name,
   price,
   isSelected: initialIsSelected,
+  confirm,
 }: QuotationOptionProps) {
   const quotationDispatch = useQuotationDispatch();
 
