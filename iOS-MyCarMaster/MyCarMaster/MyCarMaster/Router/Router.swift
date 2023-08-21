@@ -33,7 +33,7 @@ final class Router {
     }
 
     func showModelSelection() {
-        let rootViewControlller = ModelSelectionViewController(router: self)
+        let rootViewControlller = ModelSelectionViewController(router: self, estimaitonManager: estimationManager)
         let navigationController = UINavigationController(rootViewController: rootViewControlller)
         window?.rootViewController = navigationController
         self.navigationController = navigationController
