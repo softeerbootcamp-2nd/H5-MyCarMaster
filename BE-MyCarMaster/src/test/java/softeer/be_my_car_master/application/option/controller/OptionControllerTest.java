@@ -28,7 +28,7 @@ import softeer.be_my_car_master.application.option.dto.response.GetOptionsRespon
 import softeer.be_my_car_master.application.option.dto.response.OptionDto;
 import softeer.be_my_car_master.application.option.usecase.get_options.GetOptionsUseCase;
 import softeer.be_my_car_master.application.option.usecase.get_unselectable_options_by_engine.GetUnselectableOptionsByEngineUseCase;
-import softeer.be_my_car_master.global.aspect.BindingAdvice;
+import softeer.be_my_car_master.global.exception.BindingAdvice;
 import softeer.be_my_car_master.global.response.Response;
 import softeer.be_my_car_master.global.response.ResponseStatus;
 

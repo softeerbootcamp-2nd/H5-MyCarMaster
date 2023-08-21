@@ -25,7 +25,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import softeer.be_my_car_master.application.engine.dto.response.EngineDto;
 import softeer.be_my_car_master.application.engine.dto.response.GetEnginesResponse;
 import softeer.be_my_car_master.application.engine.usecase.get_engines.GetEnginesUseCase;
-import softeer.be_my_car_master.global.aspect.BindingAdvice;
+import softeer.be_my_car_master.global.exception.BindingAdvice;
 import softeer.be_my_car_master.global.response.Response;
 import softeer.be_my_car_master.global.response.ResponseStatus;
 

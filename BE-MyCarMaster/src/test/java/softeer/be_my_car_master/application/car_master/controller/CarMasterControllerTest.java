@@ -29,7 +29,7 @@ import softeer.be_my_car_master.application.car_master.dto.response.CarMasterDto
 import softeer.be_my_car_master.application.car_master.dto.response.GetCarMasterResponse;
 import softeer.be_my_car_master.application.car_master.usecase.get_car_masters.GetCarMasterUseCase;
 import softeer.be_my_car_master.application.car_master.usecase.get_car_masters_in_agency.GetCarMastersInAgencyUseCase;
-import softeer.be_my_car_master.global.aspect.BindingAdvice;
+import softeer.be_my_car_master.global.exception.BindingAdvice;
 import softeer.be_my_car_master.global.response.Response;
 
 @WebMvcTest(CarMasterController.class)

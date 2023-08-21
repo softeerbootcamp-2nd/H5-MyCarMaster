@@ -29,7 +29,7 @@ import softeer.be_my_car_master.application.option.usecase.get_trim_default_opti
 import softeer.be_my_car_master.application.trim.dto.response.GetTrimDefaultOptionsResponse;
 import softeer.be_my_car_master.application.trim.dto.response.TrimDefaultOptionDto;
 import softeer.be_my_car_master.domain.option.Category;
-import softeer.be_my_car_master.global.aspect.BindingAdvice;
+import softeer.be_my_car_master.global.exception.BindingAdvice;
 import softeer.be_my_car_master.global.response.Response;
 import softeer.be_my_car_master.global.response.ResponseStatus;
 

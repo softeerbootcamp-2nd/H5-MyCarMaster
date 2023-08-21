@@ -21,7 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import softeer.be_my_car_master.application.agency.dto.response.AgencyInGuDto;
 import softeer.be_my_car_master.application.agency.dto.response.GetAgenciesResponse;
 import softeer.be_my_car_master.application.agency.usecase.get_agencies.GetAgenciesUseCase;
-import softeer.be_my_car_master.global.aspect.BindingAdvice;
+import softeer.be_my_car_master.global.exception.BindingAdvice;
 import softeer.be_my_car_master.global.response.Response;
 
 @WebMvcTest(AgencyController.class)

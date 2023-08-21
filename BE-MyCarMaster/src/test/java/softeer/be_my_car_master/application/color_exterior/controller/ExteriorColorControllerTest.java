@@ -23,7 +23,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import softeer.be_my_car_master.application.color_exterior.dto.response.ExteriorColorDto;
 import softeer.be_my_car_master.application.color_exterior.dto.response.GetExteriorColorsResponse;
 import softeer.be_my_car_master.application.color_exterior.usecase.get_exterior_colors.GetExteriorColorsUseCase;
-import softeer.be_my_car_master.global.aspect.BindingAdvice;
+import softeer.be_my_car_master.global.exception.BindingAdvice;
 import softeer.be_my_car_master.global.response.Response;
 import softeer.be_my_car_master.global.response.ResponseStatus;
 

@@ -25,7 +25,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import softeer.be_my_car_master.application.trim.dto.response.GetTrimsResponse;
 import softeer.be_my_car_master.application.trim.dto.response.TrimDto;
 import softeer.be_my_car_master.application.trim.usecase.get_trims.GetTrimsUseCase;
-import softeer.be_my_car_master.global.aspect.BindingAdvice;
+import softeer.be_my_car_master.global.exception.BindingAdvice;
 import softeer.be_my_car_master.global.response.Response;
 import softeer.be_my_car_master.global.response.ResponseStatus;
 

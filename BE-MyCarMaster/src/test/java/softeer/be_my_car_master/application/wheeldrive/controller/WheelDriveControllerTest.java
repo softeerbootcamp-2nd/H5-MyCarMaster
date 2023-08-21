@@ -24,7 +24,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import softeer.be_my_car_master.application.wheeldrive.dto.response.GetWheelDrivesResponse;
 import softeer.be_my_car_master.application.wheeldrive.dto.response.WheelDriveDto;
 import softeer.be_my_car_master.application.wheeldrive.usecase.get_wheel_drives.GetWheelDrivesUseCase;
-import softeer.be_my_car_master.global.aspect.BindingAdvice;
+import softeer.be_my_car_master.global.exception.BindingAdvice;
 import softeer.be_my_car_master.global.response.Response;
 import softeer.be_my_car_master.global.response.ResponseStatus;
 
