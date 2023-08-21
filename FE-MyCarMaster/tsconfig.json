@@ -24,6 +24,7 @@
       "@common_button/*": ["components/common/Button/*"],
       "@common_category/*": ["components/common/CategoryList/*"],
       "@common_modals/*": ["components/common/Modals/*"],
+      "@common_option_box/*": ["components/common/OptionBox/*"],
     },
 
     /* Bundler mode */

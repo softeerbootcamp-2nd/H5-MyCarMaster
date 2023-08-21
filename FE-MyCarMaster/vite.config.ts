@@ -61,6 +61,10 @@ export default defineConfig({
         find: "@common_modals",
         replacement: path.resolve(__dirname, "src/components/common/modals"),
       },
+      {
+        find: "@common_option_box",
+        replacement: path.resolve(__dirname, "src/components/common/OptionBox"),
+      },
     ],
   },
 });
