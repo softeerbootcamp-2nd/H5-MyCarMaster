@@ -364,6 +364,7 @@
 			children = (
 				B50C7E7D2A790430005AFE0B /* App */,
 				B50C7E7E2A790434005AFE0B /* Resources */,
+				B51CE22F2A92AC5600C65689 /* Router */,
 				B53C3C562A8577760019ECA1 /* Scene */,
 				B56F55CF2A86BBB10055E382 /* Model */,
 				B56A765D2A83EF9100F7E3EF /* General */,
@@ -433,6 +434,7 @@
 			isa = PBXGroup;
 			children = (
 				B58FB4172A91FE6E00105DBF /* Router.swift */,
+				B58FB4192A91FEF200105DBF /* Step.swift */,
 				B55283ED2A925EB500E68744 /* StepRouter.swift */,
 			);
 			path = Router;
@@ -481,8 +483,6 @@
 		B53BA1062A8BDFC0009F94BE /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				B58FB4192A91FEF200105DBF /* Step.swift */,
-				B51CE22F2A92AC5600C65689 /* Router */,
 				B51CE22D2A92AC0D00C65689 /* StepContainer */,
 				B51CE22E2A92AC3E00C65689 /* StepBottom */,
 				B51CE2292A92A50300C65689 /* EstimationManager.swift */,
