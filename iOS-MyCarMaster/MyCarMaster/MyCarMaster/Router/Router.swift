@@ -44,6 +44,7 @@ final class Router {
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.topItem?.title = ""
+        navigationController?.navigationBar.tintColor = .MCM.black
         navigationController?.pushViewController(stepContainer, animated: false)
     }
 }
