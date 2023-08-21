@@ -1,11 +1,14 @@
 //
-//  EstimationView.swift
+//  StepBottomView.swift
 //  MyCarMaster
 //
 //  Created by SEUNGMIN OH on 2023/08/10.
 //
 
+import Combine
 import UIKit
+
+import MVIFoundation
 
 final class GeneralButton: UIButton, ButtonStyleSeletable {
 
@@ -27,7 +30,7 @@ final class GeneralButton: UIButton, ButtonStyleSeletable {
     }
 }
 
-final class EstimationView: UIView {
+final class StepBottomView: UIView {
 
     override var intrinsicContentSize: CGSize {
         return CGSize(width: UIScreen.main.bounds.width, height: 143)
@@ -65,21 +68,19 @@ final class EstimationView: UIView {
         return label
     }()
 
-    let backButton: GeneralButton = {
+    let leftButton: GeneralButton = {
         let button = GeneralButton()
-        button.setStyledTitle("이전", for: .normal)
         button.unselectedStyle()
         return button
     }()
 
-    let nextButton: GeneralButton = {
+    let rightButton: GeneralButton = {
         let button = GeneralButton()
-        button.setStyledTitle("다음", for: .normal)
         button.selectedStyle()
         return button
     }()
 
-    private let summaryButton: UIButton = {
+    let summaryButton: UIButton = {
         let button = UIButton()
         button.style = .bodyMedium1(nil)
         button.layer.borderWidth = 1.0
@@ -160,29 +161,45 @@ final class EstimationView: UIView {
     }
 
     private func configureBottomContainer() {
-        bottomContainer.addArrangedSubview(backButton)
-        bottomContainer.addArrangedSubview(nextButton)
+        bottomContainer.addArrangedSubview(leftButton)
+        bottomContainer.addArrangedSubview(rightButton)
     }
 }
 
 // MARK: - API
-extension EstimationView {
+extension StepBottomView {
+    func updateLeftButtonTitle(_ title: String?) {
+        guard let title else {
+            leftButton.isHidden = true
+            return
+        }
+        leftButton.isHidden = false
+        leftButton.setStyledTitle(title, for: .normal)
+    }
+
+    func updateRightButtonTitle(_ title: String?) {
+        guard let title else {
+            rightButton.isHidden = true
+            return
+        }
+        rightButton.isHidden = false
+        rightButton.setStyledTitle(title, for: .normal)
+    }
+
+    func updateTotalPrice(_ totalPrice: Int) {
+        priceLabel.setText(totalPrice.formatted(style: .currency))
+    }
+
+    func addTarget<T: UIControl>(
+        _ target: Any?,
+        _ keyPath: KeyPath<StepBottomView, T>,
+        action: Selector,
+        for event: UIControl.Event
+    ) {
+        self[keyPath: keyPath].addTarget(target, action: action, for: event)
+    }
+
     func configure(with estimationPrice: Int) {
         priceLabel.setText(estimationPrice.formatted(style: .currency))
     }
 }
-
-#if canImport(SwiftUI) && DEBUG
-import SwiftUI
-
-struct EstimationControlViewPreviews_Previews: PreviewProvider {
-    static let view = EstimationView()
-
-    static var previews: some View {
-        UIViewPreview {
-            view.configure(with: 93896000)
-            return view
-        }
-    }
-}
-#endif

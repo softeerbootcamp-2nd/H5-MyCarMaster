@@ -82,6 +82,26 @@ extension Step {
         }
     }
 
+    var leftButtonTitle: String? {
+        switch self {
+        case .trim:
+            return nil
+        case .quotation:
+            return "공유하기"
+        default:
+            return "이전"
+        }
+    }
+
+    var rightButtonTitle: String? {
+        switch self {
+        case .quotation:
+            return "카마스터 찾기"
+        default:
+            return "다음"
+        }
+    }
+
     var progress: Float {
         return Float(self.rawValue) / Float(Self.allCases.count)
     }

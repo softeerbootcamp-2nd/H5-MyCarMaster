@@ -24,7 +24,9 @@
 		B50C7E6F2A79027A005AFE0B /* MyCarMasterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C7E6E2A79027A005AFE0B /* MyCarMasterUITestsLaunchTests.swift */; };
 		B510BBDB2A840BD4009E5752 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510BBDA2A840BD4009E5752 /* Formatter.swift */; };
 		B510BBDD2A841A25009E5752 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510BBDC2A841A25009E5752 /* Reusable.swift */; };
-		B510BBDF2A84895D009E5752 /* EstimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510BBDE2A84895D009E5752 /* EstimationView.swift */; };
+		B510BBDF2A84895D009E5752 /* StepBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510BBDE2A84895D009E5752 /* StepBottomView.swift */; };
+		B51CE2282A929E8A00C65689 /* StepBottomReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51CE2272A929E8A00C65689 /* StepBottomReactor.swift */; };
+		B51CE22C2A92AB7400C65689 /* StepBottomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51CE22B2A92AB7400C65689 /* StepBottomViewController.swift */; };
 		B52FC1A82A90920C0075D288 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1A72A90920C0075D288 /* AppDelegate.swift */; };
 		B52FC1AA2A90920C0075D288 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1A92A90920C0075D288 /* SceneDelegate.swift */; };
 		B52FC1AC2A90920C0075D288 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1AB2A90920C0075D288 /* ViewController.swift */; };
@@ -52,9 +54,9 @@
 		B53C3C542A856DF00019ECA1 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53C3C532A856DF00019ECA1 /* UIView+Extension.swift */; };
 		B53C3C582A8578310019ECA1 /* BodyTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53C3C572A8578310019ECA1 /* BodyTypeView.swift */; };
 		B53C3C5A2A8578650019ECA1 /* BodyTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53C3C592A8578650019ECA1 /* BodyTypeViewController.swift */; };
-		B53E028E2A84BE5100F464FC /* StepNavigatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53E028D2A84BE5100F464FC /* StepNavigatorView.swift */; };
 		B550C0D52A8FF4440068670D /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B550C0D42A8FF4440068670D /* SeparatorView.swift */; };
 		B55283EC2A924A8A00E68744 /* ModelSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55283EB2A924A8A00E68744 /* ModelSelectionViewController.swift */; };
+		B55283EE2A925EB500E68744 /* StepRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55283ED2A925EB500E68744 /* StepRouter.swift */; };
 		B560B2182A83827600A4B9A9 /* TrimView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B560B2172A83827600A4B9A9 /* TrimView.swift */; };
 		B56A765C2A83EC5200F7E3EF /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56A765B2A83EC5200F7E3EF /* Preview.swift */; };
 		B56A765F2A83EFB000F7E3EF /* BasicListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56A765E2A83EFB000F7E3EF /* BasicListCell.swift */; };
@@ -191,7 +193,9 @@
 		B50C7E6E2A79027A005AFE0B /* MyCarMasterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCarMasterUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B510BBDA2A840BD4009E5752 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		B510BBDC2A841A25009E5752 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
-		B510BBDE2A84895D009E5752 /* EstimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimationView.swift; sourceTree = "<group>"; };
+		B510BBDE2A84895D009E5752 /* StepBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepBottomView.swift; sourceTree = "<group>"; };
+		B51CE2272A929E8A00C65689 /* StepBottomReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepBottomReactor.swift; sourceTree = "<group>"; };
+		B51CE22B2A92AB7400C65689 /* StepBottomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepBottomViewController.swift; sourceTree = "<group>"; };
 		B52FC1A52A90920C0075D288 /* Catalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Catalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B52FC1A72A90920C0075D288 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B52FC1A92A90920C0075D288 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -239,7 +243,6 @@
 		B58FB4172A91FE6E00105DBF /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		B58FB4192A91FEF200105DBF /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		B58FB41B2A92049600105DBF /* MainReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainReactor.swift; sourceTree = "<group>"; };
-		B58FB41D2A92071A00105DBF /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		B598A0842A8F297A00C4A591 /* QuotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationViewController.swift; sourceTree = "<group>"; };
 		B59B201C2A8B666A009E7868 /* OptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
 		B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMCombineExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -402,6 +405,16 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		B51CE22E2A92AC3E00C65689 /* StepBottom */ = {
+			isa = PBXGroup;
+			children = (
+				B510BBDE2A84895D009E5752 /* StepBottomView.swift */,
+				B51CE22B2A92AB7400C65689 /* StepBottomViewController.swift */,
+				B51CE2272A929E8A00C65689 /* StepBottomReactor.swift */,
+			);
+			path = StepBottom;
+			sourceTree = "<group>";
+		};
 		B51CE22F2A92AC5600C65689 /* Router */ = {
 			isa = PBXGroup;
 			children = (
@@ -441,11 +454,10 @@
 			children = (
 				B5C3EAC02A84B1AA00D9577C /* MainViewController.swift */,
 				B58FB41B2A92049600105DBF /* MainReactor.swift */,
-				B510BBDE2A84895D009E5752 /* EstimationView.swift */,
 				B53E028D2A84BE5100F464FC /* StepNavigatorView.swift */,
-				B58FB4172A91FE6E00105DBF /* Router.swift */,
 				B58FB4192A91FEF200105DBF /* Step.swift */,
 				B51CE22F2A92AC5600C65689 /* Router */,
+				B51CE22E2A92AC3E00C65689 /* StepBottom */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -943,7 +955,7 @@
 				B53E028E2A84BE5100F464FC /* StepNavigatorView.swift in Sources */,
 				B56A765C2A83EC5200F7E3EF /* Preview.swift in Sources */,
 				B58FB41C2A92049600105DBF /* MainReactor.swift in Sources */,
-				B510BBDF2A84895D009E5752 /* EstimationView.swift in Sources */,
+				B510BBDF2A84895D009E5752 /* StepBottomView.swift in Sources */,
 				B53C3C442A85483F0019ECA1 /* EngineView.swift in Sources */,
 				B5BBB3512A89C7BF00AAFC84 /* Interior.swift in Sources */,
 				B500C77D2A8FC066007724F3 /* QuotationContentView.swift in Sources */,
@@ -953,6 +965,7 @@
 				B53BA1082A8BE6B9009F94BE /* OptionListCell.swift in Sources */,
 				B5C3EAC12A84B1AA00D9577C /* MainViewController.swift in Sources */,
 				B56F55D72A86BC7D0055E382 /* Trim.swift in Sources */,
+				B51CE2282A929E8A00C65689 /* StepBottomReactor.swift in Sources */,
 				B500C7812A8FCD5A007724F3 /* QuotationContentItemState.swift in Sources */,
 				B598A0852A8F297A00C4A591 /* QuotationViewController.swift in Sources */,
 				B52FC1CC2A90DAE00075D288 /* QuotationContentOptionItemState.swift in Sources */,
@@ -965,6 +978,7 @@
 				B5DD64F12A87833200B44F61 /* ExteriorViewController.swift in Sources */,
 				B53BA1122A8C0A8F009F94BE /* PaddingLabel.swift in Sources */,
 				B52FC1D22A90E3850075D288 /* Quotation+.swift in Sources */,
+				B51CE22C2A92AB7400C65689 /* StepBottomViewController.swift in Sources */,
 				B53C3C492A854AF50019ECA1 /* BasicStepView.swift in Sources */,
 				B5C079042A8BD33700747B11 /* ButtonStyleCell.swift in Sources */,
 				B5BBB3552A89C95200AAFC84 /* InteriorDTO.swift in Sources */,
