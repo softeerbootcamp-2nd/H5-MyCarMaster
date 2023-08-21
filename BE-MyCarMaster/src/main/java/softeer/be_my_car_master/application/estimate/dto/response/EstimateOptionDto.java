@@ -23,11 +23,15 @@ public class EstimateOptionDto {
 	@Schema(description = "옵션 이미지", example = "null")
 	private String imgUrl;
 
+	@Schema(description = "카테고리", example = "안전")
+	private String category;
+
 	public static EstimateOptionDto from(Option option) {
 		return EstimateOptionDto.builder()
 			.name(option.getName())
 			.price(option.getPrice())
 			.imgUrl(option.getImgUrl())
+			.category(option.getCategoryValue())
 			.build();
 	}
 }

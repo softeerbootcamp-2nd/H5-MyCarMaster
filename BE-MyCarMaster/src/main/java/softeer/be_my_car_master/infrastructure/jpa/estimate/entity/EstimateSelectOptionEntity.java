@@ -15,11 +15,11 @@ import softeer.be_my_car_master.domain.option.Option;
 import softeer.be_my_car_master.infrastructure.jpa.option.entity.OptionEntity;
 
 @Entity
-@Table(name = "estimate_additional_option")
+@Table(name = "estimate_select_option")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class EstimateAdditionalOptionEntity {
+public class EstimateSelectOptionEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,17 +30,17 @@ public class EstimateAdditionalOptionEntity {
 	private EstimateEntity estimate;
 
 	@ManyToOne
-	@JoinColumn(name = "estimate_additional_option_id")
-	private OptionEntity estimateAdditionalOption;
+	@JoinColumn(name = "estimate_select_option_id")
+	private OptionEntity estimateSelectOption;
 
-	public static EstimateAdditionalOptionEntity create(EstimateEntity estimateEntity, OptionEntity optionEntity) {
-		return EstimateAdditionalOptionEntity.builder()
+	public static EstimateSelectOptionEntity create(EstimateEntity estimateEntity, OptionEntity optionEntity) {
+		return EstimateSelectOptionEntity.builder()
 			.estimate(estimateEntity)
-			.estimateAdditionalOption(optionEntity)
+			.estimateSelectOption(optionEntity)
 			.build();
 	}
 
 	public Option toOption() {
-		return estimateAdditionalOption.toEstimateOption();
+		return estimateSelectOption.toEstimateOption();
 	}
 }
