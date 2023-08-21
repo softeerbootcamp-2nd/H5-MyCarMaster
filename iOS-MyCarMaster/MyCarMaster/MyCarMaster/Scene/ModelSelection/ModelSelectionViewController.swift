@@ -84,11 +84,17 @@ final class ModelSelectionViewController: UIViewController {
         configureLayout()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationItem.largeTitleDisplayMode = .always
+        navigationController?.setLargeTitleStyle(.headlineSmall(nil))
+        navigationItem.title = "모델을 선택해주세요"
+    }
+
     private func configureUI() {
         view.backgroundColor = .MCM.white
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.title = "모델을 선택해주세요"
-        navigationController?.setLargeTitleStyle(.headlineSmall(nil))
         startButton.addTarget(self, action: #selector(nextButtonDidTap), for: .touchUpInside)
     }
 
