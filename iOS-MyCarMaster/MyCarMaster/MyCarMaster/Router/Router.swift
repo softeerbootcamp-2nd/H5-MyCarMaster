@@ -23,19 +23,23 @@ final class Router {
         self.stepRouter = StepRouter(entryStep: .trim)
     }
 
-    func presentOnboarding() {
+    func start() {
+        showOnboarding()
+    }
+
+    func showOnboarding() {
         let onboardingViewController = OnboardingViewController(router: self)
         window?.rootViewController = onboardingViewController
     }
 
-    func presentModelSelection() {
+    func showModelSelection() {
         let rootViewControlller = ModelSelectionViewController(router: self)
         let navigationController = UINavigationController(rootViewController: rootViewControlller)
         window?.rootViewController = navigationController
         self.navigationController = navigationController
     }
 
-    func pushStepContainer() {
+    func showStepContainer() {
         let stepContainer = resolveStepContainer()
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.navigationItem.largeTitleDisplayMode = .never

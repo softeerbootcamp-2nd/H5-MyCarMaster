@@ -74,7 +74,7 @@ final class ModelSelectionViewController: UIViewController {
 
     @objc
     private func nextButtonDidTap() {
-        router?.pushStepContainer()
+        router?.showStepContainer()
     }
 
     override func viewDidLoad() {

@@ -44,7 +44,6 @@ final class OnboardingViewController: UIViewController {
 
     @objc
     func startButtonDidTap(_ sender: UIButton) {
-        // TODO: Routing 레이어에서 RootViewController 교체
-        router?.presentModelSelection()
+        router?.showModelSelection()
     }
 }
