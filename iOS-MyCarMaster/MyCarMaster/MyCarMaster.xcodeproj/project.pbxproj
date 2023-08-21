@@ -35,7 +35,6 @@
 		B52FC1B42A90920D0075D288 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B52FC1B22A90920D0075D288 /* LaunchScreen.storyboard */; };
 		B52FC1C22A90AE6A0075D288 /* MCMResource.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B52FC1C02A90AE6A0075D288 /* MCMResource.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B52FC1C62A90B7210075D288 /* PaddingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1C52A90B7210075D288 /* PaddingButton.swift */; };
-		B52FC1C82A90B7A20075D288 /* PaddingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1C52A90B7210075D288 /* PaddingButton.swift */; };
 		B52FC1CA2A90D90A0075D288 /* QuotationContentOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1C92A90D90A0075D288 /* QuotationContentOptionView.swift */; };
 		B52FC1CC2A90DAE00075D288 /* QuotationContentOptionItemState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1CB2A90DAE00075D288 /* QuotationContentOptionItemState.swift */; };
 		B52FC1CE2A90E0D20075D288 /* QuotationContentOptionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1CD2A90E0D20075D288 /* QuotationContentOptionItemView.swift */; };
@@ -576,10 +575,6 @@
 				B5DD65232A8935FB00B44F61 /* Protocol */,
 				B5C079072A8BD4FD00747B11 /* Selectable */,
 				B5DD65132A88F5C500B44F61 /* Cell */,
-				B53C3C482A854AF50019ECA1 /* BasicStepView.swift */,
-				B53BA1112A8C0A8F009F94BE /* PaddingLabel.swift */,
-				B52FC1C52A90B7210075D288 /* PaddingButton.swift */,
-				B550C0D42A8FF4440068670D /* SeparatorView.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -682,6 +677,10 @@
 		B5C56C002A93510F009F0226 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				B52FC1C52A90B7210075D288 /* PaddingButton.swift */,
+				B53BA1112A8C0A8F009F94BE /* PaddingLabel.swift */,
+				B53C3C482A854AF50019ECA1 /* BasicStepView.swift */,
+				B550C0D42A8FF4440068670D /* SeparatorView.swift */,
 				B5C56C012A935134009F0226 /* ThemeButton.swift */,
 			);
 			path = Component;
@@ -1091,7 +1090,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B52FC1AC2A90920C0075D288 /* ViewController.swift in Sources */,
-				B52FC1C82A90B7A20075D288 /* PaddingButton.swift in Sources */,
 				B52FC1A82A90920C0075D288 /* AppDelegate.swift in Sources */,
 				B52FC1AA2A90920C0075D288 /* SceneDelegate.swift in Sources */,
 			);
