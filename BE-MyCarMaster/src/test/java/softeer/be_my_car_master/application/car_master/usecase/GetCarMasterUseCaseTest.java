@@ -56,7 +56,8 @@ class GetCarMasterUseCaseTest {
 			.build();
 		carMaster.setAgency(agency);
 
-		given(port.findAgenciesAndCarMasters(any(), any())).willReturn(Arrays.asList(agency));
+		given(port.findAgenciesByLocation(any(), any())).willReturn(Arrays.asList(agency));
+		given(port.findCarMastersByAgenciesOrderBySales(any())).willReturn(Arrays.asList(carMaster));
 
 		// when
 		GetCarMasterResponse response = useCase.execute(32.1212, 127.1545);
