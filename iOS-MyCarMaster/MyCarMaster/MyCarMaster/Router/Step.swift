@@ -97,6 +97,8 @@ extension Step {
         switch self {
         case .quotation:
             return "카마스터 찾기"
+        case .option:
+            return "견적서 완성"
         default:
             return "다음"
         }
