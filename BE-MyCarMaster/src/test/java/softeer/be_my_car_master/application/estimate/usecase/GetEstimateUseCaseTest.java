@@ -18,7 +18,7 @@ import softeer.be_my_car_master.application.estimate.dto.response.EstimateBodyTy
 import softeer.be_my_car_master.application.estimate.dto.response.EstimateEngineDto;
 import softeer.be_my_car_master.application.estimate.dto.response.EstimateExteriorColorDto;
 import softeer.be_my_car_master.application.estimate.dto.response.EstimateInteriorColorDto;
-import softeer.be_my_car_master.application.estimate.dto.response.EstimateOptionDto;
+import softeer.be_my_car_master.application.estimate.dto.response.EstimateOptionResponseDto;
 import softeer.be_my_car_master.application.estimate.dto.response.EstimateTrimDto;
 import softeer.be_my_car_master.application.estimate.dto.response.EstimateWheelDriveDto;
 import softeer.be_my_car_master.application.estimate.dto.response.GetEstimateResponse;
@@ -106,10 +106,10 @@ public class GetEstimateUseCaseTest {
 		EstimateBodyTypeDto bodyTypeExpected = response.getBodyType();
 		EstimateExteriorColorDto exteriorColorExpected = response.getExteriorColor();
 		EstimateInteriorColorDto interiorColorExpected = response.getInteriorColor();
-		List<EstimateOptionDto> selectedOptionDtos = response.getSelectOptions();
-		EstimateOptionDto selectOptionExpected = selectedOptionDtos.get(0);
-		List<EstimateOptionDto> considerOptionDtos = response.getConsiderOptions();
-		EstimateOptionDto considerOptionExpected = considerOptionDtos.get(0);
+		List<EstimateOptionResponseDto> selectedOptionDtos = response.getSelectOptions();
+		EstimateOptionResponseDto selectOptionExpected = selectedOptionDtos.get(0);
+		List<EstimateOptionResponseDto> considerOptionDtos = response.getConsiderOptions();
+		EstimateOptionResponseDto considerOptionExpected = considerOptionDtos.get(0);
 
 		SoftAssertions.assertSoftly(softAssertions -> {
 			softAssertions.assertThat(selectedOptionDtos).isNotNull();

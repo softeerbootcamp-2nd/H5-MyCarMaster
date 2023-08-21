@@ -10,14 +10,16 @@ import org.hibernate.validator.constraints.Range;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
+@Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class CreateEstimateRequest {
 
 	@Schema(description = "모델 식별자", example = "1")
@@ -86,14 +88,14 @@ public class CreateEstimateRequest {
 	private Integer interiorColorPrice;
 
 	@Valid
-	private List<EstimateOptionDto> selectOptions;
+	private List<EstimateOptionRequestDto> selectOptions;
 
 	@Schema(description = "선택 옵션 가격", example = "100000")
 	@Range(min = 0, max = 2000000000, message = "additionalOptionPrice는 0 이상 ~ 2,000,000,000 이하의 값입니다.")
 	private Integer selectOptionPrice;
 
 	@Valid
-	private List<EstimateOptionDto> considerOptions;
+	private List<EstimateOptionRequestDto> considerOptions;
 
 	@Schema(description = "전체 가격", example = "100000")
 	@NotNull(message = "totalPrice는 Null일 수 없습니다.")

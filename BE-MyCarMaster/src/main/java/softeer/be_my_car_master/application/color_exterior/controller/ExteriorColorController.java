@@ -25,8 +25,7 @@ public class ExteriorColorController {
 	@GetMapping("/exterior-colors")
 	@Operation(summary = "트림에서 선택가능한 외장 색상 목록을 반환합니다")
 	public Response<GetExteriorColorsResponse> getExteriorColors(
-		@Valid @ParameterObject GetExteriorColorsRequest request,
-		BindingResult bindingResult
+		@Valid @ParameterObject GetExteriorColorsRequest request
 	) {
 		Long trimId = request.getTrimId();
 		GetExteriorColorsResponse response = getExteriorColorsUseCase.execute(trimId);

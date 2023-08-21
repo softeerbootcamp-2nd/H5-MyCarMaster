@@ -25,8 +25,7 @@ public class RepresentativeOptionController {
 	@GetMapping("/options/representative")
 	@Operation(summary = "모델의 대표 옵션 9가지를 리턴합니다.")
 	public Response<GetRepresentativeOptionsResponse> getRepresentativeOptions(
-		@Valid @ParameterObject GetRepresentativeOptionsRequest request,
-		BindingResult bindingResult
+		@Valid @ParameterObject GetRepresentativeOptionsRequest request
 	) {
 		Long modelId = request.getModelId();
 

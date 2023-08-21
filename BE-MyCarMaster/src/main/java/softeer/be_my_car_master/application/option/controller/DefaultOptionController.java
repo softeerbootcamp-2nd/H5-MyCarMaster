@@ -29,8 +29,7 @@ public class DefaultOptionController {
 	@GetMapping("/options/default")
 	@Operation(summary = "트림, 엔진, 구동 방식, 바디 타입에 해당하는 기본 옵션 목록을 반환합니다")
 	public Response<GetDefaultOptionsResponse> getDefaultOptions(
-		@Valid @ParameterObject GetDefaultOptionsRequest request,
-		BindingResult bindingResult
+		@Valid @ParameterObject GetDefaultOptionsRequest request
 	) {
 		Long trimId = request.getTrimId();
 		Long engineId = request.getEngineId();
@@ -52,5 +51,4 @@ public class DefaultOptionController {
 		GetTrimDefaultOptionsResponse response = getTrimDefaultOptionsUseCase.execute(trimId);
 		return Response.createSuccessResponse(response);
 	}
-
 }
