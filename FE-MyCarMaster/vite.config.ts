@@ -26,44 +26,9 @@ export default defineConfig({
         replacement: path.resolve(__dirname, "src/constants"),
       },
       { find: "@types", replacement: path.resolve(__dirname, "src/types") },
-
-      // layout views
       {
-        find: "@layout_home",
-        replacement: path.resolve(__dirname, "src/components/Home"),
-      },
-      {
-        find: "@layout_header",
-        replacement: path.resolve(__dirname, "src/components/Header"),
-      },
-      {
-        find: "@layout_footer",
-        replacement: path.resolve(__dirname, "src/components/Footer"),
-      },
-      {
-        find: "@layout_main",
-        replacement: path.resolve(__dirname, "src/components/Main"),
-      },
-
-      // common components
-      {
-        find: "@common_button",
-        replacement: path.resolve(__dirname, "src/components/common/Button"),
-      },
-      {
-        find: "@common_category",
-        replacement: path.resolve(
-          __dirname,
-          "src/components/common/CategoryList"
-        ),
-      },
-      {
-        find: "@common_modals",
-        replacement: path.resolve(__dirname, "src/components/common/modals"),
-      },
-      {
-        find: "@common_option_box",
-        replacement: path.resolve(__dirname, "src/components/common/OptionBox"),
+        find: "@layout",
+        replacement: path.resolve(__dirname, "src/components"),
       },
     ],
   },

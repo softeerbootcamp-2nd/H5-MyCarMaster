@@ -17,14 +17,7 @@
       "@contexts/*": ["contexts/*"],
       "@constants/*": ["constants/*"],
       "@types/*": ["types/*"],
-      "@layout_home/*": ["components/Home/*"],
-      "@layout_header/*": ["components/Header/*"],
-      "@layout_footer/*": ["components/Footer/*"],
-      "@layout_main/*": ["components/Main/*"],
-      "@common_button/*": ["components/common/Button/*"],
-      "@common_category/*": ["components/common/CategoryList/*"],
-      "@common_modals/*": ["components/common/Modals/*"],
-      "@common_option_box/*": ["components/common/OptionBox/*"],
+      "@layout/*": ["components/*"]
     },
 
     /* Bundler mode */

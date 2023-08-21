@@ -10,9 +10,7 @@ import { OptionProvider } from "@contexts/OptionContext";
 import { QuotationProvider } from "@contexts/QuotationContext";
 import theme from "@styles/Theme";
 
-import Home from "@pages/Home";
-import Estimation from "@pages/Estimation";
-import Quotation from "@pages/Quotation";
+import { Home, Estimation, Quotation } from "@pages/index";
 
 type ContextProvider = React.ComponentType<{ children: React.ReactNode }>;
 
