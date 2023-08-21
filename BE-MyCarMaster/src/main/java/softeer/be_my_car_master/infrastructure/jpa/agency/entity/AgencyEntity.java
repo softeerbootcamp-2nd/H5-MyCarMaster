@@ -38,9 +38,6 @@ public class AgencyEntity {
 	@Column(name = "gu", nullable = false)
 	private String gu;
 
-	@OneToMany(mappedBy = "agency")
-	private List<CarMasterEntity> carMasterEntities;
-
 	public Agency toAgency() {
 		return Agency.builder()
 			.id(id)
