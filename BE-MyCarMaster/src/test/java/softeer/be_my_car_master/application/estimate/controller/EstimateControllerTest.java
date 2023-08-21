@@ -33,6 +33,7 @@ import softeer.be_my_car_master.application.estimate.dto.response.EstimateWheelD
 import softeer.be_my_car_master.application.estimate.dto.response.GetEstimateResponse;
 import softeer.be_my_car_master.application.estimate.usecase.create_estimate.CreateEstimateUseCase;
 import softeer.be_my_car_master.application.estimate.usecase.get_estimate.GetEstimateUseCase;
+import softeer.be_my_car_master.domain.option.Category;
 import softeer.be_my_car_master.global.response.Response;
 
 @WebMvcTest(EstimateController.class)
@@ -91,7 +92,6 @@ public class EstimateControllerTest {
 			Response successResponse = Response.createSuccessResponse(response);
 			String responseBody = objectMapper.writeValueAsString(successResponse);
 
-
 			//when
 			ResultActions perform = mockMvc.perform(
 				post("/estimates")
@@ -115,7 +115,7 @@ public class EstimateControllerTest {
 		@DisplayName("견적서를 조회합니다")
 		void getEstimate() throws Exception {
 			//given
-			GetEstimateResponse response = new GetEstimateResponse();
+			GetEstimateResponse getEstimateResponse = new GetEstimateResponse();
 			EstimateTrimDto trim = EstimateTrimDto.builder()
 				.name("트림")
 				.price(10000)
@@ -147,12 +147,12 @@ public class EstimateControllerTest {
 				.name("옵션")
 				.price(10000)
 				.imgUrl("img url")
+				.category(Category.SAFE.getValue())
 				.build();
 
+			given(getEstimateUseCase.execute(any())).willReturn(getEstimateResponse);
 
-			given(getEstimateUseCase.execute(any())).willReturn(response);
-
-			Response successResponse = Response.createSuccessResponse(response);
+			Response successResponse = Response.createSuccessResponse(getEstimateResponse);
 			String responseBody = objectMapper.writeValueAsString(successResponse);
 
 			//when

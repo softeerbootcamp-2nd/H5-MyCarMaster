@@ -29,6 +29,7 @@ import softeer.be_my_car_master.domain.color_exterior.ExteriorColor;
 import softeer.be_my_car_master.domain.color_interior.InteriorColor;
 import softeer.be_my_car_master.domain.engine.Engine;
 import softeer.be_my_car_master.domain.estimate.Estimate;
+import softeer.be_my_car_master.domain.option.Category;
 import softeer.be_my_car_master.domain.option.Option;
 import softeer.be_my_car_master.domain.trim.Trim;
 import softeer.be_my_car_master.domain.wheel_dirve.WheelDrive;
@@ -78,6 +79,7 @@ public class GetEstimateUseCaseTest {
 			.name("옵션")
 			.price(10000)
 			.imgUrl("img url")
+			.category(Category.SAFE)
 			.build();
 		Estimate estimate = Estimate.builder()
 			.id(1L)
@@ -105,7 +107,7 @@ public class GetEstimateUseCaseTest {
 		EstimateExteriorColorDto exteriorColorExpected = response.getExteriorColor();
 		EstimateInteriorColorDto interiorColorExpected = response.getInteriorColor();
 		List<EstimateOptionResponseDto> selectedOptionDtos = response.getSelectOptions();
-		EstimateOptionResponseDto additionalOptionExpected = selectedOptionDtos.get(0);
+		EstimateOptionResponseDto selectOptionExpected = selectedOptionDtos.get(0);
 		List<EstimateOptionResponseDto> considerOptionDtos = response.getConsiderOptions();
 		EstimateOptionResponseDto considerOptionExpected = considerOptionDtos.get(0);
 
@@ -127,10 +129,14 @@ public class GetEstimateUseCaseTest {
 			softAssertions.assertThat(exteriorColorExpected.getPrice()).isEqualTo(exteriorColor.getPrice());
 			softAssertions.assertThat(interiorColorExpected.getName()).isEqualTo(interiorColor.getName());
 			softAssertions.assertThat(interiorColorExpected.getPrice()).isEqualTo(interiorColor.getPrice());
-			softAssertions.assertThat(additionalOptionExpected.getName()).isEqualTo(option.getName());
-			softAssertions.assertThat(additionalOptionExpected.getPrice()).isEqualTo(option.getPrice());
+			softAssertions.assertThat(selectOptionExpected.getName()).isEqualTo(option.getName());
+			softAssertions.assertThat(selectOptionExpected.getPrice()).isEqualTo(option.getPrice());
+			softAssertions.assertThat(selectOptionExpected.getImgUrl()).isEqualTo(option.getImgUrl());
+			softAssertions.assertThat(selectOptionExpected.getCategory()).isEqualTo(option.getCategoryValue());
 			softAssertions.assertThat(considerOptionExpected.getName()).isEqualTo(option.getName());
 			softAssertions.assertThat(considerOptionExpected.getPrice()).isEqualTo(option.getPrice());
+			softAssertions.assertThat(considerOptionExpected.getImgUrl()).isEqualTo(option.getImgUrl());
+			softAssertions.assertThat(considerOptionExpected.getCategory()).isEqualTo(option.getCategoryValue());
 		});
 
 	}

@@ -1,4 +1,4 @@
-package softeer.be_my_car_master.application.agency;
+package softeer.be_my_car_master.application.agency.controller;
 
 import static org.mockito.BDDMockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -11,18 +11,22 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import softeer.be_my_car_master.application.agency.controller.AgencyController;
 import softeer.be_my_car_master.application.agency.dto.response.AgencyInGuDto;
 import softeer.be_my_car_master.application.agency.dto.response.GetAgenciesResponse;
 import softeer.be_my_car_master.application.agency.usecase.get_agencies.GetAgenciesUseCase;
+import softeer.be_my_car_master.global.exception.BindingAdvice;
 import softeer.be_my_car_master.global.response.Response;
 
 @WebMvcTest(AgencyController.class)
+@EnableAspectJAutoProxy
+@Import(BindingAdvice.class)
 @DisplayName("Agency Controller Test")
 class AgencyControllerTest {
 

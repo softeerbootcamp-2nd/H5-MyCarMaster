@@ -12,6 +12,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -22,10 +24,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import softeer.be_my_car_master.application.color_interior.dto.response.GetInteriorColorsResponse;
 import softeer.be_my_car_master.application.color_interior.dto.response.InteriorColorDto;
 import softeer.be_my_car_master.application.color_interior.usecase.get_interior_colors.GetInteriorColorsUseCase;
+import softeer.be_my_car_master.global.exception.BindingAdvice;
 import softeer.be_my_car_master.global.response.Response;
 import softeer.be_my_car_master.global.response.ResponseStatus;
 
 @WebMvcTest(InteriorColorController.class)
+@EnableAspectJAutoProxy
+@Import(BindingAdvice.class)
 @DisplayName("Interior Color Controller Test")
 class InteriorColorControllerTest {
 
