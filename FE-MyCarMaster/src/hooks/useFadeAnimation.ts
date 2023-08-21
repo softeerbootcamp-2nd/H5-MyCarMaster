@@ -1,29 +1,34 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, CSSProperties } from "react";
+import "./keyframe.css";
 
-export type FadeAnimationType = {
-  opacity: number;
-  transition: string;
+type AnimationProps = {
+  style: CSSProperties;
+  onAnimationEnd: () => void;
 };
 
-function useFadeAnimation(isVisible: number, duration: number = 300) {
-  const [opacity, setOpacity] = useState(isVisible ? 1 : 0);
+function useFadeAnimation(initial: boolean = false): [boolean, (value: boolean) => void, AnimationProps, AnimationProps] {
+  const [show, setShow] = useState<boolean>(initial);
+  const [isVisible, setVisible] = useState<boolean>(show);
 
   useEffect(() => {
-    if (isVisible) {
-      setOpacity(1);
-    } else {
-      const timer = setTimeout(() => {
-        setOpacity(0);
-      }, duration);
+    if (show) setVisible(true);
+  }, [show]);
 
-      return () => clearTimeout(timer);
-    }
-  }, [isVisible, duration]);
-
-  return {
-    opacity,
-    transition: `opacity ${duration}ms`,
+  const fromProps: AnimationProps = {
+    style: { animation: `${show ? "fadeIn" : "fadeOut"} 1s` },
+    onAnimationEnd: () => {
+      if (!show) setVisible(false);
+    },
   };
+
+  const toProps: AnimationProps = {
+    style: { animation: `${show ? "fadeOut" : "fadeIn"} 1s` },
+    onAnimationEnd: () => {
+      if (show) setVisible(true);
+    },
+  };
+
+  return [isVisible, setShow, fromProps, toProps];
 }
 
 export default useFadeAnimation;
