@@ -31,10 +31,7 @@ public class OptionController {
 
 	@GetMapping("/options")
 	@Operation(summary = "트림, 엔진, 구동 방식, 바디 타입, 내장 색상에서 선택 가능한 옵션 목록을 반환합니다")
-	public Response<GetOptionsResponse> getOptions(
-		@Valid @ParameterObject GetOptionsRequest request,
-		BindingResult bindingResult
-	) {
+	public Response<GetOptionsResponse> getOptions(@Valid @ParameterObject GetOptionsRequest request) {
 		Long trimId = request.getTrimId();
 		Long engineId = request.getEngineId();
 		Long wheelDriveId = request.getWheelDriveId();
@@ -50,8 +47,7 @@ public class OptionController {
 	@Operation(summary = "엔진 변경 시도시 기존에 선택된 옵션들 중 변경하려는 엔진에서 선택 불가능한 옵션 목록을 반환합니다.")
 	public Response<GetUnselectableOptionsByEngineResponse> getUnselectableOptionsByEngine(
 		@PathVariable Long engineId,
-		@Valid @ParameterObject GetUnselectableOptionsByEngineRequest request,
-		BindingResult bindingResult
+		@Valid @ParameterObject GetUnselectableOptionsByEngineRequest request
 	) {
 		Long trimId = request.getTrimId();
 		List<Long> optionIds = request.getOptionIds();

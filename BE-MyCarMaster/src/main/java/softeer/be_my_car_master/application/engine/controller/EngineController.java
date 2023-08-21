@@ -24,10 +24,7 @@ public class EngineController {
 
 	@GetMapping("/engines")
 	@Operation(summary = "트림에 따른 엔진 목록을 반환합니다")
-	public Response<GetEnginesResponse> getEngines(
-		@Valid @ParameterObject GetEnginesRequest request,
-		BindingResult bindingResult
-	) {
+	public Response<GetEnginesResponse> getEngines(@Valid @ParameterObject GetEnginesRequest request) {
 		Long trimId = request.getTrimId();
 		GetEnginesResponse response = getEnginesUseCase.execute(trimId);
 		return Response.createSuccessResponse(response);
