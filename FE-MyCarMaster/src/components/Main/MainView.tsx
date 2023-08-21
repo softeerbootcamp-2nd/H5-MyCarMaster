@@ -8,7 +8,7 @@ function MainView() {
       <MainContent>
         <MainWrapper />
       </MainContent>
-      <NavigationList />
+      <NavigationList confirm={false} />
     </Container>
   );
 }
