@@ -34,10 +34,16 @@ final class TrimReactor: Reactor {
 
     let initialState: State
     weak var estimationManager: EstimationManageable?
+    weak var stepNetworkProvider: NetworkProvider<StepTarget>?
 
-    internal init(initialState: TrimReactor.State, estimationManager: EstimationManageable?) {
+    internal init(
+        initialState: TrimReactor.State,
+        estimationManager: EstimationManageable?,
+        stepNetworkProvider: NetworkProvider<StepTarget>?
+    ) {
         self.initialState = initialState
         self.estimationManager = estimationManager
+        self.stepNetworkProvider = stepNetworkProvider
     }
 
     func mutate(action: Action) -> AnyPublisher<Mutation, Never> {
@@ -103,13 +109,17 @@ extension TrimReactor {
     }
 
     private func fetchTrimListFromNetwork() -> AnyPublisher<Mutation, Never> {
-        guard let url = URL(string: Dependency.serverURL + "trims?modelID=1") else {
-            fatalError("개발자 오류: URL이 유효하지 않습니다.")
+        guard let stepNetworkProvider else {
+            fatalError("개발자 오류: StepProvider가 존재하지 않음")
         }
 
-        return URLSession.shared.dataTaskPublisher(for: url)
+        guard let modelId = estimationManager?.estimation.model?.id else {
+            return Just(Mutation.alertError("잘못된 접근 경로입니다: 모델을 선택하지 않았습니다."))
+                .eraseToAnyPublisher()
+        }
+
+        return stepNetworkProvider.requestPublisher(.fetchTrim(modelId: modelId))
             .retry(1)
-            .eraseToAnyPublisher()
             .tryMap({ element -> Data in
                 guard let httpResponse = element.response as? HTTPURLResponse,
                       httpResponse.statusCode == 200 else {

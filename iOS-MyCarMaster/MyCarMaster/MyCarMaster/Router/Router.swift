@@ -8,6 +8,8 @@
 import Combine
 import UIKit
 
+import MCMNetwork
+
 final class Router {
 
     typealias Estimation = Quotation
@@ -16,11 +18,17 @@ final class Router {
     private weak var navigationController: UINavigationController?
     private let estimationManager: EstimationManager
     private let stepRouter: StepRouter
+    private let stepNetworkProvider: NetworkProvider<StepTarget>
 
     init(window: UIWindow?, initialEstimation: Estimation) {
         self.window = window
         self.estimationManager = EstimationManager(estimation: initialEstimation)
-        self.stepRouter = StepRouter(entryStep: .trim, estimationManager: estimationManager)
+        self.stepNetworkProvider = NetworkProvider<StepTarget>()
+        self.stepRouter = StepRouter(
+            entryStep: .trim,
+            estimationManager: estimationManager,
+            stepNetworkProvider: stepNetworkProvider
+        )
     }
 
     func start() {
