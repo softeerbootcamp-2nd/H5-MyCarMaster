@@ -18,7 +18,7 @@ public protocol NetworkProviderType: AnyObject {
     ///   - target: Entity, which provides specifications necessary for a `NetworkProvider`.
     ///   - callbackQueue: Callback queue. If nil - queue from provider initializer will be used.
     /// - Returns: `AnyPublisher<NetworkResponse, NetworkError>`
-    func requestPublisher(_ target: Target, callbackQueue: DispatchQueue?) -> AnyPublisher<TaskOutput, URLError>
+    func requestPublisher(_ target: Target, callbackQueue: DispatchQueue?) -> AnyPublisher<TaskOutput, NetworkError>
 }
 
 public class NetworkProvider<Target: TargetType>: NetworkProviderType {
@@ -57,19 +57,30 @@ public class NetworkProvider<Target: TargetType>: NetworkProviderType {
     }
     
     // TODO: 오류에 대한 처리가 많이 필요
-    public func requestPublisher(_ target: Target, callbackQueue: DispatchQueue? = nil) -> AnyPublisher<TaskOutput, URLError> {
+    public func requestPublisher(_ target: Target, callbackQueue: DispatchQueue? = nil) -> AnyPublisher<TaskOutput, NetworkError> {
         return Just((session, target))
+            .setFailureType(to: NetworkError.self)
             .map { ($0.0, endpointClosure($0.1)) }
             .tryMap { try ($0.0, $0.1.urlRequest()) }
             .mapError({ error in
-                return URLError.init(.unknown)
+                if let error = error as? NetworkError { return error }
+                else { return NetworkError.unknown(errorMessage: error.localizedDescription) }
+
             })
             .flatMap { session, urlRequest in
                 switch target.task {
                 case .requestPlain, .requestData, .requestParameters:
-                    return session.dataTaskPublisher(for: urlRequest).eraseToAnyPublisher()
+                    return session.dataTaskPublisher(for: urlRequest)
+                        .mapError({ error in
+                            return NetworkError.unknown(errorMessage: error.localizedDescription)
+                        })
+                        .eraseToAnyPublisher()
                 case .downloadContent:
-                    return session.downloadTaskPublisher(for: urlRequest).eraseToAnyPublisher()
+                    return session.downloadTaskPublisher(for: urlRequest)
+                        .mapError({ error in
+                            return NetworkError.unknown(errorMessage: error.localizedDescription)
+                        })
+                        .eraseToAnyPublisher()
                 }
             }
             .eraseToAnyPublisher()
