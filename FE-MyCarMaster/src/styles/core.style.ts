@@ -4,6 +4,7 @@ export interface FlexProps {
   $flexDirection?: "row" | "column";
   $width?: string;
   $height?: string;
+  $maxHeight?: string;
   $padding?: string;
   $position?: "relative" | "absolute";
   $margin?: string;
@@ -26,6 +27,7 @@ export const Flex = styled.div<FlexProps>`
   flex-direction: ${(props) => props.$flexDirection || "row"};
   width: ${(props) => props.$width || "100%"};
   height: ${(props) => props.$height || "100%"};
+  max-height: ${(props) => props.$maxHeight || "100%"};
   padding: ${(props) => props.$padding || "0"};
   margin: ${(props) => props.$margin || "0"};
   justify-content: ${(props) => props.$justifyContent || "flex-start"};

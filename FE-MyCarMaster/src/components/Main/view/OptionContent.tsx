@@ -15,6 +15,7 @@ interface FetchOptionsProps extends OptionType {
     options: OptionType[];
   };
 }
+
 export default function OptionContent() {
   const { optionList, optionId }: OptionState = useOptionState();
   const optionDispatch = useOptionDispatch();
@@ -81,6 +82,7 @@ export default function OptionContent() {
     target.style.animation = "1s hover_image_full ease-in-out forwards";
   };
 
+  const windowHeight = window.innerHeight;
   return (
     optionList?.length !== 0 && (
       <Flex
@@ -88,8 +90,10 @@ export default function OptionContent() {
         $justifyContent="flex-end"
         $alignItems="flex-start"
         $gap="5%"
+        $overflow="hidden"
       >
         <Flex
+          $maxHeight={windowHeight <= 950 ? "25rem" : ""}
           $justifyContent="space-between"
           $alignItems="flex-start"
           $gap="1rem"
