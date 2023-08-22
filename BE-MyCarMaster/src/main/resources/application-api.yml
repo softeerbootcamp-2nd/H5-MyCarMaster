@@ -35,7 +35,11 @@ management:
   endpoints:
     web:
       exposure:
-        include: ["prometheus"]
+        include: ["prometheus", "logfile"]
+  endpoint:
+    logfile:
+      external-file: /logs/h5.log
+
 
 ---
 spring:
