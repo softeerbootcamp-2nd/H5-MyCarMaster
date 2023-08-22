@@ -105,5 +105,19 @@ extension TrimViewController: Reactable {
                 self?.dataSource.apply(snapshot)
             }
             .store(in: &cancellables)
+
+        reactor.state.compactMap(\.errorDescription)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] errorDescription in
+                let alert = UIAlertController(
+                    title: "에러",
+                    message: errorDescription,
+                    preferredStyle: .alert
+                )
+                alert.addAction(.init(title: "확인", style: .default))
+                print(errorDescription)
+                self?.present(alert, animated: false)
+            }
+            .store(in: &cancellables)
     }
 }
