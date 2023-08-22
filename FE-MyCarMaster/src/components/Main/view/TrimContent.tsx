@@ -1,10 +1,10 @@
-import styled from "styled-components";
-import { useTrimDispatch, useTrimState } from "../../../contexts/TrimContext";
-import { useQuotationDispatch } from "../../../contexts/QuotationContext";
-import { Trims } from "../../../types/trim.types";
-import useFetch from "../../../hooks/useFetch";
-import { useModelState } from "../../../contexts/ModelContext";
 import { useEffect } from "react";
+import { Flex, Image } from "@styles/core.style";
+import { useTrimDispatch, useTrimState } from "@contexts/TrimContext";
+import { useQuotationDispatch } from "@contexts/QuotationContext";
+import { useModelState } from "@contexts/ModelContext";
+import { Trims } from "types/trim.types";
+import useFetch from "@hooks/useFetch";
 
 interface FetchTrimsProps extends Trims {
   result: {
@@ -12,7 +12,7 @@ interface FetchTrimsProps extends Trims {
   };
 }
 
-function TrimContent() {
+export default function TrimContent() {
   const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 
   const { modelId } = useModelState();
@@ -45,15 +45,16 @@ function TrimContent() {
 
   if (!trimList?.length) return null;
 
-  return trimList?.length && <TrimImage src={trimList[trimId - 1].imgUrl} />;
+  return (
+    <Flex $justifyContent="flex-start" $alignItems="center">
+      {trimList?.length && (
+        <Image
+          $objectFit="contain"
+          $height="25rem"
+          $margin="0"
+          src={trimList[trimId - 1].imgUrl}
+        />
+      )}
+    </Flex>
+  );
 }
-
-const TrimImage = styled.img`
-  width: 100%;
-  min-width: 40rem;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-`;
-
-export default TrimContent;
