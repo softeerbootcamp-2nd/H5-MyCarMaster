@@ -38,11 +38,12 @@ final class TrimViewController: UIViewController {
             if let selectedTrim = self?.selectedTrim {
                 if selectedTrim == itemIdentifier {
                     collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
-
-    var selectedCellIndexPath: IndexPath = IndexPath(row: 0, section: 0) {
+                    // 원래는 delegate에서 처리해줘야하나, 버그로 인해 delegate로 메시지가 전달되지 않아, 여기에서 처리함.
+                    self?.reactor?.action.send(.trimDidSelect(itemIdentifier))
                 }
             } else if indexPath.row == 0 {
                 collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
+                self?.reactor?.action.send(.trimDidSelect(itemIdentifier))
             }
             return cell
         })

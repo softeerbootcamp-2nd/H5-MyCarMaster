@@ -45,10 +45,16 @@ final class TrimReactor: Reactor {
         case let .trimDidSelect(trim):
             return [
                 updateTrim(trim),
+                fetchSelectedTrim()
             ].concatenate()
         case .viewDidLoad:
             return [
+                fetchSelectedTrim(),
+                Just(Mutation.setLoading(true))
+                    .eraseToAnyPublisher(),
                 fetchTrimList(),
+                Just(Mutation.setLoading(false))
+                    .eraseToAnyPublisher(),
             ].concatenate()
         }
     }
