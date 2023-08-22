@@ -21,6 +21,7 @@
 		B52955432A7B7B4C00BEDDE7 /* Font+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52955422A7B7B4C00BEDDE7 /* Font+Generated.swift */; };
 		B52955482A7B7D7900BEDDE7 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B52955472A7B7D7900BEDDE7 /* Color.xcassets */; };
 		B529554A2A7B7DC400BEDDE7 /* Color+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52955492A7B7DC400BEDDE7 /* Color+Generated.swift */; };
+		B55283F02A926C4300E68744 /* UINavigationController+TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55283EF2A926C4300E68744 /* UINavigationController+TextStyle.swift */; };
 		B5F909C62A83DC1F009C2075 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F909C52A83DC1F009C2075 /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		B52955422A7B7B4C00BEDDE7 /* Font+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Font+Generated.swift"; path = "../../../../../../../../문서 - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/MCMResource/MCMResource/Generated/Font+Generated.swift"; sourceTree = "<group>"; };
 		B52955472A7B7D7900BEDDE7 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		B52955492A7B7DC400BEDDE7 /* Color+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Color+Generated.swift"; path = "../../../../../../../../문서 - MacBook Pro 16 SM/Workspace/Softeer/H5-MyCarMaster/iOS-MyCarMaster/MCMResource/MCMResource/Generated/Color+Generated.swift"; sourceTree = "<group>"; };
+		B55283EF2A926C4300E68744 /* UINavigationController+TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+TextStyle.swift"; sourceTree = "<group>"; };
 		B5F909C52A83DC1F009C2075 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,6 +62,7 @@
 			children = (
 				B524A5942A8369450095F0E2 /* UILabel+TextStyle.swift */,
 				B524A5972A8369900095F0E2 /* UIButton+TextStyle.swift */,
+				B55283EF2A926C4300E68744 /* UINavigationController+TextStyle.swift */,
 				B5F909C52A83DC1F009C2075 /* UIColor+Extension.swift */,
 			);
 			path = "UIKit+Extension";
@@ -219,6 +222,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		B52955332A7B78DF00BEDDE7 /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -249,6 +253,7 @@
 				B529554A2A7B7DC400BEDDE7 /* Color+Generated.swift in Sources */,
 				B524A5892A8336B40095F0E2 /* TextStyle.swift in Sources */,
 				B524A5982A8369900095F0E2 /* UIButton+TextStyle.swift in Sources */,
+				B55283F02A926C4300E68744 /* UINavigationController+TextStyle.swift in Sources */,
 				B5F909C62A83DC1F009C2075 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

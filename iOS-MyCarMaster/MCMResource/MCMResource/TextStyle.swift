@@ -15,13 +15,15 @@ public struct TextStyle {
     public let kern: CGFloat?
     public let alignment: NSTextAlignment?
     public let lineBreakMode: NSLineBreakMode?
+    public let textColor: UIColor?
 
     public init(font: UIFont? = nil,
                 lineSpacing: CGFloat? = nil,
                 lineHeight: CGFloat? = nil,
                 kern: CGFloat? = nil,
                 alignment: NSTextAlignment? = nil,
-                lineBreakMode: NSLineBreakMode? = nil
+                lineBreakMode: NSLineBreakMode? = nil,
+                textColor: UIColor? = nil
     ) {
         self.font = font
         self.lineSpacing = lineSpacing
@@ -29,6 +31,7 @@ public struct TextStyle {
         self.kern = kern
         self.alignment = alignment
         self.lineBreakMode = lineBreakMode
+        self.textColor = textColor
     }
 
     public var attributes: [NSAttributedString.Key: Any] {
@@ -36,9 +39,9 @@ public struct TextStyle {
 
         attributes[NSAttributedString.Key.font] = font
         if let kern { attributes[NSAttributedString.Key.kern] = kern }
+        if let textColor { attributes[NSAttributedString.Key.foregroundColor] = textColor }
 
         let paragraphStyle = NSMutableParagraphStyle()
-//        paragraphStyle.setParagraphStyle(.default)
         if let lineSpacing  { paragraphStyle.lineSpacing = lineSpacing }
         if let lineHeight {
             paragraphStyle.minimumLineHeight = lineHeight
@@ -66,7 +69,8 @@ extension TextStyle {
             lineHeight: CGFloat? = nil,
             kern: CGFloat? = nil,
             alignment: NSTextAlignment? = nil,
-            lineBreakMode: NSLineBreakMode? = nil
+            lineBreakMode: NSLineBreakMode? = nil,
+            textColor: UIColor? = nil
     ) -> TextStyle {
         return TextStyle(
             font: font ?? self.font,
@@ -74,7 +78,8 @@ extension TextStyle {
             lineHeight: lineHeight ?? self.lineHeight,
             kern: kern ?? self.kern,
             alignment: alignment ?? self.alignment,
-            lineBreakMode: lineBreakMode ?? self.lineBreakMode
+            lineBreakMode: lineBreakMode ?? self.lineBreakMode,
+            textColor: textColor ?? self.textColor
         )
     }
     
@@ -89,7 +94,8 @@ extension TextStyle {
             lineHeight: self.lineHeight,
             kern: additionalStyle.kern ?? self.kern,
             alignment: additionalStyle.alignment ?? self.alignment,
-            lineBreakMode: additionalStyle.lineBreakMode ?? self.lineBreakMode
+            lineBreakMode: additionalStyle.lineBreakMode ?? self.lineBreakMode,
+            textColor: additionalStyle.textColor ?? self.textColor
         )
     }
 }

@@ -92,7 +92,7 @@ final class ColorListCell: UICollectionViewCell, CellStyleSelectable, ContentSiz
 
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: rightContainer.topAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo:rightContainer.leadingAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: rightContainer.leadingAnchor),
 
             additoryLabel.leadingAnchor.constraint(equalTo: rightContainer.leadingAnchor),
             additoryLabel.bottomAnchor.constraint(equalTo: rightContainer.bottomAnchor),
