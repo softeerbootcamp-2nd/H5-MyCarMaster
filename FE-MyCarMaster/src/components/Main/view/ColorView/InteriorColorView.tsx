@@ -1,16 +1,16 @@
-import { styled } from "styled-components";
+import { useEffect } from "react";
+import { Flex, Image } from "@styles/core.style";
 import {
   useCarPaintDispatch,
   useCarPaintState,
-} from "../../../../contexts/CarPaintContext";
+} from "@contexts/CarPaintContext";
 import {
   useQuotationDispatch,
   useQuotationState,
-} from "../../../../contexts/QuotationContext";
-import { InteriorColors } from "../../../../types/carpaint.types";
-import useFetch from "../../../../hooks/useFetch";
-import { useTrimState } from "../../../../contexts/TrimContext";
-import { useEffect } from "react";
+} from "@contexts/QuotationContext";
+import { useTrimState } from "@contexts/TrimContext";
+import { InteriorColors } from "types/carpaint.types";
+import useFetch from "@hooks/useFetch";
 
 interface FetchInteriorProps extends InteriorColors {
   result: {
@@ -18,7 +18,7 @@ interface FetchInteriorProps extends InteriorColors {
   };
 }
 
-function InteriorColorView() {
+export default function InteriorColorView() {
   const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 
   const { trimId } = useTrimState();
@@ -61,27 +61,19 @@ function InteriorColorView() {
   if (!interiorList?.length) return null;
 
   return (
-    <>
+    <Flex>
       {interiorList?.length && (
-        <InteriorColorImg
+        <Image
+          $width="100%"
+          $height="25rem"
+          $padding="1rem"
+          $objectFit="cover"
           src={
             interiorList.find((interior) => interior.id === interiorId)
               ?.coloredImgUrl
           }
         />
       )}
-    </>
+    </Flex>
   );
 }
-
-const InteriorColorImg = styled.img`
-  width: 100%;
-  max-width: 50rem;
-  margin: 0 auto;
-  height: 100%;
-
-  object-fit: scale-down;
-  object-position: center;
-`;
-
-export default InteriorColorView;

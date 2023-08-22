@@ -1,17 +1,17 @@
-import styled from "styled-components";
+import { useEffect } from "react";
+import { Flex, Image } from "@styles/core.style";
 import {
   useCarPaintDispatch,
   useCarPaintState,
-} from "../../../../contexts/CarPaintContext";
+} from "@contexts/CarPaintContext";
 import {
   useQuotationDispatch,
   useQuotationState,
-} from "../../../../contexts/QuotationContext";
-import { ExteriorColors } from "../../../../types/carpaint.types";
-import { useTrimState } from "../../../../contexts/TrimContext";
-import useFetch from "../../../../hooks/useFetch";
-import { useEffect } from "react";
-// import CarRotation from "../../../common/CarRotation/CarRotation";
+} from "@contexts/QuotationContext";
+import { useTrimState } from "@contexts/TrimContext";
+import { ExteriorColors } from "types/carpaint.types";
+import useFetch from "@hooks/useFetch";
+// import CarRotation from "@common/index";
 
 interface FetchExteriorProps extends ExteriorColors {
   result: {
@@ -19,7 +19,7 @@ interface FetchExteriorProps extends ExteriorColors {
   };
 }
 
-function ExteriorColorView() {
+export default function ExteriorColorView() {
   const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 
   const { trimId } = useTrimState();
@@ -63,26 +63,19 @@ function ExteriorColorView() {
   if (!exteriorList?.length) return null;
 
   return (
-    exteriorList?.length && (
-      <ExteriorColorImg
-        src={
-          exteriorList.find((exterior) => exterior.id === exteriorId)
-            ?.coloredImgUrl
-        }
-      />
-      // <CarRotation $isQuotation={false} />
-    )
+    <Flex>
+      {exteriorList?.length && (
+        <Image
+          $width="100%"
+          $height="25rem"
+          $objectFit="cover"
+          src={
+            exteriorList.find((exterior) => exterior.id === exteriorId)
+              ?.coloredImgUrl
+          }
+        />
+        // <CarRotation $isQuotation={false} />
+      )}
+    </Flex>
   );
 }
-
-const ExteriorColorImg = styled.img`
-  width: 100%;
-  max-width: 50rem;
-  margin: 0 auto;
-  height: 100%;
-
-  object-fit: scale-down;
-  object-position: center;
-`;
-
-export default ExteriorColorView;
