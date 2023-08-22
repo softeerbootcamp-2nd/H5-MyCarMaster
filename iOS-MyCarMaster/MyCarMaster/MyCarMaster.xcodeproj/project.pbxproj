@@ -22,6 +22,15 @@
 		B50C7E582A79027A005AFE0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B50C7E562A79027A005AFE0B /* LaunchScreen.storyboard */; };
 		B50C7E6D2A79027A005AFE0B /* MyCarMasterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C7E6C2A79027A005AFE0B /* MyCarMasterUITests.swift */; };
 		B50C7E6F2A79027A005AFE0B /* MyCarMasterUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50C7E6E2A79027A005AFE0B /* MyCarMasterUITestsLaunchTests.swift */; };
+		B50FEC4F2A939501003566DD /* StepTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50FEC4E2A939501003566DD /* StepTarget.swift */; };
+		B50FEC512A93CC7E003566DD /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50FEC502A93CC7E003566DD /* Model.swift */; };
+		B50FEC532A93E8E9003566DD /* TrimReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50FEC522A93E8E9003566DD /* TrimReactor.swift */; };
+		B50FEC552A93F756003566DD /* Priceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50FEC542A93F756003566DD /* Priceable.swift */; };
+		B50FEC582A940210003566DD /* EstimationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50FEC572A940210003566DD /* EstimationManagerTests.swift */; };
+		B50FEC5A2A944883003566DD /* CompressionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50FEC592A944883003566DD /* CompressionViewController.swift */; };
+		B50FEC5B2A9448F8003566DD /* Then.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5DD65162A88F8D100B44F61 /* Then.swift */; };
+		B50FEC5C2A944A43003566DD /* PaddingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FC1C52A90B7210075D288 /* PaddingButton.swift */; };
+		B50FEC5E2A94516D003566DD /* ComponentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50FEC5D2A94516D003566DD /* ComponentViewController.swift */; };
 		B510BBDB2A840BD4009E5752 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510BBDA2A840BD4009E5752 /* Formatter.swift */; };
 		B510BBDD2A841A25009E5752 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510BBDC2A841A25009E5752 /* Reusable.swift */; };
 		B510BBDF2A84895D009E5752 /* StepBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B510BBDE2A84895D009E5752 /* StepBottomView.swift */; };
@@ -193,6 +202,13 @@
 		B50C7E682A79027A005AFE0B /* MyCarMasterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyCarMasterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B50C7E6C2A79027A005AFE0B /* MyCarMasterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCarMasterUITests.swift; sourceTree = "<group>"; };
 		B50C7E6E2A79027A005AFE0B /* MyCarMasterUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCarMasterUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B50FEC4E2A939501003566DD /* StepTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTarget.swift; sourceTree = "<group>"; };
+		B50FEC502A93CC7E003566DD /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		B50FEC522A93E8E9003566DD /* TrimReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrimReactor.swift; sourceTree = "<group>"; };
+		B50FEC542A93F756003566DD /* Priceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Priceable.swift; sourceTree = "<group>"; };
+		B50FEC572A940210003566DD /* EstimationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimationManagerTests.swift; sourceTree = "<group>"; };
+		B50FEC592A944883003566DD /* CompressionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompressionViewController.swift; sourceTree = "<group>"; };
+		B50FEC5D2A94516D003566DD /* ComponentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentViewController.swift; sourceTree = "<group>"; };
 		B510BBDA2A840BD4009E5752 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		B510BBDC2A841A25009E5752 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		B510BBDE2A84895D009E5752 /* StepBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepBottomView.swift; sourceTree = "<group>"; };
@@ -378,6 +394,7 @@
 		B50C7E612A79027A005AFE0B /* MyCarMasterTests */ = {
 			isa = PBXGroup;
 			children = (
+				B50FEC562A9401FD003566DD /* EstimationManager */,
 				B5D1E1FA2A8E0DA900DAE384 /* DecodeDTO */,
 			);
 			path = MyCarMasterTests;
@@ -410,6 +427,14 @@
 				B5D1E1F42A8DFBBA00DAE384 /* Dependency.plist */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		B50FEC562A9401FD003566DD /* EstimationManager */ = {
+			isa = PBXGroup;
+			children = (
+				B50FEC572A940210003566DD /* EstimationManagerTests.swift */,
+			);
+			path = EstimationManager;
 			sourceTree = "<group>";
 		};
 		B51CE22D2A92AC0D00C65689 /* StepContainer */ = {
@@ -453,6 +478,7 @@
 				B570C0F82A89AD93000E9B75 /* Interior */,
 				B5E233FB2A8B4AE80013BEB1 /* Option */,
 				B5D1E2032A8EDF6900DAE384 /* Quotation */,
+				B50FEC4E2A939501003566DD /* StepTarget.swift */,
 			);
 			path = Step;
 			sourceTree = "<group>";
@@ -483,6 +509,8 @@
 				B52FC1A72A90920C0075D288 /* AppDelegate.swift */,
 				B52FC1A92A90920C0075D288 /* SceneDelegate.swift */,
 				B52FC1AB2A90920C0075D288 /* ViewController.swift */,
+				B50FEC5D2A94516D003566DD /* ComponentViewController.swift */,
+				B50FEC592A944883003566DD /* CompressionViewController.swift */,
 				B52FC1B02A90920D0075D288 /* Assets.xcassets */,
 				B52FC1B22A90920D0075D288 /* LaunchScreen.storyboard */,
 				B52FC1B52A90920D0075D288 /* Info.plist */,
@@ -550,6 +578,7 @@
 			children = (
 				B560B2172A83827600A4B9A9 /* TrimView.swift */,
 				B5F1AE052A838B8E00E7E392 /* TrimViewController.swift */,
+				B50FEC522A93E8E9003566DD /* TrimReactor.swift */,
 			);
 			path = Trim;
 			sourceTree = "<group>";
@@ -608,6 +637,7 @@
 		B56F55D52A86BC760055E382 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				B50FEC502A93CC7E003566DD /* Model.swift */,
 				B56F55D62A86BC7D0055E382 /* Trim.swift */,
 				B56F55E42A8761F90055E382 /* Engine.swift */,
 				B5DD64D12A876B5000B44F61 /* WheelDrive.swift */,
@@ -616,6 +646,7 @@
 				B5BBB3502A89C7BF00AAFC84 /* Interior.swift */,
 				B53BA1092A8BF426009F94BE /* Option.swift */,
 				B500C7822A8FE0AD007724F3 /* Quotation.swift */,
+				B50FEC542A93F756003566DD /* Priceable.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -985,7 +1016,9 @@
 				B53BA1102A8BF4E2009F94BE /* OptionListCellMainState.swift in Sources */,
 				B5BBB34F2A89C74C00AAFC84 /* InteriorViewController.swift in Sources */,
 				B5DD65122A880B3100B44F61 /* CGSize+Operator.swift in Sources */,
+				B50FEC532A93E8E9003566DD /* TrimReactor.swift in Sources */,
 				B500C7832A8FE0AD007724F3 /* Quotation.swift in Sources */,
+				B50FEC4F2A939501003566DD /* StepTarget.swift in Sources */,
 				B5DD65202A8926E700B44F61 /* ContentSizeEstimatable.swift in Sources */,
 				B5C0790D2A8BD6EA00747B11 /* UIButton+Selectable.swift in Sources */,
 				B5DD64DF2A876EED00B44F61 /* BodyTypeDTO.swift in Sources */,
@@ -997,6 +1030,7 @@
 				B510BBDF2A84895D009E5752 /* StepBottomView.swift in Sources */,
 				B53C3C442A85483F0019ECA1 /* EngineView.swift in Sources */,
 				B5BBB3512A89C7BF00AAFC84 /* Interior.swift in Sources */,
+				B50FEC552A93F756003566DD /* Priceable.swift in Sources */,
 				B500C77D2A8FC066007724F3 /* QuotationContentView.swift in Sources */,
 				B5DD64D02A876ABD00B44F61 /* WheelDriveDTO.swift in Sources */,
 				B53C3C502A85661D0019ECA1 /* WheelDriveView.swift in Sources */,
@@ -1014,6 +1048,7 @@
 				B5DD65192A88FB6F00B44F61 /* CellStyleSelectable.swift in Sources */,
 				B5C079092A8BD52D00747B11 /* Selectable.swift in Sources */,
 				B51CE22A2A92A50300C65689 /* EstimationManager.swift in Sources */,
+				B50FEC512A93CC7E003566DD /* Model.swift in Sources */,
 				B5DD651B2A8905B400B44F61 /* ColorListCellState.swift in Sources */,
 				B5DD64F12A87833200B44F61 /* ExteriorViewController.swift in Sources */,
 				B53BA1122A8C0A8F009F94BE /* PaddingLabel.swift in Sources */,
@@ -1068,6 +1103,7 @@
 				B500C7872A8FE175007724F3 /* DecodeWheelDriveDTOTests.swift in Sources */,
 				B500C78D2A8FE19B007724F3 /* DecodeInteriorDTOTests.swift in Sources */,
 				B5D1E1F92A8E094200DAE384 /* DecodeOptionDTOTests.swift in Sources */,
+				B50FEC582A940210003566DD /* EstimationManagerTests.swift in Sources */,
 				B5D1E1FE2A8E14C400DAE384 /* FetchFromBundle.swift in Sources */,
 				B500C7892A8FE188007724F3 /* DecodeEngineDTOTests.swift in Sources */,
 				B500C78F2A8FE1AE007724F3 /* DecodeBodyTypeDTOTests.swift in Sources */,
@@ -1092,6 +1128,10 @@
 				B52FC1AC2A90920C0075D288 /* ViewController.swift in Sources */,
 				B52FC1A82A90920C0075D288 /* AppDelegate.swift in Sources */,
 				B52FC1AA2A90920C0075D288 /* SceneDelegate.swift in Sources */,
+				B50FEC5E2A94516D003566DD /* ComponentViewController.swift in Sources */,
+				B50FEC5C2A944A43003566DD /* PaddingButton.swift in Sources */,
+				B50FEC5B2A9448F8003566DD /* Then.swift in Sources */,
+				B50FEC5A2A944883003566DD /* CompressionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1406,7 +1446,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AVZ9493N69;
+				DEVELOPMENT_TEAM = 4QG3GC35LA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Catalog/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1435,7 +1475,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AVZ9493N69;
+				DEVELOPMENT_TEAM = 4QG3GC35LA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Catalog/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1463,7 +1503,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AVZ9493N69;
+				DEVELOPMENT_TEAM = 4QG3GC35LA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Catalog/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

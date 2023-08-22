@@ -50,6 +50,7 @@ final class StepContainer: UIViewController {
 
         configureUI()
         configureLayout()
+        bindAction()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -138,5 +139,17 @@ extension StepContainer: Reactable {
                 print("isLoading: \(isLoading)")
             }
             .store(in: &cancellables)
+    }
+
+    // MARK: Action
+    func bindAction() {
+        navigationTitleButton.addTarget(self, action: #selector(titleButtonDidTap), for: .touchUpInside)
+    }
+
+    @objc
+    private func titleButtonDidTap() {
+#if DEBUG
+        reactor?.action.send(.dumpEstimation)
+#endif
     }
 }

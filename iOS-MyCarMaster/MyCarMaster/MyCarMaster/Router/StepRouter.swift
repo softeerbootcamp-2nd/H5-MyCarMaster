@@ -8,6 +8,8 @@
 import Combine
 import UIKit
 
+import MCMNetwork
+
 final class StepRouter {
 
     private let currentStepSubject: CurrentValueSubject<Step, Never>
@@ -25,8 +27,17 @@ final class StepRouter {
         }
         .eraseToAnyPublisher()
 
-    init(entryStep: Step) {
+    weak var estimationManager: EstimationManageable?
+    weak var stepNetworkProvider: NetworkProvider<StepTarget>?
+
+    init(
+        entryStep: Step,
+        estimationManager: EstimationManageable,
+        stepNetworkProvider: NetworkProvider<StepTarget>
+    ) {
         self.currentStepSubject = CurrentValueSubject(entryStep)
+        self.estimationManager = estimationManager
+        self.stepNetworkProvider = stepNetworkProvider
     }
 
     func nextStep() {
@@ -51,7 +62,14 @@ extension StepRouter {
     func resolveStepViewController(for step: Step) -> UIViewController {
         switch step {
         case .trim:
-            return TrimViewController()
+            let trimReactor = TrimReactor(
+                initialState: .init(isLoading: false, trimList: []),
+                estimationManager: estimationManager,
+                stepNetworkProvider: stepNetworkProvider
+            )
+            let trimViewController = TrimViewController()
+            trimViewController.reactor = trimReactor
+            return trimViewController
         case .engine:
             return EngineViewController()
         case .wheelDrive:

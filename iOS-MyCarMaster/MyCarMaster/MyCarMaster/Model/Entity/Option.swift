@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Option: Hashable {
+struct Option: Hashable, Priceable {
     let model: String
     let category: String
     let name: String

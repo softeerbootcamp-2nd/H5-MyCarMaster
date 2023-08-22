@@ -5,6 +5,7 @@
 //  Created by SEUNGMIN OH on 2023/08/09.
 //
 
+import Combine
 import UIKit
 
 import MCMNetwork
@@ -13,14 +14,44 @@ import MVIFoundation
 final class TrimViewController: UIViewController {
 
     typealias ListCellClass = BasicListCell
+    typealias DataSource = UICollectionViewDiffableDataSource<Section, Trim>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Trim>
 
-    var dataList: [Trim] = []
-
-    var selectedCellIndexPath: IndexPath = IndexPath(row: 0, section: 0) {
-        didSet {
-            print(#function, selectedCellIndexPath)
-        }
+    enum Section {
+        case trim
     }
+
+    //  MARK: Property
+    var cancellables = Set<AnyCancellable>()
+
+    private var dataSource: DataSource!
+    func configureDataSource() {
+        dataSource = DataSource(
+            collectionView: contentView.listView,
+            cellProvider: { [weak self] collectionView, indexPath, itemIdentifier in
+                guard let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: ListCellClass.reuseIdentifier,
+                    for: indexPath
+                ) as? ListCellClass else {
+                    fatalError("개발자 오류: 등록되지 않은 Cell 입니다.")
+                }
+                cell.configure(with: itemIdentifier)
+
+                if let selectedTrim = self?.selectedTrim {
+                    if selectedTrim == itemIdentifier {
+                        collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [.centeredVertically])
+                    }
+                } else if indexPath.row == 0 {
+                    // 원래는 delegate에서 처리해줘야하나, 버그로 인해 delegate로 메시지가 전달되지 않아, 여기에서 처리함.
+                    collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
+                    self?.reactor?.action.send(.trimDidSelect(itemIdentifier))
+                }
+                return cell
+            })
+        contentView.setDataSource(dataSource)
+    }
+
+    var selectedTrim: Trim?
 
     private var contentView: TrimView<ListCellClass> {
         return view as? TrimView ?? TrimView()
@@ -32,17 +63,13 @@ final class TrimViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureDataSource()
         configureUI()
-#if ONLINE
-        fetchData()
-#elseif OFFLINE
-        fetchFromDisk()
-#endif
+        reactor?.action.send(.viewDidLoad)
     }
 
     private func configureUI() {
         contentView.setDelegate(self)
-        contentView.setDataSource(self)
     }
 
     override func didMove(toParent parent: UIViewController?) {
@@ -50,85 +77,45 @@ final class TrimViewController: UIViewController {
     }
 }
 
-extension TrimViewController {
-    private func fetchFromDisk() {
-        guard let fileURL = Bundle.main.url(forResource: "TrimDTO.json", withExtension: nil) else { return }
-        applyData(try? Data(contentsOf: fileURL))
-    }
-
-    private func fetchData() {
-        let request = URLRequest(url: URL(string: Dependency.serverURL + "trims?modelId=1")!)
-
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            guard error == nil else {
-                print(error?.localizedDescription)
-                return
-            }
-
-            guard let response = response as? HTTPURLResponse else {
-                print("Sever Error")
-                return
-            }
-
-            print("Trim:", response.statusCode)
-            guard 200..<300 ~= response.statusCode else {
-                return
-            }
-
-            self.applyData(data)
-        }.resume()
-    }
-
-    private func applyData(_ data: Data?) {
-        if let data,
-           let trimDTOList = try? JSONDecoder().decode(RootDTO.self, from: data).result.trims {
-            self.dataList = trimDTOList.map { Trim($0) }
-            DispatchQueue.main.async {
-                self.contentView.listView.reloadData()
-            }
-        } else {
-            print("Decoding Error")
-            return
+extension TrimViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let trim = dataSource.itemIdentifier(for: indexPath) {
+            reactor?.action.send(.trimDidSelect(trim))
         }
     }
 }
 
-extension TrimViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension TrimViewController: Reactable {
+    func bindState(reactor: TrimReactor) {
+        reactor.state.compactMap(\.selectedTrim)
+            .sink { [weak self] trim in
+                self?.selectedTrim = trim
+            }
+            .store(in: &cancellables)
 
-    func collectionView(
-        _ collectionView: UICollectionView,
-        numberOfItemsInSection section: Int
-    ) -> Int {
-        return dataList.count
-    }
+        reactor.state.map(\.trimList)
+            .dropFirst()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] trimList in
+                var snapshot = Snapshot()
+                snapshot.appendSections([.trim])
+                snapshot.appendItems(trimList)
+                self?.dataSource.apply(snapshot)
+            }
+            .store(in: &cancellables)
 
-    func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath
-    ) -> UICollectionViewCell {
-
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: ListCellClass.reuseIdentifier,
-            for: indexPath
-        ) as? ListCellClass else {
-            fatalError("등록되지 않은 cell입니다.")
-        }
-
-        cell.configure(with: dataList[indexPath.row])
-
-        // 프리셋을 선택한다.
-        if selectedCellIndexPath == indexPath {
-            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
-        }
-
-        return cell
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? ListCellClass else {
-            fatalError("알 수 없는 오류가 발생했습니다.")
-        }
-        guard selectedCellIndexPath != indexPath else { return }
-        selectedCellIndexPath = indexPath
+        reactor.state.compactMap(\.errorDescription)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] errorDescription in
+                let alert = UIAlertController(
+                    title: "에러",
+                    message: errorDescription,
+                    preferredStyle: .alert
+                )
+                alert.addAction(.init(title: "확인", style: .default))
+                print(errorDescription)
+                self?.present(alert, animated: false)
+            }
+            .store(in: &cancellables)
     }
 }

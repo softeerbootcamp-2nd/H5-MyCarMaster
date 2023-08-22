@@ -17,15 +17,20 @@ final class ModelSelectionViewController: UIViewController {
     private let ratio: CGFloat = 113 / 343
 
     weak var router: Router?
+    weak var estimationManager: EstimationManager?
 
-    init(router: Router) {
+    init(router: Router, estimaitonManager: EstimationManager) {
         self.router = router
+        self.estimationManager = estimaitonManager
         super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: Mock Data
+    private let palisade = Model(id: 1, name: "Palisade", imageURL: nil)
 
     // MARK: View
     private let categoryView = UIView().then { view in
@@ -100,6 +105,7 @@ final class ModelSelectionViewController: UIViewController {
 
         configureUI()
         configureLayout()
+        selectPalisadeModel()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -142,6 +148,13 @@ final class ModelSelectionViewController: UIViewController {
         [palisadeCell, venewCell, konaCell].forEach { cell in
             cellStackView.addArrangedSubview(cell)
         }
+    }
+}
+
+// MARK: Interaction
+extension ModelSelectionViewController {
+    private func selectPalisadeModel() {
+        estimationManager?.update(\Quotation.model, value: palisade)
     }
 }
 

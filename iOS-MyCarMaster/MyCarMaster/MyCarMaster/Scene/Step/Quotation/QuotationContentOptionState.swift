@@ -8,8 +8,8 @@
 import Foundation
 
 struct QuotationContentOptionState {
-    let selectedOptions: [Option]
-    let consideredOptions: [Option]
+    let selectedOptions: Set<Option>
+    let consideredOptions: Set<Option>
     let selectedOptionsTotalPrice: Int
 }
 
