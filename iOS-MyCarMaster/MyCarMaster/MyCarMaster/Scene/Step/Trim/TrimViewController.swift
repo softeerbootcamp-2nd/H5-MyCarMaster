@@ -26,27 +26,30 @@ final class TrimViewController: UIViewController {
 
     private var dataSource: DataSource!
     func configureDataSource() {
-        dataSource = DataSource(collectionView: contentView.listView, cellProvider: { [weak self] collectionView, indexPath, itemIdentifier in
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: ListCellClass.reuseIdentifier,
-                for: indexPath
-            ) as? ListCellClass else {
-                fatalError("개발자 오류: 등록되지 않은 Cell 입니다.")
-            }
-            cell.configure(with: itemIdentifier)
+        dataSource = DataSource(
+            collectionView: contentView.listView,
+            cellProvider: {
+                [weak self] collectionView, indexPath, itemIdentifier in
+                guard let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: ListCellClass.reuseIdentifier,
+                    for: indexPath
+                ) as? ListCellClass else {
+                    fatalError("개발자 오류: 등록되지 않은 Cell 입니다.")
+                }
+                cell.configure(with: itemIdentifier)
 
-            if let selectedTrim = self?.selectedTrim {
-                if selectedTrim == itemIdentifier {
+                if let selectedTrim = self?.selectedTrim {
+                    if selectedTrim == itemIdentifier {
+                        collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
+                        // 원래는 delegate에서 처리해줘야하나, 버그로 인해 delegate로 메시지가 전달되지 않아, 여기에서 처리함.
+                        self?.reactor?.action.send(.trimDidSelect(itemIdentifier))
+                    }
+                } else if indexPath.row == 0 {
                     collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
-                    // 원래는 delegate에서 처리해줘야하나, 버그로 인해 delegate로 메시지가 전달되지 않아, 여기에서 처리함.
                     self?.reactor?.action.send(.trimDidSelect(itemIdentifier))
                 }
-            } else if indexPath.row == 0 {
-                collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
-                self?.reactor?.action.send(.trimDidSelect(itemIdentifier))
-            }
-            return cell
-        })
+                return cell
+            })
         contentView.setDataSource(dataSource)
     }
 
@@ -92,8 +95,7 @@ extension TrimViewController: Reactable {
             }
             .store(in: &cancellables)
 
-        reactor.state
-            .map(\.trimList)
+        reactor.state.map(\.trimList)
             .dropFirst()
             .receive(on: DispatchQueue.main)
             .sink { [weak self] trimList in
