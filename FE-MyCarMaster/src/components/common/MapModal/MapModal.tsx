@@ -27,6 +27,7 @@ import {
 } from "./style";
 import SeoulMap from "../../SeoulMap/SeoulMap";
 import DistrictCarMasterList from "../DistrictCarMasterList/DistrictCarMasterList";
+import { FormModal } from "../FormModal/FormModal";
 const { kakao } = window;
 
 declare global {
@@ -59,6 +60,7 @@ function MapModal({ setIsMapModalOpen, estimateId }: MapModalProps) {
   const [carMasters, setCarMasters] = useState<CarMasterType[]>();
   const [carMasterId, setCarMasterId] = useState<number>(0);
   const [district, setDistrict] = useState<string>("");
+  const [formModalOn, setFormModalOn] = useState<boolean>(false);
   const [agency, setAgency] = useState<AgencyType>({
     id: 0,
     name: "",
@@ -156,8 +158,7 @@ function MapModal({ setIsMapModalOpen, estimateId }: MapModalProps) {
   };
 
   const consultHandler = () => {
-    setIsModalOpen(false);
-    setIsMapModalOpen(false);
+    setFormModalOn(true);
   };
 
   const showAllHandler = () => {
@@ -179,8 +180,6 @@ function MapModal({ setIsMapModalOpen, estimateId }: MapModalProps) {
     };
     geocoder.coord2Address(position.longitude, position.latitude, callback);
   };
-  console.log(district);
-  console.log("re render");
 
   return (
     <Fragment>
@@ -260,6 +259,13 @@ function MapModal({ setIsMapModalOpen, estimateId }: MapModalProps) {
             />
           </Container>
         </ModalOverlay>
+      )}
+      {formModalOn && (
+        <FormModal
+          estimateId={estimateId}
+          carMasterId={carMasterId}
+          setFormModalOn={setFormModalOn}
+        />
       )}
     </Fragment>
   );
