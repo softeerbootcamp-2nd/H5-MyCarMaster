@@ -8,12 +8,13 @@
 import Combine
 import UIKit
 
+import MCMNetwork
 import MVIFoundation
 
 final class TrimReactor: Reactor {
 
     enum Action {
-        case viewDidAppear
+        case viewDidLoad
         case trimDidSelect(Trim)
     }
 
@@ -21,12 +22,14 @@ final class TrimReactor: Reactor {
         case setLoading(Bool)
         case fetchTrimList([Trim])
         case fetchSelectedTrim(Trim?)
+        case alertError(String)
     }
 
     struct State {
         var isLoading: Bool
         var trimList: [Trim]
         var selectedTrim: Trim?
+        var errorDescription: String?
     }
 
     let initialState: State
@@ -40,9 +43,13 @@ final class TrimReactor: Reactor {
     func mutate(action: Action) -> AnyPublisher<Mutation, Never> {
         switch action {
         case let .trimDidSelect(trim):
-            return updateTrim(trim)
-        case .viewDidAppear:
-            return fetchSelectedTrim()
+            return [
+                updateTrim(trim),
+            ].concatenate()
+        case .viewDidLoad:
+            return [
+                fetchTrimList(),
+            ].concatenate()
         }
     }
 
@@ -55,8 +62,10 @@ final class TrimReactor: Reactor {
             newState.trimList = trimList
         case let .fetchSelectedTrim(trim):
             newState.selectedTrim = trim
+        case let .alertError(errorDescription):
+            newState.errorDescription = errorDescription
         }
-        return state
+        return newState
     }
 }
 
@@ -67,7 +76,7 @@ extension TrimReactor {
         }
 
         estimationManager.update(\.trim, value: trim)
-        return Empty().eraseToAnyPublisher()
+        return fetchSelectedTrim()
     }
 
     private func fetchSelectedTrim() -> AnyPublisher<Mutation, Never> {
@@ -76,6 +85,66 @@ extension TrimReactor {
         }
 
         return Just(Mutation.fetchSelectedTrim(estimationManager.estimation.trim))
+            .eraseToAnyPublisher()
+    }
+
+    private func fetchTrimList() -> AnyPublisher<Mutation, Never> {
+#if ONLINE
+        fetchTrimListFromNetwork()
+#elseif OFFLINE
+        fetchTrimListFromCache()
+#endif
+    }
+
+    private func fetchTrimListFromNetwork() -> AnyPublisher<Mutation, Never> {
+        guard let url = URL(string: Dependency.serverURL + "trims?modelID=1") else {
+            fatalError("개발자 오류: URL이 유효하지 않습니다.")
+        }
+
+        return URLSession.shared.dataTaskPublisher(for: url)
+            .retry(1)
+            .eraseToAnyPublisher()
+            .tryMap({ element -> Data in
+                guard let httpResponse = element.response as? HTTPURLResponse,
+                      httpResponse.statusCode == 200 else {
+                    throw URLError(.badServerResponse)
+                }
+                return element.data
+            })
+            .decode(type: RootDTO.self, decoder: JSONDecoder())
+            .tryMap({ response -> Mutation in
+                guard let trimDTOList = response.result.trims else {
+                    throw URLError(.cannotDecodeRawData)
+                }
+                let trimList = trimDTOList.map { Trim($0) }
+                return Mutation.fetchTrimList(trimList)
+            })
+            .catch({ error in
+                return Just(Mutation.alertError(error.localizedDescription))
+            })
+            .eraseToAnyPublisher()
+    }
+
+    private func fetchTrimListFromCache() -> AnyPublisher<Mutation, Never> {
+        guard let fileURL = Bundle.main.url(forResource: "TrimDTO", withExtension: "json") else {
+            fatalError("개발자 에러: 파일이 존재하지 않습니다.")
+        }
+        guard let data = try? Data(contentsOf: fileURL) else {
+            fatalError("개발자 에러: 유효하지 않은 파일입니다")
+        }
+
+        return Just(data)
+            .decode(type: RootDTO.self, decoder: JSONDecoder())
+            .tryMap({ response -> Mutation in
+                guard let trimDTOList = response.result.trims else {
+                    throw URLError(.cannotDecodeRawData)
+                }
+                let trimList = trimDTOList.map { Trim($0) }
+                return Mutation.fetchTrimList(trimList)
+            })
+            .catch({ error in
+                return Just(Mutation.alertError(error.localizedDescription))
+            })
             .eraseToAnyPublisher()
     }
 }
