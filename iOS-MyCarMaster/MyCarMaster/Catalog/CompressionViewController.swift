@@ -43,7 +43,9 @@ final class CompressionViewController: UIViewController {
         label.textColor = .black
     }
     
-    lazy var scrollView = UIScrollView()
+    lazy var scrollView = UIScrollView().then { scrollView in
+        scrollView.contentInset = .init(top: 0, left: 0, bottom: 100, right: 0)
+    }
     
     lazy var stackView = UIStackView(arrangedSubviews: [
         originImageView, originLabel,

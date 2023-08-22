@@ -15,6 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowSchene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowSchene)
         let navigationView = UINavigationController(rootViewController: ViewController())
+        navigationView.hidesBarsOnSwipe = true
         window?.rootViewController = navigationView
         window?.makeKeyAndVisible()
     }
