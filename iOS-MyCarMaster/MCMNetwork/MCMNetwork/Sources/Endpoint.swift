@@ -42,11 +42,8 @@ extension Endpoint {
             return request
         case let.requestParameters(parameters):
             if var urlComponent = URLComponents(url: requestURL, resolvingAgainstBaseURL: false) {
-                urlComponent.queryItems = try parameters.map { (key, value) in
-                    guard let value = value as? String else {
-                        throw NetworkError.badRequestParameters("\(key): \(value)")
-                    }
-                    return URLQueryItem(name: key, value: value)
+                urlComponent.queryItems = parameters.map { (key, value) in
+                    return URLQueryItem(name: key, value: "\(value)")
                 }
                 request.url = urlComponent.url
             }
