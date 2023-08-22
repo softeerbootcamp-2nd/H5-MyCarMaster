@@ -28,8 +28,7 @@ final class TrimViewController: UIViewController {
     func configureDataSource() {
         dataSource = DataSource(
             collectionView: contentView.listView,
-            cellProvider: {
-                [weak self] collectionView, indexPath, itemIdentifier in
+            cellProvider: { [weak self] collectionView, indexPath, itemIdentifier in
                 guard let cell = collectionView.dequeueReusableCell(
                     withReuseIdentifier: ListCellClass.reuseIdentifier,
                     for: indexPath
@@ -40,11 +39,10 @@ final class TrimViewController: UIViewController {
 
                 if let selectedTrim = self?.selectedTrim {
                     if selectedTrim == itemIdentifier {
-                        collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
-                        // 원래는 delegate에서 처리해줘야하나, 버그로 인해 delegate로 메시지가 전달되지 않아, 여기에서 처리함.
-                        self?.reactor?.action.send(.trimDidSelect(itemIdentifier))
+                        collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [.centeredVertically])
                     }
                 } else if indexPath.row == 0 {
+                    // 원래는 delegate에서 처리해줘야하나, 버그로 인해 delegate로 메시지가 전달되지 않아, 여기에서 처리함.
                     collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
                     self?.reactor?.action.send(.trimDidSelect(itemIdentifier))
                 }
