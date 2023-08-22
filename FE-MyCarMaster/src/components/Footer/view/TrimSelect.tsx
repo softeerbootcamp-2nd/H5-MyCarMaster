@@ -1,15 +1,13 @@
 import React, { Fragment, useState } from "react";
-import styled from "styled-components";
-import { useTrimState, useTrimDispatch } from "../../../contexts/TrimContext";
+import { Flex } from "@styles/core.style";
+import { useTrimState, useTrimDispatch } from "@contexts/TrimContext";
 import {
   useQuotationDispatch,
   useQuotationState,
-} from "../../../contexts/QuotationContext";
-import OptionBox from "../../common/OptionBox/OptionBox";
-import { Modals } from "../../common/Modals/Modals";
-import { ModalType } from "../../../constants/Modal.constants";
-import BasicOptionModal from "../../common/BasicOptionModal/BasicOptionModal";
-import { Trims } from "../../../types/trim.types";
+} from "@contexts/QuotationContext";
+import { OptionBox, Modals, BasicOptionModal } from "@common/index";
+import { ModalType } from "@constants/Modal.constants";
+import { Trims } from "types/trim.types";
 
 export default function TrimSelect() {
   const { trimList, trimId } = useTrimState();
@@ -61,7 +59,12 @@ export default function TrimSelect() {
     setIsBasicOptionModalOpen(true);
   };
 
-  if (!trimList.length) return <Container>데이터가 없습니다.</Container>;
+  if (!trimList.length)
+    return (
+      <Flex $width="59.5rem" $gap="0.5rem">
+        데이터가 없습니다.
+      </Flex>
+    );
   const reselectTrim = (id: number) => {
     quotationDispatch({ type: "RESET_QUOTATION" });
     selectTrim(id);
@@ -70,7 +73,7 @@ export default function TrimSelect() {
 
   return (
     <Fragment>
-      <Container>
+      <Flex $width="59.5rem" $gap="0.5rem">
         {trimList?.length &&
           trimList.map((trim) => {
             return (
@@ -100,7 +103,7 @@ export default function TrimSelect() {
             setIsBasicOptionModalOpen={setIsBasicOptionModalOpen}
           />
         )}
-      </Container>
+      </Flex>
       {isOpen && (
         <Modals
           type={ModalType.CHANGE_TRIM}
@@ -111,10 +114,3 @@ export default function TrimSelect() {
     </Fragment>
   );
 }
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 59.5rem;
-  gap: 0.5rem;
-`;

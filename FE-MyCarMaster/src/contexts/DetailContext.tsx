@@ -5,7 +5,7 @@ import {
   BodyTypes,
   DetailAction,
   DetailState,
-} from "../types/detail.types";
+} from "types/detail.types";
 
 const initialDetailState: DetailState = {
   engineId: 1,

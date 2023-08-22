@@ -1,5 +1,5 @@
 import { useReducer, createContext, useContext } from "react";
-import { OptionAction, OptionState, OptionType } from "../types/options.types";
+import { OptionAction, OptionState, OptionType } from "types/options.types";
 
 const initialOptionState: OptionState = {
   selectedOption: [],

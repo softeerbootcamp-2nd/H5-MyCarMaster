@@ -1,9 +1,9 @@
-import { styled } from "styled-components";
-import CategoryList from "../../common/CategoryList/CategoryList";
+import { Flex } from "@styles/core.style";
+import { CategoryList } from "@common/index";
 import DetailModelWrapper from "./DetailModelView/DetailModelWrapper";
-import { useQuotationDispatch } from "../../../contexts/QuotationContext";
+import { useQuotationDispatch } from "@contexts/QuotationContext";
 
-function DetailModelContent() {
+export default function DetailModelContent() {
   const quotationDispatch = useQuotationDispatch();
 
   const onClickHandler = (index: number) => {
@@ -16,7 +16,7 @@ function DetailModelContent() {
     });
   };
   return (
-    <Container>
+    <Flex $flexDirection="column">
       <CategoryList
         categories={["엔진", "구동방식", "바디타입"]}
         onClickHandler={(index) => onClickHandler(index as number)}
@@ -24,14 +24,6 @@ function DetailModelContent() {
         $switch={"detail"}
       />
       <DetailModelWrapper />
-    </Container>
+    </Flex>
   );
 }
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-`;
-
-export default DetailModelContent;

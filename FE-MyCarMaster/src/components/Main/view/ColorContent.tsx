@@ -1,9 +1,9 @@
-import { styled } from "styled-components";
-import CategoryList from "../../common/CategoryList/CategoryList";
+import { Flex } from "@styles/core.style";
+import { CategoryList } from "@common/index";
 import ColorWrapper from "./ColorView/ColorWrapper";
-import { useQuotationDispatch } from "../../../contexts/QuotationContext";
+import { useQuotationDispatch } from "@contexts/QuotationContext";
 
-function ColorContent() {
+export default function ColorContent() {
   const quotationDispatch = useQuotationDispatch();
 
   const onClickHandler = (index: number) => {
@@ -17,7 +17,7 @@ function ColorContent() {
   };
 
   return (
-    <Container>
+    <Flex $flexDirection="column">
       <CategoryList
         categories={["외장색상", "내장색상"]}
         onClickHandler={(index) => onClickHandler(index as number)}
@@ -25,15 +25,6 @@ function ColorContent() {
         $switch={"colors"}
       />
       <ColorWrapper />
-    </Container>
+    </Flex>
   );
 }
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-`;
-
-export default ColorContent;

@@ -1,13 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
-import CategoryList from "../../common/CategoryList/CategoryList";
-import GridOptionList from "../../common/OptionList/GridOptionList";
-import useFetch from "../../../hooks/useFetch";
-import { useEffect } from "react";
-import { useTrimState } from "../../../contexts/TrimContext";
-import { useDetailState } from "../../../contexts/DetailContext";
-import ArrowLeft from "../../../assets/icons/ArrowLeft.svg";
-import ArrowRight from "../../../assets/icons/ArrowRight.svg";
+import { CategoryList, GridOptionList } from "@common/index";
+import { useTrimState } from "@contexts/TrimContext";
+import { useDetailState } from "@contexts/DetailContext";
+import ArrowLeft from "@assets/icons/ArrowLeft.svg";
+import ArrowRight from "@assets/icons/ArrowRight.svg";
+import useFetch from "@hooks/useFetch";
 
 type DataListProps = {
   id: number;

@@ -1,19 +1,15 @@
 import { Fragment, useState } from "react";
-import {
-  useDetailState,
-  useDetailDispatch,
-} from "../../../../contexts/DetailContext";
+import { useDetailState, useDetailDispatch } from "@contexts/DetailContext";
 import {
   useQuotationDispatch,
   useQuotationState,
-} from "../../../../contexts/QuotationContext";
-import { useOptionState } from "../../../../contexts/OptionContext";
-import { useTrimState } from "../../../../contexts/TrimContext";
-import OptionBox from "../../../common/OptionBox/OptionBox";
-import { Modals } from "../../../common/Modals/Modals";
-import { ModalType } from "../../../../constants/Modal.constants";
-import { get } from "../../../../utils/fetch";
-import { UnselectableOptionProps } from "../../../../types/options.types";
+} from "@contexts/QuotationContext";
+import { useOptionState } from "@contexts/OptionContext";
+import { useTrimState } from "@contexts/TrimContext";
+import { OptionBox, Modals } from "@common/index";
+import { ModalType } from "@constants/Modal.constants";
+import { UnselectableOptionProps } from "types/options.types";
+import { get } from "@utils/fetch";
 
 export default function BodyTypeSelectView() {
   const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;

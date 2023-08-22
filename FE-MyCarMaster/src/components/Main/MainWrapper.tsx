@@ -1,10 +1,12 @@
-import TrimContent from "./view/TrimContent";
-import DetailModelContent from "./view/DetailModelContent";
-import ColorContent from "./view/ColorContent";
-import OptionContent from "./view/OptionContent";
-import { useQuotationState } from "../../contexts/QuotationContext";
+import {
+  TrimContent,
+  DetailModelContent,
+  ColorContent,
+  OptionContent,
+} from "./view/index";
+import { useQuotationState } from "@contexts/QuotationContext";
 
-function MainWrapper() {
+export default function MainWrapper() {
   const { navigationId } = useQuotationState();
   if (navigationId === 0) return <TrimContent />;
   if (navigationId >= 1 && navigationId <= 3) return <DetailModelContent />;
@@ -12,5 +14,3 @@ function MainWrapper() {
   if (navigationId === 6) return <OptionContent />;
   return <></>;
 }
-
-export default MainWrapper;

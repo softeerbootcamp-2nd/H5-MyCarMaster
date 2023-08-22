@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import { createPortal } from "react-dom";
 import styled from "styled-components";
-import AngleUp from "../../assets/icons/AngleUp.svg";
-import AngleDown from "../../assets/icons/AngleDown.svg";
+import AngleUp from "@assets/icons/AngleUp.svg";
+import AngleDown from "@assets/icons/AngleDown.svg";
 import MyTrimSearchScreen from "./screen_view/MyTrimSearchScreen";
 import DefaultOptionScreen from "./screen_view/DefaultOptionScreen";
-import { QuotationType } from "../../types/quotation.types";
-import { useTrimState, useTrimDispatch } from "../../contexts/TrimContext";
-import { useQuotationDispatch } from "../../contexts/QuotationContext";
-import SnackBar from "../common/SnackBar/SnackBar";
-import { Modals } from "../common/Modals/Modals";
-import { ModalType } from "../../constants/Modal.constants";
+import { QuotationType } from "types/quotation.types";
+import { useTrimState, useTrimDispatch } from "@contexts/TrimContext";
+import { useQuotationDispatch } from "@contexts/QuotationContext";
+import { SnackBar, Modals } from "@common/index";
+import { ModalType } from "@constants/Modal.constants";
 
 type FoldScreenProps = {
   text: string;
