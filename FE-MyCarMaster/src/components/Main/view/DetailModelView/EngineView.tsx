@@ -1,14 +1,14 @@
-import { styled } from "styled-components";
-import GraphList from "../../../common/Graph/GraphList";
-import {
-  useDetailDispatch,
-  useDetailState,
-} from "../../../../contexts/DetailContext";
-import { Engines } from "../../../../types/detail.types";
-import { useTrimState } from "../../../../contexts/TrimContext";
-import { useQuotationDispatch } from "../../../../contexts/QuotationContext";
-import useFetch from "../../../../hooks/useFetch";
 import { useEffect } from "react";
+import { Flex, Image } from "@styles/core.style";
+import { GraphList } from "@common/index";
+import { useDetailDispatch, useDetailState } from "@contexts/DetailContext";
+import {
+  useQuotationDispatch,
+  useQuotationState,
+} from "@contexts/QuotationContext";
+import { Engines } from "types/detail.types";
+import { useTrimState } from "@contexts/TrimContext";
+import useFetch from "@hooks/useFetch";
 
 interface FetchEngineProps extends Engines {
   result: {
@@ -16,11 +16,12 @@ interface FetchEngineProps extends Engines {
   };
 }
 
-function EngineView() {
+export default function EngineView() {
   const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 
   const { trimId } = useTrimState();
   const { engineId, engineList } = useDetailState();
+  const { detailQuotation } = useQuotationState();
   const engineDispatch = useDetailDispatch();
   const quotationDispatch = useQuotationDispatch();
 
@@ -31,54 +32,45 @@ function EngineView() {
 
   useEffect(() => {
     if (data) {
+      if (detailQuotation.engineQuotation.id) return;
+
       engineDispatch({
         type: "SET_DETAIL_LIST",
         payload: { engineList: data.result.engines },
+      });
+
+      engineDispatch({
+        type: "SELECT_DETAIL",
+        payload: { engineId: data.result.engines[0].id },
       });
 
       quotationDispatch({
         type: "SET_DETAIL_QUOTATION",
         payload: {
           type: "engineQuotation",
-          name: data.result.engines[engineId - 1].name,
-          price: data.result.engines[engineId - 1].price,
+          id: data.result.engines[0].id,
+          name: data.result.engines[0].name,
+          price: data.result.engines[0].price,
         },
       });
     }
-  }, [data, engineDispatch]);
+  }, [data]);
 
-  if (!engineList?.length) return <Container></Container>;
+  if (!engineList?.length) return <Flex></Flex>;
 
   return (
-    <Container>
+    <Flex $justifyContent="space-between" $gap="5rem" $alignItems="center">
       {engineList?.length && (
-        <EngineImg src={engineList[engineId - 1].imgUrl} />
+        <Image
+          $width="50%"
+          $height="20rem"
+          $objectFit="contain"
+          $shadow={"0 0 10px #000"}
+          src={engineList.find((engine) => engine.id === engineId)?.imgUrl}
+          alt="엔진 이미지"
+        />
       )}
-      <EngineGraph>
-        <GraphList />
-      </EngineGraph>
-    </Container>
+      <GraphList />
+    </Flex>
   );
 }
-
-const Container = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 2rem;
-  height: 100%;
-`;
-
-const EngineImg = styled.img`
-  flex: 1;
-  width: calc(100% / 2);
-  height: 25rem;
-  object-fit: contain;
-  object-position: center;
-`;
-
-const EngineGraph = styled.div`
-  flex: 1;
-`;
-
-export default EngineView;

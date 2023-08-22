@@ -1,22 +1,13 @@
-import { Footer, Header, MainView } from "../components";
-import { styled } from "styled-components";
-import dark_logo from "../assets/images/dark_logo.svg";
+import { Header, MainView, Footer } from "@layout/index";
+import { Flex } from "@styles/core.style";
+import dark_logo from "@assets/images/dark_logo.svg";
 
-function Estimation() {
+export default function Estimation() {
   return (
-    <Container>
+    <Flex $flexDirection="column">
       <Header logo={dark_logo} isHome={false} />
       <MainView />
       <Footer />
-    </Container>
+    </Flex>
   );
 }
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-`;
-
-export default Estimation;

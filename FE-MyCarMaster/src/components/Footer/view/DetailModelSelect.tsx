@@ -1,24 +1,19 @@
-import styled from "styled-components";
-import { useQuotationState } from "../../../contexts/QuotationContext";
-import BodyTypeSelectView from "./DetailModelView/BodyTypeSelectView";
-import EngineSelectView from "./DetailModelView/EngineSelectView";
-import WheelDriveSelectView from "./DetailModelView/WheelDriveSelectView";
+import { Flex } from "@styles/core.style";
+import { useQuotationState } from "@contexts/QuotationContext";
+import {
+  BodyTypeSelectView,
+  EngineSelectView,
+  WheelDriveSelectView,
+} from "./DetailModelView/index";
 
 export default function DetailModelSelect() {
   const { navigationId } = useQuotationState();
 
   return (
-    <Container>
+    <Flex $width="59.5rem" $gap="0.5rem">
       {navigationId === 1 && <EngineSelectView />}
       {navigationId === 2 && <WheelDriveSelectView />}
       {navigationId === 3 && <BodyTypeSelectView />}
-    </Container>
+    </Flex>
   );
 }
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 59.5rem;
-  gap: 0.5rem;
-`;

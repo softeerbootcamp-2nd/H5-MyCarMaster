@@ -4,7 +4,7 @@ import {
   CarPaintAction,
   ExteriorColors,
   InteriorColors,
-} from "../types/carpaint.types";
+} from "types/carpaint.types";
 
 const initialCarPaintState: CarPaintState = {
   exteriorId: 1,

@@ -1,12 +1,15 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { createPortal } from "react-dom";
 import styled from "styled-components";
-import AngleUp from "../../assets/icons/AngleUp.svg";
-import AngleDown from "../../assets/icons/AngleDown.svg";
+import AngleUp from "@assets/icons/AngleUp.svg";
+import AngleDown from "@assets/icons/AngleDown.svg";
 import MyTrimSearchScreen from "./screen_view/MyTrimSearchScreen";
 import DefaultOptionScreen from "./screen_view/DefaultOptionScreen";
-import { QuotationType } from "../../types/quotation.types";
-import { useTrimState, useTrimDispatch } from "../../contexts/TrimContext";
-import { useQuotationDispatch } from "../../contexts/QuotationContext";
+import { QuotationType } from "types/quotation.types";
+import { useTrimState, useTrimDispatch } from "@contexts/TrimContext";
+import { useQuotationDispatch } from "@contexts/QuotationContext";
+import { SnackBar, Modals } from "@common/index";
+import { ModalType } from "@constants/Modal.constants";
 
 type FoldScreenProps = {
   text: string;
@@ -16,7 +19,13 @@ type FoldScreenProps = {
 export default function FoldScreen({ text, $switch }: FoldScreenProps) {
   const [isFold, setIsFold] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { trimList } = useTrimState();
+  const [isOpen, setIsOpen] = useState(false);
+  const [saveData, setSaveData] = useState<{
+    optionList: QuotationType[];
+    selected: number;
+  } | null>(null);
+  const [snackBar, setSnackBar] = useState<string[] | null>(null);
+  const { trimList, trimId } = useTrimState();
   const trimDispatch = useTrimDispatch();
   const quotationDispatch = useQuotationDispatch();
 
@@ -35,9 +44,26 @@ export default function FoldScreen({ text, $switch }: FoldScreenProps) {
     }, 500);
   };
 
-  const searchHandler = (optionList: QuotationType[], selected: number) => {
+  const searchHandler = (
+    optionList: QuotationType[],
+    selected: number,
+    sign?: boolean | undefined
+  ) => {
+    if (trimId !== selected && (sign === undefined || !sign)) {
+      setIsOpen(true);
+      setSaveData({ optionList, selected });
+      return;
+    }
+
+    quotationDispatch({
+      type: "RESET_QUOTATION",
+    });
+
     const target = document.querySelector(".fold-screen") as HTMLDivElement;
     target.style.animation = "moveDown 0.5s ease-in-out forwards";
+
+    const messages = optionList.map((option) => option.name);
+    setSnackBarHandler(messages);
 
     setLoading(true);
 
@@ -69,6 +95,11 @@ export default function FoldScreen({ text, $switch }: FoldScreenProps) {
         optionList: optionList,
       },
     });
+    setIsOpen(false);
+  };
+
+  const setSnackBarHandler = (messages: string[] | null) => {
+    setSnackBar(messages);
   };
 
   return (
@@ -108,6 +139,23 @@ export default function FoldScreen({ text, $switch }: FoldScreenProps) {
           />
         )}
       </ButtonContainer>
+      {snackBar !== null &&
+        createPortal(
+          <SnackBar
+            messages={snackBar ? snackBar : []}
+            onClose={() => setSnackBarHandler(null)}
+          />,
+          document.body
+        )}
+      {isOpen && (
+        <Modals
+          type={ModalType.CHANGE_SEARCH_TRIM}
+          onClick={() =>
+            searchHandler(saveData!.optionList, saveData!.selected, true)
+          }
+          setIsOpen={setIsOpen}
+        />
+      )}
     </Conatiner>
   );
 }

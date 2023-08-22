@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import Button from "../components/common/Button/Button.tsx";
-import homeVideo from "../assets/video/homeVideo.mp4";
-import white_logo from "../assets/images/white_logo.svg";
-import ModelSelectView from "../components/Home/ModelSelectView.tsx";
-import { Header } from "../components/index.tsx";
+import { Button } from "@common/index";
+import homeVideo from "@assets/video/homeVideo.mp4";
+import white_logo from "@assets/images/white_logo.svg";
+import { ModelSelectView, Header } from "@layout/index";
 import { useState } from "react";
 
 type TextProp = {

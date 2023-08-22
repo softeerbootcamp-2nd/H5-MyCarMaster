@@ -43,6 +43,11 @@ function NavigationItem({ name, quotation, confirm }: NavigationItemProp) {
       type: "NAVIGATE",
       payload: { navigationId: start },
     });
+
+    if (name === "견적서 완성") {
+      navigate("/quotation");
+      return;
+    }
     navigate("/estimation");
   };
 

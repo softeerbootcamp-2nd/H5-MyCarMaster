@@ -1,13 +1,13 @@
-import OuterColorBox from "../../../common/ColorBox/OuterColorBox";
+import { OuterColorBox } from "@common/index";
 import {
   useCarPaintState,
   useCarPaintDispatch,
-} from "../../../../contexts/CarPaintContext";
+} from "@contexts/CarPaintContext";
 import {
   useQuotationState,
   useQuotationDispatch,
-} from "../../../../contexts/QuotationContext";
-import { TrimQuotationType } from "../../../../types/quotation.types";
+} from "@contexts/QuotationContext";
+import { TrimQuotationType } from "types/quotation.types";
 
 export default function InteriorColorSelectView() {
   const { exteriorList, exteriorId } = useCarPaintState();
@@ -18,15 +18,15 @@ export default function InteriorColorSelectView() {
   const quotationDispatch = useQuotationDispatch();
   const carPaintDispatch = useCarPaintDispatch();
 
-  const selectExterior = (id: number) => {
+  const selectExterior = (id: number, index: number) => {
     quotationDispatch({
       type: "SET_CAR_PAINT_QUOTATION",
       payload: {
         type: "exteriorColorQuotation",
         id: id,
-        name: exteriorList[id - 1].name,
-        price: exteriorList[id - 1].price,
-        imgUrl: exteriorList[id - 1].colorImgUrl,
+        name: exteriorList[index].name,
+        price: exteriorList[index].price,
+        imgUrl: exteriorList[index].colorImgUrl,
       },
     });
     carPaintDispatch({
@@ -42,10 +42,10 @@ export default function InteriorColorSelectView() {
   return (
     <>
       {exteriorList?.length &&
-        exteriorList.map((exterior) => {
+        exteriorList.map((exterior, index) => {
           return (
             <OuterColorBox
-              key={exterior.id}
+              key={index}
               $id={exterior.id}
               $name={exterior.name}
               ratio={exterior.ratio}
@@ -54,7 +54,7 @@ export default function InteriorColorSelectView() {
               $active={exterior.id === exteriorId}
               $colorImgUrl={exterior.colorImgUrl}
               $coloredImgUrl={exterior.coloredImgUrl}
-              handleClick={() => selectExterior(exterior.id)}
+              handleClick={() => selectExterior(exterior.id, index)}
             />
           );
         })}

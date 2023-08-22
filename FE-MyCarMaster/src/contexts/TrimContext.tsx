@@ -1,5 +1,5 @@
 import { useReducer, createContext, useContext } from "react";
-import { TrimAction, TrimState, Trims } from "../types/trim.types";
+import { TrimAction, TrimState, Trims } from "types/trim.types";
 
 const initialTrimState: TrimState = {
   trimId: 1,

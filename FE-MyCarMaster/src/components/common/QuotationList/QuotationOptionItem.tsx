@@ -3,6 +3,7 @@ import { styled } from "styled-components";
 import Button from "../Button/Button";
 import theme from "../../../styles/Theme";
 import { useQuotationDispatch } from "../../../contexts/QuotationContext";
+import { useOptionDispatch } from "../../../contexts/OptionContext";
 
 interface QuotationOptionProps {
   id: number;
@@ -24,6 +25,7 @@ function QuotationOptionItem({
   confirm,
 }: QuotationOptionProps) {
   const quotationDispatch = useQuotationDispatch();
+  const optionDispatch = useOptionDispatch();
 
   const [isSelected, setIsSelected] = useState(initialIsSelected);
 
@@ -36,6 +38,7 @@ function QuotationOptionItem({
     const actionType = updatedIsSelected
       ? "SET_SELECT_QUOTATION"
       : "SET_CONSIDER_QUOTATION";
+    const where = updatedIsSelected ? "selectedOption" : "consideredOption";
 
     quotationDispatch({
       type: actionType,
@@ -47,6 +50,15 @@ function QuotationOptionItem({
         imgUrl,
       },
     });
+
+    optionDispatch({
+      type: "SET_CHOICE_OPTION",
+      payload: {
+        where: where,
+        id: id,
+      },
+    });
+    
     setIsSelected(updatedIsSelected);
   };
 

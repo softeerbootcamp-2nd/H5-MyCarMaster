@@ -3,7 +3,7 @@ import {
   QuotationAction,
   QuotationState,
   QuotationType,
-} from "../types/quotation.types";
+} from "types/quotation.types";
 
 const initialQuotationState: QuotationState = {
   navigationId: 0,
@@ -145,7 +145,6 @@ const quotationReducer = (
         },
       };
     }
-    // 임시?
     case "SET_MY_TRIM_OPTIONS":
       return {
         ...state,
@@ -153,6 +152,17 @@ const quotationReducer = (
           ...state.optionQuotation,
           // selectedQuotation is optionList
           selectedQuotation: action.payload!.optionList as QuotationType[],
+        },
+      };
+    case "REMOVE_EXCEPT_SELECTED":
+      return {
+        ...state,
+        optionQuotation: {
+          ...state.optionQuotation,
+          // 선택된 옵션들만 제거시키기
+          selectedQuotation: state.optionQuotation.selectedQuotation.filter(
+            (option) => !action.payload!.ids!.includes(option.id as number)
+          ),
         },
       };
     case "RESET_QUOTATION":
