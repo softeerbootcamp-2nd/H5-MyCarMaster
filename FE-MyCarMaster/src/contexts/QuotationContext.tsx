@@ -3,7 +3,7 @@ import {
   QuotationAction,
   QuotationState,
   QuotationType,
-} from "../types/quotation.types";
+} from "types/quotation.types";
 
 const initialQuotationState: QuotationState = {
   navigationId: 0,

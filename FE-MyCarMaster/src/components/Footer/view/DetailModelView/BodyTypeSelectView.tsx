@@ -1,12 +1,9 @@
-import {
-  useDetailState,
-  useDetailDispatch,
-} from "../../../../contexts/DetailContext";
-import { useQuotationDispatch } from "../../../../contexts/QuotationContext";
-import OptionBox from "../../../common/OptionBox/OptionBox";
+import { useDetailState, useDetailDispatch } from "@contexts/DetailContext";
+import { useQuotationDispatch } from "@contexts/QuotationContext";
+import { OptionBox } from "@common/index";
 
 export default function BodyTypeSelectView() {
-  const { bodyTypeList,  bodyTypeId } = useDetailState();
+  const { bodyTypeList, bodyTypeId } = useDetailState();
   const detailDispatch = useDetailDispatch();
   const quotationDispatch = useQuotationDispatch();
 

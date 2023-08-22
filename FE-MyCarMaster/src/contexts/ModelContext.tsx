@@ -1,5 +1,5 @@
 import { useReducer, createContext, useContext } from "react";
-import { ModelState, ModelAction } from "../types/model.types";
+import { ModelState, ModelAction } from "types/model.types";
 
 const initialModelState: ModelState = {
   modelId: 1,

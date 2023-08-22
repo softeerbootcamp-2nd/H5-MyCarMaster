@@ -1,16 +1,17 @@
+import { Fragment, useState, useEffect } from "react";
 import styled from "styled-components";
-import SearchTrimBox from "../../common/SearchTrimBox/SearchTrimBox";
-import OptionCheckBox from "../../common/CheckBox/OptionCheckBox";
-import Button from "../../common/Button/Button";
-import { Fragment, useState } from "react";
-import theme from "../../../styles/Theme";
-import { useTrimState } from "../../../contexts/TrimContext";
-import { QuotationType } from "../../../types/quotation.types";
-import { DescriptionOptionModalProps } from "../../../types/options.types";
-import OptionDescriptionModal from "../../common/OptionDescriptionModal/OptionDescriptionModal";
-import useFetch from "../../../hooks/useFetch";
-import { useEffect } from "react";
-import { useModelState } from "../../../contexts/ModelContext";
+import theme from "@styles/Theme";
+import {
+  SearchTrimBox,
+  OptionCheckBox,
+  Button,
+  OptionDescriptionModal,
+} from "@common/index";
+import { useModelState } from "@contexts/ModelContext";
+import { useTrimState } from "@contexts/TrimContext";
+import { QuotationType } from "types/quotation.types";
+import { DescriptionOptionModalProps } from "types/options.types";
+import useFetch from "@hooks/useFetch";
 
 type DataListProps = {
   id: number;

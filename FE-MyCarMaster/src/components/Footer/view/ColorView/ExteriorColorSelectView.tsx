@@ -1,13 +1,13 @@
-import OuterColorBox from "../../../common/ColorBox/OuterColorBox";
+import { OuterColorBox } from "@common/index";
 import {
   useCarPaintState,
   useCarPaintDispatch,
-} from "../../../../contexts/CarPaintContext";
+} from "@contexts/CarPaintContext";
 import {
   useQuotationState,
   useQuotationDispatch,
-} from "../../../../contexts/QuotationContext";
-import { TrimQuotationType } from "../../../../types/quotation.types";
+} from "@contexts/QuotationContext";
+import { TrimQuotationType } from "types/quotation.types";
 
 export default function InteriorColorSelectView() {
   const { exteriorList, exteriorId } = useCarPaintState();

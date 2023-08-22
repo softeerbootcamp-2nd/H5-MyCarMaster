@@ -1,16 +1,13 @@
-import { styled } from "styled-components";
-import {
-  useDetailDispatch,
-  useDetailState,
-} from "../../../../contexts/DetailContext";
-import { WheelDrives } from "../../../../types/detail.types";
-import { useTrimState } from "../../../../contexts/TrimContext";
+import { useEffect } from "react";
+import { Flex, Image } from "@styles/core.style";
+import { useDetailDispatch, useDetailState } from "@contexts/DetailContext";
+import { useTrimState } from "@contexts/TrimContext";
 import {
   useQuotationDispatch,
   useQuotationState,
-} from "../../../../contexts/QuotationContext";
-import useFetch from "../../../../hooks/useFetch";
-import { useEffect } from "react";
+} from "@contexts/QuotationContext";
+import { WheelDrives } from "types/detail.types";
+import useFetch from "@hooks/useFetch";
 
 interface FetchWheelDriveProps extends WheelDrives {
   result: {
@@ -18,7 +15,7 @@ interface FetchWheelDriveProps extends WheelDrives {
   };
 }
 
-function WheelDriveView() {
+export default function WheelDriveView() {
   const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 
   const { trimId } = useTrimState();
@@ -61,24 +58,19 @@ function WheelDriveView() {
   if (!wheelDriveList?.length) return null;
 
   return (
-    wheelDriveList?.length && (
-      <WheelDriveImg
-        src={
-          wheelDriveList.find((wheelDrive) => wheelDrive.id === wheelDriveId)
-            ?.imgUrl
-        }
-      />
-    )
+    <Flex $justifyContent="flex-start" $alignItems="center">
+      {wheelDriveList?.length && (
+        <Image
+          $width="100%"
+          $height="25rem"
+          $objectFit="contain"
+          $margin="1rem"
+          src={
+            wheelDriveList.find((wheelDrive) => wheelDrive.id === wheelDriveId)
+              ?.imgUrl
+          }
+        />
+      )}
+    </Flex>
   );
 }
-
-const WheelDriveImg = styled.img`
-  width: 100%;
-  max-width: 40rem;
-  height: 100%;
-  margin: 0 auto;
-  object-fit: contain;
-  object-position: center;
-`;
-
-export default WheelDriveView;
