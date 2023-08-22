@@ -3,7 +3,7 @@ export { default as Button } from "./Button/Button";
 export { default as TextButton } from "./Button/TextButton";
 export { default as CarRotation } from "./CarRotation/CarRotation";
 export { default as CategoryList } from "./CategoryList/CategoryList";
-export { default as CheckBox } from "./CheckBox/OptionCheckBox";
+export { default as OptionCheckBox } from "./CheckBox/OptionCheckBox";
 export { default as InnerColorBox } from "./ColorBox/InnerColorBox";
 export { default as OuterColorBox } from "./ColorBox/OuterColorBox";
 export { default as GraphList } from "./Graph/GraphList";
