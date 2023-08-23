@@ -13,12 +13,14 @@ import { Modals } from "../components/common/Modals/Modals";
 import { ModalType } from "../constants/Modal.constants";
 import { post } from "../utils/fetch";
 import { QuotationType } from "../types/quotation.types";
+import MapModal from "../components/common/MapModal/MapModal";
 
 function Quotation() {
   const { trimQuotation, detailQuotation, carPaintQuotation, optionQuotation } =
     useQuotationState();
   const [confirm, setConfirm] = useState<boolean>(false);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState<boolean>(false);
+  const [isMapModalOpen, setIsMapModalOpen] = useState<boolean>(false);
   const [estimateId, setEstimateId] = useState<string>();
 
   const getTotalPrice = () => {
@@ -122,7 +124,7 @@ function Quotation() {
               $textcolor={`${theme.colors.WHITE}`}
               $bordercolor={`${theme.colors.NAVYBLUE5}`}
               text="카마스터 찾기"
-              handleClick={() => console.log("카마스터 찾기!")}
+              handleClick={() => setIsMapModalOpen(true)}
             />
           </ButtonContainer>
         </QuotationFooter>
@@ -133,6 +135,12 @@ function Quotation() {
           type={ModalType.CONFIRM}
           setIsOpen={setIsConfirmModalOpen}
           onClick={confirmHandler}
+        />
+      )}
+      {isMapModalOpen && (
+        <MapModal
+          setIsMapModalOpen={setIsMapModalOpen}
+          estimateId={estimateId!}
         />
       )}
     </Fragment>
