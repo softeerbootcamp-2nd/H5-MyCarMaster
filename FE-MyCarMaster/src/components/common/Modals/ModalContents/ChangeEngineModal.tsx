@@ -6,7 +6,7 @@ function ChangeEngineModal({ id, name, price }: UnselectableOptionProps) {
   return (
     <Container key={id}>
       <MainText>엔진을 변경하시면</MainText>
-      <MainText>선택하신 아래 옵션이 해제돼요.</MainText>
+      <MainText>선택하신 아래 옵션이 해제됩니다.</MainText>
       <OptionContainer>
         <OptionName>{name}</OptionName>
         <OptionPrice>+{price.toLocaleString("ko-KR")}원</OptionPrice>
