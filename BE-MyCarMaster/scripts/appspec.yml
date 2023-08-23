@@ -1,5 +1,10 @@
 version: 0.0
 os: linux
+
+files:
+  - source: scripts/promtail-config.yml
+    destination: /home/ubuntu
+
 hooks:
   BeforeInstall:
     - location: create-directory.sh
