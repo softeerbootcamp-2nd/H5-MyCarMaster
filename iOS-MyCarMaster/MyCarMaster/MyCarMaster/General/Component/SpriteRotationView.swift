@@ -96,19 +96,20 @@ final class SpriteRotationView: UIView {
     private func handlePan(_ sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: self)
         
-        // (0, sensitive)의 값을 갖는데, 1을 360도라고 생각한다.
+        // (0, 1)의 값을 갖는데, 1을 360도라고 생각한다.
         let diff = (translation.x / self.bounds.width) * sensitive
         
         switch sender.state {
         case .began:
             startingY = self.bounds.origin.y
         case .changed:
-            let imageNext = Int(round(diff * CGFloat(imageCount))) // (360 * diff) / (360 / imageCount)
-            print("imageNext:",imageNext)
+            // ((360 * diff) / (360 / imageCount)) % imageCount
+            let imageNext = Int(round(diff * CGFloat(imageCount))) % imageCount
             
             // y를 몇 옮겨야 할까?
             let lastImageY = imageView.bounds.height - imageSize.height
             var windowY = startingY + CGFloat(imageNext) * imageSize.height
+            
             // y의 최소/최대 범위는 어떻게 처리할까?
             if windowY < 0 {
                 windowY += lastImageY
