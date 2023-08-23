@@ -10,7 +10,13 @@ import { OptionProvider } from "@contexts/OptionContext";
 import { QuotationProvider } from "@contexts/QuotationContext";
 import theme from "@styles/Theme";
 
-import { Home, Estimation, Quotation } from "@pages/index";
+import {
+  Home,
+  Estimation,
+  Quotation,
+  WrittenQuotation,
+  ConsultComplete,
+} from "@pages/index";
 
 type ContextProvider = React.ComponentType<{ children: React.ReactNode }>;
 
@@ -42,11 +48,13 @@ function App() {
           QuotationProvider,
         ]}
       >
-        <Flex $overflow="hidden">
+        <Flex>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/estimation" element={<Estimation />} />
             <Route path="/quotation" element={<Quotation />} />
+            <Route path="/:estimateId" element={<WrittenQuotation />} />
+            <Route path="/consult-complete" element={<ConsultComplete />} />
           </Routes>
         </Flex>
       </AppProvider>

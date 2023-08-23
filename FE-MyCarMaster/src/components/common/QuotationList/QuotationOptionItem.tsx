@@ -12,6 +12,7 @@ interface QuotationOptionProps {
   name: string;
   price: number;
   isSelected: boolean;
+  $isFinished: boolean;
   confirm: boolean;
 }
 
@@ -22,6 +23,7 @@ function QuotationOptionItem({
   name,
   price,
   isSelected: initialIsSelected,
+  $isFinished,
   confirm,
 }: QuotationOptionProps) {
   const quotationDispatch = useQuotationDispatch();
@@ -58,12 +60,12 @@ function QuotationOptionItem({
         id: id,
       },
     });
-    
+
     setIsSelected(updatedIsSelected);
   };
 
   return (
-    <Container>
+    <Container $isFinished={$isFinished}>
       <OptionImg src={imgUrl} />
       <OptionDetail>
         <OptionCategory>{category}</OptionCategory>
@@ -92,8 +94,8 @@ function QuotationOptionItem({
 
 export default QuotationOptionItem;
 
-const Container = styled.div`
-  width: 48rem;
+const Container = styled.div<{ $isFinished: boolean }>`
+  width: ${({ $isFinished }) => ($isFinished ? "100%" : "48rem")};
   height: 7.5rem;
 
   display: flex;
