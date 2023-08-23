@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import theme from "../../styles/Theme";
+import theme from "../../../styles/Theme";
 import React, { useState } from "react";
 import { createPortal } from "react-dom";
 
