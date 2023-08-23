@@ -12,6 +12,7 @@ ARG ESTIMATE_LINK
 ARG SERVER_URL
 ARG REDIS_URL
 ARG REDIS_PORT
+ARG BATCH_FETCH_SIZE
 
 COPY ${JAR_FILE} app.jar
 COPY config/pinpoint-agent pinpoint-agent
@@ -29,6 +30,7 @@ ENV ESTIMATE_LINK=${ESTIMATE_LINK}
 ENV SERVER_URL=${SERVER_URL}
 ENV REDIS_URL=${REDIS_URL}
 ENV REDIS_PORT=${REDIS_PORT}
+ENV BATCH_FETCH_SIZE=${BATCH_FETCH_SIZE}
 ENV TZ=Asia/Seoul
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
