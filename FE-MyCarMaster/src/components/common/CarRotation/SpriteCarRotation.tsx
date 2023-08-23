@@ -48,8 +48,6 @@ export default function SpriteCarRotation({ $imgUrl }: SpriteCarRotationProps) {
           $width={frameWidth * scale}
           $height={frameHeight * scale}
           $backgroundPositionY={-currentFrame * (gap * scale)}
-          $backgroundSizeX={frameWidth * scale}
-          $backgroundSizeY={frameHeight * scale}
         />
       </ImageContainer>
     </Container>
@@ -72,8 +70,6 @@ const Image = styled.div<{
   $width: number;
   $height: number;
   $backgroundPositionY: number;
-  $backgroundSizeX: number;
-  $backgroundSizeY: number;
 }>`
   width: ${({ $width }) => $width}px;
   height: ${({ $height }) => $height}px;
@@ -82,9 +78,6 @@ const Image = styled.div<{
   background-position-y: ${({ $backgroundPositionY }) =>
     $backgroundPositionY}px;
   background-position-x: -0px;
-
-  /* background-size: ${({ $backgroundSizeX, $backgroundSizeY }) =>
-    `${$backgroundSizeX}px ${$backgroundSizeY}px`}; */
 
   background-size: 100%;
   transition: background-position-x 0.1s linear;
