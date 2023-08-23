@@ -34,6 +34,14 @@ class ViewController: UIViewController {
         button.layer.borderWidth = 1.0
         button.addTarget(self, action: #selector(showCollectionView), for: .touchUpInside)
     }
+    
+    lazy var spriteViewButton = UIButton().then { button in
+        button.setTitle("360 sprite Image", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.layer.borderColor = UIColor.black.cgColor
+        button.layer.borderWidth = 1.0
+        button.addTarget(self, action: #selector(showSpriteView), for: .touchUpInside)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +51,8 @@ class ViewController: UIViewController {
         let stackView = UIStackView(arrangedSubviews: [
             componentButton,
             compressionButton,
-            collectionViewButton
+            collectionViewButton,
+            spriteViewButton
         ]).then { stackView in
             stackView.axis = .vertical
             stackView.spacing = 20
@@ -57,7 +66,6 @@ class ViewController: UIViewController {
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-//            stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
         ])
     }
     
@@ -75,6 +83,12 @@ class ViewController: UIViewController {
     @objc
     func showCollectionView() {
         let viewController = CollectionViewController()
+        navigationController?.pushViewController(viewController, animated: false)
+    }
+    
+    @objc
+    func showSpriteView() {
+        let viewController = SpriteViewController()
         navigationController?.pushViewController(viewController, animated: false)
     }
 }

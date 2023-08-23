@@ -87,6 +87,7 @@
 		B59B201D2A8B666A009E7868 /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59B201C2A8B666A009E7868 /* OptionViewController.swift */; };
 		B5A600FE2A81E1FC00CF2983 /* MCMCombineExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */; };
 		B5A600FF2A81E1FC00CF2983 /* MCMCombineExtension.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B5B142312A960B40007BB426 /* SpriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B142302A960B40007BB426 /* SpriteViewController.swift */; };
 		B5BBB34F2A89C74C00AAFC84 /* InteriorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBB34E2A89C74C00AAFC84 /* InteriorViewController.swift */; };
 		B5BBB3512A89C7BF00AAFC84 /* Interior.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBB3502A89C7BF00AAFC84 /* Interior.swift */; };
 		B5BBB3532A89C7ED00AAFC84 /* Interior+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBB3522A89C7ED00AAFC84 /* Interior+.swift */; };
@@ -268,6 +269,7 @@
 		B598A0842A8F297A00C4A591 /* QuotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationViewController.swift; sourceTree = "<group>"; };
 		B59B201C2A8B666A009E7868 /* OptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
 		B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMCombineExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5B142302A960B40007BB426 /* SpriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteViewController.swift; sourceTree = "<group>"; };
 		B5BBB34E2A89C74C00AAFC84 /* InteriorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteriorViewController.swift; sourceTree = "<group>"; };
 		B5BBB3502A89C7BF00AAFC84 /* Interior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interior.swift; sourceTree = "<group>"; };
 		B5BBB3522A89C7ED00AAFC84 /* Interior+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Interior+.swift"; sourceTree = "<group>"; };
@@ -511,6 +513,7 @@
 				B52FC1A72A90920C0075D288 /* AppDelegate.swift */,
 				B52FC1A92A90920C0075D288 /* SceneDelegate.swift */,
 				B52FC1AB2A90920C0075D288 /* ViewController.swift */,
+				B5B142302A960B40007BB426 /* SpriteViewController.swift */,
 				B567FDA72A95700600224619 /* CollectionViewController.swift */,
 				B50FEC5D2A94516D003566DD /* ComponentViewController.swift */,
 				B50FEC592A944883003566DD /* CompressionViewController.swift */,
@@ -1130,6 +1133,7 @@
 			files = (
 				B52FC1AC2A90920C0075D288 /* ViewController.swift in Sources */,
 				B52FC1A82A90920C0075D288 /* AppDelegate.swift in Sources */,
+				B5B142312A960B40007BB426 /* SpriteViewController.swift in Sources */,
 				B52FC1AA2A90920C0075D288 /* SceneDelegate.swift in Sources */,
 				B567FDA82A95700600224619 /* CollectionViewController.swift in Sources */,
 				B50FEC5E2A94516D003566DD /* ComponentViewController.swift in Sources */,
