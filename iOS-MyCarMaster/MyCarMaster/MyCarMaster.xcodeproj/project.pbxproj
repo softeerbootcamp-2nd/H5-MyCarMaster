@@ -88,6 +88,8 @@
 		B5A600FE2A81E1FC00CF2983 /* MCMCombineExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */; };
 		B5A600FF2A81E1FC00CF2983 /* MCMCombineExtension.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5B142312A960B40007BB426 /* SpriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B142302A960B40007BB426 /* SpriteViewController.swift */; };
+		B5B142332A967E7E007BB426 /* SpriteRotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B142322A967E7E007BB426 /* SpriteRotationView.swift */; };
+		B5B142342A967ED3007BB426 /* SpriteRotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B142322A967E7E007BB426 /* SpriteRotationView.swift */; };
 		B5BBB34F2A89C74C00AAFC84 /* InteriorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBB34E2A89C74C00AAFC84 /* InteriorViewController.swift */; };
 		B5BBB3512A89C7BF00AAFC84 /* Interior.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBB3502A89C7BF00AAFC84 /* Interior.swift */; };
 		B5BBB3532A89C7ED00AAFC84 /* Interior+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BBB3522A89C7ED00AAFC84 /* Interior+.swift */; };
@@ -270,6 +272,7 @@
 		B59B201C2A8B666A009E7868 /* OptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
 		B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMCombineExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B142302A960B40007BB426 /* SpriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteViewController.swift; sourceTree = "<group>"; };
+		B5B142322A967E7E007BB426 /* SpriteRotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteRotationView.swift; sourceTree = "<group>"; };
 		B5BBB34E2A89C74C00AAFC84 /* InteriorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteriorViewController.swift; sourceTree = "<group>"; };
 		B5BBB3502A89C7BF00AAFC84 /* Interior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interior.swift; sourceTree = "<group>"; };
 		B5BBB3522A89C7ED00AAFC84 /* Interior+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Interior+.swift"; sourceTree = "<group>"; };
@@ -719,6 +722,7 @@
 				B53C3C482A854AF50019ECA1 /* BasicStepView.swift */,
 				B550C0D42A8FF4440068670D /* SeparatorView.swift */,
 				B5C56C012A935134009F0226 /* ThemeButton.swift */,
+				B5B142322A967E7E007BB426 /* SpriteRotationView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1077,6 +1081,7 @@
 				B5DD64F32A8783D800B44F61 /* Exterior.swift in Sources */,
 				B550C0D52A8FF4440068670D /* SeparatorView.swift in Sources */,
 				B58A323B2A7C0B35005FC831 /* OnboardingViewController.swift in Sources */,
+				B5B142332A967E7E007BB426 /* SpriteRotationView.swift in Sources */,
 				B56A765F2A83EFB000F7E3EF /* BasicListCell.swift in Sources */,
 				B570C0FA2A89ADA7000E9B75 /* InteriorView.swift in Sources */,
 				B500C77F2A8FCA5F007724F3 /* QuotationContentItemView.swift in Sources */,
@@ -1134,6 +1139,7 @@
 				B52FC1AC2A90920C0075D288 /* ViewController.swift in Sources */,
 				B52FC1A82A90920C0075D288 /* AppDelegate.swift in Sources */,
 				B5B142312A960B40007BB426 /* SpriteViewController.swift in Sources */,
+				B5B142342A967ED3007BB426 /* SpriteRotationView.swift in Sources */,
 				B52FC1AA2A90920C0075D288 /* SceneDelegate.swift in Sources */,
 				B567FDA82A95700600224619 /* CollectionViewController.swift in Sources */,
 				B50FEC5E2A94516D003566DD /* ComponentViewController.swift in Sources */,
