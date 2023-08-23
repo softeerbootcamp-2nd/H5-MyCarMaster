@@ -43,6 +43,7 @@ final class Router {
     func showModelSelection() {
         let rootViewControlller = ModelSelectionViewController(router: self, estimaitonManager: estimationManager)
         let navigationController = UINavigationController(rootViewController: rootViewControlller)
+        navigationController.interactivePopGestureRecognizer?.isEnabled = false
         window?.rootViewController = navigationController
         self.navigationController = navigationController
     }
