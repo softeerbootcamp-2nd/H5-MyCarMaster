@@ -50,84 +50,6 @@ export type FontType = {
 };
 
 const fonts = {
-  BodyMedium: {
-    fontFamily: "HyundaiSansMedium",
-    fontSize: fontSize.ExtraSmall, // 0.75
-    fontStyle: "normal",
-    fontWeight: fontWeight.medium, // 500
-  },
-
-  BodySmall: {
-    fontFamily: "HyundaiSansRegular",
-    fontSize: fontSize.Tiny, // 0.625
-    fontStyle: "normal",
-    fontWeight: fontWeight.regular, // 400
-  },
-
-  ContentLarge: {
-    fontFamily: "HyundaiSansRegular",
-    fontSize: fontSize.Large, // 1
-    fontStyle: "normal",
-    fontWeight: fontWeight.regular, // 400
-  },
-
-  ContentMedium1: {
-    fontFamily: "HyundaiSansRegular",
-    fontSize: fontSize.Normal, // 0.875
-    fontStyle: "normal",
-    fontWeight: fontWeight.regular,
-  },
-
-  ContentMedium2: {
-    fontFamily: "HyundaiSansRegular",
-    fontSize: fontSize.Small, // 0.8125
-    fontStyle: "normal",
-    fontWeight: fontWeight.regular,
-  },
-
-  ContentSmall: {
-    fontFamily: "HyundaiSansRegular",
-    fontSize: fontSize.ExtraSmall, // 0.75
-    fontStyle: "normal",
-    fontWeight: fontWeight.medium,
-  },
-
-  ContentSmall2: {
-    fontFamily: "HyundaiSansRegular",
-    fontSize: fontSize.Tiny,
-    fontStyle: "normal",
-    fontWeight: fontWeight.medium,
-  },
-
-  titleLarge: {
-    fontFamily: "HyundaiSansRegular",
-    fontSize: fontSize.Huge,
-    fontStyle: "normal",
-    fontWeight: fontWeight.bold,
-  },
-
-  titleSmall: {
-    fontFamily: "HyundaiSansRegular",
-    fontSize: fontSize.Large,
-    fontStyle: "normal",
-    fontWeight: fontWeight.bold,
-  },
-
-  contentLarge: {
-    fontFamily: "HyundaiSansRegular",
-    fontSize: fontSize.Large,
-    fontStyle: "normal",
-    fontWeight: fontWeight.medium,
-  },
-
-  contentMedium: {
-    fontFamily: "HyundaiSansRegular",
-    fontSize: fontSize.Small,
-    fontStyle: "normal",
-    fontWeight: fontWeight.regular,
-  },
-
-  /* reset */
   Bold25: {
     fontFamily: "HyundaiSansBold",
     fontSize: fontSize.Colossal,
@@ -151,6 +73,11 @@ const fonts = {
     fontSize: fontSize.ExtraLarge,
     fontWeight: fontWeight.medium,
   },
+  Medium13: {
+    fontFamily: "HyundaiSansMedium",
+    fontSize: fontSize.Large,
+    fontWeight: fontWeight.medium,
+  },
   Medium12: {
     fontFamily: "HyundaiSansMedium",
     fontSize: fontSize.Normal,
@@ -170,6 +97,11 @@ const fonts = {
     Active: {
       fontSize: fontSize.Large,
     },
+    fontWeight: fontWeight.medium,
+  },
+  Medium11: {
+    fontFamily: "HyundaiSansMedium",
+    fontSize: fontSize.Small2,
     fontWeight: fontWeight.medium,
   },
   Medium10: {
