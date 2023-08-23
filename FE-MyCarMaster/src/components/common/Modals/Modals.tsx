@@ -16,6 +16,7 @@ interface ModalProps {
   setIsOpen: (isOpen: boolean) => void;
   unselectableOption?: UnselectableOptionProps[];
   isAlert?: boolean;
+  text?: string[];
 }
 
 export function Modals({
@@ -24,6 +25,7 @@ export function Modals({
   setIsOpen,
   unselectableOption,
   isAlert,
+  text,
 }: ModalProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -57,7 +59,7 @@ export function Modals({
       case "CONFIRM":
         return <ConfirmModal />;
       case "ALERT":
-        return <AlertModal />;
+        return <AlertModal text={text as string[]} />;
       default:
         return <></>;
     }

@@ -1,10 +1,10 @@
 import { styled } from "styled-components";
 
-function AlertModal() {
+function AlertModal({ text }: { text: string[] }) {
   return (
     <Container>
-      <MainText>구동 방식이 선택되지 않았습니다.</MainText>
-      <SubText>구동 방식 선택 페이지로 이동합니다.</SubText>
+      <MainText>{text[0]}</MainText>
+      <SubText>{text[1] && text[1]}</SubText>
     </Container>
   );
 }

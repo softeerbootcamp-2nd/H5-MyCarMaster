@@ -122,6 +122,10 @@ export default function Footer() {
           isAlert={true}
           type={ModalType.ALERT}
           onClick={alertHandler}
+          text={[
+            "구동 방식이 선택되지 않았습니다.",
+            "구동 방식 선택 페이지로 이동합니다.",
+          ]}
         />
       )}
     </Container>
