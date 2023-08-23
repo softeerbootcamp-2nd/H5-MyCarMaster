@@ -15,17 +15,17 @@ export const Container = styled.div<CSSProps>`
 
 export const Name = styled.p<CSSProps>`
   ${(props) => props.$text}
-  ${(props) => props.theme.fonts.titleLarge}
+  ${(props) => props.theme.fonts.Medium17}
 `;
 
 export const Description = styled.p<CSSProps>`
   ${(props) => props.$text}
-  ${(props) => props.theme.fonts.ContentMedium2}
+  ${(props) => props.theme.fonts.Regular11}
 `;
 
 export const Price = styled.p<CSSProps>`
   ${(props) => props.$text}
-  ${(props) => props.theme.fonts.contentLarge}
+  ${(props) => props.theme.fonts.Regular15}
 `;
 
 export const BottomContainer = styled.div`
