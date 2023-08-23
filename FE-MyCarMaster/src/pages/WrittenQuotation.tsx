@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
-import QuotationItem from "../components/common/QuotationList/QuotationItem";
-import QuotationOptionItem from "../components/common/QuotationList/QuotationOptionItem";
-import theme from "../styles/Theme";
+import QuotationItem from "@common/QuotationList/QuotationItem";
+import QuotationOptionItem from "@common/QuotationList/QuotationOptionItem";
+import theme from "@styles/Theme";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { get } from "@/utils/fetch";
@@ -50,17 +50,17 @@ function WrittenQuotation() {
   const estimateId = useParams();
   const [data, setData] = useState<WrittenQuotationProps>();
 
-  const calculateTotalPrice = () => {
-    let totalPrice = 0;
+  function calculateTotalPrice(quotation: WrittenQuotationProps): number {
+    const parts = [
+      quotation.trim,
+      quotation.engine,
+      quotation.wheelDrive,
+      quotation.bodyType,
+      quotation.exteriorColor,
+      quotation.interiorColor,
+    ];
 
-    totalPrice += data!.trim.price;
-    totalPrice += data!.engine.price;
-    totalPrice += data!.wheelDrive.price;
-    totalPrice += data!.bodyType.price;
-
-    totalPrice += data!.exteriorColor.price;
-    totalPrice += data!.interiorColor.price;
-
+    let totalPrice = parts.reduce((acc, part) => acc + part.price, 0);
     data?.selectOptions &&
       data.selectOptions.forEach((option: WrittenOptionProps) => {
         totalPrice += option.price;
@@ -71,7 +71,7 @@ function WrittenQuotation() {
       });
 
     return totalPrice;
-  };
+  }
 
   useEffect(() => {
     get(`${SERVER_URL}/estimates/${estimateId}`).then((res) => {
