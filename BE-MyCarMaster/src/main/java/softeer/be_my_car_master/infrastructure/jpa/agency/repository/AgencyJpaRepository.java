@@ -1,6 +1,5 @@
 package softeer.be_my_car_master.infrastructure.jpa.agency.repository;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,7 +15,7 @@ public interface AgencyJpaRepository extends JpaRepository<AgencyEntity, Long> {
 		+ "WHERE a.id IN ("
 		+ "SELECT id "
 		+ "FROM agency "
-		+ "WHERE ST_Distance_Sphere(POINT(:longitude, :latitude), POINT(longitude, latitude)) < 10000"
+		+ "WHERE ST_Distance_Sphere(POINT(:longitude, :latitude), POINT(longitude, latitude)) < 2000"
 		+ ")",
 		nativeQuery = true)
 	List<AgencyEntity> findAllByLocation(
