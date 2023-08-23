@@ -12,14 +12,14 @@ final class SpriteRotationView: UIView {
     // MARK: Property
 
     /// 스크롤 대상이 되는 세로로 긴 이미지
-    private let spriteImage: UIImage
+    private var spriteImage: UIImage
 
     /// SpriteImage 내부에 있는 사진의 개수
-    private let imageCount: Int
+    private var imageCount: Int
 
     /// 가로로 한 번 스크롤 했을 때, 회전할 수 있는 바퀴 수
     /// 0 이하의 값일 때에는, 1로 설정된다.
-    var sensitive: CGFloat
+    private var sensitive: CGFloat
 
     /// ImageViewHeight / ImageCount 만큼의 높이를 기준으로 동작한다.
     /// ImageSize를 기준으로 설정하면, float의 정밀도 때문에 오차가 발생한다.
@@ -45,13 +45,16 @@ final class SpriteRotationView: UIView {
     /// 스크롤이 시작하는 이미지의 Y값을 나타낸다.
     private var startingY: CGFloat = 0
 
+    /// imageView.bounds.origin.y가 될 수 있는 최대 y값
+    private lazy var imageViewMaxY = imageView.bounds.height - imageSize.height
+
     // MARK: View
     private lazy var imageView = UIImageView().then { imageView in
         imageView.image = spriteImage
         imageView.contentMode = .scaleAspectFill
     }
 
-    init(imageCount: Int, sensitive: CGFloat, image: UIImage) {
+    init(image: UIImage, imageCount: Int = 60, sensitive: CGFloat = 1.0) {
         self.imageCount = imageCount
         self.sensitive = sensitive
         self.spriteImage = image
@@ -67,8 +70,6 @@ final class SpriteRotationView: UIView {
 
     private func configureUI() {
         clipsToBounds = true
-        layer.borderColor = UIColor.black.cgColor
-        layer.borderWidth = 1.0
 
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
         addGestureRecognizer(panGesture)
@@ -107,14 +108,14 @@ final class SpriteRotationView: UIView {
             let imageNext = Int(round(diff * CGFloat(imageCount))) % imageCount
 
             // y를 몇 옮겨야 할까?
-            let lastImageY = imageView.bounds.height - imageSize.height
+
             var windowY = startingY + CGFloat(imageNext) * imageSize.height
 
             // y의 최소/최대 범위는 어떻게 처리할까?
             if windowY < 0 {
-                windowY += lastImageY
-            } else if lastImageY < windowY {
-                windowY -= lastImageY
+                windowY += imageViewMaxY
+            } else if imageViewMaxY < windowY {
+                windowY -= imageViewMaxY
             }
 
             // 옮기기
@@ -127,5 +128,13 @@ final class SpriteRotationView: UIView {
         default:
             break
         }
+    }
+}
+
+extension SpriteRotationView {
+    func setImage(_ image: UIImage, imageCount: Int = 60, sensitive: CGFloat = 1.0) {
+        self.spriteImage = image
+        self.imageCount = imageCount
+        self.sensitive = sensitive
     }
 }

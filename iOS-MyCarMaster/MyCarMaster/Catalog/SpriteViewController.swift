@@ -14,9 +14,9 @@ class SpriteViewController: UIViewController {
     let imageName = "abyss_sprite"
     
     lazy var rotationView = SpriteRotationView(
+        image: UIImage(named: imageName)!,
         imageCount: imageCount,
-        sensitive: sensitive,
-        image: UIImage(named: imageName)!
+        sensitive: sensitive
     )
 
     lazy var descriptionLabel = UILabel().then { label in
