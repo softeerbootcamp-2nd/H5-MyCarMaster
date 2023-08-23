@@ -12,5 +12,8 @@ where ListCellClass: UICollectionViewCell & ContentSizeEstimatable & CellStyleSe
 
     override func configureUI() {
         super.configureUI()
-        previewView = SpriteRotationView(image: UIImage(named: "silver_sprite")!)    }
+        let rotationView = SpriteRotationView()
+        previewView = rotationView
+        rotationView.setImage(UIImage(named: "silver_sprite")!)
+    }
 }

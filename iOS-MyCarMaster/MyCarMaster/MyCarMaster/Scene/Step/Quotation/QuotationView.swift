@@ -37,9 +37,7 @@ final class QuotationView: UIView {
         label.setText("카마스터 찾기를 통해 구매 상담을 할 수 있어요")
     }
 
-    private let previewImageView = UIImageView().then { imageView in
-        imageView.contentMode = .scaleAspectFill
-    }
+    private let previewImageView = SpriteRotationView()
 
     private let priceDescriptionLabel = UILabel().then { label in
         label.style = .bodyMedium2(nil)
@@ -134,9 +132,7 @@ final class QuotationView: UIView {
 extension QuotationView {
     func configure(with quotationConvertible: String) {
         titleLabel.setText("펠리세이드와 함께\n드라이브 떠나볼까요?")
-        let previewImage = UIImage(named: "CreamyWhitePearl")!
-        let bottomAroundImage = UIImage(named: "BottomAround")!
-        previewImageView.image = bottomAroundImage.drawAtBottom(ofImage: previewImage, verbose: true)
+        previewImageView.setImage(UIImage(named: "abyss_sprite")!)
         priceLabel.setText("\(999999999.formatted(style: .currency))")
 
         let quotation = Quotation(
