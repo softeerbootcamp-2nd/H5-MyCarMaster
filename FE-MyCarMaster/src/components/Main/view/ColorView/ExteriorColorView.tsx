@@ -11,7 +11,7 @@ import {
 import { useTrimState } from "@contexts/TrimContext";
 import { ExteriorColors } from "types/carpaint.types";
 import useFetch from "@hooks/useFetch";
-// import CarRotation from "@common/index";
+import { CarRotation, SpriteCarRotation } from "@common/index";
 
 interface FetchExteriorProps extends ExteriorColors {
   result: {
@@ -37,6 +37,12 @@ export default function ExteriorColorView() {
     if (data) {
       if (carPaintQuotation.exteriorColorQuotation.id) return;
 
+      const option = "high"; // low, medium, high
+
+      data.result.exteriorColors.forEach((exterior) => {
+        exterior.coloredImgUrl = `${exterior.coloredImgUrl}${option}/sprite.png`;
+      });
+
       exteriorDispatch({
         type: "SET_EXTERIOR_LIST",
         payload: { exteriorList: data.result.exteriorColors },
@@ -54,27 +60,32 @@ export default function ExteriorColorView() {
           id: data.result.exteriorColors[0].id,
           name: data.result.exteriorColors[0].name,
           price: data.result.exteriorColors[0].price,
-          imgUrl: data.result.exteriorColors[0].colorImgUrl,
+          imgUrl: `${data.result.exteriorColors[0].colorImgUrl}`,
         },
       });
     }
   }, [data]);
 
   if (!exteriorList?.length) return null;
-
   return (
     <Flex>
       {exteriorList?.length && (
-        <Image
-          $width="100%"
-          $height="25rem"
-          $objectFit="cover"
-          src={
+        // <Image
+        //   $width="100%"
+        //   $height="25rem"
+        //   $objectFit="cover"
+        //   src={
+        //     exteriorList.find((exterior) => exterior.id === exteriorId)
+        //       ?.coloredImgUrl
+        //   }
+        // />
+        // <CarRotation $isQuotation={false} />
+        <SpriteCarRotation
+          $imgUrl={
             exteriorList.find((exterior) => exterior.id === exteriorId)
               ?.coloredImgUrl
           }
         />
-        // <CarRotation $isQuotation={false} />
       )}
     </Flex>
   );
