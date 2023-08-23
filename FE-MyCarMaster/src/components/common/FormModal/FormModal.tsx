@@ -89,7 +89,6 @@ export function FormModal({
         client: formDatas,
       };
       post(`${SERVER_URL}/consultings`, submitData).then((res) => {
-        console.log(res);
         if (res.code === 2000) {
           setIsModalOpen(false);
           setFormModalOn(false);

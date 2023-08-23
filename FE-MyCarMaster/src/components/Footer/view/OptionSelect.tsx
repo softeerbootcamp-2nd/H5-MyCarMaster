@@ -57,7 +57,6 @@ export default function OptionSelect() {
 
   const handleScroll = (e: React.WheelEvent<HTMLDivElement>) => {
     const target = e.currentTarget;
-    console.log(target);
     const scrollAmount = e.deltaY;
     target.scrollTo({
       top: 0,
