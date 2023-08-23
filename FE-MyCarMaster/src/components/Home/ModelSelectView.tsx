@@ -1,10 +1,17 @@
 import { useState } from "react";
-import theme from "../../styles/Theme";
-import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import CategoryList from "../common/CategoryList/CategoryList";
-import Button from "../common/Button/Button";
+import theme from "@styles/Theme";
+import { CategoryList, Button } from "@common/index";
 import ModelBox from "./ModelBox";
+import {
+  Container,
+  TopContainer,
+  ModelContainer,
+  ButtonContainer,
+  Text,
+  NotFoundText,
+} from "./style";
+import { typeData } from "@constants/Model.constatns";
 
 const data = {
   model: [
@@ -67,24 +74,6 @@ const data = {
   ],
 };
 
-const typeData = [
-  "전체",
-  "수소 / 전기차",
-  "N",
-  "승용",
-  "SUV",
-  "MPV",
-  "소형트럭&택시",
-  "트럭",
-  "버스",
-];
-
-type TextProp = {
-  $color?: string;
-  $animation?: boolean;
-  $delay?: number;
-};
-
 type HomeProp = {
   isFold: boolean;
 };
@@ -128,17 +117,7 @@ export default function Home({ isFold }: HomeProp) {
         </Text>
 
         <CategoryList
-          categories={[
-            "전체",
-            "수소 / 전기차",
-            "N",
-            "승용",
-            "SUV",
-            "MPV",
-            "소형트럭&택시",
-            "트럭",
-            "버스",
-          ]}
+          categories={typeData}
           onClickHandler={(index) => setCategorySelect(index as number)}
           indexSetter={categorySelect}
           $switch="model"
@@ -177,66 +156,3 @@ export default function Home({ isFold }: HomeProp) {
     </Container>
   );
 }
-
-const Container = styled.div<{ $animation?: boolean }>`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-
-  margin: 2rem 0;
-
-  animation: ${({ $animation }) =>
-    $animation ? "homeAppear 2s ease-in-out forwards" : ""};
-
-  @keyframes homeAppear {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-`;
-
-const TopContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const ModelContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-
-  gap: 1rem;
-`;
-
-const ButtonContainer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-`;
-
-const Text = styled.p<TextProp>`
-  ${(props) => props.theme.fonts.Display}
-  text-align: left;
-  color: ${(props) => props.$color || "#FFFFFF"};
-
-  @media screen and (max-width: 1400px) {
-    font-size: 0;
-  }
-`;
-
-const NotFoundText = styled.p`
-  ${(props) => props.theme.fonts.ContentMedium1}
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;

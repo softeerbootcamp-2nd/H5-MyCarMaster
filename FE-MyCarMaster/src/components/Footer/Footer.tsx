@@ -1,16 +1,17 @@
-import styled from "styled-components";
-import SelectListWrapper from "./SelectListWrapper";
-import Button from "../common/Button/Button";
-import theme from "../../styles/Theme";
-import FoldScreen from "./FoldScreen";
+import { useNavigate } from "react-router-dom";
+import { Flex } from "@styles/core.style";
+import { Container, HeadText, DescriptionText } from "./style";
 import {
   useQuotationState,
   useQuotationDispatch,
-} from "../../contexts/QuotationContext";
-import indexNameSwitching from "../../utils/indexNameSwitching";
-import { useNavigate } from "react-router-dom";
+} from "@contexts/QuotationContext";
+import { Button } from "@common/index";
+import theme from "@styles/Theme";
+import SelectListWrapper from "./SelectListWrapper";
+import FoldScreen from "./FoldScreen";
+import indexNameSwitching from "@utils/indexNameSwitching";
 
-function Footer() {
+export default function Footer() {
   const { navigationId, isFirst } = useQuotationState();
   const quotationDispatch = useQuotationDispatch();
   const name = indexNameSwitching(navigationId) as string;
@@ -42,17 +43,25 @@ function Footer() {
   return (
     <Container>
       <SelectListWrapper />
-      <RightContainer>
-        <HeightFittingContainer>
-          <TextContainer>
+      <Flex $width="12rem" $flexDirection="column">
+        <Flex
+          $height="10.25rem"
+          $flexDirection="column"
+          $justifyContent="space-between"
+        >
+          <Flex $flexDirection="column">
             {name && (
               <>
                 <HeadText>{name} 선택</HeadText>
                 <DescriptionText>원하는 {name}을 선택해주세요.</DescriptionText>
               </>
             )}
-          </TextContainer>
-          <ButtonContainer>
+          </Flex>
+          <Flex
+            $flexDirection="column"
+            $gap="0.25rem"
+            $justifyContent="flex-end"
+          >
             {navigationId !== 0 && (
               <Button
                 $x={12}
@@ -78,9 +87,9 @@ function Footer() {
                   : () => buttonHandler(1)
               }
             />
-          </ButtonContainer>
-        </HeightFittingContainer>
-      </RightContainer>
+          </Flex>
+        </Flex>
+      </Flex>
       {navigationId === 0 && (
         <FoldScreen text={"내게 맞는 트림 찾기"} $switch={"searchTrim"} />
       )}
@@ -90,56 +99,3 @@ function Footer() {
     </Container>
   );
 }
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  position: relative;
-  width: 100%;
-  gap: 10rem;
-  height: 30rem;
-  padding: 2rem 0rem;
-  background-color: ${({ theme }) => theme.colors.GREY1};
-`;
-
-const RightContainer = styled.div`
-  width: 12rem;
-  display: flex;
-  flex-direction: column;
-`;
-
-const TextContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-`;
-
-const HeadText = styled.p`
-  font-size: 1.5rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 1.5rem;
-`;
-
-const DescriptionText = styled.p`
-  font-size: 0.9rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 165%;
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-`;
-
-const HeightFittingContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 10.25rem;
-`;
-
-export default Footer;

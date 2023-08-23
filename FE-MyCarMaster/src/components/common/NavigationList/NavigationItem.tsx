@@ -29,9 +29,10 @@ type QutoationProp =
 type NavigationItemProp = {
   name: string;
   quotation?: QutoationProp;
+  confirm: boolean;
 };
 
-function NavigationItem({ name, quotation }: NavigationItemProp) {
+function NavigationItem({ name, quotation, confirm }: NavigationItemProp) {
   const { navigationId, isFirst } = useQuotationState();
   const quotationDispatch = useQuotationDispatch();
   const navigate = useNavigate();
@@ -42,6 +43,11 @@ function NavigationItem({ name, quotation }: NavigationItemProp) {
       type: "NAVIGATE",
       payload: { navigationId: start },
     });
+
+    if (name === "견적서 완성") {
+      navigate("/quotation");
+      return;
+    }
     navigate("/estimation");
   };
 
@@ -52,7 +58,7 @@ function NavigationItem({ name, quotation }: NavigationItemProp) {
         navigationId >= start &&
         navigationId <= end
       }
-      onClick={handleNavigate}
+      onClick={!confirm ? handleNavigate : () => {}}
     >
       <TopContainer>
         <Category>{name}</Category>

@@ -7,6 +7,7 @@ import ChangeTrimModal from "./ModalContents/ChangeTrimModal";
 import ChangeEngineModal from "./ModalContents/ChangeEngineModal";
 import { useEffect, useState } from "react";
 import { UnselectableOptionProps } from "../../../types/options.types";
+import ConfirmModal from "./ModalContents/ConfirmModal";
 
 interface ModalProps {
   type: ModalType;
@@ -38,6 +39,8 @@ export function Modals({
         return <ExitModal />;
       case "CHANGE_TRIM":
         return <ChangeTrimModal />;
+      case "CHANGE_SEARCH_TRIM":
+        return <ChangeTrimModal isSearch={true} />;
       case "CHANGE_ENGINE":
         if (unselectableOption && unselectableOption.length > 0) {
           return (
@@ -48,6 +51,8 @@ export function Modals({
             />
           );
         } else return <></>;
+      case "CONFIRM":
+        return <ConfirmModal />;
       default:
         return <></>;
     }

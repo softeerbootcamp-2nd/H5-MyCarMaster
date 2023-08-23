@@ -1,31 +1,23 @@
-import styled from "styled-components";
-import { useQuotationState } from "../../../contexts/QuotationContext";
+import { Flex } from "@styles/core.style";
+import { useQuotationState } from "@/contexts/QuotationContext";
 import ExteriorColorSelectView from "./ColorView/ExteriorColorSelectView";
 import InteriorColorSelectView from "./ColorView/InteriorColorSelectView";
 
 export default function TrimSelect() {
   const { navigationId } = useQuotationState();
   return (
-    <>
+    <Flex $justifyContent="center" $width="59.5rem">
       {navigationId === 4 && (
-        <Container>
+        <Flex $gap="0.5rem" $wrap={true}>
           <ExteriorColorSelectView />
-        </Container>
+        </Flex>
       )}
 
       {navigationId === 5 && (
-        <Container>
+        <Flex $gap="0.5rem" $wrap={true}>
           <InteriorColorSelectView />
-        </Container>
+        </Flex>
       )}
-    </>
+    </Flex>
   );
 }
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 59.5rem;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-`;

@@ -1,29 +1,15 @@
-import styled from "styled-components";
 import MainWrapper from "./MainWrapper";
-import NavigationList from "../common/NavigationList/NavigationList";
+import { MainContent } from "./style";
+import { NavigationList } from "@common/index";
+import { Flex } from "@styles/core.style";
 
-function MainView() {
+export default function MainView() {
   return (
-    <Container>
+    <Flex $gap={"10rem"} $justifyContent="center" >
       <MainContent>
         <MainWrapper />
       </MainContent>
-      <NavigationList />
-    </Container>
+      <NavigationList confirm={false} />
+    </Flex>
   );
 }
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 10rem;
-  height: 100%;
-  width: 100%;
-`;
-
-const MainContent = styled.div`
-  width: 59.5rem;
-`;
-
-export default MainView;

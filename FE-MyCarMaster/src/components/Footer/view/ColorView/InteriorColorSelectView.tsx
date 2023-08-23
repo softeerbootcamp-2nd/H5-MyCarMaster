@@ -1,13 +1,13 @@
-import InnerColorBox from "../../../common/ColorBox/InnerColorBox";
+import { InnerColorBox } from "@common/index";
 import {
   useCarPaintState,
   useCarPaintDispatch,
-} from "../../../../contexts/CarPaintContext";
+} from "@contexts/CarPaintContext";
 import {
   useQuotationState,
   useQuotationDispatch,
-} from "../../../../contexts/QuotationContext";
-import { TrimQuotationType } from "../../../../types/quotation.types";
+} from "@contexts/QuotationContext";
+import { TrimQuotationType } from "types/quotation.types";
 
 export default function InteriorColorSelectView() {
   const { interiorList, interiorId } = useCarPaintState();
@@ -23,6 +23,7 @@ export default function InteriorColorSelectView() {
       type: "SET_CAR_PAINT_QUOTATION",
       payload: {
         type: "interiorColorQuotation",
+        id: id,
         name: interiorList[index].name,
         price: interiorList[index].price,
         imgUrl: interiorList[index].colorImgUrl,

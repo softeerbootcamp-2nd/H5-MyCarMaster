@@ -1,19 +1,17 @@
 import React, { Fragment, useState } from "react";
-import styled from "styled-components";
-import { useTrimState, useTrimDispatch } from "../../../contexts/TrimContext";
+import { Flex } from "@styles/core.style";
+import { useTrimState, useTrimDispatch } from "@contexts/TrimContext";
 import {
   useQuotationDispatch,
   useQuotationState,
-} from "../../../contexts/QuotationContext";
-import OptionBox from "../../common/OptionBox/OptionBox";
-import { Modals } from "../../common/Modals/Modals";
-import { ModalType } from "../../../constants/Modal.constants";
-import BasicOptionModal from "../../common/BasicOptionModal/BasicOptionModal";
-import { Trims } from "../../../types/trim.types";
+} from "@contexts/QuotationContext";
+import { OptionBox, Modals, BasicOptionModal } from "@common/index";
+import { ModalType } from "@constants/Modal.constants";
+import { Trims } from "types/trim.types";
 
 export default function TrimSelect() {
   const { trimList, trimId } = useTrimState();
-  const { trimQuotation } = useQuotationState();
+  const { isFirst, optionQuotation } = useQuotationState();
   const [isBasicOptionModalOpen, setIsBasicOptionModalOpen] = useState(false);
   const [detailTrim, setDetailTrim] = useState<Trims>();
   const [isOpen, setIsOpen] = useState(false);
@@ -27,6 +25,7 @@ export default function TrimSelect() {
     quotationDispatch({
       type: "SET_TRIM_QUOTATION",
       payload: {
+        id: id,
         name: trimList[id - 1].name,
         price: trimList[id - 1].price,
       },
@@ -39,7 +38,33 @@ export default function TrimSelect() {
     });
   };
 
-  if (!trimList.length) return <Container>데이터가 없습니다.</Container>;
+  const handleTrimVaildation = (e: React.MouseEvent, id: number) => {
+    e.stopPropagation();
+
+    if (
+      !isFirst[1] ||
+      optionQuotation.selectedQuotation.length ||
+      optionQuotation.consideredQuotation.length
+    ) {
+      setIsOpen(true);
+      setReselectId(id);
+      return;
+    }
+    selectTrim(id);
+  };
+
+  const handleShowDetail = (e: React.MouseEvent, trim: Trims) => {
+    e.stopPropagation();
+    setDetailTrim(trim);
+    setIsBasicOptionModalOpen(true);
+  };
+
+  if (!trimList.length)
+    return (
+      <Flex $width="59.5rem" $gap="0.5rem">
+        데이터가 없습니다.
+      </Flex>
+    );
   const reselectTrim = (id: number) => {
     quotationDispatch({ type: "RESET_QUOTATION" });
     selectTrim(id);
@@ -48,7 +73,7 @@ export default function TrimSelect() {
 
   return (
     <Fragment>
-      <Container>
+      <Flex $width="59.5rem" $gap="0.5rem">
         {trimList?.length &&
           trimList.map((trim) => {
             return (
@@ -61,26 +86,12 @@ export default function TrimSelect() {
                 $price={trim.price}
                 $switch="trim"
                 $choice={trimId === trim.id}
-                handleClick={(e: React.MouseEvent) => {
-                  const clickedTarget = e.target as HTMLElement;
-                  const isTrimModalButtonClicked =
-                    clickedTarget.classList.contains("basic-option");
-                  if (
-                    trimQuotation.trimQuotation.name !== "" &&
-                    trimQuotation.trimQuotation.name !== trim.name &&
-                    !isTrimModalButtonClicked
-                  ) {
-                    setIsOpen(true);
-                    setReselectId(trim.id);
-                  } else {
-                    if (!isTrimModalButtonClicked) selectTrim(trim.id);
-                  }
-                  e.stopPropagation();
-                }}
-                handleClickDetail={() => {
-                  setDetailTrim(trim);
-                  setIsBasicOptionModalOpen(true);
-                }}
+                handleClick={(e: React.MouseEvent) =>
+                  handleTrimVaildation(e as React.MouseEvent, trim.id)
+                }
+                handleClickDetail={(e: React.MouseEvent) =>
+                  handleShowDetail(e as React.MouseEvent, trim)
+                }
               />
             );
           })}
@@ -92,7 +103,7 @@ export default function TrimSelect() {
             setIsBasicOptionModalOpen={setIsBasicOptionModalOpen}
           />
         )}
-      </Container>
+      </Flex>
       {isOpen && (
         <Modals
           type={ModalType.CHANGE_TRIM}
@@ -103,10 +114,3 @@ export default function TrimSelect() {
     </Fragment>
   );
 }
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 59.5rem;
-  gap: 0.5rem;
-`;

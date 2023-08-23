@@ -1,25 +1,22 @@
-import { styled } from "styled-components";
-import CategoryList from "../../common/CategoryList/CategoryList";
-import OptionDescription from "../../common/OptionDescription/OptionDescription";
-import {
-  useOptionDispatch,
-  useOptionState,
-} from "../../../contexts/OptionContext";
-import useFetch from "../../../hooks/useFetch";
 import { useEffect } from "react";
-import { OptionType, OptionState } from "../../../types/options.types";
-import filterOptionCategory from "../../../utils/Option/filterOptionCategory";
-import { categories } from "../../../constants/Option.constants";
-import { useTrimState } from "../../../contexts/TrimContext";
-import { useDetailState } from "../../../contexts/DetailContext";
-import { useCarPaintState } from "../../../contexts/CarPaintContext";
+import { Flex, Image } from "@styles/core.style";
+import { CategoryList, OptionDescription } from "@common/index";
+import { useOptionDispatch, useOptionState } from "@contexts/OptionContext";
+import { useTrimState } from "@contexts/TrimContext";
+import { useDetailState } from "@contexts/DetailContext";
+import { useCarPaintState } from "@contexts/CarPaintContext";
+import filterOptionCategory from "@utils/Option/filterOptionCategory";
+import { categories } from "@constants/Option.constants";
+import { OptionType, OptionState } from "types/options.types";
+import useFetch from "@hooks/useFetch";
 
 interface FetchOptionsProps extends OptionType {
   result: {
     options: OptionType[];
   };
 }
-function OptionContent() {
+
+export default function OptionContent() {
   const { optionList, optionId }: OptionState = useOptionState();
   const optionDispatch = useOptionDispatch();
 
@@ -71,11 +68,43 @@ function OptionContent() {
     });
   };
 
+  const ResizeImageHandler = (e: React.MouseEvent<HTMLImageElement>) => {
+    const target = e.target as HTMLImageElement;
+
+    if (target.style.animation) {
+      target.style.animation = "1s hover_image_full_back ease-in-out forwards";
+
+      setTimeout(() => {
+        target.style.animation = "";
+      }, 1000);
+      return;
+    }
+    target.style.animation = "1s hover_image_full ease-in-out forwards";
+  };
+
+  const windowHeight = window.innerHeight;
   return (
     optionList?.length !== 0 && (
-      <Container>
-        <OptionContainer>
-          <OptionImg
+      <Flex
+        $flexDirection="column"
+        $justifyContent="flex-end"
+        $alignItems="flex-start"
+        $gap="5%"
+        $overflow="hidden"
+      >
+        <Flex
+          $maxHeight={windowHeight <= 950 ? "25rem" : ""}
+          $justifyContent="space-between"
+          $alignItems="flex-start"
+          $gap="1rem"
+        >
+          <Image
+            $width="50%"
+            $height="85%"
+            $borderRadius="0 100% 100% 0"
+            $shadow="#222222 0 0 1rem"
+            $onHover={true}
+            onClick={(e) => ResizeImageHandler(e)}
             src={optionList.find((option) => option.id === optionId)?.imgUrl}
           />
           <OptionDescription
@@ -83,38 +112,13 @@ function OptionContent() {
               optionList.find((option) => option.id === optionId) as OptionType
             }
           />
-        </OptionContainer>
+        </Flex>
         <CategoryList
           categories={categories}
           onClickHandler={(index) => onClickHandler(index as number)}
           $switch={"option"}
         />
-      </Container>
+      </Flex>
     )
   );
 }
-
-const Container = styled.div`
-  width: 100%;
-  height: 100%;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-`;
-
-const OptionContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-`;
-
-const OptionImg = styled.img`
-  max-width: 37rem;
-  width: 100%;
-  flex-shrink: 0;
-`;
-
-export default OptionContent;

@@ -3,6 +3,7 @@ import { styled } from "styled-components";
 import Button from "../Button/Button";
 import theme from "../../../styles/Theme";
 import { useQuotationDispatch } from "../../../contexts/QuotationContext";
+import { useOptionDispatch } from "../../../contexts/OptionContext";
 
 interface QuotationOptionProps {
   id: number;
@@ -11,6 +12,8 @@ interface QuotationOptionProps {
   name: string;
   price: number;
   isSelected: boolean;
+  $isFinished: boolean;
+  confirm: boolean;
 }
 
 function QuotationOptionItem({
@@ -20,8 +23,11 @@ function QuotationOptionItem({
   name,
   price,
   isSelected: initialIsSelected,
+  $isFinished,
+  confirm,
 }: QuotationOptionProps) {
   const quotationDispatch = useQuotationDispatch();
+  const optionDispatch = useOptionDispatch();
 
   const [isSelected, setIsSelected] = useState(initialIsSelected);
 
@@ -34,6 +40,7 @@ function QuotationOptionItem({
     const actionType = updatedIsSelected
       ? "SET_SELECT_QUOTATION"
       : "SET_CONSIDER_QUOTATION";
+    const where = updatedIsSelected ? "selectedOption" : "consideredOption";
 
     quotationDispatch({
       type: actionType,
@@ -45,29 +52,41 @@ function QuotationOptionItem({
         imgUrl,
       },
     });
+
+    optionDispatch({
+      type: "SET_CHOICE_OPTION",
+      payload: {
+        where: where,
+        id: id,
+      },
+    });
+
     setIsSelected(updatedIsSelected);
   };
 
   return (
-    <Container>
+    <Container $isFinished={$isFinished}>
       <OptionImg src={imgUrl} />
       <OptionDetail>
         <OptionCategory>{category}</OptionCategory>
         <OptionName>{name}</OptionName>
       </OptionDetail>
-      <Button
-        $x={8}
-        $y={2}
-        text={isSelected ? "고민해보기" : "확정하기"}
-        $backgroundcolor={
-          isSelected ? `${theme.colors.GOLD5}` : `${theme.colors.NAVYBLUE5}`
-        }
-        $bordercolor={
-          isSelected ? `${theme.colors.GOLD5}` : `${theme.colors.NAVYBLUE5}`
-        }
-        $textcolor={`${theme.colors.WHITE}`}
-        handleClick={() => toggleSelect(id)}
-      />
+      {!confirm && (
+        <Button
+          $x={8}
+          $y={2}
+          text={isSelected ? "고민해보기" : "확정하기"}
+          $backgroundcolor={
+            isSelected ? `${theme.colors.GOLD5}` : `${theme.colors.NAVYBLUE5}`
+          }
+          $bordercolor={
+            isSelected ? `${theme.colors.GOLD5}` : `${theme.colors.NAVYBLUE5}`
+          }
+          $textcolor={`${theme.colors.WHITE}`}
+          handleClick={() => toggleSelect(id)}
+        />
+      )}
+
       <OptionPrice>+{price.toLocaleString("ko-KR")}원</OptionPrice>
     </Container>
   );
@@ -75,8 +94,8 @@ function QuotationOptionItem({
 
 export default QuotationOptionItem;
 
-const Container = styled.div`
-  width: 48rem;
+const Container = styled.div<{ $isFinished: boolean }>`
+  width: ${({ $isFinished }) => ($isFinished ? "100%" : "48rem")};
   height: 7.5rem;
 
   display: flex;
@@ -111,7 +130,6 @@ const OptionName = styled.p`
 `;
 
 const OptionPrice = styled.p`
-  width: 7.6875rem;
   font-family: "HyundaiSansMedium";
   font-size: 1.375rem;
   font-style: normal;
