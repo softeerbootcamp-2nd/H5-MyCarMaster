@@ -53,7 +53,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/estimation" element={<Estimation />} />
             <Route path="/quotation" element={<Quotation />} />
-            <Route path="/:estimateId" element={<WrittenQuotation />} />
+            <Route
+              path="/estimates/:estimateId"
+              element={<WrittenQuotation />}
+            />
             <Route path="/consult-complete" element={<ConsultComplete />} />
           </Routes>
         </Flex>
