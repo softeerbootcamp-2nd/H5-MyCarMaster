@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import QuotationItem from "@common/QuotationList/QuotationItem";
 import QuotationOptionItem from "@common/QuotationList/QuotationOptionItem";
 import theme from "@styles/Theme";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { get } from "@/utils/fetch";
 
@@ -47,7 +47,7 @@ interface WrittenQuotationProps {
 
 function WrittenQuotation() {
   const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
-  const estimateId = useParams();
+  const { estimateId } = useParams();
   const [data, setData] = useState<WrittenQuotationProps>();
 
   function calculateTotalPrice(quotation: WrittenQuotationProps): number {
@@ -74,118 +74,129 @@ function WrittenQuotation() {
   }
 
   useEffect(() => {
+    console.log(estimateId);
     get(`${SERVER_URL}/estimates/${estimateId}`).then((res) => {
+      console.log(res);
       setData(res.result);
     });
   }, []);
 
   return (
-    <Container>
-      <BlueBackground />
-      <QuotationMain>
-        <QuotationContent>
-          <Model>팰리세이드</Model>
-          <CarImage src={data!.exteriorColor.coloredImgUrl} />
-        </QuotationContent>
-      </QuotationMain>
-      <QuotationFooter>
-        <PriceContainer>
-          <Price>예상 가격</Price>
-          <SumPrice>{calculateTotalPrice().toLocaleString("ko-KR")}원</SumPrice>
-        </PriceContainer>
-      </QuotationFooter>
-      <StepList>
-        <QuotationItem
-          category={"트림"}
-          name={data!.trim.name}
-          price={data!.trim.price}
-          id={0}
-          confirm={true}
-        />
-        <QuotationItem
-          category={"엔진"}
-          name={data!.engine.name}
-          price={data!.engine.price}
-          id={1}
-          confirm={true}
-        />
-        <QuotationItem
-          category={"구동 방식"}
-          name={data!.wheelDrive.name}
-          price={data!.wheelDrive.price}
-          id={2}
-          confirm={true}
-        />
-        <QuotationItem
-          category={"바디 타입"}
-          name={data!.bodyType.name}
-          price={data!.bodyType.price}
-          id={3}
-          confirm={true}
-        />
-        <QuotationItem
-          category={"외장 색상"}
-          name={data!.exteriorColor.name}
-          price={data!.exteriorColor.price}
-          imgUrl={data!.exteriorColor.colorImgUrl}
-          id={4}
-          confirm={true}
-        />
-        <QuotationItem
-          category={"내장 색상"}
-          name={data!.interiorColor.name}
-          price={data!.interiorColor.price}
-          imgUrl={data!.interiorColor.colorImgUrl}
-          id={5}
-          confirm={true}
-        />
-      </StepList>
-      <Options>
-        <OptionResize>
-          <CategoryContainer>
-            <Category>옵션</Category>
-          </CategoryContainer>
-          <ItemContainer>
-            <TotalOptionContainer>
-              <OptionContainer>
-                <Option>추가 옵션</Option>
-                {data?.selectOptions &&
-                  data.selectOptions.map((option, id) => (
-                    <QuotationOptionItem
-                      key={id}
-                      id={id as number}
-                      imgUrl={option.imgUrl as string}
-                      category={option.category as string}
-                      name={option.name}
-                      price={option.price}
-                      isSelected={true}
-                      $isFinished={true}
-                      confirm={true}
-                    />
-                  ))}
-              </OptionContainer>
-              <OptionContainer>
-                <Option>고민 옵션</Option>
-                {data?.considerOptions &&
-                  data.considerOptions.map((option, id) => (
-                    <QuotationOptionItem
-                      key={id}
-                      id={id as number}
-                      imgUrl={option.imgUrl as string}
-                      category={option.category as string}
-                      name={option.name}
-                      price={option.price}
-                      isSelected={false}
-                      $isFinished={true}
-                      confirm={true}
-                    />
-                  ))}
-              </OptionContainer>
-            </TotalOptionContainer>
-          </ItemContainer>
-        </OptionResize>
-      </Options>
-    </Container>
+    <Fragment>
+      {data && (
+        <Container>
+          <BlueBackground />
+          <QuotationMain>
+            <QuotationContent>
+              <Model>팰리세이드</Model>
+              <CarImage src={data!.exteriorColor.coloredImgUrl} />
+            </QuotationContent>
+          </QuotationMain>
+          <QuotationFooter>
+            <PriceContainer>
+              <Price>예상 가격</Price>
+              <SumPrice>
+                {calculateTotalPrice(
+                  data as WrittenQuotationProps
+                ).toLocaleString("ko-KR")}
+                원
+              </SumPrice>
+            </PriceContainer>
+          </QuotationFooter>
+          <StepList>
+            <QuotationItem
+              category={"트림"}
+              name={data!.trim.name}
+              price={data!.trim.price}
+              id={0}
+              confirm={true}
+            />
+            <QuotationItem
+              category={"엔진"}
+              name={data!.engine.name}
+              price={data!.engine.price}
+              id={1}
+              confirm={true}
+            />
+            <QuotationItem
+              category={"구동 방식"}
+              name={data!.wheelDrive.name}
+              price={data!.wheelDrive.price}
+              id={2}
+              confirm={true}
+            />
+            <QuotationItem
+              category={"바디 타입"}
+              name={data!.bodyType.name}
+              price={data!.bodyType.price}
+              id={3}
+              confirm={true}
+            />
+            <QuotationItem
+              category={"외장 색상"}
+              name={data!.exteriorColor.name}
+              price={data!.exteriorColor.price}
+              imgUrl={data!.exteriorColor.colorImgUrl}
+              id={4}
+              confirm={true}
+            />
+            <QuotationItem
+              category={"내장 색상"}
+              name={data!.interiorColor.name}
+              price={data!.interiorColor.price}
+              imgUrl={data!.interiorColor.colorImgUrl}
+              id={5}
+              confirm={true}
+            />
+          </StepList>
+          <Options>
+            <OptionResize>
+              <CategoryContainer>
+                <Category>옵션</Category>
+              </CategoryContainer>
+              <ItemContainer>
+                <TotalOptionContainer>
+                  <OptionContainer>
+                    <Option>추가 옵션</Option>
+                    {data?.selectOptions &&
+                      data.selectOptions.map((option, id) => (
+                        <QuotationOptionItem
+                          key={id}
+                          id={id as number}
+                          imgUrl={option.imgUrl as string}
+                          category={option.category as string}
+                          name={option.name}
+                          price={option.price}
+                          isSelected={true}
+                          $isFinished={true}
+                          confirm={true}
+                        />
+                      ))}
+                  </OptionContainer>
+                  <OptionContainer>
+                    <Option>고민 옵션</Option>
+                    {data?.considerOptions &&
+                      data.considerOptions.map((option, id) => (
+                        <QuotationOptionItem
+                          key={id}
+                          id={id as number}
+                          imgUrl={option.imgUrl as string}
+                          category={option.category as string}
+                          name={option.name}
+                          price={option.price}
+                          isSelected={false}
+                          $isFinished={true}
+                          confirm={true}
+                        />
+                      ))}
+                  </OptionContainer>
+                </TotalOptionContainer>
+              </ItemContainer>
+            </OptionResize>
+          </Options>
+        </Container>
+      )}
+    </Fragment>
   );
 }
 

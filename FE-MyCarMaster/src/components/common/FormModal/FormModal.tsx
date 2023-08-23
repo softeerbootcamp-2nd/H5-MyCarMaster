@@ -93,7 +93,7 @@ export function FormModal({
         if (res.code === 2000) {
           setIsModalOpen(false);
           setFormModalOn(false);
-          navigate("/");
+          navigate("/consult-complete", { state: { email: formDatas.email } });
         }
       });
     }
