@@ -150,8 +150,7 @@ const ShowRightOption = styled.div`
 `;
 
 const Price = styled.p`
-  font-size: 0.875rem;
-  // text vertical center
+  ${(props) => props.theme.fonts.Regular9};
   display: flex;
   align-items: center;
 `;
@@ -159,25 +158,18 @@ const Price = styled.p`
 const BottomContainer = styled.div`
   display: flex;
   flex-direction: row;
-
   gap: 0.45rem;
-  font-family: "Hyundai Sans Text KR";
-  font-size: 0.875rem;
-  font-style: normal;
-  font-weight: 400;
-  letter-spacing: -0.015rem;
+
+  ${(props) => props.theme.fonts.Regular9};
+
   flex-wrap: wrap;
 `;
 
 const Text = styled.p``;
 
 const Category = styled.p`
-  font-family: "Hyundai Sans Text KR";
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 165%; /* 1.2375rem */
-  letter-spacing: -0.0225rem;
+  ${(props) => props.theme.fonts.Medium10};
+  line-height: 1.5rem;
 `;
 
 const CheckCircle = styled.img``;
