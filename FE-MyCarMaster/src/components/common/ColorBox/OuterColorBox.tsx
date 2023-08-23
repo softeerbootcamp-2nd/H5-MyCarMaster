@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Text, Price, DarkColor, LightColor } from "./style";
+import { Text, Price, Color } from "./style";
 
 type ContainerProp = {
   $id: number;
@@ -14,22 +14,15 @@ type ContainerProp = {
 };
 
 export default function OuterColorBox(props: ContainerProp) {
-  const isColorBright = 1 as number;
   return (
     <Container onClick={props.handleClick}>
       <OuterColor $colorImgUrl={props.$colorImgUrl as string} />
       <OuterDiscription>
-        <Text $style={isColorBright === 1 ? LightColor.Head : DarkColor.Head}>
-          {props.$name}
-        </Text>
-        <Text
-          $style={isColorBright === 1 ? LightColor.Content : DarkColor.Content}
-        >
+        <Text $style={Color.Head}>{props.$name}</Text>
+        <Text $style={Color.Content}>
           {props.trim} 구매자의 {props.ratio}%가 선택
         </Text>
-        <Price
-          $style={isColorBright === 1 ? LightColor.Content : DarkColor.Content}
-        >
+        <Price $style={Color.OuterPrice}>
           +{props.price.toLocaleString("ko-KR")}원
         </Price>
       </OuterDiscription>
