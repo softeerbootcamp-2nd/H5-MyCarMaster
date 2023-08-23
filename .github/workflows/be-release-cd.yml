@@ -62,6 +62,7 @@ jobs:
             PINPOINT_AGENT_ID=${{ steps.generate-pinpoint.outputs.pinpoint }}
             REDIS_URL=${{ secrets.REDIS_URL }}
             REDIS_PORT=${{ secrets.REDIS_PORT }}
+            BATCH_FETCH_SIZE=${{ secrets.BATCH_FETCH_SIZE }}
           tags: |
             softeerh5/my-car-master:latest
 
