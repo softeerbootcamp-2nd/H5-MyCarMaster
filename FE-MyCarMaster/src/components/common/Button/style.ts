@@ -1,11 +1,14 @@
 import styled, { css, RuleSet } from "styled-components";
+import { FontType } from "@styles/Theme";
 
 export type CSSProps = {
   $style?: RuleSet;
+  $font?: FontType;
 };
 
 export const Text = styled.p<CSSProps>`
   ${(props) => props.$style}
+  ${(props) => props.$font}
 `;
 
 export const DefaultStyle = {
