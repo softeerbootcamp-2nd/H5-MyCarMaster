@@ -19,6 +19,7 @@ jobs:
           cd ./FE-MyCarMaster
           touch ./.env.production
           echo "VITE_APP_SERVER_URL=${{ secrets.VITE_APP_SERVER_URL  }}" >> ./.env.production
+          echo "VITE_APP_KAKAO_MAP_KEY"=${{ secrets.VITE_APP_KAKAO_MAP_KEY  }}" >> ./.env.production
 
       - name: Cache node modules 
         uses: actions/cache@v1
