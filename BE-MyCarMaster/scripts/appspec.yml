@@ -7,7 +7,7 @@ files:
 
 hooks:
   BeforeInstall:
-    - location: create-directory.sh
+    - location: remove-directory.sh
       timeout: 300
       runas: root
     - location: remove-container.sh
