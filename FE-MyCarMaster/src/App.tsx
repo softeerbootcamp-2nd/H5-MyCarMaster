@@ -42,7 +42,7 @@ function App() {
           QuotationProvider,
         ]}
       >
-        <Flex $overflow="hidden">
+        <Flex>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/estimation" element={<Estimation />} />
