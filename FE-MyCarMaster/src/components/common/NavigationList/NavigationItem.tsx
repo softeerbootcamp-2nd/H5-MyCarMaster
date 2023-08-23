@@ -14,6 +14,7 @@ import {
   OptionQuotationType,
 } from "../../../types/quotation.types";
 import { useNavigate } from "react-router-dom";
+import { NavigationIndex } from "@/constants/Navigate.constants";
 
 type activeProp = {
   $active?: boolean | undefined | 0;
@@ -39,12 +40,14 @@ function NavigationItem({ name, quotation, confirm }: NavigationItemProp) {
   const [start, end] = indexNameSwitching(name) as number[];
 
   const handleNavigate = () => {
+    if (isFirst[start]) return;
     quotationDispatch({
       type: "NAVIGATE",
       payload: { navigationId: start },
     });
 
     if (name === "견적서 완성") {
+      if (isFirst[NavigationIndex.QUOATATION]) return;
       navigate("/quotation");
       return;
     }

@@ -7,7 +7,7 @@ import {
 
 const initialQuotationState: QuotationState = {
   navigationId: 0,
-  isFirst: [false, true, true, true, true, true, true],
+  isFirst: [false, true, true, true, true, true, true, true],
   trimQuotation: {
     trimQuotation: {
       id: 0,
