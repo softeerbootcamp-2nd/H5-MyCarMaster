@@ -12,7 +12,11 @@ final class SpriteRotationView: UIView {
     // MARK: Property
 
     /// 스크롤 대상이 되는 세로로 긴 이미지
-    private var spriteImage: UIImage
+    private var spriteImage: UIImage! {
+        didSet {
+            imageView.image = spriteImage
+        }
+    }
 
     /// SpriteImage 내부에 있는 사진의 개수
     private var imageCount: Int
@@ -30,6 +34,9 @@ final class SpriteRotationView: UIView {
     private var wholeImageRatio: CGFloat {
         return spriteImage.size.height / spriteImage.size.width
     }
+
+    private var imageViewHeightAnchor: NSLayoutConstraint?
+    private var viewHeightAnchor: NSLayoutConstraint?
 
     override var description: String {
         return """
@@ -54,11 +61,20 @@ final class SpriteRotationView: UIView {
         imageView.contentMode = .scaleAspectFill
     }
 
-    init(image: UIImage, imageCount: Int = 60, sensitive: CGFloat = 1.0) {
+    init(image: UIImage, imageCount: Int, sensitive: CGFloat) {
         self.imageCount = imageCount
         self.sensitive = sensitive
         self.spriteImage = image
 
+        super.init(frame: .zero)
+        configureUI()
+        configureLayout()
+        updateLayout()
+    }
+
+    init() {
+        self.imageCount = 60
+        self.sensitive = 1.0
         super.init(frame: .zero)
         configureUI()
         configureLayout()
@@ -88,11 +104,24 @@ final class SpriteRotationView: UIView {
             imageView.topAnchor.constraint(equalTo: topAnchor),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: wholeImageRatio),
-            heightAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: 1 / CGFloat(imageCount)),
         ])
     }
 
+    private func updateLayout() {
+        if let imageViewHeightAnchor, let viewHeightAnchor {
+            imageView.removeConstraint(imageViewHeightAnchor)
+            removeConstraint(viewHeightAnchor)
+        }
+
+        viewHeightAnchor = heightAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: 1 / CGFloat(imageCount))
+        imageViewHeightAnchor = imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: wholeImageRatio)
+        viewHeightAnchor?.isActive = true
+        imageViewHeightAnchor?.isActive = true
+        layoutIfNeeded()
+    }
+}
+
+extension SpriteRotationView {
     @objc
     private func handlePan(_ sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: self)
@@ -136,5 +165,6 @@ extension SpriteRotationView {
         self.spriteImage = image
         self.imageCount = imageCount
         self.sensitive = sensitive
+        updateLayout()
     }
 }
