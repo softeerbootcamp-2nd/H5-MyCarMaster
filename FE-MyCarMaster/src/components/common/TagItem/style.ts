@@ -23,7 +23,7 @@ export const Option = {
   `,
   Text: css`
     color: ${(props) => props.theme.colors.NAVYBLUE5};
-    ${(props) => props.theme.fonts.BodyMedium}
+    ${(props) => props.theme.fonts.Medium8}
   `,
 
   Padding: css`
@@ -37,14 +37,14 @@ export const SearchTrim = {
   `,
   AddText: css`
     color: ${(props) => props.theme.colors.NAVYBLUE5};
-    ${(props) => props.theme.fonts.ContentSmall2}
+    ${(props) => props.theme.fonts.Regular8}
   `,
   DefaultBackground: css`
     background-color: ${(props) => props.theme.colors.NAVYBLUE5};
   `,
   DefaultText: css`
     color: ${(props) => props.theme.colors.NAVYBLUE1};
-    ${(props) => props.theme.fonts.ContentSmall2}
+    ${(props) => props.theme.fonts.Regular8}
   `,
   Padding: css`
     padding: 0.13rem 0.5rem;
@@ -60,6 +60,6 @@ export const ConsiderOption = {
   `,
   Text: css`
     color: ${(props) => props.theme.colors.GOLD5};
-    ${(props) => props.theme.fonts.BodySmall}
+    ${(props) => props.theme.fonts.Regular8}
   `,
 };
