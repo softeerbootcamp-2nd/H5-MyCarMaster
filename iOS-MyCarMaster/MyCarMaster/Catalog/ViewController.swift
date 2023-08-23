@@ -26,6 +26,14 @@ class ViewController: UIViewController {
         button.layer.borderWidth = 1.0
         button.addTarget(self, action: #selector(showCompressionView), for: .touchUpInside)
     }
+    
+    lazy var collectionViewButton = UIButton().then { button in
+        button.setTitle("CollectionView 실험", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.layer.borderColor = UIColor.black.cgColor
+        button.layer.borderWidth = 1.0
+        button.addTarget(self, action: #selector(showCollectionView), for: .touchUpInside)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +43,7 @@ class ViewController: UIViewController {
         let stackView = UIStackView(arrangedSubviews: [
             componentButton,
             compressionButton,
+            collectionViewButton
         ]).then { stackView in
             stackView.axis = .vertical
             stackView.spacing = 20
@@ -60,6 +69,12 @@ class ViewController: UIViewController {
     @objc
     func showCompressionView() {
         let viewController = CompressionViewController()
+        navigationController?.pushViewController(viewController, animated: false)
+    }
+    
+    @objc
+    func showCollectionView() {
+        let viewController = CollectionViewController()
         navigationController?.pushViewController(viewController, animated: false)
     }
 }
