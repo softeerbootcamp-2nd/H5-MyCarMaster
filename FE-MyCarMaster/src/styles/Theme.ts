@@ -30,12 +30,22 @@ const fontSize = {
   Huge: "1.75rem",
   Gigantic: "2rem",
   Enormous: "2.25rem",
+  Colossal: "2.5rem",
 };
 
 const fontWeight = {
   regular: 400,
   medium: 500,
   bold: 700,
+};
+
+export type FontType = {
+  fontFamily: string;
+  fontSize: string;
+  fontWeight: number;
+  Active?: {
+    fontSize: string;
+  };
 };
 
 const fonts = {
@@ -129,6 +139,67 @@ const fonts = {
     fontStyle: "normal",
     fontWeight: fontWeight.regular,
   },
+
+  /* reset */
+  Bold25: {
+    fontFamily: "HyundaiSansBold",
+    fontSize: fontSize.Colossal,
+    fontWeight: fontWeight.medium,
+  },
+
+  Bold20: {
+    fontFamily: "HyundaiSansBold",
+    fontSize: fontSize.Gigantic,
+    fontWeight: fontWeight.medium,
+    lineHeight: 2.0,
+  },
+
+  Medium17: {
+    fontFamily: "HyundaiSansMedium",
+    fontSize: fontSize.Huge,
+    fontWeight: fontWeight.medium,
+  },
+  Medium15: {
+    fontFamily: "HyundaiSansMedium",
+    fontSize: fontSize.ExtraLarge,
+    fontWeight: fontWeight.medium,
+  },
+  Medium12: {
+    fontFamily: "HyundaiSansMedium",
+    fontSize: fontSize.Normal,
+    fontWeight: fontWeight.medium,
+  },
+  Medium12_13: {
+    fontFamily: "HyundaiSansMedium",
+    fontSize: fontSize.Normal,
+    Active: {
+      fontSize: fontSize.Large,
+    },
+    fontWeight: fontWeight.medium,
+  },
+  Medium10: {
+    fontFamily: "HyundaiSansMedium",
+    fontSize: fontSize.Small,
+    fontWeight: fontWeight.medium,
+  },
+
+  Regular12: {
+    fontFamily: "HyundaiSansRegular",
+    fontSize: fontSize.Normal,
+    fontWeight: fontWeight.medium,
+  },
+
+  Regular10: {
+    fontFamily: "HyundaiSansRegular",
+    fontSize: fontSize.Small,
+    fontWeight: fontWeight.medium,
+  },
+
+  Regular9: {
+    fontFamily: "HyundaiSansRegular",
+    fontSize: fontSize.ExtraSmall,
+    fontWeight: fontWeight.medium,
+  }
 };
 
 export type ColorsTypes = typeof colors;
