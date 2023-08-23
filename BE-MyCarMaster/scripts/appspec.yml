@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 
 files:
-  - source: scripts/promtail-config.yml
+  - source: promtail-config.yml
     destination: /home/ubuntu
 
 hooks:
