@@ -177,6 +177,11 @@ const fonts = {
     fontSize: fontSize.Small,
     fontWeight: fontWeight.medium,
   },
+  Medium8: {
+    fontFamily: "HyundaiSansMedium",
+    fontSize: fontSize.ExtraSmall,
+    fontWeight: fontWeight.medium,
+  },
 
   Regular15: {
     fontFamily: "HyundaiSansRegular",
