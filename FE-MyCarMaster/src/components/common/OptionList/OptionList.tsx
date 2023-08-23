@@ -1,7 +1,7 @@
 import {
   Container,
   ListContainer,
-  Text,
+  NameText,
   Icon,
   OptionItem,
   Line,
@@ -35,7 +35,7 @@ export default function OptionList({ $name }: OptionListProps) {
   return (
     <Container $isOpen={isOpen}>
       <ListContainer $isOpen={isOpen}>
-        <Text $size={1.25}>{$name}</Text>
+        <NameText>{$name}</NameText>
         <Icon $isOpen={true} onClick={() => setIsOpen(!isOpen)} />
       </ListContainer>
       <Line $isOpen={isOpen} $isFirst={isFirst.current} />
