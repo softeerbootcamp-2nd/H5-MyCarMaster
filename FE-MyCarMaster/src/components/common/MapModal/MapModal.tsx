@@ -25,7 +25,7 @@ import {
   ShowAllCarMasterBtn,
   Title,
 } from "./style";
-import SeoulMap from "../../SeoulMap/SeoulMap";
+import SeoulMap from "../SeoulMap/SeoulMap";
 import DistrictCarMasterList from "../DistrictCarMasterList/DistrictCarMasterList";
 import { FormModal } from "../FormModal/FormModal";
 const { kakao } = window;
