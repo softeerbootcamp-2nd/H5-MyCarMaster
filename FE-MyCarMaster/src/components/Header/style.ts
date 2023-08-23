@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
@@ -24,8 +24,7 @@ export const ModelSelector = styled.div`
 `;
 
 export const ModelName = styled.div`
-  font-size: 1.2rem;
-  font-weight: 500;
+  ${(props) => props.theme.fonts.Medium12};
   color: ${({ theme }) => theme.colors.NAVYBLUE5};
 `;
 

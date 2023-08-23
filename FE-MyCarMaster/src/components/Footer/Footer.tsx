@@ -70,6 +70,7 @@ export default function Footer() {
                 $textcolor={`${theme.colors.NAVYBLUE5}`}
                 $bordercolor={`${theme.colors.NAVYBLUE5}`}
                 text={"이전"}
+                $font={theme.fonts.Regular12}
                 handleClick={() => buttonHandler(-1)}
               />
             )}
@@ -81,6 +82,7 @@ export default function Footer() {
               $textcolor={`${theme.colors.WHITE}`}
               $bordercolor={`${theme.colors.NAVYBLUE5}`}
               text={navigationId === 6 ? "견적서 완성" : "다음"}
+              $font={theme.fonts.Regular12}
               handleClick={
                 navigationId === 6
                   ? navigateQuotationHandler
