@@ -24,6 +24,7 @@ const fontSize = {
   Tiny: "0.8125rem",
   ExtraSmall: "0.875rem",
   Small: "1rem",
+  Small2: "1.125rem",
   Normal: "1.25rem",
   Large: "1.375rem",
   ExtraLarge: "1.5rem",
@@ -63,13 +64,6 @@ const fonts = {
     fontWeight: fontWeight.regular, // 400
   },
 
-  BodySmall2: {
-    fontFamily: "HyundaiSansRegular",
-    fontSize: fontSize.Nano, // 0.625
-    fontStyle: "normal",
-    fontWeight: fontWeight.regular, // 400
-  },
-
   ContentLarge: {
     fontFamily: "HyundaiSansRegular",
     fontSize: fontSize.Large, // 1
@@ -101,13 +95,6 @@ const fonts = {
   ContentSmall2: {
     fontFamily: "HyundaiSansRegular",
     fontSize: fontSize.Tiny,
-    fontStyle: "normal",
-    fontWeight: fontWeight.medium,
-  },
-
-  Display: {
-    fontFamily: "HyundaiSansBold",
-    fontSize: fontSize.Gigantic,
     fontStyle: "normal",
     fontWeight: fontWeight.medium,
   },
@@ -169,6 +156,14 @@ const fonts = {
     fontSize: fontSize.Normal,
     fontWeight: fontWeight.medium,
   },
+  Medium12_15: {
+    fontFamily: "HyundaiSansMedium",
+    fontSize: fontSize.Normal,
+    Active: {
+      fontSize: fontSize.ExtraLarge,
+    },
+    fontWeight: fontWeight.medium,
+  },
   Medium12_13: {
     fontFamily: "HyundaiSansMedium",
     fontSize: fontSize.Normal,
@@ -183,9 +178,21 @@ const fonts = {
     fontWeight: fontWeight.medium,
   },
 
+  Regular15: {
+    fontFamily: "HyundaiSansRegular",
+    fontSize: fontSize.ExtraLarge,
+    fontWeight: fontWeight.medium,
+  },
+
   Regular12: {
     fontFamily: "HyundaiSansRegular",
     fontSize: fontSize.Normal,
+    fontWeight: fontWeight.medium,
+  },
+
+  Regular11: {
+    fontFamily: "HyundaiSansRegular",
+    fontSize: fontSize.Small2,
     fontWeight: fontWeight.medium,
   },
 
@@ -199,7 +206,17 @@ const fonts = {
     fontFamily: "HyundaiSansRegular",
     fontSize: fontSize.ExtraSmall,
     fontWeight: fontWeight.medium,
-  }
+  },
+  Regular8: {
+    fontFamily: "HyundaiSansRegular",
+    fontSize: fontSize.Tiny,
+    fontWeight: fontWeight.medium,
+  },
+  Regular6: {
+    fontFamily: "HyundaiSansRegular",
+    fontSize: fontSize.Nano,
+    fontWeight: fontWeight.medium,
+  },
 };
 
 export type ColorsTypes = typeof colors;
