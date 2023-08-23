@@ -9,7 +9,7 @@ export default function SpriteCarRotation({ $imgUrl }: SpriteCarRotationProps) {
   const frameWidth = 940;
   const frameHeight = 515;
   const gap = 515;
-  const totalFrames = 60;
+  const totalFrames = 59;
   const scale = 0.8;
 
   const [currentFrame, setCurrentFrame] = useState(0);
