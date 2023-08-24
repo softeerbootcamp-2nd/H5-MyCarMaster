@@ -3,15 +3,6 @@ import AngleUp from "../../../assets/icons/AngleUp.svg";
 import AngleDown from "../../../assets/icons/AngleDown.svg";
 import { Text } from "@styles/core.style";
 
-const expandAnimation = keyframes`
-  from {
-    height: calc(2rem + 1.5rem + 0.75rem + 0.75rem);
-  }
-  to {
-    height: 100%;
-  }
-`;
-
 const ListTextAppearAnimation = keyframes`
     from {
         opacity: 0;
@@ -43,14 +34,11 @@ export const Container = styled.div<{ $isOpen: boolean }>`
   flex-direction: column;
   padding: 1rem 1.5rem;
   width: 95%;
+  height: 100%;
   border: 1px solid ${(props) => props.theme.colors.GREY2};
   background-color: ${(props) => props.theme.colors.WHITE};
 
-  ${(props) =>
-    props.$isOpen &&
-    css`
-      animation: ${expandAnimation} 1s ease-in-out forwards;
-    `}
+  ${(props) => props.$isOpen && css``}
 `;
 export const ListContainer = styled.div<{ $isOpen?: boolean }>`
   display: flex;
@@ -96,6 +84,7 @@ export const Icon = styled.div<{ $isOpen: boolean }>`
 
 export const OptionItem = styled.div<{ $isOpen: boolean }>`
   display: flex;
+  height: 2.5rem;
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 0;

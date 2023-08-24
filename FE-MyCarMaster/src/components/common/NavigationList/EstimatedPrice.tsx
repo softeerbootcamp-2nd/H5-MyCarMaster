@@ -33,8 +33,8 @@ function EstimatedPrice() {
 
 const Container = styled.li`
   width: 12rem;
-  height: 4.5rem;
   padding: 0.75rem;
+  gap: 0.5rem;
 
   display: flex;
   flex-direction: column;

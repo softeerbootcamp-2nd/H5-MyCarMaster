@@ -29,28 +29,6 @@ const GlobalStyle = createGlobalStyle`
         background: transparent;
         cursor: pointer;
     }
-
-
-    /* @font-face {
-        font-family: HyundaiSansBold;
-        font-display: swap;
-        src: local('HyundaiSansBold'), url('./fonts/HyundaiSansHeadKRBold.woff2') format('woff2'),
-      url('./fonts/fonts/HyundaiSansHeadKRBold.woff') format('woff');
-    }
-    @font-face {
-        font-family: HyundaiSansMedium;
-        font-display: swap;
-        src: local('HyundaiSansMedium'), url('./fonts/HyundaiSansHeadKRMedium.woff2') format('woff2'),
-      url('./fonts/HyundaiSansHeadKRMedium.woff') format('woff');
-    }
-    @font-face {
-        font-family: HyundaiSansRegular;
-        font-display: swap;
-        src: local('HyundaiSansRegular'), url('./fonts/HyundaiSansHeadKRRegular.woff2') format('woff2'),
-      url('./fonts/HyundaiSansHeadKRRegular.woff') format('woff');
-    } */
-
-    // public font setting
 `;
 
 export default GlobalStyle;

@@ -1,10 +1,11 @@
 import { Fragment, useEffect, useState } from "react";
 import { styled } from "styled-components";
-// import useFetch from "../../../hooks/useFetch";
-// import { BasicOptionProps } from "../../../types/options.types";
-import theme from "../../../styles/Theme";
-import XMark from "../../../assets/icons/XMark.svg";
+import useFetch from "@hooks/useFetch";
+import { BasicOptionProps } from "types/options.types";
+import theme from "@styles/Theme";
+import XMark from "@assets/icons/XMark.svg";
 import OptionList from "../OptionList/OptionList";
+import { useTrimState } from "@/contexts/TrimContext";
 
 interface BasicOptionModalProps {
   setIsBasicOptionModalOpen: (isOpen: boolean) => void;
@@ -13,11 +14,11 @@ interface BasicOptionModalProps {
   trimDescription: string;
 }
 
-// interface FetchBasicOptionProps extends BasicOptionProps {
-//   result: {
-//     defaultOptions: BasicOptionProps[];
-//   };
-// }
+interface FetchBasicOptionProps extends BasicOptionProps {
+  result: {
+    defaultOptions: BasicOptionProps[];
+  };
+}
 
 function BasicOptionModal({
   setIsBasicOptionModalOpen,
@@ -26,19 +27,21 @@ function BasicOptionModal({
   trimDescription,
 }: BasicOptionModalProps) {
   // 아직 API에 데이터 안들어간 것 같아서 통신 부분 주석 처리
-  //   const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
+  const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
+  const { trimId } = useTrimState();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showList, setShowList] = useState<BasicOptionProps[] | null>(null);
 
-  //   const { data } = useFetch<FetchBasicOptionProps>(
-  //     `${SERVER_URL}/trims/${trimId}/default-options`
-  //   );
+  const { data } = useFetch<FetchBasicOptionProps>(
+    `${SERVER_URL}/trims/${trimId}/default-options`
+  );
 
-  //   useEffect(() => {
-  //     if (data) {
-  //       console.log(data);
-  //     }
-  //   }, [data]);
+  useEffect(() => {
+    if (data) {
+      setShowList(data.result.defaultOptions);
+    }
+  }, [data]);
 
   useEffect(() => {
     setIsModalOpen(true);
@@ -49,24 +52,67 @@ function BasicOptionModal({
     setIsBasicOptionModalOpen(false);
   };
 
+  const filterList = (category: string) => {
+    const filteredList = showList?.filter((item) => item.category === category);
+    return filteredList;
+  };
+
+  const handleFocus = (e: React.MouseEvent) => {
+    e.stopPropagation();
+  };
+
   return (
     <Fragment>
       {isModalOpen && (
         <ModalOverlay>
-          <Container>
+          <Container className="modal-scroll">
             <TrimNameContainer>
               <TrimName>{trimName}</TrimName>
               <CloseButton onClick={closeBasicOptionModal}></CloseButton>
             </TrimNameContainer>
             <TrimDescription>{trimDescription}</TrimDescription>
             <BasicOptionContainer>
-              <OptionList $name="파워트레인/성능" />
-              <OptionList $name="지능형 안전 기술" />
-              <OptionList $name="안전" />
-              <OptionList $name="외관" />
-              <OptionList $name="내장" />
-              <OptionList $name="시트" />
-              <OptionList $name="편의" />
+              {showList === undefined || showList === null ? (
+                <p>데이터가 없습니다.</p>
+              ) : (
+                <>
+                  <OptionList
+                    $name="파워트레인/성능"
+                    $data={filterList("파워트레인/성능")}
+                    onClick={handleFocus}
+                  />
+                  <OptionList
+                    $name="지능형 안전기술"
+                    $data={filterList("지능형 안전기술")}
+                    onClick={handleFocus}
+                  />
+                  <OptionList
+                    $name="안전"
+                    $data={filterList("안전")}
+                    onClick={handleFocus}
+                  />
+                  <OptionList
+                    $name="외관"
+                    $data={filterList("외관")}
+                    onClick={handleFocus}
+                  />
+                  <OptionList
+                    $name="내장"
+                    $data={filterList("내장")}
+                    onClick={handleFocus}
+                  />
+                  <OptionList
+                    $name="시트"
+                    $data={filterList("시트")}
+                    onClick={handleFocus}
+                  />
+                  <OptionList
+                    $name="편의"
+                    $data={filterList("편의")}
+                    onClick={handleFocus}
+                  />
+                </>
+              )}
             </BasicOptionContainer>
           </Container>
         </ModalOverlay>
@@ -85,6 +131,9 @@ const ModalOverlay = styled.div`
   right: 0;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 999;
+
+  // first show
+  animation: fadeIn 0.3s ease-in-out;
 `;
 
 const Container = styled.div`
@@ -96,6 +145,8 @@ const Container = styled.div`
   width: 50rem;
   height: 45rem;
   background-color: ${theme.colors.WHITE};
+
+  gap: 2rem;
 
   padding: 2rem 2.75rem;
 
@@ -133,7 +184,6 @@ const TrimDescription = styled.p`
   font-weight: 400;
 
   height: 2rem;
-  margin-top: 1rem;
 `;
 
 const BasicOptionContainer = styled.div`
@@ -141,6 +191,4 @@ const BasicOptionContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 0.75rem;
-
-  margin-top: 1.5rem;
 `;

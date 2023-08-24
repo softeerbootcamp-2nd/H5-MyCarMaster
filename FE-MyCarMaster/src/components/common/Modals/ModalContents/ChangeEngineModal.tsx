@@ -6,7 +6,7 @@ function ChangeEngineModal({ id, name, price }: UnselectableOptionProps) {
   return (
     <Container key={id}>
       <MainText>엔진을 변경하시면</MainText>
-      <MainText>선택하신 아래 옵션이 해제됩니다.</MainText>
+      <MainText $isColor={true}>선택하신 아래 옵션이 해제됩니다.</MainText>
       <OptionContainer>
         <OptionName>{name}</OptionName>
         <OptionPrice>+{price.toLocaleString("ko-KR")}원</OptionPrice>
@@ -20,20 +20,20 @@ export default ChangeEngineModal;
 const Container = styled.div`
   width: 100%;
   height: 60%;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
-
-  font-family: "HyundaiSansRegular";
 `;
 
-const MainText = styled.p`
-  font-size: 1.5rem;
-  font-style: normal;
-  font-weight: 500;
+const MainText = styled.p<{ $isColor?: boolean }>`
+  ${(props) => props.theme.fonts.Medium15};
+  ${(props) =>
+    props.$isColor &&
+    `
+    color: ${theme.colors.SMOOTH_RED};
+  `};
 `;
 
 const OptionContainer = styled.div`
@@ -51,13 +51,9 @@ const OptionContainer = styled.div`
 `;
 
 const OptionName = styled.p`
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 700;
+  ${(props) => props.theme.fonts.Medium12};
 `;
 
 const OptionPrice = styled.p`
-  font-size: 0.875rem;
-  font-style: normal;
-  font-weight: 500;
+  ${(props) => props.theme.fonts.Medium10};
 `;

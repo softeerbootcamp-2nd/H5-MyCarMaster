@@ -26,18 +26,13 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   gap: 2rem;
-
-  font-family: "HyundaiSansRegular";
 `;
 
 const MainText = styled.p`
-  font-size: 1.5rem;
-  font-style: normal;
-  font-weight: 500;
+  ${(props) => props.theme.fonts.Bold20};
 `;
 
 const SubText = styled.p`
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 400;
+  ${(props) => props.theme.fonts.Regular12};
+  color: ${(props) => props.theme.colors.SMOOTH_RED};
 `;
