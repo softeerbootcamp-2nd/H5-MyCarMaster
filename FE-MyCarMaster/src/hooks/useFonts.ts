@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 type FontFaceType = {
   family: string;
   url: string;
-  options: FontFaceDescriptors;
+  options?: FontFaceDescriptors;
 };
 
 function useFonts(fonts: FontFaceType[]) {
