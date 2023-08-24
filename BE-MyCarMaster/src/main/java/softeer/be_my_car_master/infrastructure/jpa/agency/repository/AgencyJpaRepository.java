@@ -10,17 +10,10 @@ import softeer.be_my_car_master.infrastructure.jpa.agency.entity.AgencyEntity;
 
 public interface AgencyJpaRepository extends JpaRepository<AgencyEntity, Long> {
 
-	@Query(value = "SELECT a.* "
-		+ "FROM agency a "
-		+ "WHERE a.id IN ("
-		+ "SELECT id "
-		+ "FROM agency "
-		+ "WHERE ST_Distance_Sphere(POINT(:longitude, :latitude), POINT(longitude, latitude)) < 2000"
-		+ ")",
+	@Query(value = "SELECT * FROM agency "
+		+ "WHERE ST_Contains(ST_Buffer(ST_GeomFromText(CONCAT('Point(', :lat, ' ', :long, ')'), 0), 0.02), points)",
 		nativeQuery = true)
-	List<AgencyEntity> findAllByLocation(
-		@Param("latitude") Double latitude,
-		@Param("longitude") Double longitude);
+	List<AgencyEntity> findAllByLocation(@Param("lat") Double latitude, @Param("long") Double longitude);
 
 	List<AgencyEntity> findAllByGu(String gu);
 }
