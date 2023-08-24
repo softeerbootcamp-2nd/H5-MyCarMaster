@@ -3,7 +3,7 @@ package softeer.be_my_car_master.application.estimate.usecase.create_estimate;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.*;
 
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.UUID;
 
@@ -68,8 +68,9 @@ class CreateEstimateUseCaseTest {
 			.totalPrice(4000)
 			.build();
 
-		given(port.findModels()).willReturn(Arrays.asList(
-			new Model(1L, "model", "url", 100, Type.SUV)
+		given(port.findModels())
+			.willReturn(Arrays.asList(
+				new Model(1L, "model", "url", 100, Type.SUV, LocalDateTime.now())
 			));
 		given(port.findTrimsByModel(any()))
 			.willReturn(Arrays.asList(
@@ -170,8 +171,9 @@ class CreateEstimateUseCaseTest {
 			.totalPrice(4000)
 			.build();
 
-		given(port.findModels()).willReturn(Arrays.asList(
-			new Model(1L, "model", "url", 1000, Type.SUV)
+		given(port.findModels())
+			.willReturn(Arrays.asList(
+				new Model(1L, "model", "url", 1000, Type.SUV, LocalDateTime.now())
 			));
 		given(port.findTrimsByModel(any()))
 			.willReturn(Arrays.asList(

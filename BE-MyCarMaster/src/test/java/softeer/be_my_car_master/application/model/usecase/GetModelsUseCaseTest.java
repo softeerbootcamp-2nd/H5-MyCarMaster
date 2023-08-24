@@ -2,6 +2,7 @@ package softeer.be_my_car_master.application.model.usecase;
 
 import static org.mockito.BDDMockito.*;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -40,6 +41,7 @@ class GetModelsUseCaseTest {
 			.imgUrl("image")
 			.price(10000)
 			.type(Type.SUV)
+			.createdAt(LocalDateTime.now())
 			.build();
 		given(getModelsPort.findModels()).willReturn(Arrays.asList(model));
 
@@ -58,6 +60,7 @@ class GetModelsUseCaseTest {
 			softAssertions.assertThat(expected.getImgUrl()).isEqualTo(model.getImgUrl());
 			softAssertions.assertThat(expected.getPrice()).isEqualTo(model.getPrice());
 			softAssertions.assertThat(expected.getType()).isEqualTo(model.getType());
+			softAssertions.assertThat(expected.getIsNew()).isEqualTo(true);
 		});
 	}
 }
