@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import theme from "../../../styles/Theme";
 import { useQuotationState } from "../../../contexts/QuotationContext";
+import { QuotationState, QuotationType } from "@/types/quotation.types";
 
 function EstimatedPrice() {
   const {
@@ -8,7 +9,7 @@ function EstimatedPrice() {
     detailQuotation,
     carPaintQuotation,
     optionQuotation,
-  }: any = useQuotationState();
+  }: QuotationState = useQuotationState();
 
   const sum: number =
     trimQuotation?.trimQuotation.price +
@@ -18,7 +19,7 @@ function EstimatedPrice() {
     carPaintQuotation?.exteriorColorQuotation.price +
     carPaintQuotation?.interiorColorQuotation.price +
     optionQuotation?.selectedQuotation.reduce(
-      (acc: number, cur: any) => acc + cur.price,
+      (acc: number, cur: QuotationType) => acc + cur.price,
       0
     );
 
