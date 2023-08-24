@@ -4,7 +4,7 @@ import dark_logo from "@assets/images/dark_logo.svg";
 
 export default function Estimation() {
   return (
-    <Flex $flexDirection="column">
+    <Flex $flexDirection="column" $overflow="hidden">
       <Header logo={dark_logo} isHome={false} />
       <MainView />
       <Footer />

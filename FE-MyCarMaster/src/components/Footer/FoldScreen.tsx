@@ -217,7 +217,7 @@ const Bar = styled.div<{ $show: boolean }>`
 `;
 
 const Text = styled.p<{ $show: boolean }>`
-  ${({ theme }) => theme.fonts.ContentMedium1};
+  ${({ theme }) => theme.fonts.Medium12};
   animation: ${({ $show }) =>
     $show ? "textDisappear 0.5s ease-in-out" : "textAppear 0.5s ease-in-out"};
 

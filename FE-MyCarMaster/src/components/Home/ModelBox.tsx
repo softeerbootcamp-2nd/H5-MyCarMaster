@@ -64,13 +64,13 @@ const ModelImage = styled.img`
 const ModelName = styled.p`
   width: 100%;
   height: 100%;
-  ${(props) => props.theme.fonts.ContentMedium1}
+  ${(props) => props.theme.fonts.Medium12}
   text-align: center;
 `;
 
 const ModelPrice = styled.p`
   width: 100%;
   height: 100%;
-  ${(props) => props.theme.fonts.ContentMedium2}
+  ${(props) => props.theme.fonts.Regular10}
   text-align: center;
 `;

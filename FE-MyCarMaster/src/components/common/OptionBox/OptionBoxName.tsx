@@ -27,6 +27,7 @@ export default function OptionBoxName({
   isDetail,
   isTrim,
 }: OptionBoxNameProp) {
+  const nameLength = name?.length || 0;
   return (
     <>
       {isDetail ? (
@@ -56,7 +57,13 @@ export default function OptionBoxName({
             ? ActiveCSS.Name
             : DefaultCSS.Name
         }
-        $size={isTrim ? DefaultCSS.SizeUp : DefaultCSS.SizeDown}
+        $size={
+          isTrim
+            ? DefaultCSS.SizeUp
+            : nameLength < 20
+            ? DefaultCSS.SizeDown
+            : DefaultCSS.LongSizeDown
+        }
       >
         {name}
       </Name>

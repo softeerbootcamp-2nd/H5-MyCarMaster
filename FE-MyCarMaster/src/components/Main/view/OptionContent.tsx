@@ -9,6 +9,7 @@ import filterOptionCategory from "@utils/Option/filterOptionCategory";
 import { categories } from "@constants/Option.constants";
 import { OptionType, OptionState } from "types/options.types";
 import useFetch from "@hooks/useFetch";
+import theme from "@styles/Theme";
 
 interface FetchOptionsProps extends OptionType {
   result: {
@@ -116,6 +117,7 @@ export default function OptionContent() {
         <CategoryList
           categories={categories}
           onClickHandler={(index) => onClickHandler(index as number)}
+          $font={theme.fonts.Medium12_15}
           $switch={"option"}
         />
       </Flex>

@@ -1,26 +1,29 @@
 import styled, { css, RuleSet } from "styled-components";
+import { FontType } from "@styles/Theme";
 
 export type CSSProps = {
   $style?: RuleSet;
+  $font?: FontType;
 };
 
 export const Text = styled.p<CSSProps>`
   ${(props) => props.$style}
+  ${(props) => props.$font}
 `;
 
 export const DefaultStyle = {
   General: css`
-    ${(props) => props.theme.fonts.ContentMedium1};
+    ${(props) => props.theme.fonts.Medium12};
   `,
   Text: css`
     color: ${(props) => props.theme.colors.COOLGREY2};
-    ${(props) => props.theme.fonts.ContentLarge};
+    ${(props) => props.theme.fonts.Medium13};
   `,
   Qutoation: css`
-    ${(props) => props.theme.fonts.ContentMedium2};
+    ${(props) => props.theme.fonts.Medium10};
   `,
   Option: css`
-    ${(props) => props.theme.fonts.ContentSmall};
+    ${(props) => props.theme.fonts.Medium8};
   `,
 };
 

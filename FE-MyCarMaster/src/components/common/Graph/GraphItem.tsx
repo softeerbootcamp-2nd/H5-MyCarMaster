@@ -79,10 +79,7 @@ const NameContainer = styled.div`
 `;
 
 const KoreanName = styled.p`
-  font-size: 0.875rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 1.25rem;
+  ${(props) => props.theme.fonts.Medium12}
 `;
 
 const Bar = styled.p<{ $value: ValueProps }>`
@@ -97,17 +94,11 @@ const Bar = styled.p<{ $value: ValueProps }>`
 `;
 
 const Unit = styled.p`
-  font-size: 0.8125rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 165%;
+  ${(props) => props.theme.fonts.Regular10}
 `;
 
 const ValueContainer = styled.div<{ $value: ValueProps }>`
-  font-size: 2.25rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 2.75rem; /* 122.222% */
+  ${(props) => props.theme.fonts.Bold25}
   color: ${(props) =>
     props.$value.power !== undefined
       ? theme.colors.NAVYBLUE5

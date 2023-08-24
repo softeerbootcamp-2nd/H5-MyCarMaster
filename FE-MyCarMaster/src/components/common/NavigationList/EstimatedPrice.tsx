@@ -46,15 +46,11 @@ const Container = styled.li`
 `;
 
 const Text = styled.p`
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 500;
+  ${(props) => props.theme.fonts.Medium12};
 `;
 
 const Price = styled.p`
-  font-size: 1.25rem;
-  font-style: normal;
-  font-weight: 700;
+  ${(props) => props.theme.fonts.Medium15};
 `;
 
 export default EstimatedPrice;

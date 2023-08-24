@@ -17,47 +17,21 @@ export const Price = styled.p<CSSProps>`
   transform: translate(0%, -50%);
 `;
 
-export const DarkColor = {
-  Head: css`
-    color: ${(props) => props.theme.colors.WHITE};
-    ${(props) => props.theme.fonts.BodyMedium};
-  `,
-  Content: css`
-    color: ${(props) => props.theme.colors.GREY3};
-    ${(props) => props.theme.fonts.BodySmall2};
-  `,
-  Price: css`
-    color: ${(props) => props.theme.colors.COOLGREY1};
-    ${(props) => props.theme.fonts.BodySmall};
-  `,
-};
-
-export const DefaultColor = {
+export const Color = {
   Head: css`
     color: ${(props) => props.theme.colors.BLACK};
-    ${(props) => props.theme.fonts.BodyMedium};
+    ${(props) => props.theme.fonts.Medium10};
   `,
   Content: css`
     color: ${(props) => props.theme.colors.GREY3};
-    ${(props) => props.theme.fonts.BodySmall2};
+    ${(props) => props.theme.fonts.Regular8};
   `,
-  Price: css`
+  OuterPrice: css`
     color: ${(props) => props.theme.colors.COOLGREY2};
-    ${(props) => props.theme.fonts.BodySmall};
+    ${(props) => props.theme.fonts.Regular6};
   `,
-};
-
-export const LightColor = {
-  Head: css`
-    color: ${(props) => props.theme.colors.BLACK};
-    ${(props) => props.theme.fonts.BodyMedium};
-  `,
-  Content: css`
-    color: ${(props) => props.theme.colors.GREY3};
-    ${(props) => props.theme.fonts.BodySmall2};
-  `,
-  Price: css`
+  InnerPrice: css`
     color: ${(props) => props.theme.colors.COOLGREY2};
-    ${(props) => props.theme.fonts.BodySmall};
+    ${(props) => props.theme.fonts.Medium10};
   `,
 };

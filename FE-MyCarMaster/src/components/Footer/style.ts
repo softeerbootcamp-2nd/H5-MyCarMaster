@@ -13,15 +13,11 @@ export const Container = styled.div`
 `;
 
 export const HeadText = styled.p`
-  font-size: 1.5rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 1.5rem;
+  ${(props) => props.theme.fonts.Medium15};
+  line-height: 2.5rem;
 `;
 
 export const DescriptionText = styled.p`
-  font-size: 0.9rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 165%;
+  ${(props) => props.theme.fonts.Regular9};
+  line-height: 1.5rem;
 `;

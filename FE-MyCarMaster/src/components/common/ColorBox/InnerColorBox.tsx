@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { Text, DefaultColor } from "./style";
+import { Text, Color } from "./style";
 
 type innerColorProps = {
   $id: number;
@@ -19,12 +19,12 @@ export default function InnerColorBox(props: innerColorProps) {
       <InnerColorImage src={props.$colorImgUrl} />
       <InnerColorText>
         <TopTextBox>
-          <Text $style={DefaultColor.Head}>{props.$name}</Text>
-          <Text $style={DefaultColor.Content}>
+          <Text $style={Color.Head}>{props.$name}</Text>
+          <Text $style={Color.Content}>
             {props.trim} 구매자의 {props.ratio}%가 선택
           </Text>
         </TopTextBox>
-        <Text $style={DefaultColor.Price}>+ {props.price}원</Text>
+        <Text $style={Color.InnerPrice}>+ {props.price}원</Text>
       </InnerColorText>
       {props.$active && <SelectedFrame />}
     </Container>

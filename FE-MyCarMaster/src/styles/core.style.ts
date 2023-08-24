@@ -39,16 +39,14 @@ export const Flex = styled.div<FlexProps>`
   position: ${(props) => props.$position || "static"};
 `;
 
-interface TextProps {
-  $fontSize?: string;
-  $fontWeight?: string;
+export interface TextProps {
   $color?: string;
   $textAlign?: string;
+  $font?: any;
 }
 
 export const Text = styled.p<TextProps>`
-  font-size: ${(props) => props.$fontSize || "1rem"};
-  font-weight: ${(props) => props.$fontWeight || "normal"};
+  ${(props) => props.$font || ""};
   color: ${(props) => props.$color || "#000"};
   text-align: ${(props) => props.$textAlign || "left"};
 `;
