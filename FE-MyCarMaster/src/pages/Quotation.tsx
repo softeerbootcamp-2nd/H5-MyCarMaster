@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { Header } from "../components";
 import dark_logo from "../assets/images/dark_logo.svg";
 import NavigationList from "../components/common/NavigationList/NavigationList";
@@ -19,6 +19,9 @@ function Quotation() {
   const { trimQuotation, detailQuotation, carPaintQuotation, optionQuotation } =
     useQuotationState();
   const [confirm, setConfirm] = useState<boolean>(false);
+  const [confirmClicked, setConfirmClicked] = useState<boolean>(false);
+  const [confirmClickedModal, setConfirmClickedModal] =
+    useState<boolean>(false);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState<boolean>(false);
   const [isMapModalOpen, setIsMapModalOpen] = useState<boolean>(false);
   const [estimateId, setEstimateId] = useState<string>();
@@ -80,6 +83,7 @@ function Quotation() {
     });
 
     setConfirm(true);
+    setConfirmClicked(true);
   };
 
   return (
@@ -107,7 +111,7 @@ function Quotation() {
             <SumPrice>{getTotalPrice().toLocaleString("ko-KR")}원</SumPrice>
           </PriceContainer>
           <ButtonContainer>
-            <ToolTip src={findCarmasterTooltip} />
+            <ToolTip src={findCarmasterTooltip} $showTooltip={confirmClicked} />
             <Button
               $x={12}
               $y={2.25}
@@ -124,7 +128,11 @@ function Quotation() {
               $textcolor={`${theme.colors.WHITE}`}
               $bordercolor={`${theme.colors.NAVYBLUE5}`}
               text="카마스터 찾기"
-              handleClick={() => setIsMapModalOpen(true)}
+              handleClick={() => {
+                confirmClicked
+                  ? setIsMapModalOpen(true)
+                  : setConfirmClickedModal(true);
+              }}
             />
           </ButtonContainer>
         </QuotationFooter>
@@ -141,6 +149,20 @@ function Quotation() {
         <MapModal
           setIsMapModalOpen={setIsMapModalOpen}
           estimateId={estimateId!}
+        />
+      )}
+      {confirmClickedModal && (
+        <Modals
+          type={ModalType.ALERT}
+          onClick={() => {
+            setConfirmClickedModal(false);
+          }}
+          isAlert={true}
+          setIsOpen={setConfirmClickedModal}
+          text={[
+            "카마스터 찾기는 견적서 확정 후 이용하실 수 있습니다.",
+            "먼저 견적서를 확정해주십시오.",
+          ]}
         />
       )}
     </Fragment>
@@ -273,15 +295,21 @@ const ButtonContainer = styled.div`
   position: relative;
 `;
 
-const ToolTip = styled.img`
+const ToolTip = styled.img<{ $showTooltip: boolean }>`
   width: 12.4375rem;
   position: absolute;
   top: -80%;
   left: 0;
+  display: none;
 
-  animation: ${boundAnimation} 1s ease-in-out 5 forwards,
-    ${fadeoutAnimation} 1.5s ease-in-out 5s forwards;
-  opacity: 1;
+  ${(props) =>
+    props.$showTooltip &&
+    css`
+      animation: ${boundAnimation} 1s ease-in-out 5 forwards,
+        ${fadeoutAnimation} 1.5s ease-in-out 5s forwards;
+      opacity: 1;
+      display: block;
+    `}
 `;
 
 export default Quotation;

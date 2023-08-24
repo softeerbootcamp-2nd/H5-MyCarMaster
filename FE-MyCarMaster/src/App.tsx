@@ -1,6 +1,6 @@
 import React, { createElement } from "react";
 import { Flex } from "@styles/core.style";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import GlobalStyle from "@styles/GlobalStyle.ts";
 import { ThemeProvider } from "styled-components";
 import { ModelProvider } from "@contexts/ModelContext";
@@ -17,6 +17,7 @@ import {
   WrittenQuotation,
   ConsultComplete,
 } from "@pages/index";
+import ErrorBoundary from "./components/common/ErrorBoundary/ErrorBoundary";
 import { useFonts } from "@hooks/useFonts";
 import { fonts } from "@constants/Font.constants";
 
@@ -39,6 +40,11 @@ const AppProvider = ({
 
 function App() {
   useFonts(fonts);
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/");
+    window.location.reload();
+  };
   return (
     <>
       <GlobalStyle />
@@ -53,6 +59,7 @@ function App() {
             QuotationProvider,
           ]}
         >
+         <ErrorBoundary handleClick={handleClick}>
           <Flex>
             <Routes>
               <Route path="/" element={<Home />} />
@@ -65,9 +72,9 @@ function App() {
               <Route path="/consult-complete" element={<ConsultComplete />} />
             </Routes>
           </Flex>
-        </AppProvider>
-      </ThemeProvider>
-    </>
+        </ErrorBoundary>
+      </AppProvider>
+    </ThemeProvider>
   );
 }
 
