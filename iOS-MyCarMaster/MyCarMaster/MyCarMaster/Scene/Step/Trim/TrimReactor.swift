@@ -50,9 +50,7 @@ final class TrimReactor: Reactor {
     func mutate(action: Action) -> AnyPublisher<Mutation, Never> {
         switch action {
         case let .trimDidSelect(trim):
-            return [
-                updateTrim(trim),
-            ].concatenate()
+            return updateTrim(trim)
         case .viewDidLoad:
             return [
                 Just(Mutation.setLoading(true))
@@ -64,6 +62,22 @@ final class TrimReactor: Reactor {
         case .dataSourceDidApply:
             return fetchSelectedTrim()
         }
+    }
+
+    func transform(mutation: AnyPublisher<Mutation, Never>) -> AnyPublisher<Mutation, Never> {
+        guard let estimationManager else {
+            return Empty().eraseToAnyPublisher()
+        }
+
+        let esitmationMutation = estimationManager.estimationPublisher.map(\.trim)
+            .flatMap({ trim in
+                return Just(Mutation.fetchSelectedTrim(trim))
+                    .eraseToAnyPublisher()
+            })
+            .eraseToAnyPublisher()
+
+        return Publishers.Merge(mutation, esitmationMutation)
+            .eraseToAnyPublisher()
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
