@@ -16,6 +16,7 @@ final class TrimReactor: Reactor {
     enum Action {
         case viewDidLoad
         case trimDidSelect(Trim)
+        case dataSourceDidApply
     }
 
     enum Mutation {
@@ -51,17 +52,17 @@ final class TrimReactor: Reactor {
         case let .trimDidSelect(trim):
             return [
                 updateTrim(trim),
-                fetchSelectedTrim()
             ].concatenate()
         case .viewDidLoad:
             return [
-                fetchSelectedTrim(),
                 Just(Mutation.setLoading(true))
                     .eraseToAnyPublisher(),
                 fetchTrimList(),
                 Just(Mutation.setLoading(false))
                     .eraseToAnyPublisher(),
             ].concatenate()
+        case .dataSourceDidApply:
+            return fetchSelectedTrim()
         }
     }
 
@@ -88,7 +89,7 @@ extension TrimReactor {
         }
 
         estimationManager.update(\.trim, value: trim)
-        return fetchSelectedTrim()
+        return Empty().eraseToAnyPublisher()
     }
 
     private func fetchSelectedTrim() -> AnyPublisher<Mutation, Never> {
