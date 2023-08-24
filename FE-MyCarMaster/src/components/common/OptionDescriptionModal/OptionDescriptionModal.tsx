@@ -90,6 +90,8 @@ const ModalOverlay = styled.div`
   right: 0;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 999;
+
+  animation: fadeIn 0.3s ease-in-out;
 `;
 
 const Container = styled.div`
