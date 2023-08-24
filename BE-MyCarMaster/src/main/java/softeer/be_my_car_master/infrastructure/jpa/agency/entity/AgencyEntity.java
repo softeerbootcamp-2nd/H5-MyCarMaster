@@ -1,20 +1,18 @@
 package softeer.be_my_car_master.infrastructure.jpa.agency.entity;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.locationtech.jts.geom.Point;
 
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import softeer.be_my_car_master.domain.agency.Agency;
-import softeer.be_my_car_master.infrastructure.jpa.car_master.entity.CarMasterEntity;
 
 @Entity
 @Getter
@@ -37,6 +35,9 @@ public class AgencyEntity {
 
 	@Column(name = "gu", nullable = false)
 	private String gu;
+
+	@Column(name = "points")
+	private Point points;
 
 	public Agency toAgency() {
 		return Agency.builder()
