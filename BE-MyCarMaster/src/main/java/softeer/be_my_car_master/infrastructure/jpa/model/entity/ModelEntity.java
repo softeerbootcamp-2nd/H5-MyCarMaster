@@ -17,12 +17,13 @@ import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import softeer.be_my_car_master.domain.model.Model;
 import softeer.be_my_car_master.domain.model.Type;
+import softeer.be_my_car_master.global.config.BaseTime;
 import softeer.be_my_car_master.infrastructure.jpa.trim.entity.TrimEntity;
 
 @Entity
 @Table(name = "model")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ModelEntity {
+public class ModelEntity extends BaseTime {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,6 +54,7 @@ public class ModelEntity {
 			.imgUrl(imgUrl)
 			.type(type)
 			.price(minPrice)
+			.createdAt(createdAt)
 			.build();
 	}
 }
