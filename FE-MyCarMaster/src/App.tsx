@@ -59,22 +59,23 @@ function App() {
             QuotationProvider,
           ]}
         >
-         <ErrorBoundary handleClick={handleClick}>
-          <Flex>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/estimation" element={<Estimation />} />
-              <Route path="/quotation" element={<Quotation />} />
-              <Route
-                path="/estimates/:estimateId"
-                element={<WrittenQuotation />}
-              />
-              <Route path="/consult-complete" element={<ConsultComplete />} />
-            </Routes>
-          </Flex>
-        </ErrorBoundary>
-      </AppProvider>
-    </ThemeProvider>
+          <ErrorBoundary handleClick={handleClick}>
+            <Flex>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/estimation" element={<Estimation />} />
+                <Route path="/quotation" element={<Quotation />} />
+                <Route
+                  path="/estimates/:estimateId"
+                  element={<WrittenQuotation />}
+                />
+                <Route path="/consult-complete" element={<ConsultComplete />} />
+              </Routes>
+            </Flex>
+          </ErrorBoundary>
+        </AppProvider>
+      </ThemeProvider>
+    </>
   );
 }
 
