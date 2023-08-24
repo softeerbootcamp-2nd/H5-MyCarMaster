@@ -93,7 +93,14 @@ extension EstimationManager {
     }
 
     func removeAll() {
-        let newEstimation = Estimation(selectedOptions: [], consideredOptions: [], selectedOptionsTotalPrice: 0, totalPrice: 0)
+        var newEstimation = self.estimation
+        newEstimation.engine = nil
+        newEstimation.wheelDrive = nil
+        newEstimation.bodyType = nil
+        newEstimation.exterior = nil
+        newEstimation.interior = nil
+        newEstimation.selectedOptions.removeAll()
+        newEstimation.consideredOptions.removeAll()
         estimationSubject.accept(newEstimation)
     }
 }

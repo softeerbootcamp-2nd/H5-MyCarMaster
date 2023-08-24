@@ -132,6 +132,7 @@ extension TrimViewController: Reactable {
             .store(in: &cancellables)
 
         reactor.state.compactMap(\.showSelectionAlert)
+            .removeDuplicates()
             .receive(on: DispatchQueue.main)
             .sink { [weak self] trim in
                 let alert = UIAlertController(
