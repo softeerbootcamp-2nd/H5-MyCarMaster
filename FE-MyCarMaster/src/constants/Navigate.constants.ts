@@ -1,0 +1,10 @@
+export enum NavigationIndex {
+  TRIM,
+  ENGINE,
+  WHEELTYPE,
+  BODYTYPE,
+  EXTERIOR_COLOR,
+  INTERIOR_COLOR,
+  OPTION,
+  QUOATATION,
+}

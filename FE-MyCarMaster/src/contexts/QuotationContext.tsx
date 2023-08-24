@@ -7,7 +7,7 @@ import {
 
 const initialQuotationState: QuotationState = {
   navigationId: 0,
-  isFirst: [false, true, true, true, true, true, true],
+  isFirst: [false, true, true, true, true, true, true, true],
   trimQuotation: {
     trimQuotation: {
       id: 0,
@@ -43,8 +43,8 @@ const quotationReducer = (
         navigationId:
           action.payload!.navigationId === -1
             ? (0 as number)
-            : action.payload!.navigationId === 8
-            ? (7 as number)
+            : action.payload!.navigationId === 7
+            ? (6 as number)
             : (action.payload!.navigationId as number),
         isFirst: action.payload!.isFirst
           ? (action.payload!.isFirst as boolean[])
