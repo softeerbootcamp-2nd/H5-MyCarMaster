@@ -74,7 +74,7 @@ export default function DefaultOptionScreen({
           <CategoryList
             categories={[
               "파워트레인/성능",
-              "지능형 안전 기술", // 띄어쓰기 api 확인바람
+              "지능형 안전기술",
               "안전",
               "외관",
               "내장",
