@@ -2,6 +2,7 @@ import styled from "styled-components";
 import CategoryItem from "./CategoryItem";
 import { useQuotationState } from "../../../contexts/QuotationContext";
 import { useOptionState } from "../../../contexts/OptionContext";
+import { FontType } from "@/styles/Theme";
 
 type SwitchType = "detail" | "option" | "default" | "colors" | "model";
 type CategoryType =
@@ -19,6 +20,7 @@ type CagetoryListProps = {
   indexSetter?: number | CategoryType;
   $switch?: SwitchType;
   $gap?: number;
+  $font?: FontType;
 };
 
 function CategoryList({
@@ -27,6 +29,7 @@ function CategoryList({
   indexSetter,
   $switch,
   $gap,
+  $font,
 }: CagetoryListProps) {
   const { navigationId } = useQuotationState();
   const { optionCategoryId } = useOptionState();
@@ -55,6 +58,7 @@ function CategoryList({
         <CategoryItem
           name={category}
           key={index}
+          $font={$font}
           $active={SwitchActive(
             $switch as SwitchType,
             index,

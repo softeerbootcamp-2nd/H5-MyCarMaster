@@ -31,7 +31,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
 
-    @font-face {
+    /* @font-face {
         font-family: HyundaiSansBold;
         font-display: swap;
         src: local('HyundaiSansBold'), url('./fonts/HyundaiSansHeadKRBold.woff2') format('woff2'),
@@ -48,7 +48,7 @@ const GlobalStyle = createGlobalStyle`
         font-display: swap;
         src: local('HyundaiSansRegular'), url('./fonts/HyundaiSansHeadKRRegular.woff2') format('woff2'),
       url('./fonts/HyundaiSansHeadKRRegular.woff') format('woff');
-    }
+    } */
 
     // public font setting
 `;

@@ -6,6 +6,7 @@ import { useDetailState } from "@contexts/DetailContext";
 import ArrowLeft from "@assets/icons/ArrowLeft.svg";
 import ArrowRight from "@assets/icons/ArrowRight.svg";
 import useFetch from "@hooks/useFetch";
+import theme from "@styles/Theme";
 
 type DataListProps = {
   id: number;
@@ -73,7 +74,7 @@ export default function DefaultOptionScreen({
           <CategoryList
             categories={[
               "파워트레인/성능",
-              "지능형 안전 기술", // 띄어쓰기 api 확인바람
+              "지능형 안전기술",
               "안전",
               "외관",
               "내장",
@@ -81,6 +82,7 @@ export default function DefaultOptionScreen({
               "편의",
             ]}
             indexSetter={selected}
+            $font={theme.fonts.Medium12_15}
             onClickHandler={(_index, category) =>
               onClickHandler(category as CategoryType)
             }
@@ -162,7 +164,7 @@ const CategoryListContainer = styled.div`
 const GridOptionListContainer = styled.div`
   margin-top: 1.5rem;
   width: 80%;
-  height: 65%;
+  height: 75%;
 `;
 
 const PageButtonContainer = styled.div`
@@ -171,7 +173,7 @@ const PageButtonContainer = styled.div`
   width: 80%;
   text-align: center;
   gap: 1rem;
-  font-size: 1.5rem;
+  ${(props) => props.theme.fonts.Bold20};
   color: ${({ theme }) => theme.colors.NAVYBLUE5};
 `;
 

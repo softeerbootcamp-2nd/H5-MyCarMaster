@@ -1,6 +1,7 @@
 import styled, { css, keyframes } from "styled-components";
 import AngleUp from "../../../assets/icons/AngleUp.svg";
 import AngleDown from "../../../assets/icons/AngleDown.svg";
+import { Text } from "@styles/core.style";
 
 const expandAnimation = keyframes`
   from {
@@ -64,8 +65,25 @@ export const GridContainer = styled.div`
   gap: 1.5rem;
 `;
 
-export const Text = styled.div<{ $size?: number }>`
-  font-size: ${(props) => props.$size}rem;
+export const NameText = styled(Text)`
+  ${(props) => props.theme.fonts.Medium12};
+`;
+
+export const GridNameText = styled(Text)`
+  ${(props) => props.theme.fonts.Medium10};
+`;
+
+export const GridNameLongText = styled(Text)`
+  ${(props) => props.theme.fonts.Medium8};
+`;
+
+export const DetailText = styled(Text)`
+  ${(props) => props.theme.fonts.Regular8};
+
+  // hover
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const Icon = styled.div<{ $isOpen: boolean }>`
@@ -110,11 +128,6 @@ export const GridOptionImage = styled.img`
   width: 100%;
   height: 8rem;
   object-fit: cover;
-`;
-
-export const Detail = styled.p`
-  display: flex;
-  font-size: 0.75rem;
 `;
 
 export const Line = styled.div<{ $isOpen: boolean; $isFirst: boolean }>`

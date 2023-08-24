@@ -1,4 +1,5 @@
 import styled, { RuleSet } from "styled-components";
+import { FontType } from "@styles/Theme";
 import { Text, DefaultStyle, OptionStyle, StyleKey } from "./style";
 
 type ContainerProp = {
@@ -11,6 +12,7 @@ type ContainerProp = {
   text?: string | undefined;
   $tool?: string;
   $style?: RuleSet | string;
+  $font?: FontType;
   handleClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
@@ -22,6 +24,7 @@ function Button({
   $bordercolor,
   text,
   $tool,
+  $font,
   $opacity,
   handleClick,
 }: ContainerProp) {
@@ -44,6 +47,7 @@ function Button({
             ? DefaultStyle.Option
             : DefaultStyle.General
         }
+        $font={$font}
       >
         {text}
       </Text>
