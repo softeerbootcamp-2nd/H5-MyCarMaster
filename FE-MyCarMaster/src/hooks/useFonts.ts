@@ -3,9 +3,7 @@ import { useState, useEffect } from "react";
 type FontFaceType = {
   family: string;
   url: string;
-  options: {
-    fontDisplay: string;
-  };
+  options: FontFaceDescriptors;
 };
 
 function useFonts(fonts: FontFaceType[]) {
@@ -15,13 +13,13 @@ function useFonts(fonts: FontFaceType[]) {
     })
   );
 
-  async function loadFontFace(fontFace) {
+  async function loadFontFace(fontFace = new FontFace("", "")) {
     const loadedFont = await fontFace.load();
     document.fonts.add(loadedFont);
   }
 
   useEffect(() => {
-    fontFaces.forEach((fontFace, index) => {
+    fontFaces.forEach((fontFace) => {
       loadFontFace(fontFace);
     });
   }, [fontFaces]);

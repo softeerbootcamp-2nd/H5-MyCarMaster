@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Flex, Image } from "@styles/core.style";
+import { Flex } from "@styles/core.style";
 import {
   useCarPaintDispatch,
   useCarPaintState,
@@ -11,7 +11,7 @@ import {
 import { useTrimState } from "@contexts/TrimContext";
 import { ExteriorColors } from "types/carpaint.types";
 import useFetch from "@hooks/useFetch";
-import { CarRotation, SpriteCarRotation } from "@common/index";
+import { SpriteCarRotation } from "@common/index";
 
 interface FetchExteriorProps extends ExteriorColors {
   result: {
