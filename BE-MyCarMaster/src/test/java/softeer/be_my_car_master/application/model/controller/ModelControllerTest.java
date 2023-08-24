@@ -19,6 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import softeer.be_my_car_master.application.model.dto.response.GetModelsResponse;
 import softeer.be_my_car_master.application.model.dto.response.ModelDto;
 import softeer.be_my_car_master.application.model.usecase.get_models.GetModelsUseCase;
+import softeer.be_my_car_master.domain.model.Type;
 import softeer.be_my_car_master.global.response.Response;
 
 @WebMvcTest(ModelController.class)
@@ -42,6 +43,8 @@ class ModelControllerTest {
 			.id(1L)
 			.name("model name")
 			.imgUrl("imgUrl")
+			.price(1000)
+			.type(Type.SUV.getValue())
 			.build();
 		response.setModels(Arrays.asList(modelDto));
 		given(getModelsUseCase.execute()).willReturn(response);
