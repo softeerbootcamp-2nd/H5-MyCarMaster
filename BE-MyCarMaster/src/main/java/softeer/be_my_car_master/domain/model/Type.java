@@ -5,7 +5,7 @@ import lombok.Getter;
 @Getter
 public enum Type {
 
-	HYDROGEN_ELECTRIC("수소/전기차"),
+	HYDROGEN_ELECTRIC("수소 / 전기차"),
 	N("N"),
 	PASSENGER("승용차"),
 	SUV("SUV"),
