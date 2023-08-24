@@ -55,6 +55,7 @@ extension StepBottomViewController: Reactable {
     func bindState(reactor: StepBottomReactor) {
         reactor.state.map(\.leftButtonTitle)
             .removeDuplicates()
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] title in
                 self?.stepBottomView.updateLeftButtonTitle(title)
             }
@@ -62,6 +63,7 @@ extension StepBottomViewController: Reactable {
 
         reactor.state.map(\.rightButtonTitle)
             .removeDuplicates()
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] title in
                 self?.stepBottomView.updateRightButtonTitle(title)
             }
@@ -69,6 +71,7 @@ extension StepBottomViewController: Reactable {
 
         reactor.state.map(\.totalPrice)
             .removeDuplicates()
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] totalPrice in
                 self?.stepBottomView.updateTotalPrice(totalPrice)
             }

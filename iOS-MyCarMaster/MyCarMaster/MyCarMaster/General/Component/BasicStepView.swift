@@ -14,11 +14,11 @@ where ListCellClass: UICollectionViewCell & ContentSizeEstimatable & CellStyleSe
     let firstSpacing: CGFloat = 16
     let listSpacing: CGFloat = 12
 
-    let previewImageView: UIImageView = {
-        let imageView = UIImageView()
+    var previewView = UIView()
+
+    var previewImageView = UIImageView().then { imageView in
         imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
+    }
 
     private var collectionViewCellEstimatedHeight: CGFloat = ListCellClass.intrinsicContentSize.height
 
@@ -26,6 +26,8 @@ where ListCellClass: UICollectionViewCell & ContentSizeEstimatable & CellStyleSe
         let listView = UICollectionView(frame: .zero, collectionViewLayout: createListLayout())
         listView.backgroundColor = .MCM.white
         listView.bounces = false
+        listView.showsVerticalScrollIndicator = false
+        listView.contentInset = .init(top: 0, left: 0, bottom: 20, right: 0)
         return listView
     }()
 
@@ -45,10 +47,13 @@ where ListCellClass: UICollectionViewCell & ContentSizeEstimatable & CellStyleSe
     }
 
     func configureLayout() {
-        [previewImageView, listView].forEach { subview in
+        [previewView, listView].forEach { subview in
             addSubview(subview)
             subview.translatesAutoresizingMaskIntoConstraints = false
         }
+
+        previewView.addSubview(previewImageView)
+        previewImageView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
             previewImageView.topAnchor.constraint(equalTo: topAnchor),
@@ -59,7 +64,12 @@ where ListCellClass: UICollectionViewCell & ContentSizeEstimatable & CellStyleSe
             listView.topAnchor.constraint(equalTo: previewImageView.bottomAnchor, constant: firstSpacing),
             listView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: inset),
             listView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -inset),
-            listView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            listView.bottomAnchor.constraint(equalTo: bottomAnchor),
+
+            previewImageView.topAnchor.constraint(equalTo: previewView.topAnchor),
+            previewImageView.leadingAnchor.constraint(equalTo: previewView.leadingAnchor),
+            previewImageView.trailingAnchor.constraint(equalTo: previewView.trailingAnchor),
+            previewImageView.bottomAnchor.constraint(equalTo: previewView.bottomAnchor),
         ])
     }
 }
