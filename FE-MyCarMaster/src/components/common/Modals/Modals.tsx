@@ -8,12 +8,15 @@ import ChangeEngineModal from "./ModalContents/ChangeEngineModal";
 import { useEffect, useState } from "react";
 import { UnselectableOptionProps } from "../../../types/options.types";
 import ConfirmModal from "./ModalContents/ConfirmModal";
+import AlertModal from "./ModalContents/AlertModal";
 
 interface ModalProps {
   type: ModalType;
   onClick: (id?: number) => void;
   setIsOpen: (isOpen: boolean) => void;
   unselectableOption?: UnselectableOptionProps[];
+  isAlert?: boolean;
+  text?: string[];
 }
 
 export function Modals({
@@ -21,6 +24,8 @@ export function Modals({
   onClick,
   setIsOpen,
   unselectableOption,
+  isAlert,
+  text,
 }: ModalProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -53,6 +58,8 @@ export function Modals({
         } else return <></>;
       case "CONFIRM":
         return <ConfirmModal />;
+      case "ALERT":
+        return <AlertModal text={text as string[]} />;
       default:
         return <></>;
     }
@@ -70,15 +77,19 @@ export function Modals({
           <Container>
             {ModalContent}
             <ButtonContainer>
-              <Button
-                $x={9.625}
-                $y={2.25}
-                $backgroundcolor={`${theme.colors.WHITE}`}
-                $textcolor={`${theme.colors.NAVYBLUE5}`}
-                $bordercolor={`${theme.colors.NAVYBLUE5}`}
-                text={"취소"}
-                handleClick={closeModal}
-              />
+              {isAlert ? (
+                <></>
+              ) : (
+                <Button
+                  $x={9.625}
+                  $y={2.25}
+                  $backgroundcolor={`${theme.colors.WHITE}`}
+                  $textcolor={`${theme.colors.NAVYBLUE5}`}
+                  $bordercolor={`${theme.colors.NAVYBLUE5}`}
+                  text={"취소"}
+                  handleClick={closeModal}
+                />
+              )}
               <Button
                 $x={9.625}
                 $y={2.25}

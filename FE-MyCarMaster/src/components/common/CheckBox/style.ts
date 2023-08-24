@@ -54,7 +54,7 @@ export const CheckStyle = styled.div<{ $checked?: boolean }>`
 `;
 
 export const Name = styled.p<{ $checked: boolean }>`
-  ${(props) => props.theme.fonts.contentMedium};
+  ${(props) => props.theme.fonts.Medium10};
   color: ${(props) =>
     props.$checked ? props.theme.colors.WHITE : props.theme.colors.BLACK};
 
@@ -62,7 +62,7 @@ export const Name = styled.p<{ $checked: boolean }>`
 `;
 
 export const Detail = styled.p<{ $checked: boolean }>`
-  ${(props) => props.theme.fonts.contentMedium};
+  ${(props) => props.theme.fonts.Medium10};
   color: ${(props) =>
     props.$checked ? props.theme.colors.WHITE : props.theme.colors.NAVYBLUE5};
   width: 6rem;

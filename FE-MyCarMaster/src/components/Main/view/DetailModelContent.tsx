@@ -2,6 +2,7 @@ import { Flex } from "@styles/core.style";
 import { CategoryList } from "@common/index";
 import DetailModelWrapper from "./DetailModelView/DetailModelWrapper";
 import { useQuotationDispatch } from "@contexts/QuotationContext";
+import theme from "@styles/Theme";
 
 export default function DetailModelContent() {
   const quotationDispatch = useQuotationDispatch();
@@ -22,6 +23,7 @@ export default function DetailModelContent() {
         onClickHandler={(index) => onClickHandler(index as number)}
         indexSetter={1}
         $switch={"detail"}
+        $font={theme.fonts.Medium12_15}
       />
       <DetailModelWrapper />
     </Flex>

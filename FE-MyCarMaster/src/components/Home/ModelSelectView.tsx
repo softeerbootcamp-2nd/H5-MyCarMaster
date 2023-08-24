@@ -8,8 +8,7 @@ import {
   TopContainer,
   ModelContainer,
   ButtonContainer,
-  Text,
-  NotFoundText,
+  HomeText,
 } from "./style";
 import { typeData } from "@constants/Model.constatns";
 
@@ -112,9 +111,9 @@ export default function Home({ isFold }: HomeProp) {
   return (
     <Container $animation={isFold}>
       <TopContainer>
-        <Text $color={"#222222"} $animation={isFold} $delay={0.5}>
+        <HomeText $color={theme.colors.BLACK} $font={theme.fonts.Bold20}>
           모델을 선택해주세요.
-        </Text>
+        </HomeText>
 
         <CategoryList
           categories={typeData}
@@ -122,12 +121,19 @@ export default function Home({ isFold }: HomeProp) {
           indexSetter={categorySelect}
           $switch="model"
           $gap={2.5}
+          $font={theme.fonts.Medium12_13}
         />
       </TopContainer>
 
       <ModelContainer>
         {filteredModelData.length === 0 && (
-          <NotFoundText>해당되는 모델이 없습니다.</NotFoundText>
+          <HomeText
+            $color={theme.colors.BLACK}
+            $font={theme.fonts.Bold25}
+            $align={true}
+          >
+            해당되는 모델이 없습니다.
+          </HomeText>
         )}
         {filteredModelData.map((model, index) => (
           <ModelBox

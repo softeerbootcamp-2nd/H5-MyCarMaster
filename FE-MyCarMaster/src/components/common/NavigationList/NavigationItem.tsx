@@ -13,13 +13,14 @@ import {
   CarPaintQuotationType,
   OptionQuotationType,
 } from "../../../types/quotation.types";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { NavigationIndex } from "@/constants/Navigate.constants";
 
 type activeProp = {
   $active?: boolean | undefined | 0;
 };
 
-type QutoationProp =
+type QuotationProp =
   | undefined
   | TrimQuotationType
   | DetailQuotationType
@@ -28,23 +29,27 @@ type QutoationProp =
 
 type NavigationItemProp = {
   name: string;
-  quotation?: QutoationProp;
+  quotation?: QuotationProp;
   confirm: boolean;
 };
 
 function NavigationItem({ name, quotation, confirm }: NavigationItemProp) {
   const { navigationId, isFirst } = useQuotationState();
+  const { pathname } = useLocation();
+
   const quotationDispatch = useQuotationDispatch();
   const navigate = useNavigate();
   const [start, end] = indexNameSwitching(name) as number[];
 
   const handleNavigate = () => {
+    if (isFirst[start]) return;
     quotationDispatch({
       type: "NAVIGATE",
       payload: { navigationId: start },
     });
 
     if (name === "견적서 완성") {
+      if (isFirst[NavigationIndex.QUOATATION]) return;
       navigate("/quotation");
       return;
     }
@@ -54,9 +59,11 @@ function NavigationItem({ name, quotation, confirm }: NavigationItemProp) {
   return (
     <Container
       $active={
-        navigationId !== undefined &&
-        navigationId >= start &&
-        navigationId <= end
+        pathname === "/estimation"
+          ? navigationId !== undefined &&
+            navigationId >= start &&
+            navigationId <= end
+          : end === NavigationIndex.QUOATATION
       }
       onClick={!confirm ? handleNavigate : () => {}}
     >
@@ -81,9 +88,9 @@ function NavigationItem({ name, quotation, confirm }: NavigationItemProp) {
                 }, 0)
                 .toLocaleString("ko-KR")}
             </Price>
-            <CheckCircle src={CircleCheck} />
           </ShowRightOption>
         )}
+        <CheckCircle $isFirst={isFirst[end]} src={CircleCheck} />
       </TopContainer>
 
       {quotation && name === "세부모델" ? (
@@ -147,11 +154,11 @@ const ShowRightOption = styled.div`
   display: flex;
   flex-direction: row;
   gap: 0.38rem;
+  margin-left: auto;
 `;
 
 const Price = styled.p`
-  font-size: 0.875rem;
-  // text vertical center
+  ${(props) => props.theme.fonts.Regular9};
   display: flex;
   align-items: center;
 `;
@@ -159,27 +166,23 @@ const Price = styled.p`
 const BottomContainer = styled.div`
   display: flex;
   flex-direction: row;
-
   gap: 0.45rem;
-  font-family: "Hyundai Sans Text KR";
-  font-size: 0.875rem;
-  font-style: normal;
-  font-weight: 400;
-  letter-spacing: -0.015rem;
+
+  ${(props) => props.theme.fonts.Regular9};
+
   flex-wrap: wrap;
 `;
 
 const Text = styled.p``;
 
 const Category = styled.p`
-  font-family: "Hyundai Sans Text KR";
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 165%; /* 1.2375rem */
-  letter-spacing: -0.0225rem;
+  ${(props) => props.theme.fonts.Medium10};
+  line-height: 1.5rem;
 `;
 
-const CheckCircle = styled.img``;
+const CheckCircle = styled.img<{ $isFirst: boolean }>`
+  display: ${({ $isFirst }) => ($isFirst ? "none" : "block")};
+  margin-left: 0.5rem;
+`;
 
 export default NavigationItem;

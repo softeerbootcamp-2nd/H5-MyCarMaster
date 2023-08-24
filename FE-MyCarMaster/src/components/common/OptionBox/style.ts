@@ -1,37 +1,40 @@
 import styled, { css, RuleSet } from "styled-components";
 
 export const Decoration = styled.p<CSSProps>`
-  ${(props) => props.theme.fonts.BodySmall};
+  ${(props) => props.theme.fonts.Regular8};
   ${(props) => props.$style}
-  line-height: 1rem;
+  line-height: 1.25rem;
 `;
 
 export const Name = styled.p<CSSProps>`
   ${(props) => props.$size}
   ${(props) => props.$style}
-  line-height: 1.4rem;
 `;
 
 export const Description = styled.p<CSSProps>`
-  ${(props) => props.theme.fonts.contentMedium};
+  ${(props) => props.theme.fonts.Regular10};
   ${(props) => props.$style}
   line-height: 1.4rem;
   margin: auto 0;
 `;
 
 export const Price = styled.p<CSSProps>`
-  ${(props) => props.theme.fonts.contentLarge};
+  ${(props) => props.theme.fonts.Medium15};
   ${(props) => props.$style}
 `;
 
 export const Ratio = styled.p`
-  ${(props) => props.theme.fonts.BodySmall};
+  ${(props) => props.theme.fonts.Regular8};
   color: ${(props) => props.theme.colors.NAVYBLUE4};
 `;
 
 export const Detail = styled.p<CSSProps>`
-  ${(props) => props.theme.fonts.BodySmall};
+  ${(props) => props.theme.fonts.Medium8};
   ${(props) => props.$style}
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const TopContainer = styled.div`
@@ -146,12 +149,19 @@ export const DefaultCSS = {
     color: ${(props) => props.theme.colors.BLACK};
   `,
 
+  LongSizeDown: css`
+    ${(props) => props.theme.fonts.Medium11};
+    line-height: 1.7rem;
+  `,
+
   SizeDown: css`
-    ${(props) => props.theme.fonts.titleSmall};
+    ${(props) => props.theme.fonts.Medium13};
+    line-height: 2rem;
   `,
 
   SizeUp: css`
-    ${(props) => props.theme.fonts.titleLarge};
+    ${(props) => props.theme.fonts.Medium17};
+    line-height: 1.4rem;
   `,
 };
 

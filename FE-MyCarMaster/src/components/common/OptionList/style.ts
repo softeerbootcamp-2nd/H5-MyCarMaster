@@ -1,15 +1,7 @@
 import styled, { css, keyframes } from "styled-components";
 import AngleUp from "../../../assets/icons/AngleUp.svg";
 import AngleDown from "../../../assets/icons/AngleDown.svg";
-
-const expandAnimation = keyframes`
-  from {
-    height: calc(2rem + 1.5rem + 0.75rem + 0.75rem);
-  }
-  to {
-    height: 100%;
-  }
-`;
+import { Text } from "@styles/core.style";
 
 const ListTextAppearAnimation = keyframes`
     from {
@@ -42,14 +34,11 @@ export const Container = styled.div<{ $isOpen: boolean }>`
   flex-direction: column;
   padding: 1rem 1.5rem;
   width: 95%;
+  height: 100%;
   border: 1px solid ${(props) => props.theme.colors.GREY2};
   background-color: ${(props) => props.theme.colors.WHITE};
 
-  ${(props) =>
-    props.$isOpen &&
-    css`
-      animation: ${expandAnimation} 1s ease-in-out forwards;
-    `}
+  ${(props) => props.$isOpen && css``}
 `;
 export const ListContainer = styled.div<{ $isOpen?: boolean }>`
   display: flex;
@@ -64,8 +53,25 @@ export const GridContainer = styled.div`
   gap: 1.5rem;
 `;
 
-export const Text = styled.div<{ $size?: number }>`
-  font-size: ${(props) => props.$size}rem;
+export const NameText = styled(Text)`
+  ${(props) => props.theme.fonts.Medium12};
+`;
+
+export const GridNameText = styled(Text)`
+  ${(props) => props.theme.fonts.Medium10};
+`;
+
+export const GridNameLongText = styled(Text)`
+  ${(props) => props.theme.fonts.Medium8};
+`;
+
+export const DetailText = styled(Text)`
+  ${(props) => props.theme.fonts.Regular8};
+
+  // hover
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const Icon = styled.div<{ $isOpen: boolean }>`
@@ -78,6 +84,7 @@ export const Icon = styled.div<{ $isOpen: boolean }>`
 
 export const OptionItem = styled.div<{ $isOpen: boolean }>`
   display: flex;
+  height: 2.5rem;
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem 0;
@@ -110,11 +117,6 @@ export const GridOptionImage = styled.img`
   width: 100%;
   height: 8rem;
   object-fit: cover;
-`;
-
-export const Detail = styled.p`
-  display: flex;
-  font-size: 0.75rem;
 `;
 
 export const Line = styled.div<{ $isOpen: boolean; $isFirst: boolean }>`

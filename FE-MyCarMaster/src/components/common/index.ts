@@ -2,6 +2,7 @@ export { default as BasicOptionModal } from "./BasicOptionModal/BasicOptionModal
 export { default as Button } from "./Button/Button";
 export { default as TextButton } from "./Button/TextButton";
 export { default as CarRotation } from "./CarRotation/CarRotation";
+export { default as SpriteCarRotation } from "./CarRotation/SpriteCarRotation";
 export { default as CategoryList } from "./CategoryList/CategoryList";
 export { default as OptionCheckBox } from "./CheckBox/OptionCheckBox";
 export { default as InnerColorBox } from "./ColorBox/InnerColorBox";

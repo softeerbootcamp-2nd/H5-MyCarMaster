@@ -143,6 +143,8 @@ export default function MyTrimSearchScreen({
     onSearch && onSearch(appliedOptionsFilter as QuotationType[], selected);
   };
 
+  if (dataList.length === 0) return <></>;
+
   return (
     <Fragment>
       {dataList.length && (

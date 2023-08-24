@@ -15,8 +15,5 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
 
-  font-family: "HyundaiSansRegular";
-  font-size: 1.5rem;
-  font-style: normal;
-  font-weight: 500;
+  ${(props) => props.theme.fonts.Bold20};
 `;

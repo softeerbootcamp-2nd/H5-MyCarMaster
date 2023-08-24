@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import theme from "../../../styles/Theme";
 import { useQuotationState } from "../../../contexts/QuotationContext";
+import { QuotationState, QuotationType } from "@/types/quotation.types";
 
 function EstimatedPrice() {
   const {
@@ -8,7 +9,7 @@ function EstimatedPrice() {
     detailQuotation,
     carPaintQuotation,
     optionQuotation,
-  }: any = useQuotationState();
+  }: QuotationState = useQuotationState();
 
   const sum: number =
     trimQuotation?.trimQuotation.price +
@@ -18,7 +19,7 @@ function EstimatedPrice() {
     carPaintQuotation?.exteriorColorQuotation.price +
     carPaintQuotation?.interiorColorQuotation.price +
     optionQuotation?.selectedQuotation.reduce(
-      (acc: number, cur: any) => acc + cur.price,
+      (acc: number, cur: QuotationType) => acc + cur.price,
       0
     );
 
@@ -32,8 +33,8 @@ function EstimatedPrice() {
 
 const Container = styled.li`
   width: 12rem;
-  height: 4.5rem;
   padding: 0.75rem;
+  gap: 0.5rem;
 
   display: flex;
   flex-direction: column;
@@ -45,15 +46,11 @@ const Container = styled.li`
 `;
 
 const Text = styled.p`
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 500;
+  ${(props) => props.theme.fonts.Medium12};
 `;
 
 const Price = styled.p`
-  font-size: 1.25rem;
-  font-style: normal;
-  font-weight: 700;
+  ${(props) => props.theme.fonts.Medium15};
 `;
 
 export default EstimatedPrice;

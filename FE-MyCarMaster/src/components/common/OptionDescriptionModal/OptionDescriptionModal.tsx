@@ -38,6 +38,7 @@ function OptionDescriptionModal({
     setIsDescriptionModalOpen(false);
   };
 
+  console.log(option.summary);
   return (
     <Fragment>
       {isModalOpen && (
@@ -50,7 +51,9 @@ function OptionDescriptionModal({
             {isTrimSelect && option.summary && (
               <OptionSummary>{option.summary}</OptionSummary>
             )}
-            <OptionImage src={option.imgUrl} />
+            <OpiontImageContainer>
+              <OptionImage src={option.imgUrl} />
+            </OpiontImageContainer>
             <OptionDescription>{option.description}</OptionDescription>
             <Note>
               * 홈페이지의 사진과 설명은 참고용이며 실제 차량에 탑재되는 기능과
@@ -87,6 +90,8 @@ const ModalOverlay = styled.div`
   right: 0;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 999;
+
+  animation: fadeIn 0.3s ease-in-out;
 `;
 
 const Container = styled.div`
@@ -95,15 +100,14 @@ const Container = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
 
-  width: 50rem;
-  height: 45rem;
+  width: 55%;
   background-color: ${theme.colors.WHITE};
 
   padding: 2rem 2.75rem;
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 2rem;
 `;
 
 const OptionNameContainer = styled.div`
@@ -113,10 +117,7 @@ const OptionNameContainer = styled.div`
 `;
 
 const OptionName = styled.p`
-  font-family: "HyundaiSansMedium";
-  font-size: 2rem;
-  font-style: normal;
-  font-weight: 500;
+  ${(props) => props.theme.fonts.Medium17};
 `;
 
 const CloseButton = styled.button`
@@ -128,29 +129,28 @@ const CloseButton = styled.button`
 `;
 
 const OptionSummary = styled.p`
-  font-family: "HyundaiSansRegular";
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 400;
-
+  ${(props) => props.theme.fonts.Regular15};
   height: 2rem;
   margin-top: 1rem;
 `;
 
-const OptionImage = styled.img`
+const OpiontImageContainer = styled.div`
   width: 100%;
+  height: 18rem;
+  display: flex;
+  justify-content: center;
+`;
+
+const OptionImage = styled.img`
+  // image
+  object-fit: contain;
 `;
 
 const OptionDescription = styled.p`
   font-family: "HyundaiSansRegular";
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 400;
+  ${(props) => props.theme.fonts.Regular12};
 `;
 
 const Note = styled.p`
-  font-family: "HyundaiSansRegular";
-  font-size: 0.75rem;
-  font-style: normal;
-  font-weight: 400;
+  ${(props) => props.theme.fonts.Medium8};
 `;

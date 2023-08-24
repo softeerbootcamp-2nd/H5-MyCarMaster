@@ -3,8 +3,9 @@ import {
   GridContainer,
   GridOptionItem,
   GridOptionImage,
-  Text,
-  Detail,
+  GridNameText,
+  GridNameLongText,
+  DetailText,
   GridOptionTextContainer,
 } from "./style";
 import { DescriptionOptionModalProps } from "../../../types/options.types";
@@ -37,15 +38,20 @@ export default function GridOptionList({ list, page }: GridOptionListProps) {
           <GridOptionItem key={item.id}>
             <GridOptionImage src={item.imgUrl} />
             <GridOptionTextContainer>
-              <Text $size={0.875}>{item.name}</Text>
-              <Detail
+              {item.name.length > 20 ? (
+                <GridNameLongText>{item.name}</GridNameLongText>
+              ) : (
+                <GridNameText>{item.name}</GridNameText>
+              )}
+
+              <DetailText
                 onClick={() => {
                   setDetailOption(item);
                   setIsDescriptionModalOpen(true);
                 }}
               >
                 자세히 보기 &gt;
-              </Detail>
+              </DetailText>
             </GridOptionTextContainer>
           </GridOptionItem>
         ))}

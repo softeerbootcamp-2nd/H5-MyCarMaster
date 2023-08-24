@@ -107,17 +107,12 @@ const MainOptionContainer = styled.div`
 `;
 
 const MainOptionName = styled.p`
-  font-size: 2rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 2.25rem; /* 128.571% */
+  ${(props) => props.theme.fonts.Bold20};
 `;
 
 const Summary = styled.p`
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 165%; /* 1.34063rem */
+  ${(props) => props.theme.fonts.Regular10};
+  line-height: 1.5rem;
 
   color: ${theme.colors.COOLGREY2};
 `;
@@ -146,6 +141,7 @@ const SubOptionContainer = styled.div`
 const SubOptionList = styled.div<{ $transformX: number }>`
   display: flex;
   width: 100%;
+
   transition: transform 0.5s ease-in-out;
   transform: translateX(${({ $transformX }) => $transformX}px);
 `;
@@ -173,9 +169,7 @@ const PrevButton = styled.button`
 `;
 
 const SubOptionName = styled.p`
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 500;
+  ${(props) => props.theme.fonts.Medium12};
   line-height: 1.25rem; /* 142.857% */
   padding: 0 1rem;
 
@@ -190,10 +184,8 @@ const NextButton = styled.button`
 `;
 
 const Description = styled.p`
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 165%; /* 1.34063rem */
+  ${(props) => props.theme.fonts.Regular10};
+  line-height: 1.5rem;
 `;
 
 const PaginationContainer = styled.div`
