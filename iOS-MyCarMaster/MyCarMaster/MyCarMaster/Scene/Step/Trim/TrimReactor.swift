@@ -16,13 +16,16 @@ final class TrimReactor: Reactor {
     enum Action {
         case viewDidLoad
         case trimDidSelect(Trim)
+        case shouldSelectTrim(Trim)
         case dataSourceDidApply
+        case resetAndSelectTrim(Trim)
     }
 
     enum Mutation {
         case setLoading(Bool)
         case fetchTrimList([Trim])
         case fetchSelectedTrim(Trim?)
+        case showSelectionAlert(Trim)
         case alertError(String)
     }
 
@@ -30,6 +33,7 @@ final class TrimReactor: Reactor {
         var isLoading: Bool
         var trimList: [Trim]
         var selectedTrim: Trim?
+        var showSelectionAlert: Trim?
         var errorDescription: String?
     }
 
@@ -61,6 +65,13 @@ final class TrimReactor: Reactor {
             ].concatenate()
         case .dataSourceDidApply:
             return fetchSelectedTrim()
+        case let .shouldSelectTrim(trim):
+            return changeTrimIfCan(trim)
+        case let .resetAndSelectTrim(trim):
+            return [
+                resetEstimation(),
+                updateTrim(trim)
+            ].concatenate()
         }
     }
 
@@ -91,6 +102,8 @@ final class TrimReactor: Reactor {
             newState.selectedTrim = trim
         case let .alertError(errorDescription):
             newState.errorDescription = errorDescription
+        case let .showSelectionAlert(trim):
+            newState.showSelectionAlert = trim
         }
         return newState
     }
@@ -115,6 +128,30 @@ extension TrimReactor {
             .eraseToAnyPublisher()
     }
 
+    private func changeTrimIfCan(_ trim: Trim) -> AnyPublisher<Mutation, Never> {
+        guard let estimationManager else {
+            return Empty().eraseToAnyPublisher()
+        }
+
+        if estimationManager.checkTrimCanChange() {
+            return updateTrim(trim)
+        } else {
+            return Just(Mutation.showSelectionAlert(trim))
+                .eraseToAnyPublisher()
+        }
+    }
+
+    private func resetEstimation() -> AnyPublisher<Mutation, Never> {
+        guard let estimationManager else {
+            return Empty().eraseToAnyPublisher()
+        }
+
+        estimationManager.removeAll()
+        return Empty().eraseToAnyPublisher()
+    }
+}
+
+extension TrimReactor {
     private func fetchTrimList() -> AnyPublisher<Mutation, Never> {
 #if ONLINE
         fetchTrimListFromNetwork()

@@ -69,6 +69,14 @@ final class TrimViewController: UIViewController {
 }
 
 extension TrimViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        guard let trim = dataSource.itemIdentifier(for: indexPath) else {
+            return false
+        }
+        reactor?.action.send(.shouldSelectTrim(trim))
+        return false
+    }
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let trim = dataSource.itemIdentifier(for: indexPath) {
             reactor?.action.send(.trimDidSelect(trim))
@@ -119,6 +127,22 @@ extension TrimViewController: Reactable {
                 )
                 alert.addAction(.init(title: "확인", style: .default))
                 print(errorDescription)
+                self?.present(alert, animated: false)
+            }
+            .store(in: &cancellables)
+
+        reactor.state.compactMap(\.showSelectionAlert)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] trim in
+                let alert = UIAlertController(
+                    title: "트림을 변경하시겠습니까?",
+                    message: "현재까지의 변경사항은 저장되지 않습니다.",
+                    preferredStyle: .alert
+                )
+                alert.addAction(.init(title: "취소", style: .cancel))
+                alert.addAction(.init(title: "확인", style: .default, handler: { _ in
+                    reactor.action.send(.resetAndSelectTrim(trim))
+                }))
                 self?.present(alert, animated: false)
             }
             .store(in: &cancellables)
