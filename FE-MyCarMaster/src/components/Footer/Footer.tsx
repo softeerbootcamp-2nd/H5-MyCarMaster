@@ -23,7 +23,6 @@ export default function Footer() {
 
   const buttonHandler = (cal: number) => {
     const navigationIndex = navigationId + cal;
-
     quotationDispatch({
       type: "NAVIGATE",
       payload: {

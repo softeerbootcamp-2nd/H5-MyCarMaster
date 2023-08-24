@@ -43,8 +43,8 @@ const quotationReducer = (
         navigationId:
           action.payload!.navigationId === -1
             ? (0 as number)
-            : action.payload!.navigationId === 8
-            ? (7 as number)
+            : action.payload!.navigationId === 7
+            ? (6 as number)
             : (action.payload!.navigationId as number),
         isFirst: action.payload!.isFirst
           ? (action.payload!.isFirst as boolean[])
