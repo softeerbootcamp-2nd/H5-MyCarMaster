@@ -1,6 +1,6 @@
 import React, { createElement } from "react";
 import { Flex } from "@styles/core.style";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { ModelProvider } from "@contexts/ModelContext";
 import { TrimProvider } from "@contexts/TrimContext";
@@ -17,6 +17,7 @@ import {
   WrittenQuotation,
   ConsultComplete,
 } from "@pages/index";
+import ErrorBoundary from "./components/common/ErrorBoundary/ErrorBoundary";
 
 type ContextProvider = React.ComponentType<{ children: React.ReactNode }>;
 
@@ -36,6 +37,11 @@ const AppProvider = ({
   );
 
 function App() {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/");
+    window.location.reload();
+  };
   return (
     <ThemeProvider theme={theme}>
       <AppProvider
@@ -48,18 +54,20 @@ function App() {
           QuotationProvider,
         ]}
       >
-        <Flex>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/estimation" element={<Estimation />} />
-            <Route path="/quotation" element={<Quotation />} />
-            <Route
-              path="/estimates/:estimateId"
-              element={<WrittenQuotation />}
-            />
-            <Route path="/consult-complete" element={<ConsultComplete />} />
-          </Routes>
-        </Flex>
+        <ErrorBoundary handleClick={handleClick}>
+          <Flex>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/estimation" element={<Estimation />} />
+              <Route path="/quotation" element={<Quotation />} />
+              <Route
+                path="/estimates/:estimateId"
+                element={<WrittenQuotation />}
+              />
+              <Route path="/consult-complete" element={<ConsultComplete />} />
+            </Routes>
+          </Flex>
+        </ErrorBoundary>
       </AppProvider>
     </ThemeProvider>
   );
