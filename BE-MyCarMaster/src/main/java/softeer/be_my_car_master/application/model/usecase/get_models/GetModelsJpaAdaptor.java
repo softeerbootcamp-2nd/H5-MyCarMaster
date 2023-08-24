@@ -20,7 +20,7 @@ public class GetModelsJpaAdaptor implements GetModelsPort {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Model> findModels() {
-		return modelJpaRepository.findAll().stream()
+		return modelJpaRepository.findAllByOrderByCreatedAtDesc().stream()
 			.map(ModelEntity::toModel)
 			.collect(Collectors.toList());
 	}
