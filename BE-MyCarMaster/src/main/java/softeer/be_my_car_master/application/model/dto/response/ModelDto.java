@@ -23,11 +23,19 @@ public class ModelDto {
 	@Schema(description = "모델 이미지", example = "s3 url")
 	private String imgUrl;
 
+	@Schema(description = "최소 가격", example = "100000")
+	private Integer price;
+
+	@Schema(description = "타입", example = "SUV")
+	private String type;
+
 	public static ModelDto from(Model model) {
 		return ModelDto.builder()
 			.id(model.getId())
 			.name(model.getName())
 			.imgUrl(model.getImgUrl())
+			.price(model.getPrice())
+			.type(model.getType())
 			.build();
 	}
 }
