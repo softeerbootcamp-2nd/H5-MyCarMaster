@@ -2,6 +2,7 @@ package softeer.be_my_car_master.application.model.usecase;
 
 import static org.mockito.BDDMockito.*;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import softeer.be_my_car_master.application.model.dto.response.ModelDto;
 import softeer.be_my_car_master.application.model.usecase.get_models.GetModelsPort;
 import softeer.be_my_car_master.application.model.usecase.get_models.GetModelsUseCase;
 import softeer.be_my_car_master.domain.model.Model;
+import softeer.be_my_car_master.domain.model.Type;
 
 @ExtendWith(MockitoExtension.class)
 @DisplayName("GetModelsUseCase Test")
@@ -37,6 +39,9 @@ class GetModelsUseCaseTest {
 			.id(1L)
 			.name("name")
 			.imgUrl("image")
+			.price(10000)
+			.type(Type.SUV)
+			.createdAt(LocalDateTime.now())
 			.build();
 		given(getModelsPort.findModels()).willReturn(Arrays.asList(model));
 
@@ -53,6 +58,9 @@ class GetModelsUseCaseTest {
 			softAssertions.assertThat(expected.getId()).isEqualTo(model.getId());
 			softAssertions.assertThat(expected.getName()).isEqualTo(model.getName());
 			softAssertions.assertThat(expected.getImgUrl()).isEqualTo(model.getImgUrl());
+			softAssertions.assertThat(expected.getPrice()).isEqualTo(model.getPrice());
+			softAssertions.assertThat(expected.getType()).isEqualTo(model.getType());
+			softAssertions.assertThat(expected.getIsNew()).isEqualTo(true);
 		});
 	}
 }

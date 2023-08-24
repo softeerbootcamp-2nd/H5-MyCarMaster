@@ -3,7 +3,7 @@ package softeer.be_my_car_master.application.estimate.usecase.create_estimate;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.*;
 
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.UUID;
 
@@ -24,6 +24,7 @@ import softeer.be_my_car_master.domain.color_exterior.ExteriorColor;
 import softeer.be_my_car_master.domain.color_interior.InteriorColor;
 import softeer.be_my_car_master.domain.engine.Engine;
 import softeer.be_my_car_master.domain.model.Model;
+import softeer.be_my_car_master.domain.model.Type;
 import softeer.be_my_car_master.domain.option.Option;
 import softeer.be_my_car_master.domain.trim.Trim;
 import softeer.be_my_car_master.domain.wheel_dirve.WheelDrive;
@@ -67,7 +68,10 @@ class CreateEstimateUseCaseTest {
 			.totalPrice(4000)
 			.build();
 
-		given(port.findModels()).willReturn(Arrays.asList(new Model(1L, "model", "url")));
+		given(port.findModels())
+			.willReturn(Arrays.asList(
+				new Model(1L, "model", "url", 100, Type.SUV, LocalDateTime.now())
+			));
 		given(port.findTrimsByModel(any()))
 			.willReturn(Arrays.asList(
 				new Trim(1L, "model", "description", 22, 500, "url")
@@ -167,7 +171,10 @@ class CreateEstimateUseCaseTest {
 			.totalPrice(4000)
 			.build();
 
-		given(port.findModels()).willReturn(Arrays.asList(new Model(1L, "model", "url")));
+		given(port.findModels())
+			.willReturn(Arrays.asList(
+				new Model(1L, "model", "url", 1000, Type.SUV, LocalDateTime.now())
+			));
 		given(port.findTrimsByModel(any()))
 			.willReturn(Arrays.asList(
 				new Trim(1L, "model", "description", 22, 500, "url")

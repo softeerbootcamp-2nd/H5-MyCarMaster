@@ -3,6 +3,8 @@ package softeer.be_my_car_master.application.model.usecase.get_models;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.domain.model.Model;
 import softeer.be_my_car_master.global.annotation.Adaptor;
@@ -16,8 +18,9 @@ public class GetModelsJpaAdaptor implements GetModelsPort {
 	private final ModelJpaRepository modelJpaRepository;
 
 	@Override
+	@Transactional(readOnly = true)
 	public List<Model> findModels() {
-		return modelJpaRepository.findAll().stream()
+		return modelJpaRepository.findAllByOrderByCreatedAtDesc().stream()
 			.map(ModelEntity::toModel)
 			.collect(Collectors.toList());
 	}
