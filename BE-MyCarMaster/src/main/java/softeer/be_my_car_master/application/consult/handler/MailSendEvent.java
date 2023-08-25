@@ -13,4 +13,5 @@ public class MailSendEvent {
 
 	private UUID estimateId;
 	private String clientEmail;
+	private Long consultingId;
 }

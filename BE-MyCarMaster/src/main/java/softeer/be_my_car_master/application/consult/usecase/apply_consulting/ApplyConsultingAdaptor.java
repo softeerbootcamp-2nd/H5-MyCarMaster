@@ -36,7 +36,8 @@ public class ApplyConsultingAdaptor implements ApplyConsultingPort {
 	}
 
 	@Override
-	public void createConsulting(Consulting consulting) {
-		consultingJpaRepository.save(ConsultingEntity.from(consulting));
+	public Long createConsulting(Consulting consulting) {
+		ConsultingEntity consultingEntity = consultingJpaRepository.save(ConsultingEntity.from(consulting));
+		return consultingEntity.getId();
 	}
 }
