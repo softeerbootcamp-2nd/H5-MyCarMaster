@@ -34,7 +34,7 @@ public class CacheConfig {
 			.withCacheConfiguration("redis",
 				RedisCacheConfiguration.defaultCacheConfig()
 					.computePrefixWith(cacheName -> "prefix::" + cacheName + "::")
-					.entryTtl(Duration.ofSeconds(10))
+					.entryTtl(Duration.ofSeconds(15))
 					.disableCachingNullValues()
 					.serializeKeysWith(
 						RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer())
