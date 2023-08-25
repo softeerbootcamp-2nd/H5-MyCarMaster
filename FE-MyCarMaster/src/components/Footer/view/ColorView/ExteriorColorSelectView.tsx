@@ -27,6 +27,7 @@ export default function InteriorColorSelectView() {
         name: exteriorList[index].name,
         price: exteriorList[index].price,
         imgUrl: exteriorList[index].colorImgUrl,
+        coloredImgUrl: exteriorList[index].coloredImgUrl,
       },
     });
     carPaintDispatch({

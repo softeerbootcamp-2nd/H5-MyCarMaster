@@ -6,6 +6,7 @@ type ModelBoxProp = {
   price: number;
   imgUrl: string;
   active?: boolean;
+  isNew?: boolean;
   onClick?: (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
     id: number
@@ -17,6 +18,7 @@ export default function ModelBox({
   price,
   imgUrl,
   active,
+  isNew,
   onClick,
 }: ModelBoxProp) {
   return (
@@ -26,14 +28,16 @@ export default function ModelBox({
         <ModelName>{name}</ModelName>
         <ModelPrice>{price.toLocaleString("ko-KR")}원~</ModelPrice>
       </ModelContainer>
+      {isNew && <NewIcon $isNew={isNew}>NEW</NewIcon>}
     </Container>
   );
 }
 
 const Container = styled.div<{ $active?: boolean }>`
   width: 23%;
-  height: 50%;
+  height: 12rem;
   cursor: pointer;
+  position: relative;
   border: 1px solid
     ${(props) =>
       props.$active
@@ -56,9 +60,8 @@ const ModelContainer = styled.div`
 `;
 
 const ModelImage = styled.img`
-  width: 80%;
-  height: 100%;
-  object-fit: contain;
+  height: 8rem;
+  object-fit: fill;
 `;
 
 const ModelName = styled.p`
@@ -72,5 +75,16 @@ const ModelPrice = styled.p`
   width: 100%;
   height: 100%;
   ${(props) => props.theme.fonts.Regular10}
+  color: ${(props) => props.theme.colors.GREY3};
   text-align: center;
+`;
+
+const NewIcon = styled.div<{ $isNew?: boolean }>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3.5rem;
+  height: 1.5rem;
+  margin: 0.5rem;
+  ${(props) => props.theme.fonts.Medium10}
 `;

@@ -1,35 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { styled } from "styled-components";
 import theme from "../../../styles/Theme";
 
-const coloredImgUrl: string[] = [];
-
-for (let i = 1; i <= 60; i++) {
-  coloredImgUrl.push(
-    `/images/exterior/black/image_${i.toString().padStart(3, "0")}.png`
-  );
-}
-
 interface CarRotationProps {
   $isQuotation: boolean;
-  // coloredImgUrl: string[]; 추가 예정
+  $imgUrl: string | undefined;
 }
 
-function CarRotation({ $isQuotation }: CarRotationProps) {
-  const [currentImg, setCurrentImg] = useState<number>(0);
+function CarRotation({ $isQuotation, $imgUrl }: CarRotationProps) {
+  const [currentImg, setCurrentImg] = useState<number>(1);
   const [isMouseDown, setIsMouseDown] = useState<boolean>(false);
   const [beforeX, setBeforeX] = useState(0);
+  const [colorImgUrl, setColorImgUrl] = useState<string[]>([]);
 
-  const imgCount = coloredImgUrl.length - 1;
+  const imgCount = colorImgUrl.length - 1;
 
   const turnRight = () => {
     currentImg === imgCount
-      ? setCurrentImg(0)
+      ? setCurrentImg(1)
       : setCurrentImg((currentImg) => currentImg + 1);
   };
 
   const turnLeft = () => {
-    currentImg === 0
+    currentImg === 1
       ? setCurrentImg(imgCount)
       : setCurrentImg((currentImg) => currentImg - 1);
   };
@@ -41,6 +34,20 @@ function CarRotation({ $isQuotation }: CarRotationProps) {
     }
   };
 
+  useEffect(() => {
+    if (!$imgUrl) return;
+    setColorImgUrl(
+      Array.from({ length: 60 }, (_, i) => {
+        const index = i + 1;
+        return `${$imgUrl}image_${index < 10 ? "00" + index : "0" + index}.png`;
+      })
+    );
+
+    return () => {
+      setColorImgUrl([]);
+    };
+  }, [$imgUrl]);
+
   return (
     <Container>
       <ImgContainer
@@ -49,7 +56,7 @@ function CarRotation({ $isQuotation }: CarRotationProps) {
         onMouseMove={turnCar}
         onMouseLeave={() => setIsMouseDown(false)}
       >
-        {coloredImgUrl.map((img, index) => (
+        {colorImgUrl.map((img, index) => (
           <Image key={index} src={img} $display={currentImg === index} />
         ))}
         <Text $isQuotation={$isQuotation}>360도 돌려보세요!</Text>

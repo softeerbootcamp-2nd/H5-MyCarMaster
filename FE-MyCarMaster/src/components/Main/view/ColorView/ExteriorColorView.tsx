@@ -37,7 +37,7 @@ export default function ExteriorColorView() {
     if (data) {
       if (carPaintQuotation.exteriorColorQuotation.id) return;
 
-      const option = "high"; // low, medium, high
+      const option = "mid"; // low, mid, high
 
       data.result.exteriorColors.forEach((exterior) => {
         exterior.coloredImgUrl = `${exterior.coloredImgUrl}${option}/sprite.png`;
@@ -79,7 +79,13 @@ export default function ExteriorColorView() {
         //       ?.coloredImgUrl
         //   }
         // />
-        // <CarRotation $isQuotation={false} />
+        // <CarRotation
+        //   $isQuotation={false}
+        //   $imgUrl={
+        //     exteriorList.find((exterior) => exterior.id === exteriorId)
+        //       ?.coloredImgUrl
+        //   }
+        // />
         <SpriteCarRotation
           $imgUrl={
             exteriorList.find((exterior) => exterior.id === exteriorId)

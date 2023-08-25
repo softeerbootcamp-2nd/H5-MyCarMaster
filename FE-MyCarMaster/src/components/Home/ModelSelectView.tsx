@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import theme from "@styles/Theme";
 import { CategoryList, Button } from "@common/index";
@@ -11,67 +11,7 @@ import {
   HomeText,
 } from "./style";
 import { typeData } from "@constants/Model.constatns";
-
-const data = {
-  model: [
-    {
-      id: 0,
-      name: "팰리세이드",
-      price: 3000000,
-      type: ["SUV", "승용", "수소 / 전기차"],
-      image: "/images/car_model/palisade-24my-45side.png",
-    },
-    {
-      id: 1,
-      name: "싼타페",
-      price: 3000000,
-      type: ["SUV", "승용"],
-      image: "/images/car_model/santafe-23my-45side.png",
-    },
-    {
-      id: 2,
-      name: "싼타페 Hybrid",
-      price: 3000000,
-      type: ["SUV", "승용", "수소 / 전기차"],
-      image: "/images/car_model/santafe-hybrid-45side.png",
-    },
-    {
-      id: 3,
-      name: "베뉴",
-      price: 3000000,
-      type: ["SUV", "승용"],
-      image: "/images/car_model/venue-23my-45side.png",
-    },
-    {
-      id: 4,
-      name: "투싼",
-      price: 3000000,
-      type: ["SUV", "승용", "N"],
-      image: "/images/car_model/tucson-23my-45side.png",
-    },
-    {
-      id: 5,
-      name: "투싼 Hybrid",
-      price: 3000000,
-      type: ["SUV", "승용", "수소 / 전기차", "N"],
-      image: "/images/car_model/tucson-hybrid-23my-45side.png",
-    },
-    {
-      id: 6,
-      name: "디 올 뉴 코나",
-      price: 3000000,
-      type: ["SUV", "승용"],
-      image: "/images/car_model/the-all-new-kona-45side.png",
-    },
-    {
-      id: 7,
-      name: "디 올 뉴 코나 Hybrid",
-      price: 3000000,
-      type: ["SUV", "승용", "수소 / 전기차"],
-      image: "/images/car_model/the-all-new-kona-hybrid-45side.png",
-    },
-  ],
-};
+import useFetch from "@/hooks/useFetch";
 
 type HomeProp = {
   isFold: boolean;
@@ -82,6 +22,19 @@ type SelectModelProp = {
   selected: number;
 };
 
+type ModelDataProps = {
+  result: {
+    models: {
+      id: number;
+      name: string;
+      price: number;
+      imgUrl: string;
+      type: string;
+      isNew: boolean;
+    }[];
+  };
+};
+
 export default function Home({ isFold }: HomeProp) {
   const [categorySelect, setCategorySelect] = useState<number>(0);
   const [modelSelect, setModelSelect] = useState<SelectModelProp>({
@@ -90,12 +43,24 @@ export default function Home({ isFold }: HomeProp) {
   });
   const navigate = useNavigate();
   const homeButtonHandler = () => {
-    // animation 추가 예정
     setTimeout(() => {
       navigate("/estimation");
     }, 0);
   };
+  const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 
+  const { data } = useFetch<ModelDataProps>(`${SERVER_URL}/models`, {
+    method: "GET",
+  });
+
+  useEffect(() => {
+    if (data) {
+      setModelSelect({
+        point: null,
+        selected: data.result.models[0].id,
+      });
+    }
+  }, [data]);
   const handleModelSelect = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
     index: number
@@ -103,7 +68,8 @@ export default function Home({ isFold }: HomeProp) {
     setModelSelect({ point: e, selected: index });
   };
 
-  const filteredModelData = data.model.filter((model) => {
+  if (!data) return null;
+  const filteredModelData = data.result.models.filter((model) => {
     if (categorySelect === 0) return true;
     else return model.type.includes(typeData[categorySelect]);
   });
@@ -135,17 +101,23 @@ export default function Home({ isFold }: HomeProp) {
             해당되는 모델이 없습니다.
           </HomeText>
         )}
-        {filteredModelData.map((model, index) => (
-          <ModelBox
-            key={index}
-            id={model.id}
-            name={model.name}
-            price={model.price}
-            imgUrl={model.image}
-            active={model.id === modelSelect.selected}
-            onClick={(e, id) => handleModelSelect(e, id)}
-          />
-        ))}
+        {filteredModelData.length !== 0 &&
+          filteredModelData.map(
+            (model, index) =>
+              // 8개만 렌더링
+              index < 8 && (
+                <ModelBox
+                  key={index}
+                  id={model.id}
+                  name={model.name}
+                  price={model.price}
+                  imgUrl={model.imgUrl}
+                  isNew={model.isNew}
+                  active={model.id === modelSelect.selected}
+                  onClick={(e, id) => handleModelSelect(e, id)}
+                />
+              )
+          )}
       </ModelContainer>
 
       <ButtonContainer>

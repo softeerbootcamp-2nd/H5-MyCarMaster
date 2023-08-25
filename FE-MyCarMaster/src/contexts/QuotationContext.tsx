@@ -83,6 +83,7 @@ const quotationReducer = (
             name: action.payload!.name as string,
             price: action.payload!.price as number,
             imgUrl: action.payload!.imgUrl as string,
+            coloredImgUrl: action.payload!.coloredImgUrl as string,
           },
         },
       };

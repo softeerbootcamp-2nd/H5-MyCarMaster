@@ -116,6 +116,12 @@ const fonts = {
     fontWeight: fontWeight.medium,
   },
 
+  Regular25: {
+    fontFamily: "HyundaiSansRegular",
+    fontSize: fontSize.Colossal,
+    fontWeight: fontWeight.medium,
+  },
+
   Regular15: {
     fontFamily: "HyundaiSansRegular",
     fontSize: fontSize.ExtraLarge,
