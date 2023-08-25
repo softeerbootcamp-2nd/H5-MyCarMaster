@@ -1,20 +1,21 @@
 import { styled } from "styled-components";
-import theme from "../../../styles/Theme";
-import CircleCheck from "../../../assets/icons/CircleCheck.svg";
-import indexNameSwitching from "../../../utils/indexNameSwitching";
+import theme from "@styles/Theme";
+import CircleCheck from "@assets/icons/CircleCheck.svg";
+import indexNameSwitching from "@utils/indexNameSwitching";
 import {
   useQuotationState,
   useQuotationDispatch,
-} from "../../../contexts/QuotationContext";
+} from "@contexts/QuotationContext";
 import {
   QuotationType,
   TrimQuotationType,
   DetailQuotationType,
   CarPaintQuotationType,
   OptionQuotationType,
-} from "../../../types/quotation.types";
+} from "types/quotation.types";
 import { useLocation, useNavigate } from "react-router-dom";
 import { NavigationIndex } from "@/constants/Navigate.constants";
+import { useCallback } from "react";
 
 type activeProp = {
   $active?: boolean | undefined | 0;
@@ -41,7 +42,7 @@ function NavigationItem({ name, quotation, confirm }: NavigationItemProp) {
   const navigate = useNavigate();
   const [start, end] = indexNameSwitching(name) as number[];
 
-  const handleNavigate = () => {
+  const handleNavigate = useCallback(() => {
     if (isFirst[start]) return;
     quotationDispatch({
       type: "NAVIGATE",
@@ -54,7 +55,7 @@ function NavigationItem({ name, quotation, confirm }: NavigationItemProp) {
       return;
     }
     navigate("/estimation");
-  };
+  }, [isFirst, name, navigate, quotationDispatch, start]);
 
   return (
     <Container

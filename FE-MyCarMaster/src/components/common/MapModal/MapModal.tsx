@@ -1,12 +1,12 @@
 /* eslint-disable */
 
 import { Fragment, useEffect, useRef, useState } from "react";
-import theme from "../../../styles/Theme";
+import theme from "styles/Theme";
 import Button from "../Button/Button";
-import { get } from "../../../utils/fetch";
+import { get } from "utils/fetch";
 import CarMasterItem from "../CarMasterItem/CarMasterItem";
-import { AgencyType, CarMasterType } from "../../../types/map.types";
-import MarkerImg from "../../../assets/images/MarkerImage.png";
+import { AgencyType, CarMasterType } from "types/map.types";
+import MarkerImg from "assets/images/MarkerImage.png";
 import {
   Address,
   AddressContainer,
@@ -210,7 +210,7 @@ function MapModal({ setIsMapModalOpen, estimateId }: MapModalProps) {
                         <Description>
                           {carMasters
                             ? agency!.name === ""
-                              ? "10km 반경 판매량 순으로 정렬한 카마스터입니다."
+                              ? "2km 반경 판매량 순으로 정렬한 카마스터입니다."
                               : `${agency!.name}의 카마스터입니다.`
                             : "주변에 카마스터가 없습니다. 구 단위로 확인해보세요."}
                         </Description>
