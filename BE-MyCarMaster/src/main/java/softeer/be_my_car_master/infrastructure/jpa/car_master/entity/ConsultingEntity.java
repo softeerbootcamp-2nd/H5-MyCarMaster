@@ -17,6 +17,7 @@ import lombok.NoArgsConstructor;
 import softeer.be_my_car_master.domain.car_master.CarMaster;
 import softeer.be_my_car_master.domain.consulting.Consulting;
 import softeer.be_my_car_master.domain.estimate.Estimate;
+import softeer.be_my_car_master.global.config.BaseTime;
 import softeer.be_my_car_master.infrastructure.jpa.estimate.entity.EstimateEntity;
 
 @Entity
@@ -24,7 +25,7 @@ import softeer.be_my_car_master.infrastructure.jpa.estimate.entity.EstimateEntit
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class ConsultingEntity {
+public class ConsultingEntity extends BaseTime {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,6 +40,9 @@ public class ConsultingEntity {
 	@Column(name = "client_phone", nullable = false)
 	private String clientPhone;
 
+	@Column(name = "is_sent", nullable = false)
+	private Boolean isSent;
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "estimate_id", nullable = false)
 	private EstimateEntity estimate;
@@ -46,6 +50,10 @@ public class ConsultingEntity {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "car_master_id", nullable = false)
 	private CarMasterEntity carMaster;
+
+	public Long getId() {
+		return id;
+	}
 
 	public static ConsultingEntity from(Consulting consulting) {
 		Estimate estimate = consulting.getEstimate();
@@ -60,6 +68,26 @@ public class ConsultingEntity {
 			.clientPhone(consulting.getClientPhone())
 			.estimate(estimateEntity)
 			.carMaster(carMasterEntity)
+			.isSent(false)
 			.build();
+	}
+
+	public Consulting toConsulting() {
+		Estimate estimate = Estimate.builder()
+			.uuid(this.estimate.getUuid())
+			.build();
+
+		return Consulting.builder()
+			.id(id)
+			.clientName(clientName)
+			.clientEmail(clientEmail)
+			.clientPhone(clientPhone)
+			.isSent(isSent)
+			.estimate(estimate)
+			.build();
+	}
+
+	public void sendEmail() {
+		isSent = true;
 	}
 }
