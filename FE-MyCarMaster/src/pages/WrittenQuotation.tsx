@@ -89,7 +89,9 @@ function WrittenQuotation() {
           <QuotationMain>
             <QuotationContent>
               <Model>팰리세이드</Model>
-              <CarImage src={data!.exteriorColor.coloredImgUrl} />
+              <CarImage
+                src={`${data!.exteriorColor.coloredImgUrl}high/sprite.png`}
+              />
             </QuotationContent>
           </QuotationMain>
           <QuotationFooter>

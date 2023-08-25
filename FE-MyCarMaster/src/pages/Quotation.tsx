@@ -1,19 +1,21 @@
 import styled, { css, keyframes } from "styled-components";
 import { Header } from "../components";
-import dark_logo from "../assets/images/dark_logo.svg";
-import NavigationList from "../components/common/NavigationList/NavigationList";
-import CarRotation from "../components/common/CarRotation/CarRotation";
-import Button from "../components/common/Button/Button";
-import theme from "../styles/Theme";
-import QuotationList from "../components/common/QuotationList/QuotationList";
-import findCarmasterTooltip from "../assets/images/FindCarmasterTooltip.png";
-import { useQuotationState } from "../contexts/QuotationContext";
+import dark_logo from "@assets/images/dark_logo.svg";
+import {
+  NavigationList,
+  SpriteCarRotation,
+  Button,
+  QuotationList,
+  Modals,
+  MapModal,
+} from "@common/index";
+import theme from "@styles/Theme";
+import findCarmasterTooltip from "@assets/images/FindCarmasterTooltip.png";
+import { useQuotationState } from "@contexts/QuotationContext";
 import { Fragment, useState } from "react";
-import { Modals } from "../components/common/Modals/Modals";
-import { ModalType } from "../constants/Modal.constants";
-import { post } from "../utils/fetch";
-import { QuotationType } from "../types/quotation.types";
-import MapModal from "../components/common/MapModal/MapModal";
+import { ModalType } from "@constants/Modal.constants";
+import { post } from "@utils/fetch";
+import { QuotationType } from "types/quotation.types";
 
 function Quotation() {
   const { trimQuotation, detailQuotation, carPaintQuotation, optionQuotation } =
@@ -100,7 +102,9 @@ function Quotation() {
             </MainText>
             <SubText>카마스터 찾기를 통해 구매 상담을 할 수 있어요</SubText>
             <AnimationContainer>
-              <CarRotation $isQuotation={true} />
+              <SpriteCarRotation
+                $imgUrl={carPaintQuotation.exteriorColorQuotation.coloredImgUrl}
+              />
             </AnimationContainer>
           </QuotationContent>
           <NavigationList confirm={confirm} />
