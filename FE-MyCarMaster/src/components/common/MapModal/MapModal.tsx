@@ -1,12 +1,12 @@
 /* eslint-disable */
 
 import { Fragment, useEffect, useRef, useState } from "react";
-import theme from "styles/Theme";
+import theme from "@styles/Theme";
 import Button from "../Button/Button";
-import { get } from "utils/fetch";
+import { get } from "@utils/fetch";
 import CarMasterItem from "../CarMasterItem/CarMasterItem";
-import { AgencyType, CarMasterType } from "types/map.types";
-import MarkerImg from "assets/images/MarkerImage.png";
+import { AgencyType, CarMasterType } from "@types/map.types";
+import MarkerImg from "@assets/images/MarkerImage.png";
 import {
   Address,
   AddressContainer,
