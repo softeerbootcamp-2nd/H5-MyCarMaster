@@ -29,7 +29,7 @@ const Container = styled.div`
 `;
 
 const MainText = styled.p`
-  ${(props) => props.theme.fonts.Bold20};
+  ${(props) => props.theme.fonts.Medium20};
 `;
 
 const SubText = styled.p`

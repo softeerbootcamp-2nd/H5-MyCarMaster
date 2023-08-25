@@ -38,32 +38,19 @@ export const CarMasterInfo = styled.div`
 `;
 
 export const CarMasterName = styled.p`
-  font-family: "HyundaiSansRegular";
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 500;
+  ${(props) => props.theme.fonts.Regular10};
 `;
 
 export const CarMasterPhoneNum = styled.p`
-  font-family: "HyundaiSansRegular";
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 400;
+  ${(props) => props.theme.fonts.Regular10};
 `;
 
 export const CarMasterIntro = styled.p`
-  color: ${theme.colors.GREY3};
-  font-family: "HyundaiSansRegular";
-  font-size: 0.8125rem;
-  font-style: normal;
-  font-weight: 400;
+  ${(props) => props.theme.fonts.Regular9};
 `;
 
 export const Agency = styled.p`
   width: 6rem;
   color: ${theme.colors.GREY3};
-  font-family: "HyundaiSansRegular";
-  font-size: 0.875rem;
-  font-style: normal;
-  font-weight: 500;
+  ${(props) => props.theme.fonts.Regular8};
 `;

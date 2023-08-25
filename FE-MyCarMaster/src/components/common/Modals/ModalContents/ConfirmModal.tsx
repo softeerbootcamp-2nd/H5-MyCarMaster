@@ -20,7 +20,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
 
-  ${(props) => props.theme.fonts.Bold20};
+  ${(props) => props.theme.fonts.Medium20};
 `;
 
 const P = styled.p`

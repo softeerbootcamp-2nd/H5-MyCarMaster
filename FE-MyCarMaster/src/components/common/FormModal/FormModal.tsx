@@ -192,8 +192,7 @@ const ButtonContainer = styled.div`
 const Text = styled.p`
   width: 100%;
   text-align: center;
-  font-family: "HyundaiSansRegular";
-  font-size: 1.5rem;
+  ${(props) => props.theme.fonts.Regular15};
 `;
 
 const Form = styled.form`
@@ -208,13 +207,11 @@ const Input = styled.input`
   width: 20rem;
   height: 3rem;
   padding: 0 1rem;
-
-  font-family: "HyundaiSansRegular";
-  font-size: 1rem;
   margin: 0.5rem 0;
+  ${(props) => props.theme.fonts.Regular10};
 `;
 
 const ErrorText = styled.div`
-  color: red;
-  font-size: 0.8rem;
+  ${(props) => props.theme.colors.SMOOTH_RED};
+  ${(props) => props.theme.fonts.Regular8};
 `;

@@ -244,10 +244,7 @@ const QuotationContent = styled.div`
 `;
 
 const Model = styled.p`
-  font-family: "HyundaiSansBold";
-  font-size: 4rem;
-  font-style: normal;
-  font-weight: 500;
+  ${(props) => props.theme.fonts.Medium40};
   line-height: 2.5rem; /* 125% */
 `;
 
@@ -269,18 +266,12 @@ const PriceContainer = styled.div`
 `;
 
 const Price = styled.p`
-  font-family: "HyundaiSansRegular";
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 700;
+  ${(props) => props.theme.fonts.Regular10};
   line-height: 1.5rem;
 `;
 
 const SumPrice = styled.p`
-  font-family: "HyundaiSansMedium";
-  font-size: 1.75rem;
-  font-style: normal;
-  font-weight: 500;
+  ${(props) => props.theme.fonts.Regular15};
   line-height: 2.25rem;
 `;
 
@@ -313,10 +304,7 @@ const CategoryContainer = styled.div`
 `;
 
 const Category = styled.p`
-  font-family: "HyundaiSansMedium";
-  font-size: 1.5rem;
-  font-style: normal;
-  font-weight: 500;
+  ${(props) => props.theme.fonts.Regular15};
   line-height: 2rem; /* 133.333% */
 `;
 
@@ -344,9 +332,6 @@ const OptionContainer = styled.div`
 `;
 
 const Option = styled.div`
-  font-family: "HyundaiSansMedium";
-  font-size: 1.375rem;
-  font-style: normal;
-  font-weight: 700;
+  ${(props) => props.theme.fonts.Regular13};
   line-height: 1.75rem;
 `;

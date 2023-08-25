@@ -1,17 +1,18 @@
 import styled from "styled-components";
-import ArrowRight from "../../../assets/icons/ArrowRight.svg";
+import ArrowRight from "@assets/icons/ArrowRight.svg";
 import { Text, DefaultStyle } from "./style";
+import { FontType } from "@/styles/Theme";
 
 type TextProp = {
-  size?: string;
   gap?: string;
   text?: string;
+  $font?: FontType;
   handleClick?: () => void;
 };
 
-function TextButton({ text, size, handleClick }: TextProp) {
+function TextButton({ text, $font, handleClick }: TextProp) {
   return (
-    <Container size={size} onClick={handleClick}>
+    <Container $font={$font} onClick={handleClick}>
       <Text $style={DefaultStyle.Text}>{text}</Text>
       <img src={ArrowRight} alt="arrow-right" />
     </Container>
@@ -26,7 +27,7 @@ const Container = styled.div<TextProp>`
   align-items: center;
   gap: 0.5rem;
 
-  font-size: ${(props) => props.size}rem;
+  ${(props) => props.$font};
 
   img {
     width: 0.75rem;
