@@ -18,7 +18,7 @@ public class GetCarMasterUseCase {
 
 	private final GetCarMastersPort port;
 
-	@Cacheable(value = "redis", key = "#latitude + '_' + #longitude", unless = "#result == null")
+	// @Cacheable(value = "redis", key = "#latitude + '_' + #longitude", unless = "#result == null")
 	public GetCarMasterResponse execute(Double latitude, Double longitude) {
 		List<Agency> agencies = port.findAgenciesByLocation(latitude, longitude);
 
