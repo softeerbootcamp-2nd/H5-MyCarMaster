@@ -34,9 +34,10 @@ public class SchedulingConfig {
 		sendFailureConsultings.stream()
 				.forEach(consulting -> {
 					UUID uuid = consulting.getUuid();
+					String clientName = consulting.getClientName();
 					String clientEmail = consulting.getClientEmail();
 					Long id = consulting.getId();
-					eventPublisher.publishEvent(new MailSendEvent(uuid, clientEmail, id));
+					eventPublisher.publishEvent(new MailSendEvent(uuid, clientName, clientEmail, id));
 				});
 	}
 }

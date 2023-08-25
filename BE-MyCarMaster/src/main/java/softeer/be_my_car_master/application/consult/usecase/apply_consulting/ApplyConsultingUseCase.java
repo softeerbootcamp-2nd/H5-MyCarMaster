@@ -39,6 +39,6 @@ public class ApplyConsultingUseCase {
 		Long consultingId = port.createConsulting(consulting);
 
 		// 이메일 전송
-		eventPublisher.publishEvent(new MailSendEvent(estimateId, clientEmail, consultingId));
+		eventPublisher.publishEvent(new MailSendEvent(estimateId, clientName, clientEmail, consultingId));
 	}
 }
