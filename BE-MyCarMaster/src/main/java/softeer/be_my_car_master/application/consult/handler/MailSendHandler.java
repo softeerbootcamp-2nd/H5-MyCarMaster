@@ -28,6 +28,7 @@ public class MailSendHandler {
 
 	private final JavaMailSender mailSender;
 	private final SpringTemplateEngine templateEngine;
+	private final MailSendPort mailSendPort;
 
 	@Async
 	@TransactionalEventListener(
@@ -35,7 +36,6 @@ public class MailSendHandler {
 		classes = MailSendEvent.class
 	)
 	public void publicApplyConsultingEvent(MailSendEvent mailSendEvent) throws MessagingException {
-
 		MimeMessage mimeMessage = mailSender.createMimeMessage();
 		String text = makeText(mailSendEvent.getEstimateId());
 
@@ -44,6 +44,8 @@ public class MailSendHandler {
 		mimeMessageHelper.setSubject("다들 화이팅합시다~");
 		mimeMessageHelper.setText(text, true); // 메일 본문 내용, HTML 여부
 		mailSender.send(mimeMessage);
+
+		mailSendPort.sendComplete(mailSendEvent.getConsultingId());
 	}
 
 	private String makeText(UUID estimateId) {
