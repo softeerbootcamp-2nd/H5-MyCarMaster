@@ -30,7 +30,7 @@ public class MailSendHandler {
 	private final SpringTemplateEngine templateEngine;
 	private final MailSendPort mailSendPort;
 
-	@Async
+	// @Async
 	@TransactionalEventListener(
 		phase = TransactionPhase.AFTER_COMMIT,
 		classes = MailSendEvent.class
