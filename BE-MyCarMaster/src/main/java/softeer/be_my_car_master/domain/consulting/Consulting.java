@@ -1,5 +1,7 @@
 package softeer.be_my_car_master.domain.consulting;
 
+import java.util.UUID;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,9 +15,11 @@ import softeer.be_my_car_master.global.annotation.Domain;
 @AllArgsConstructor
 public class Consulting {
 
+	private Long id;
 	private String clientName;
 	private String clientEmail;
 	private String clientPhone;
+	private Boolean isSent;
 	private Estimate estimate;
 	private CarMaster carMaster;
 
@@ -34,5 +38,9 @@ public class Consulting {
 			.estimate(estimate)
 			.carMaster(carMaster)
 			.build();
+	}
+
+	public UUID getUuid() {
+		return estimate.getUuid();
 	}
 }
