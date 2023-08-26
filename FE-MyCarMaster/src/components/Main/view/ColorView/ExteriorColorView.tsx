@@ -61,6 +61,7 @@ export default function ExteriorColorView() {
           name: data.result.exteriorColors[0].name,
           price: data.result.exteriorColors[0].price,
           imgUrl: `${data.result.exteriorColors[0].colorImgUrl}`,
+          coloredImgUrl: `${data.result.exteriorColors[0].coloredImgUrl}`,
         },
       });
     }
