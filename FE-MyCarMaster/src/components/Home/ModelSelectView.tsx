@@ -77,7 +77,7 @@ export default function Home({ isFold }: HomeProp) {
   return (
     <Container $animation={isFold}>
       <TopContainer>
-        <HomeText $color={theme.colors.BLACK} $font={theme.fonts.Bold20}>
+        <HomeText $color={theme.colors.BLACK} $font={theme.fonts.Medium20}>
           모델을 선택해주세요.
         </HomeText>
 
@@ -95,7 +95,7 @@ export default function Home({ isFold }: HomeProp) {
         {filteredModelData.length === 0 && (
           <HomeText
             $color={theme.colors.BLACK}
-            $font={theme.fonts.Bold25}
+            $font={theme.fonts.Regular25}
             $align={true}
           >
             해당되는 모델이 없습니다.

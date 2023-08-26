@@ -37,7 +37,7 @@ function QuotationItem({
         <Category>{category}</Category>
         {!confirm && (
           <TextButton
-            size={"1"}
+            $font={theme.fonts.Regular10}
             text={"변경하기"}
             handleClick={() => handleClick(id)}
           />
@@ -80,10 +80,8 @@ const CategoryContainer = styled.div`
 
 const Category = styled.p`
   font-family: "HyundaiSansMedium";
-  font-size: 1.5rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 2rem; /* 133.333% */
+  ${(props) => props.theme.fonts.Medium15};
+  line-height: 2rem;
 `;
 
 const ItemContainer = styled.div`
@@ -114,10 +112,7 @@ const ColorName = styled.p`
   display: flex;
   align-items: center;
 
-  font-family: "HyundaiSansRegular";
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 500;
+  ${(props) => props.theme.fonts.Regular10};
   line-height: 1.5rem;
 
   border: 1px solid ${theme.colors.GREY2};
@@ -125,17 +120,11 @@ const ColorName = styled.p`
 `;
 
 const ItemName = styled.p`
-  font-family: "HyundaiSansRegular";
-  font-size: 1.375rem;
-  font-style: normal;
-  font-weight: 500;
+  ${(props) => props.theme.fonts.Regular13};
   line-height: 1.75rem;
 `;
 
 const ItemPrice = styled.p`
-  font-family: "HyundaiSansMedium";
-  font-size: 1.375rem;
-  font-style: normal;
-  font-weight: 700;
+  ${(props) => props.theme.fonts.Regular13};
   line-height: 1.75rem;
 `;

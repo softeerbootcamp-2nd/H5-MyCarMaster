@@ -41,7 +41,7 @@ function QuotationOptionList({ confirm }: ConfirmType) {
           <Category>옵션</Category>
           {!confirm && (
             <TextButton
-              size={"1"}
+              $font={theme.fonts.Regular10}
               text={"변경하기"}
               handleClick={() => navigateOption(6)}
             />
@@ -49,7 +49,7 @@ function QuotationOptionList({ confirm }: ConfirmType) {
         </CategoryContainer>
         <ItemContainer>
           <TextButton
-            size={"1.25"}
+            $font={theme.fonts.Regular12}
             text={"기본 포함 옵션"}
             handleClick={() => setIsBasicOptionModalOpen(true)}
           />
@@ -128,10 +128,7 @@ const CategoryContainer = styled.div`
 `;
 
 const Category = styled.p`
-  font-family: "HyundaiSansMedium";
-  font-size: 1.5rem;
-  font-style: normal;
-  font-weight: 500;
+  ${(props) => props.theme.fonts.Regular15};
   line-height: 2rem; /* 133.333% */
 `;
 
@@ -157,10 +154,7 @@ const OptionContainer = styled.div`
 `;
 
 const Option = styled.div`
-  font-family: "HyundaiSansMedium";
-  font-size: 1.375rem;
-  font-style: normal;
-  font-weight: 700;
+  ${(props) => props.theme.fonts.Regular13};
   line-height: 1.75rem;
 `;
 
@@ -171,17 +165,11 @@ const TotalPriceContainer = styled.div`
 `;
 
 const TotalText = styled.p`
-  font-family: "HyundaiSansMedium";
-  font-size: 1.375rem;
-  font-style: normal;
-  font-weight: 700;
+  ${(props) => props.theme.fonts.Regular13};
   line-height: 1.75rem;
 `;
 
 const TotalPrice = styled.p`
-  font-family: "HyundaiSansMedium";
-  font-size: 1.375rem;
-  font-style: normal;
-  font-weight: 700;
+  ${(props) => props.theme.fonts.Regular13};
   line-height: 1.75rem;
 `;

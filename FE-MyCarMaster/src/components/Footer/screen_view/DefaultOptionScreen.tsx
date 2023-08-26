@@ -173,7 +173,7 @@ const PageButtonContainer = styled.div`
   width: 80%;
   text-align: center;
   gap: 1rem;
-  ${(props) => props.theme.fonts.Bold20};
+  ${(props) => props.theme.fonts.Medium20};
   color: ${({ theme }) => theme.colors.NAVYBLUE5};
 `;
 

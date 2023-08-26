@@ -62,14 +62,12 @@ const CompleteContainer = styled.div`
 `;
 
 const Text = styled.p`
-  font-family: "HyundaiSansRegular";
-  font-size: 2rem;
+  ${(props) => props.theme.fonts.Medium20};
 `;
 
 const Email = styled.p`
   margin-top: 2rem;
-  font-family: "HyundaiSansRegular";
-  font-size: 1rem;
+  ${(props) => props.theme.fonts.Regular10};
 `;
 
 const ButtonContainer = styled.div`

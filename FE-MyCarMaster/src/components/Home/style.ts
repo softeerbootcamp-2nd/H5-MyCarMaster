@@ -7,7 +7,7 @@ interface HomeTextProps extends TextProps {
 }
 
 export const HomeText = styled(Text)<HomeTextProps>`
-  ${(props) => props.theme.fonts.Bold20}
+  ${(props) => props.theme.fonts.Medium20};
   color: ${(props) => props.$color || "#FFFFFF"};
 
   ${(props) =>

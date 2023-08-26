@@ -17,7 +17,7 @@ export const Container = styled.div<{ $show: boolean }>`
 `;
 
 export const Message = styled.p`
-  font-size: 1.25rem;
+  ${(props) => props.theme.fonts.Medium12};
   color: ${(props) => props.theme.colors.WHITE};
   text-align: center;
   line-height: 1.25;
@@ -26,7 +26,7 @@ export const Message = styled.p`
 
 export const SubMessage = styled.p`
   padding: 0rem 2.5rem 1.125rem 2.5rem;
-  font-size: 0.875rem;
+  ${(props) => props.theme.fonts.Medium9};
   color: ${(props) => props.theme.colors.WHITE};
   opacity: 0.6;
 `;

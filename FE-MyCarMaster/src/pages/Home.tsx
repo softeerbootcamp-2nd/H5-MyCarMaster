@@ -25,7 +25,7 @@ function Home() {
           status={isFold ? "dark" : "default"}
         />
         <IntroduceBox>
-          <HomeText $size={2.5} $font={theme.fonts.Bold25}>
+          <HomeText $size={2.5} $font={theme.fonts.Medium25}>
             내게 맞는 견적부터 카마스터 연결까지
           </HomeText>
           <HomeText $size={1.5} $font={theme.fonts.Medium15}>

@@ -75,9 +75,6 @@ const QuotationSummary = styled.div`
 
 const QuotationText = styled.p`
   width: 59.5rem;
-  font-family: "HyundaiSansRegular";
-  font-size: 2.25rem;
-  font-style: normal;
-  font-weight: 700;
+  ${(props) => props.theme.fonts.Regular22};
   line-height: 1.75rem; /* 77.778% */
 `;
