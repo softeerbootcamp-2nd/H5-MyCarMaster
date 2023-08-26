@@ -10,7 +10,7 @@ import {
   MapModal,
 } from "@common/index";
 import theme from "@styles/Theme";
-import findCarmasterTooltip from "@assets/images/FindCarmasterTooltip.png";
+import findCarmasterTooltip from "@assets/tooltips/FindCarmasterTooltip.png";
 import { useQuotationState } from "@contexts/QuotationContext";
 import { Fragment, useState } from "react";
 import { ModalType } from "@constants/Modal.constants";
@@ -116,15 +116,18 @@ function Quotation() {
           </PriceContainer>
           <ButtonContainer>
             <ToolTip src={findCarmasterTooltip} $showTooltip={confirmClicked} />
-            <Button
-              $x={12}
-              $y={2.25}
-              $backgroundcolor={`${theme.colors.WHITE}`}
-              $textcolor={`${theme.colors.NAVYBLUE5}`}
-              $bordercolor={`${theme.colors.NAVYBLUE5}`}
-              text="확정하기"
-              handleClick={() => setIsConfirmModalOpen(true)}
-            />
+            {!isConfirmModalOpen && (
+              <Button
+                $x={12}
+                $y={2.25}
+                $backgroundcolor={`${theme.colors.WHITE}`}
+                $textcolor={`${theme.colors.NAVYBLUE5}`}
+                $bordercolor={`${theme.colors.NAVYBLUE5}`}
+                text="확정하기"
+                handleClick={() => setIsConfirmModalOpen(true)}
+              />
+            )}
+
             <Button
               $x={12}
               $y={2.25}
@@ -290,7 +293,7 @@ const ButtonContainer = styled.div`
 const ToolTip = styled.img<{ $showTooltip: boolean }>`
   width: 12.4375rem;
   position: absolute;
-  top: -80%;
+  top: -100%;
   left: 0;
   display: none;
 

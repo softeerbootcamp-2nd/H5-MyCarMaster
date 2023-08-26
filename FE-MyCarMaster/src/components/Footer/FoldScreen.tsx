@@ -10,6 +10,7 @@ import { useTrimState, useTrimDispatch } from "@contexts/TrimContext";
 import { useQuotationDispatch } from "@contexts/QuotationContext";
 import { SnackBar, Modals } from "@common/index";
 import { ModalType } from "@constants/Modal.constants";
+import SearchTrimTooltip from "@assets/tooltips/SearchTrimTooltip.png";
 
 type FoldScreenProps = {
   text: string;
@@ -118,6 +119,10 @@ export default function FoldScreen({ text, $switch }: FoldScreenProps) {
             ? "원하는 기능을 선택하시면 해당 기능이 포함된 트림을 추천해드려요!"
             : "추가 옵션 선택하러 가기"}
         </Text>
+        <ToolTip
+          src={SearchTrimTooltip}
+          $showTooltip={!isFold && $switch === "searchTrim"}
+        />
 
         {!isFold && $switch === "searchTrim" && <Bar $show={loading} />}
         {$switch === "searchTrim" ? (
@@ -314,6 +319,42 @@ const ButtonContainer = styled.div<{ $style: boolean }>`
     }
     to {
       transform: translateY(calc(100% - 2.25rem));
+    }
+  }
+`;
+
+const ToolTip = styled.img<{ $showTooltip: boolean }>`
+  display: ${({ $showTooltip }) => ($showTooltip ? "block" : "none")};
+  position: absolute;
+  top: 60%;
+  right: -15rem;
+  transform: translateY(-50%);
+  width: 15rem;
+  height: auto;
+
+  animation: ${({ $showTooltip }) =>
+    $showTooltip
+      ? "fadeInToolTip 0.5s ease-in-out"
+      : "fadeOutToolTip 0.5s ease-in-out"};
+  @keyframes fadeInToolTip {
+    0% {
+      opacity: 0;
+      right: -15rem;
+    }
+    100% {
+      opacity: 1;
+      right: -15rem;
+    }
+  }
+
+  @keyframes fadeOutToolTip {
+    0% {
+      opacity: 1;
+      right: -15rem;
+    }
+    100% {
+      opacity: 0;
+      right: -15rem;
     }
   }
 `;

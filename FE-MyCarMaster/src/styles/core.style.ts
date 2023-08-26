@@ -51,6 +51,32 @@ export const Text = styled.p<TextProps>`
   text-align: ${(props) => props.$textAlign || "left"};
 `;
 
+export interface TooltipProps {
+  $width?: string;
+  $height?: string;
+  $top?: string;
+  $left?: string;
+}
+
+export const Tooltip = styled.img<TooltipProps>`
+  position: absolute;
+  width: ${(props) => props.$width || "100%"};
+  height: ${(props) => props.$height || "100%"};
+  top: ${(props) => props.$top || "0"};
+  left: ${(props) => props.$left || "0"};
+
+  animation: 0.5s showTooltip ease-in-out forwards;
+
+  @keyframes showTooltip {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+`;
+
 interface ImageProps {
   $width?: string;
   $height?: string;
