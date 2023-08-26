@@ -28,6 +28,7 @@ public class MailSendHandler {
 
 	private final JavaMailSender mailSender;
 	private final SpringTemplateEngine templateEngine;
+	private final MailSendPort mailSendPort;
 
 	@Async
 	@TransactionalEventListener(
@@ -35,21 +36,23 @@ public class MailSendHandler {
 		classes = MailSendEvent.class
 	)
 	public void publicApplyConsultingEvent(MailSendEvent mailSendEvent) throws MessagingException {
-
 		MimeMessage mimeMessage = mailSender.createMimeMessage();
-		String text = makeText(mailSendEvent.getEstimateId());
+		String text = makeText(mailSendEvent.getEstimateId(), mailSendEvent.getClientName());
 
 		MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(mimeMessage, false, "UTF-8");
 		mimeMessageHelper.setTo(mailSendEvent.getClientEmail());
-		mimeMessageHelper.setSubject("다들 화이팅합시다~");
+		mimeMessageHelper.setSubject("[Hyundai] " + mailSendEvent.getClientName() + "님의 구매 상담 신청이 접수되었습니다.");
 		mimeMessageHelper.setText(text, true); // 메일 본문 내용, HTML 여부
 		mailSender.send(mimeMessage);
+
+		mailSendPort.sendComplete(mailSendEvent.getConsultingId());
 	}
 
-	private String makeText(UUID estimateId) {
+	private String makeText(UUID estimateId, String clientName) {
 		String clientEstimateLink = estimateLink + estimateId.toString();
 		Context context = new Context();
 		context.setVariable("clientEstimateLink", clientEstimateLink);
+		context.setVariable("clientName", clientName);
 		return templateEngine.process("mail", context);
 	}
 }

@@ -12,5 +12,7 @@ import lombok.Getter;
 public class MailSendEvent {
 
 	private UUID estimateId;
+	private String clientName;
 	private String clientEmail;
+	private Long consultingId;
 }

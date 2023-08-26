@@ -36,9 +36,9 @@ public class ApplyConsultingUseCase {
 			.orElseThrow(() -> InvalidCarMasterIdException.EXCEPTION);
 
 		Consulting consulting = Consulting.create(clientName, clientEmail, clientPhone, estimate, carMaster);
-		port.createConsulting(consulting);
+		Long consultingId = port.createConsulting(consulting);
 
 		// 이메일 전송
-		eventPublisher.publishEvent(new MailSendEvent(estimateId, clientEmail));
+		eventPublisher.publishEvent(new MailSendEvent(estimateId, clientName, clientEmail, consultingId));
 	}
 }

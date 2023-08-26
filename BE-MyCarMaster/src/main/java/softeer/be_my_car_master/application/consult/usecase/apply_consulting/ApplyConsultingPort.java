@@ -15,5 +15,5 @@ public interface ApplyConsultingPort {
 
 	Optional<CarMaster> findCarMasterById(Long carMasterId);
 
-	void createConsulting(Consulting consulting);
+	Long createConsulting(Consulting consulting);
 }

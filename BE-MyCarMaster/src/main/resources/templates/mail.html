@@ -3,7 +3,11 @@
 
 <body>
 <div style="margin:100px;">
-  <h1> 안녕하세요.</h1>
+  <div align="top">
+    <img src="https://www.hyundai.com/content/dam/hyundai/kr/ko/images/mail-template/img_mailing_header.jpg"  width="700" height="82" alt loading="lazy"/>
+  </div>
+
+  <h1 th:text="'안녕하세요 ' + ${clientName} + '님.'"> 안녕하세요.</h1>
   <h1> 마이카마스터 서비스를 이용해주셔서 감사합니다. </h1>
   <br>
 
