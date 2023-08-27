@@ -20,11 +20,11 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
 
-  ${(props) => props.theme.fonts.Medium20};
+  ${(props) => props.theme.fonts.Regular17};
 `;
 
 const P = styled.p`
   margin: 1rem;
-  ${(props) => props.theme.fonts.Medium15};
+  ${(props) => props.theme.fonts.Regular13};
   color: ${(props) => props.theme.colors.SMOOTH_RED};
 `;

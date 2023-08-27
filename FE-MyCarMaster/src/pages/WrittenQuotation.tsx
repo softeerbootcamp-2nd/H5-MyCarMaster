@@ -90,7 +90,7 @@ function WrittenQuotation() {
             <QuotationContent>
               <Model>팰리세이드</Model>
               <CarImage
-                src={`${data!.exteriorColor.coloredImgUrl}high/sprite.png`}
+                $src={`${data!.exteriorColor.coloredImgUrl}high/sprite.png`}
               />
             </QuotationContent>
           </QuotationMain>
@@ -248,7 +248,14 @@ const Model = styled.p`
   line-height: 2.5rem; /* 125% */
 `;
 
-const CarImage = styled.img``;
+const CarImage = styled.div<{ $src: string | undefined }>`
+  width: 952px;
+  height: 515px;
+  background-image: url(${({ $src }) => $src});
+  background-repeat: no-repeat;
+  background-position-y: 0px;
+  background-position-x: -0px;
+`;
 
 const QuotationFooter = styled.div`
   display: flex;

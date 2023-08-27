@@ -1,5 +1,4 @@
 /* eslint-disable */
-
 import { Fragment, useEffect, useRef, useState } from "react";
 import theme from "@styles/Theme";
 import Button from "../Button/Button";
@@ -25,9 +24,8 @@ import {
   ShowAllCarMasterBtn,
   Title,
 } from "./style";
-import SeoulMap from "../SeoulMap/SeoulMap";
-import DistrictCarMasterList from "../DistrictCarMasterList/DistrictCarMasterList";
 import { FormModal } from "../FormModal/FormModal";
+import { Loader } from "..";
 const { kakao } = window;
 
 declare global {
@@ -59,7 +57,6 @@ function MapModal({ setIsMapModalOpen, estimateId }: MapModalProps) {
   const [allCarMasters, setAllCarMasters] = useState<CarMasterType[]>();
   const [carMasters, setCarMasters] = useState<CarMasterType[]>();
   const [carMasterId, setCarMasterId] = useState<number>(0);
-  const [district, setDistrict] = useState<string>("");
   const [formModalOn, setFormModalOn] = useState<boolean>(false);
   const [agency, setAgency] = useState<AgencyType>({
     id: 0,
@@ -203,7 +200,7 @@ function MapModal({ setIsMapModalOpen, estimateId }: MapModalProps) {
                     </AddressContainer>
                   </CarMasterHeader>
                   {myLocation.isLoading ? (
-                    <div>로딩 중</div>
+                    <Loader />
                   ) : (
                     <CarMasters>
                       <CarMastersDescription>
@@ -212,7 +209,7 @@ function MapModal({ setIsMapModalOpen, estimateId }: MapModalProps) {
                             ? agency!.name === ""
                               ? "2km 반경 판매량 순으로 정렬한 카마스터입니다."
                               : `${agency!.name}의 카마스터입니다.`
-                            : "주변에 카마스터가 없습니다. 구 단위로 확인해보세요."}
+                            : "주변에 카마스터가 없습니다. 위치를 수정해주세요."}
                         </Description>
                         {carMasters && (
                           <ShowAllCarMasterBtn onClick={showAllHandler}>
@@ -221,7 +218,7 @@ function MapModal({ setIsMapModalOpen, estimateId }: MapModalProps) {
                         )}
                       </CarMastersDescription>
                       <CarMasterList>
-                        {carMasters ? (
+                        {carMasters &&
                           carMasters.map((carMaster) => (
                             <CarMasterItem
                               key={carMaster.id}
@@ -229,19 +226,7 @@ function MapModal({ setIsMapModalOpen, estimateId }: MapModalProps) {
                               carMasterId={carMasterId}
                               setCarMasterId={setCarMasterId}
                             />
-                          ))
-                        ) : district === "" ? (
-                          <SeoulMap setDistrict={setDistrict} />
-                        ) : (
-                          <DistrictCarMasterList
-                            district={district}
-                            setDistrict={setDistrict}
-                            setAgencies={setAgencies}
-                            carMasters={carMasters! as CarMasterType[]}
-                            carMasterId={carMasterId}
-                            setCarMasterId={setCarMasterId}
-                          />
-                        )}
+                          ))}
                       </CarMasterList>
                     </CarMasters>
                   )}
