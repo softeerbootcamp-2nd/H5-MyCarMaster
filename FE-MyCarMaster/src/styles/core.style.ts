@@ -15,7 +15,7 @@ export interface FlexProps {
     | "space-between"
     | "space-around"
     | "normal";
-  $alignItems?: "center" | "flex-start" | "flex-end" | "stretch" | "normal
+  $alignItems?: "center" | "flex-start" | "flex-end" | "stretch" | "normal";
   $alignContent?: "center" | "flex-start" | "flex-end" | "stretch" | "normal";
   $gap?: string;
   $backgroundColor?: string;
