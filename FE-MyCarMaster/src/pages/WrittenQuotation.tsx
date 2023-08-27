@@ -324,9 +324,7 @@ const Options = styled.div`
   border-bottom: 1px solid ${theme.colors.GREY3};
   width: 100%;
 `;
-const OptionResize = styled.div`
-  /* width: 59.5rem; */
-`;
+const OptionResize = styled.div``;
 
 const CategoryContainer = styled.div`
   display: flex;
