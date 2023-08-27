@@ -12,6 +12,7 @@ import MCMNetwork
 enum StepTarget {
     case fetchTrim(modelId: Int)
     case fetchEngine(trimId: Int)
+    case fetchWheelDrive(trimId: Int, engineId: Int)
 }
 
 extension StepTarget: TargetType {
@@ -32,6 +33,8 @@ extension StepTarget: TargetType {
             return "trims"
         case .fetchEngine:
             return "engines"
+        case .fetchWheelDrive:
+            return "wheel-drives"
         }
     }
 
@@ -48,6 +51,8 @@ extension StepTarget: TargetType {
             return .requestParameters(parameters: ["modelId": modelId])
         case let .fetchEngine(trimId):
             return .requestParameters(parameters: ["trimId": trimId])
+        case let .fetchWheelDrive(trimId, engineId):
+            return .requestParameters(parameters: ["trimId": trimId, "engineId": engineId])
         }
     }
 
