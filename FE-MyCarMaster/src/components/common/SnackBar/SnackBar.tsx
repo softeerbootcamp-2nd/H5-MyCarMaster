@@ -1,6 +1,6 @@
 import { Container, Message, SubMessage } from "./style";
 import { useEffect, useCallback } from "react";
-import useFadeAnimation from "../../../hooks/useFadeAnimation";
+import useFadeAnimation from "@hooks/useFadeAnimation";
 
 type SnackBarProps = {
   messages: string[];
