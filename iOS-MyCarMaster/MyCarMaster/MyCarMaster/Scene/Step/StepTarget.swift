@@ -13,6 +13,7 @@ enum StepTarget {
     case fetchTrim(modelId: Int)
     case fetchEngine(trimId: Int)
     case fetchWheelDrive(trimId: Int, engineId: Int)
+    case fetchBodyType(modelId: Int)
 }
 
 extension StepTarget: TargetType {
@@ -35,6 +36,8 @@ extension StepTarget: TargetType {
             return "engines"
         case .fetchWheelDrive:
             return "wheel-drives"
+        case .fetchBodyType:
+            return "body-types"
         }
     }
 
@@ -53,6 +56,8 @@ extension StepTarget: TargetType {
             return .requestParameters(parameters: ["trimId": trimId])
         case let .fetchWheelDrive(trimId, engineId):
             return .requestParameters(parameters: ["trimId": trimId, "engineId": engineId])
+        case let .fetchBodyType(modelId):
+            return .requestParameters(parameters: ["modelId": modelId])
         }
     }
 
