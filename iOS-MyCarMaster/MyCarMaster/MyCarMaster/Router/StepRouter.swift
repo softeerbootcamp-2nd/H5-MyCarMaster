@@ -80,7 +80,14 @@ extension StepRouter {
             engineViewController.reactor = engineReactor
             return engineViewController
         case .wheelDrive:
-            return WheelDriveViewController()
+            let wheelDriveReactor = WheelDriveReactor(
+                initialState: .init(isLoading: false, wheelDriveList: []),
+                estimationManager: estimationManager,
+                stepNetworkProvider: stepNetworkProvider
+            )
+            let wheelDriveViewController = WheelDriveViewController()
+            wheelDriveViewController.reactor = wheelDriveReactor
+            return wheelDriveViewController
         case .bodyType:
             return BodyTypeViewController()
         case .exterior:
