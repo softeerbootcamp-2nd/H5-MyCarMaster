@@ -74,9 +74,7 @@ function WrittenQuotation() {
   }
 
   useEffect(() => {
-    console.log(estimateId);
     get(`${SERVER_URL}/estimates/${estimateId}`).then((res) => {
-      console.log(res);
       setData(res.result);
     });
   }, []);

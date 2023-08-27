@@ -16,6 +16,7 @@ import {
   Quotation,
   WrittenQuotation,
   ConsultComplete,
+  Admin,
 } from "@pages/index";
 import ErrorBoundary from "./components/common/ErrorBoundary/ErrorBoundary";
 import { useFonts } from "@hooks/useFonts";
@@ -70,6 +71,7 @@ function App() {
                   element={<WrittenQuotation />}
                 />
                 <Route path="/consult-complete" element={<ConsultComplete />} />
+                <Route path="/admin" element={<Admin />} />
               </Routes>
             </Flex>
           </ErrorBoundary>

@@ -3,10 +3,18 @@ import { useNavigate } from "react-router-dom";
 import ArrowBottom from "@assets/icons/ArrowBottom.svg";
 import white_logo from "@assets/images/white_logo.svg";
 import dark_logo from "@assets/images/dark_logo.svg";
+import Setting from "@assets/icons/Setting.svg";
 import { useModelState } from "@contexts/ModelContext";
 import { Modals } from "@common/index";
 import { ModalType } from "@constants/Modal.constants";
-import { Container, Img, ModelSelector, ModelName, ModelButton } from "./style";
+import {
+  Container,
+  Img,
+  ModelSelector,
+  ModelName,
+  ModelButton,
+  Admin,
+} from "./style";
 
 type HeaderProps = {
   isHome: boolean;
@@ -27,6 +35,10 @@ function Header({ isHome, logo, status }: HeaderProps) {
     }, 0);
   };
 
+  const PagingAdmin = () => {
+    navigate("/admin");
+  };
+
   const { modelName } = useModelState();
   return (
     <Fragment>
@@ -41,13 +53,15 @@ function Header({ isHome, logo, status }: HeaderProps) {
           }
           onClick={() => setIsOpen(true)}
         />
-        {!isHome && (
+        {!isHome ? (
           <>
             <ModelSelector>
               <ModelName>{modelName}</ModelName>
               <ModelButton src={ArrowBottom} />
             </ModelSelector>
           </>
+        ) : (
+          <Admin src={Setting} onClick={PagingAdmin} />
         )}
       </Container>
       {isOpen && (
