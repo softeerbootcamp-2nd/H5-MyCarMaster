@@ -1,6 +1,7 @@
 package softeer.be_my_car_master.infrastructure.jpa.car_master.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -22,4 +23,10 @@ public interface CarMasterJpaRepository extends JpaRepository<CarMasterEntity, L
 		+ "WHERE a.id IN :agencyIds "
 		+ "ORDER BY cm.sales DESC, cm.name ASC")
 	List<CarMaster> findAllByAgencyIdsOrderBySales(List<Long> agencyIds);
+
+	@Query(value = "SELECT cm.id "
+		+ "FROM CarMasterEntity cm "
+		+ "WHERE cm.email= :email "
+		+ "AND cm.phone = :phone")
+	Optional<Long> findIdByForm(String email, String phone);
 }
