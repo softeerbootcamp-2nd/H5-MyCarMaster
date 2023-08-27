@@ -8,8 +8,7 @@ import { useCarPaintState } from "@contexts/CarPaintContext";
 import filterOptionCategory from "@utils/Option/filterOptionCategory";
 import { categories } from "@constants/Option.constants";
 import { OptionType, OptionState } from "types/options.types";
-import OptionCategoryTooltip from "@assets/images/OptionCategoryTooltip.png";
-
+import OptionCategoryToolTip from "@assets/tooltips/OptionCategoryToolTip.png";
 import useFetch from "@hooks/useFetch";
 import theme from "@styles/Theme";
 

@@ -9,7 +9,7 @@ import filterOptionCategory from "@utils/Option/filterOptionCategory";
 import { OptionType } from "types/options.types";
 import ArrowRightLong from "@assets/icons/ArrowRightLong.svg";
 import ArrowLeftLong from "@assets/icons/ArrowLeftLong.svg";
-import TryConsiderTooltip from "@assets/tooltips/TryConsiderTooltip.png";
+import TryConsiderTooltip from "@assets/images/TryConsiderTooltip.png";
 
 export default function OptionSelect() {
   const { optionList, selectedOption, consideredOption, optionCategoryId } =

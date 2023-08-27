@@ -10,7 +10,7 @@ import { useTrimState, useTrimDispatch } from "@contexts/TrimContext";
 import { useQuotationDispatch } from "@contexts/QuotationContext";
 import { SnackBar, Modals } from "@common/index";
 import { ModalType } from "@constants/Modal.constants";
-import SearchTrimTooltip from "@assets/tooltips/SearchTrimTooltip.png";
+import SearchTrimTooltip from "@assets/images/SearchTrimTooltip.png";
 
 type FoldScreenProps = {
   text: string;
