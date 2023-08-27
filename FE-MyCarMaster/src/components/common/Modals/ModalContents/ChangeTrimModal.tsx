@@ -29,10 +29,10 @@ const Container = styled.div`
 `;
 
 const MainText = styled.p`
-  ${(props) => props.theme.fonts.Medium20};
+  ${(props) => props.theme.fonts.Regular17};
 `;
 
 const SubText = styled.p`
-  ${(props) => props.theme.fonts.Regular12};
+  ${(props) => props.theme.fonts.Regular10};
   color: ${(props) => props.theme.colors.SMOOTH_RED};
 `;

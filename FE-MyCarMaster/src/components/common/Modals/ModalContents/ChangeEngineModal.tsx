@@ -28,7 +28,7 @@ const Container = styled.div`
 `;
 
 const MainText = styled.p<{ $isColor?: boolean }>`
-  ${(props) => props.theme.fonts.Medium15};
+  ${(props) => props.theme.fonts.Regular13};
   ${(props) =>
     props.$isColor &&
     `
