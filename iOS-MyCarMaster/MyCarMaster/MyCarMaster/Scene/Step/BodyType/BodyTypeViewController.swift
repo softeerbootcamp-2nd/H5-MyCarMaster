@@ -5,6 +5,7 @@
 //  Created by SEUNGMIN OH on 2023/08/11.
 //
 
+import Combine
 import UIKit
 
 import MCMNetwork
@@ -13,13 +14,34 @@ import MVIFoundation
 final class BodyTypeViewController: UIViewController {
 
     typealias ListCellClass = BasicListCell
+    typealias DataSource = UICollectionViewDiffableDataSource<Section, BodyType>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, BodyType>
 
-    var dataList: [BodyType] = []
+    enum Section {
+        case bodyType
+    }
 
-    var selectedCellIndexPath: IndexPath = IndexPath(row: 0, section: 0) {
-        didSet {
-            print(#function, selectedCellIndexPath)
-        }
+    // MARK: Property
+    var cancellables = Set<AnyCancellable>()
+
+    var selectedBodyType: BodyType?
+
+    private var dataSource: DataSource!
+    private func configureDataSource() {
+        dataSource = DataSource(
+            collectionView: contentView.listView,
+            cellProvider: { collectionView, indexPath, itemIdentifier in
+                guard let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: ListCellClass.reuseIdentifier,
+                    for: indexPath
+                ) as? ListCellClass else {
+                    fatalError("개발자 오류: 등록되지 않은 Cell 입니다.")
+                }
+                cell.configure(with: itemIdentifier)
+
+                return cell
+            })
+        contentView.setDataSource(dataSource)
     }
 
     private var contentView: BodyTypeView<ListCellClass> {
@@ -32,17 +54,13 @@ final class BodyTypeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureDataSource()
         configureUI()
-#if ONLINE
-        fetchData()
-#elseif OFFLINE
-        fetchFromDisk()
-#endif
+        reactor?.action.send(.viewDidLoad)
     }
 
     private func configureUI() {
         contentView.setDelegate(self)
-        contentView.setDataSource(self)
     }
 
     override func didMove(toParent parent: UIViewController?) {
@@ -50,85 +68,74 @@ final class BodyTypeViewController: UIViewController {
     }
 }
 
-extension BodyTypeViewController {
-    private func fetchFromDisk() {
-        guard let fileURL = Bundle.main.url(forResource: "BodyTypeDTO.json", withExtension: nil) else { return }
-        applyData(try? Data(contentsOf: fileURL))
-    }
-
-    private func fetchData() {
-        let request = URLRequest(url: URL(string: Dependency.serverURL + "body-types?modelId=1")!)
-
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            guard error == nil else {
-                print(error?.localizedDescription)
-                return
-            }
-
-            guard let response = response as? HTTPURLResponse else {
-                print("Sever Error")
-                return
-            }
-
-            print("BodyType:", response.statusCode)
-            guard 200..<300 ~= response.statusCode else {
-                return
-            }
-
-            self.applyData(data)
-        }.resume()
-    }
-
-    private func applyData(_ data: Data?) {
-        if let data,
-           let bodyTypeDTOList = try? JSONDecoder().decode(RootDTO.self, from: data).result.bodyTypes {
-            self.dataList = bodyTypeDTOList.map { BodyType($0) }
-            DispatchQueue.main.async {
-                self.contentView.listView.reloadData()
-            }
-        } else {
-            print("Decoding Error")
-            return
+extension BodyTypeViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let bodyType = dataSource.itemIdentifier(for: indexPath) {
+            reactor?.action.send(.bodyTypeDidSelect(bodyType))
         }
     }
 }
 
-extension BodyTypeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension BodyTypeViewController: Reactable {
+    func bindState(reactor: BodyTypeReactor) {
+        reactor.state.map(\.selectedBodyType)
+            .dropFirst()
+            .sink { [weak self] bodyType in
+                if let bodyType {
+                    self?.selectItemFor(bodyType)
+                    return
+                }
 
-    func collectionView(
-        _ collectionView: UICollectionView,
-        numberOfItemsInSection section: Int
-    ) -> Int {
-        return dataList.count
+                if let firstBodyType = self?.dataSource.itemIdentifier(
+                    for: .init(item: 0, section: 0)
+                ) {
+                    reactor.action.send(.bodyTypeDidSelect(firstBodyType))
+                }
+                return
+            }
+            .store(in: &cancellables)
+
+        reactor.state.map(\.bodyTypeList)
+            .dropFirst()
+            .removeDuplicates()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] bodyTypeList in
+                var snapshot = Snapshot()
+                snapshot.appendSections([.bodyType])
+                snapshot.appendItems(bodyTypeList)
+                self?.dataSource.apply(snapshot, completion: {
+                    reactor.action.send(.dataSourceDidApply)
+                })
+            }
+            .store(in: &cancellables)
+
+        reactor.state.compactMap(\.errorDescription)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] errorDescription in
+                let alert = UIAlertController(
+                    title: "에러",
+                    message: errorDescription,
+                    preferredStyle: .alert
+                )
+                alert.addAction(.init(title: "확인", style: .default))
+                print(errorDescription)
+                self?.present(alert, animated: false)
+            }
+            .store(in: &cancellables)
+    }
+}
+
+extension BodyTypeViewController {
+    func selectItemFor(_ bodyType: BodyType) {
+        guard let indexPath = dataSource.indexPath(for: bodyType) else { return }
+        selectItemAt(indexPath)
     }
 
-    func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath
-    ) -> UICollectionViewCell {
-
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: ListCellClass.reuseIdentifier,
-            for: indexPath
-        ) as? ListCellClass else {
-            fatalError("등록되지 않은 cell입니다.")
+    func selectItemAt(_ indexPath: IndexPath) {
+        guard dataSource?.itemIdentifier(for: indexPath) != nil else {
+            print("Error: \(indexPath)에 원소가 없음")
+            return
         }
-
-        cell.configure(with: dataList[indexPath.row])
-
-        // 프리셋을 선택한다.
-        if selectedCellIndexPath == indexPath {
-            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
-        }
-
-        return cell
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? ListCellClass else {
-            fatalError("알 수 없는 오류가 발생했습니다.")
-        }
-        guard selectedCellIndexPath != indexPath else { return }
-        selectedCellIndexPath = indexPath
+        contentView.listView.selectItem(at: indexPath, animated: true, scrollPosition: [.centeredVertically])
     }
 }
