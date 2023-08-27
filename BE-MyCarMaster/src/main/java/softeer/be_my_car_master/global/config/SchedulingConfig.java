@@ -24,7 +24,7 @@ public class SchedulingConfig {
 	private final ApplicationEventPublisher eventPublisher;
 
 	@Transactional
-	@Scheduled(cron = "0 0/1 * * * *")
+	@Scheduled(cron = "0 0/10 * * * *")
 	public void setDiaryEditStatus() {
 		List<Consulting> sendFailureConsultings = mailSendPort.findSendFailureConsultings();
 		sendEmails(sendFailureConsultings);
