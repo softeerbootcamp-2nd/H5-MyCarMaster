@@ -15,10 +15,13 @@ protocol EstimationManageable: AnyObject {
     var estimation: Estimation { get }
     var estimationPublisher: AnyPublisher<Estimation, Never> { get }
 
+    func checkTrimCanChange() -> Bool
+
     func update<T>(_ keyPath: WritableKeyPath<Estimation, T?>, value: T)
     func update<T: Priceable>(_ keyPath: WritableKeyPath<Estimation, T?>, value: T)
     func update(_ keyPath: WritableKeyPath<Estimation, Set<Option>>, value: Option)
     func remove(_ keyPath: WritableKeyPath<Estimation, Set<Option>>, value: Option)
+    func removeAll()
 }
 
 final class EstimationManager: EstimationManageable {
@@ -34,7 +37,22 @@ final class EstimationManager: EstimationManageable {
     init(estimation: Estimation) {
         self.estimationSubject = CurrentValueRelay<Estimation>(estimation)
     }
+}
 
+extension EstimationManager {
+    func checkTrimCanChange() -> Bool {
+        return estimation.engine == nil &&
+        estimation.bodyType == nil &&
+        estimation.wheelDrive == nil &&
+        estimation.bodyType == nil &&
+        estimation.exterior == nil &&
+        estimation.interior == nil &&
+        estimation.selectedOptions.isEmpty &&
+        estimation.consideredOptions.isEmpty
+    }
+}
+
+extension EstimationManager {
     func update<T>(_ keyPath: WritableKeyPath<Estimation, T?>, value: T) {
         var estimation = self.estimation
         estimation[keyPath: keyPath] = value
@@ -72,6 +90,18 @@ final class EstimationManager: EstimationManageable {
         estimation.totalPrice = calculateTotalPrice(estimation)
 
         estimationSubject.accept(estimation)
+    }
+
+    func removeAll() {
+        var newEstimation = self.estimation
+        newEstimation.engine = nil
+        newEstimation.wheelDrive = nil
+        newEstimation.bodyType = nil
+        newEstimation.exterior = nil
+        newEstimation.interior = nil
+        newEstimation.selectedOptions.removeAll()
+        newEstimation.consideredOptions.removeAll()
+        estimationSubject.accept(newEstimation)
     }
 }
 

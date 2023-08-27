@@ -16,12 +16,16 @@ final class TrimReactor: Reactor {
     enum Action {
         case viewDidLoad
         case trimDidSelect(Trim)
+        case shouldSelectTrim(Trim)
+        case dataSourceDidApply
+        case resetAndSelectTrim(Trim)
     }
 
     enum Mutation {
         case setLoading(Bool)
         case fetchTrimList([Trim])
         case fetchSelectedTrim(Trim?)
+        case showSelectionAlert(Trim)
         case alertError(String)
     }
 
@@ -29,6 +33,7 @@ final class TrimReactor: Reactor {
         var isLoading: Bool
         var trimList: [Trim]
         var selectedTrim: Trim?
+        var showSelectionAlert: Trim?
         var errorDescription: String?
     }
 
@@ -49,20 +54,41 @@ final class TrimReactor: Reactor {
     func mutate(action: Action) -> AnyPublisher<Mutation, Never> {
         switch action {
         case let .trimDidSelect(trim):
-            return [
-                updateTrim(trim),
-                fetchSelectedTrim()
-            ].concatenate()
+            return updateTrim(trim)
         case .viewDidLoad:
             return [
-                fetchSelectedTrim(),
                 Just(Mutation.setLoading(true))
                     .eraseToAnyPublisher(),
                 fetchTrimList(),
                 Just(Mutation.setLoading(false))
                     .eraseToAnyPublisher(),
             ].concatenate()
+        case .dataSourceDidApply:
+            return fetchSelectedTrim()
+        case let .shouldSelectTrim(trim):
+            return changeTrimIfCan(trim)
+        case let .resetAndSelectTrim(trim):
+            return [
+                resetEstimation(),
+                updateTrim(trim)
+            ].concatenate()
         }
+    }
+
+    func transform(mutation: AnyPublisher<Mutation, Never>) -> AnyPublisher<Mutation, Never> {
+        guard let estimationManager else {
+            return Empty().eraseToAnyPublisher()
+        }
+
+        let esitmationMutation = estimationManager.estimationPublisher.map(\.trim)
+            .flatMap({ trim in
+                return Just(Mutation.fetchSelectedTrim(trim))
+                    .eraseToAnyPublisher()
+            })
+            .eraseToAnyPublisher()
+
+        return Publishers.Merge(mutation, esitmationMutation)
+            .eraseToAnyPublisher()
     }
 
     func reduce(state: State, mutation: Mutation) -> State {
@@ -76,6 +102,8 @@ final class TrimReactor: Reactor {
             newState.selectedTrim = trim
         case let .alertError(errorDescription):
             newState.errorDescription = errorDescription
+        case let .showSelectionAlert(trim):
+            newState.showSelectionAlert = trim
         }
         return newState
     }
@@ -88,7 +116,7 @@ extension TrimReactor {
         }
 
         estimationManager.update(\.trim, value: trim)
-        return fetchSelectedTrim()
+        return Empty().eraseToAnyPublisher()
     }
 
     private func fetchSelectedTrim() -> AnyPublisher<Mutation, Never> {
@@ -100,6 +128,30 @@ extension TrimReactor {
             .eraseToAnyPublisher()
     }
 
+    private func changeTrimIfCan(_ trim: Trim) -> AnyPublisher<Mutation, Never> {
+        guard let estimationManager else {
+            return Empty().eraseToAnyPublisher()
+        }
+
+        if estimationManager.checkTrimCanChange() {
+            return updateTrim(trim)
+        } else {
+            return Just(Mutation.showSelectionAlert(trim))
+                .eraseToAnyPublisher()
+        }
+    }
+
+    private func resetEstimation() -> AnyPublisher<Mutation, Never> {
+        guard let estimationManager else {
+            return Empty().eraseToAnyPublisher()
+        }
+
+        estimationManager.removeAll()
+        return Empty().eraseToAnyPublisher()
+    }
+}
+
+extension TrimReactor {
     private func fetchTrimList() -> AnyPublisher<Mutation, Never> {
 #if ONLINE
         fetchTrimListFromNetwork()
