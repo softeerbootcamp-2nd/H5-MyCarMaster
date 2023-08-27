@@ -19,7 +19,7 @@ public class ConsultingDto {
 	private ClientResponseDto client;
 
 	public static ConsultingDto from(Consulting consulting) {
-		final String urlPrefix = "https://my-car-master.shop/estimates/";
+		final String urlPrefix = "https://beta.my-car-master.shop/estimates/";
 		return ConsultingDto.builder()
 			.estimateUrl(urlPrefix + consulting.getUuid())
 			.client(ClientResponseDto.from(consulting))
