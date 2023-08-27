@@ -17,6 +17,10 @@ export const Img = styled.img`
   cursor: pointer;
 `;
 
+export const Admin = styled.img`
+  width: 2.5rem;
+  cursor: pointer;
+`;
 export const ModelSelector = styled.div`
   display: flex;
   align-items: center;

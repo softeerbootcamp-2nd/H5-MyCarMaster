@@ -55,16 +55,27 @@ export const AdminContentText = styled(Text)`
   }
 `;
 
-export const Input = styled.input`
+export const Input = styled.input<CheckTypeProps>`
   ${(props) => props.theme.fonts.Regular13};
   width: 100%;
   height: 3rem;
   border-radius: 0.5rem;
   padding: 0 1rem;
   outline: none;
-  &:focus {
-    border: 1px solid ${(props) => props.theme.colors.SMOOTH_RED};
-  }
+  border: 1px solid
+    ${(props) => {
+      switch (props.$status) {
+        case "success":
+          return props.theme.colors.ACTIVE_BLUE;
+        case "error":
+        case "invalid":
+          return props.theme.colors.SMOOTH_RED;
+        case "default":
+          return props.theme.colors.ACTIVE_BLUE;
+        default:
+          return props.theme.colors.BLACK;
+      }
+    }};
 `;
 
 interface CheckTypeProps {
@@ -79,6 +90,7 @@ export const CheckText = styled(Text)<CheckTypeProps>`
       case "success":
         return props.theme.colors.ACTIVE_BLUE;
       case "error":
+      case "invalid":
         return props.theme.colors.SMOOTH_RED;
       case "default":
         return props.theme.colors.BLACK;
@@ -92,7 +104,15 @@ export const CheckText = styled(Text)<CheckTypeProps>`
   top: 50%;
   transform: translateY(-50%);
 
-  animation: showCheckText 0.5s ease-in-out;
+  ${(props) =>
+    props.$status === "invalid"
+      ? `
+    animation: shakingText 0.5s ease-in-out;
+    
+  `
+      : `
+  animation: showCheckText 0.1s ease-in-out;
+  `}
 
   @keyframes showCheckText {
     0% {
@@ -100,6 +120,24 @@ export const CheckText = styled(Text)<CheckTypeProps>`
     }
     100% {
       opacity: 1;
+    }
+  }
+
+  @keyframes shakingText {
+    0% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    75% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
     }
   }
 `;

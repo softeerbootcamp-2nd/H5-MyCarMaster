@@ -41,14 +41,12 @@ export default function AdminView({ clientList }: AdminViewProps) {
           $gap="1rem"
         >
           {clientList &&
-            clientList.map((client) => (
+            clientList.map((client, index) => (
               <ClientBox
-                key={client.id}
+                key={index}
                 $justifyContent="center"
                 $alignItems="center"
-                onClick={() =>
-                  handleQuotationUrl(client.estimateUrl, client.id)
-                }
+                onClick={() => handleQuotationUrl(client.estimateUrl, index)}
               >
                 <Flex $flexDirection="column" $gap="0.5rem">
                   <ClientBoxText $font={theme.fonts.Medium15}>
@@ -81,22 +79,13 @@ export default function AdminView({ clientList }: AdminViewProps) {
               돌아가려면 클릭해주세요.
             </ClientBoxText>
             <ClientBoxText $font={theme.fonts.Medium15}>
-              이름 :{" "}
-              {clientList.find((client) => client.id === clientId)?.client.name}
+              이름 : {clientList[clientId].client.name}
             </ClientBoxText>
             <ClientBoxText $font={theme.fonts.Regular10}>
-              전화번호 :{" "}
-              {
-                clientList.find((client) => client.id === clientId)?.client
-                  .phone
-              }
+              전화번호 : {clientList[clientId].client.phone}
             </ClientBoxText>
             <ClientBoxText $font={theme.fonts.Regular10}>
-              이메일 :{" "}
-              {
-                clientList.find((client) => client.id === clientId)?.client
-                  .email
-              }
+              이메일 : {clientList[clientId].client.email}
             </ClientBoxText>
           </ClientQuotationDetailBox>
 

@@ -10,7 +10,7 @@ import {
   CheckText,
 } from "./Admin.style";
 import { Flex } from "@styles/core.style";
-import { Button } from "@common/index";
+import { Button, Loader } from "@common/index";
 import { useNavigate } from "react-router-dom";
 import { AdminView } from "@layout/index";
 import { get } from "@utils/fetch";
@@ -24,9 +24,9 @@ const STATUS_TEXT = {
     text: "올바르지 않은 형식입니다.",
     status: "error",
   },
-  DEFAULT: {
-    text: "",
-    status: "default",
+  INVALID: {
+    text: "올바르지 않은 접근입니다.",
+    status: "invalid",
   },
   NONE: {
     text: "",
@@ -38,68 +38,15 @@ const STATUS_TEXT = {
   },
 };
 
-const tempClientList = [
-  {
-    id: 1,
-    estimateUrl:
-      "https://beta.my-car-master.shop/estimates/652baec3-eba2-486b-953f-ca4869f2b6d4",
-    client: {
-      name: "김민수",
-      phone: "010-1234-5678",
-      email: "abc@naver.com",
-    },
-  },
-  {
-    id: 2,
-    estimateUrl:
-      "https://beta.my-car-master.shop/estimates/652baec3-eba2-486b-953f-ca4869f2b6d4",
-    client: {
-      name: "고구려",
-      phone: "010-1234-9999",
-      email: "abdd@gamil.com",
-    },
-  },
-  {
-    id: 3,
-    estimateUrl:
-      "https://beta.my-car-master.shop/estimates/652baec3-eba2-486b-953f-ca4869f2b6d4",
-    client: {
-      name: "박민수",
-      phone: "010-1234-9999",
-      email: "abdd@gamil.com",
-    },
-  },
-  {
-    id: 4,
-    estimateUrl:
-      "https://beta.my-car-master.shop/estimates/652baec3-eba2-486b-953f-ca4869f2b6d4",
-    client: {
-      name: "정민수",
-      phone: "010-1234-9999",
-      email: "abdd@gamil.com",
-    },
-  },
-  {
-    id: 5,
-    estimateUrl:
-      "https://beta.my-car-master.shop/estimates/652baec3-eba2-486b-953f-ca4869f2b6d4",
-    client: {
-      name: "유민수",
-      phone: "010-1234-9999",
-      email: "abdd@gamil.com",
-    },
-  },
-  {
-    id: 6,
-    estimateUrl:
-      "https://beta.my-car-master.shop/estimates/652baec3-eba2-486b-953f-ca4869f2b6d4",
-    client: {
-      name: "양민수",
-      phone: "010-1234-9999",
-      email: "abdd@gamil.com",
-    },
-  },
-];
+type ClientType = {
+  id: number;
+  estimateUrl: string;
+  client: {
+    name: string;
+    phone: string;
+    email: string;
+  };
+};
 
 export default function Admin() {
   const [isOpen, setIsOpen] = useState(true);
@@ -108,11 +55,12 @@ export default function Admin() {
   const [statusEmail, setStatusEmail] = useState(STATUS_TEXT.NONE);
   const [statusPhoneNumber, setStatusPhoneNumber] = useState(STATUS_TEXT.NONE);
   const [isLogin, setIsLogin] = useState(false);
+  const [clientList, setClientList] = useState<ClientType[]>([]);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 
-  // focus input
   useEffect(() => {
     const input = document.querySelector("input");
     input?.focus();
@@ -127,23 +75,21 @@ export default function Admin() {
       statusEmail.status === "success" &&
       statusPhoneNumber.status === "success"
     ) {
-      get(`${SERVER_URL}/consultings?email=${email}&phone=${phoneNumber}`)
-        .then((res) => {
-          console.log(res);
-          if (res.status === 200) {
+      setLoading(true);
+      get(`${SERVER_URL}/consultings?email=${email}&phone=${phoneNumber}`).then(
+        (res) => {
+          setLoading(false);
+          if (res.code === 2000) {
+            setClientList(res.result.consultings);
             setIsOpen(false);
             setIsLogin(true);
-            console.log("관리자임");
           } else {
-            console.log("관리자가 아님");
+            setStatusEmail(STATUS_TEXT.INVALID);
+            setStatusPhoneNumber(STATUS_TEXT.INVALID);
           }
-        })
-        .catch(() => {
-          console.log("관리자가 아님");
-        });
+        }
+      );
     }
-    setIsOpen(false);
-    setIsLogin(true);
   };
 
   const ChangeTextHandler = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -155,6 +101,8 @@ export default function Admin() {
 
       if (emailCheck) {
         setStatusEmail(STATUS_TEXT.SUCCESS);
+      } else if (e.target.value === "" || e.target.value.length < 5) {
+        setStatusEmail(STATUS_TEXT.NONE);
       } else {
         setStatusEmail(STATUS_TEXT.ERROR);
       }
@@ -166,7 +114,8 @@ export default function Admin() {
       );
       setPhoneNumber(formattedValue);
 
-      if (phoneNumber.length <= 9) {
+      const phoneNumberLength = formattedValue.replace(/-/g, "").length;
+      if (phoneNumberLength < 11) {
         setStatusPhoneNumber(STATUS_TEXT.CHECK);
       } else {
         setStatusPhoneNumber(STATUS_TEXT.SUCCESS);
@@ -174,14 +123,8 @@ export default function Admin() {
     }
   };
 
-  const FocusTextHandler = () => {
-    if (phoneNumber.length < 1) {
-      setPhoneNumber("010");
-    }
-  };
-
   return (
-    <Flex>
+    <Flex $flexDirection="column" $justifyContent="center" $alignItems="center">
       {isOpen && (
         <ModalOverlay>
           <AdminLogin>
@@ -196,6 +139,8 @@ export default function Admin() {
                 <Input
                   placeholder="EMAIL"
                   onChange={ChangeTextHandler}
+                  onFocus={ChangeTextHandler}
+                  $status={statusEmail.status}
                   value={email}
                 />
                 <CheckText $status={statusEmail.status}>
@@ -208,7 +153,8 @@ export default function Admin() {
                 <Input
                   placeholder="PhoneNumber"
                   onChange={ChangeTextHandler}
-                  onFocus={FocusTextHandler}
+                  onFocus={ChangeTextHandler}
+                  $status={statusPhoneNumber.status}
                   value={phoneNumber}
                 />
                 <CheckText $status={statusPhoneNumber.status}>
@@ -241,12 +187,28 @@ export default function Admin() {
                   $font={theme.fonts.Regular12}
                   handleClick={() => LoginHandler()}
                 />
+                {loading && <Loader />}
               </Flex>
             </Flex>
           </AdminLogin>
         </ModalOverlay>
       )}
-      {!isOpen && isLogin && <AdminView clientList={tempClientList} />}
+      {!isOpen && isLogin && (
+        <>
+          <Flex
+            $width="100%"
+            $justifyContent="center"
+            $alignItems="center"
+            $height="3rem"
+            $gap="1rem"
+          >
+            <AdminLoginTitle $font={theme.fonts.Medium15}>
+              {email.slice(0, 2)}** 카마스터 관리자 페이지
+            </AdminLoginTitle>
+          </Flex>
+          <AdminView clientList={clientList} />
+        </>
+      )}
     </Flex>
   );
 }
