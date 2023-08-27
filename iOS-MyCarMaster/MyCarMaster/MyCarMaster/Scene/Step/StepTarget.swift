@@ -15,6 +15,7 @@ enum StepTarget {
     case fetchWheelDrive(trimId: Int, engineId: Int)
     case fetchBodyType(modelId: Int)
     case fetchExterior(trimId: Int)
+    case fetchInterior(trimId: Int, exteriorColorId: Int)
 }
 
 extension StepTarget: TargetType {
@@ -41,6 +42,8 @@ extension StepTarget: TargetType {
             return "body-types"
         case .fetchExterior:
             return "exterior-colors"
+        case .fetchInterior:
+            return "interior-colors"
         }
     }
 
@@ -63,6 +66,8 @@ extension StepTarget: TargetType {
             return .requestParameters(parameters: ["modelId": modelId])
         case let .fetchExterior(trimId):
             return .requestParameters(parameters: ["trimId": trimId])
+        case let .fetchInterior(trimId, exteriorColorId):
+            return .requestParameters(parameters: ["trimId": trimId, "exteriorColorId": exteriorColorId])
         }
     }
 
