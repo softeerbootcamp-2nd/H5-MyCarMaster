@@ -49,6 +49,7 @@ struct SubOptionDTO: Codable {
 extension Option {
     init(_ optionDTO: OptionDTO) {
         self.model = "펠리세이드"
+        self.id = optionDTO.id
         self.category = optionDTO.category
         self.name = optionDTO.name
         self.price = optionDTO.price

@@ -8,10 +8,11 @@
 import Foundation
 
 struct Interior: Hashable, Priceable {
-    let model: String
-    let name: String
-    let price: Int
-    let ratio: Int
-    let colorImgURL: URL?
-    let coloredImgURL: URL?
+    var model: String
+    var id: Int
+    var name: String
+    var price: Int
+    var ratio: Int
+    var colorImgURL: URL?
+    var coloredImgURL: URL?
 }

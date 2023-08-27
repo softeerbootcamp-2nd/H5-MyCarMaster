@@ -28,6 +28,7 @@ struct ExteriorDTO: Codable {
 extension Exterior {
     init(_ exteriorDTO: ExteriorDTO) {
         self.model = "펠리세이드"
+        self.id = exteriorDTO.id
         self.name = exteriorDTO.name
         self.price = exteriorDTO.price
         self.ratio = exteriorDTO.ratio

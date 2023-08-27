@@ -28,6 +28,7 @@ struct TrimDTO: Codable {
 extension Trim {
     init(_ trimDTO: TrimDTO) {
         self.model = "펠리세이드"
+        self.id = trimDTO.id
         self.name = trimDTO.name
         self.ratio = trimDTO.ratio
         self.description = trimDTO.description

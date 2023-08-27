@@ -8,7 +8,7 @@
 import Foundation
 
 struct Model: Hashable {
-    let id: Int
-    let name: String
-    let imageURL: URL?
+    var id: Int
+    var name: String
+    var imageURL: URL?
 }

@@ -9,6 +9,7 @@ import Foundation
 
 struct BodyType: Hashable, Priceable {
     var model: String
+    var id: Int
     var name: String
     var description: String
     var ratio: Int

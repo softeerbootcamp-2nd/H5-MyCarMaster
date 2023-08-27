@@ -28,6 +28,7 @@ struct WheelDriveDTO: Codable {
 extension WheelDrive {
     init(_ wheelDriveDTO: WheelDriveDTO) {
         self.model = "펠리세이드"
+        self.id = wheelDriveDTO.id
         self.name = wheelDriveDTO.name
         self.description = wheelDriveDTO.description
         self.ratio = wheelDriveDTO.ratio

@@ -28,6 +28,7 @@ struct BodyTypeDTO: Codable {
 extension BodyType {
     init(_ bodyTypeDTO: BodyTypeDTO) {
         self.model = "펠리세이드"
+        self.id = bodyTypeDTO.id
         self.name = bodyTypeDTO.name
         self.description = bodyTypeDTO.description
         self.ratio = bodyTypeDTO.ratio
