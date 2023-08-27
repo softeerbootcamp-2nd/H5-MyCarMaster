@@ -62,6 +62,7 @@ final class QuotationContentOptionView: UIView {
 
     private let totalPriceStackView = UIStackView().then { stackView in
         stackView.axis = .horizontal
+        stackView.distribution = .fill
     }
 
     private let totalPriceDescriptionLabel = UILabel().then { label in
@@ -73,6 +74,7 @@ final class QuotationContentOptionView: UIView {
     private let totalPriceLabel = UILabel().then { label in
         label.style = .titleLarge2(nil)
         label.textColor = .MCM.black
+        label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
     }
 
     override init(frame: CGRect) {
