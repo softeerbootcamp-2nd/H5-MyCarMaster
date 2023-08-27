@@ -12,6 +12,7 @@ final class QuotationContentOptionView: UIView {
     // MARK: View
     private let contentStackView = UIStackView().then { stackView in
         stackView.axis = .vertical
+        stackView.alignment = .fill
         stackView.spacing = 18
     }
 
@@ -42,7 +43,7 @@ final class QuotationContentOptionView: UIView {
     private let selectedOptionStackView = UIStackView().then { stackView in
         stackView.axis = .vertical
         stackView.spacing = 12
-        stackView.alignment = .center
+        stackView.alignment = .fill
         stackView.distribution = .fill
     }
 
@@ -55,7 +56,7 @@ final class QuotationContentOptionView: UIView {
     private let consideredOptionStackView = UIStackView().then { stackView in
         stackView.axis = .vertical
         stackView.spacing = 12
-        stackView.alignment = .center
+        stackView.alignment = .fill
         stackView.distribution = .fill
     }
 
