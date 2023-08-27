@@ -128,6 +128,7 @@ const OptionName = styled.p`
 `;
 
 const OptionPrice = styled.p`
+  width: 9rem;
   font-family: "HyundaiSansMedium";
   ${(props) => props.theme.fonts.Regular13};
   line-height: 1.75rem;

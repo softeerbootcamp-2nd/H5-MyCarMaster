@@ -5,6 +5,7 @@ import theme from "@styles/Theme";
 import { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { get } from "@/utils/fetch";
+import { QRCodeCanvas } from "qrcode.react";
 
 interface WrittenOptionProps {
   name: string;
@@ -86,7 +87,15 @@ function WrittenQuotation() {
           <BlueBackground />
           <QuotationMain>
             <QuotationContent>
-              <Model>팰리세이드</Model>
+              <TopContainer>
+                <Model>팰리세이드</Model>
+                <QRContainer>
+                  <QRCodeCanvas
+                    value={`https://beta.my-car-master.shop/estimates/${estimateId}`}
+                    size={80}
+                  />
+                </QRContainer>
+              </TopContainer>
               <CarImage
                 $src={`${data!.exteriorColor.coloredImgUrl}high/sprite.png`}
               />
@@ -207,6 +216,12 @@ const Container = styled.div`
   flex-direction: column;
   width: 100vw;
   height: 100vh;
+
+  @media (max-width: 800px) {
+    display: flex;
+    flex-direction: column;
+    scale: 0.4;
+  }
 `;
 
 const BlueBackground = styled.div`
@@ -214,10 +229,14 @@ const BlueBackground = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 37.5rem;
+  height: 100%;
   margin: 0;
   background: linear-gradient(180deg, #dde4f8 0%, rgba(231, 235, 246, 0) 100%);
   z-index: -1;
+
+  @media (max-width: 800px) {
+    display: none;
+  }
 `;
 
 const QuotationMain = styled.div`
@@ -233,22 +252,30 @@ const QuotationMain = styled.div`
 `;
 
 const QuotationContent = styled.div`
-  width: 59.5rem;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
 `;
 
+const TopContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`;
+
 const Model = styled.p`
   ${(props) => props.theme.fonts.Medium40};
   line-height: 2.5rem; /* 125% */
+  margin-right: 26%;
 `;
 
+const QRContainer = styled.div``;
+
 const CarImage = styled.div<{ $src: string | undefined }>`
-  width: 952px;
-  height: 515px;
+  width: 59.5rem;
+  height: 32.1875rem;
   background-image: url(${({ $src }) => $src});
   background-repeat: no-repeat;
   background-position-y: 0px;
@@ -257,8 +284,9 @@ const CarImage = styled.div<{ $src: string | undefined }>`
 
 const QuotationFooter = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  gap: 10rem;
+  align-items: center;
   margin-bottom: 3rem;
 `;
 
@@ -296,9 +324,7 @@ const Options = styled.div`
   border-bottom: 1px solid ${theme.colors.GREY3};
   width: 100%;
 `;
-const OptionResize = styled.div`
-  width: 59.5rem;
-`;
+const OptionResize = styled.div``;
 
 const CategoryContainer = styled.div`
   display: flex;
