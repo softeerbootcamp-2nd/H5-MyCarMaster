@@ -5,6 +5,7 @@
 //  Created by SEUNGMIN OH on 2023/08/14.
 //
 
+import Combine
 import UIKit
 
 import MCMNetwork
@@ -13,13 +14,34 @@ import MVIFoundation
 final class InteriorViewController: UIViewController {
 
     typealias ListCellClass = ColorListCell
+    typealias DataSource = UICollectionViewDiffableDataSource<Section, Interior>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Interior>
 
-    var dataList: [Interior] = []
+    enum Section {
+        case interior
+    }
 
-    var selectedCellIndexPath: IndexPath = IndexPath(row: 0, section: 0) {
-        didSet {
-            print(#function, selectedCellIndexPath)
-        }
+    // MARK: Property
+    var cancellables = Set<AnyCancellable>()
+
+    var selectedInterior: Interior?
+
+    private var dataSource: DataSource!
+    private func configureDataSource() {
+        dataSource = DataSource(
+            collectionView: contentView.listView,
+            cellProvider: { collectionView, indexPath, itemIdentifier in
+                guard let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: ListCellClass.reuseIdentifier,
+                    for: indexPath
+                ) as? ListCellClass else {
+                    fatalError("개발자 오류: 등록되지 않은 Cell 입니다.")
+                }
+                cell.configure(with: itemIdentifier)
+
+                return cell
+            })
+        contentView.setDataSource(dataSource)
     }
 
     private var contentView: InteriorView<ListCellClass> {
@@ -32,17 +54,13 @@ final class InteriorViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureDataSource()
         configureUI()
-#if ONLINE
-        fetchData()
-#elseif OFFLINE
-        fetchFromDisk()
-#endif
+        reactor?.action.send(.viewDidLoad)
     }
 
     private func configureUI() {
         contentView.setDelegate(self)
-        contentView.setDataSource(self)
     }
 
     override func didMove(toParent parent: UIViewController?) {
@@ -50,86 +68,74 @@ final class InteriorViewController: UIViewController {
     }
 }
 
-extension InteriorViewController {
-    private func fetchFromDisk() {
-        guard let fileURL = Bundle.main.url(forResource: "InteriorDTO.json", withExtension: nil) else { return }
-        applyData(try? Data(contentsOf: fileURL))
-    }
-
-    private func fetchData() {
-        let request = URLRequest(url: URL(string: Dependency.serverURL + "interior-colors?trimId=1&exteriorColorId=1")!)
-
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            guard error == nil else {
-                print(error?.localizedDescription)
-                return
-            }
-
-            guard let response = response as? HTTPURLResponse else {
-                print("Sever Error")
-                return
-            }
-
-            print("Interior:", response.statusCode)
-            guard 200..<300 ~= response.statusCode else {
-                return
-            }
-
-            self.applyData(data)
-        }.resume()
-    }
-
-    private func applyData(_ data: Data?) {
-        if let data,
-           let interiorDTOList = try? JSONDecoder().decode(RootDTO.self, from: data).result.interiors {
-            self.dataList = interiorDTOList.map { Interior($0) }
-            DispatchQueue.main.async {
-                self.contentView.listView.reloadData()
-            }
-        } else {
-            print("Decoding Error")
-            return
+extension InteriorViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let interior = dataSource.itemIdentifier(for: indexPath) {
+            reactor?.action.send(.interiorDidSelect(interior))
         }
     }
 }
 
-extension InteriorViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension InteriorViewController: Reactable {
+    func bindState(reactor: InteriorReactor) {
+        reactor.state.map(\.selectedInterior)
+            .dropFirst()
+            .sink { [weak self] interior in
+                if let interior {
+                    self?.selectItemFor(interior)
+                    return
+                }
 
-    func collectionView(
-        _ collectionView: UICollectionView,
-        numberOfItemsInSection section: Int
-    ) -> Int {
-        return dataList.count
+                if let firstInterior = self?.dataSource.itemIdentifier(
+                    for: .init(item: 0, section: 0)
+                ) {
+                    reactor.action.send(.interiorDidSelect(firstInterior))
+                }
+                return
+            }
+            .store(in: &cancellables)
+
+        reactor.state.map(\.interiorList)
+            .dropFirst()
+            .removeDuplicates()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] interiorList in
+                var snapshot = Snapshot()
+                snapshot.appendSections([.interior])
+                snapshot.appendItems(interiorList)
+                self?.dataSource.apply(snapshot, completion: {
+                    reactor.action.send(.dataSourceDidApply)
+                })
+            }
+            .store(in: &cancellables)
+
+        reactor.state.compactMap(\.errorDescription)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] errorDescription in
+                let alert = UIAlertController(
+                    title: "에러",
+                    message: errorDescription,
+                    preferredStyle: .alert
+                )
+                alert.addAction(.init(title: "확인", style: .default))
+                print(errorDescription)
+                self?.present(alert, animated: false)
+            }
+            .store(in: &cancellables)
+    }
+}
+
+extension InteriorViewController {
+    func selectItemFor(_ interior: Interior) {
+        guard let indexPath = dataSource.indexPath(for: interior) else { return }
+        selectItemAt(indexPath)
     }
 
-    func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath
-    ) -> UICollectionViewCell {
-
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: ListCellClass.reuseIdentifier,
-            for: indexPath
-        ) as? ListCellClass else {
-            fatalError("등록되지 않은 cell입니다.")
+    func selectItemAt(_ indexPath: IndexPath) {
+        guard dataSource?.itemIdentifier(for: indexPath) != nil else {
+            print("Error: \(indexPath)에 원소가 없음")
+            return
         }
-
-        let cellState = dataList[indexPath.row]
-        cell.configure(with: cellState)
-
-        // 프리셋을 선택한다.
-        if selectedCellIndexPath == indexPath {
-            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
-        }
-
-        return cell
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? ListCellClass else {
-            fatalError("알 수 없는 오류가 발생했습니다.")
-        }
-        guard selectedCellIndexPath != indexPath else { return }
-        selectedCellIndexPath = indexPath
+        contentView.listView.selectItem(at: indexPath, animated: true, scrollPosition: [.centeredVertically])
     }
 }

@@ -5,6 +5,7 @@
 //  Created by SEUNGMIN OH on 2023/08/12.
 //
 
+import Combine
 import UIKit
 
 import MCMNetwork
@@ -13,13 +14,34 @@ import MVIFoundation
 final class ExteriorViewController: UIViewController {
 
     typealias ListCellClass = ColorListCell
+    typealias DataSource = UICollectionViewDiffableDataSource<Section, Exterior>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Exterior>
 
-    var dataList: [Exterior] = []
+    enum Section {
+        case exterior
+    }
 
-    var selectedCellIndexPath: IndexPath = IndexPath(row: 0, section: 0) {
-        didSet {
-            print(#function, selectedCellIndexPath)
-        }
+    // MARK: Property
+    var cancellables = Set<AnyCancellable>()
+
+    var selectedExterior: Exterior?
+
+    private var dataSource: DataSource!
+    private func configureDataSource() {
+        dataSource = DataSource(
+            collectionView: contentView.listView,
+            cellProvider: { collectionView, indexPath, itemIdentifier in
+                guard let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: ListCellClass.reuseIdentifier,
+                    for: indexPath
+                ) as? ListCellClass else {
+                    fatalError("개발자 오류: 등록되지 않은 Cell 입니다.")
+                }
+                cell.configure(with: itemIdentifier)
+
+                return cell
+            })
+        contentView.setDataSource(dataSource)
     }
 
     private var contentView: ExteriorView<ListCellClass> {
@@ -32,17 +54,13 @@ final class ExteriorViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureDataSource()
         configureUI()
-#if ONLINE
-        fetchData()
-#elseif OFFLINE
-        fetchFromDisk()
-#endif
+        reactor?.action.send(.viewDidLoad)
     }
 
     private func configureUI() {
         contentView.setDelegate(self)
-        contentView.setDataSource(self)
     }
 
     override func didMove(toParent parent: UIViewController?) {
@@ -50,86 +68,74 @@ final class ExteriorViewController: UIViewController {
     }
 }
 
-extension ExteriorViewController {
-    private func fetchFromDisk() {
-        guard let fileURL = Bundle.main.url(forResource: "ExteriorDTO.json", withExtension: nil) else { return }
-        applyData(try? Data(contentsOf: fileURL))
-    }
-
-    private func fetchData() {
-        let request = URLRequest(url: URL(string: Dependency.serverURL + "exterior-colors?trimId=1")!)
-
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            guard error == nil else {
-                print(error?.localizedDescription)
-                return
-            }
-
-            guard let response = response as? HTTPURLResponse else {
-                print("Sever Error")
-                return
-            }
-
-            print("Exterior:", response.statusCode)
-            guard 200..<300 ~= response.statusCode else {
-                return
-            }
-
-            self.applyData(data)
-        }.resume()
-    }
-
-    private func applyData(_ data: Data?) {
-        if let data,
-           let exteriorDTOList = try? JSONDecoder().decode(RootDTO.self, from: data).result.exteriors {
-            DispatchQueue.main.async {
-                self.dataList = exteriorDTOList.map { Exterior($0) }
-                self.contentView.listView.reloadData()
-            }
-        } else {
-            print("Decoding Error")
-            return
+extension ExteriorViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let exterior = dataSource.itemIdentifier(for: indexPath) {
+            reactor?.action.send(.exteriorDidSelect(exterior))
         }
     }
 }
 
-extension ExteriorViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ExteriorViewController: Reactable {
+    func bindState(reactor: ExteriorReactor) {
+        reactor.state.map(\.selectedExterior)
+            .dropFirst()
+            .sink { [weak self] exterior in
+                if let exterior {
+                    self?.selectItemFor(exterior)
+                    return
+                }
 
-    func collectionView(
-        _ collectionView: UICollectionView,
-        numberOfItemsInSection section: Int
-    ) -> Int {
-        return dataList.count
+                if let firstExterior = self?.dataSource.itemIdentifier(
+                    for: .init(item: 0, section: 0)
+                ) {
+                    reactor.action.send(.exteriorDidSelect(firstExterior))
+                }
+                return
+            }
+            .store(in: &cancellables)
+
+        reactor.state.map(\.exteriorList)
+            .dropFirst()
+            .removeDuplicates()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] exteriorList in
+                var snapshot = Snapshot()
+                snapshot.appendSections([.exterior])
+                snapshot.appendItems(exteriorList)
+                self?.dataSource.apply(snapshot, completion: {
+                    reactor.action.send(.dataSourceDidApply)
+                })
+            }
+            .store(in: &cancellables)
+
+        reactor.state.compactMap(\.errorDescription)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] errorDescription in
+                let alert = UIAlertController(
+                    title: "에러",
+                    message: errorDescription,
+                    preferredStyle: .alert
+                )
+                alert.addAction(.init(title: "확인", style: .default))
+                print(errorDescription)
+                self?.present(alert, animated: false)
+            }
+            .store(in: &cancellables)
+    }
+}
+
+extension ExteriorViewController {
+    func selectItemFor(_ exterior: Exterior) {
+        guard let indexPath = dataSource.indexPath(for: exterior) else { return }
+        selectItemAt(indexPath)
     }
 
-    func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath
-    ) -> UICollectionViewCell {
-
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: ListCellClass.reuseIdentifier,
-            for: indexPath
-        ) as? ListCellClass else {
-            fatalError("등록되지 않은 cell입니다.")
+    func selectItemAt(_ indexPath: IndexPath) {
+        guard dataSource?.itemIdentifier(for: indexPath) != nil else {
+            print("Error: \(indexPath)에 원소가 없음")
+            return
         }
-
-        let cellState = dataList[indexPath.row]
-        cell.configure(with: cellState)
-
-        // 프리셋을 선택한다.
-        if selectedCellIndexPath == indexPath {
-            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
-        }
-
-        return cell
-    }
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? ListCellClass else {
-            fatalError("알 수 없는 오류가 발생했습니다.")
-        }
-        guard selectedCellIndexPath != indexPath else { return }
-        selectedCellIndexPath = indexPath
+        contentView.listView.selectItem(at: indexPath, animated: true, scrollPosition: [.centeredVertically])
     }
 }
