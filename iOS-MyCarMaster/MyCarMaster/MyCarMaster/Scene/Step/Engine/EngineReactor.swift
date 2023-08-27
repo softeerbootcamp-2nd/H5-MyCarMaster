@@ -20,12 +20,14 @@ final class EngineReactor: Reactor {
     }
 
     enum Mutation {
+        case setLoading(Bool)
         case fetchEngineList([Engine])
         case fetchSelectedEngine(Engine?)
         case alertError(String)
     }
 
     struct State {
+        var isLoading: Bool
         var engineList: [Engine]
         var selectedEngine: Engine?
         var errorDescription: String?
@@ -48,7 +50,11 @@ final class EngineReactor: Reactor {
     func mutate(action: Action) -> AnyPublisher<Mutation, Never> {
         switch action {
         case .viewDidLoad:
-            return fetchEngineList()
+            return [
+                Just(Mutation.setLoading(true)).eraseToAnyPublisher(),
+                fetchEngineList(),
+                Just(Mutation.setLoading(false)).eraseToAnyPublisher(),
+            ].concatenate()
         case let .engineDidSelect(engine):
             return updateEngine(engine)
         case .dataSourceDidApply:
@@ -75,6 +81,8 @@ final class EngineReactor: Reactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
         switch mutation {
+        case let .setLoading(isLoading):
+            newState.isLoading = isLoading
         case let .fetchEngineList(engineList):
             newState.engineList = engineList
         case let .fetchSelectedEngine(engine):

@@ -72,7 +72,7 @@ extension StepRouter {
             return trimViewController
         case .engine:
             let engineReactor = EngineReactor(
-                initialState: .init(engineList: []),
+                initialState: .init(isLoading: false, engineList: []),
                 estimationManager: estimationManager,
                 stepNetworkProvider: stepNetworkProvider
             )
