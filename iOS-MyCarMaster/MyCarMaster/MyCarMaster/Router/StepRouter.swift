@@ -125,7 +125,8 @@ extension StepRouter {
             optionViewController.reactor = optionReactor
             return optionViewController
         case .quotation:
-            return QuotationViewController()
+            let quotation = Quotation(estimationManager!.estimation)
+            return QuotationViewController(quotation: quotation)
         }
     }
 }
