@@ -142,6 +142,7 @@ extension QuotationContentOptionView {
             let optionItemView = QuotationContentOptionItemView()
             optionItemView.configure(with: option)
             optionItemView.selectButtonStyle()
+            optionItemView.opaquePriceLabel()
             consideredOptionStackView.addArrangedSubview(optionItemView)
         }
 

@@ -80,4 +80,8 @@ extension QuotationContentOptionItemView {
         actionButton.configureUI(titleColor: .MCM.white, backgroundColor: .MCM.gold3)
         actionButton.setStyledTitle("제외하기", for: .normal)
     }
+
+    func opaquePriceLabel() {
+        priceLabel.textColor = .MCM.grey2
+    }
 }
