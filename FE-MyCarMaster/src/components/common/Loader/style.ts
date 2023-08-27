@@ -5,6 +5,7 @@ export const FlexBlur = styled(Flex)`
   width: 100%;
   height: 100%;
   position: absolute;
+  z-index: 999;
 
   //center
   top: 50%;
@@ -14,10 +15,8 @@ export const FlexBlur = styled(Flex)`
 `;
 
 export const LoaderSpinner = styled.div`
-  // size
   width: 4rem;
   height: 4rem;
-  z-index: 999;
 `;
 
 export const LoaderImage = styled(Image)`
