@@ -182,12 +182,12 @@ class ConsultControllerTest {
 	}
 
 	@Nested
-	@DisplayName("getConsultings")
-	class GetConsultings {
+	@DisplayName("getConsultings Test")
+	class GetConsulting {
 
 		@Test
 		@DisplayName("상담 신청 내역을 조회합니다")
-		void GetConsultings() throws Exception {
+		void getConsultings() throws Exception {
 			//given
 			ClientResponseDto client = ClientResponseDto.builder()
 				.name("이름")
