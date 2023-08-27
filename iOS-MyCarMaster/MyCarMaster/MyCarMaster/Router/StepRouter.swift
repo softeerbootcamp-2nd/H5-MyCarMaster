@@ -71,7 +71,14 @@ extension StepRouter {
             trimViewController.reactor = trimReactor
             return trimViewController
         case .engine:
-            return EngineViewController()
+            let engineReactor = EngineReactor(
+                initialState: .init(engineList: []),
+                estimationManager: estimationManager,
+                stepNetworkProvider: stepNetworkProvider
+            )
+            let engineViewController = EngineViewController()
+            engineViewController.reactor = engineReactor
+            return engineViewController
         case .wheelDrive:
             return WheelDriveViewController()
         case .bodyType:
