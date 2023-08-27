@@ -138,6 +138,7 @@ extension QuotationView {
         let quotation = Quotation(
             trim: Trim(
                 model: "펠리세이드",
+                id: 0,
                 name: "Le Blanc",
                 ratio: 0,
                 description: "인기있는 주요 기능을 포함한 가성비 트림",
@@ -146,6 +147,7 @@ extension QuotationView {
             ),
             engine: Engine(
                 model: "펠리세이드",
+                id: 0,
                 name: "디젤 2.2 엔진",
                 ratio: 60,
                 description: "우수한 가속 성능으로 안정적이고 엔진의 진동이 적어 \\n조용한 드라이빙이 가능합니다.",
@@ -158,6 +160,7 @@ extension QuotationView {
             ),
             wheelDrive: WheelDrive(
                 model: "펠리세이드",
+                id: 0,
                 name: "2WD",
                 description: "엔진 동력이 전후륜 중 한쪽으로만 전달돼 움직입니다. 차체가 가벼워 연료 효율이 높습니다.",
                 ratio: 60,
@@ -165,8 +168,9 @@ extension QuotationView {
                 imageURL: URL(string: "https://h5-image.s3.ap-northeast-2.amazonaws.com/palisade/wheel-drive/2-wd.png")
             ),
             bodyType: BodyType(
-                model: "펠리세이드"
-                , name: "7인승",
+                model: "펠리세이드",
+                id: 0,
+                name: "7인승",
                 description: "8인승 시트에서 2열 가운데 시트를 없애 2열 탑승객의 편의는 물론, 3열 탑승객의 승하차가 편리합니다.",
                 ratio: 50,
                 price: 0,
@@ -174,6 +178,7 @@ extension QuotationView {
             ),
             exterior: Exterior(
                 model: "펠리세이드",
+                id: 0,
                 name: "어비스 블랙 펄",
                 price: 0,
                 ratio: 30,
@@ -182,6 +187,7 @@ extension QuotationView {
             ),
             interior: Interior(
                 model: "펠리세이드",
+                id: 0,
                 name: "퀼팅천연 (블랙)",
                 price: 0,
                 ratio: 60,
@@ -191,6 +197,7 @@ extension QuotationView {
             selectedOptions: [
                 Option(
                     model: "펠리세이드",
+                    id: 0,
                     category: "안전",
                     name: "빌트인 캠(보조배터리 포함)",
                     price: 690000,
@@ -203,6 +210,7 @@ extension QuotationView {
                 ),
                 Option(
                     model: "펠리세이드",
+                    id: 0,
                     category: "안전",
                     name: "빌트인 캠(보조배터리 포함)",
                     price: 690000,
@@ -217,6 +225,7 @@ extension QuotationView {
             consideredOptions: [
                 Option(
                     model: "펠리세이드",
+                    id: 0,
                     category: "안전",
                     name: "빌트인 캠(보조배터리 포함)",
                     price: 690000,

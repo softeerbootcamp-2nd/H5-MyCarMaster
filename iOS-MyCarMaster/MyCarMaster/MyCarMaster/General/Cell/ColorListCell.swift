@@ -119,36 +119,3 @@ extension ColorListCell {
         priceLabel.setText("+\(state.price.formatted(style: .currency))")
     }
 }
-
-#if canImport(SwiftUI) && DEBUG
-import SwiftUI
-
-struct ColorListCellPreviews_Previews: PreviewProvider {
-    static var previews: some View {
-        VStack {
-            let exterior = Exterior(model: "펠리세이드", name: "어비스블랙펄", price: 10000000, ratio: 54, colorImgURL: nil, coloredImgURL: nil)
-            UIViewPreview {
-                let cell = ColorListCell()
-                cell.configure(with: exterior)
-                return cell
-            }
-            UIViewPreview {
-                let cell = ColorListCell()
-                cell.configure(with: exterior)
-                cell.selectedStyle()
-                return cell
-            }
-            UIViewPreview {
-                let cell = ColorListCell()
-                cell.configure(with: exterior)
-                return cell
-            }
-            UIViewPreview {
-                let cell = ColorListCell()
-                cell.configure(with: exterior)
-                return cell
-            }
-        }
-    }
-}
-#endif
