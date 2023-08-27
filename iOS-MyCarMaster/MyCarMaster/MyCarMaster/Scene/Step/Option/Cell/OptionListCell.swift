@@ -9,6 +9,10 @@ import UIKit
 
 final class OptionListCell: UICollectionViewCell, CellStyleSelectable {
 
+    static let selectButtonDidTap = Notification.Name("selectButtonDidTap")
+    static let considerButtonDidTap = Notification.Name("considerButtonDidTap")
+    static let unselectButtonDidTap = Notification.Name("unselectButtonDidTap")
+
     // MARK: Property
     private var optionState: OptionListCellMainState?
 
@@ -115,6 +119,7 @@ final class OptionListCell: UICollectionViewCell, CellStyleSelectable {
         configureUI()
         configureLayout()
         addSelectionAction()
+        addTarget()
     }
 
     required init?(coder: NSCoder) {
@@ -129,6 +134,30 @@ final class OptionListCell: UICollectionViewCell, CellStyleSelectable {
         unselectedStyle()
         updateUIForExpand()
         updateUIIfExpandable()
+    }
+}
+
+// MARK: - Action
+extension OptionListCell {
+    private func addTarget() {
+        appendButton.addTarget(nil, action: #selector(selectButtonDidTap), for: .touchUpInside)
+        considerButton.addTarget(nil, action: #selector(considerButtonDidTap), for: .touchUpInside)
+        removeButton.addTarget(nil, action: #selector(unselectButtonDidTap), for: .touchUpInside)
+    }
+
+    @objc
+    func selectButtonDidTap() {
+        NotificationCenter.default.post(name: Self.selectButtonDidTap, object: appendButton, userInfo: ["cell": self])
+    }
+
+    @objc
+    func considerButtonDidTap() {
+        NotificationCenter.default.post(name: Self.considerButtonDidTap, object: considerButton, userInfo: ["cell": self])
+    }
+
+    @objc
+    func unselectButtonDidTap() {
+        NotificationCenter.default.post(name: Self.unselectButtonDidTap, object: removeButton, userInfo: ["cell": self])
     }
 }
 

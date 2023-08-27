@@ -90,6 +90,7 @@
 		B59F0B722A9BB7DC00E444C6 /* BodyTypeReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F0B712A9BB7DC00E444C6 /* BodyTypeReactor.swift */; };
 		B59F0B742A9BBA1A00E444C6 /* ExteriorReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F0B732A9BBA1A00E444C6 /* ExteriorReactor.swift */; };
 		B59F0B762A9BBA5500E444C6 /* InteriorReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F0B752A9BBA5500E444C6 /* InteriorReactor.swift */; };
+		B59F0B782A9BBD1600E444C6 /* OptionReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F0B772A9BBD1600E444C6 /* OptionReactor.swift */; };
 		B5A600FE2A81E1FC00CF2983 /* MCMCombineExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */; };
 		B5A600FF2A81E1FC00CF2983 /* MCMCombineExtension.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5B142312A960B40007BB426 /* SpriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B142302A960B40007BB426 /* SpriteViewController.swift */; };
@@ -280,6 +281,7 @@
 		B59F0B712A9BB7DC00E444C6 /* BodyTypeReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyTypeReactor.swift; sourceTree = "<group>"; };
 		B59F0B732A9BBA1A00E444C6 /* ExteriorReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExteriorReactor.swift; sourceTree = "<group>"; };
 		B59F0B752A9BBA5500E444C6 /* InteriorReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteriorReactor.swift; sourceTree = "<group>"; };
+		B59F0B772A9BBD1600E444C6 /* OptionReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionReactor.swift; sourceTree = "<group>"; };
 		B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMCombineExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B142302A960B40007BB426 /* SpriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteViewController.swift; sourceTree = "<group>"; };
 		B5B142322A967E7E007BB426 /* SpriteRotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteRotationView.swift; sourceTree = "<group>"; };
@@ -822,6 +824,7 @@
 				B5C079022A8BD32B00747B11 /* Cell */,
 				B5E233FC2A8B4B0F0013BEB1 /* OptionView.swift */,
 				B59B201C2A8B666A009E7868 /* OptionViewController.swift */,
+				B59F0B772A9BBD1600E444C6 /* OptionReactor.swift */,
 				B5D5D4142A8D559600A4DA3C /* SubOptionButton.swift */,
 			);
 			path = Option;
@@ -1086,6 +1089,7 @@
 				B5DD65252A89363C00B44F61 /* Trim+.swift in Sources */,
 				B5DD650E2A880A4100B44F61 /* UIImage+Merge.swift in Sources */,
 				B5BBB3532A89C7ED00AAFC84 /* Interior+.swift in Sources */,
+				B59F0B782A9BBD1600E444C6 /* OptionReactor.swift in Sources */,
 				B5DD64F52A87844A00B44F61 /* ExteriorDTO.swift in Sources */,
 				B510BBDB2A840BD4009E5752 /* Formatter.swift in Sources */,
 				B5DD65272A8937A500B44F61 /* Engine+.swift in Sources */,

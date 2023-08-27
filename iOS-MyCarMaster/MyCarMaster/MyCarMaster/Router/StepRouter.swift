@@ -116,7 +116,14 @@ extension StepRouter {
             interiorViewController.reactor = interiorReactor
             return interiorViewController
         case .option:
-            return OptionViewController()
+            let optionReactor = OptionReactor(
+                initialState: .init(isLoading: false, optionList: [], selectedOptions: [], consideredOptions: []),
+                estimationManager: estimationManager,
+                stepNetworkProvider: stepNetworkProvider
+            )
+            let optionViewController = OptionViewController()
+            optionViewController.reactor = optionReactor
+            return optionViewController
         case .quotation:
             return QuotationViewController()
         }
