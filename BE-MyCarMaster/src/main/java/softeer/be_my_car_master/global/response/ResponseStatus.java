@@ -14,6 +14,8 @@ public enum ResponseStatus {
 	INVALID_ESTIMATE(4200, "잘못된 견적서입니다. 견적서 내용을 다시 확인해주세요."),
 	INVALID_ESTIMATE_ID(4201, "해당 ID와 일치하는 견적서가 존재하지 않습니다."),
 
+	CAR_MASTER_NOT_FOUND(4300, "존재하지 않는 카마스터입니다."),
+
 	INTERNAL_SERVER_ERROR(5000, "서버 내부에서 문제가 발생했습니다.");
 
 	private final int code;
