@@ -10,7 +10,7 @@ import {
   MapModal,
 } from "@common/index";
 import theme from "@styles/Theme";
-import FindCarmasterTooltip from "@assets/icons/FindCarmasterTooltip.png";
+import FindCarmasterTooltip from "@assets/images/FindCarmasterTooltip.png";
 import { useQuotationState } from "@contexts/QuotationContext";
 import { Fragment, useState } from "react";
 import { ModalType } from "@constants/Modal.constants";
