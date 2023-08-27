@@ -1,5 +1,5 @@
 import theme from "@styles/Theme";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   AdminLogin,
   AdminLoginTitle,
@@ -12,6 +12,8 @@ import {
 import { Flex } from "@styles/core.style";
 import { Button } from "@common/index";
 import { useNavigate } from "react-router-dom";
+import { AdminView } from "@layout/index";
+import { get } from "@utils/fetch";
 
 const STATUS_TEXT = {
   SUCCESS: {
@@ -36,13 +38,85 @@ const STATUS_TEXT = {
   },
 };
 
+const tempClientList = [
+  {
+    id: 1,
+    estimateUrl:
+      "https://beta.my-car-master.shop/estimates/652baec3-eba2-486b-953f-ca4869f2b6d4",
+    client: {
+      name: "김민수",
+      phone: "010-1234-5678",
+      email: "abc@naver.com",
+    },
+  },
+  {
+    id: 2,
+    estimateUrl:
+      "https://beta.my-car-master.shop/estimates/652baec3-eba2-486b-953f-ca4869f2b6d4",
+    client: {
+      name: "고구려",
+      phone: "010-1234-9999",
+      email: "abdd@gamil.com",
+    },
+  },
+  {
+    id: 3,
+    estimateUrl:
+      "https://beta.my-car-master.shop/estimates/652baec3-eba2-486b-953f-ca4869f2b6d4",
+    client: {
+      name: "박민수",
+      phone: "010-1234-9999",
+      email: "abdd@gamil.com",
+    },
+  },
+  {
+    id: 4,
+    estimateUrl:
+      "https://beta.my-car-master.shop/estimates/652baec3-eba2-486b-953f-ca4869f2b6d4",
+    client: {
+      name: "정민수",
+      phone: "010-1234-9999",
+      email: "abdd@gamil.com",
+    },
+  },
+  {
+    id: 5,
+    estimateUrl:
+      "https://beta.my-car-master.shop/estimates/652baec3-eba2-486b-953f-ca4869f2b6d4",
+    client: {
+      name: "유민수",
+      phone: "010-1234-9999",
+      email: "abdd@gamil.com",
+    },
+  },
+  {
+    id: 6,
+    estimateUrl:
+      "https://beta.my-car-master.shop/estimates/652baec3-eba2-486b-953f-ca4869f2b6d4",
+    client: {
+      name: "양민수",
+      phone: "010-1234-9999",
+      email: "abdd@gamil.com",
+    },
+  },
+];
+
 export default function Admin() {
   const [isOpen, setIsOpen] = useState(true);
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [statusEmail, setStatusEmail] = useState(STATUS_TEXT.NONE);
   const [statusPhoneNumber, setStatusPhoneNumber] = useState(STATUS_TEXT.NONE);
+  const [isLogin, setIsLogin] = useState(false);
   const navigate = useNavigate();
+
+  const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
+
+  // focus input
+  useEffect(() => {
+    const input = document.querySelector("input");
+    input?.focus();
+  }, []);
 
   const isGoHomeHandler = () => {
     navigate("/");
@@ -53,10 +127,23 @@ export default function Admin() {
       statusEmail.status === "success" &&
       statusPhoneNumber.status === "success"
     ) {
-      console.log(email, phoneNumber);
-      // 여기서 로그인 처리
-      setIsOpen(false);
+      get(`${SERVER_URL}/consultings?email=${email}&phone=${phoneNumber}`)
+        .then((res) => {
+          console.log(res);
+          if (res.status === 200) {
+            setIsOpen(false);
+            setIsLogin(true);
+            console.log("관리자임");
+          } else {
+            console.log("관리자가 아님");
+          }
+        })
+        .catch(() => {
+          console.log("관리자가 아님");
+        });
     }
+    setIsOpen(false);
+    setIsLogin(true);
   };
 
   const ChangeTextHandler = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -159,11 +246,7 @@ export default function Admin() {
           </AdminLogin>
         </ModalOverlay>
       )}
-      {!isOpen && (
-        <Flex $flexDirection="column" $gap="1rem">
-          Data ...
-        </Flex>
-      )}
+      {!isOpen && isLogin && <AdminView clientList={tempClientList} />}
     </Flex>
   );
 }
