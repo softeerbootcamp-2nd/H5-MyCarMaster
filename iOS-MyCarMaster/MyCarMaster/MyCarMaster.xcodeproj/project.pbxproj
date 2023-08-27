@@ -88,6 +88,8 @@
 		B59F0B6C2A9B418900E444C6 /* EngineReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F0B6B2A9B418900E444C6 /* EngineReactor.swift */; };
 		B59F0B702A9BB46100E444C6 /* WheelDriveReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F0B6F2A9BB46100E444C6 /* WheelDriveReactor.swift */; };
 		B59F0B722A9BB7DC00E444C6 /* BodyTypeReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F0B712A9BB7DC00E444C6 /* BodyTypeReactor.swift */; };
+		B59F0B742A9BBA1A00E444C6 /* ExteriorReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F0B732A9BBA1A00E444C6 /* ExteriorReactor.swift */; };
+		B59F0B762A9BBA5500E444C6 /* InteriorReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F0B752A9BBA5500E444C6 /* InteriorReactor.swift */; };
 		B5A600FE2A81E1FC00CF2983 /* MCMCombineExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */; };
 		B5A600FF2A81E1FC00CF2983 /* MCMCombineExtension.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5B142312A960B40007BB426 /* SpriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B142302A960B40007BB426 /* SpriteViewController.swift */; };
@@ -276,6 +278,8 @@
 		B59F0B6B2A9B418900E444C6 /* EngineReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineReactor.swift; sourceTree = "<group>"; };
 		B59F0B6F2A9BB46100E444C6 /* WheelDriveReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelDriveReactor.swift; sourceTree = "<group>"; };
 		B59F0B712A9BB7DC00E444C6 /* BodyTypeReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyTypeReactor.swift; sourceTree = "<group>"; };
+		B59F0B732A9BBA1A00E444C6 /* ExteriorReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExteriorReactor.swift; sourceTree = "<group>"; };
+		B59F0B752A9BBA5500E444C6 /* InteriorReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteriorReactor.swift; sourceTree = "<group>"; };
 		B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMCombineExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B142302A960B40007BB426 /* SpriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteViewController.swift; sourceTree = "<group>"; };
 		B5B142322A967E7E007BB426 /* SpriteRotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteRotationView.swift; sourceTree = "<group>"; };
@@ -688,6 +692,7 @@
 			children = (
 				B570C0F92A89ADA7000E9B75 /* InteriorView.swift */,
 				B5BBB34E2A89C74C00AAFC84 /* InteriorViewController.swift */,
+				B59F0B752A9BBA5500E444C6 /* InteriorReactor.swift */,
 			);
 			path = Interior;
 			sourceTree = "<group>";
@@ -772,6 +777,7 @@
 			children = (
 				B5DD64EE2A877DDD00B44F61 /* ExteriorView.swift */,
 				B5DD64F02A87833200B44F61 /* ExteriorViewController.swift */,
+				B59F0B732A9BBA1A00E444C6 /* ExteriorReactor.swift */,
 			);
 			path = Exterior;
 			sourceTree = "<group>";
@@ -1092,11 +1098,13 @@
 				B53C3C542A856DF00019ECA1 /* UIView+Extension.swift in Sources */,
 				B5DD64F32A8783D800B44F61 /* Exterior.swift in Sources */,
 				B550C0D52A8FF4440068670D /* SeparatorView.swift in Sources */,
+				B59F0B742A9BBA1A00E444C6 /* ExteriorReactor.swift in Sources */,
 				B58A323B2A7C0B35005FC831 /* OnboardingViewController.swift in Sources */,
 				B5B142332A967E7E007BB426 /* SpriteRotationView.swift in Sources */,
 				B56A765F2A83EFB000F7E3EF /* BasicListCell.swift in Sources */,
 				B570C0FA2A89ADA7000E9B75 /* InteriorView.swift in Sources */,
 				B500C77F2A8FCA5F007724F3 /* QuotationContentItemView.swift in Sources */,
+				B59F0B762A9BBA5500E444C6 /* InteriorReactor.swift in Sources */,
 				B55283E42A9238B400E68744 /* StepProgressView.swift in Sources */,
 				B50C7E4C2A790279005AFE0B /* AppDelegate.swift in Sources */,
 				B5D1E2052A8EDF7600DAE384 /* QuotationView.swift in Sources */,
