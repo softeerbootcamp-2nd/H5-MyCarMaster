@@ -26,7 +26,7 @@ export const Message = styled.p`
 
 export const SubMessage = styled.p`
   padding: 0rem 2.5rem 1.125rem 2.5rem;
-  ${(props) => props.theme.fonts.Medium9};
+  ${(props) => props.theme.fonts.Medium8};
   color: ${(props) => props.theme.colors.WHITE};
   opacity: 0.6;
 `;

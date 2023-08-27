@@ -10,7 +10,7 @@ import {
   MapModal,
 } from "@common/index";
 import theme from "@styles/Theme";
-import findCarmasterTooltip from "@assets/tooltips/FindCarmasterTooltip.png";
+import FindCarmasterTooltip from "@assets/tooltips/FindCarmasterTooltip.png";
 import { useQuotationState } from "@contexts/QuotationContext";
 import { Fragment, useState } from "react";
 import { ModalType } from "@constants/Modal.constants";
@@ -115,7 +115,7 @@ function Quotation() {
             <SumPrice>{getTotalPrice().toLocaleString("ko-KR")}원</SumPrice>
           </PriceContainer>
           <ButtonContainer>
-            <ToolTip src={findCarmasterTooltip} $showTooltip={confirmClicked} />
+            <ToolTip src={FindCarmasterTooltip} $showTooltip={confirmClicked} />
             {!isConfirmModalOpen && (
               <Button
                 $x={12}
