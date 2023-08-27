@@ -8,7 +8,7 @@ import { useCarPaintState } from "@contexts/CarPaintContext";
 import filterOptionCategory from "@utils/Option/filterOptionCategory";
 import { categories } from "@constants/Option.constants";
 import { OptionType, OptionState } from "types/options.types";
-import OptionCategoryToolTip from "@assets/images/OptionCategoryToolTip.png";
+import OptionCategoryTooltip from "@assets/images/OptionCategoryTooltip.png";
 import useFetch from "@hooks/useFetch";
 import theme from "@styles/Theme";
 
@@ -129,7 +129,7 @@ export default function OptionContent() {
             $height="auto"
             $top="92%"
             $left="45%"
-            src={OptionCategoryToolTip}
+            src={OptionCategoryTooltip}
           />
         )}
       </Flex>
