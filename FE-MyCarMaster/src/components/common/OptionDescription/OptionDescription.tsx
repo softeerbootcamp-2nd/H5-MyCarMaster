@@ -107,7 +107,7 @@ const MainOptionContainer = styled.div`
 `;
 
 const MainOptionName = styled.p`
-  ${(props) => props.theme.fonts.Bold20};
+  ${(props) => props.theme.fonts.Medium20};
 `;
 
 const Summary = styled.p`

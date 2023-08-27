@@ -80,6 +80,7 @@ export const Icon = styled.div<{ $isOpen: boolean }>`
   background-image: url(${(props) => (props.$isOpen ? AngleUp : AngleDown)});
   background-repeat: no-repeat;
   background-position: center;
+  cursor: pointer;
 `;
 
 export const OptionItem = styled.div<{ $isOpen: boolean }>`

@@ -1,12 +1,12 @@
 import { styled } from "styled-components";
-import theme from "../../../styles/Theme";
+import theme from "@styles/Theme";
 import ProgressBar from "./ProgressBar";
 import {
   MAX_FUEL,
   MAX_POWER,
   MAX_TORQUE,
-} from "../../../constants/Graph.constants";
-import { useDetailState } from "../../../contexts/DetailContext";
+} from "@constants/Graph.constants";
+import { useDetailState } from "@contexts/DetailContext";
 
 export type ValueProps = {
   power?: number;
@@ -98,7 +98,7 @@ const Unit = styled.p`
 `;
 
 const ValueContainer = styled.div<{ $value: ValueProps }>`
-  ${(props) => props.theme.fonts.Bold25}
+  ${(props) => props.theme.fonts.Regular25}
   color: ${(props) =>
     props.$value.power !== undefined
       ? theme.colors.NAVYBLUE5

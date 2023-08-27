@@ -23,13 +23,11 @@ export const CompleteContainer = styled.div`
 `;
 
 export const Text = styled.p`
-  font-family: "HyundaiSansRegular";
-  font-size: 2rem;
+  ${(props) => props.theme.fonts.Medium20};
 `;
 
 export const SubText = styled.p`
-  font-family: "HyundaiSansRegular";
-  font-size: 1rem;
+  ${(props) => props.theme.fonts.Regular10};
   margin-top: 1rem;
 `;
 

@@ -74,8 +74,5 @@ export const BackButton = styled.button`
   height: 2rem;
 
   color: ${theme.colors.NAVYBLUE5};
-  font-family: "HyundaiSansRegular";
-  font-size: 0.875rem;
-  font-style: normal;
-  font-weight: 500;
+  ${(props) => props.theme.fonts.Regular9};
 `;

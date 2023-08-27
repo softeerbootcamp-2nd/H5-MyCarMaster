@@ -163,10 +163,7 @@ const TrimNameContainer = styled.div`
 `;
 
 const TrimName = styled.p`
-  font-family: "HyundaiSansMedium";
-  font-size: 2rem;
-  font-style: normal;
-  font-weight: 500;
+  ${(props) => props.theme.fonts.Medium20};
 `;
 
 const CloseButton = styled.button`
@@ -178,11 +175,7 @@ const CloseButton = styled.button`
 `;
 
 const TrimDescription = styled.p`
-  font-family: "HyundaiSansRegular";
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 400;
-
+  ${(props) => props.theme.fonts.Regular10};
   height: 2rem;
 `;
 

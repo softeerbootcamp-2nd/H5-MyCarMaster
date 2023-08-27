@@ -3,6 +3,7 @@ export type QuotationType = {
   name: string;
   price: number;
   imgUrl?: string;
+  coloredImgUrl?: string;
   category?: string;
   description?: string;
 };
@@ -58,6 +59,7 @@ export type QuotationAction = {
     name?: string | undefined;
     price?: number | undefined;
     imgUrl?: string;
+    coloredImgUrl?: string;
     category?: string;
     description?: string;
     optionList?: QuotationType[];

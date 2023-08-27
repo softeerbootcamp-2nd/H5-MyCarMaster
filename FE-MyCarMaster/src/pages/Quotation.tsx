@@ -1,19 +1,21 @@
 import styled, { css, keyframes } from "styled-components";
 import { Header } from "../components";
-import dark_logo from "../assets/images/dark_logo.svg";
-import NavigationList from "../components/common/NavigationList/NavigationList";
-import CarRotation from "../components/common/CarRotation/CarRotation";
-import Button from "../components/common/Button/Button";
-import theme from "../styles/Theme";
-import QuotationList from "../components/common/QuotationList/QuotationList";
-import findCarmasterTooltip from "../assets/images/FindCarmasterTooltip.png";
-import { useQuotationState } from "../contexts/QuotationContext";
+import dark_logo from "@assets/images/dark_logo.svg";
+import {
+  NavigationList,
+  SpriteCarRotation,
+  Button,
+  QuotationList,
+  Modals,
+  MapModal,
+} from "@common/index";
+import theme from "@styles/Theme";
+import FindCarmasterTooltip from "@assets/images/FindCarmasterTooltip.png";
+import { useQuotationState } from "@contexts/QuotationContext";
 import { Fragment, useState } from "react";
-import { Modals } from "../components/common/Modals/Modals";
-import { ModalType } from "../constants/Modal.constants";
-import { post } from "../utils/fetch";
-import { QuotationType } from "../types/quotation.types";
-import MapModal from "../components/common/MapModal/MapModal";
+import { ModalType } from "@constants/Modal.constants";
+import { post } from "@utils/fetch";
+import { QuotationType } from "types/quotation.types";
 
 function Quotation() {
   const { trimQuotation, detailQuotation, carPaintQuotation, optionQuotation } =
@@ -100,7 +102,9 @@ function Quotation() {
             </MainText>
             <SubText>카마스터 찾기를 통해 구매 상담을 할 수 있어요</SubText>
             <AnimationContainer>
-              <CarRotation $isQuotation={true} />
+              <SpriteCarRotation
+                $imgUrl={carPaintQuotation.exteriorColorQuotation.coloredImgUrl}
+              />
             </AnimationContainer>
           </QuotationContent>
           <NavigationList confirm={confirm} />
@@ -111,16 +115,19 @@ function Quotation() {
             <SumPrice>{getTotalPrice().toLocaleString("ko-KR")}원</SumPrice>
           </PriceContainer>
           <ButtonContainer>
-            <ToolTip src={findCarmasterTooltip} $showTooltip={confirmClicked} />
-            <Button
-              $x={12}
-              $y={2.25}
-              $backgroundcolor={`${theme.colors.WHITE}`}
-              $textcolor={`${theme.colors.NAVYBLUE5}`}
-              $bordercolor={`${theme.colors.NAVYBLUE5}`}
-              text="확정하기"
-              handleClick={() => setIsConfirmModalOpen(true)}
-            />
+            <ToolTip src={FindCarmasterTooltip} $showTooltip={confirmClicked} />
+            {!isConfirmModalOpen && (
+              <Button
+                $x={12}
+                $y={2.25}
+                $backgroundcolor={`${theme.colors.WHITE}`}
+                $textcolor={`${theme.colors.NAVYBLUE5}`}
+                $bordercolor={`${theme.colors.NAVYBLUE5}`}
+                text="확정하기"
+                handleClick={() => setIsConfirmModalOpen(true)}
+              />
+            )}
+
             <Button
               $x={12}
               $y={2.25}
@@ -236,18 +243,12 @@ const QuotationContent = styled.div`
 `;
 
 const MainText = styled.p`
-  font-family: "HyundaiSansBold";
-  font-size: 2rem;
-  font-style: normal;
-  font-weight: 500;
+  ${(props) => props.theme.fonts.Medium20};
   line-height: 2.5rem; /* 125% */
 `;
 
 const SubText = styled.p`
-  font-family: "HyundaiSansRegular";
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 400;
+  ${(props) => props.theme.fonts.Regular10};
   line-height: 1.5rem; /* 150% */
 `;
 
@@ -272,18 +273,12 @@ const PriceContainer = styled.div`
 `;
 
 const Price = styled.p`
-  font-family: "HyundaiSansRegular";
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 700;
+  ${(props) => props.theme.fonts.Regular10};
   line-height: 1.5rem;
 `;
 
 const SumPrice = styled.p`
-  font-family: "HyundaiSansMedium";
-  font-size: 1.75rem;
-  font-style: normal;
-  font-weight: 500;
+  ${(props) => props.theme.fonts.Medium17};
   line-height: 2.25rem;
 `;
 
@@ -298,7 +293,7 @@ const ButtonContainer = styled.div`
 const ToolTip = styled.img<{ $showTooltip: boolean }>`
   width: 12.4375rem;
   position: absolute;
-  top: -80%;
+  top: -100%;
   left: 0;
   display: none;
 

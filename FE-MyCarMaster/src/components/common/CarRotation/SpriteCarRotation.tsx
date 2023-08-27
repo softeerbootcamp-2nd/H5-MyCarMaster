@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { styled } from "styled-components";
+import UnderBar from "@assets/icons/UnderBar.svg";
 
 type SpriteCarRotationProps = {
   $imgUrl: string | undefined;
@@ -15,14 +16,17 @@ export default function SpriteCarRotation({ $imgUrl }: SpriteCarRotationProps) {
   const [currentFrame, setCurrentFrame] = useState(0);
   const [isMouseDown, setIsMouseDown] = useState(false);
   const [beforeX, setBeforeX] = useState(0);
+  const [showText, setShowText] = useState(true);
 
   const turnRight = () => {
+    setShowText(false);
     currentFrame === totalFrames
       ? setCurrentFrame(0)
       : setCurrentFrame((currentFrame) => currentFrame + 1);
   };
 
   const turnLeft = () => {
+    setShowText(false);
     currentFrame === 0
       ? setCurrentFrame(totalFrames)
       : setCurrentFrame((currentFrame) => currentFrame - 1);
@@ -35,6 +39,14 @@ export default function SpriteCarRotation({ $imgUrl }: SpriteCarRotationProps) {
     }
   };
 
+  useEffect(() => {
+    if (!$imgUrl) return;
+    setShowText(true);
+    return () => {
+      setShowText(false);
+    };
+  }, [$imgUrl]);
+
   return (
     <Container>
       <ImageContainer
@@ -43,6 +55,8 @@ export default function SpriteCarRotation({ $imgUrl }: SpriteCarRotationProps) {
         onMouseMove={turnCar}
         onMouseLeave={() => setIsMouseDown(false)}
       >
+        <UnderBarContainer src={UnderBar} />
+        {showText && <Text>360도 돌려보세요!</Text>}
         <Image
           $src={$imgUrl}
           $width={frameWidth * scale}
@@ -61,6 +75,26 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
+`;
+
+const Text = styled.div`
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: ${(props) => props.theme.colors.NAVYBLUE5};
+  ${(props) => props.theme.fonts.Regular12};
+
+  animation: fadeIn 0.3s ease-in-out;
+`;
+
+const UnderBarContainer = styled.img`
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+  width: 60%;
 `;
 
 const ImageContainer = styled.div``;

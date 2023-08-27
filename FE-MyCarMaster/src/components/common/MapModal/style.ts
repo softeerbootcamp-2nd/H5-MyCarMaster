@@ -65,10 +65,7 @@ export const CarMasterHeader = styled.div`
 `;
 
 export const Title = styled.p`
-  font-family: "HyundaiSansMedium";
-  font-size: 1.25rem;
-  font-style: normal;
-  font-weight: 600;
+  ${(props) => props.theme.fonts.Regular12};
 `;
 
 export const AddressContainer = styled.div`
@@ -79,18 +76,12 @@ export const AddressContainer = styled.div`
 `;
 
 export const Address = styled.p`
-  font-family: "HyundaiSansRegular";
-  font-size: 0.875rem;
-  font-style: normal;
-  font-weight: 400;
+  ${(props) => props.theme.fonts.Regular9};
 `;
 
 export const ChangeAddress = styled.button`
   color: ${theme.colors.NAVYBLUE5};
-  font-family: "HyundaiSansRegular";
-  font-size: 0.875rem;
-  font-style: normal;
-  font-weight: 400;
+  ${(props) => props.theme.fonts.Regular9};
 `;
 
 export const CarMasters = styled.div`
@@ -104,10 +95,7 @@ export const CarMastersDescription = styled.div`
   justify-content: space-between;
   align-items: center;
   color: ${theme.colors.NAVYBLUE5};
-  font-family: "HyundaiSansRegular";
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 500;
+  ${(props) => props.theme.fonts.Regular10};
 `;
 
 export const Description = styled.p``;
@@ -116,10 +104,7 @@ export const ShowAllCarMasterBtn = styled.button`
   height: 2rem;
 
   color: ${theme.colors.NAVYBLUE5};
-  font-family: "HyundaiSansRegular";
-  font-size: 0.875rem;
-  font-style: normal;
-  font-weight: 500;
+  ${(props) => props.theme.fonts.Regular9};
 `;
 
 export const CarMasterList = styled.div`

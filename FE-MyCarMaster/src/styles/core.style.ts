@@ -13,8 +13,10 @@ export interface FlexProps {
     | "flex-start"
     | "flex-end"
     | "space-between"
-    | "space-around";
-  $alignItems?: "center" | "flex-start" | "flex-end";
+    | "space-around"
+    | "normal";
+  $alignItems?: "center" | "flex-start" | "flex-end" | "stretch" | "normal";
+  $alignContent?: "center" | "flex-start" | "flex-end" | "stretch" | "normal";
   $gap?: string;
   $backgroundColor?: string;
   $frame?: string;
@@ -32,6 +34,7 @@ export const Flex = styled.div<FlexProps>`
   margin: ${(props) => props.$margin || "0"};
   justify-content: ${(props) => props.$justifyContent || "flex-start"};
   align-items: ${(props) => props.$alignItems || "normal"};
+  align-content: ${(props) => props.$alignContent || "normal"};
   gap: ${(props) => props.$gap || "0"};
   background-color: ${(props) => props.$backgroundColor || "transparent"};
   flex-wrap: ${(props) => (props.$wrap ? "wrap" : "nowrap")};
@@ -49,6 +52,32 @@ export const Text = styled.p<TextProps>`
   ${(props) => props.$font || ""};
   color: ${(props) => props.$color || "#000"};
   text-align: ${(props) => props.$textAlign || "left"};
+`;
+
+export interface TooltipProps {
+  $width?: string;
+  $height?: string;
+  $top?: string;
+  $left?: string;
+}
+
+export const Tooltip = styled.img<TooltipProps>`
+  position: absolute;
+  width: ${(props) => props.$width || "100%"};
+  height: ${(props) => props.$height || "100%"};
+  top: ${(props) => props.$top || "0"};
+  left: ${(props) => props.$left || "0"};
+
+  animation: 0.5s showTooltip ease-in-out forwards;
+
+  @keyframes showTooltip {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 `;
 
 interface ImageProps {

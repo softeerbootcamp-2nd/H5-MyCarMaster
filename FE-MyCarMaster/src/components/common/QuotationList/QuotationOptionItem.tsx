@@ -123,17 +123,14 @@ const OptionCategory = styled.p``;
 
 const OptionName = styled.p`
   font-family: "HyundaiSansMedium";
-  font-size: 1.375rem;
-  font-style: normal;
-  font-weight: 700;
+  ${(props) => props.theme.fonts.Regular13};
   line-height: 1.75rem;
 `;
 
 const OptionPrice = styled.p`
+  width: 9rem;
   font-family: "HyundaiSansMedium";
-  font-size: 1.375rem;
-  font-style: normal;
-  font-weight: 700;
+  ${(props) => props.theme.fonts.Regular13};
   line-height: 1.75rem;
 
   display: flex;

@@ -1,12 +1,12 @@
-import { ModalType } from "../../../constants/Modal.constants";
+import { ModalType } from "@constants/Modal.constants";
 import ExitModal from "./ModalContents/ExitModal";
 import { styled } from "styled-components";
-import theme from "../../../styles/Theme";
+import theme from "@styles/Theme";
 import Button from "../Button/Button";
 import ChangeTrimModal from "./ModalContents/ChangeTrimModal";
 import ChangeEngineModal from "./ModalContents/ChangeEngineModal";
 import { useEffect, useState } from "react";
-import { UnselectableOptionProps } from "../../../types/options.types";
+import { UnselectableOptionProps } from "types/options.types";
 import ConfirmModal from "./ModalContents/ConfirmModal";
 import AlertModal from "./ModalContents/AlertModal";
 

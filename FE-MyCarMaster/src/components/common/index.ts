@@ -21,3 +21,5 @@ export { default as QuotationOptionList } from "./QuotationList/QuotationOptionL
 export { default as SearchTrimBox } from "./SearchTrimBox/SearchTrimBox";
 export { default as SnackBar } from "./SnackBar/SnackBar";
 export { default as TagItem } from "./TagItem/TagItem";
+export { default as MapModal } from "./MapModal/MapModal";
+export { default as Loader } from "./Loader/Loader";

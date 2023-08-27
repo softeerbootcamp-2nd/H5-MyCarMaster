@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { Flex, Image } from "@styles/core.style";
+import { useState, useEffect } from "react";
+import { Flex, Image, Tooltip } from "@styles/core.style";
 import { CategoryList, OptionDescription } from "@common/index";
 import { useOptionDispatch, useOptionState } from "@contexts/OptionContext";
 import { useTrimState } from "@contexts/TrimContext";
@@ -8,6 +8,7 @@ import { useCarPaintState } from "@contexts/CarPaintContext";
 import filterOptionCategory from "@utils/Option/filterOptionCategory";
 import { categories } from "@constants/Option.constants";
 import { OptionType, OptionState } from "types/options.types";
+import OptionCategoryTooltip from "@assets/images/OptionCategoryTooltip.png";
 import useFetch from "@hooks/useFetch";
 import theme from "@styles/Theme";
 
@@ -19,12 +20,12 @@ interface FetchOptionsProps extends OptionType {
 
 export default function OptionContent() {
   const { optionList, optionId }: OptionState = useOptionState();
-  const optionDispatch = useOptionDispatch();
-
+  const [isTooltipOpen, setIsTooltipOpen] = useState<boolean>(true);
   const { trimId } = useTrimState();
   const { engineId, wheelDriveId, bodyTypeId } = useDetailState();
   const { interiorId } = useCarPaintState();
 
+  const optionDispatch = useOptionDispatch();
   const SERVER_URL = import.meta.env.VITE_APP_SERVER_URL;
 
   const { data } = useFetch<FetchOptionsProps>(
@@ -53,6 +54,7 @@ export default function OptionContent() {
 
   const onClickHandler = (index: number) => {
     const nextOptionCategoryId = index;
+    setIsTooltipOpen(false);
 
     const filteredList = filterOptionCategory(
       categories,
@@ -92,6 +94,7 @@ export default function OptionContent() {
         $alignItems="flex-start"
         $gap="5%"
         $overflow="hidden"
+        $position="relative"
       >
         <Flex
           $maxHeight={windowHeight <= 950 ? "25rem" : ""}
@@ -120,6 +123,15 @@ export default function OptionContent() {
           $font={theme.fonts.Medium12_15}
           $switch={"option"}
         />
+        {isTooltipOpen && (
+          <Tooltip
+            $width="30%"
+            $height="auto"
+            $top="92%"
+            $left="45%"
+            src={OptionCategoryTooltip}
+          />
+        )}
       </Flex>
     )
   );

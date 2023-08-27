@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Tooltip } from "@/styles/core.style";
 import { BlurFlex, OptionFlex, ScrollButton } from "./style";
 import { useOptionDispatch, useOptionState } from "@contexts/OptionContext";
 import { useQuotationState } from "@contexts/QuotationContext";
@@ -8,11 +9,13 @@ import filterOptionCategory from "@utils/Option/filterOptionCategory";
 import { OptionType } from "types/options.types";
 import ArrowRightLong from "@assets/icons/ArrowRightLong.svg";
 import ArrowLeftLong from "@assets/icons/ArrowLeftLong.svg";
+import TryConsiderTooltip from "@assets/images/TryConsiderTooltip.png";
 
 export default function OptionSelect() {
   const { optionList, selectedOption, consideredOption, optionCategoryId } =
     useOptionState();
   const [isTrimCheckOption, setIsTrimCheckOption] = useState<boolean>(false);
+  const [isTooltipOpen, setIsTooltipOpen] = useState<boolean>(true);
   const { optionQuotation } = useQuotationState();
   // const [current, setCurrent] = useState<number>(0);
   const optionDispatch = useOptionDispatch();
@@ -47,6 +50,7 @@ export default function OptionSelect() {
   }, [optionQuotation.selectedQuotation, optionDispatch]);
 
   const changeOptionId = (index: number) => {
+    setIsTooltipOpen(false);
     optionDispatch({
       type: "SET_OPTION_ID",
       payload: {
@@ -99,6 +103,15 @@ export default function OptionSelect() {
             );
           })}
       </OptionFlex>
+      {isTooltipOpen && (
+        <Tooltip
+          $width="30%"
+          $height="auto"
+          $top="80%"
+          $left="0"
+          src={TryConsiderTooltip}
+        />
+      )}
       <ScrollButton
         $direction="left"
         onClick={() => handleScrollButton("left")}
