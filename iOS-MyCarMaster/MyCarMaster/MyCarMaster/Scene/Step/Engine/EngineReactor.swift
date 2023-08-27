@@ -8,33 +8,33 @@
 import Combine
 import UIKit
 
-import MVIFoundation
 import MCMNetwork
+import MVIFoundation
 
 final class EngineReactor: Reactor {
-    
+
     enum Action {
         case viewDidLoad
         case engineDidSelect(Engine)
         case dataSourceDidApply
     }
-    
+
     enum Mutation {
         case fetchEngineList([Engine])
         case fetchSelectedEngine(Engine?)
         case alertError(String)
     }
-    
+
     struct State {
         var engineList: [Engine]
         var selectedEngine: Engine?
         var errorDescription: String?
     }
-    
+
     let initialState: State
     weak var estimationManager: EstimationManageable?
     weak var stepNetworkProvider: NetworkProvider<StepTarget>?
-    
+
     init(
         initialState: EngineReactor.State,
         estimationManager: EstimationManageable?,
@@ -44,7 +44,7 @@ final class EngineReactor: Reactor {
         self.estimationManager = estimationManager
         self.stepNetworkProvider = stepNetworkProvider
     }
-    
+
     func mutate(action: Action) -> AnyPublisher<Mutation, Never> {
         switch action {
         case .viewDidLoad:
@@ -55,7 +55,7 @@ final class EngineReactor: Reactor {
             return fetchSelectedEngine()
         }
     }
-    
+
     func transform(mutation: AnyPublisher<Mutation, Never>) -> AnyPublisher<Mutation, Never> {
         guard let estimationManager else {
             return Empty().eraseToAnyPublisher()
@@ -71,7 +71,7 @@ final class EngineReactor: Reactor {
         return Publishers.Merge(mutation, esitmationMutation)
             .eraseToAnyPublisher()
     }
-    
+
     func reduce(state: State, mutation: Mutation) -> State {
         var newState = state
         switch mutation {
@@ -91,22 +91,21 @@ extension EngineReactor {
         guard let estimationManager else {
             return Empty().eraseToAnyPublisher()
         }
-        
+
         estimationManager.update(\.engine, value: engine)
         return Empty().eraseToAnyPublisher()
     }
-    
+
     private func fetchSelectedEngine() -> AnyPublisher<Mutation, Never> {
         guard let estimationManager else {
             return Empty().eraseToAnyPublisher()
         }
-        
+
         let selectedEngine = estimationManager.estimation.engine
         return Just(Mutation.fetchSelectedEngine(selectedEngine))
             .eraseToAnyPublisher()
     }
 }
-
 
 // MARK: Network
 extension EngineReactor {
@@ -117,7 +116,7 @@ extension EngineReactor {
         fetchEngineListFromCache()
 #endif
     }
-    
+
     private func fetchEngineListFromNetwork() -> AnyPublisher<Mutation, Never> {
         guard let stepNetworkProvider else {
             fatalError("개발자 오류: StepProvider가 존재하지 않음")
@@ -127,7 +126,7 @@ extension EngineReactor {
             return Just(Mutation.alertError("잘못된 접근 경로입니다: 트림을 선택하지 않았습니다."))
                 .eraseToAnyPublisher()
         }
-        
+
         return stepNetworkProvider.requestPublisher(.fetchEngine(trimId: trimId))
             .retry(1)
             .tryMap({ element -> Data in
@@ -139,7 +138,7 @@ extension EngineReactor {
             })
             .decodeToEngine()
     }
-    
+
     private func fetchEngineListFromCache() -> AnyPublisher<Mutation, Never> {
         guard let fileURL = Bundle.main.url(forResource: "EngineDTO", withExtension: "json") else {
             fatalError("개발자 에러: 파일이 존재하지 않습니다.")

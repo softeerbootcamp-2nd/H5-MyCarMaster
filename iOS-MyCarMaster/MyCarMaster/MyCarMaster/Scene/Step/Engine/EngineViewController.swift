@@ -23,9 +23,9 @@ final class EngineViewController: UIViewController {
 
     // MARK: Property
     var cancellables = Set<AnyCancellable>()
-    
+
     var selectedEngine: Engine?
-    
+
     private var dataSource: DataSource!
     private func configureDataSource() {
         dataSource = DataSource(
@@ -38,12 +38,12 @@ final class EngineViewController: UIViewController {
                     fatalError("개발자 오류: 등록되지 않은 Cell 입니다.")
                 }
                 cell.configure(with: itemIdentifier)
-                
+
                 return cell
             })
         contentView.setDataSource(dataSource)
     }
-    
+
     private var contentView: EngineView<ListCellClass> {
         return view as? EngineView ?? EngineView()
     }
@@ -85,7 +85,7 @@ extension EngineViewController: Reactable {
                     self?.selectItemFor(engine)
                     return
                 }
-                
+
                 if let firstEngine = self?.dataSource.itemIdentifier(
                     for: .init(item: 0, section: 0)
                 ) {
@@ -94,7 +94,7 @@ extension EngineViewController: Reactable {
                 return
             }
             .store(in: &cancellables)
-        
+
         reactor.state.map(\.engineList)
             .dropFirst()
             .removeDuplicates()
@@ -108,7 +108,7 @@ extension EngineViewController: Reactable {
                 })
             }
             .store(in: &cancellables)
-        
+
         reactor.state.compactMap(\.errorDescription)
             .receive(on: DispatchQueue.main)
             .sink { [weak self] errorDescription in
@@ -130,7 +130,7 @@ extension EngineViewController {
         guard let indexPath = dataSource.indexPath(for: engine) else { return }
         selectItemAt(indexPath)
     }
-    
+
     func selectItemAt(_ indexPath: IndexPath) {
         guard dataSource?.itemIdentifier(for: indexPath) != nil else {
             print("Error: \(indexPath)에 원소가 없음")
