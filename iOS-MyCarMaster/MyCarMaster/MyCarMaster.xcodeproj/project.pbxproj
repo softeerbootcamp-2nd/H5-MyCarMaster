@@ -91,6 +91,7 @@
 		B59F0B742A9BBA1A00E444C6 /* ExteriorReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F0B732A9BBA1A00E444C6 /* ExteriorReactor.swift */; };
 		B59F0B762A9BBA5500E444C6 /* InteriorReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F0B752A9BBA5500E444C6 /* InteriorReactor.swift */; };
 		B59F0B782A9BBD1600E444C6 /* OptionReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F0B772A9BBD1600E444C6 /* OptionReactor.swift */; };
+		B59F0B7A2A9BDEB400E444C6 /* Estimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F0B792A9BDEB400E444C6 /* Estimation.swift */; };
 		B5A600FE2A81E1FC00CF2983 /* MCMCombineExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */; };
 		B5A600FF2A81E1FC00CF2983 /* MCMCombineExtension.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5B142312A960B40007BB426 /* SpriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B142302A960B40007BB426 /* SpriteViewController.swift */; };
@@ -282,6 +283,7 @@
 		B59F0B732A9BBA1A00E444C6 /* ExteriorReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExteriorReactor.swift; sourceTree = "<group>"; };
 		B59F0B752A9BBA5500E444C6 /* InteriorReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteriorReactor.swift; sourceTree = "<group>"; };
 		B59F0B772A9BBD1600E444C6 /* OptionReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionReactor.swift; sourceTree = "<group>"; };
+		B59F0B792A9BDEB400E444C6 /* Estimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Estimation.swift; sourceTree = "<group>"; };
 		B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMCombineExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B142302A960B40007BB426 /* SpriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteViewController.swift; sourceTree = "<group>"; };
 		B5B142322A967E7E007BB426 /* SpriteRotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteRotationView.swift; sourceTree = "<group>"; };
@@ -669,6 +671,7 @@
 				B5DD64F22A8783D800B44F61 /* Exterior.swift */,
 				B5BBB3502A89C7BF00AAFC84 /* Interior.swift */,
 				B53BA1092A8BF426009F94BE /* Option.swift */,
+				B59F0B792A9BDEB400E444C6 /* Estimation.swift */,
 				B500C7822A8FE0AD007724F3 /* Quotation.swift */,
 				B50FEC542A93F756003566DD /* Priceable.swift */,
 			);
@@ -1057,6 +1060,7 @@
 				B58FB41C2A92049600105DBF /* StepContainerReactor.swift in Sources */,
 				B510BBDF2A84895D009E5752 /* StepBottomView.swift in Sources */,
 				B53C3C442A85483F0019ECA1 /* EngineView.swift in Sources */,
+				B59F0B7A2A9BDEB400E444C6 /* Estimation.swift in Sources */,
 				B5BBB3512A89C7BF00AAFC84 /* Interior.swift in Sources */,
 				B50FEC552A93F756003566DD /* Priceable.swift in Sources */,
 				B500C77D2A8FC066007724F3 /* QuotationContentView.swift in Sources */,

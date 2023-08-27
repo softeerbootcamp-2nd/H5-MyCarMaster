@@ -9,8 +9,6 @@ import Combine
 
 import MCMCombineExtension
 
-typealias Estimation = Quotation
-
 protocol EstimationManageable: AnyObject {
     var estimation: Estimation { get }
     var estimationPublisher: AnyPublisher<Estimation, Never> { get }
