@@ -154,7 +154,7 @@ final class ModelSelectionViewController: UIViewController {
 // MARK: Interaction
 extension ModelSelectionViewController {
     private func selectPalisadeModel() {
-        estimationManager?.update(\Quotation.model, value: palisade)
+        estimationManager?.update(\Estimation.model, value: palisade)
     }
 }
 

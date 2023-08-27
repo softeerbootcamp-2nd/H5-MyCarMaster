@@ -15,8 +15,8 @@ struct Quotation: Hashable {
     var bodyType: BodyType
     var exterior: Exterior
     var interior: Interior
-    var selectedOptions: Set<Option>
-    var consideredOptions: Set<Option>
+    var selectedOptions: [Option]
+    var consideredOptions: [Option]
     var selectedOptionsTotalPrice: Int
     var totalPrice: Int
 }
