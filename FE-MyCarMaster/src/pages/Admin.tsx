@@ -15,11 +15,11 @@ import { useNavigate } from "react-router-dom";
 
 const STATUS_TEXT = {
   SUCCESS: {
-    text: "Check !",
+    text: "Check!",
     status: "success",
   },
   ERROR: {
-    text: "Error ... ",
+    text: "올바르지 않은 형식입니다.",
     status: "error",
   },
   DEFAULT: {
@@ -30,14 +30,18 @@ const STATUS_TEXT = {
     text: "",
     status: "none",
   },
+  CHECK: {
+    text: "숫자만 입력해주세요.",
+    status: "check",
+  },
 };
 
 export default function Admin() {
   const [isOpen, setIsOpen] = useState(true);
-  const [id, setId] = useState("");
-  const [password, setPassword] = useState("");
-  const [statusId, setStatusId] = useState(STATUS_TEXT.NONE);
-  const [statusPassword, setStatusPassword] = useState(STATUS_TEXT.NONE);
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [statusEmail, setStatusEmail] = useState(STATUS_TEXT.NONE);
+  const [statusPhoneNumber, setStatusPhoneNumber] = useState(STATUS_TEXT.NONE);
   const navigate = useNavigate();
 
   const isGoHomeHandler = () => {
@@ -45,26 +49,47 @@ export default function Admin() {
   };
 
   const LoginHandler = () => {
-    setIsOpen(false);
+    if (
+      statusEmail.status === "success" &&
+      statusPhoneNumber.status === "success"
+    ) {
+      console.log(email, phoneNumber);
+      // 여기서 로그인 처리
+      setIsOpen(false);
+    }
   };
 
   const ChangeTextHandler = (e: React.FocusEvent<HTMLInputElement>) => {
-    if (e.target.placeholder === "ID") {
-      setId(e.target.value);
+    if (e.target.placeholder === "EMAIL") {
+      setEmail(e.target.value);
 
-      if (e.target.value === "admin") {
-        setStatusId(STATUS_TEXT.SUCCESS);
+      const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      const emailCheck = emailPattern.test(e.target.value);
+
+      if (emailCheck) {
+        setStatusEmail(STATUS_TEXT.SUCCESS);
       } else {
-        // setStatusId(STATUS_TEXT.ERROR);
+        setStatusEmail(STATUS_TEXT.ERROR);
       }
     } else {
-      setPassword(e.target.value);
+      const cleanedValue = e.target.value.replace(/\D/g, "");
+      const formattedValue = cleanedValue.replace(
+        /(\d{3})(\d{4})(\d{4})/,
+        "$1-$2-$3"
+      );
+      setPhoneNumber(formattedValue);
 
-      if (e.target.value === "1234") {
-        setStatusPassword(STATUS_TEXT.SUCCESS);
+      if (phoneNumber.length <= 9) {
+        setStatusPhoneNumber(STATUS_TEXT.CHECK);
       } else {
-        // setStatusPassword(STATUS_TEXT.ERROR);
+        setStatusPhoneNumber(STATUS_TEXT.SUCCESS);
       }
+    }
+  };
+
+  const FocusTextHandler = () => {
+    if (phoneNumber.length < 1) {
+      setPhoneNumber("010");
     }
   };
 
@@ -79,26 +104,28 @@ export default function Admin() {
               수 있습니다.
             </AdminShortContent>
             <Flex $flexDirection="column" $gap="0.5rem">
-              {id && <AdminContentText>ID</AdminContentText>}
+              {email && <AdminContentText>EMAIL</AdminContentText>}
               <Flex $flexDirection="column" $gap="0.5rem" $position="relative">
                 <Input
-                  placeholder="ID"
+                  placeholder="EMAIL"
                   onChange={ChangeTextHandler}
-                  value={id}
+                  value={email}
                 />
-                <CheckText $status={statusId.status}>{statusId.text}</CheckText>
+                <CheckText $status={statusEmail.status}>
+                  {statusEmail.text}
+                </CheckText>
               </Flex>
 
-              {password && <AdminContentText>Password</AdminContentText>}
+              {phoneNumber && <AdminContentText>PhoneNumber</AdminContentText>}
               <Flex $flexDirection="column" $gap="0.5rem" $position="relative">
                 <Input
-                  placeholder="Password"
+                  placeholder="PhoneNumber"
                   onChange={ChangeTextHandler}
-                  value={password}
-                  type="password"
+                  onFocus={FocusTextHandler}
+                  value={phoneNumber}
                 />
-                <CheckText $status={statusPassword.status}>
-                  {statusPassword.text}
+                <CheckText $status={statusPhoneNumber.status}>
+                  {statusPhoneNumber.text}
                 </CheckText>
               </Flex>
               <Flex
