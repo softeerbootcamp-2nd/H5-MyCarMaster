@@ -98,9 +98,23 @@ extension StepRouter {
             bodyTypeViewController.reactor = bodyTypeReactor
             return bodyTypeViewController
         case .exterior:
-            return ExteriorViewController()
+            let exteriorReactor = ExteriorReactor(
+                initialState: .init(isLoading: false, exteriorList: []),
+                estimationManager: estimationManager,
+                stepNetworkProvider: stepNetworkProvider
+            )
+            let exteriorViewController = ExteriorViewController()
+            exteriorViewController.reactor = exteriorReactor
+            return exteriorViewController
         case .interior:
-            return InteriorViewController()
+            let interiorReactor = InteriorReactor(
+                initialState: .init(isLoading: false, interiorList: []),
+                estimationManager: estimationManager,
+                stepNetworkProvider: stepNetworkProvider
+            )
+            let interiorViewController = InteriorViewController()
+            interiorViewController.reactor = interiorReactor
+            return interiorViewController
         case .option:
             return OptionViewController()
         case .quotation:
