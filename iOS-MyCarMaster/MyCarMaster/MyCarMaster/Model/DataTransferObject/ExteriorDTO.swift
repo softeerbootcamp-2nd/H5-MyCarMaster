@@ -32,7 +32,13 @@ extension Exterior {
         self.name = exteriorDTO.name
         self.price = exteriorDTO.price
         self.ratio = exteriorDTO.ratio
-        self.colorImgURL = URL(string: exteriorDTO.colorImgURL)
-        self.coloredImgURL = URL(string: exteriorDTO.coloredImgURL)
+        guard let colorImgURL = URL(string: exteriorDTO.colorImgURL) else {
+            fatalError("서버 개발자 에러: 유효하지 않은 URL입니다.")
+        }
+        self.colorImgURL = colorImgURL
+        guard let coloredImgURL = URL(string: exteriorDTO.coloredImgURL + "mid/sprite.png") else {
+            fatalError("서버 개발자 에러: 유효하지 않은 URL입니다.")
+        }
+        self.coloredImgURL = coloredImgURL
     }
 }

@@ -32,7 +32,13 @@ extension Interior {
         self.name = interiorDTO.name
         self.price = interiorDTO.price
         self.ratio = interiorDTO.ratio
-        self.colorImgURL = URL(string: interiorDTO.colorImgURL)
-        self.coloredImgURL = URL(string: interiorDTO.coloredImgURL)
+        guard let colorImgURL = URL(string: interiorDTO.colorImgURL) else {
+            fatalError("서버 개발자 에러: 유효하지 않은 URL입니다.")
+        }
+        self.colorImgURL = colorImgURL
+        guard let coloredImgURL = URL(string: interiorDTO.coloredImgURL) else {
+            fatalError("서버 개발자 에러: 유효하지 않은 URL입니다.")
+        }
+        self.coloredImgURL = coloredImgURL
     }
 }

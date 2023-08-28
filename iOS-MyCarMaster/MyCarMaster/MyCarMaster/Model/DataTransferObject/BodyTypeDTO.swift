@@ -33,6 +33,9 @@ extension BodyType {
         self.description = bodyTypeDTO.description
         self.ratio = bodyTypeDTO.ratio
         self.price = bodyTypeDTO.price
-        self.imageURL = URL(string: bodyTypeDTO.imgURL)
+        guard let imageURL = URL(string: bodyTypeDTO.imgURL) else {
+            fatalError("서버 개발자 에러: 유효하지 않은 URL입니다.")
+        }
+        self.imageURL = imageURL
     }
 }
