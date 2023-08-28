@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+extension String {
+    var iOS: String {
+        return self.replacingOccurrences(of: ".png", with: "_ios.png")
+    }
+}
