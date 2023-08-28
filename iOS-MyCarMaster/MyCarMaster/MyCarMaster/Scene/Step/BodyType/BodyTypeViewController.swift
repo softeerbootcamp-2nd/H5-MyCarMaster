@@ -122,6 +122,19 @@ extension BodyTypeViewController: Reactable {
                 self?.present(alert, animated: false)
             }
             .store(in: &cancellables)
+
+        reactor.state.map(\.isLoading)
+            .dropFirst()
+            .removeDuplicates()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isLoading in
+                if isLoading {
+                    self?.showIndicator()
+                } else {
+                    self?.hideIndicator()
+                }
+            }
+            .store(in: &cancellables)
     }
 }
 
