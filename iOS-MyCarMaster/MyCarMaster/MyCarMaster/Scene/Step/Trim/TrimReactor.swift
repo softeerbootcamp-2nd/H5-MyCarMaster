@@ -19,6 +19,7 @@ final class TrimReactor: Reactor {
         case shouldSelectTrim(Trim)
         case dataSourceDidApply
         case resetAndSelectTrim(Trim)
+        case fetchTrimImage(URL)
     }
 
     enum Mutation {
@@ -27,12 +28,14 @@ final class TrimReactor: Reactor {
         case fetchSelectedTrim(Trim?)
         case showSelectionAlert(Trim)
         case alertError(String)
+        case fetchTrimImage(UIImage)
     }
 
     struct State {
         var isLoading: Bool
         var trimList: [Trim]
         var selectedTrim: Trim?
+        var selectedTrimImage: UIImage?
         var showSelectionAlert: Trim?
         var errorDescription: String?
     }
@@ -72,6 +75,8 @@ final class TrimReactor: Reactor {
                 resetEstimation(),
                 updateTrim(trim)
             ].concatenate()
+        case let .fetchTrimImage(url):
+            return fetchTrimImage(url)
         }
     }
 
@@ -104,6 +109,8 @@ final class TrimReactor: Reactor {
             newState.errorDescription = errorDescription
         case let .showSelectionAlert(trim):
             newState.showSelectionAlert = trim
+        case let .fetchTrimImage(image):
+            newState.selectedTrimImage = image
         }
         return newState
     }
@@ -152,6 +159,37 @@ extension TrimReactor {
 }
 
 extension TrimReactor {
+    private func fetchTrimImage(_ url: URL) -> AnyPublisher<Mutation, Never> {
+        if let image = ImageCacheManager.shared.object(forKey: url as NSURL) {
+            return Just(Mutation.fetchTrimImage(image))
+                .eraseToAnyPublisher()
+        }
+
+        guard let stepNetworkProvider else {
+            fatalError("개발자 오류: StepProvider가 존재하지 않음")
+        }
+
+        return stepNetworkProvider.requestPublisher(.fetchImage(url: url))
+            .retry(1)
+            .tryMap({ element -> Mutation in
+                guard let httpResponse = element.response as? HTTPURLResponse,
+                      httpResponse.statusCode == 200 else {
+                    throw URLError(.badServerResponse)
+                }
+
+                guard let image = UIImage(data: element.data) else {
+                    throw URLError(.badServerResponse)
+                }
+                ImageCacheManager.shared.setObject(image, forKey: url as NSURL)
+
+                return Mutation.fetchTrimImage(image)
+            })
+            .catch({ error in
+                return Just(Mutation.alertError(error.localizedDescription))
+            })
+            .eraseToAnyPublisher()
+    }
+
     private func fetchTrimList() -> AnyPublisher<Mutation, Never> {
 #if ONLINE
         fetchTrimListFromNetwork()
