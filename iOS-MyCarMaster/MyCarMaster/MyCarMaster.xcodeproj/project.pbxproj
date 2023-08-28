@@ -85,6 +85,13 @@
 		B58FB41C2A92049600105DBF /* StepContainerReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FB41B2A92049600105DBF /* StepContainerReactor.swift */; };
 		B598A0852A8F297A00C4A591 /* QuotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B598A0842A8F297A00C4A591 /* QuotationViewController.swift */; };
 		B59B201D2A8B666A009E7868 /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59B201C2A8B666A009E7868 /* OptionViewController.swift */; };
+		B59F0B6C2A9B418900E444C6 /* EngineReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F0B6B2A9B418900E444C6 /* EngineReactor.swift */; };
+		B59F0B702A9BB46100E444C6 /* WheelDriveReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F0B6F2A9BB46100E444C6 /* WheelDriveReactor.swift */; };
+		B59F0B722A9BB7DC00E444C6 /* BodyTypeReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F0B712A9BB7DC00E444C6 /* BodyTypeReactor.swift */; };
+		B59F0B742A9BBA1A00E444C6 /* ExteriorReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F0B732A9BBA1A00E444C6 /* ExteriorReactor.swift */; };
+		B59F0B762A9BBA5500E444C6 /* InteriorReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F0B752A9BBA5500E444C6 /* InteriorReactor.swift */; };
+		B59F0B782A9BBD1600E444C6 /* OptionReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F0B772A9BBD1600E444C6 /* OptionReactor.swift */; };
+		B59F0B7A2A9BDEB400E444C6 /* Estimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F0B792A9BDEB400E444C6 /* Estimation.swift */; };
 		B5A600FE2A81E1FC00CF2983 /* MCMCombineExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */; };
 		B5A600FF2A81E1FC00CF2983 /* MCMCombineExtension.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5B142312A960B40007BB426 /* SpriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B142302A960B40007BB426 /* SpriteViewController.swift */; };
@@ -270,6 +277,13 @@
 		B58FB41B2A92049600105DBF /* StepContainerReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepContainerReactor.swift; sourceTree = "<group>"; };
 		B598A0842A8F297A00C4A591 /* QuotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationViewController.swift; sourceTree = "<group>"; };
 		B59B201C2A8B666A009E7868 /* OptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
+		B59F0B6B2A9B418900E444C6 /* EngineReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineReactor.swift; sourceTree = "<group>"; };
+		B59F0B6F2A9BB46100E444C6 /* WheelDriveReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelDriveReactor.swift; sourceTree = "<group>"; };
+		B59F0B712A9BB7DC00E444C6 /* BodyTypeReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BodyTypeReactor.swift; sourceTree = "<group>"; };
+		B59F0B732A9BBA1A00E444C6 /* ExteriorReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExteriorReactor.swift; sourceTree = "<group>"; };
+		B59F0B752A9BBA5500E444C6 /* InteriorReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteriorReactor.swift; sourceTree = "<group>"; };
+		B59F0B772A9BBD1600E444C6 /* OptionReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionReactor.swift; sourceTree = "<group>"; };
+		B59F0B792A9BDEB400E444C6 /* Estimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Estimation.swift; sourceTree = "<group>"; };
 		B5A600FD2A81E1FC00CF2983 /* MCMCombineExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MCMCombineExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5B142302A960B40007BB426 /* SpriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteViewController.swift; sourceTree = "<group>"; };
 		B5B142322A967E7E007BB426 /* SpriteRotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteRotationView.swift; sourceTree = "<group>"; };
@@ -541,6 +555,7 @@
 			children = (
 				B53C3C432A85483F0019ECA1 /* EngineView.swift */,
 				B53C3C452A8548450019ECA1 /* EngineViewController.swift */,
+				B59F0B6B2A9B418900E444C6 /* EngineReactor.swift */,
 			);
 			path = Engine;
 			sourceTree = "<group>";
@@ -550,6 +565,7 @@
 			children = (
 				B53C3C4F2A85661D0019ECA1 /* WheelDriveView.swift */,
 				B53C3C512A8566270019ECA1 /* WheelDriveViewController.swift */,
+				B59F0B6F2A9BB46100E444C6 /* WheelDriveReactor.swift */,
 			);
 			path = WheelDrive;
 			sourceTree = "<group>";
@@ -559,6 +575,7 @@
 			children = (
 				B53C3C572A8578310019ECA1 /* BodyTypeView.swift */,
 				B53C3C592A8578650019ECA1 /* BodyTypeViewController.swift */,
+				B59F0B712A9BB7DC00E444C6 /* BodyTypeReactor.swift */,
 			);
 			path = BodyType;
 			sourceTree = "<group>";
@@ -654,6 +671,7 @@
 				B5DD64F22A8783D800B44F61 /* Exterior.swift */,
 				B5BBB3502A89C7BF00AAFC84 /* Interior.swift */,
 				B53BA1092A8BF426009F94BE /* Option.swift */,
+				B59F0B792A9BDEB400E444C6 /* Estimation.swift */,
 				B500C7822A8FE0AD007724F3 /* Quotation.swift */,
 				B50FEC542A93F756003566DD /* Priceable.swift */,
 			);
@@ -679,6 +697,7 @@
 			children = (
 				B570C0F92A89ADA7000E9B75 /* InteriorView.swift */,
 				B5BBB34E2A89C74C00AAFC84 /* InteriorViewController.swift */,
+				B59F0B752A9BBA5500E444C6 /* InteriorReactor.swift */,
 			);
 			path = Interior;
 			sourceTree = "<group>";
@@ -763,6 +782,7 @@
 			children = (
 				B5DD64EE2A877DDD00B44F61 /* ExteriorView.swift */,
 				B5DD64F02A87833200B44F61 /* ExteriorViewController.swift */,
+				B59F0B732A9BBA1A00E444C6 /* ExteriorReactor.swift */,
 			);
 			path = Exterior;
 			sourceTree = "<group>";
@@ -807,6 +827,7 @@
 				B5C079022A8BD32B00747B11 /* Cell */,
 				B5E233FC2A8B4B0F0013BEB1 /* OptionView.swift */,
 				B59B201C2A8B666A009E7868 /* OptionViewController.swift */,
+				B59F0B772A9BBD1600E444C6 /* OptionReactor.swift */,
 				B5D5D4142A8D559600A4DA3C /* SubOptionButton.swift */,
 			);
 			path = Option;
@@ -1039,6 +1060,7 @@
 				B58FB41C2A92049600105DBF /* StepContainerReactor.swift in Sources */,
 				B510BBDF2A84895D009E5752 /* StepBottomView.swift in Sources */,
 				B53C3C442A85483F0019ECA1 /* EngineView.swift in Sources */,
+				B59F0B7A2A9BDEB400E444C6 /* Estimation.swift in Sources */,
 				B5BBB3512A89C7BF00AAFC84 /* Interior.swift in Sources */,
 				B50FEC552A93F756003566DD /* Priceable.swift in Sources */,
 				B500C77D2A8FC066007724F3 /* QuotationContentView.swift in Sources */,
@@ -1059,6 +1081,7 @@
 				B5C079092A8BD52D00747B11 /* Selectable.swift in Sources */,
 				B51CE22A2A92A50300C65689 /* EstimationManager.swift in Sources */,
 				B50FEC512A93CC7E003566DD /* Model.swift in Sources */,
+				B59F0B722A9BB7DC00E444C6 /* BodyTypeReactor.swift in Sources */,
 				B5DD651B2A8905B400B44F61 /* ColorListCellState.swift in Sources */,
 				B5DD64F12A87833200B44F61 /* ExteriorViewController.swift in Sources */,
 				B53BA1122A8C0A8F009F94BE /* PaddingLabel.swift in Sources */,
@@ -1070,6 +1093,7 @@
 				B5DD65252A89363C00B44F61 /* Trim+.swift in Sources */,
 				B5DD650E2A880A4100B44F61 /* UIImage+Merge.swift in Sources */,
 				B5BBB3532A89C7ED00AAFC84 /* Interior+.swift in Sources */,
+				B59F0B782A9BBD1600E444C6 /* OptionReactor.swift in Sources */,
 				B5DD64F52A87844A00B44F61 /* ExteriorDTO.swift in Sources */,
 				B510BBDB2A840BD4009E5752 /* Formatter.swift in Sources */,
 				B5DD65272A8937A500B44F61 /* Engine+.swift in Sources */,
@@ -1077,14 +1101,18 @@
 				B5C56C022A935134009F0226 /* ThemeButton.swift in Sources */,
 				B55283EC2A924A8A00E68744 /* ModelSelectionViewController.swift in Sources */,
 				B5E233FD2A8B4B0F0013BEB1 /* OptionView.swift in Sources */,
+				B59F0B702A9BB46100E444C6 /* WheelDriveReactor.swift in Sources */,
+				B59F0B6C2A9B418900E444C6 /* EngineReactor.swift in Sources */,
 				B53C3C542A856DF00019ECA1 /* UIView+Extension.swift in Sources */,
 				B5DD64F32A8783D800B44F61 /* Exterior.swift in Sources */,
 				B550C0D52A8FF4440068670D /* SeparatorView.swift in Sources */,
+				B59F0B742A9BBA1A00E444C6 /* ExteriorReactor.swift in Sources */,
 				B58A323B2A7C0B35005FC831 /* OnboardingViewController.swift in Sources */,
 				B5B142332A967E7E007BB426 /* SpriteRotationView.swift in Sources */,
 				B56A765F2A83EFB000F7E3EF /* BasicListCell.swift in Sources */,
 				B570C0FA2A89ADA7000E9B75 /* InteriorView.swift in Sources */,
 				B500C77F2A8FCA5F007724F3 /* QuotationContentItemView.swift in Sources */,
+				B59F0B762A9BBA5500E444C6 /* InteriorReactor.swift in Sources */,
 				B55283E42A9238B400E68744 /* StepProgressView.swift in Sources */,
 				B50C7E4C2A790279005AFE0B /* AppDelegate.swift in Sources */,
 				B5D1E2052A8EDF7600DAE384 /* QuotationView.swift in Sources */,

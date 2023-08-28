@@ -8,16 +8,17 @@
 import Foundation
 
 struct Option: Hashable, Priceable {
-    let model: String
-    let category: String
-    let name: String
-    let price: Int
-    let ratio: Int
-    let imgURL: URL?
-    let summary: String?
-    let description: String?
-    let tag: String?
-    let subOptions: [SubOption]
+    var model: String
+    var id: Int
+    var category: String
+    var name: String
+    var price: Int
+    var ratio: Int
+    var imgURL: URL?
+    var summary: String?
+    var description: String?
+    var tag: String?
+    var subOptions: [SubOption]
 }
 
 struct SubOption: Hashable {

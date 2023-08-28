@@ -11,6 +11,12 @@ import MCMNetwork
 
 enum StepTarget {
     case fetchTrim(modelId: Int)
+    case fetchEngine(trimId: Int)
+    case fetchWheelDrive(trimId: Int, engineId: Int)
+    case fetchBodyType(modelId: Int)
+    case fetchExterior(trimId: Int)
+    case fetchInterior(trimId: Int, exteriorColorId: Int)
+    case fetchOption(trimId: Int, engineId: Int, wheelDriveId: Int, bodyTypeId: Int, interiorColorId: Int)
 }
 
 extension StepTarget: TargetType {
@@ -29,6 +35,18 @@ extension StepTarget: TargetType {
         switch self {
         case .fetchTrim:
             return "trims"
+        case .fetchEngine:
+            return "engines"
+        case .fetchWheelDrive:
+            return "wheel-drives"
+        case .fetchBodyType:
+            return "body-types"
+        case .fetchExterior:
+            return "exterior-colors"
+        case .fetchInterior:
+            return "interior-colors"
+        case .fetchOption:
+            return "options"
         }
     }
 
@@ -41,8 +59,26 @@ extension StepTarget: TargetType {
 
     var task: MCMNetwork.Task {
         switch self {
-        case .fetchTrim(let modelId):
+        case let .fetchTrim(modelId):
             return .requestParameters(parameters: ["modelId": modelId])
+        case let .fetchEngine(trimId):
+            return .requestParameters(parameters: ["trimId": trimId])
+        case let .fetchWheelDrive(trimId, engineId):
+            return .requestParameters(parameters: ["trimId": trimId, "engineId": engineId])
+        case let .fetchBodyType(modelId):
+            return .requestParameters(parameters: ["modelId": modelId])
+        case let .fetchExterior(trimId):
+            return .requestParameters(parameters: ["trimId": trimId])
+        case let .fetchInterior(trimId, exteriorColorId):
+            return .requestParameters(parameters: ["trimId": trimId, "exteriorColorId": exteriorColorId])
+        case let .fetchOption(trimId, engineId, wheelDriveId, bodyTypeId, interiorColorId):
+            return .requestParameters(parameters: [
+                "trimId": trimId,
+                "engineId": engineId,
+                "wheelDriveId": wheelDriveId,
+                "bodyTypeId": bodyTypeId,
+                "interiorColorId": interiorColorId
+            ])
         }
     }
 

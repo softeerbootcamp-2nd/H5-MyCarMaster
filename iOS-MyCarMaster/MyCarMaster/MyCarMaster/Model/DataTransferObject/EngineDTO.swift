@@ -36,6 +36,7 @@ struct EngineDTO: Codable {
 extension Engine {
     init(_ engineDTO: EngineDTO) {
         self.model = "펠리세이드"
+        self.id = engineDTO.id
         self.name = engineDTO.name
         self.ratio = engineDTO.ratio
         self.description = engineDTO.description

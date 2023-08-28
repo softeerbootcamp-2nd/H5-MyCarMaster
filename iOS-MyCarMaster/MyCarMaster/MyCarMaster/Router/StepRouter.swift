@@ -71,19 +71,62 @@ extension StepRouter {
             trimViewController.reactor = trimReactor
             return trimViewController
         case .engine:
-            return EngineViewController()
+            let engineReactor = EngineReactor(
+                initialState: .init(isLoading: false, engineList: []),
+                estimationManager: estimationManager,
+                stepNetworkProvider: stepNetworkProvider
+            )
+            let engineViewController = EngineViewController()
+            engineViewController.reactor = engineReactor
+            return engineViewController
         case .wheelDrive:
-            return WheelDriveViewController()
+            let wheelDriveReactor = WheelDriveReactor(
+                initialState: .init(isLoading: false, wheelDriveList: []),
+                estimationManager: estimationManager,
+                stepNetworkProvider: stepNetworkProvider
+            )
+            let wheelDriveViewController = WheelDriveViewController()
+            wheelDriveViewController.reactor = wheelDriveReactor
+            return wheelDriveViewController
         case .bodyType:
-            return BodyTypeViewController()
+            let bodyTypeReactor = BodyTypeReactor(
+                initialState: .init(isLoading: false, bodyTypeList: []),
+                estimationManager: estimationManager,
+                stepNetworkProvider: stepNetworkProvider
+            )
+            let bodyTypeViewController = BodyTypeViewController()
+            bodyTypeViewController.reactor = bodyTypeReactor
+            return bodyTypeViewController
         case .exterior:
-            return ExteriorViewController()
+            let exteriorReactor = ExteriorReactor(
+                initialState: .init(isLoading: false, exteriorList: []),
+                estimationManager: estimationManager,
+                stepNetworkProvider: stepNetworkProvider
+            )
+            let exteriorViewController = ExteriorViewController()
+            exteriorViewController.reactor = exteriorReactor
+            return exteriorViewController
         case .interior:
-            return InteriorViewController()
+            let interiorReactor = InteriorReactor(
+                initialState: .init(isLoading: false, interiorList: []),
+                estimationManager: estimationManager,
+                stepNetworkProvider: stepNetworkProvider
+            )
+            let interiorViewController = InteriorViewController()
+            interiorViewController.reactor = interiorReactor
+            return interiorViewController
         case .option:
-            return OptionViewController()
+            let optionReactor = OptionReactor(
+                initialState: .init(isLoading: false, optionList: [], selectedOptions: [], consideredOptions: []),
+                estimationManager: estimationManager,
+                stepNetworkProvider: stepNetworkProvider
+            )
+            let optionViewController = OptionViewController()
+            optionViewController.reactor = optionReactor
+            return optionViewController
         case .quotation:
-            return QuotationViewController()
+            let quotation = Quotation(estimationManager!.estimation)
+            return QuotationViewController(quotation: quotation)
         }
     }
 }

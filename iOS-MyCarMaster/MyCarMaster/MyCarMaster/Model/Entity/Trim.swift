@@ -8,10 +8,11 @@
 import Foundation
 
 struct Trim: Hashable, Priceable {
-    let model: String
-    let name: String
-    let ratio: Int
-    let description: String
+    var model: String
+    var id: Int
+    var name: String
+    var ratio: Int
+    var description: String
     var price: Int
     var imageURL: URL?
 }

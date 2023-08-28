@@ -9,6 +9,18 @@ import UIKit
 
 final class QuotationViewController: UIViewController {
 
+    // MARK: Property
+    private let quotation: Quotation
+
+    init(quotation: Quotation) {
+        self.quotation = quotation
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     private var contentView: QuotationView {
         return view as? QuotationView ?? QuotationView()
     }
@@ -23,5 +35,6 @@ final class QuotationViewController: UIViewController {
     }
 
     private func configureUI() {
+        contentView.configure(with: quotation)
     }
 }

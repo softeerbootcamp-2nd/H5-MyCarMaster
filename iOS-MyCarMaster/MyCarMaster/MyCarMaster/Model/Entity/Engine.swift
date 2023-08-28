@@ -8,14 +8,15 @@
 import Foundation
 
 struct Engine: Hashable, Priceable {
-    let model: String
-    let name: String
-    let ratio: Int
-    let description: String
-    let fuelMin: Double
-    let fuelMax: Double
-    let power: Int
-    let toque: Double
-    let price: Int
+    var model: String
+    var id: Int
+    var name: String
+    var ratio: Int
+    var description: String
+    var fuelMin: Double
+    var fuelMax: Double
+    var power: Int
+    var toque: Double
+    var price: Int
     var imageURL: URL?
 }

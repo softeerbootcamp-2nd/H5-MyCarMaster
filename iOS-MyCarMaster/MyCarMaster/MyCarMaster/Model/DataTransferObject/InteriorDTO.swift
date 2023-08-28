@@ -28,6 +28,7 @@ struct InteriorDTO: Codable {
 extension Interior {
     init(_ interiorDTO: InteriorDTO) {
         self.model = "펠리세이드"
+        self.id = interiorDTO.id
         self.name = interiorDTO.name
         self.price = interiorDTO.price
         self.ratio = interiorDTO.ratio

@@ -8,10 +8,11 @@
 import Foundation
 
 struct WheelDrive: Hashable, Priceable {
-    let model: String
-    let name: String
-    let description: String
-    let ratio: Int
-    let price: Int
-    let imageURL: URL?
+    var model: String
+    var id: Int
+    var name: String
+    var description: String
+    var ratio: Int
+    var price: Int
+    var imageURL: URL?
 }

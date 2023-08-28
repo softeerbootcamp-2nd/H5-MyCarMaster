@@ -12,8 +12,6 @@ import MCMNetwork
 
 final class Router {
 
-    typealias Estimation = Quotation
-
     private weak var window: UIWindow?
     private weak var navigationController: UINavigationController?
     private let estimationManager: EstimationManager

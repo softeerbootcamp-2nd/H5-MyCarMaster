@@ -9,8 +9,6 @@ import Combine
 
 import MCMCombineExtension
 
-typealias Estimation = Quotation
-
 protocol EstimationManageable: AnyObject {
     var estimation: Estimation { get }
     var estimationPublisher: AnyPublisher<Estimation, Never> { get }
@@ -20,7 +18,7 @@ protocol EstimationManageable: AnyObject {
     func update<T>(_ keyPath: WritableKeyPath<Estimation, T?>, value: T)
     func update<T: Priceable>(_ keyPath: WritableKeyPath<Estimation, T?>, value: T)
     func update(_ keyPath: WritableKeyPath<Estimation, Set<Option>>, value: Option)
-    func remove(_ keyPath: WritableKeyPath<Estimation, Set<Option>>, value: Option)
+    func remove(value: Option)
     func removeAll()
 }
 
@@ -82,12 +80,16 @@ extension EstimationManager {
         estimationSubject.accept(estimation)
     }
 
-    func remove(_ keyPath: WritableKeyPath<Estimation, Set<Option>>, value: Option) {
+    func remove(value: Option) {
         var estimation = self.estimation
-        estimation[keyPath: keyPath].remove(value)
 
-        estimation.selectedOptionsTotalPrice = calculateSelectOptionsTotalPrice(estimation)
-        estimation.totalPrice = calculateTotalPrice(estimation)
+        if estimation.selectedOptions.contains(value) {
+            estimation.selectedOptions.remove(value)
+            estimation.selectedOptionsTotalPrice = calculateSelectOptionsTotalPrice(estimation)
+            estimation.totalPrice = calculateTotalPrice(estimation)
+        } else if estimation.consideredOptions.contains(value) {
+            estimation.consideredOptions.remove(value)
+        }
 
         estimationSubject.accept(estimation)
     }

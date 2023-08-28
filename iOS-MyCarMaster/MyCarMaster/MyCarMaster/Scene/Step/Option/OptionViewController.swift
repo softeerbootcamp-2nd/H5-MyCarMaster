@@ -5,11 +5,16 @@
 //  Created by SEUNGMIN OH on 2023/08/15.
 //
 
+import Combine
 import UIKit
 
 import MCMNetwork
+import MVIFoundation
 
 final class OptionViewController: UIViewController {
+
+    typealias DataSource = UICollectionViewDiffableDataSource<Section, Option>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Option>
 
     enum Section {
         case option
@@ -17,26 +22,36 @@ final class OptionViewController: UIViewController {
 
     private let categoryList = ["전체", "안전", "스타일&퍼포먼스", "차량 보호", "편의"]
 
-    private var dataSource: UICollectionViewDiffableDataSource<Section, Option>?
-    private func configureDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, Option>(
-            collectionView: contentView.optionListView
-        ) { collectionView, indexPath, option in
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: OptionListCell.reuseIdentifier,
-                for: indexPath
-            ) as? OptionListCell else {
-                fatalError("등록되지 않은 cell 입니다.")
-            }
-            cell.configure(with: option)
-            return cell
-        }
-        contentView.optionListView.dataSource = dataSource
+    // MARK: Property
+    var cancellables = Set<AnyCancellable>()
 
-        var snapshot = NSDiffableDataSourceSnapshot<Section, Option>()
-        snapshot.appendSections([.option])
-        snapshot.appendItems([])
-        dataSource?.apply(snapshot)
+    var selectedIndexPaths = Set<IndexPath>()
+    var consideredIndexPaths = Set<IndexPath>()
+
+    private var dataSource: DataSource!
+    private func configureDataSource() {
+        dataSource = DataSource(
+            collectionView: contentView.optionListView,
+            cellProvider: { [weak self] collectionView, indexPath, option in
+                guard let cell = collectionView.dequeueReusableCell(
+                    withReuseIdentifier: OptionListCell.reuseIdentifier,
+                    for: indexPath
+                ) as? OptionListCell else {
+                    fatalError("개발자 오류: 등록되지 않은 cell 입니다.")
+                }
+                cell.configure(with: option)
+
+                if self?.selectedIndexPaths.contains(indexPath) == Optional(true) {
+                    cell.selectedStyle()
+                } else if self?.consideredIndexPaths.contains(indexPath) == Optional(true) {
+                    cell.consideredStyle()
+                } else {
+                    cell.unselectedStyle()
+                }
+
+                return cell
+            })
+        contentView.optionListView.dataSource = dataSource
     }
 
     private var contentView: OptionView {
@@ -50,12 +65,9 @@ final class OptionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-#if ONLINE
-        fetchData()
-#elseif OFFLINE
-        fetchFromDisk()
-#endif
         configureDataSource()
+        addCellEventObservers()
+        reactor?.action.send(.viewDidLoad)
     }
 
     private func configureUI() {
@@ -69,79 +81,68 @@ final class OptionViewController: UIViewController {
     }
 }
 
+// OptionListCell의 버튼 이벤트가 reponder chain을 타고 이곳으로 넘어 올 것이다.
 extension OptionViewController {
-    private func fetchFromDisk() {
-        guard let fileURL = Bundle.main.url(forResource: "OptionDTO.json", withExtension: nil) else {
-            print("Invalid Data")
-            return
-        }
-
-        applyData(try? Data(contentsOf: fileURL))
+    private func addCellEventObservers() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(selectButtonDidTap),
+            name: OptionListCell.selectButtonDidTap,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(considerButtonDidTap),
+            name: OptionListCell.considerButtonDidTap,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(unselectButtonDidTap),
+            name: OptionListCell.unselectButtonDidTap,
+            object: nil
+        )
     }
 
-    private func fetchData() {
-        let request = URLRequest(url: URL(string: Dependency.serverURL + "options?trimId=1&engineId=1&wheelDriveId=1&bodyTypeId=1&interiorColorId=1")!)
-
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            guard error == nil else {
-                print(error?.localizedDescription)
-                return
-            }
-
-            guard let response = response as? HTTPURLResponse else {
-                print("Sever Error")
-                return
-            }
-
-            print("Option:", response.statusCode)
-            guard 200..<300 ~= response.statusCode else {
-                return
-            }
-
-            self.applyData(data)
-        }.resume()
+    @objc
+    func selectButtonDidTap(_ sender: Notification) {
+        guard let cell = sender.userInfo?["cell"] as? OptionListCell,
+              let indexPath = contentView.optionListView.indexPath(for: cell),
+              let option = dataSource.itemIdentifier(for: indexPath)
+        else { return }
+        selectedIndexPaths.insert(indexPath)
+        consideredIndexPaths.remove(indexPath)
+        reactor?.action.send(.optionDidSelect(option))
     }
 
-    private func applyData(_ data: Data?) {
-        if let data,
-           let optionDTOList = try? JSONDecoder().decode(RootDTO.self, from: data).result.options {
-            let dataList = optionDTOList.map { Option($0) }
+    @objc
+    func unselectButtonDidTap(_ sender: Notification) {
+        guard let cell = sender.userInfo?["cell"] as? OptionListCell,
+              let indexPath = contentView.optionListView.indexPath(for: cell),
+              let option = dataSource.itemIdentifier(for: indexPath)
+        else { return }
+        selectedIndexPaths.remove(indexPath)
+        consideredIndexPaths.remove(indexPath)
+        reactor?.action.send(.optionDidUnselect(option))
+    }
 
-            var snapshot = NSDiffableDataSourceSnapshot<Section, Option>()
-            snapshot.appendSections([.option])
-            snapshot.appendItems(dataList)
-            DispatchQueue.main.async { [weak self] in
-                self?.dataSource?.apply(snapshot)
-            }
-        } else {
-            print("Decoding Error")
-            return
-        }
+    @objc
+    func considerButtonDidTap(_ sender: Notification) {
+        guard let cell = sender.userInfo?["cell"] as? OptionListCell,
+              let indexPath = contentView.optionListView.indexPath(for: cell),
+              let option = dataSource.itemIdentifier(for: indexPath)
+        else { return }
+        selectedIndexPaths.remove(indexPath)
+        consideredIndexPaths.insert(indexPath)
+        reactor?.action.send(.optionDidConsider(option))
     }
 }
 
 // MARK: CollectionViewDelegate
 extension OptionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-
-        if collectionView == contentView.categoryListView {
-        } else { // OptionListView 일 때
-
-//            // 선택된 셀이 가장 위에 보여지도록 한다.
-//            if cell.frame.origin.y + contentView.optionListView.bounds.height < contentView.optionListView.contentSize.height {
-//                contentView.optionListView.bounds.origin = cell.frame.origin
-//            } else {
-//                // 마지막 셀 일 때
-//                contentView.optionListView.bounds.origin.y = cell.frame.maxY - contentView.optionListView.bounds.height
-//            }
-
-            // preview Image를 띄운다.
-            // FIXME: 내부 파일 URL로 바꾸기
-            if let imageURL = dataSource?.itemIdentifier(for: indexPath)?.imgURL,
-               let data = try? Data(contentsOf: imageURL) {
-                contentView.configurePreviewImage(with: UIImage(data: data))
-            }
+        if let option = dataSource.itemIdentifier(for: indexPath) {
+            reactor?.action.send(.optionDidSelect(option))
         }
     }
 }
@@ -149,8 +150,6 @@ extension OptionViewController: UICollectionViewDelegate {
 // MARK: CollectionViewDataSource
 extension OptionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard collectionView == contentView.categoryListView else { return 0 }
-
         return categoryList.count
     }
 
@@ -168,5 +167,77 @@ extension OptionViewController: UICollectionViewDataSource {
         }
         cell.setStyledTitle(categoryList[indexPath.item])
         return cell
+    }
+}
+
+extension OptionViewController: Reactable {
+    func bindState(reactor: OptionReactor) {
+        reactor.state.map(\.selectedOptions)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] selectedOptions in
+                for selectedOption in selectedOptions {
+                    self?.selectedStyleFor(selectedOption)
+                }
+            }
+            .store(in: &cancellables)
+
+        reactor.state.map(\.consideredOptions)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] consideredOptions in
+                for considredOption in consideredOptions {
+                    self?.consideredStyleFor(considredOption)
+                }
+            }
+            .store(in: &cancellables)
+
+        reactor.state.map(\.optionList)
+            .dropFirst()
+            .removeDuplicates()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] optionList in
+                var snapshot = Snapshot()
+                snapshot.appendSections([.option])
+                snapshot.appendItems(optionList)
+                self?.dataSource.apply(snapshot, completion: {
+                    reactor.action.send(.dataSourceDidApply)
+                })
+            }
+            .store(in: &cancellables)
+
+        reactor.state.compactMap(\.errorDescription)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] errorDescription in
+                let alert = UIAlertController(
+                    title: "에러",
+                    message: errorDescription,
+                    preferredStyle: .alert
+                )
+                alert.addAction(.init(title: "확인", style: .default))
+                print(errorDescription)
+                self?.present(alert, animated: false)
+            }
+            .store(in: &cancellables)
+    }
+}
+
+extension OptionViewController {
+    func selectedStyleFor(_ option: Option) {
+        guard let indexPath = dataSource.indexPath(for: option) else { return }
+        guard let cell = contentView.optionListView.cellForItem(at: indexPath) as? OptionListCell else { return }
+        selectedIndexPaths.insert(indexPath)
+        cell.selectedStyle()
+    }
+
+    func unselectedStyleFor(_ option: Option) {
+        guard let indexPath = dataSource.indexPath(for: option) else { return }
+        guard let cell = contentView.optionListView.cellForItem(at: indexPath) as? OptionListCell else { return }
+        cell.unselectedStyle()
+    }
+
+    func consideredStyleFor(_ option: Option) {
+        guard let indexPath = dataSource.indexPath(for: option) else { return }
+        guard let cell = contentView.optionListView.cellForItem(at: indexPath) as? OptionListCell else { return }
+        consideredIndexPaths.insert(indexPath)
+        cell.consideredStyle()
     }
 }
