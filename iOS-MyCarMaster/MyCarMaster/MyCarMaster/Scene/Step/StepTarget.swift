@@ -17,12 +17,15 @@ enum StepTarget {
     case fetchExterior(trimId: Int)
     case fetchInterior(trimId: Int, exteriorColorId: Int)
     case fetchOption(trimId: Int, engineId: Int, wheelDriveId: Int, bodyTypeId: Int, interiorColorId: Int)
+    case fetchImage(url: URL)
 }
 
 extension StepTarget: TargetType {
 
     var baseURL: URL {
         switch self {
+        case let .fetchImage(url):
+            return url
         default:
             guard let severURL = URL(string: Dependency.serverURL) else {
                 fatalError("개발자오류: 잘못된 URL입니다.")
@@ -47,6 +50,8 @@ extension StepTarget: TargetType {
             return "interior-colors"
         case .fetchOption:
             return "options"
+        case .fetchImage:
+            return ""
         }
     }
 
@@ -79,6 +84,8 @@ extension StepTarget: TargetType {
                 "bodyTypeId": bodyTypeId,
                 "interiorColorId": interiorColorId
             ])
+        case .fetchImage:
+            return .downloadContent
         }
     }
 
