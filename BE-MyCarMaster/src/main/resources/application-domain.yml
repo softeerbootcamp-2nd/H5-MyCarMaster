@@ -1,0 +1,53 @@
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://host.docker.internal:3306/my_car_master?serverTimezone=Asia/Seoul
+    username: h5_local
+    password: h5_local@@
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 100
+    show-sql: true
+    open-in-view : false
+    database-platform: org.hibernate.spatial.dialect.mysql.MySQL8SpatialDialect
+
+  redis:
+    url: redis
+    port: 6379
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${DB_URL}:3306/my_car_master?serverTimezone=Asia/Seoul
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: ${DDL_AUTO}
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: ${BATCH_FETCH_SIZE}
+    show-sql: true
+    open-in-view : false
+    database-platform: org.hibernate.spatial.dialect.mysql.MySQL8SpatialDialect
+
+  redis:
+    url: ${REDIS_URL}
+    port: ${REDIS_PORT}

@@ -1,0 +1,92 @@
+name: Build Image and Deploy
+
+on:
+  push:
+    branches:
+      - be-release
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+
+      - name: Gradle Caching
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Grant Execute Permission For Gradlew
+        run: chmod +x ./BE-MyCarMaster/gradlew
+
+      - name: Build with Gradle
+        run: cd ./BE-MyCarMaster && ./gradlew build
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Generate random pinpoint value
+        id: generate-pinpoint
+        run: echo "::set-output name=pinpoint::$(uuidgen)"
+
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v4.0.0
+        with:
+          context: ./BE-MyCarMaster
+          file: ./BE-MyCarMaster/Dockerfile
+          push: true
+          build-args: |
+            PROFILE=prod
+            DDL_AUTO=${{ secrets.DDL_AUTO }}
+            DB_URL=${{ secrets.DB_URL }} 
+            DB_USERNAME=${{ secrets.DB_USERNAME }} 
+            DB_PASSWORD=${{ secrets.DB_PASSWORD }}
+            MAIL_USERNAME=${{ secrets.MAIL_USERNAME }}
+            MAIL_PASSWORD=${{ secrets.MAIL_PASSWORD }}
+            ESTIMATE_LINK=${{ secrets.ESTIMATE_LINK }}
+            SERVER_URL=${{ secrets.SERVER_URL }}
+            PINPOINT_AGENT_ID=${{ steps.generate-pinpoint.outputs.pinpoint }}
+            REDIS_URL=${{ secrets.REDIS_URL }}
+            REDIS_PORT=${{ secrets.REDIS_PORT }}
+            BATCH_FETCH_SIZE=${{ secrets.BATCH_FETCH_SIZE }}
+          tags: |
+            softeerh5/my-car-master:latest
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-2
+
+      - name: Zip Deployment Files
+        run: |
+          cd ./BE-MyCarMaster 
+          zip -r scripts.zip scripts/
+
+      - name: Copy Files to S3
+        run: |
+          cd ./BE-MyCarMaster
+          aws s3 cp scripts.zip s3://h5-codedeploy-script/script/
+
+      - name: Deploy to AWS CodeDeploy
+        run: |
+          aws deploy create-deployment \
+            --application-name h5-application-ec2-deploy \
+            --deployment-config-name CodeDeployDefault.AllAtOnce \
+            --deployment-group-name h5-application-deploy-group \
+            --s3-location bucket=h5-codedeploy-script,bundleType=zip,key=script/scripts.zip

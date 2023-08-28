@@ -1,0 +1,63 @@
+# Swagger springdoc-ui Configuration
+springdoc:
+  packages-to-scan: softeer.be_my_car_master.application
+  default-consumes-media-type: application/json;charset=UTF-8
+  default-produces-media-type: application/json;charset=UTF-8
+  swagger-ui:
+    path: docs-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /api-docs/json
+    groups:
+      enabled: true
+  cache:
+    disabled: true
+
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    link: ${ESTIMATE_LINK}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          timeout: 5000
+          starttls:
+            enable: true
+
+management:
+  server:
+    port: 9292
+  endpoints:
+    web:
+      exposure:
+        include: ["prometheus", "logfile"]
+  endpoint:
+    logfile:
+      external-file: /logs/h5.log
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+
+api:
+  server:
+    url: http://localhost:8080
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+api:
+  server:
+    url: ${SERVER_URL}
+

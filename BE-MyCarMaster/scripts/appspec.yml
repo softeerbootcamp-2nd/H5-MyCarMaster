@@ -1,0 +1,19 @@
+version: 0.0
+os: linux
+
+files:
+  - source: promtail-config.yml
+    destination: /home/ubuntu
+
+hooks:
+  BeforeInstall:
+    - location: remove-directory.sh
+      timeout: 300
+      runas: root
+    - location: remove-container.sh
+      timeout: 300
+      runas: root
+  AfterInstall:
+    - location: pull-and-run-container.sh
+      timeout: 300
+      runas: root
