@@ -80,9 +80,11 @@ extension EngineViewController: Reactable {
     func bindState(reactor: EngineReactor) {
         reactor.state.map(\.selectedEngine)
             .dropFirst()
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] engine in
                 if let engine {
                     self?.selectItemFor(engine)
+                    reactor.action.send(.fetchEngineImage(engine.imageURL))
                     return
                 }
 
@@ -90,6 +92,7 @@ extension EngineViewController: Reactable {
                     for: .init(item: 0, section: 0)
                 ) {
                     reactor.action.send(.engineDidSelect(firstEngine))
+                    reactor.action.send(.fetchEngineImage(firstEngine.imageURL))
                 }
                 return
             }
@@ -135,15 +138,21 @@ extension EngineViewController: Reactable {
                 }
             }
             .store(in: &cancellables)
+
+        reactor.state.compactMap(\.selectedEngineImage)
+            .dropFirst()
+            .removeDuplicates()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] image in
+                self?.contentView.previewImageView.image = image
+            }
+            .store(in: &cancellables)
     }
 }
 
 extension EngineViewController {
     func selectItemFor(_ engine: Engine) {
         guard let indexPath = dataSource.indexPath(for: engine) else { return }
-        guard let imageData = try? Data(contentsOf: engine.imageURL)
-        else { return }
-        contentView.previewImageView.image = UIImage(data: imageData)
         selectItemAt(indexPath)
     }
 

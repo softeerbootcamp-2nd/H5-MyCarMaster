@@ -17,6 +17,7 @@ final class InteriorReactor: Reactor {
         case viewDidLoad
         case interiorDidSelect(Interior)
         case dataSourceDidApply
+        case fetchInteriorImage(URL)
     }
 
     enum Mutation {
@@ -24,12 +25,14 @@ final class InteriorReactor: Reactor {
         case fetchInteriorList([Interior])
         case fetchSelectedInterior(Interior?)
         case alertError(String)
+        case fetchInteriorImage(UIImage)
     }
 
     struct State {
         var isLoading: Bool
         var interiorList: [Interior]
         var selectedInterior: Interior?
+        var selectedInteriorImage: UIImage?
         var errorDescription: String?
     }
 
@@ -59,6 +62,8 @@ final class InteriorReactor: Reactor {
             return updateInterior(interior)
         case .dataSourceDidApply:
             return fetchSelectedInterior()
+        case let .fetchInteriorImage(url):
+            return fetchInteriorImage(url)
         }
     }
 
@@ -89,6 +94,8 @@ final class InteriorReactor: Reactor {
             newState.selectedInterior = interior
         case let .alertError(errorDescription):
             newState.errorDescription = errorDescription
+        case let .fetchInteriorImage(image):
+            newState.selectedInteriorImage = image
         }
         return newState
     }
@@ -117,6 +124,37 @@ extension InteriorReactor {
 
 // MARK: Network
 extension InteriorReactor {
+    private func fetchInteriorImage(_ url: URL) -> AnyPublisher<Mutation, Never> {
+        if let image = ImageCacheManager.shared.object(forKey: url as NSURL) {
+            return Just(Mutation.fetchInteriorImage(image))
+                .eraseToAnyPublisher()
+        }
+
+        guard let stepNetworkProvider else {
+            fatalError("개발자 오류: StepProvider가 존재하지 않음")
+        }
+
+        return stepNetworkProvider.requestPublisher(.fetchImage(url: url))
+            .retry(1)
+            .tryMap({ element -> Mutation in
+                guard let httpResponse = element.response as? HTTPURLResponse,
+                      httpResponse.statusCode == 200 else {
+                    throw URLError(.badServerResponse)
+                }
+
+                guard let image = UIImage(data: element.data) else {
+                    throw URLError(.badServerResponse)
+                }
+                ImageCacheManager.shared.setObject(image, forKey: url as NSURL)
+
+                return Mutation.fetchInteriorImage(image)
+            })
+            .catch({ error in
+                return Just(Mutation.alertError(error.localizedDescription))
+            })
+            .eraseToAnyPublisher()
+    }
+
     private func fetchInteriorList() -> AnyPublisher<Mutation, Never> {
 #if ONLINE
         fetchInteriorListFromNetwork()

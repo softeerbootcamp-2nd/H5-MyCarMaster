@@ -17,6 +17,7 @@ final class EngineReactor: Reactor {
         case viewDidLoad
         case engineDidSelect(Engine)
         case dataSourceDidApply
+        case fetchEngineImage(URL)
     }
 
     enum Mutation {
@@ -24,12 +25,14 @@ final class EngineReactor: Reactor {
         case fetchEngineList([Engine])
         case fetchSelectedEngine(Engine?)
         case alertError(String)
+        case fetchEngineImage(UIImage)
     }
 
     struct State {
         var isLoading: Bool
         var engineList: [Engine]
         var selectedEngine: Engine?
+        var selectedEngineImage: UIImage?
         var errorDescription: String?
     }
 
@@ -59,6 +62,8 @@ final class EngineReactor: Reactor {
             return updateEngine(engine)
         case .dataSourceDidApply:
             return fetchSelectedEngine()
+        case let .fetchEngineImage(url):
+            return fetchEngineImage(url)
         }
     }
 
@@ -89,12 +94,45 @@ final class EngineReactor: Reactor {
             newState.selectedEngine = engine
         case let .alertError(errorDescription):
             newState.errorDescription = errorDescription
+        case let .fetchEngineImage(image):
+            newState.selectedEngineImage = image
         }
         return newState
     }
 }
 
 extension EngineReactor {
+    private func fetchEngineImage(_ url: URL) -> AnyPublisher<Mutation, Never> {
+        if let image = ImageCacheManager.shared.object(forKey: url as NSURL) {
+            return Just(Mutation.fetchEngineImage(image))
+                .eraseToAnyPublisher()
+        }
+
+        guard let stepNetworkProvider else {
+            fatalError("개발자 오류: StepProvider가 존재하지 않음")
+        }
+
+        return stepNetworkProvider.requestPublisher(.fetchImage(url: url))
+            .retry(1)
+            .tryMap({ element -> Mutation in
+                guard let httpResponse = element.response as? HTTPURLResponse,
+                      httpResponse.statusCode == 200 else {
+                    throw URLError(.badServerResponse)
+                }
+
+                guard let image = UIImage(data: element.data) else {
+                    throw URLError(.badServerResponse)
+                }
+                ImageCacheManager.shared.setObject(image, forKey: url as NSURL)
+
+                return Mutation.fetchEngineImage(image)
+            })
+            .catch({ error in
+                return Just(Mutation.alertError(error.localizedDescription))
+            })
+            .eraseToAnyPublisher()
+    }
+
     private func updateEngine(_ engine: Engine) -> AnyPublisher<Mutation, Never> {
         guard let estimationManager else {
             return Empty().eraseToAnyPublisher()

@@ -80,9 +80,11 @@ extension BodyTypeViewController: Reactable {
     func bindState(reactor: BodyTypeReactor) {
         reactor.state.map(\.selectedBodyType)
             .dropFirst()
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] bodyType in
                 if let bodyType {
                     self?.selectItemFor(bodyType)
+                    reactor.action.send(.fetchBodyTypeImage(bodyType.imageURL))
                     return
                 }
 
@@ -90,6 +92,7 @@ extension BodyTypeViewController: Reactable {
                     for: .init(item: 0, section: 0)
                 ) {
                     reactor.action.send(.bodyTypeDidSelect(firstBodyType))
+                    reactor.action.send(.fetchBodyTypeImage(firstBodyType.imageURL))
                 }
                 return
             }
@@ -135,15 +138,21 @@ extension BodyTypeViewController: Reactable {
                 }
             }
             .store(in: &cancellables)
+
+        reactor.state.compactMap(\.selectedBodyTypeImage)
+            .dropFirst()
+            .removeDuplicates()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] image in
+                self?.contentView.previewImageView.image = image
+            }
+            .store(in: &cancellables)
     }
 }
 
 extension BodyTypeViewController {
     func selectItemFor(_ bodyType: BodyType) {
         guard let indexPath = dataSource.indexPath(for: bodyType) else { return }
-        guard let imageData = try? Data(contentsOf: bodyType.imageURL)
-        else { return }
-        contentView.previewImageView.image = UIImage(data: imageData)
         selectItemAt(indexPath)
     }
 

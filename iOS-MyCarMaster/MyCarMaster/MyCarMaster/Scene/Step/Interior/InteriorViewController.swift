@@ -80,9 +80,11 @@ extension InteriorViewController: Reactable {
     func bindState(reactor: InteriorReactor) {
         reactor.state.map(\.selectedInterior)
             .dropFirst()
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] interior in
                 if let interior {
                     self?.selectItemFor(interior)
+                    reactor.action.send(.fetchInteriorImage(interior.coloredImgURL))
                     return
                 }
 
@@ -90,6 +92,7 @@ extension InteriorViewController: Reactable {
                     for: .init(item: 0, section: 0)
                 ) {
                     reactor.action.send(.interiorDidSelect(firstInterior))
+                    reactor.action.send(.fetchInteriorImage(firstInterior.coloredImgURL))
                 }
                 return
             }
@@ -135,15 +138,21 @@ extension InteriorViewController: Reactable {
                 }
             }
             .store(in: &cancellables)
+
+        reactor.state.compactMap(\.selectedInteriorImage)
+            .dropFirst()
+            .removeDuplicates()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] image in
+                self?.contentView.previewImageView.image = image
+            }
+            .store(in: &cancellables)
     }
 }
 
 extension InteriorViewController {
     func selectItemFor(_ interior: Interior) {
         guard let indexPath = dataSource.indexPath(for: interior) else { return }
-        guard let imageData = try? Data(contentsOf: interior.coloredImgURL)
-        else { return }
-        contentView.previewImageView.image = UIImage(data: imageData)
         selectItemAt(indexPath)
     }
 

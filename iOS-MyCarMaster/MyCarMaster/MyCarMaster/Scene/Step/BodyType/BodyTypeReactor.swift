@@ -17,6 +17,7 @@ final class BodyTypeReactor: Reactor {
         case viewDidLoad
         case bodyTypeDidSelect(BodyType)
         case dataSourceDidApply
+        case fetchBodyTypeImage(URL)
     }
 
     enum Mutation {
@@ -24,12 +25,14 @@ final class BodyTypeReactor: Reactor {
         case fetchBodyTypeList([BodyType])
         case fetchSelectedBodyType(BodyType?)
         case alertError(String)
+        case fetchBodyTypeImage(UIImage)
     }
 
     struct State {
         var isLoading: Bool
         var bodyTypeList: [BodyType]
         var selectedBodyType: BodyType?
+        var selectedBodyTypeImage: UIImage?
         var errorDescription: String?
     }
 
@@ -59,6 +62,8 @@ final class BodyTypeReactor: Reactor {
             return updateBodyType(bodyType)
         case .dataSourceDidApply:
             return fetchSelectedBodyType()
+        case let .fetchBodyTypeImage(url):
+            return fetchBodyTypeImage(url)
         }
     }
 
@@ -89,6 +94,8 @@ final class BodyTypeReactor: Reactor {
             newState.selectedBodyType = bodyType
         case let .alertError(errorDescription):
             newState.errorDescription = errorDescription
+        case let .fetchBodyTypeImage(image):
+            newState.selectedBodyTypeImage = image
         }
         return newState
     }
@@ -117,6 +124,37 @@ extension BodyTypeReactor {
 
 // MARK: Network
 extension BodyTypeReactor {
+    private func fetchBodyTypeImage(_ url: URL) -> AnyPublisher<Mutation, Never> {
+        if let image = ImageCacheManager.shared.object(forKey: url as NSURL) {
+            return Just(Mutation.fetchBodyTypeImage(image))
+                .eraseToAnyPublisher()
+        }
+
+        guard let stepNetworkProvider else {
+            fatalError("개발자 오류: StepProvider가 존재하지 않음")
+        }
+
+        return stepNetworkProvider.requestPublisher(.fetchImage(url: url))
+            .retry(1)
+            .tryMap({ element -> Mutation in
+                guard let httpResponse = element.response as? HTTPURLResponse,
+                      httpResponse.statusCode == 200 else {
+                    throw URLError(.badServerResponse)
+                }
+
+                guard let image = UIImage(data: element.data) else {
+                    throw URLError(.badServerResponse)
+                }
+                ImageCacheManager.shared.setObject(image, forKey: url as NSURL)
+
+                return Mutation.fetchBodyTypeImage(image)
+            })
+            .catch({ error in
+                return Just(Mutation.alertError(error.localizedDescription))
+            })
+            .eraseToAnyPublisher()
+    }
+
     private func fetchBodyTypeList() -> AnyPublisher<Mutation, Never> {
 #if ONLINE
         fetchBodyTypeListFromNetwork()
