@@ -79,7 +79,7 @@ const Container = styled.div`
 
 const Text = styled.div`
   position: absolute;
-  bottom: 5%;
+  bottom: 10%;
   left: 50%;
   transform: translateX(-50%);
   color: ${(props) => props.theme.colors.NAVYBLUE5};
@@ -90,7 +90,7 @@ const Text = styled.div`
 
 const UnderBarContainer = styled.img`
   position: absolute;
-  bottom: 15%;
+  bottom: 20%;
   left: 50%;
   transform: translateX(-50%);
   z-index: -1;
