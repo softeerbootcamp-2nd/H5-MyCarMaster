@@ -6,6 +6,7 @@ export const QuotationBox = styled(Flex)`
   width: 100%;
   height: 100%;
 `;
+
 export const ClientBox = styled(Flex)`
   width: 20rem;
   height: 10rem;
@@ -65,7 +66,6 @@ export const ClientQuotationDetailBox = styled(Flex)`
   height: auto;
   position: absolute;
   gap: 1rem;
-  top: 0;
   left: 0;
   background-color: ${(props) => props.theme.colors.WHITE};
   padding: 2.5rem;
