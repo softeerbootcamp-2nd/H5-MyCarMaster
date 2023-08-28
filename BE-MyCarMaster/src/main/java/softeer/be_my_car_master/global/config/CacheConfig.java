@@ -31,10 +31,10 @@ public class CacheConfig {
 	@Bean
 	public RedisCacheManagerBuilderCustomizer redisCacheManagerBuilderCustomizer() {
 		return (builder) -> builder
-			.withCacheConfiguration("redis",
+			.withCacheConfiguration("get_options",
 				RedisCacheConfiguration.defaultCacheConfig()
 					.computePrefixWith(cacheName -> "prefix::" + cacheName + "::")
-					.entryTtl(Duration.ofSeconds(15))
+					.entryTtl(Duration.ZERO)
 					.disableCachingNullValues()
 					.serializeKeysWith(
 						RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer())
@@ -43,6 +43,35 @@ public class CacheConfig {
 						RedisSerializationContext.SerializationPair.fromSerializer(
 							new GenericJackson2JsonRedisSerializer()
 						)
-					));
+					)
+			)
+			.withCacheConfiguration("get_body_types",
+				RedisCacheConfiguration.defaultCacheConfig()
+					.computePrefixWith(cacheName -> "prefix::" + cacheName + "::")
+					.entryTtl(Duration.ZERO)
+					.disableCachingNullValues()
+					.serializeKeysWith(
+						RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer())
+					)
+					.serializeValuesWith(
+						RedisSerializationContext.SerializationPair.fromSerializer(
+							new GenericJackson2JsonRedisSerializer()
+						)
+					)
+			)
+			.withCacheConfiguration("get_trims",
+				RedisCacheConfiguration.defaultCacheConfig()
+					.computePrefixWith(cacheName -> "prefix::" + cacheName + "::")
+					.entryTtl(Duration.ZERO)
+					.disableCachingNullValues()
+					.serializeKeysWith(
+						RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer())
+					)
+					.serializeValuesWith(
+						RedisSerializationContext.SerializationPair.fromSerializer(
+							new GenericJackson2JsonRedisSerializer()
+						)
+					)
+			);
 	}
 }
