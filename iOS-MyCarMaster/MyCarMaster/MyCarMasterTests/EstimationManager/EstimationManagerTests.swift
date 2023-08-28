@@ -35,7 +35,7 @@ final class EstimationManagerTests: XCTestCase {
     
     func testUpdateTrim() throws {
         let trimPrice = 10000
-        let trim = Trim(model: "", name: "", ratio: 0, description: "", price: trimPrice)
+        let trim = Trim(model: "", id: 1, name: "", ratio: 0, description: "", price: trimPrice, imageURL: URL(fileURLWithPath: ""))
         
         XCTAssertEqual(estimationManager.estimation.trim, nil)
         XCTAssertEqual(estimationManager.estimation.totalPrice, 0)
@@ -50,9 +50,9 @@ final class EstimationManagerTests: XCTestCase {
     }
 
     func testUpdateOptionOnlySelect() throws {
-        let option1 = Option(model: "", category: "", name: "", price: 10000, ratio: 0, imgURL: nil, summary: nil, description: nil, tag: nil, subOptions: [])
+        let option1 = Option(model: "", id: 1, category: "", name: "", price: 10000, ratio: 0, imgURL: nil, summary: nil, description: nil, tag: nil, subOptions: [])
         
-        let option2 = Option(model: "", category: "", name: "", price: 1000, ratio: 0, imgURL: nil, summary: nil, description: nil, tag: nil, subOptions: [])
+        let option2 = Option(model: "", id: 1, category: "", name: "", price: 1000, ratio: 0, imgURL: nil, summary: nil, description: nil, tag: nil, subOptions: [])
         
         XCTAssertEqual(estimationManager.estimation.selectedOptions, [])
         XCTAssertEqual(estimationManager.estimation.totalPrice, 0)
@@ -71,7 +71,7 @@ final class EstimationManagerTests: XCTestCase {
     }
     
     func testUpdateOptionSelectAndConsider() throws {
-        let option1 = Option(model: "", category: "", name: "", price: 10000, ratio: 0, imgURL: nil, summary: nil, description: nil, tag: nil, subOptions: [])
+        let option1 = Option(model: "", id: 1, category: "", name: "", price: 10000, ratio: 0, imgURL: nil, summary: nil, description: nil, tag: nil, subOptions: [])
         
         // 초기 상태
         XCTAssertEqual(estimationManager.estimation.selectedOptions, [])
@@ -96,7 +96,7 @@ final class EstimationManagerTests: XCTestCase {
     }
     
     func testRemoveOption() throws {
-        let option1 = Option(model: "", category: "", name: "", price: 10000, ratio: 0, imgURL: nil, summary: nil, description: nil, tag: nil, subOptions: [])
+        let option1 = Option(model: "", id: 1, category: "", name: "", price: 10000, ratio: 0, imgURL: nil, summary: nil, description: nil, tag: nil, subOptions: [])
         
         // 초기 상태
         XCTAssertEqual(estimationManager.estimation.selectedOptions, [])
@@ -112,7 +112,7 @@ final class EstimationManagerTests: XCTestCase {
         XCTAssertEqual(estimationManager.estimation.totalPrice, 10000)
         
         // option1 제거
-        estimationManager.remove(\.selectedOptions, value: option1)
+        estimationManager.remove(value: option1)
         
         XCTAssertEqual(estimationManager.estimation.selectedOptions, [])
         XCTAssertEqual(estimationManager.estimation.consideredOptions, [])
