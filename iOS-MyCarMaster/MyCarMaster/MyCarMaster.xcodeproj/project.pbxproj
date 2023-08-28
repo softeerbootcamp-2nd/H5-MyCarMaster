@@ -86,6 +86,7 @@
 		B5917EC22A9C3693004793EF /* String+DTOURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5917EC12A9C3693004793EF /* String+DTOURL.swift */; };
 		B5917EC42A9C39E3004793EF /* ImageUrlReplacingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5917EC32A9C39E3004793EF /* ImageUrlReplacingTests.swift */; };
 		B5917EC72A9C5FFF004793EF /* MCMActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5917EC62A9C5FFF004793EF /* MCMActivityIndicatorView.swift */; };
+		B5917EC92A9C7278004793EF /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5917EC82A9C7278004793EF /* ImageCacheManager.swift */; };
 		B598A0852A8F297A00C4A591 /* QuotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B598A0842A8F297A00C4A591 /* QuotationViewController.swift */; };
 		B59B201D2A8B666A009E7868 /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59B201C2A8B666A009E7868 /* OptionViewController.swift */; };
 		B59F0B6C2A9B418900E444C6 /* EngineReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F0B6B2A9B418900E444C6 /* EngineReactor.swift */; };
@@ -281,6 +282,7 @@
 		B5917EC12A9C3693004793EF /* String+DTOURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DTOURL.swift"; sourceTree = "<group>"; };
 		B5917EC32A9C39E3004793EF /* ImageUrlReplacingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUrlReplacingTests.swift; sourceTree = "<group>"; };
 		B5917EC62A9C5FFF004793EF /* MCMActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCMActivityIndicatorView.swift; sourceTree = "<group>"; };
+		B5917EC82A9C7278004793EF /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		B598A0842A8F297A00C4A591 /* QuotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationViewController.swift; sourceTree = "<group>"; };
 		B59B201C2A8B666A009E7868 /* OptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
 		B59F0B6B2A9B418900E444C6 /* EngineReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineReactor.swift; sourceTree = "<group>"; };
@@ -515,6 +517,7 @@
 			isa = PBXGroup;
 			children = (
 				B51CE2292A92A50300C65689 /* EstimationManager.swift */,
+				B5917EC82A9C7278004793EF /* ImageCacheManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1067,6 +1070,7 @@
 				B59B201D2A8B666A009E7868 /* OptionViewController.swift in Sources */,
 				B53C3C582A8578310019ECA1 /* BodyTypeView.swift in Sources */,
 				B56A765C2A83EC5200F7E3EF /* Preview.swift in Sources */,
+				B5917EC92A9C7278004793EF /* ImageCacheManager.swift in Sources */,
 				B58FB41C2A92049600105DBF /* StepContainerReactor.swift in Sources */,
 				B510BBDF2A84895D009E5752 /* StepBottomView.swift in Sources */,
 				B53C3C442A85483F0019ECA1 /* EngineView.swift in Sources */,
