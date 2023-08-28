@@ -83,6 +83,10 @@
 		B58FB4182A91FE6E00105DBF /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FB4172A91FE6E00105DBF /* Router.swift */; };
 		B58FB41A2A91FEF200105DBF /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FB4192A91FEF200105DBF /* Step.swift */; };
 		B58FB41C2A92049600105DBF /* StepContainerReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FB41B2A92049600105DBF /* StepContainerReactor.swift */; };
+		B5917EC22A9C3693004793EF /* String+DTOURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5917EC12A9C3693004793EF /* String+DTOURL.swift */; };
+		B5917EC42A9C39E3004793EF /* ImageUrlReplacingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5917EC32A9C39E3004793EF /* ImageUrlReplacingTests.swift */; };
+		B5917EC72A9C5FFF004793EF /* MCMActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5917EC62A9C5FFF004793EF /* MCMActivityIndicatorView.swift */; };
+		B5917EC92A9C7278004793EF /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5917EC82A9C7278004793EF /* ImageCacheManager.swift */; };
 		B598A0852A8F297A00C4A591 /* QuotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B598A0842A8F297A00C4A591 /* QuotationViewController.swift */; };
 		B59B201D2A8B666A009E7868 /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59B201C2A8B666A009E7868 /* OptionViewController.swift */; };
 		B59F0B6C2A9B418900E444C6 /* EngineReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F0B6B2A9B418900E444C6 /* EngineReactor.swift */; };
@@ -275,6 +279,10 @@
 		B58FB4172A91FE6E00105DBF /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		B58FB4192A91FEF200105DBF /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		B58FB41B2A92049600105DBF /* StepContainerReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepContainerReactor.swift; sourceTree = "<group>"; };
+		B5917EC12A9C3693004793EF /* String+DTOURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DTOURL.swift"; sourceTree = "<group>"; };
+		B5917EC32A9C39E3004793EF /* ImageUrlReplacingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUrlReplacingTests.swift; sourceTree = "<group>"; };
+		B5917EC62A9C5FFF004793EF /* MCMActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCMActivityIndicatorView.swift; sourceTree = "<group>"; };
+		B5917EC82A9C7278004793EF /* ImageCacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		B598A0842A8F297A00C4A591 /* QuotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationViewController.swift; sourceTree = "<group>"; };
 		B59B201C2A8B666A009E7868 /* OptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
 		B59F0B6B2A9B418900E444C6 /* EngineReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineReactor.swift; sourceTree = "<group>"; };
@@ -417,6 +425,7 @@
 			children = (
 				B50FEC562A9401FD003566DD /* EstimationManager */,
 				B5D1E1FA2A8E0DA900DAE384 /* DecodeDTO */,
+				B5917EC32A9C39E3004793EF /* ImageUrlReplacingTests.swift */,
 			);
 			path = MyCarMasterTests;
 			sourceTree = "<group>";
@@ -508,6 +517,7 @@
 			isa = PBXGroup;
 			children = (
 				B51CE2292A92A50300C65689 /* EstimationManager.swift */,
+				B5917EC82A9C7278004793EF /* ImageCacheManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -619,6 +629,7 @@
 				B5DD650D2A880A4100B44F61 /* UIImage+Merge.swift */,
 				B5DD65112A880B3100B44F61 /* CGSize+Operator.swift */,
 				B5DD65162A88F8D100B44F61 /* Then.swift */,
+				B5917EC12A9C3693004793EF /* String+DTOURL.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -742,6 +753,7 @@
 				B550C0D42A8FF4440068670D /* SeparatorView.swift */,
 				B5C56C012A935134009F0226 /* ThemeButton.swift */,
 				B5B142322A967E7E007BB426 /* SpriteRotationView.swift */,
+				B5917EC62A9C5FFF004793EF /* MCMActivityIndicatorView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1052,11 +1064,13 @@
 				B50FEC4F2A939501003566DD /* StepTarget.swift in Sources */,
 				B5DD65202A8926E700B44F61 /* ContentSizeEstimatable.swift in Sources */,
 				B5C0790D2A8BD6EA00747B11 /* UIButton+Selectable.swift in Sources */,
+				B5917EC72A9C5FFF004793EF /* MCMActivityIndicatorView.swift in Sources */,
 				B5DD64DF2A876EED00B44F61 /* BodyTypeDTO.swift in Sources */,
 				B56F55D22A86BBE50055E382 /* RootDTO.swift in Sources */,
 				B59B201D2A8B666A009E7868 /* OptionViewController.swift in Sources */,
 				B53C3C582A8578310019ECA1 /* BodyTypeView.swift in Sources */,
 				B56A765C2A83EC5200F7E3EF /* Preview.swift in Sources */,
+				B5917EC92A9C7278004793EF /* ImageCacheManager.swift in Sources */,
 				B58FB41C2A92049600105DBF /* StepContainerReactor.swift in Sources */,
 				B510BBDF2A84895D009E5752 /* StepBottomView.swift in Sources */,
 				B53C3C442A85483F0019ECA1 /* EngineView.swift in Sources */,
@@ -1109,6 +1123,7 @@
 				B59F0B742A9BBA1A00E444C6 /* ExteriorReactor.swift in Sources */,
 				B58A323B2A7C0B35005FC831 /* OnboardingViewController.swift in Sources */,
 				B5B142332A967E7E007BB426 /* SpriteRotationView.swift in Sources */,
+				B5917EC22A9C3693004793EF /* String+DTOURL.swift in Sources */,
 				B56A765F2A83EFB000F7E3EF /* BasicListCell.swift in Sources */,
 				B570C0FA2A89ADA7000E9B75 /* InteriorView.swift in Sources */,
 				B500C77F2A8FCA5F007724F3 /* QuotationContentItemView.swift in Sources */,
@@ -1146,6 +1161,7 @@
 				B5D1E1FE2A8E14C400DAE384 /* FetchFromBundle.swift in Sources */,
 				B500C7892A8FE188007724F3 /* DecodeEngineDTOTests.swift in Sources */,
 				B500C78F2A8FE1AE007724F3 /* DecodeBodyTypeDTOTests.swift in Sources */,
+				B5917EC42A9C39E3004793EF /* ImageUrlReplacingTests.swift in Sources */,
 				B5D1E1FC2A8E14AE00DAE384 /* DecodeTrimDTOTests.swift in Sources */,
 				B500C78B2A8FE192007724F3 /* DecodeExteriorDTOTests.swift in Sources */,
 			);

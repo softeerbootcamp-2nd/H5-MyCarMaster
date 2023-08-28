@@ -122,12 +122,28 @@ extension EngineViewController: Reactable {
                 self?.present(alert, animated: false)
             }
             .store(in: &cancellables)
+
+        reactor.state.map(\.isLoading)
+            .dropFirst()
+            .removeDuplicates()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isLoading in
+                if isLoading {
+                    self?.showIndicator()
+                } else {
+                    self?.hideIndicator()
+                }
+            }
+            .store(in: &cancellables)
     }
 }
 
 extension EngineViewController {
     func selectItemFor(_ engine: Engine) {
         guard let indexPath = dataSource.indexPath(for: engine) else { return }
+        guard let imageData = try? Data(contentsOf: engine.imageURL)
+        else { return }
+        contentView.previewImageView.image = UIImage(data: imageData)
         selectItemAt(indexPath)
     }
 

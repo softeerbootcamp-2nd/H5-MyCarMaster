@@ -33,6 +33,9 @@ extension WheelDrive {
         self.description = wheelDriveDTO.description
         self.ratio = wheelDriveDTO.ratio
         self.price = wheelDriveDTO.price
-        self.imageURL = URL(string: wheelDriveDTO.imgURL)
+        guard let imageURL = URL(string: wheelDriveDTO.imgURL) else {
+            fatalError("서버 개발자 에러: 유효하지 않은 URL입니다.")
+        }
+        self.imageURL = imageURL
     }
 }

@@ -122,12 +122,28 @@ extension WheelDriveViewController: Reactable {
                 self?.present(alert, animated: false)
             }
             .store(in: &cancellables)
+
+        reactor.state.map(\.isLoading)
+            .dropFirst()
+            .removeDuplicates()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isLoading in
+                if isLoading {
+                    self?.showIndicator()
+                } else {
+                    self?.hideIndicator()
+                }
+            }
+            .store(in: &cancellables)
     }
 }
 
 extension WheelDriveViewController {
     func selectItemFor(_ wheelDrive: WheelDrive) {
         guard let indexPath = dataSource.indexPath(for: wheelDrive) else { return }
+        guard let imageData = try? Data(contentsOf: wheelDrive.imageURL)
+        else { return }
+        contentView.previewImageView.image = UIImage(data: imageData)
         selectItemAt(indexPath)
     }
 

@@ -33,6 +33,9 @@ extension Trim {
         self.ratio = trimDTO.ratio
         self.description = trimDTO.description
         self.price = trimDTO.price
-        self.imageURL = URL(string: trimDTO.imgURL)
+        guard let imageURL = URL(string: trimDTO.imgURL.iOS) else {
+            fatalError("서버 개발자 에러: 유효하지 않은 URL입니다.")
+        }
+        self.imageURL = imageURL
     }
 }

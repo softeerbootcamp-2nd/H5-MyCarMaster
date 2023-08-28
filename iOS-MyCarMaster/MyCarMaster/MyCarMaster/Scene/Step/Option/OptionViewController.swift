@@ -81,7 +81,6 @@ final class OptionViewController: UIViewController {
     }
 }
 
-// OptionListCell의 버튼 이벤트가 reponder chain을 타고 이곳으로 넘어 올 것이다.
 extension OptionViewController {
     private func addCellEventObservers() {
         NotificationCenter.default.addObserver(
@@ -143,6 +142,12 @@ extension OptionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let option = dataSource.itemIdentifier(for: indexPath) {
             reactor?.action.send(.optionDidSelect(option))
+            guard let imageURL = option.imgURL,
+                  let imageData = try? Data(contentsOf: imageURL),
+                  let image = UIImage(data: imageData)
+            else { return }
+
+            self.contentView.configurePreviewImage(with: image)
         }
     }
 }
@@ -215,6 +220,19 @@ extension OptionViewController: Reactable {
                 alert.addAction(.init(title: "확인", style: .default))
                 print(errorDescription)
                 self?.present(alert, animated: false)
+            }
+            .store(in: &cancellables)
+
+        reactor.state.map(\.isLoading)
+            .dropFirst()
+            .removeDuplicates()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isLoading in
+                if isLoading {
+                    self?.showIndicator()
+                } else {
+                    self?.hideIndicator()
+                }
             }
             .store(in: &cancellables)
     }

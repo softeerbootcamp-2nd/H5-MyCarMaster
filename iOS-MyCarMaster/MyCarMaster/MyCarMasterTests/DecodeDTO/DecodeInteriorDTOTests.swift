@@ -26,22 +26,26 @@ final class DecodeInteriorDTOTests: XCTestCase {
         let expectedDataList = [
             Interior(
                 model: "펠리세이드",
+                id: 1,
                 name: "퀼팅천연 (블랙)",
                 price: 0,
                 ratio: 60,
-                colorImgURL: URL(string: "https://h5-image.s3.ap-northeast-2.amazonaws.com/palisade/interior-color/quilting-natural-black.png"),
-                coloredImgURL: URL(string: "https://h5-image.s3.ap-northeast-2.amazonaws.com/palisade/interior-color/car/quilting-natural-black.png")
+                colorImgURL: URL(string: "https://h5-image.s3.ap-northeast-2.amazonaws.com/palisade/interior-color/quilting-natural-black.png")!,
+                coloredImgURL: URL(string: "https://h5-image.s3.ap-northeast-2.amazonaws.com/palisade/interior-color/car/quilting-natural-black.png")!
             ),
             Interior(
                 model: "펠리세이드",
+                id: 2,
                 name: "쿨그레이",
                 price: 0,
                 ratio: 40,
-                colorImgURL: URL(string: "https://h5-image.s3.ap-northeast-2.amazonaws.com/palisade/interior-color/cool-gray.png"),
-                coloredImgURL: URL(string: "https://h5-image.s3.ap-northeast-2.amazonaws.com/palisade/interior-color/car/cool-gray.png")
+                colorImgURL: URL(string: "https://h5-image.s3.ap-northeast-2.amazonaws.com/palisade/interior-color/cool-gray.png")!,
+                coloredImgURL: URL(string: "https://h5-image.s3.ap-northeast-2.amazonaws.com/palisade/interior-color/car/cool-gray.png")!
             )
         ]
 
-        XCTAssertEqual(dataList, expectedDataList)
+        for (data, expected) in zip(dataList, expectedDataList) {
+            XCTAssertEqual(data, expected)
+        }
     }
 }

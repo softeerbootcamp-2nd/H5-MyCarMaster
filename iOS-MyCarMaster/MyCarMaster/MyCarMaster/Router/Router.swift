@@ -21,7 +21,8 @@ final class Router {
     init(window: UIWindow?, initialEstimation: Estimation) {
         self.window = window
         self.estimationManager = EstimationManager(estimation: initialEstimation)
-        self.stepNetworkProvider = NetworkProvider<StepTarget>()
+
+        self.stepNetworkProvider = NetworkProvider<StepTarget>(session: Self.configureURLSession())
         self.stepRouter = StepRouter(
             entryStep: .trim,
             estimationManager: estimationManager,
@@ -50,6 +51,15 @@ final class Router {
         let stepContainer = resolveStepContainer()
         navigationController?.navigationBar.topItem?.title = ""
         navigationController?.pushViewController(stepContainer, animated: false)
+    }
+}
+
+extension Router {
+    private static func configureURLSession() -> URLSession {
+        var configuration = URLSessionConfiguration.default
+        configuration.requestCachePolicy = .useProtocolCachePolicy
+        let session = URLSession(configuration: configuration)
+        return session
     }
 }
 

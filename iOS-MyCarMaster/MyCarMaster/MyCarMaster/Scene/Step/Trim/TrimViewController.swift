@@ -88,16 +88,19 @@ extension TrimViewController: Reactable {
     func bindState(reactor: TrimReactor) {
         reactor.state.map(\.selectedTrim)
             .dropFirst()
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] trim in
                 // 견적에 선택된 트림이 있을 때, 그 트림을 선택상태로 만들어준다.
                 if let trim {
                     self?.selectItemFor(trim)
+                    reactor.action.send(.fetchTrimImage(trim.imageURL))
                     return
                 }
 
                 // 없을 때에는 0번째 트림을 견적서에 추가한다.
                 if let firstTrim = self?.dataSource?.itemIdentifier(for: IndexPath(item: 0, section: 0)) {
                     reactor.action.send(.trimDidSelect(firstTrim))
+                    reactor.action.send(.fetchTrimImage(firstTrim.imageURL))
                 }
                 return
             }
@@ -145,6 +148,28 @@ extension TrimViewController: Reactable {
                     reactor.action.send(.resetAndSelectTrim(trim))
                 }))
                 self?.present(alert, animated: false)
+            }
+            .store(in: &cancellables)
+
+        reactor.state.map(\.isLoading)
+            .dropFirst()
+            .removeDuplicates()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isLoading in
+                if isLoading {
+                    self?.showIndicator()
+                } else {
+                    self?.hideIndicator()
+                }
+            }
+            .store(in: &cancellables)
+
+        reactor.state.compactMap(\.selectedTrimImage)
+            .dropFirst()
+            .removeDuplicates()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] image in
+                self?.contentView.previewImageView.image = image
             }
             .store(in: &cancellables)
     }

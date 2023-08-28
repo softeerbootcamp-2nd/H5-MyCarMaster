@@ -122,12 +122,28 @@ extension InteriorViewController: Reactable {
                 self?.present(alert, animated: false)
             }
             .store(in: &cancellables)
+
+        reactor.state.map(\.isLoading)
+            .dropFirst()
+            .removeDuplicates()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isLoading in
+                if isLoading {
+                    self?.showIndicator()
+                } else {
+                    self?.hideIndicator()
+                }
+            }
+            .store(in: &cancellables)
     }
 }
 
 extension InteriorViewController {
     func selectItemFor(_ interior: Interior) {
         guard let indexPath = dataSource.indexPath(for: interior) else { return }
+        guard let imageData = try? Data(contentsOf: interior.coloredImgURL)
+        else { return }
+        contentView.previewImageView.image = UIImage(data: imageData)
         selectItemAt(indexPath)
     }
 

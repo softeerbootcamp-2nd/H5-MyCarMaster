@@ -13,6 +13,6 @@ struct Exterior: Hashable, Priceable {
     var name: String
     var price: Int
     var ratio: Int
-    var colorImgURL: URL?
-    var coloredImgURL: URL?
+    var colorImgURL: URL
+    var coloredImgURL: URL
 }
