@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import org.springframework.cache.annotation.Cacheable;
+
 import lombok.RequiredArgsConstructor;
 import softeer.be_my_car_master.application.option.dto.response.GetOptionsResponse;
 import softeer.be_my_car_master.domain.option.Option;
@@ -16,6 +18,14 @@ public class GetOptionsUseCase {
 
 	private final GetOptionsPort port;
 
+	@Cacheable(value = "get_options",
+		key =
+			"'trimId=' + #trimId "
+				+ "+ '_engineId=' + #engineId "
+				+ "+ '_wheelDriveId=' + #wheelDriveId "
+				+ "+ '_bodyTypeId=' + #bodyTypeId "
+				+ "+ '_interiorColorId=' + #interiorColorId",
+		unless = "#result == null")
 	public GetOptionsResponse execute(
 		Long trimId,
 		Long engineId,
