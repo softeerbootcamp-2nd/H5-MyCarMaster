@@ -90,11 +90,11 @@ const Text = styled.div`
 
 const UnderBarContainer = styled.img`
   position: absolute;
-  bottom: 20%;
+  bottom: 16.66%;
   left: 50%;
   transform: translateX(-50%);
   z-index: -1;
-  width: 60%;
+  width: 70%;
 `;
 
 const ImageContainer = styled.div``;
