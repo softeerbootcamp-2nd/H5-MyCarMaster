@@ -4,9 +4,13 @@ import UnderBar from "@assets/icons/UnderBar.svg";
 
 type SpriteCarRotationProps = {
   $imgUrl: string | undefined;
+  onLoad?: () => void;
 };
 
-export default function SpriteCarRotation({ $imgUrl }: SpriteCarRotationProps) {
+export default function SpriteCarRotation({
+  $imgUrl,
+  onLoad,
+}: SpriteCarRotationProps) {
   const frameWidth = 940;
   const frameHeight = 515;
   const gap = 515;
@@ -40,6 +44,15 @@ export default function SpriteCarRotation({ $imgUrl }: SpriteCarRotationProps) {
   };
 
   useEffect(() => {
+    const spriteImage = new Image();
+    spriteImage.src = `${$imgUrl}`; // Replace with the actual URL
+
+    spriteImage.onload = () => {
+      onLoad && onLoad();
+    };
+  }, [$imgUrl, onLoad]);
+
+  useEffect(() => {
     if (!$imgUrl) return;
     setShowText(true);
     return () => {
@@ -57,7 +70,8 @@ export default function SpriteCarRotation({ $imgUrl }: SpriteCarRotationProps) {
       >
         <UnderBarContainer src={UnderBar} />
         {showText && <Text>360도 돌려보세요!</Text>}
-        <Image
+        <SpriteImage
+          onLoad={onLoad}
           $src={$imgUrl}
           $width={frameWidth * scale}
           $height={frameHeight * scale}
@@ -99,7 +113,7 @@ const UnderBarContainer = styled.img`
 
 const ImageContainer = styled.div``;
 
-const Image = styled.div<{
+const SpriteImage = styled.div<{
   $src: string | undefined;
   $width: number;
   $height: number;

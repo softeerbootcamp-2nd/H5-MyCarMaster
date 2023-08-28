@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Flex } from "@styles/core.style";
 import {
   useCarPaintDispatch,
@@ -11,7 +11,7 @@ import {
 import { useTrimState } from "@contexts/TrimContext";
 import { ExteriorColors } from "types/carpaint.types";
 import useFetch from "@hooks/useFetch";
-import { SpriteCarRotation } from "@common/index";
+import { SpriteCarRotation, Loader } from "@common/index";
 
 interface FetchExteriorProps extends ExteriorColors {
   result: {
@@ -25,6 +25,7 @@ export default function ExteriorColorView() {
   const { trimId } = useTrimState();
   const { exteriorList, exteriorId } = useCarPaintState();
   const { carPaintQuotation } = useQuotationState();
+  const [loading, setLoading] = useState(true);
   const exteriorDispatch = useCarPaintDispatch();
   const quotationDispatch = useQuotationDispatch();
 
@@ -34,6 +35,7 @@ export default function ExteriorColorView() {
   );
 
   useEffect(() => {
+    setLoading(true);
     if (data) {
       if (carPaintQuotation.exteriorColorQuotation.id) return;
 
@@ -65,34 +67,27 @@ export default function ExteriorColorView() {
         },
       });
     }
-  }, [data]);
+  }, [data, carPaintQuotation.exteriorColorQuotation.id]);
+
+  const handleSpriteLoad = () => {
+    console.log("handleSpriteLoad");
+    setLoading(false);
+  };
 
   if (!exteriorList?.length) return null;
   return (
-    <Flex>
+    <Flex $position="relative">
       {exteriorList?.length && (
-        // <Image
-        //   $width="100%"
-        //   $height="25rem"
-        //   $objectFit="cover"
-        //   src={
-        //     exteriorList.find((exterior) => exterior.id === exteriorId)
-        //       ?.coloredImgUrl
-        //   }
-        // />
-        // <CarRotation
-        //   $isQuotation={false}
-        //   $imgUrl={
-        //     exteriorList.find((exterior) => exterior.id === exteriorId)
-        //       ?.coloredImgUrl
-        //   }
-        // />
-        <SpriteCarRotation
-          $imgUrl={
-            exteriorList.find((exterior) => exterior.id === exteriorId)
-              ?.coloredImgUrl
-          }
-        />
+        <>
+          {loading && <Loader />}
+          <SpriteCarRotation
+            onLoad={handleSpriteLoad}
+            $imgUrl={
+              exteriorList.find((exterior) => exterior.id === exteriorId)
+                ?.coloredImgUrl
+            }
+          />
+        </>
       )}
     </Flex>
   );
