@@ -80,9 +80,11 @@ extension WheelDriveViewController: Reactable {
     func bindState(reactor: WheelDriveReactor) {
         reactor.state.map(\.selectedWheelDrive)
             .dropFirst()
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] wheelDrive in
                 if let wheelDrive {
                     self?.selectItemFor(wheelDrive)
+                    reactor.action.send(.fetchWheelDriveImage(wheelDrive.imageURL))
                     return
                 }
 
@@ -90,6 +92,7 @@ extension WheelDriveViewController: Reactable {
                     for: .init(item: 0, section: 0)
                 ) {
                     reactor.action.send(.wheelDriveDidSelect(firstWheelDrive))
+                    reactor.action.send(.fetchWheelDriveImage(firstWheelDrive.imageURL))
                 }
                 return
             }
@@ -135,15 +138,21 @@ extension WheelDriveViewController: Reactable {
                 }
             }
             .store(in: &cancellables)
+
+        reactor.state.compactMap(\.selectedWheelDriveImage)
+            .dropFirst()
+            .removeDuplicates()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] image in
+                self?.contentView.previewImageView.image = image
+            }
+            .store(in: &cancellables)
     }
 }
 
 extension WheelDriveViewController {
     func selectItemFor(_ wheelDrive: WheelDrive) {
         guard let indexPath = dataSource.indexPath(for: wheelDrive) else { return }
-        guard let imageData = try? Data(contentsOf: wheelDrive.imageURL)
-        else { return }
-        contentView.previewImageView.image = UIImage(data: imageData)
         selectItemAt(indexPath)
     }
 

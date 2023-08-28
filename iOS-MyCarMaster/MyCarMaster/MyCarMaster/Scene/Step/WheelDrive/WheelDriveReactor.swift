@@ -17,6 +17,7 @@ final class WheelDriveReactor: Reactor {
         case viewDidLoad
         case wheelDriveDidSelect(WheelDrive)
         case dataSourceDidApply
+        case fetchWheelDriveImage(URL)
     }
 
     enum Mutation {
@@ -24,12 +25,14 @@ final class WheelDriveReactor: Reactor {
         case fetchWheelDriveList([WheelDrive])
         case fetchSelectedWheelDrive(WheelDrive?)
         case alertError(String)
+        case fetchWheelDriveImage(UIImage)
     }
 
     struct State {
         var isLoading: Bool
         var wheelDriveList: [WheelDrive]
         var selectedWheelDrive: WheelDrive?
+        var selectedWheelDriveImage: UIImage?
         var errorDescription: String?
     }
 
@@ -59,6 +62,8 @@ final class WheelDriveReactor: Reactor {
             return updateWheelDrive(wheelDrive)
         case .dataSourceDidApply:
             return fetchSelectedWheelDrive()
+        case let .fetchWheelDriveImage(url):
+            return fetchWheelDriveImage(url)
         }
     }
 
@@ -89,6 +94,8 @@ final class WheelDriveReactor: Reactor {
             newState.selectedWheelDrive = wheelDrive
         case let .alertError(errorDescription):
             newState.errorDescription = errorDescription
+        case let .fetchWheelDriveImage(image):
+            newState.selectedWheelDriveImage = image
         }
         return newState
     }
@@ -117,6 +124,37 @@ extension WheelDriveReactor {
 
 // MARK: Network
 extension WheelDriveReactor {
+    private func fetchWheelDriveImage(_ url: URL) -> AnyPublisher<Mutation, Never> {
+        if let image = ImageCacheManager.shared.object(forKey: url as NSURL) {
+            return Just(Mutation.fetchWheelDriveImage(image))
+                .eraseToAnyPublisher()
+        }
+
+        guard let stepNetworkProvider else {
+            fatalError("개발자 오류: StepProvider가 존재하지 않음")
+        }
+
+        return stepNetworkProvider.requestPublisher(.fetchImage(url: url))
+            .retry(1)
+            .tryMap({ element -> Mutation in
+                guard let httpResponse = element.response as? HTTPURLResponse,
+                      httpResponse.statusCode == 200 else {
+                    throw URLError(.badServerResponse)
+                }
+
+                guard let image = UIImage(data: element.data) else {
+                    throw URLError(.badServerResponse)
+                }
+                ImageCacheManager.shared.setObject(image, forKey: url as NSURL)
+
+                return Mutation.fetchWheelDriveImage(image)
+            })
+            .catch({ error in
+                return Just(Mutation.alertError(error.localizedDescription))
+            })
+            .eraseToAnyPublisher()
+    }
+
     private func fetchWheelDriveList() -> AnyPublisher<Mutation, Never> {
 #if ONLINE
         fetchWheelDriveListFromNetwork()
