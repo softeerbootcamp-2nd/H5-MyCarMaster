@@ -107,13 +107,15 @@ final class ColorListCell: UICollectionViewCell, CellStyleSelectable, ContentSiz
 extension ColorListCell {
     func configure(with stateConvertible: ColorListCellStateConvertible) {
         let state = stateConvertible.colorListCellState
-//        if let colorImageURL = state.colorImageURL {
-            // Image가 메모리에 캐시됨
-//            colorImageView.image = UIImage(contentsOfFile: colorImageURL.absoluteString)
-//        } else {
+        if let colorImageURL = state.colorImageURL {
+            guard let imageData = try? Data(contentsOf: colorImageURL),
+                  let image = UIImage(data: imageData)
+            else { return }
+            colorImageView.image = image
+        } else {
             // TODO: EmptyView
             colorImageView.image = UIImage(named: "A2B")
-//        }
+        }
         titleLabel.setText(state.titleName)
         additoryLabel.setText("\(state.model) 구매자의 \(state.ratio.formatted(style: .percent))가 선택")
         priceLabel.setText("+\(state.price.formatted(style: .currency))")

@@ -128,6 +128,9 @@ extension EngineViewController: Reactable {
 extension EngineViewController {
     func selectItemFor(_ engine: Engine) {
         guard let indexPath = dataSource.indexPath(for: engine) else { return }
+        guard let imageData = try? Data(contentsOf: engine.imageURL)
+        else { return }
+        contentView.previewImageView.image = UIImage(data: imageData)
         selectItemAt(indexPath)
     }
 

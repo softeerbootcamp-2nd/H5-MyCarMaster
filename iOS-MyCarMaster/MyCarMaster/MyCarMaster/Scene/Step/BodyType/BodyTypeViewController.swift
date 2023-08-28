@@ -128,6 +128,9 @@ extension BodyTypeViewController: Reactable {
 extension BodyTypeViewController {
     func selectItemFor(_ bodyType: BodyType) {
         guard let indexPath = dataSource.indexPath(for: bodyType) else { return }
+        guard let imageData = try? Data(contentsOf: bodyType.imageURL)
+        else { return }
+        contentView.previewImageView.image = UIImage(data: imageData)
         selectItemAt(indexPath)
     }
 

@@ -128,6 +128,14 @@ extension ExteriorViewController: Reactable {
 extension ExteriorViewController {
     func selectItemFor(_ exterior: Exterior) {
         guard let indexPath = dataSource.indexPath(for: exterior) else { return }
+        DispatchQueue.global().async {
+            guard let imageData = try? Data(contentsOf: exterior.coloredImgURL),
+                  let image = UIImage(data: imageData)
+            else { return }
+            DispatchQueue.main.async {
+                (self.contentView.previewView as? SpriteRotationView)?.setImage(image)
+            }
+        }
         selectItemAt(indexPath)
     }
 

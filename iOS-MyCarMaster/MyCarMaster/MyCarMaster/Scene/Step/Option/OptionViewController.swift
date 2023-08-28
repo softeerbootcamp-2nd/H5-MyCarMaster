@@ -143,6 +143,12 @@ extension OptionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let option = dataSource.itemIdentifier(for: indexPath) {
             reactor?.action.send(.optionDidSelect(option))
+            guard let imageURL = option.imgURL,
+                  let imageData = try? Data(contentsOf: imageURL),
+                  let image = UIImage(data: imageData)
+            else { return }
+
+            self.contentView.configurePreviewImage(with: image)
         }
     }
 }

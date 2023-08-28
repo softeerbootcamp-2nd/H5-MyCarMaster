@@ -128,6 +128,9 @@ extension WheelDriveViewController: Reactable {
 extension WheelDriveViewController {
     func selectItemFor(_ wheelDrive: WheelDrive) {
         guard let indexPath = dataSource.indexPath(for: wheelDrive) else { return }
+        guard let imageData = try? Data(contentsOf: wheelDrive.imageURL)
+        else { return }
+        contentView.previewImageView.image = UIImage(data: imageData)
         selectItemAt(indexPath)
     }
 

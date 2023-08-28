@@ -153,6 +153,9 @@ extension TrimViewController: Reactable {
 extension TrimViewController {
     func selectItemFor(_ trim: Trim) {
         guard let indexPath = dataSource.indexPath(for: trim) else { return }
+        guard let imageData = try? Data(contentsOf: trim.imageURL)
+        else { return }
+        contentView.previewImageView.image = UIImage(data: imageData)
         selectItemAt(indexPath)
     }
 

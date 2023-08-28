@@ -128,6 +128,9 @@ extension InteriorViewController: Reactable {
 extension InteriorViewController {
     func selectItemFor(_ interior: Interior) {
         guard let indexPath = dataSource.indexPath(for: interior) else { return }
+        guard let imageData = try? Data(contentsOf: interior.coloredImgURL)
+        else { return }
+        contentView.previewImageView.image = UIImage(data: imageData)
         selectItemAt(indexPath)
     }
 
