@@ -17,6 +17,7 @@ final class ExteriorReactor: Reactor {
         case viewDidLoad
         case exteriorDidSelect(Exterior)
         case dataSourceDidApply
+        case fetchExteriorImage(URL)
     }
 
     enum Mutation {
@@ -24,6 +25,7 @@ final class ExteriorReactor: Reactor {
         case fetchExteriorList([Exterior])
         case fetchSelectedExterior(Exterior?)
         case alertError(String)
+        case fetchExteriorImage(UIImage)
     }
 
     struct State {
@@ -31,6 +33,7 @@ final class ExteriorReactor: Reactor {
         var exteriorList: [Exterior]
         var selectedExterior: Exterior?
         var errorDescription: String?
+        var selectedExteriorImage: UIImage?
     }
 
     let initialState: State
@@ -59,6 +62,8 @@ final class ExteriorReactor: Reactor {
             return updateExterior(exterior)
         case .dataSourceDidApply:
             return fetchSelectedExterior()
+        case let .fetchExteriorImage(url):
+            return fetchExteriorImage(url)
         }
     }
 
@@ -89,6 +94,8 @@ final class ExteriorReactor: Reactor {
             newState.selectedExterior = exterior
         case let .alertError(errorDescription):
             newState.errorDescription = errorDescription
+        case let .fetchExteriorImage(image):
+            newState.selectedExteriorImage = image
         }
         return newState
     }
@@ -117,6 +124,37 @@ extension ExteriorReactor {
 
 // MARK: Network
 extension ExteriorReactor {
+    private func fetchExteriorImage(_ url: URL) -> AnyPublisher<Mutation, Never> {
+        if let image = ImageCacheManager.shared.object(forKey: url as NSURL) {
+            return Just(Mutation.fetchExteriorImage(image))
+                .eraseToAnyPublisher()
+        }
+
+        guard let stepNetworkProvider else {
+            fatalError("개발자 오류: StepProvider가 존재하지 않음")
+        }
+
+        return stepNetworkProvider.requestPublisher(.fetchImage(url: url))
+            .retry(1)
+            .tryMap({ element -> Mutation in
+                guard let httpResponse = element.response as? HTTPURLResponse,
+                      httpResponse.statusCode == 200 else {
+                    throw URLError(.badServerResponse)
+                }
+
+                guard let image = UIImage(data: element.data) else {
+                    throw URLError(.badServerResponse)
+                }
+                ImageCacheManager.shared.setObject(image, forKey: url as NSURL)
+
+                return Mutation.fetchExteriorImage(image)
+            })
+            .catch({ error in
+                return Just(Mutation.alertError(error.localizedDescription))
+            })
+            .eraseToAnyPublisher()
+    }
+
     private func fetchExteriorList() -> AnyPublisher<Mutation, Never> {
 #if ONLINE
         fetchExteriorListFromNetwork()

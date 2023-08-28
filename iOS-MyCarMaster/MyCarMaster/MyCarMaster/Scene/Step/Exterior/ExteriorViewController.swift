@@ -80,9 +80,11 @@ extension ExteriorViewController: Reactable {
     func bindState(reactor: ExteriorReactor) {
         reactor.state.map(\.selectedExterior)
             .dropFirst()
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] exterior in
                 if let exterior {
                     self?.selectItemFor(exterior)
+                    reactor.action.send(.fetchExteriorImage(exterior.coloredImgURL))
                     return
                 }
 
@@ -90,6 +92,7 @@ extension ExteriorViewController: Reactable {
                     for: .init(item: 0, section: 0)
                 ) {
                     reactor.action.send(.exteriorDidSelect(firstExterior))
+                    reactor.action.send(.fetchExteriorImage(firstExterior.coloredImgURL))
                 }
                 return
             }
@@ -135,20 +138,21 @@ extension ExteriorViewController: Reactable {
                 }
             }
             .store(in: &cancellables)
+
+        reactor.state.compactMap(\.selectedExteriorImage)
+            .dropFirst()
+            .removeDuplicates()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] image in
+                (self?.contentView.previewView as? SpriteRotationView)?.setImage(image)
+            }
+            .store(in: &cancellables)
     }
 }
 
 extension ExteriorViewController {
     func selectItemFor(_ exterior: Exterior) {
         guard let indexPath = dataSource.indexPath(for: exterior) else { return }
-        DispatchQueue.global().async {
-            guard let imageData = try? Data(contentsOf: exterior.coloredImgURL),
-                  let image = UIImage(data: imageData)
-            else { return }
-            DispatchQueue.main.async {
-                (self.contentView.previewView as? SpriteRotationView)?.setImage(image)
-            }
-        }
         selectItemAt(indexPath)
     }
 
