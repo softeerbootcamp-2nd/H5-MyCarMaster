@@ -49,6 +49,19 @@ export function FormModal({
     e: React.ChangeEvent<HTMLInputElement>,
     field: keyof FormDatas
   ) => {
+    // if filed is phone, only number and
+    if (field === "phone") {
+      const cleanedValue = e.target.value.replace(/\D/g, "");
+      const formattedValue = cleanedValue.replace(
+        /(\d{3})(\d{4})(\d{4})/,
+        "$1-$2-$3"
+      );
+      setFormDatas({
+        ...formDatas,
+        [field]: formattedValue,
+      });
+      return;
+    }
     setFormDatas({
       ...formDatas,
       [field]: e.target.value,

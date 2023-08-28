@@ -38,7 +38,9 @@ export default function AdminView({ clientList }: AdminViewProps) {
           $flexDirection="row"
           $wrap={true}
           $alignContent="flex-start"
-          $gap="1rem"
+          $justifyContent="flex-start"
+          $alignItems="center"
+          $margin="0 5%"
         >
           {clientList &&
             clientList.map((client, index) => (
@@ -90,7 +92,6 @@ export default function AdminView({ clientList }: AdminViewProps) {
           </ClientQuotationDetailBox>
 
           <QuotationLookBox>
-            {/* client.estimateUrl에 해당하는 견적서를 보여주는 페이지 */}
             <QuotationIFrame src={isQuotationUrl} title="견적서" />
           </QuotationLookBox>
         </>

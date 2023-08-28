@@ -29,6 +29,7 @@ export const AdminLogin = styled(Flex)`
 
 export const AdminLoginTitle = styled(Text)`
   ${(props) => props.theme.fonts.Medium15};
+  margin: 0 4rem;
   text-align: center;
 `;
 
@@ -140,4 +141,13 @@ export const CheckText = styled(Text)<CheckTypeProps>`
       opacity: 0;
     }
   }
+`;
+
+export const LogoImg = styled.img`
+  margin: 0 4rem;
+  width: 20%;
+  min-width: 12rem;
+  max-width: 16rem;
+  z-index: 100;
+  cursor: pointer;
 `;
