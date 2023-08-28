@@ -85,6 +85,7 @@
 		B58FB41C2A92049600105DBF /* StepContainerReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FB41B2A92049600105DBF /* StepContainerReactor.swift */; };
 		B5917EC22A9C3693004793EF /* String+DTOURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5917EC12A9C3693004793EF /* String+DTOURL.swift */; };
 		B5917EC42A9C39E3004793EF /* ImageUrlReplacingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5917EC32A9C39E3004793EF /* ImageUrlReplacingTests.swift */; };
+		B5917EC72A9C5FFF004793EF /* MCMActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5917EC62A9C5FFF004793EF /* MCMActivityIndicatorView.swift */; };
 		B598A0852A8F297A00C4A591 /* QuotationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B598A0842A8F297A00C4A591 /* QuotationViewController.swift */; };
 		B59B201D2A8B666A009E7868 /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59B201C2A8B666A009E7868 /* OptionViewController.swift */; };
 		B59F0B6C2A9B418900E444C6 /* EngineReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F0B6B2A9B418900E444C6 /* EngineReactor.swift */; };
@@ -279,6 +280,7 @@
 		B58FB41B2A92049600105DBF /* StepContainerReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepContainerReactor.swift; sourceTree = "<group>"; };
 		B5917EC12A9C3693004793EF /* String+DTOURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DTOURL.swift"; sourceTree = "<group>"; };
 		B5917EC32A9C39E3004793EF /* ImageUrlReplacingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUrlReplacingTests.swift; sourceTree = "<group>"; };
+		B5917EC62A9C5FFF004793EF /* MCMActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MCMActivityIndicatorView.swift; sourceTree = "<group>"; };
 		B598A0842A8F297A00C4A591 /* QuotationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationViewController.swift; sourceTree = "<group>"; };
 		B59B201C2A8B666A009E7868 /* OptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
 		B59F0B6B2A9B418900E444C6 /* EngineReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineReactor.swift; sourceTree = "<group>"; };
@@ -748,6 +750,7 @@
 				B550C0D42A8FF4440068670D /* SeparatorView.swift */,
 				B5C56C012A935134009F0226 /* ThemeButton.swift */,
 				B5B142322A967E7E007BB426 /* SpriteRotationView.swift */,
+				B5917EC62A9C5FFF004793EF /* MCMActivityIndicatorView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -1058,6 +1061,7 @@
 				B50FEC4F2A939501003566DD /* StepTarget.swift in Sources */,
 				B5DD65202A8926E700B44F61 /* ContentSizeEstimatable.swift in Sources */,
 				B5C0790D2A8BD6EA00747B11 /* UIButton+Selectable.swift in Sources */,
+				B5917EC72A9C5FFF004793EF /* MCMActivityIndicatorView.swift in Sources */,
 				B5DD64DF2A876EED00B44F61 /* BodyTypeDTO.swift in Sources */,
 				B56F55D22A86BBE50055E382 /* RootDTO.swift in Sources */,
 				B59B201D2A8B666A009E7868 /* OptionViewController.swift in Sources */,
