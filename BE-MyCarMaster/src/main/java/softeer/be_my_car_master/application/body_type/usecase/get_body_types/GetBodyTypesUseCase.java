@@ -15,7 +15,7 @@ public class GetBodyTypesUseCase {
 
 	private final GetBodyTypesPort port;
 
-	@Cacheable(value = "get_body_types", key = "'modelId = ' + #modelId", unless = "#result == null")
+	@Cacheable(value = "get_body_types", key = "'modelId=' + #modelId", unless = "#result == null")
 	public GetBodyTypesResponse execute(Long modelId) {
 		List<BodyType> bodyTypes = port.findBodyTypesByModel(modelId);
 		return GetBodyTypesResponse.from(bodyTypes);

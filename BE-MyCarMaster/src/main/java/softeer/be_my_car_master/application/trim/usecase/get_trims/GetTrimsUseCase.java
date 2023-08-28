@@ -15,7 +15,7 @@ public class GetTrimsUseCase {
 
 	private final GetTrimsPort getTrimsPort;
 
-	@Cacheable(value = "get_trims", key = "'modelId = ' + #modelId", unless = "#result == null")
+	@Cacheable(value = "get_trims", key = "'modelId=' + #modelId", unless = "#result == null")
 	public GetTrimsResponse execute(Long modelId) {
 		List<Trim> trims = getTrimsPort.findTrimsByModel(modelId);
 		return GetTrimsResponse.from(trims);
