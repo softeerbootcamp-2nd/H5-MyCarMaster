@@ -14,5 +14,5 @@ struct BodyType: Hashable, Priceable {
     var description: String
     var ratio: Int
     var price: Int
-    var imageURL: URL?
+    var imageURL: URL
 }

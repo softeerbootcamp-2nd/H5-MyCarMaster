@@ -14,5 +14,5 @@ struct Trim: Hashable, Priceable {
     var ratio: Int
     var description: String
     var price: Int
-    var imageURL: URL?
+    var imageURL: URL
 }

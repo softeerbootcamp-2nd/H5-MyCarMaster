@@ -18,5 +18,5 @@ struct Engine: Hashable, Priceable {
     var power: Int
     var toque: Double
     var price: Int
-    var imageURL: URL?
+    var imageURL: URL
 }
