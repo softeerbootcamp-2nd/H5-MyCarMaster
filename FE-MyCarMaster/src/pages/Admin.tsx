@@ -8,12 +8,14 @@ import {
   ModalOverlay,
   AdminContentText,
   CheckText,
+  LogoImg,
 } from "./Admin.style";
 import { Flex } from "@styles/core.style";
 import { Button, Loader } from "@common/index";
 import { useNavigate } from "react-router-dom";
 import { AdminView } from "@layout/index";
 import { get } from "@utils/fetch";
+import dark_logo from "@assets/images/dark_logo.svg";
 
 const STATUS_TEXT = {
   SUCCESS: {
@@ -197,13 +199,14 @@ export default function Admin() {
         <>
           <Flex
             $width="100%"
-            $justifyContent="center"
+            $justifyContent="space-between"
             $alignItems="center"
             $height="3rem"
-            $gap="1rem"
+            $margin="2rem"
           >
+            <LogoImg src={dark_logo} onClick={isGoHomeHandler} />
             <AdminLoginTitle $font={theme.fonts.Medium15}>
-              {email.slice(0, 2)}** 카마스터 관리자 페이지
+              {email.slice(0, 2)}** 카마스터님 환영합니다.
             </AdminLoginTitle>
           </Flex>
           <AdminView clientList={clientList} />
